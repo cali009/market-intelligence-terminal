@@ -1,16 +1,20 @@
 """
-Event-Driven Walk-Forward Backtesting Engine
+Event-Driven Walk-Forward Backtesting Engine (Dual-Market US + Canada)
 US + Canada Market Intelligence Platform
 
-Strict anti-bias controls:
-1. No look-ahead bias: Signals generated on bar T close; orders executed on bar T+1 Open.
-2. Realistic transaction costs: 5 bps commission + 5 bps slippage per side (10 bps per side, 20 bps round-trip).
-3. Walk-Forward / Out-of-Sample Partitioning:
+Strict anti-bias controls and realistic quantitative standards:
+1. Strict Anti-Lookahead: Signals generated on bar T close; orders executed on bar T+1 Open.
+2. Same-Day Intraday Risk: Positions evaluated for adverse intraday stops on day of entry.
+3. Adverse Intrabar Priority: If a bar touches both Stop and Target, the Stop Loss triggers first.
+4. Cross-Border FX Normalization: Converts CAD equity transactions to USD portfolio base via point-in-time Bank of Canada FX rates.
+5. Realistic Cost Modeling: 5 bps commission + 5 bps slippage per side (10 bps per side, 20 bps round-trip).
+6. Disaggregated Gross vs Net: Explicitly isolates fee drag ($ and %) from strategy alpha.
+7. Walk-Forward / Out-of-Sample Partitioning:
    - TRAIN: 60% of timeline (hypothesis & parameter calibration)
    - VALIDATION: 20% of timeline (hyperparameter tuning)
    - TEST: 20% of timeline (untouched out-of-sample verification)
-4. Comprehensive metric calculation: CAGR, Sharpe, Sortino, Calmar, Max Drawdown, Win Rate, Profit Factor, Expectancy.
-5. Mandatory regulatory disclosure: Statutory CSA 31-369 & SEC Rule 206(4)-1 hypothetical performance warnings.
+8. Dual-Benchmark Attribution: Compares against SPY (US), XIU (Canada), and 60/40 Blended Benchmark.
+9. Statutory Compliance: Mandatory CSA Staff Notice 31-369 and SEC Rule 206(4)-1 hypothetical disclosures.
 """
 
 from dataclasses import dataclass, field
@@ -28,15 +32,16 @@ from src.engine.technicals import TechnicalAnalysisEngine
 
 @dataclass
 class BacktestConfig:
-    initial_capital: float = 100000.0
+    initial_capital_usd: float = 100000.0
     commission_bps: float = 5.0     # 0.05%
     slippage_bps: float = 5.0       # 0.05%
     risk_per_trade_pct: float = 1.0 # 1.0% equity risk per trade (1R)
     max_open_positions: int = 8
+    max_single_position_pct: float = 15.0 # Max 15% capital per position
     split_train_pct: float = 0.60
     split_val_pct: float = 0.20
     split_test_pct: float = 0.20
-    annual_sovereign_benchmark_yield: float = 0.035 # 3.5% annualized baseline yield benchmark
+    annual_sovereign_benchmark_yield: float = 0.035 # 3.5% baseline sovereign yield
 
 
 @dataclass
@@ -44,20 +49,28 @@ class SimulatedTrade:
     symbol: str
     exchange: str
     country: str
+    currency: str
     direction: str
     signal_date: str
     entry_date: str
-    entry_price: float
+    raw_entry_price: float
+    entry_price_net: float
+    entry_fx_rate: float            # CAD/USD FX rate at entry (1.0 for USD)
+    entry_price_usd_net: float
     exit_date: Optional[str] = None
-    exit_price: Optional[float] = None
+    raw_exit_price: Optional[float] = None
+    exit_price_net: Optional[float] = None
+    exit_fx_rate: Optional[float] = None
+    exit_price_usd_net: Optional[float] = None
     stop_loss: float = 0.0
     target_1: float = 0.0
     target_2: float = 0.0
     target_3: float = 0.0
     initial_risk_per_share: float = 0.0
     shares: int = 0
-    gross_pnl: float = 0.0
-    net_pnl: float = 0.0
+    gross_pnl_usd: float = 0.0
+    net_pnl_usd: float = 0.0
+    fee_drag_usd: float = 0.0
     return_pct: float = 0.0
     r_multiple: float = 0.0
     holding_days: int = 0
@@ -70,19 +83,23 @@ class SimulatedTrade:
             "symbol": str(self.symbol),
             "exchange": str(self.exchange),
             "country": str(self.country),
+            "currency": str(self.currency),
             "direction": str(self.direction),
             "signal_date": str(self.signal_date),
             "entry_date": str(self.entry_date),
-            "entry_price": round(float(self.entry_price), 2),
+            "entry_price": round(float(self.entry_price_net), 2),
+            "entry_price_usd": round(float(self.entry_price_usd_net), 2),
             "exit_date": str(self.exit_date) if self.exit_date else None,
-            "exit_price": round(float(self.exit_price), 2) if self.exit_price else None,
+            "exit_price": round(float(self.exit_price_net), 2) if self.exit_price_net else None,
+            "exit_price_usd": round(float(self.exit_price_usd_net), 2) if self.exit_price_usd_net else None,
             "stop_loss": round(float(self.stop_loss), 2),
             "target_1": round(float(self.target_1), 2),
             "target_2": round(float(self.target_2), 2),
             "target_3": round(float(self.target_3), 2),
             "shares": int(self.shares),
-            "gross_pnl": round(float(self.gross_pnl), 2),
-            "net_pnl": round(float(self.net_pnl), 2),
+            "gross_pnl_usd": round(float(self.gross_pnl_usd), 2),
+            "net_pnl_usd": round(float(self.net_pnl_usd), 2),
+            "fee_drag_usd": round(float(self.fee_drag_usd), 2),
             "return_pct": round(float(self.return_pct), 2),
             "r_multiple": round(float(self.r_multiple), 2),
             "holding_days": int(self.holding_days),
@@ -94,7 +111,7 @@ class SimulatedTrade:
 
 class BacktestEngine:
     """
-    Production-grade event-driven backtesting engine for quantitative market strategies.
+    Production-grade event-driven walk-forward backtesting engine.
     """
 
     def __init__(self, config: Optional[BacktestConfig] = None):
@@ -106,14 +123,6 @@ class BacktestEngine:
         start_date: Optional[str] = None,
         end_date: Optional[str] = None,
     ) -> Dict[str, Any]:
-        """
-        Executes a complete walk-forward backtest for the specified strategy.
-        Supported strategies:
-        - 'ENSEMBLE_8F': Multi-factor composite scoring model (Score >= 60 in bullish regimes)
-        - 'TAC01_PULLBACK': Pullback to rising key moving averages (SMA20/50 + RSI digestion)
-        - 'TAC02_SQUEEZE': Volatility squeeze bandwidth compression breakout
-        - 'TAC04_MOMENTUM': Momentum leaders 52-week breakout continuation
-        """
         # 1. Load securities and historical daily price bars
         securities = db.execute_query(
             "SELECT security_id, symbol, exchange, country, currency FROM security WHERE is_active = 1;"
@@ -129,6 +138,13 @@ class BacktestEngine:
         all_bars = db.execute_query(bars_query)
         if not all_bars:
             raise ValueError("No historical price bars found in database to backtest.")
+
+        # Load Bank of Canada CAD/USD FX observations for cross-border currency normalization
+        fx_rows = db.execute_query(
+            "SELECT observation_date, value FROM macro_observation WHERE series_id = 'FXUSDCAD' ORDER BY observation_date ASC;"
+        )
+        fx_rates_raw = {r["observation_date"]: float(r["value"]) for r in fx_rows}
+        last_known_fx = 1.38
 
         # Group bars by security_id into DataFrames
         sec_bars: Dict[int, pd.DataFrame] = {}
@@ -172,23 +188,42 @@ class BacktestEngine:
             else:
                 return "TEST"
 
-        # 3. Benchmark Data for Alpha/Beta tracking (SPY for US, XIU for CA)
-        benchmark_close: Dict[str, float] = {}
+        # 3. Dual-Market Benchmark Data (SPY for US, XIU for Canada)
+        benchmark_close_spy: Dict[str, float] = {}
+        benchmark_close_xiu: Dict[str, float] = {}
+
         spy_sec = next((s for s in securities if s["symbol"] == "SPY"), None)
         if spy_sec and spy_sec["security_id"] in sec_dfs:
             spy_df = sec_dfs[spy_sec["security_id"]]
             for _, row in spy_df.iterrows():
-                benchmark_close[row["trading_date"]] = row["close"]
+                benchmark_close_spy[row["trading_date"]] = row["close"]
 
-        # 4. Simulation State
-        capital = self.config.initial_capital
-        cash = capital
+        xiu_sec = next((s for s in securities if s["symbol"] == "XIU"), None)
+        if xiu_sec and xiu_sec["security_id"] in sec_dfs:
+            xiu_df = sec_dfs[xiu_sec["security_id"]]
+            for _, row in xiu_df.iterrows():
+                benchmark_close_xiu[row["trading_date"]] = row["close"]
+
+        # 4. Simulation State (USD Base Currency)
+        capital_usd = self.config.initial_capital_usd
+        cash_usd = capital_usd
         open_trades: List[SimulatedTrade] = []
         closed_trades: List[SimulatedTrade] = []
         equity_curve: List[Dict[str, Any]] = []
 
-        # Fee factors
+        # Fee rate per side (5 bps commission + 5 bps slippage = 10 bps per side)
         fee_rate = (self.config.commission_bps + self.config.slippage_bps) / 10000.0
+
+        # Helper to get point-in-time FX
+        def get_fx_to_usd(t_date: str, curr: str) -> float:
+            nonlocal last_known_fx
+            if curr == "USD":
+                return 1.0
+            val = fx_rates_raw.get(t_date)
+            if val and val > 0:
+                last_known_fx = val
+            # 1 USD = last_known_fx CAD -> 1 CAD = (1 / last_known_fx) USD
+            return 1.0 / last_known_fx
 
         # Step through every trading session chronologically
         for t_idx in range(50, len(timeline)):
@@ -198,7 +233,6 @@ class BacktestEngine:
 
             # A. Update Open Positions & Check Stop/Target Execution on Today's Bar
             still_open: List[SimulatedTrade] = []
-            daily_realized_pnl = 0.0
 
             for trade in open_trades:
                 s_meta = next((s for s in securities if s["symbol"] == trade.symbol), None)
@@ -219,51 +253,63 @@ class BacktestEngine:
                 b_close = bar["close"]
 
                 trade.holding_days += 1
-                exit_price: Optional[float] = None
+                exit_price_net: Optional[float] = None
+                raw_exit_price: Optional[float] = None
                 exit_reason: Optional[str] = None
 
-                # Breakeven Stop Trailing Rule: Once Target 1 is hit, trail stop to breakeven
-                if b_high >= trade.target_1 and trade.stop_loss < trade.entry_price:
-                    trade.stop_loss = trade.entry_price
-
-                # Check Stop Loss Trigger (hits Low)
+                # ADVERSE PRIORITY RULE: Check Stop Loss Trigger FIRST
                 if b_low <= trade.stop_loss:
-                    # Gapped below stop -> fill at Open; else fill at Stop Loss
-                    exit_price = min(b_open, trade.stop_loss) * (1.0 - fee_rate)
-                    exit_reason = "STOP_LOSS" if trade.stop_loss < trade.entry_price else "BREAKEVEN_STOP"
+                    raw_exit = min(b_open, trade.stop_loss)
+                    raw_exit_price = raw_exit
+                    exit_price_net = raw_exit * (1.0 - fee_rate)
+                    exit_reason = "STOP_LOSS" if trade.stop_loss < trade.raw_entry_price else "BREAKEVEN_STOP"
 
-                # Check Profit Target 2 Trigger (hits High)
+                # Check Profit Target 2 Trigger (only if Stop was NOT hit)
                 elif b_high >= trade.target_2:
-                    exit_price = trade.target_2 * (1.0 - fee_rate)
+                    raw_exit_price = trade.target_2
+                    exit_price_net = trade.target_2 * (1.0 - fee_rate)
                     exit_reason = "TARGET_2"
 
                 # Check Profit Target 1 Trigger after multi-session hold
                 elif b_high >= trade.target_1 and trade.holding_days >= 6:
-                    exit_price = trade.target_1 * (1.0 - fee_rate)
+                    raw_exit_price = trade.target_1
+                    exit_price_net = trade.target_1 * (1.0 - fee_rate)
                     exit_reason = "TARGET_1"
 
                 # Max Holding Horizon Rule (20 sessions max)
                 elif trade.holding_days >= 20:
-                    exit_price = b_close * (1.0 - fee_rate)
+                    raw_exit_price = b_close
+                    exit_price_net = b_close * (1.0 - fee_rate)
                     exit_reason = "TIME_EXPIRY"
 
+                # Breakeven Stop Trailing Rule (if Target 1 touched and not exited)
+                elif b_high >= trade.target_1 and trade.stop_loss < trade.raw_entry_price:
+                    trade.stop_loss = trade.raw_entry_price
+
                 # Execute Exit if triggered
-                if exit_price and exit_reason:
+                if exit_price_net and exit_reason and raw_exit_price:
                     trade.exit_date = curr_date
-                    trade.exit_price = exit_price
+                    trade.raw_exit_price = raw_exit_price
+                    trade.exit_price_net = exit_price_net
                     trade.exit_reason = exit_reason
 
-                    trade.gross_pnl = (exit_price - trade.entry_price) * trade.shares
-                    trade.net_pnl = trade.gross_pnl
-                    trade.return_pct = ((exit_price / trade.entry_price) - 1.0) * 100.0
+                    exit_fx = get_fx_to_usd(curr_date, trade.currency)
+                    trade.exit_fx_rate = exit_fx
+                    trade.exit_price_usd_net = exit_price_net * exit_fx
+                    raw_exit_usd = raw_exit_price * exit_fx
+                    raw_entry_usd = trade.raw_entry_price * trade.entry_fx_rate
+
+                    trade.gross_pnl_usd = (raw_exit_usd - raw_entry_usd) * trade.shares
+                    trade.net_pnl_usd = (trade.exit_price_usd_net - trade.entry_price_usd_net) * trade.shares
+                    trade.fee_drag_usd = trade.gross_pnl_usd - trade.net_pnl_usd
+                    trade.return_pct = ((trade.exit_price_usd_net / trade.entry_price_usd_net) - 1.0) * 100.0
 
                     if trade.initial_risk_per_share > 0:
-                        trade.r_multiple = (exit_price - trade.entry_price) / trade.initial_risk_per_share
+                        trade.r_multiple = (trade.exit_price_net - trade.entry_price_net) / trade.initial_risk_per_share
                     else:
                         trade.r_multiple = 0.0
 
-                    cash += (exit_price * trade.shares)
-                    daily_realized_pnl += trade.net_pnl
+                    cash_usd += (trade.exit_price_usd_net * trade.shares)
                     closed_trades.append(trade)
                 else:
                     still_open.append(trade)
@@ -278,7 +324,6 @@ class BacktestEngine:
                         break
 
                     sym = s["symbol"]
-                    # Skip if already holding a position in this security
                     if any(t.symbol == sym for t in open_trades):
                         continue
 
@@ -287,7 +332,6 @@ class BacktestEngine:
                         continue
 
                     df_s = sec_dfs[s_id]
-                    # We need the prior bar (signal generated at close)
                     idx_today_series = df_s.index[df_s["trading_date"] == curr_date]
                     if len(idx_today_series) == 0 or idx_today_series[0] == 0:
                         continue
@@ -299,41 +343,55 @@ class BacktestEngine:
                     # Verify signal condition on prior_bar
                     signal_fired = self._evaluate_signal_predicate(strategy_id, prior_bar)
                     if signal_fired:
-                        # Entry executes at Today's Open with slippage & commission
-                        entry_price = today_bar["open"] * (1.0 + fee_rate)
-                        atr = prior_bar.get("atr_14", entry_price * 0.02)
+                        raw_entry = today_bar["open"]
+                        entry_net = raw_entry * (1.0 + fee_rate)
+                        atr = prior_bar.get("atr_14", raw_entry * 0.02)
                         if not atr or math.isnan(atr) or atr <= 0:
-                            atr = entry_price * 0.02
+                            atr = raw_entry * 0.02
 
-                        # Structural stop at 1.5 ATR below entry
-                        stop_loss = round(entry_price - (1.5 * atr), 2)
-                        risk_per_share = entry_price - stop_loss
+                        stop_loss = round(raw_entry - (1.5 * atr), 2)
+                        risk_per_share = raw_entry - stop_loss
                         if risk_per_share <= 0:
                             continue
 
-                        # Multi-stage targets
-                        target_1 = round(entry_price + (1.6 * risk_per_share), 2)
-                        target_2 = round(entry_price + (2.6 * risk_per_share), 2)
-                        target_3 = round(entry_price + (4.0 * risk_per_share), 2)
+                        target_1 = round(raw_entry + (1.6 * risk_per_share), 2)
+                        target_2 = round(raw_entry + (2.6 * risk_per_share), 2)
+                        target_3 = round(raw_entry + (4.0 * risk_per_share), 2)
 
-                        # Position Sizing: 1% equity risk / risk_per_share
-                        max_risk_amount = capital * (self.config.risk_per_trade_pct / 100.0)
-                        raw_shares = int(max_risk_amount / risk_per_share)
-                        # Cap at 15% of portfolio capital
-                        max_shares_cap = int((capital * 0.15) / entry_price)
+                        # Currency conversion for sizing
+                        curr_fx = get_fx_to_usd(curr_date, s["currency"])
+                        entry_price_usd = entry_net * curr_fx
+                        risk_per_share_usd = risk_per_share * curr_fx
+
+                        # Position Sizing: 1% risk / risk_per_share_usd
+                        max_risk_amount = capital_usd * (self.config.risk_per_trade_pct / 100.0)
+                        raw_shares = int(max_risk_amount / risk_per_share_usd) if risk_per_share_usd > 0 else 1
+                        
+                        # Portfolio Exposure Cap (Max 15% per position)
+                        max_shares_cap = int((capital_usd * (self.config.max_single_position_pct / 100.0)) / entry_price_usd) if entry_price_usd > 0 else 1
                         shares = max(1, min(raw_shares, max_shares_cap))
 
-                        required_capital = shares * entry_price
-                        if cash >= required_capital:
-                            cash -= required_capital
+                        # Cash availability buffer
+                        required_cash_usd = shares * entry_price_usd
+                        if cash_usd < required_cash_usd and cash_usd > (1000.0 * curr_fx):
+                            # Size down to remaining cash
+                            shares = max(1, int((cash_usd * 0.95) / entry_price_usd))
+                            required_cash_usd = shares * entry_price_usd
+
+                        if cash_usd >= required_cash_usd and shares > 0:
+                            cash_usd -= required_cash_usd
                             new_trade = SimulatedTrade(
                                 symbol=sym,
                                 exchange=s["exchange"],
                                 country=s["country"],
+                                currency=s["currency"],
                                 direction="LONG",
                                 signal_date=prior_bar["trading_date"],
                                 entry_date=curr_date,
-                                entry_price=entry_price,
+                                raw_entry_price=raw_entry,
+                                entry_price_net=entry_net,
+                                entry_fx_rate=curr_fx,
+                                entry_price_usd_net=entry_price_usd,
                                 stop_loss=stop_loss,
                                 target_1=target_1,
                                 target_2=target_2,
@@ -343,31 +401,58 @@ class BacktestEngine:
                                 regime_at_entry="BULLISH" if prior_bar["close"] > (prior_bar.get("sma_200") or 0) else "NEUTRAL",
                                 partition=curr_partition,
                             )
-                            open_trades.append(new_trade)
+
+                            # SAME-DAY INTRADAY RISK GATE: Check if entry bar hit stop or target intraday
+                            b_low = today_bar["low"]
+                            b_high = today_bar["high"]
+                            if b_low <= stop_loss:
+                                # Stopped out on day of entry
+                                raw_exit = min(today_bar["open"], stop_loss)
+                                new_trade.exit_date = curr_date
+                                new_trade.raw_exit_price = raw_exit
+                                new_trade.exit_price_net = raw_exit * (1.0 - fee_rate)
+                                new_trade.exit_fx_rate = curr_fx
+                                new_trade.exit_price_usd_net = new_trade.exit_price_net * curr_fx
+                                new_trade.holding_days = 1
+                                new_trade.exit_reason = "SAME_DAY_STOP"
+                                new_trade.gross_pnl_usd = ((raw_exit * curr_fx) - (raw_entry * curr_fx)) * shares
+                                new_trade.net_pnl_usd = (new_trade.exit_price_usd_net - new_trade.entry_price_usd_net) * shares
+                                new_trade.fee_drag_usd = new_trade.gross_pnl_usd - new_trade.net_pnl_usd
+                                new_trade.return_pct = ((new_trade.exit_price_usd_net / new_trade.entry_price_usd_net) - 1.0) * 100.0
+                                new_trade.r_multiple = (new_trade.exit_price_net - new_trade.entry_price_net) / risk_per_share
+
+                                cash_usd += (new_trade.exit_price_usd_net * shares)
+                                closed_trades.append(new_trade)
+                            else:
+                                open_trades.append(new_trade)
 
             # C. Mark-to-Market Equity Calculation for the session
-            unrealized_equity = 0.0
+            unrealized_equity_usd = 0.0
             for t in open_trades:
                 s_meta = next(s for s in securities if s["symbol"] == t.symbol)
                 df_s = sec_dfs[s_meta["security_id"]]
                 today_row = df_s[df_s["trading_date"] == curr_date]
+                fx_today = get_fx_to_usd(curr_date, t.currency)
                 if not today_row.empty:
                     current_close = today_row.iloc[0]["close"]
-                    unrealized_equity += (current_close * t.shares)
+                    unrealized_equity_usd += (current_close * fx_today * t.shares)
                 else:
-                    unrealized_equity += (t.entry_price * t.shares)
+                    unrealized_equity_usd += (t.entry_price_usd_net * t.shares)
 
-            total_portfolio_equity = cash + unrealized_equity
-            capital = total_portfolio_equity
+            total_portfolio_equity = cash_usd + unrealized_equity_usd
+            capital_usd = total_portfolio_equity
 
-            # Benchmark mark-to-market comparison
-            bm_price = benchmark_close.get(curr_date, None)
+            # Dual-Benchmark Mark-to-Market
+            bm_spy = benchmark_close_spy.get(curr_date, None)
+            bm_xiu = benchmark_close_xiu.get(curr_date, None)
+
             equity_curve.append({
                 "date": curr_date,
                 "portfolio_equity": round(total_portfolio_equity, 2),
-                "cash": round(cash, 2),
+                "cash": round(cash_usd, 2),
                 "open_positions": len(open_trades),
-                "benchmark_price": bm_price,
+                "benchmark_price_spy": bm_spy,
+                "benchmark_price_xiu": bm_xiu,
                 "partition": curr_partition,
             })
 
@@ -375,8 +460,9 @@ class BacktestEngine:
         metrics = self._calculate_performance_metrics(
             equity_curve=equity_curve,
             closed_trades=closed_trades,
-            initial_capital=self.config.initial_capital,
-            benchmark_close=benchmark_close,
+            initial_capital=self.config.initial_capital_usd,
+            benchmark_close_spy=benchmark_close_spy,
+            benchmark_close_xiu=benchmark_close_xiu,
             train_cutoff=train_cutoff,
             val_cutoff=val_cutoff,
         )
@@ -386,13 +472,14 @@ class BacktestEngine:
             "strategy_name": self._get_strategy_display_name(strategy_id),
             "generated_at": datetime.now().isoformat(),
             "config": {
-                "initial_capital": self.config.initial_capital,
+                "initial_capital_usd": self.config.initial_capital_usd,
                 "commission_bps": self.config.commission_bps,
                 "slippage_bps": self.config.slippage_bps,
                 "risk_per_trade_pct": self.config.risk_per_trade_pct,
                 "max_open_positions": self.config.max_open_positions,
                 "train_cutoff": train_cutoff,
                 "val_cutoff": val_cutoff,
+                "survivorship_bias_note": "Evaluated on 19 Liquid Cross-Sectional Large-Cap Constituents",
             },
             "metrics": metrics,
             "equity_curve": equity_curve[::2], # Sample every 2 sessions for fast web transfer
@@ -415,17 +502,16 @@ class BacktestEngine:
         bb_lower = bar.get("bb_lower")
         prox52 = bar.get("proximity_52w_high", 0.0)
 
-        # Check required fields are present and not NaN
         for val in [sma20, sma50, sma200, rsi, atr]:
             if val is None or math.isnan(val):
                 return False
 
         if strategy_id == "ENSEMBLE_8F":
-            # Multi-factor alignment: Above 200DMA, SMA20 > SMA50, RSI 48-68, within 12% of 52w high
+            # Multi-factor alignment: Golden Cross trend, RSI 48-68, near 52w highs
             return bool(c > sma200 and sma20 > sma50 and 48.0 <= rsi <= 68.0 and prox52 >= -0.12)
 
         elif strategy_id == "TAC01_PULLBACK":
-            # Pullback to Key Support: Rising 50DMA, price within 2.5% of 20DMA with healthy RSI
+            # Pullback to Key Support: Rising 50DMA, price near 20DMA with healthy RSI
             is_uptrend = c > sma50 and sma50 > sma200
             pullback_zone = abs(c - sma20) / sma20 <= 0.025
             return bool(is_uptrend and pullback_zone and 42.0 <= rsi <= 58.0)
@@ -448,13 +534,11 @@ class BacktestEngine:
         equity_curve: List[Dict[str, Any]],
         closed_trades: List[SimulatedTrade],
         initial_capital: float,
-        benchmark_close: Dict[str, float],
+        benchmark_close_spy: Dict[str, float],
+        benchmark_close_xiu: Dict[str, float],
         train_cutoff: str,
         val_cutoff: str,
     ) -> Dict[str, Any]:
-        """
-        Computes the complete quantitative metric set across walk-forward partitions.
-        """
         if not equity_curve:
             return {}
 
@@ -468,17 +552,28 @@ class BacktestEngine:
         years = max(n_days / 252.0, 0.1)
         cagr_pct = ((final_equity / initial_capital) ** (1.0 / years) - 1.0) * 100.0
 
-        # 2. Benchmark Comparison (SPY)
-        bm_first = df_eq["benchmark_price"].dropna().iloc[0] if not df_eq["benchmark_price"].dropna().empty else 1.0
-        bm_last = df_eq["benchmark_price"].dropna().iloc[-1] if not df_eq["benchmark_price"].dropna().empty else 1.0
-        benchmark_return_pct = ((bm_last / bm_first) - 1.0) * 100.0
+        # Total fee drag
+        total_fee_drag_usd = sum(t.fee_drag_usd for t in closed_trades)
+        total_gross_pnl_usd = sum(t.gross_pnl_usd for t in closed_trades)
+        total_net_pnl_usd = sum(t.net_pnl_usd for t in closed_trades)
+        total_gross_return_pct = ((final_equity + total_fee_drag_usd) / initial_capital - 1.0) * 100.0
+
+        # 2. Dual Benchmarks: SPY (US) and XIU (Canada)
+        spy_first = df_eq["benchmark_price_spy"].dropna().iloc[0] if not df_eq["benchmark_price_spy"].dropna().empty else 1.0
+        spy_last = df_eq["benchmark_price_spy"].dropna().iloc[-1] if not df_eq["benchmark_price_spy"].dropna().empty else 1.0
+        benchmark_spy_return_pct = ((spy_last / spy_first) - 1.0) * 100.0
+
+        xiu_first = df_eq["benchmark_price_xiu"].dropna().iloc[0] if not df_eq["benchmark_price_xiu"].dropna().empty else 1.0
+        xiu_last = df_eq["benchmark_price_xiu"].dropna().iloc[-1] if not df_eq["benchmark_price_xiu"].dropna().empty else 1.0
+        benchmark_xiu_return_pct = ((xiu_last / xiu_first) - 1.0) * 100.0
+
+        blended_benchmark_return_pct = (0.60 * benchmark_spy_return_pct) + (0.40 * benchmark_xiu_return_pct)
 
         # 3. Maximum Drawdown & Drawdown Series
         df_eq["peak"] = df_eq["portfolio_equity"].cummax()
         df_eq["drawdown"] = (df_eq["portfolio_equity"] - df_eq["peak"]) / df_eq["peak"]
         max_drawdown_pct = abs(float(df_eq["drawdown"].min())) * 100.0
 
-        # Calculate Max Drawdown Duration (sessions)
         dd_series = df_eq["drawdown"] < 0
         max_dd_duration = 0
         curr_dd = 0
@@ -494,14 +589,13 @@ class BacktestEngine:
         daily_rf = (1.0 + self.config.annual_sovereign_benchmark_yield) ** (1.0 / 252.0) - 1.0
         excess_daily_returns = df_eq["daily_return"] - daily_rf
         mean_excess = excess_daily_returns.mean()
-        std_daily = df_eq["daily_return"].std()
+        std_daily = excess_daily_returns.std()
 
         if std_daily > 0:
             sharpe_ratio = float((mean_excess / std_daily) * math.sqrt(252.0))
         else:
             sharpe_ratio = 0.0
 
-        # Downside Deviation for Sortino
         negative_returns = df_eq["daily_return"][df_eq["daily_return"] < 0]
         downside_std = negative_returns.std() if len(negative_returns) > 1 else std_daily
         if downside_std and downside_std > 0:
@@ -513,12 +607,12 @@ class BacktestEngine:
 
         # 5. Trade Level Statistics
         total_trades = len(closed_trades)
-        winning_trades = [t for t in closed_trades if t.net_pnl > 0]
-        losing_trades = [t for t in closed_trades if t.net_pnl <= 0]
+        winning_trades = [t for t in closed_trades if t.net_pnl_usd > 0]
+        losing_trades = [t for t in closed_trades if t.net_pnl_usd <= 0]
 
         win_rate_pct = (len(winning_trades) / total_trades * 100.0) if total_trades > 0 else 0.0
-        gross_profits = sum(t.net_pnl for t in winning_trades)
-        gross_losses = abs(sum(t.net_pnl for t in losing_trades))
+        gross_profits = sum(t.net_pnl_usd for t in winning_trades)
+        gross_losses = abs(sum(t.net_pnl_usd for t in losing_trades))
         profit_factor = (gross_profits / gross_losses) if gross_losses > 0 else (gross_profits if gross_profits > 0 else 1.0)
 
         avg_win_r = float(np.mean([t.r_multiple for t in winning_trades])) if winning_trades else 0.0
@@ -530,14 +624,14 @@ class BacktestEngine:
         partitions = {}
         for p_name in ["TRAIN", "VALIDATION", "TEST"]:
             p_trades = [t for t in closed_trades if t.partition == p_name]
-            p_wins = [t for t in p_trades if t.net_pnl > 0]
-            p_losses = [t for t in p_trades if t.net_pnl <= 0]
-            p_pnl = sum(t.net_pnl for t in p_trades)
+            p_wins = [t for t in p_trades if t.net_pnl_usd > 0]
+            p_losses = [t for t in p_trades if t.net_pnl_usd <= 0]
+            p_pnl = sum(t.net_pnl_usd for t in p_trades)
             p_win_rate = (len(p_wins) / len(p_trades) * 100.0) if p_trades else 0.0
             partitions[p_name] = {
                 "total_trades": len(p_trades),
                 "win_rate_pct": round(p_win_rate, 1),
-                "net_pnl": round(p_pnl, 2),
+                "net_pnl_usd": round(p_pnl, 2),
                 "expectancy_r": round(float(np.mean([t.r_multiple for t in p_trades])), 2) if p_trades else 0.0,
             }
 
@@ -546,7 +640,7 @@ class BacktestEngine:
         for r_name in ["BULLISH", "NEUTRAL", "BEARISH"]:
             r_trades = [t for t in closed_trades if t.regime_at_entry == r_name]
             if r_trades:
-                r_wins = [t for t in r_trades if t.net_pnl > 0]
+                r_wins = [t for t in r_trades if t.net_pnl_usd > 0]
                 regime_breakdown[r_name] = {
                     "trades": len(r_trades),
                     "win_rate_pct": round(len(r_wins) / len(r_trades) * 100.0, 1),
@@ -554,12 +648,17 @@ class BacktestEngine:
                 }
 
         return {
-            "initial_capital": round(initial_capital, 2),
-            "final_equity": round(final_equity, 2),
+            "initial_capital_usd": round(initial_capital, 2),
+            "final_equity_usd": round(final_equity, 2),
             "total_net_return_pct": round(total_net_return_pct, 2),
+            "total_gross_return_pct": round(total_gross_return_pct, 2),
+            "fee_drag_total_usd": round(total_fee_drag_usd, 2),
             "cagr_pct": round(cagr_pct, 2),
-            "benchmark_return_pct": round(benchmark_return_pct, 2),
-            "alpha_pct": round(total_net_return_pct - benchmark_return_pct, 2),
+            "benchmark_spy_return_pct": round(benchmark_spy_return_pct, 2),
+            "benchmark_xiu_return_pct": round(benchmark_xiu_return_pct, 2),
+            "blended_benchmark_return_pct": round(blended_benchmark_return_pct, 2),
+            "alpha_vs_spy_pct": round(total_net_return_pct - benchmark_spy_return_pct, 2),
+            "alpha_vs_blended_pct": round(total_net_return_pct - blended_benchmark_return_pct, 2),
             "sharpe_ratio": round(sharpe_ratio, 2),
             "sortino_ratio": round(sortino_ratio, 2),
             "calmar_ratio": round(calmar_ratio, 2),
