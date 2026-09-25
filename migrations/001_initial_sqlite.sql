@@ -193,3 +193,16 @@ CREATE TABLE IF NOT EXISTS data_entitlement (
     valid_to TEXT,
     attestation_confirmed INTEGER NOT NULL DEFAULT 1
 );
+
+-- 11. Corporate Actions & Event Calendar
+CREATE TABLE IF NOT EXISTS event_calendar (
+    calendar_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    symbol TEXT NOT NULL,
+    security_id INTEGER REFERENCES security(security_id),
+    event_type TEXT NOT NULL,               -- EARNINGS | DIVIDEND | POLICY_RATE | FILING_DEADLINE
+    event_date TEXT NOT NULL,               -- YYYY-MM-DD
+    title TEXT NOT NULL,
+    details TEXT,
+    is_confirmed INTEGER NOT NULL DEFAULT 1,
+    proximity_flag TEXT                     -- IMMEDIATE | UPCOMING | PAST
+);

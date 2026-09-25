@@ -601,6 +601,61 @@
             border: 1px solid rgba(148, 163, 184, 0.3);
         }
 
+        .verdict-badge-edge {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--accent-green);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            font-weight: 800;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .verdict-badge-conditional {
+            background: rgba(59, 130, 246, 0.15);
+            color: var(--accent-blue);
+            border: 1px solid rgba(59, 130, 246, 0.4);
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .verdict-badge-noise {
+            background: rgba(148, 163, 184, 0.12);
+            color: var(--text-muted);
+            border: 1px solid rgba(148, 163, 184, 0.25);
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .cal-imminent {
+            background: rgba(239, 68, 68, 0.15);
+            color: var(--accent-red);
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            font-weight: 800;
+            padding: 2px 7px;
+            border-radius: 4px;
+            font-size: 10px;
+        }
+        .cal-upcoming {
+            background: rgba(59, 130, 246, 0.15);
+            color: var(--accent-blue);
+            border: 1px solid rgba(59, 130, 246, 0.4);
+            font-weight: 700;
+            padding: 2px 7px;
+            border-radius: 4px;
+            font-size: 10px;
+        }
+
         /* Drawer / Modal */
         .drawer-overlay {
             position: fixed;
@@ -1158,68 +1213,168 @@
                 <!-- Populated dynamically -->
             </div>
 
-            <!-- Filter & Search Toolbar -->
-            <div class="toolbar" style="margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
-                <!-- Market Filter -->
-                <div class="filter-group">
-                    <button class="filter-btn active" id="catMarketAll" onclick="setCatalystMarketFilter('ALL')">All Markets</button>
-                    <button class="filter-btn" id="catMarketUS" onclick="setCatalystMarketFilter('US')">US Equities (SEC)</button>
-                    <button class="filter-btn" id="catMarketCA" onclick="setCatalystMarketFilter('CA')">Canadian TSX (6-K)</button>
-                    <button class="filter-btn" id="catMarketMacro" onclick="setCatalystMarketFilter('MACRO')">Macro Rates</button>
+            <!-- Sub-tab Navigation -->
+            <div style="display: flex; gap: 8px; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 12px; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                    <button class="filter-btn active" id="subtabBtnFeed" onclick="switchCatalystSubTab('feed')">Continuous Filings Stream</button>
+                    <button class="filter-btn" id="subtabBtnExpectancy" onclick="switchCatalystSubTab('expectancy')">📊 Empirical Expectancy Matrix (Alpha vs Noise)</button>
+                    <button class="filter-btn" id="subtabBtnCalendar" onclick="switchCatalystSubTab('calendar')">📅 Corporate & Central Bank Calendar</button>
                 </div>
-
-                <!-- Materiality Filter -->
-                <div style="display: flex; align-items: center; gap: 6px;">
-                    <span style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Materiality:</span>
-                    <select id="catMaterialityFilter" onchange="filterCatalysts()" style="background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color); padding: 6px 10px; border-radius: 4px; font-size: 12px;">
-                        <option value="ALL">All Materiality Levels</option>
-                        <option value="HIGH">High Only (Tier 1: 4-5)</option>
-                        <option value="MEDIUM">Medium+ (Tier 2: 3-5)</option>
-                        <option value="LOW">Low (Tier 3: 1-2)</option>
-                    </select>
-                </div>
-
-                <!-- Category Filter -->
-                <div style="display: flex; align-items: center; gap: 6px;">
-                    <span style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Category:</span>
-                    <select id="catCategoryFilter" onchange="filterCatalysts()" style="background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color); padding: 6px 10px; border-radius: 4px; font-size: 12px;">
-                        <option value="ALL">All Event Categories</option>
-                        <option value="EARNINGS_ANNOUNCEMENT">Earnings Releases (8-K 2.02)</option>
-                        <option value="QUARTERLY_REPORT">Quarterly Reports (10-Q)</option>
-                        <option value="ANNUAL_REPORT">Annual Reports (10-K / 40-F)</option>
-                        <option value="MATERIAL_AGREEMENT">Material Agreements (8-K 1.01)</option>
-                        <option value="EXECUTIVE_CHANGE">Executive Changes (8-K 5.02)</option>
-                        <option value="MACRO_RATE_POLICY">Macro Rate Policy</option>
-                        <option value="CANADIAN_FOREIGN_FILING">Canadian Form 6-K</option>
-                        <option value="OTHER_MATERIAL_EVENT">Other Material Events (8-K 8.01)</option>
-                    </select>
-                </div>
-
-                <!-- Sentiment Filter -->
-                <div style="display: flex; align-items: center; gap: 6px;">
-                    <span style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Sentiment:</span>
-                    <select id="catSentimentFilter" onchange="filterCatalysts()" style="background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color); padding: 6px 10px; border-radius: 4px; font-size: 12px;">
-                        <option value="ALL">All Sentiments</option>
-                        <option value="BULLISH">Bullish / Positive</option>
-                        <option value="NEUTRAL">Neutral</option>
-                        <option value="BEARISH">Bearish / Risk</option>
-                    </select>
-                </div>
-
-                <!-- Search Input -->
-                <div class="search-box" style="margin-left: auto;">
-                    <input type="text" id="catalystSearchInput" placeholder="Search symbol, headline, CIK..." oninput="filterCatalysts()" style="background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color); padding: 6px 12px; border-radius: 4px; font-size: 12px; width: 220px;">
+                <div style="font-size: 11px; color: var(--text-muted); display: flex; align-items: center; gap: 6px;">
+                    <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--accent-green);"></span>
+                    <span>T+1 / T+3 Empirical Price Drift Tracking</span>
                 </div>
             </div>
 
-            <!-- Catalysts Stream Grid / Feed -->
-            <div id="catalystsFeedContainer" style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px;">
-                <!-- Populated dynamically -->
+            <!-- Subview 1: Continuous Filings Stream -->
+            <div id="subview-catalysts-feed">
+                <!-- Filter & Search Toolbar -->
+                <div class="toolbar" style="margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
+                    <!-- Market Filter -->
+                    <div class="filter-group">
+                        <button class="filter-btn active" id="catMarketAll" onclick="setCatalystMarketFilter('ALL')">All Markets</button>
+                        <button class="filter-btn" id="catMarketUS" onclick="setCatalystMarketFilter('US')">US Equities (SEC)</button>
+                        <button class="filter-btn" id="catMarketCA" onclick="setCatalystMarketFilter('CA')">Canadian TSX (6-K)</button>
+                        <button class="filter-btn" id="catMarketMacro" onclick="setCatalystMarketFilter('MACRO')">Macro Rates</button>
+                    </div>
+
+                    <!-- Materiality Filter -->
+                    <div style="display: flex; align-items: center; gap: 6px;">
+                        <span style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Materiality:</span>
+                        <select id="catMaterialityFilter" onchange="filterCatalysts()" style="background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color); padding: 6px 10px; border-radius: 4px; font-size: 12px;">
+                            <option value="ALL">All Materiality Levels</option>
+                            <option value="HIGH">High Only (Tier 1: 4-5)</option>
+                            <option value="MEDIUM">Medium+ (Tier 2: 3-5)</option>
+                            <option value="LOW">Low (Tier 3: 1-2)</option>
+                        </select>
+                    </div>
+
+                    <!-- Category Filter -->
+                    <div style="display: flex; align-items: center; gap: 6px;">
+                        <span style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Category:</span>
+                        <select id="catCategoryFilter" onchange="filterCatalysts()" style="background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color); padding: 6px 10px; border-radius: 4px; font-size: 12px;">
+                            <option value="ALL">All Event Categories</option>
+                            <option value="EARNINGS_ANNOUNCEMENT">Earnings Releases (8-K 2.02)</option>
+                            <option value="QUARTERLY_REPORT">Quarterly Reports (10-Q)</option>
+                            <option value="ANNUAL_REPORT">Annual Reports (10-K / 40-F)</option>
+                            <option value="MATERIAL_AGREEMENT">Material Agreements (8-K 1.01)</option>
+                            <option value="EXECUTIVE_CHANGE">Executive Changes (8-K 5.02)</option>
+                            <option value="MACRO_RATE_POLICY">Macro Rate Policy</option>
+                            <option value="CANADIAN_FOREIGN_FILING">Canadian Form 6-K</option>
+                            <option value="OTHER_MATERIAL_EVENT">Other Material Events (8-K 8.01)</option>
+                        </select>
+                    </div>
+
+                    <!-- Sentiment Filter -->
+                    <div style="display: flex; align-items: center; gap: 6px;">
+                        <span style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Sentiment:</span>
+                        <select id="catSentimentFilter" onchange="filterCatalysts()" style="background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color); padding: 6px 10px; border-radius: 4px; font-size: 12px;">
+                            <option value="ALL">All Sentiments</option>
+                            <option value="BULLISH">Bullish / Positive</option>
+                            <option value="NEUTRAL">Neutral</option>
+                            <option value="BEARISH">Bearish / Risk</option>
+                        </select>
+                    </div>
+
+                    <!-- Search Input -->
+                    <div class="search-box" style="margin-left: auto;">
+                        <input type="text" id="catalystSearchInput" placeholder="Search symbol, headline, CIK..." oninput="filterCatalysts()" style="background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color); padding: 6px 12px; border-radius: 4px; font-size: 12px; width: 220px;">
+                    </div>
+                </div>
+
+                <!-- Catalysts Stream Grid / Feed -->
+                <div id="catalystsFeedContainer" style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px;">
+                    <!-- Populated dynamically -->
+                </div>
+
+                <!-- Pagination Controls -->
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; padding-top: 12px; border-top: 1px solid var(--border-color); flex-wrap: wrap; gap: 10px;" id="catPaginationControls">
+                    <!-- Populated dynamically -->
+                </div>
             </div>
 
-            <!-- Pagination Controls -->
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; padding-top: 12px; border-top: 1px solid var(--border-color); flex-wrap: wrap; gap: 10px;" id="catPaginationControls">
-                <!-- Populated dynamically -->
+            <!-- Subview 2: Empirical Alpha Expectancy Matrix -->
+            <div id="subview-catalysts-expectancy" style="display: none;">
+                <!-- Institutional Disclosure Banner -->
+                <div style="background: rgba(59, 130, 246, 0.08); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 8px; padding: 16px; margin-bottom: 20px; font-size: 12px; line-height: 1.6; color: var(--text-secondary);">
+                    <div style="font-weight: 800; color: var(--accent-blue); margin-bottom: 4px; display: flex; align-items: center; gap: 6px;">
+                        <span>🔬 QUANTITATIVE EMPIRICAL EXPECTANCY METHODOLOGY</span>
+                        <span class="exchange-tag" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-green);">No Hype Guarantee</span>
+                    </div>
+                    <span>
+                        Academic and quantitative trading literature demonstrates that general financial news headlines decay within <strong>3 to 5 minutes</strong> in liquid US and Canadian large caps. This platform does <strong>not</strong> assume that all news generates exploitable alpha. Below is the empirical 1-day and 3-day post-announcement drift measured across historical event categories. Only accounting earnings surprises and guidance shifts exhibit persistent post-earnings announcement drift (PEAD). Routine 8-K disclosures and investor presentations are classified honestly as statistical noise already priced in by market makers.
+                    </span>
+                </div>
+
+                <!-- Expectancy Table Container -->
+                <div class="table-container" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; overflow-x: auto; margin-bottom: 24px;">
+                    <table style="width: 100%; border-collapse: collapse; font-size: 12px;">
+                        <thead>
+                            <tr style="background: var(--bg-secondary); border-bottom: 1px solid var(--border-color); text-align: left; color: var(--text-muted); font-size: 11px; text-transform: uppercase;">
+                                <th style="padding: 12px 14px;">Regulatory Event Category</th>
+                                <th style="padding: 12px 14px; text-align: right;">Sample (n)</th>
+                                <th style="padding: 12px 14px; text-align: right;">Avg 1D Reaction</th>
+                                <th style="padding: 12px 14px; text-align: right;">Avg 3D Drift</th>
+                                <th style="padding: 12px 14px; text-align: right;">Directional Win %</th>
+                                <th style="padding: 12px 14px; text-align: right;">Event RVOL</th>
+                                <th style="padding: 12px 14px; text-align: center;">Alpha Verdict</th>
+                                <th style="padding: 12px 14px;">Institutional Quantitative Rationale</th>
+                            </tr>
+                        </thead>
+                        <tbody id="expectancyTableBody">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Academic Pillars Cards -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; margin-bottom: 24px;">
+                    <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 16px;">
+                        <div style="font-weight: 800; color: var(--accent-green); margin-bottom: 6px; font-size: 13px;">1. Post-Earnings Announcement Drift (PEAD)</div>
+                        <p style="font-size: 11px; color: var(--text-secondary); line-height: 1.5; margin: 0;">
+                            SEC Item 2.02 and Form 10-Q/10-K releases represent the primary source of structural multi-week price drift due to institutional re-rating and analyst estimate revisions. The platform attributes up to ±12 score points only to confirmed revenue/EPS surprises with RVOL &gt; 1.5x.
+                        </p>
+                    </div>
+                    <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 16px;">
+                        <div style="font-weight: 800; color: var(--accent-amber); margin-bottom: 6px; font-size: 13px;">2. Why Routine 8-Ks Are Filtered as Noise</div>
+                        <p style="font-size: 11px; color: var(--text-secondary); line-height: 1.5; margin: 0;">
+                            SEC Item 8.01 (Other Events) and Item 7.01 (Regulation FD) frequently contain press releases and conference presentations. Empirical backtests show a win rate near 50% and 1-day drift of &lt; 0.20% — meaning retail traders buying headline sentiment are systematically liquidity providers.
+                        </p>
+                    </div>
+                    <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 16px;">
+                        <div style="font-weight: 800; color: var(--accent-red); margin-bottom: 6px; font-size: 13px;">3. Hard Safety Gates (Non-Reliance &amp; Insolvency)</div>
+                        <p style="font-size: 11px; color: var(--text-secondary); line-height: 1.5; margin: 0;">
+                            Filings under SEC Item 4.02 (accounting restatements/non-reliance) or Item 1.03 (bankruptcy) immediately trigger an algorithmic hard stop. The security is barred from Long candidate status regardless of technical moving averages or momentum indicators.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Subview 3: Corporate & Central Bank Calendar -->
+            <div id="subview-catalysts-calendar" style="display: none;">
+                <!-- Calendar Filter Toolbar -->
+                <div class="toolbar" style="margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
+                    <div class="filter-group">
+                        <button class="filter-btn active" id="calFilterAll" onclick="setCalendarTypeFilter('ALL')">All Scheduled Events</button>
+                        <button class="filter-btn" id="calFilterRate" onclick="setCalendarTypeFilter('POLICY_RATE')">BoC Rate Decisions</button>
+                        <button class="filter-btn" id="calFilterEarnings" onclick="setCalendarTypeFilter('EARNINGS')">Quarterly Earnings</button>
+                        <button class="filter-btn" id="calFilterDividend" onclick="setCalendarTypeFilter('DIVIDEND')">Dividend Ex-Dates</button>
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 6px; margin-left: auto;">
+                        <span style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Risk Status:</span>
+                        <select id="calProximityFilter" onchange="filterCalendar()" style="background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color); padding: 6px 10px; border-radius: 4px; font-size: 12px;">
+                            <option value="ALL">All Time Horizons</option>
+                            <option value="EVENT_RISK_IMMEDIATE">Imminent Event Risk (&lt; 48h)</option>
+                            <option value="UPCOMING">Upcoming Scheduled</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Calendar Events Container -->
+                <div id="calendarEventsContainer" style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px;">
+                    <!-- Populated dynamically -->
+                </div>
             </div>
         </div>
 
@@ -2895,6 +3050,8 @@
             if (!catalystsBundle) return;
             renderCatalystsMetrics();
             filterCatalysts();
+            renderExpectancyMatrix();
+            filterCalendar();
         }
 
         function renderCatalystsMetrics() {
@@ -3148,6 +3305,163 @@
             catCurrentPage = newPage;
             renderCatalystsFeed();
             window.scrollTo({ top: document.getElementById('tab-catalysts').offsetTop - 60, behavior: 'smooth' });
+        }
+
+        // Subtab Navigation
+        let activeCatalystSubTab = 'feed';
+        let calendarTypeFilter = 'ALL';
+
+        function switchCatalystSubTab(subTabId) {
+            activeCatalystSubTab = subTabId;
+            document.getElementById('subtabBtnFeed')?.classList.toggle('active', subTabId === 'feed');
+            document.getElementById('subtabBtnExpectancy')?.classList.toggle('active', subTabId === 'expectancy');
+            document.getElementById('subtabBtnCalendar')?.classList.toggle('active', subTabId === 'calendar');
+
+            const viewFeed = document.getElementById('subview-catalysts-feed');
+            const viewExp = document.getElementById('subview-catalysts-expectancy');
+            const viewCal = document.getElementById('subview-catalysts-calendar');
+
+            if (viewFeed) viewFeed.style.display = subTabId === 'feed' ? 'block' : 'none';
+            if (viewExp) viewExp.style.display = subTabId === 'expectancy' ? 'block' : 'none';
+            if (viewCal) viewCal.style.display = subTabId === 'calendar' ? 'block' : 'none';
+
+            if (subTabId === 'expectancy') renderExpectancyMatrix();
+            if (subTabId === 'calendar') filterCalendar();
+        }
+
+        function renderExpectancyMatrix() {
+            const tbody = document.getElementById('expectancyTableBody');
+            if (!tbody || !catalystsBundle || !catalystsBundle.category_expectancy) return;
+
+            const items = catalystsBundle.category_expectancy;
+            let html = '';
+
+            items.forEach(item => {
+                const badgeCls = item.verdict_badge === 'ALPHA EDGE'
+                    ? 'verdict-badge-edge'
+                    : (item.verdict_badge === 'CONDITIONAL' ? 'verdict-badge-conditional' : 'verdict-badge-noise');
+
+                const r1dColor = item.avg_reaction_1d_pct >= 0 ? 'var(--accent-green)' : 'var(--accent-red)';
+                const r3dColor = item.avg_reaction_3d_pct >= 0 ? 'var(--accent-green)' : 'var(--accent-red)';
+                const winColor = item.directional_win_rate_pct >= 55 ? 'var(--accent-green)' : (item.directional_win_rate_pct <= 45 ? 'var(--accent-red)' : 'var(--text-primary)');
+
+                html += `
+                    <tr style="border-bottom: 1px solid var(--border-color); transition: background 0.15s ease;">
+                        <td style="padding: 12px 14px;">
+                            <div style="font-weight: 700; color: var(--text-primary); font-size: 13px;">${item.category.replace(/_/g, ' ')}</div>
+                            <div style="font-size: 10px; color: var(--text-muted); font-family: monospace;">CODE: ${item.category}</div>
+                        </td>
+                        <td style="padding: 12px 14px; text-align: right; font-family: monospace; font-weight: 700; color: var(--text-secondary);">
+                            ${item.sample_size}
+                        </td>
+                        <td style="padding: 12px 14px; text-align: right; font-family: monospace; font-weight: 800; color: ${r1dColor};">
+                            ${item.avg_reaction_1d_pct >= 0 ? '+' : ''}${item.avg_reaction_1d_pct.toFixed(2)}%
+                        </td>
+                        <td style="padding: 12px 14px; text-align: right; font-family: monospace; font-weight: 800; color: ${r3dColor};">
+                            ${item.avg_reaction_3d_pct >= 0 ? '+' : ''}${item.avg_reaction_3d_pct.toFixed(2)}%
+                        </td>
+                        <td style="padding: 12px 14px; text-align: right; font-family: monospace; font-weight: 800; color: ${winColor};">
+                            ${item.directional_win_rate_pct.toFixed(1)}%
+                        </td>
+                        <td style="padding: 12px 14px; text-align: right; font-family: monospace; font-weight: 700; color: var(--accent-cyan);">
+                            ${item.avg_rvol.toFixed(1)}x
+                        </td>
+                        <td style="padding: 12px 14px; text-align: center;">
+                            <span class="${badgeCls}">${item.verdict_badge}</span>
+                        </td>
+                        <td style="padding: 12px 14px; color: var(--text-secondary); font-size: 11px; line-height: 1.4; max-width: 380px;">
+                            ${item.notes}
+                        </td>
+                    </tr>
+                `;
+            });
+
+            tbody.innerHTML = html;
+        }
+
+        function setCalendarTypeFilter(t) {
+            calendarTypeFilter = t;
+            document.getElementById('calFilterAll')?.classList.toggle('active', t === 'ALL');
+            document.getElementById('calFilterRate')?.classList.toggle('active', t === 'POLICY_RATE');
+            document.getElementById('calFilterEarnings')?.classList.toggle('active', t === 'EARNINGS');
+            document.getElementById('calFilterDividend')?.classList.toggle('active', t === 'DIVIDEND');
+            filterCalendar();
+        }
+
+        function filterCalendar() {
+            const container = document.getElementById('calendarEventsContainer');
+            if (!container || !catalystsBundle || !catalystsBundle.event_calendar) return;
+
+            const proxFilter = document.getElementById('calProximityFilter')?.value || 'ALL';
+            const allEvents = catalystsBundle.event_calendar;
+
+            const filtered = allEvents.filter(ev => {
+                if (calendarTypeFilter !== 'ALL' && ev.event_type !== calendarTypeFilter) return false;
+                if (proxFilter !== 'ALL' && ev.proximity_flag !== proxFilter) return false;
+                return true;
+            });
+
+            if (filtered.length === 0) {
+                container.innerHTML = `
+                    <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 40px; text-align: center; color: var(--text-muted); font-size: 13px;">
+                        No scheduled corporate actions or central bank policy decisions match the selected filters.
+                    </div>
+                `;
+                return;
+            }
+
+            let html = '';
+            filtered.forEach(ev => {
+                const isImmediate = ev.proximity_flag === 'EVENT_RISK_IMMEDIATE';
+                const proxBadge = isImmediate
+                    ? `<span class="cal-imminent">⚠️ EVENT RISK: &lt; 48H</span>`
+                    : `<span class="cal-upcoming">📅 SCHEDULED (${ev.days_until}d)</span>`;
+
+                const typeColor = ev.event_type === 'POLICY_RATE' ? 'var(--accent-purple)' : (ev.event_type === 'EARNINGS' ? 'var(--accent-blue)' : 'var(--accent-green)');
+                const isMacro = ev.symbol.startsWith('MACRO');
+                const symButton = isMacro
+                    ? `<span class="exchange-tag" style="background: rgba(139, 92, 246, 0.2); color: var(--accent-purple); font-weight: 800; font-size: 12px; padding: 4px 8px;">🏛️ ${ev.symbol}</span>`
+                    : `<button class="filter-btn" onclick="openSymbol('${ev.symbol}')" style="font-weight: 800; font-size: 12px; padding: 4px 10px; cursor: pointer; background: var(--bg-secondary);">
+                        ${ev.market === 'US' ? '🇺🇸' : '🇨🇦'} ${ev.symbol}
+                       </button>`;
+
+                html += `
+                    <div class="catalyst-card" style="border-left: 4px solid ${isImmediate ? 'var(--accent-red)' : typeColor};">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;">
+                            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                                ${symButton}
+                                <span style="font-weight: 700; font-size: 13px; color: var(--text-primary);">${ev.company_name}</span>
+                                <span class="exchange-tag" style="color: ${typeColor}; font-weight: 700;">${ev.event_type.replace(/_/g, ' ')}</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+                                ${proxBadge}
+                                <span style="font-size: 12px; font-family: monospace; font-weight: 700; color: var(--text-primary);">${ev.date}</span>
+                                <span class="exchange-tag" style="color: var(--text-muted);">${ev.confirmed ? 'Confirmed' : 'Projected'}</span>
+                            </div>
+                        </div>
+
+                        <div style="font-size: 13px; font-weight: 700; color: var(--text-primary); margin-bottom: 4px;">
+                            ${ev.title}
+                        </div>
+
+                        <div style="font-size: 11px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 8px;">
+                            ${ev.details}
+                        </div>
+
+                        <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: 8px; font-size: 11px; color: var(--text-muted); flex-wrap: wrap; gap: 8px;">
+                            <div>
+                                <span style="font-weight: 700; color: ${isImmediate ? 'var(--accent-red)' : 'var(--accent-amber)'};">Risk Management Protocol:</span>
+                                <span>${isImmediate ? 'High volatility event. Binary gap risk — reduce position sizing or tighten trailing stops.' : 'Monitor implied volatility and estimate revisions prior to print.'}</span>
+                            </div>
+                            <div>
+                                <span>Source: <strong style="color: var(--text-secondary);">${ev.source}</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
         }
 
         window.onload = init;

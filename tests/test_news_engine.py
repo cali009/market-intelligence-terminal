@@ -64,3 +64,41 @@ def test_compile_master_catalyst_feed():
         assert e.priced_in_status in ("FRESH", "PARTIAL", "PRICED_IN")
         assert -12.0 <= e.score_impact_pts <= 12.0
         assert e.source_url.startswith("http")
+
+
+def test_category_expectancy_measurement():
+    events = news_engine.compile_master_catalyst_feed()
+    expectancy = news_engine.compute_category_expectancy(events)
+    assert len(expectancy) >= 5
+    for item in expectancy:
+        assert "category" in item
+        assert "sample_size" in item
+        assert "avg_reaction_1d_pct" in item
+        assert "directional_win_rate_pct" in item
+        assert item["verdict"] in (
+            "PERSISTENT_POST_EVENT_DRIFT",
+            "MODEST_CONDITIONAL_SIGNAL",
+            "STATISTICAL_NOISE_PRICED_IN",
+        )
+        assert item["verdict_badge"] in ("ALPHA EDGE", "CONDITIONAL", "NO QUANT EDGE")
+
+
+def test_event_calendar_compilation():
+    calendar = news_engine.compile_event_calendar()
+    assert len(calendar) >= 5
+    boc_events = [c for c in calendar if c["symbol"] == "MACRO_BOC"]
+    assert len(boc_events) >= 1
+    for c in calendar:
+        assert "symbol" in c
+        assert "event_type" in c
+        assert "date" in c
+        assert c["proximity_flag"] in ("EVENT_RISK_IMMEDIATE", "UPCOMING", "PAST", "SCHEDULED")
+
+
+def test_database_persistence():
+    events = news_engine.compile_master_catalyst_feed()
+    calendar = news_engine.compile_event_calendar()
+    persisted_news = news_engine.persist_news_to_database(events)
+    persisted_cal = news_engine.persist_calendar_to_database(calendar)
+    assert persisted_news > 0
+    assert persisted_cal > 0

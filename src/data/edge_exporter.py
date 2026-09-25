@@ -95,6 +95,10 @@ class EdgeExporter:
         # Compile master news & SEC filings intelligence feed
         master_catalysts = news_engine.compile_master_catalyst_feed()
         news_summary = news_engine.get_summary_metrics(master_catalysts)
+        category_expectancy = news_engine.compute_category_expectancy(master_catalysts)
+        event_calendar = news_engine.compile_event_calendar()
+        news_engine.persist_news_to_database(master_catalysts)
+        news_engine.persist_calendar_to_database(event_calendar)
 
         for s in securities:
             sec_id = s["security_id"]
@@ -329,6 +333,8 @@ class EdgeExporter:
                         "generated_at": generated_at,
                         "summary": news_summary,
                         "total_catalysts": len(master_catalysts),
+                        "category_expectancy": category_expectancy,
+                        "event_calendar": event_calendar,
                         "catalysts": [e.model_dump() for e in master_catalysts],
                     },
                     f,
