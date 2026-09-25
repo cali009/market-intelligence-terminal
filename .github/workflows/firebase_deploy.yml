@@ -34,9 +34,16 @@ jobs:
           python3 scripts/build_firebase_public.py
 
       - name: Deploy to Firebase Hosting
+        if: ${{ secrets.FIREBASE_SERVICE_ACCOUNT != '' }}
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
           channelId: live
           projectId: '${{ secrets.FIREBASE_PROJECT_ID }}'
+
+      - name: Inform Missing Firebase Secret
+        if: ${{ secrets.FIREBASE_SERVICE_ACCOUNT == '' }}
+        run: |
+          echo "Notice: FIREBASE_SERVICE_ACCOUNT secret is not yet set in repository secrets."
+          echo "To enable automated Firebase deployment, add FIREBASE_SERVICE_ACCOUNT and FIREBASE_PROJECT_ID in Settings > Secrets."
