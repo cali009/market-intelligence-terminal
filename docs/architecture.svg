@@ -1,0 +1,232 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1010" width="1400" height="1010" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/>
+    </marker>
+    <style>
+      .title { font-size: 20px; font-weight: 700; fill: #0f172a; }
+      .subtitle { font-size: 12.5px; fill: #475569; }
+      .layertag { font-size: 10px; font-weight: 700; fill: #94a3b8; letter-spacing: 1.2px; }
+      .boxt { font-size: 13px; font-weight: 650; fill: #0f172a; }
+      .boxs { font-size: 10px; fill: #475569; }
+      .src   { fill: #eef2f7; stroke: #94a3b8; }
+      .ing   { fill: #e8f0fe; stroke: #93c5fd; }
+      .proc  { fill: #f1f5f9; stroke: #94a3b8; }
+      .store { fill: #f8fafc; stroke: #94a3b8; }
+      .dec   { fill: #ecfdf5; stroke: #6ee7b7; }
+      .serv  { fill: #eff6ff; stroke: #93c5fd; }
+      .client{ fill: #f5f3ff; stroke: #c4b5fd; }
+      .sec   { fill: #fff7ed; stroke: #fdba74; }
+      .obs   { fill: #f0fdfa; stroke: #5eead4; }
+      .barbt { font-size: 11.5px; font-weight: 700; fill: #7c2d12; }
+      .barbt2{ font-size: 11.5px; font-weight: 700; fill: #115e59; }
+      .barl  { font-size: 10.5px; fill: #7c2d12; }
+      .barl2 { font-size: 10.5px; fill: #115e59; }
+      .note  { font-size: 11px; fill: #64748b; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1400" height="1010" fill="#ffffff"/>
+
+  <!-- Header -->
+  <text class="title" x="40" y="42">US + Canada Market Intelligence Platform — System Architecture</text>
+  <text class="subtitle" x="40" y="64">Delayed/EOD-first by design. Every datum carries source · timestamp · freshness · confidence. No LLM computes numbers.</text>
+
+  <!-- L0 SOURCES -->
+  <text class="layertag" x="40" y="84">L0 · SOURCES</text>
+  <g>
+    <rect class="src" x="40"   y="90" width="205" height="72" rx="8"/>
+    <text class="boxt" x="142" y="118" text-anchor="middle">US Market Data</text>
+    <text class="boxs" x="142" y="138" text-anchor="middle">NYSE · NASDAQ · AMEX · ETFs</text>
+
+    <rect class="src" x="263"  y="90" width="205" height="72" rx="8"/>
+    <text class="boxt" x="365" y="118" text-anchor="middle">Canada Market Data</text>
+    <text class="boxs" x="365" y="138" text-anchor="middle">TSX · TSXV · CSE (best-effort)</text>
+
+    <rect class="src" x="486"  y="90" width="205" height="72" rx="8"/>
+    <text class="boxt" x="588" y="118" text-anchor="middle">Fundamentals</text>
+    <text class="boxs" x="588" y="138" text-anchor="middle">SEC XBRL · PIT vendor history</text>
+
+    <rect class="src" x="709"  y="90" width="205" height="72" rx="8"/>
+    <text class="boxt" x="811" y="118" text-anchor="middle">Filings &amp; Insiders</text>
+    <text class="boxs" x="811" y="138" text-anchor="middle">EDGAR · SEDAR+ · SEDI (licensed)</text>
+
+    <rect class="src" x="932"  y="90" width="205" height="72" rx="8"/>
+    <text class="boxt" x="1034" y="118" text-anchor="middle">News &amp; Events</text>
+    <text class="boxs" x="1034" y="138" text-anchor="middle">newswires · IR feeds · calendars</text>
+
+    <rect class="src" x="1155" y="90" width="205" height="72" rx="8"/>
+    <text class="boxt" x="1257" y="118" text-anchor="middle">Macro &amp; Commodities</text>
+    <text class="boxs" x="1257" y="138" text-anchor="middle">FRED · BoC · StatCan · EIA</text>
+  </g>
+
+  <!-- arrows -->
+  <g stroke="#64748b" stroke-width="1.6" marker-end="url(#arrow)">
+    <line x1="450" y1="166" x2="450" y2="204"/>
+    <line x1="950" y1="166" x2="950" y2="204"/>
+  </g>
+
+  <!-- L1 INGESTION -->
+  <text class="layertag" x="40" y="206">L1 · INGESTION</text>
+  <g>
+    <rect class="ing" x="40"   y="212" width="315" height="72" rx="8"/>
+    <text class="boxt" x="197" y="240" text-anchor="middle">Provider Adapters</text>
+    <text class="boxs" x="197" y="260" text-anchor="middle">typed · rate-limited · retry &amp; circuit-breaker</text>
+
+    <rect class="ing" x="375"  y="212" width="315" height="72" rx="8"/>
+    <text class="boxt" x="532" y="240" text-anchor="middle">Raw Landing (S3)</text>
+    <text class="boxs" x="532" y="260" text-anchor="middle">immutable · checksummed · append-only</text>
+
+    <rect class="ing" x="710"  y="212" width="315" height="72" rx="8"/>
+    <text class="boxt" x="867" y="240" text-anchor="middle">Data-Quality Gates</text>
+    <text class="boxs" x="867" y="260" text-anchor="middle">freshness · accuracy · cross-vendor reconcile</text>
+
+    <rect class="ing" x="1045" y="212" width="315" height="72" rx="8"/>
+    <text class="boxt" x="1202" y="240" text-anchor="middle">Normalize &amp; PIT</text>
+    <text class="boxs" x="1202" y="260" text-anchor="middle">canonical concepts · corporate actions · symbol master</text>
+  </g>
+
+  <g stroke="#64748b" stroke-width="1.6" marker-end="url(#arrow)">
+    <line x1="450" y1="288" x2="450" y2="326"/>
+    <line x1="950" y1="288" x2="950" y2="326"/>
+  </g>
+
+  <!-- L2 PROCESSING -->
+  <text class="layertag" x="40" y="328">L2 · PROCESSING &amp; ORCHESTRATION</text>
+  <g>
+    <rect class="proc" x="40"   y="334" width="315" height="72" rx="8"/>
+    <text class="boxt" x="197" y="362" text-anchor="middle">Orchestrator (Dagster)</text>
+    <text class="boxs" x="197" y="382" text-anchor="middle">nightly + intraday cycles · backfills</text>
+
+    <rect class="proc" x="375"  y="334" width="315" height="72" rx="8"/>
+    <text class="boxt" x="532" y="362" text-anchor="middle">Event Bus</text>
+    <text class="boxs" x="532" y="382" text-anchor="middle">NATS → Redpanda · change &amp; alert streams</text>
+
+    <rect class="proc" x="710"  y="334" width="315" height="72" rx="8"/>
+    <text class="boxt" x="867" y="362" text-anchor="middle">Feature Store</text>
+    <text class="boxs" x="867" y="382" text-anchor="middle">versioned features · feat_vX.Y.Z</text>
+
+    <rect class="proc" x="1045" y="334" width="315" height="72" rx="8"/>
+    <text class="boxt" x="1202" y="362" text-anchor="middle">Market Calendar Service</text>
+    <text class="boxs" x="1202" y="382" text-anchor="middle">US + CA sessions · holidays · early closes</text>
+  </g>
+
+  <g stroke="#64748b" stroke-width="1.6" marker-end="url(#arrow)">
+    <line x1="450" y1="410" x2="450" y2="448"/>
+    <line x1="950" y1="410" x2="950" y2="448"/>
+  </g>
+
+  <!-- L3 STORAGE -->
+  <text class="layertag" x="40" y="450">L3 · STORAGE</text>
+  <g>
+    <rect class="store" x="40"    y="456" width="250" height="72" rx="8"/>
+    <text class="boxt" x="165" y="484" text-anchor="middle">PostgreSQL 16</text>
+    <text class="boxs" x="165" y="504" text-anchor="middle">OLTP · RLS multi-tenant</text>
+
+    <rect class="store" x="307.5" y="456" width="250" height="72" rx="8"/>
+    <text class="boxt" x="432.5" y="484" text-anchor="middle">TimescaleDB</text>
+    <text class="boxs" x="432.5" y="504" text-anchor="middle">bars · compression · rollups</text>
+
+    <rect class="store" x="575"   y="456" width="250" height="72" rx="8"/>
+    <text class="boxt" x="700" y="484" text-anchor="middle">S3 + Iceberg</text>
+    <text class="boxs" x="700" y="504" text-anchor="middle">raw &amp; curated Parquet lake</text>
+
+    <rect class="store" x="842.5" y="456" width="250" height="72" rx="8"/>
+    <text class="boxt" x="967.5" y="484" text-anchor="middle">Redis</text>
+    <text class="boxs" x="967.5" y="504" text-anchor="middle">cache · quotas · locks</text>
+
+    <rect class="store" x="1110"  y="456" width="250" height="72" rx="8"/>
+    <text class="boxt" x="1235" y="484" text-anchor="middle">pgvector + OpenSearch</text>
+    <text class="boxs" x="1235" y="504" text-anchor="middle">embeddings · document search</text>
+  </g>
+
+  <g stroke="#64748b" stroke-width="1.6" marker-end="url(#arrow)">
+    <line x1="450" y1="532" x2="450" y2="570"/>
+    <line x1="950" y1="532" x2="950" y2="570"/>
+  </g>
+
+  <!-- L5 DECISION ENGINES -->
+  <text class="layertag" x="40" y="572">L5 · DECISION &amp; RESEARCH ENGINES</text>
+  <g>
+    <rect class="dec" x="40"   y="578" width="205" height="86" rx="8"/>
+    <text class="boxt" x="142" y="606" text-anchor="middle">Scoring Engine</text>
+    <text class="boxs" x="142" y="626" text-anchor="middle">8 sub-scores · gates · tiers</text>
+    <text class="boxs" x="142" y="642" text-anchor="middle">risk = penalty, never additive</text>
+
+    <rect class="dec" x="263"  y="578" width="205" height="86" rx="8"/>
+    <text class="boxt" x="365" y="606" text-anchor="middle">Regime Model</text>
+    <text class="boxs" x="365" y="626" text-anchor="middle">HSMM · filtered (causal) probs</text>
+    <text class="boxs" x="365" y="642" text-anchor="middle">6 states · per market</text>
+
+    <rect class="dec" x="486"  y="578" width="205" height="86" rx="8"/>
+    <text class="boxt" x="588" y="606" text-anchor="middle">News Intelligence</text>
+    <text class="boxs" x="588" y="626" text-anchor="middle">dedupe · link · classify</text>
+    <text class="boxs" x="588" y="642" text-anchor="middle">materiality · priced-in</text>
+
+    <rect class="dec" x="709"  y="578" width="205" height="86" rx="8"/>
+    <text class="boxt" x="811" y="606" text-anchor="middle">Entry / Exit Engines</text>
+    <text class="boxs" x="811" y="626" text-anchor="middle">zones · stops · targets</text>
+    <text class="boxs" x="811" y="642" text-anchor="middle">invalidation predicates</text>
+
+    <rect class="dec" x="932"  y="578" width="205" height="86" rx="8"/>
+    <text class="boxt" x="1034" y="606" text-anchor="middle">Risk Engine</text>
+    <text class="boxs" x="1034" y="626" text-anchor="middle">sizing · exposure · correlation</text>
+    <text class="boxs" x="1034" y="642" text-anchor="middle">stress · circuit breakers</text>
+
+    <rect class="dec" x="1155" y="578" width="205" height="86" rx="8"/>
+    <text class="boxt" x="1257" y="606" text-anchor="middle">Backtest &amp; Paper</text>
+    <text class="boxs" x="1257" y="626" text-anchor="middle">PIT · walk-forward · DSR/PBO</text>
+    <text class="boxs" x="1257" y="642" text-anchor="middle">live scoreboard</text>
+  </g>
+
+  <g stroke="#64748b" stroke-width="1.6" marker-end="url(#arrow)">
+    <line x1="450" y1="664" x2="450" y2="702"/>
+    <line x1="950" y1="664" x2="950" y2="702"/>
+  </g>
+
+  <!-- L7 SERVING -->
+  <text class="layertag" x="40" y="704">L7 · SERVING</text>
+  <g>
+    <rect class="serv" x="40"  y="710" width="650" height="72" rx="8"/>
+    <text class="boxt" x="365" y="738" text-anchor="middle">Public API (FastAPI) + BFF</text>
+    <text class="boxs" x="365" y="758" text-anchor="middle">typed contracts · entitlement middleware · rate limits · caching</text>
+
+    <rect class="serv" x="710" y="710" width="650" height="72" rx="8"/>
+    <text class="boxt" x="1035" y="738" text-anchor="middle">Alert Engine</text>
+    <text class="boxs" x="1035" y="758" text-anchor="middle">severity policy · hysteresis · budgets · consent ledger · audit log</text>
+  </g>
+
+  <g stroke="#64748b" stroke-width="1.6" marker-end="url(#arrow)">
+    <line x1="450" y1="786" x2="450" y2="824"/>
+    <line x1="950" y1="786" x2="950" y2="824"/>
+  </g>
+
+  <!-- L8 CLIENTS -->
+  <text class="layertag" x="40" y="826">L8 · CLIENTS</text>
+  <g>
+    <rect class="client" x="40"  y="832" width="426" height="72" rx="8"/>
+    <text class="boxt" x="253" y="860" text-anchor="middle">Web App (Next.js)</text>
+    <text class="boxs" x="253" y="880" text-anchor="middle">dashboard · scanners · symbol page · portfolio</text>
+
+    <rect class="client" x="487" y="832" width="426" height="72" rx="8"/>
+    <text class="boxt" x="700" y="860" text-anchor="middle">Email · Push · SMS*</text>
+    <text class="boxs" x="700" y="880" text-anchor="middle">*transactional, double opt-in, jurisdiction-gated</text>
+
+    <rect class="client" x="934" y="832" width="426" height="72" rx="8"/>
+    <text class="boxt" x="1147" y="860" text-anchor="middle">Public API / White-label</text>
+    <text class="boxs" x="1147" y="880" text-anchor="middle">data + scores, licensed tiers only</text>
+  </g>
+
+  <!-- Cross-cutting bars -->
+  <g>
+    <rect class="sec" x="40" y="930" width="650" height="66" rx="8"/>
+    <text class="barbt" x="58" y="950">SECURITY &amp; COMPLIANCE (cross-cutting)</text>
+    <text class="barl" x="58" y="968">entitlement gate · RLS · KMS · hash-chained audit log · secrets management</text>
+    <text class="barl" x="58" y="984">CASL / TCPA consent · PIPEDA / Quebec Law 25 · disclaimer versions · AI model cards</text>
+
+    <rect class="obs" x="710" y="930" width="650" height="66" rx="8"/>
+    <text class="barbt2" x="728" y="950">OBSERVABILITY &amp; DATA QUALITY (cross-cutting)</text>
+    <text class="barl2" x="728" y="968">freshness SLOs · quarantine · lineage · drift monitors · numeric-hallucination gate = 0</text>
+    <text class="barl2" x="728" y="984">cost per user · incident runbooks · public status page · DR restore drills</text>
+  </g>
+</svg>

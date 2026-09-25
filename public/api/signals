@@ -1,0 +1,385 @@
+{
+  "as_of_date": "2026-09-24",
+  "generated_at": "2026-09-24T23:18:34.415016+00:00",
+  "total_active_signals": 9,
+  "signals": [
+    {
+      "symbol": "AAPL",
+      "exchange": "NASDAQ",
+      "name": "Apple Inc.",
+      "currency": "USD",
+      "composite_score": 67,
+      "confidence_tier": "B",
+      "direction": "LONG",
+      "preferred_entry": 335.92,
+      "entry_zone": [
+        333.08,
+        337.34
+      ],
+      "structural_stop": 318.13,
+      "targets": [
+        364.38,
+        382.17,
+        407.08
+      ],
+      "risk_reward_ratio": 2.6,
+      "invalidation_predicates": [
+        {
+          "predicate": "DAILY_CLOSE_BELOW_LEVEL",
+          "level": 318.13,
+          "description": "Daily closing price finishes below structural stop loss of 318.13"
+        },
+        {
+          "predicate": "RVOL_COLLAPSE",
+          "threshold": 0.4,
+          "description": "20-day Relative Volume drops below 0.40x indicating liquidity desertion"
+        },
+        {
+          "predicate": "EARNINGS_ANNOUNCEMENT_EVENT",
+          "buffer_sessions": 2,
+          "description": "Filing within 2 trading sessions triggers event risk de-risking protocol"
+        }
+      ],
+      "risk_notes": [
+        "Daily ATR volatility is 2.1%; position sizing must calibrate to $17.79/share risk.",
+        "Stop loss is positioned 5.3% below preferred entry price."
+      ]
+    },
+    {
+      "symbol": "MSFT",
+      "exchange": "NASDAQ",
+      "name": "Microsoft Corporation",
+      "currency": "USD",
+      "composite_score": 61,
+      "confidence_tier": "B",
+      "direction": "LONG",
+      "preferred_entry": 497.93,
+      "entry_zone": [
+        494.49,
+        499.97
+      ],
+      "structural_stop": 468.41,
+      "targets": [
+        545.16,
+        574.68,
+        616.01
+      ],
+      "risk_reward_ratio": 2.6,
+      "invalidation_predicates": [
+        {
+          "predicate": "DAILY_CLOSE_BELOW_LEVEL",
+          "level": 468.41,
+          "description": "Daily closing price finishes below structural stop loss of 468.41"
+        },
+        {
+          "predicate": "RVOL_COLLAPSE",
+          "threshold": 0.4,
+          "description": "20-day Relative Volume drops below 0.40x indicating liquidity desertion"
+        },
+        {
+          "predicate": "EARNINGS_ANNOUNCEMENT_EVENT",
+          "buffer_sessions": 2,
+          "description": "Filing within 2 trading sessions triggers event risk de-risking protocol"
+        }
+      ],
+      "risk_notes": [
+        "Daily ATR volatility is 2.0%; position sizing must calibrate to $29.52/share risk.",
+        "Stop loss is positioned 5.9% below preferred entry price."
+      ]
+    },
+    {
+      "symbol": "NVDA",
+      "exchange": "NASDAQ",
+      "name": "NVIDIA Corporation",
+      "currency": "USD",
+      "composite_score": 61,
+      "confidence_tier": "B",
+      "direction": "LONG",
+      "preferred_entry": 224.58,
+      "entry_zone": [
+        222.42,
+        225.66
+      ],
+      "structural_stop": 212.7,
+      "targets": [
+        243.59,
+        255.47,
+        272.1
+      ],
+      "risk_reward_ratio": 2.6,
+      "invalidation_predicates": [
+        {
+          "predicate": "DAILY_CLOSE_BELOW_LEVEL",
+          "level": 212.7,
+          "description": "Daily closing price finishes below structural stop loss of 212.7"
+        },
+        {
+          "predicate": "RVOL_COLLAPSE",
+          "threshold": 0.4,
+          "description": "20-day Relative Volume drops below 0.40x indicating liquidity desertion"
+        },
+        {
+          "predicate": "EARNINGS_ANNOUNCEMENT_EVENT",
+          "buffer_sessions": 2,
+          "description": "Filing within 2 trading sessions triggers event risk de-risking protocol"
+        }
+      ],
+      "risk_notes": [
+        "Daily ATR volatility is 2.4%; position sizing must calibrate to $11.88/share risk.",
+        "Stop loss is positioned 5.3% below preferred entry price."
+      ]
+    },
+    {
+      "symbol": "JPM",
+      "exchange": "NYSE",
+      "name": "JPMorgan Chase & Co.",
+      "currency": "USD",
+      "composite_score": 50,
+      "confidence_tier": "B",
+      "direction": "LONG",
+      "preferred_entry": 338.56,
+      "entry_zone": [
+        348.3,
+        340.03
+      ],
+      "structural_stop": 322.36,
+      "targets": [
+        364.48,
+        380.68,
+        403.36
+      ],
+      "risk_reward_ratio": 2.6,
+      "invalidation_predicates": [
+        {
+          "predicate": "DAILY_CLOSE_BELOW_LEVEL",
+          "level": 322.36,
+          "description": "Daily closing price finishes below structural stop loss of 322.36"
+        },
+        {
+          "predicate": "RVOL_COLLAPSE",
+          "threshold": 0.4,
+          "description": "20-day Relative Volume drops below 0.40x indicating liquidity desertion"
+        },
+        {
+          "predicate": "EARNINGS_ANNOUNCEMENT_EVENT",
+          "buffer_sessions": 2,
+          "description": "Filing within 2 trading sessions triggers event risk de-risking protocol"
+        }
+      ],
+      "risk_notes": [
+        "Daily ATR volatility is 2.2%; position sizing must calibrate to $16.20/share risk.",
+        "Stop loss is positioned 4.8% below preferred entry price."
+      ]
+    },
+    {
+      "symbol": "XOM",
+      "exchange": "NYSE",
+      "name": "Exxon Mobil Corporation",
+      "currency": "USD",
+      "composite_score": 60,
+      "confidence_tier": "B",
+      "direction": "LONG",
+      "preferred_entry": 162.14,
+      "entry_zone": [
+        160.63,
+        162.95
+      ],
+      "structural_stop": 153.23,
+      "targets": [
+        176.4,
+        185.31,
+        197.78
+      ],
+      "risk_reward_ratio": 2.6,
+      "invalidation_predicates": [
+        {
+          "predicate": "DAILY_CLOSE_BELOW_LEVEL",
+          "level": 153.23,
+          "description": "Daily closing price finishes below structural stop loss of 153.23"
+        },
+        {
+          "predicate": "RVOL_COLLAPSE",
+          "threshold": 0.4,
+          "description": "20-day Relative Volume drops below 0.40x indicating liquidity desertion"
+        },
+        {
+          "predicate": "EARNINGS_ANNOUNCEMENT_EVENT",
+          "buffer_sessions": 2,
+          "description": "Filing within 2 trading sessions triggers event risk de-risking protocol"
+        }
+      ],
+      "risk_notes": [
+        "Daily ATR volatility is 2.5%; position sizing must calibrate to $8.91/share risk.",
+        "Stop loss is positioned 5.5% below preferred entry price."
+      ]
+    },
+    {
+      "symbol": "SPY",
+      "exchange": "AMEX",
+      "name": "SPDR S&P 500 ETF Trust",
+      "currency": "USD",
+      "composite_score": 57,
+      "confidence_tier": "B",
+      "direction": "LONG",
+      "preferred_entry": 767.18,
+      "entry_zone": [
+        764.49,
+        768.53
+      ],
+      "structural_stop": 752.37,
+      "targets": [
+        790.88,
+        805.69,
+        826.42
+      ],
+      "risk_reward_ratio": 2.6,
+      "invalidation_predicates": [
+        {
+          "predicate": "DAILY_CLOSE_BELOW_LEVEL",
+          "level": 752.37,
+          "description": "Daily closing price finishes below structural stop loss of 752.37"
+        },
+        {
+          "predicate": "RVOL_COLLAPSE",
+          "threshold": 0.4,
+          "description": "20-day Relative Volume drops below 0.40x indicating liquidity desertion"
+        },
+        {
+          "predicate": "EARNINGS_ANNOUNCEMENT_EVENT",
+          "buffer_sessions": 2,
+          "description": "Filing within 2 trading sessions triggers event risk de-risking protocol"
+        }
+      ],
+      "risk_notes": [
+        "Daily ATR volatility is 0.9%; position sizing must calibrate to $14.81/share risk.",
+        "Stop loss is positioned 1.9% below preferred entry price."
+      ]
+    },
+    {
+      "symbol": "QQQ",
+      "exchange": "NASDAQ",
+      "name": "Invesco QQQ Trust",
+      "currency": "USD",
+      "composite_score": 61,
+      "confidence_tier": "B",
+      "direction": "LONG",
+      "preferred_entry": 741.1,
+      "entry_zone": [
+        737.33,
+        742.99
+      ],
+      "structural_stop": 707.17,
+      "targets": [
+        795.39,
+        829.32,
+        876.82
+      ],
+      "risk_reward_ratio": 2.6,
+      "invalidation_predicates": [
+        {
+          "predicate": "DAILY_CLOSE_BELOW_LEVEL",
+          "level": 707.17,
+          "description": "Daily closing price finishes below structural stop loss of 707.17"
+        },
+        {
+          "predicate": "RVOL_COLLAPSE",
+          "threshold": 0.4,
+          "description": "20-day Relative Volume drops below 0.40x indicating liquidity desertion"
+        },
+        {
+          "predicate": "EARNINGS_ANNOUNCEMENT_EVENT",
+          "buffer_sessions": 2,
+          "description": "Filing within 2 trading sessions triggers event risk de-risking protocol"
+        }
+      ],
+      "risk_notes": [
+        "Daily ATR volatility is 1.3%; position sizing must calibrate to $33.93/share risk.",
+        "Stop loss is positioned 4.6% below preferred entry price."
+      ]
+    },
+    {
+      "symbol": "TD",
+      "exchange": "TSX",
+      "name": "Toronto-Dominion Bank",
+      "currency": "CAD",
+      "composite_score": 54,
+      "confidence_tier": "B",
+      "direction": "LONG",
+      "preferred_entry": 168.66,
+      "entry_zone": [
+        167.55,
+        169.22
+      ],
+      "structural_stop": 162.53,
+      "targets": [
+        178.47,
+        184.6,
+        193.18
+      ],
+      "risk_reward_ratio": 2.6,
+      "invalidation_predicates": [
+        {
+          "predicate": "DAILY_CLOSE_BELOW_LEVEL",
+          "level": 162.53,
+          "description": "Daily closing price finishes below structural stop loss of 162.53"
+        },
+        {
+          "predicate": "RVOL_COLLAPSE",
+          "threshold": 0.4,
+          "description": "20-day Relative Volume drops below 0.40x indicating liquidity desertion"
+        },
+        {
+          "predicate": "EARNINGS_ANNOUNCEMENT_EVENT",
+          "buffer_sessions": 2,
+          "description": "Filing within 2 trading sessions triggers event risk de-risking protocol"
+        }
+      ],
+      "risk_notes": [
+        "Daily ATR volatility is 1.7%; position sizing must calibrate to $6.13/share risk.",
+        "Stop loss is positioned 3.6% below preferred entry price."
+      ]
+    },
+    {
+      "symbol": "CNQ",
+      "exchange": "TSX",
+      "name": "Canadian Natural Resources",
+      "currency": "CAD",
+      "composite_score": 54,
+      "confidence_tier": "B",
+      "direction": "LONG",
+      "preferred_entry": 67.82,
+      "entry_zone": [
+        69.05,
+        68.18
+      ],
+      "structural_stop": 63.84,
+      "targets": [
+        74.19,
+        78.17,
+        83.74
+      ],
+      "risk_reward_ratio": 2.6,
+      "invalidation_predicates": [
+        {
+          "predicate": "DAILY_CLOSE_BELOW_LEVEL",
+          "level": 63.84,
+          "description": "Daily closing price finishes below structural stop loss of 63.84"
+        },
+        {
+          "predicate": "RVOL_COLLAPSE",
+          "threshold": 0.4,
+          "description": "20-day Relative Volume drops below 0.40x indicating liquidity desertion"
+        },
+        {
+          "predicate": "EARNINGS_ANNOUNCEMENT_EVENT",
+          "buffer_sessions": 2,
+          "description": "Filing within 2 trading sessions triggers event risk de-risking protocol"
+        }
+      ],
+      "risk_notes": [
+        "Daily ATR volatility is 2.7%; position sizing must calibrate to $3.98/share risk.",
+        "Stop loss is positioned 5.9% below preferred entry price."
+      ]
+    }
+  ]
+}

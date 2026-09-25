@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  # TimescaleDB (PostgreSQL 16) - Optimized for ARM64 & x86_64
+  postgres:
+    image: timescale/timescaledb:latest-pg16
+    container_name: marketintel-timescale
+    restart: always
+    environment:
+      POSTGRES_USER: marketintel_user
+      POSTGRES_PASSWORD: marketintel_secure_password
+      POSTGRES_DB: market_intel
+    ports:
+      - "5432:5432"
+    volumes:
+      - timescale_data:/var/lib/postgresql/data
+      - ../migrations/001_initial_schema.sql:/docker-entrypoint-initdb.d/001_initial_schema.sql
+    command: >
+      postgres
+      -c shared_buffers=2GB
+      -c effective_cache_size=6GB
+      -c maintenance_work_mem=512MB
+      -c max_connections=50
+      -c timescaledb.max_background_workers=4
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U marketintel_user -d market_intel"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Redis for background queuing & rate-limit state
+  redis:
+    image: redis:7-alpine
+    container_name: marketintel-redis
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  timescale_data:
+  redis_data:

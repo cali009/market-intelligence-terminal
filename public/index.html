@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>US + Canada Quantitative Market Intelligence Terminal</title>
+    <style>
+        :root {
+            --bg-primary: #0a0e17;
+            --bg-secondary: #111827;
+            --bg-tertiary: #1f2937;
+            --bg-card: #141d2e;
+            --border-color: #243247;
+            --border-light: #2d3e58;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --text-muted: #6b7280;
+            --accent-blue: #3b82f6;
+            --accent-cyan: #06b6d4;
+            --accent-green: #10b981;
+            --accent-red: #ef4444;
+            --accent-amber: #f59e0b;
+            --accent-purple: #8b5cf6;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-size: 14px;
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        /* Top Header */
+        header {
+            background-color: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-logo {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 16px;
+            color: #ffffff;
+        }
+
+        .brand-title {
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+
+        .brand-subtitle {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .market-pills {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .pill {
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background-color: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+        }
+
+        .dot-green {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background-color: var(--accent-green);
+            box-shadow: 0 0 6px var(--accent-green);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 20px 24px;
+        }
+
+        /* Regime Banner */
+        .regime-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .regime-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 16px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .regime-card::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+        }
+
+        .regime-card.strong-bull::before {
+            background: linear-gradient(to bottom, var(--accent-green), var(--accent-cyan));
+        }
+
+        .regime-card.weak-bull::before {
+            background: linear-gradient(to bottom, var(--accent-cyan), var(--accent-blue));
+        }
+
+        .regime-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .regime-name {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-secondary);
+        }
+
+        .regime-state-badge {
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .badge-bull {
+            background-color: rgba(16, 185, 129, 0.15);
+            color: var(--accent-green);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .badge-weak-bull {
+            background-color: rgba(6, 182, 212, 0.15);
+            color: var(--accent-cyan);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+        }
+
+        .regime-metrics {
+            display: flex;
+            gap: 20px;
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+
+        .regime-drivers {
+            font-size: 12px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            padding-top: 10px;
+        }
+
+        .regime-drivers li {
+            list-style: none;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .regime-drivers li::before {
+            content: "•";
+            color: var(--accent-cyan);
+        }
+
+        /* Nav Tabs */
+        .tabs {
+            display: flex;
+            gap: 8px;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 20px;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 13px;
+            font-weight: 600;
+            padding: 10px 18px;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .tab-btn:hover {
+            color: var(--text-primary);
+        }
+
+        .tab-btn.active {
+            color: var(--accent-blue);
+            border-bottom-color: var(--accent-blue);
+        }
+
+        /* Search & Filter Toolbar */
+        .toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            gap: 16px;
+        }
+
+        .search-input {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 8px 14px;
+            font-size: 13px;
+            color: var(--text-primary);
+            width: 300px;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 8px;
+        }
+
+        .filter-btn {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .filter-btn.active {
+            background-color: var(--accent-blue);
+            color: #ffffff;
+            border-color: var(--accent-blue);
+        }
+
+        /* Data Tables */
+        .table-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--bg-secondary);
+            color: var(--text-muted);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border-color);
+            font-weight: 600;
+        }
+
+        td {
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 13px;
+        }
+
+        tr:hover td {
+            background-color: rgba(59, 130, 246, 0.05);
+            cursor: pointer;
+        }
+
+        .symbol-badge {
+            font-weight: 700;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .exchange-tag {
+            font-size: 10px;
+            padding: 2px 5px;
+            background-color: var(--bg-tertiary);
+            border-radius: 4px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .score-box {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .score-pill {
+            font-weight: 800;
+            font-size: 14px;
+            padding: 2px 8px;
+            border-radius: 6px;
+        }
+
+        .score-high {
+            background-color: rgba(16, 185, 129, 0.15);
+            color: var(--accent-green);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .score-mid {
+            background-color: rgba(59, 130, 246, 0.15);
+            color: var(--accent-blue);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .score-low {
+            background-color: rgba(239, 68, 68, 0.15);
+            color: var(--accent-red);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .tag-pill {
+            display: inline-block;
+            font-size: 10px;
+            padding: 2px 6px;
+            background-color: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            margin-right: 4px;
+            color: var(--text-secondary);
+        }
+
+        /* Scanners Grid View */
+        .scanners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 16px;
+        }
+
+        .scanner-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 16px;
+        }
+
+        .scanner-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .scanner-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .scanner-count {
+            background-color: rgba(59, 130, 246, 0.15);
+            color: var(--accent-blue);
+            font-weight: 700;
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 12px;
+        }
+
+        .scanner-matches {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 10px;
+        }
+
+        .match-badge {
+            padding: 4px 8px;
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .match-badge:hover {
+            border-color: var(--accent-blue);
+            color: var(--accent-blue);
+        }
+
+        /* Signals Execution Cards */
+        .signals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+            gap: 16px;
+        }
+
+        .signal-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 20px;
+            position: relative;
+        }
+
+        .signal-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+
+        .signal-levels {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+            background-color: var(--bg-secondary);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .level-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .level-val {
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .val-entry { color: var(--accent-blue); }
+        .val-stop { color: var(--accent-red); }
+        .val-target { color: var(--accent-green); }
+
+        .invalidation-box {
+            font-size: 11px;
+            color: var(--text-muted);
+            background-color: rgba(239, 68, 68, 0.05);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            border-radius: 6px;
+            padding: 8px 12px;
+        }
+
+        /* Drawer / Modal */
+        .drawer-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 100;
+            display: none;
+            backdrop-filter: blur(4px);
+        }
+
+        .drawer {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 680px;
+            max-width: 90vw;
+            height: 100vh;
+            background-color: var(--bg-secondary);
+            border-left: 1px solid var(--border-color);
+            z-index: 101;
+            transform: translateX(100%);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            overflow-y: auto;
+            padding: 24px;
+        }
+
+        .drawer.open {
+            transform: translateX(0);
+        }
+
+        .drawer-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .chart-container {
+            width: 100%;
+            height: 260px;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin: 16px 0;
+            position: relative;
+        }
+
+        canvas {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* AI Explanation Cards */
+        .ai-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .ai-card {
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-size: 12px;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-card);
+        }
+
+        .ai-card-title {
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .card-fact { border-left: 3px solid var(--accent-blue); }
+        .card-fact .ai-card-title { color: var(--accent-blue); }
+
+        .card-calc { border-left: 3px solid var(--accent-purple); }
+        .card-calc .ai-card-title { color: var(--accent-purple); }
+
+        .card-inf { border-left: 3px solid var(--accent-green); }
+        .card-inf .ai-card-title { color: var(--accent-green); }
+
+        .card-unc { border-left: 3px solid var(--accent-amber); }
+        .card-unc .ai-card-title { color: var(--accent-amber); }
+
+        .disclaimer-footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 11px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="brand">
+            <div class="brand-logo">Q</div>
+            <div>
+                <div class="brand-title">QUANT INTEL TERMINAL</div>
+                <div class="brand-subtitle">US + Canada Multi-Market Decision Support</div>
+            </div>
+        </div>
+        <div class="market-pills">
+            <div class="pill">
+                <span class="dot-green"></span>
+                <span>NYSE / NASDAQ: REGULAR</span>
+            </div>
+            <div class="pill">
+                <span class="dot-green"></span>
+                <span>TSX: REGULAR</span>
+            </div>
+            <div class="pill" style="color: var(--accent-cyan);">
+                <span>CSA 31-369 STATUTORY IMPERSONAL RESEARCH</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Dual-Market Regime Banner -->
+        <div class="regime-grid" id="regimeGrid">
+            <!-- Populated dynamically via JS -->
+        </div>
+
+        <!-- Navigation Tabs -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('leaderboard')">Opportunity Leaderboard</button>
+            <button class="tab-btn" onclick="switchTab('scanners')">TAC-14 Market Scanners</button>
+            <button class="tab-btn" onclick="switchTab('signals')">Research Signal Plans</button>
+        </div>
+
+        <!-- Tab 1: Leaderboard -->
+        <div id="tab-leaderboard">
+            <div class="toolbar">
+                <input type="text" id="searchInput" class="search-input" placeholder="Search symbol, company, or sector..." oninput="filterTable()">
+                <div class="filter-group">
+                    <button class="filter-btn active" onclick="filterMarket('ALL')">All Markets</button>
+                    <button class="filter-btn" onclick="filterMarket('US')">United States</button>
+                    <button class="filter-btn" onclick="filterMarket('CA')">Canada (TSX)</button>
+                </div>
+            </div>
+
+            <div class="table-card">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Security</th>
+                            <th>Market Price</th>
+                            <th>Opportunity Score</th>
+                            <th>Confidence</th>
+                            <th>14-Day RSI</th>
+                            <th>20-Day RVOL</th>
+                            <th>52W High Prox</th>
+                            <th>Active Setups</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leaderboardBody">
+                        <!-- Populated dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Tab 2: Scanners -->
+        <div id="tab-scanners" style="display: none;">
+            <div class="scanners-grid" id="scannersGrid">
+                <!-- Populated dynamically -->
+            </div>
+        </div>
+
+        <!-- Tab 3: Signals -->
+        <div id="tab-signals" style="display: none;">
+            <div class="signals-grid" id="signalsGrid">
+                <!-- Populated dynamically -->
+            </div>
+        </div>
+
+        <!-- Statutory Footer -->
+        <div class="disclaimer-footer">
+            <p><strong>STATUTORY CANADIAN DISCLOSURE (CSA Staff Notice 31-369):</strong> This platform provides impersonal quantitative decision-support research intended exclusively for self-directed investors. It does not provide personalized investment advice or account management. All scores (0–100) are generated by mathematical models and rule-based algorithms without consideration of your individual risk tolerance, tax profile, or financial situation.</p>
+            <p style="margin-top: 6px;"><strong>UNITED STATES REGULATORY NOTICE:</strong> Impersonal financial commentary published under the publisher exclusion of Section 202(a)(11)(D) of the Investment Advisers Act of 1940. Model performance results represent hypothetical backtested parameters under SEC Rule 206(4)-1.</p>
+        </div>
+    </div>
+
+    <!-- Slide-out Symbol Drawer -->
+    <div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+    <div class="drawer" id="symbolDrawer">
+        <button class="drawer-close" onclick="closeDrawer()">&times;</button>
+        <div id="drawerContent">
+            <!-- Populated dynamically -->
+        </div>
+    </div>
+
+    <script>
+        let fullLeaderboard = [];
+        let currentMarketFilter = 'ALL';
+
+        async function fetchJson(primaryUrl, fallbackUrl) {
+            try {
+                const res = await fetch(primaryUrl);
+                if (res.ok) return await res.json();
+            } catch (e) {}
+            if (fallbackUrl) {
+                const res2 = await fetch(fallbackUrl);
+                if (res2.ok) return await res2.json();
+            }
+            throw new Error(`Failed to fetch from ${primaryUrl} or ${fallbackUrl}`);
+        }
+
+        async function init() {
+            try {
+                // Fetch summary
+                const sumData = await fetchJson('/api/summary.json', '/api/summary');
+                renderRegimes(sumData.regimes);
+
+                // Fetch leaderboard
+                const leadData = await fetchJson('/api/leaderboard.json', '/api/leaderboard');
+                fullLeaderboard = leadData.securities;
+                renderLeaderboard(fullLeaderboard);
+
+                // Fetch scanners
+                const scanData = await fetchJson('/api/scanners.json', '/api/scanners');
+                renderScanners(scanData.matches);
+
+                // Fetch signals
+                const sigData = await fetchJson('/api/signals.json', '/api/signals');
+                renderSignals(sigData.signals);
+
+            } catch (err) {
+                console.error("Failed to load initial data", err);
+            }
+        }
+
+        function renderRegimes(regimes) {
+            const grid = document.getElementById('regimeGrid');
+            grid.innerHTML = '';
+
+            for (const [ctry, r] of Object.entries(regimes)) {
+                const card = document.createElement('div');
+                const isStrong = r.regime_state === 'STRONG_BULL';
+                card.className = `regime-card ${isStrong ? 'strong-bull' : 'weak-bull'}`;
+                
+                card.innerHTML = `
+                    <div class="regime-header">
+                        <div>
+                            <div class="regime-name">${r.market_label} (${ctry})</div>
+                            <div style="font-size: 15px; font-weight: 700; margin-top: 2px;">
+                                ${r.benchmark_symbol} @ $${r.benchmark_price.toFixed(2)}
+                            </div>
+                        </div>
+                        <span class="regime-state-badge ${isStrong ? 'badge-bull' : 'badge-weak-bull'}">
+                            ${r.regime_state.replace('_', ' ')} (${Math.round(r.filtered_probability * 100)}%)
+                        </span>
+                    </div>
+                    <div class="regime-metrics">
+                        <div>Score Multiplier: <strong style="color: var(--text-primary);">${r.score_multiplier}x</strong></div>
+                        <div>Position Size Scaling: <strong style="color: var(--text-primary);">${r.risk_scaling}x</strong></div>
+                    </div>
+                    <div class="regime-drivers">
+                        <ul>
+                            ${r.top_drivers.map(d => `<li>${d}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+                grid.appendChild(card);
+            }
+        }
+
+        function renderLeaderboard(items) {
+            const tbody = document.getElementById('leaderboardBody');
+            tbody.innerHTML = '';
+
+            items.forEach(item => {
+                const tr = document.createElement('tr');
+                tr.onclick = () => openSymbol(item.symbol);
+
+                const scoreClass = item.composite_score >= 60 ? 'score-high' : (item.composite_score >= 45 ? 'score-mid' : 'score-low');
+                const proxClass = item.proximity_52w_high >= -5 ? 'color: var(--accent-green);' : (item.proximity_52w_high <= -20 ? 'color: var(--accent-red);' : '');
+
+                tr.innerHTML = `
+                    <td>
+                        <div class="symbol-badge">
+                            <span>${item.symbol}</span>
+                            <span class="exchange-tag">${item.exchange}</span>
+                        </div>
+                        <div style="font-size: 11px; color: var(--text-muted);">${item.name}</div>
+                    </td>
+                    <td>
+                        <strong>$${item.price.toFixed(2)}</strong> <span style="font-size: 11px; color: var(--text-muted);">${item.currency}</span>
+                    </td>
+                    <td>
+                        <div class="score-box">
+                            <span class="score-pill ${scoreClass}">${item.composite_score}/100</span>
+                        </div>
+                    </td>
+                    <td>
+                        <span style="font-weight: 700; color: ${item.confidence_tier === 'A' ? 'var(--accent-green)' : (item.confidence_tier === 'B' ? 'var(--accent-blue)' : 'var(--accent-amber)')};">
+                            Tier ${item.confidence_tier}
+                        </span>
+                    </td>
+                    <td>${item.rsi_14.toFixed(1)}</td>
+                    <td>${item.rvol_20.toFixed(2)}x</td>
+                    <td style="${proxClass} font-weight: 600;">
+                        ${item.proximity_52w_high > 0 ? '+' : ''}${item.proximity_52w_high.toFixed(1)}%
+                    </td>
+                    <td>
+                        ${item.scanner_tags.slice(0, 2).map(t => `<span class="tag-pill">${t}</span>`).join('')}
+                        ${item.scanner_tags.length > 2 ? `<span class="tag-pill">+${item.scanner_tags.length - 2}</span>` : ''}
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function renderScanners(matches) {
+            const grid = document.getElementById('scannersGrid');
+            grid.innerHTML = '';
+
+            const grouped = {};
+            matches.forEach(m => {
+                if (!grouped[m.scanner_name]) grouped[m.scanner_name] = [];
+                grouped[m.scanner_name].push(m);
+            });
+
+            for (const [name, list] of Object.entries(grouped)) {
+                const card = document.createElement('div');
+                card.className = 'scanner-card';
+                card.innerHTML = `
+                    <div class="scanner-header">
+                        <span class="scanner-title">${name}</span>
+                        <span class="scanner-count">${list.length}</span>
+                    </div>
+                    <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 8px;">
+                        ${list[0].why_matched.split(';')[0]}
+                    </div>
+                    <div class="scanner-matches">
+                        ${list.map(m => `
+                            <span class="match-badge" onclick="openSymbol('${m.symbol}')">
+                                ${m.symbol} <span style="color: var(--text-muted); font-size: 10px;">$${m.price.toFixed(1)}</span>
+                            </span>
+                        `).join('')}
+                    </div>
+                `;
+                grid.appendChild(card);
+            }
+        }
+
+        function renderSignals(signals) {
+            const grid = document.getElementById('signalsGrid');
+            grid.innerHTML = '';
+
+            signals.forEach(s => {
+                const card = document.createElement('div');
+                card.className = 'signal-card';
+                card.innerHTML = `
+                    <div class="signal-card-header">
+                        <div>
+                            <div class="symbol-badge" style="font-size: 16px;">
+                                <span>${s.symbol}</span>
+                                <span class="exchange-tag">${s.exchange}</span>
+                            </div>
+                            <div style="font-size: 12px; color: var(--text-muted);">${s.name}</div>
+                        </div>
+                        <div style="text-align: right;">
+                            <span class="score-pill score-high">${s.composite_score}/100</span>
+                            <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">Tier ${s.confidence_tier}</div>
+                        </div>
+                    </div>
+                    <div class="signal-levels">
+                        <div>
+                            <div class="level-label">Preferred Entry</div>
+                            <div class="level-val val-entry">$${s.preferred_entry.toFixed(2)}</div>
+                        </div>
+                        <div>
+                            <div class="level-label">Structural Stop</div>
+                            <div class="level-val val-stop">$${s.structural_stop.toFixed(2)}</div>
+                        </div>
+                        <div>
+                            <div class="level-label">Target 2 (2.6R)</div>
+                            <div class="level-val val-target">$${s.targets[1].toFixed(2)}</div>
+                        </div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 12px;">
+                        <span>Entry Zone: <strong>$${s.entry_zone[0].toFixed(2)} – $${s.entry_zone[1].toFixed(2)}</strong></span>
+                        <span style="color: var(--accent-green); font-weight: 700;">R:R ${s.risk_reward_ratio}:1</span>
+                    </div>
+                    <div class="invalidation-box">
+                        <strong>Invalidation:</strong> ${s.invalidation_predicates[0].description}
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        async function openSymbol(symbol) {
+            const drawer = document.getElementById('symbolDrawer');
+            const overlay = document.getElementById('drawerOverlay');
+            const content = document.getElementById('drawerContent');
+
+            overlay.style.display = 'block';
+            setTimeout(() => drawer.classList.add('open'), 10);
+
+            content.innerHTML = '<div style="padding: 40px; text-align: center; color: var(--text-muted);">Loading quantitative dossier for ' + symbol + '...</div>';
+
+            try {
+                const data = await fetchJson(`/api/symbols/${symbol}.json`, `/api/symbol/${symbol}`);
+                
+                const exp = data.ai_explanation;
+                const score = data.score_record.composite_score;
+                const m = data.latest_metrics;
+
+                content.innerHTML = `
+                    <div style="margin-bottom: 16px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <h2 style="font-size: 24px; font-weight: 800;">${data.symbol}</h2>
+                                <span class="exchange-tag" style="font-size: 12px;">${data.exchange}</span>
+                                <span class="exchange-tag" style="font-size: 12px;">${data.country}</span>
+                            </div>
+                            <span class="score-pill ${score >= 60 ? 'score-high' : 'score-mid'}" style="font-size: 18px;">
+                                ${score}/100
+                            </span>
+                        </div>
+                        <div style="font-size: 13px; color: var(--text-muted);">${data.name}</div>
+                        <div style="font-size: 20px; font-weight: 700; margin-top: 6px;">
+                            $${m.close.toFixed(2)} <span style="font-size: 12px; color: var(--text-muted);">${data.currency}</span>
+                        </div>
+                    </div>
+
+                    <!-- Candlestick Canvas Chart -->
+                    <div class="chart-container">
+                        <canvas id="candleChart"></canvas>
+                    </div>
+
+                    <!-- AI Reasoning Contract -->
+                    <h3 style="font-size: 13px; text-transform: uppercase; color: var(--text-secondary); margin-top: 24px;">
+                        AI Explanation & Evidence Layer (Contract 2026.1)
+                    </h3>
+                    <div class="ai-grid">
+                        <div class="ai-card card-fact">
+                            <div class="ai-card-title">FACT (Primary Market Data)</div>
+                            <div>${exp.FACT}</div>
+                        </div>
+                        <div class="ai-card card-calc">
+                            <div class="ai-card-title">CALCULATION (Deterministic Feature Engine)</div>
+                            <div>${exp.CALCULATION}</div>
+                        </div>
+                        <div class="ai-card card-inf">
+                            <div class="ai-card-title">INFERENCE (Historical Analogue Distribution)</div>
+                            <div>${exp.INFERENCE}</div>
+                        </div>
+                        <div class="ai-card card-unc">
+                            <div class="ai-card-title">UNCERTAINTY & INVALIDATION (Risk Governance)</div>
+                            <div>${exp.UNCERTAINTY}</div>
+                        </div>
+                    </div>
+
+                    <!-- Factor Breakdown -->
+                    <h3 style="font-size: 13px; text-transform: uppercase; color: var(--text-secondary); margin-top: 24px; margin-bottom: 12px;">
+                        8-Factor Technical Score Decomposition
+                    </h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 12px;">
+                        <div style="background: var(--bg-card); padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border-color);">
+                            Trend Score: <strong>${data.score_record.factor_attribution.trend_score} / 25</strong>
+                        </div>
+                        <div style="background: var(--bg-card); padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border-color);">
+                            Relative Strength: <strong>${data.score_record.factor_attribution.relative_strength_score} / 20</strong>
+                        </div>
+                        <div style="background: var(--bg-card); padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border-color);">
+                            Setup Geometry: <strong>${data.score_record.factor_attribution.setup_geometry_score} / 10</strong>
+                        </div>
+                        <div style="background: var(--bg-card); padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border-color);">
+                            Volume Participation: <strong>${data.score_record.factor_attribution.volume_participation_score} / 10</strong>
+                        </div>
+                        <div style="background: var(--bg-card); padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border-color);">
+                            Risk Deduction: <strong style="color: var(--accent-red);">${data.score_record.factor_attribution.risk_penalty} pts</strong>
+                        </div>
+                        <div style="background: var(--bg-card); padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border-color);">
+                            Regime Multiplier: <strong>${data.score_record.factor_attribution.regime_multiplier}x</strong>
+                        </div>
+                    </div>
+                `;
+
+                // Draw chart on canvas
+                setTimeout(() => drawCandlestickChart(data.chart_bars), 50);
+
+            } catch (err) {
+                content.innerHTML = '<div style="color: var(--accent-red); padding: 20px;">Failed to load dossier.</div>';
+            }
+        }
+
+        function drawCandlestickChart(bars) {
+            const canvas = document.getElementById('candleChart');
+            if (!canvas || !bars || bars.length === 0) return;
+
+            const ctx = canvas.getContext('2d');
+            const rect = canvas.getBoundingClientRect();
+            canvas.width = rect.width * 2;
+            canvas.height = rect.height * 2;
+            ctx.scale(2, 2);
+
+            const width = rect.width;
+            const height = rect.height;
+            const paddingBottom = 20;
+            const paddingTop = 15;
+
+            // Take last 45 bars for clean visual display
+            const displayBars = bars.slice(-45);
+            const highs = displayBars.map(b => b.high);
+            const lows = displayBars.map(b => b.low);
+
+            const minP = Math.min(...lows) * 0.995;
+            const maxP = Math.max(...highs) * 1.005;
+            const priceRange = maxP - minP;
+
+            const candleWidth = (width / displayBars.length) * 0.7;
+            const slotWidth = width / displayBars.length;
+
+            ctx.clearRect(0, 0, width, height);
+
+            displayBars.forEach((b, i) => {
+                const x = (i * slotWidth) + (slotWidth / 2);
+                const isGreen = b.close >= b.open;
+
+                const openY = paddingTop + (1 - (b.open - minP) / priceRange) * (height - paddingTop - paddingBottom);
+                const closeY = paddingTop + (1 - (b.close - minP) / priceRange) * (height - paddingTop - paddingBottom);
+                const highY = paddingTop + (1 - (b.high - minP) / priceRange) * (height - paddingTop - paddingBottom);
+                const lowY = paddingTop + (1 - (b.low - minP) / priceRange) * (height - paddingTop - paddingBottom);
+
+                // Wick
+                ctx.strokeStyle = isGreen ? '#10b981' : '#ef4444';
+                ctx.lineWidth = 1.2;
+                ctx.beginPath();
+                ctx.moveTo(x, highY);
+                ctx.lineTo(x, lowY);
+                ctx.stroke();
+
+                // Candle Body
+                ctx.fillStyle = isGreen ? '#10b981' : '#ef4444';
+                const bodyY = Math.min(openY, closeY);
+                const bodyHeight = Math.max(2, Math.abs(closeY - openY));
+                ctx.fillRect(x - candleWidth / 2, bodyY, candleWidth, bodyHeight);
+            });
+        }
+
+        function closeDrawer() {
+            document.getElementById('symbolDrawer').classList.remove('open');
+            document.getElementById('drawerOverlay').style.display = 'none';
+        }
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            document.getElementById('tab-leaderboard').style.display = tabId === 'leaderboard' ? 'block' : 'none';
+            document.getElementById('tab-scanners').style.display = tabId === 'scanners' ? 'block' : 'none';
+            document.getElementById('tab-signals').style.display = tabId === 'signals' ? 'block' : 'none';
+        }
+
+        function filterMarket(mkt) {
+            currentMarketFilter = mkt;
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            filterTable();
+        }
+
+        function filterTable() {
+            const q = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = fullLeaderboard.filter(item => {
+                const matchesMkt = (currentMarketFilter === 'ALL') || (item.country === currentMarketFilter);
+                const matchesQ = item.symbol.toLowerCase().includes(q) || item.name.toLowerCase().includes(q);
+                return matchesMkt && matchesQ;
+            });
+            renderLeaderboard(filtered);
+        }
+
+        window.onload = init;
+    </script>
+</body>
+</html>

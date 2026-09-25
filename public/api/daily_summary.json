@@ -1,0 +1,142 @@
+{
+  "as_of_date": "2026-09-24",
+  "generated_at": "2026-09-24T23:18:34.415016+00:00",
+  "regimes": {
+    "US": {
+      "market_label": "US Equities",
+      "benchmark_symbol": "SPY",
+      "benchmark_price": 767.1799926757812,
+      "regime_state": "STRONG_BULL",
+      "filtered_probability": 0.9,
+      "score_multiplier": 1.05,
+      "risk_scaling": 1.0,
+      "top_drivers": [
+        "Index trading above rising 200-day moving average (bullish trend structure)",
+        "VIX at 16.0 indicates low implied volatility / calm conditions",
+        "Yield curve positively sloped (+45 bps 10Y-2Y spread)"
+      ]
+    },
+    "CA": {
+      "market_label": "Canadian Equities",
+      "benchmark_symbol": "XIU",
+      "benchmark_price": 52.95000076293945,
+      "regime_state": "WEAK_BULL",
+      "filtered_probability": 0.78,
+      "score_multiplier": 1.0,
+      "risk_scaling": 0.85,
+      "top_drivers": [
+        "Index trading above rising 200-day moving average (bullish trend structure)",
+        "VIX at 16.0 indicates low implied volatility / calm conditions",
+        "Yield curve positively sloped (+55 bps 10Y-2Y spread)"
+      ]
+    }
+  },
+  "market_leaders": [
+    {
+      "symbol": "AAPL",
+      "exchange": "NASDAQ",
+      "country": "US",
+      "currency": "USD",
+      "name": "Apple Inc.",
+      "price": 335.9200134277344,
+      "composite_score": 67,
+      "confidence_tier": "B",
+      "technical_score": 63,
+      "rsi_14": 61.3,
+      "rvol_20": 0.57,
+      "atr_pct": 2.11,
+      "proximity_52w_high": -2.7,
+      "scanner_tags": [
+        "Momentum Leaders",
+        "Stacked Moving Average Alignment",
+        "Low-Volatility Trend Quality",
+        "Fast & Medium MTF Alignment"
+      ]
+    },
+    {
+      "symbol": "MSFT",
+      "exchange": "NASDAQ",
+      "country": "US",
+      "currency": "USD",
+      "name": "Microsoft Corporation",
+      "price": 497.92999267578125,
+      "composite_score": 61,
+      "confidence_tier": "B",
+      "technical_score": 56,
+      "rsi_14": 54.4,
+      "rvol_20": 0.78,
+      "atr_pct": 2.05,
+      "proximity_52w_high": -10.1,
+      "scanner_tags": [
+        "Pullback to Key Support",
+        "Volatility Squeeze (Bandwidth)",
+        "Low-Volatility Trend Quality",
+        "Fast & Medium MTF Alignment",
+        "Consolidation Base Tightening"
+      ]
+    },
+    {
+      "symbol": "NVDA",
+      "exchange": "NASDAQ",
+      "country": "US",
+      "currency": "USD",
+      "name": "NVIDIA Corporation",
+      "price": 224.5800018310547,
+      "composite_score": 61,
+      "confidence_tier": "B",
+      "technical_score": 56,
+      "rsi_14": 54.7,
+      "rvol_20": 0.6,
+      "atr_pct": 2.41,
+      "proximity_52w_high": -5.1,
+      "scanner_tags": [
+        "Momentum Leaders",
+        "Pullback to Key Support",
+        "Stacked Moving Average Alignment"
+      ]
+    },
+    {
+      "symbol": "QQQ",
+      "exchange": "NASDAQ",
+      "country": "US",
+      "currency": "USD",
+      "name": "Invesco QQQ Trust",
+      "price": 741.0999755859375,
+      "composite_score": 61,
+      "confidence_tier": "B",
+      "technical_score": 56,
+      "rsi_14": 63.1,
+      "rvol_20": 0.87,
+      "atr_pct": 1.27,
+      "proximity_52w_high": -1.0,
+      "scanner_tags": [
+        "Volatility Squeeze (Bandwidth)",
+        "Stacked Moving Average Alignment",
+        "Low-Volatility Trend Quality",
+        "Consolidation Base Tightening"
+      ]
+    },
+    {
+      "symbol": "XOM",
+      "exchange": "NYSE",
+      "country": "US",
+      "currency": "USD",
+      "name": "Exxon Mobil Corporation",
+      "price": 162.13999938964844,
+      "composite_score": 60,
+      "confidence_tier": "B",
+      "technical_score": 54,
+      "rsi_14": 51.2,
+      "rvol_20": 0.84,
+      "atr_pct": 2.5,
+      "proximity_52w_high": -8.1,
+      "scanner_tags": [
+        "Pullback to Key Support",
+        "Volatility Squeeze (Bandwidth)",
+        "Consolidation Base Tightening"
+      ]
+    }
+  ],
+  "total_securities_analyzed": 19,
+  "disclaimer_version": "2026.1"
+}

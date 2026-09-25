@@ -1,0 +1,42 @@
+name: Deploy to Firebase Hosting
+
+on:
+  push:
+    branches: [main, master]
+  schedule:
+    # Run every weekday at 16:30 EST (21:30 UTC) after US & Canadian markets close
+    - cron: '30 21 * * 1-5'
+  workflow_dispatch:
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Dependencies
+        run: |
+          pip install pandas numpy requests
+
+      - name: Run Master Market Intelligence Pipeline
+        run: |
+          python3 scripts/run_daily_pipeline.py
+
+      - name: Build Public Firebase Bundle
+        run: |
+          python3 scripts/build_firebase_public.py
+
+      - name: Deploy to Firebase Hosting
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
+          channelId: live
+          projectId: '${{ secrets.FIREBASE_PROJECT_ID }}'

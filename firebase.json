@@ -1,0 +1,60 @@
+{
+  "hosting": {
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "headers": [
+      {
+        "source": "**",
+        "headers": [
+          {
+            "key": "Access-Control-Allow-Origin",
+            "value": "*"
+          },
+          {
+            "key": "X-Content-Type-Options",
+            "value": "nosniff"
+          }
+        ]
+      },
+      {
+        "source": "**/*.json",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json; charset=utf-8"
+          },
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=300, s-maxage=3600"
+          }
+        ]
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "/api/summary",
+        "destination": "/api/summary.json"
+      },
+      {
+        "source": "/api/leaderboard",
+        "destination": "/api/leaderboard.json"
+      },
+      {
+        "source": "/api/scanners",
+        "destination": "/api/scanners.json"
+      },
+      {
+        "source": "/api/signals",
+        "destination": "/api/signals.json"
+      },
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

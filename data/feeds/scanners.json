@@ -1,0 +1,678 @@
+{
+  "as_of_date": "2026-09-25",
+  "generated_at": "2026-09-25T00:12:28.204962+00:00",
+  "total_matches": 53,
+  "matches": [
+    {
+      "scanner_id": "MOMENTUM_LEADERS",
+      "scanner_name": "Momentum Leaders",
+      "symbol": "AAPL",
+      "exchange": "NASDAQ",
+      "price": 335.9200134277344,
+      "why_matched": "Strong trend: close > 50DMA > 200DMA with +22.1% 3m return and -2.7% from 52w high.",
+      "key_metrics": {
+        "ret_3m": 0.22086142423871036,
+        "prox_52w": -0.027277416488241002,
+        "rsi": 61.32249654912553
+      }
+    },
+    {
+      "scanner_id": "STACKED_MOVING_AVERAGES",
+      "scanner_name": "Stacked Moving Average Alignment",
+      "symbol": "AAPL",
+      "exchange": "NASDAQ",
+      "price": 335.9200134277344,
+      "why_matched": "Perfect bullish alignment: Price > 20DMA > 50DMA > 200DMA with positive 200DMA slope.",
+      "key_metrics": {
+        "close": 335.9200134277344,
+        "sma_20": 328.0714996337891,
+        "sma_50": 321.67579956054686,
+        "sma_200": 287.45044937133787
+      }
+    },
+    {
+      "scanner_id": "LOW_BETA_QUALITY",
+      "scanner_name": "Low-Volatility Trend Quality",
+      "symbol": "AAPL",
+      "exchange": "NASDAQ",
+      "price": 335.9200134277344,
+      "why_matched": "Low ATR volatility (2.1%) paired with rising 200DMA and positive quarterly return.",
+      "key_metrics": {
+        "atr_pct": 2.111898110767783,
+        "slope_200": 23.805635624959823,
+        "ret_3m": 0.22086142423871036
+      }
+    },
+    {
+      "scanner_id": "MTF_ALIGNMENT",
+      "scanner_name": "Fast & Medium MTF Alignment",
+      "symbol": "AAPL",
+      "exchange": "NASDAQ",
+      "price": 335.9200134277344,
+      "why_matched": "Fast 8EMA > 21EMA above 50DMA with established trend strength (ADX 26.1).",
+      "key_metrics": {
+        "ema_8": 335.2545523907749,
+        "ema_21": 328.82438143442437,
+        "adx": 26.057845841064612
+      }
+    },
+    {
+      "scanner_id": "PULLBACK_UPTREND",
+      "scanner_name": "Pullback to Key Support",
+      "symbol": "MSFT",
+      "exchange": "NASDAQ",
+      "price": 497.92999267578125,
+      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 54.4 shows controlled digestion.",
+      "key_metrics": {
+        "dist_sma20": 0.0031132224844993388,
+        "dist_sma50": 0.05157184177283746,
+        "rsi": 54.36286894579904
+      }
+    },
+    {
+      "scanner_id": "VOLATILITY_SQUEEZE",
+      "scanner_name": "Volatility Squeeze (Bandwidth)",
+      "symbol": "MSFT",
+      "exchange": "NASDAQ",
+      "price": 497.92999267578125,
+      "why_matched": "Bollinger Bandwidth compressed to 5.0% with low ATR% of 2.0%, indicating impending expansion.",
+      "key_metrics": {
+        "bandwidth": 0.049956331323095717,
+        "atr_pct": 2.047477178423963
+      }
+    },
+    {
+      "scanner_id": "LOW_BETA_QUALITY",
+      "scanner_name": "Low-Volatility Trend Quality",
+      "symbol": "MSFT",
+      "exchange": "NASDAQ",
+      "price": 497.92999267578125,
+      "why_matched": "Low ATR volatility (2.0%) paired with rising 200DMA and positive quarterly return.",
+      "key_metrics": {
+        "atr_pct": 2.047477178423963,
+        "slope_200": 2.4503106648986694,
+        "ret_3m": 0.4112462421722103
+      }
+    },
+    {
+      "scanner_id": "MTF_ALIGNMENT",
+      "scanner_name": "Fast & Medium MTF Alignment",
+      "symbol": "MSFT",
+      "exchange": "NASDAQ",
+      "price": 497.92999267578125,
+      "why_matched": "Fast 8EMA > 21EMA above 50DMA with established trend strength (ADX 25.3).",
+      "key_metrics": {
+        "ema_8": 498.09038659614276,
+        "ema_21": 494.8324745107534,
+        "adx": 25.269045725973665
+      }
+    },
+    {
+      "scanner_id": "BASE_TIGHTENING",
+      "scanner_name": "Consolidation Base Tightening",
+      "symbol": "MSFT",
+      "exchange": "NASDAQ",
+      "price": 497.92999267578125,
+      "why_matched": "Price consolidating in a tight band (5.0%) within 10.1% of yearly high.",
+      "key_metrics": {
+        "bandwidth": 0.049956331323095717,
+        "prox_52w": -0.10075485981930632
+      }
+    },
+    {
+      "scanner_id": "MOMENTUM_LEADERS",
+      "scanner_name": "Momentum Leaders",
+      "symbol": "NVDA",
+      "exchange": "NASDAQ",
+      "price": 224.5800018310547,
+      "why_matched": "Strong trend: close > 50DMA > 200DMA with +14.7% 3m return and -5.1% from 52w high.",
+      "key_metrics": {
+        "ret_3m": 0.1473382830721226,
+        "prox_52w": -0.05056223807620819,
+        "rsi": 54.717248892824706
+      }
+    },
+    {
+      "scanner_id": "PULLBACK_UPTREND",
+      "scanner_name": "Pullback to Key Support",
+      "symbol": "NVDA",
+      "exchange": "NASDAQ",
+      "price": 224.5800018310547,
+      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 54.7 shows controlled digestion.",
+      "key_metrics": {
+        "dist_sma20": 0.012077524124418955,
+        "dist_sma50": 0.0415372093747043,
+        "rsi": 54.717248892824706
+      }
+    },
+    {
+      "scanner_id": "STACKED_MOVING_AVERAGES",
+      "scanner_name": "Stacked Moving Average Alignment",
+      "symbol": "NVDA",
+      "exchange": "NASDAQ",
+      "price": 224.5800018310547,
+      "why_matched": "Perfect bullish alignment: Price > 20DMA > 50DMA > 200DMA with positive 200DMA slope.",
+      "key_metrics": {
+        "close": 224.5800018310547,
+        "sma_20": 221.89999923706054,
+        "sma_50": 215.62359924316405,
+        "sma_200": 199.2756499481201
+      }
+    },
+    {
+      "scanner_id": "PULLBACK_UPTREND",
+      "scanner_name": "Pullback to Key Support",
+      "symbol": "AMZN",
+      "exchange": "NASDAQ",
+      "price": 249.3800048828125,
+      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 44.2 shows controlled digestion.",
+      "key_metrics": {
+        "dist_sma20": 0.020639288103789115,
+        "dist_sma50": 0.02654153745755349,
+        "rsi": 44.19518218781976
+      }
+    },
+    {
+      "scanner_id": "VOLATILITY_SQUEEZE",
+      "scanner_name": "Volatility Squeeze (Bandwidth)",
+      "symbol": "AMZN",
+      "exchange": "NASDAQ",
+      "price": 249.3800048828125,
+      "why_matched": "Bollinger Bandwidth compressed to 7.4% with low ATR% of 2.2%, indicating impending expansion.",
+      "key_metrics": {
+        "bandwidth": 0.0741194965127083,
+        "atr_pct": 2.195872793346949
+      }
+    },
+    {
+      "scanner_id": "LOW_BETA_QUALITY",
+      "scanner_name": "Low-Volatility Trend Quality",
+      "symbol": "AMZN",
+      "exchange": "NASDAQ",
+      "price": 249.3800048828125,
+      "why_matched": "Low ATR volatility (2.2%) paired with rising 200DMA and positive quarterly return.",
+      "key_metrics": {
+        "atr_pct": 2.195872793346949,
+        "slope_200": 11.640711978035924,
+        "ret_3m": 0.09854196254475012
+      }
+    },
+    {
+      "scanner_id": "PULLBACK_UPTREND",
+      "scanner_name": "Pullback to Key Support",
+      "symbol": "GOOGL",
+      "exchange": "NASDAQ",
+      "price": 342.3599853515625,
+      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 48.5 shows controlled digestion.",
+      "key_metrics": {
+        "dist_sma20": 0.0010218613366645847,
+        "dist_sma50": 0.006215398302475957,
+        "rsi": 48.53578542606357
+      }
+    },
+    {
+      "scanner_id": "VOLATILITY_SQUEEZE",
+      "scanner_name": "Volatility Squeeze (Bandwidth)",
+      "symbol": "JPM",
+      "exchange": "NYSE",
+      "price": 338.55999755859375,
+      "why_matched": "Bollinger Bandwidth compressed to 7.4% with low ATR% of 2.2%, indicating impending expansion.",
+      "key_metrics": {
+        "bandwidth": 0.07440298706604133,
+        "atr_pct": 2.1745455025885576
+      }
+    },
+    {
+      "scanner_id": "MEAN_REVERSION_OVERSOLD",
+      "scanner_name": "Mean Reversion (Oversold Bounce)",
+      "symbol": "JPM",
+      "exchange": "NYSE",
+      "price": 338.55999755859375,
+      "why_matched": "Oversold conditions: RSI at 35.0 interacting with lower Bollinger Band.",
+      "key_metrics": {
+        "rsi": 35.02202580404749,
+        "close": 338.55999755859375,
+        "bb_lower": 338.73129132024803
+      }
+    },
+    {
+      "scanner_id": "BASE_TIGHTENING",
+      "scanner_name": "Consolidation Base Tightening",
+      "symbol": "JPM",
+      "exchange": "NYSE",
+      "price": 338.55999755859375,
+      "why_matched": "Price consolidating in a tight band (7.4%) within 7.6% of yearly high.",
+      "key_metrics": {
+        "bandwidth": 0.07440298706604133,
+        "prox_52w": -0.0762346587760061
+      }
+    },
+    {
+      "scanner_id": "PULLBACK_UPTREND",
+      "scanner_name": "Pullback to Key Support",
+      "symbol": "XOM",
+      "exchange": "NYSE",
+      "price": 162.13999938964844,
+      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 51.2 shows controlled digestion.",
+      "key_metrics": {
+        "dist_sma20": 0.0006718187583642126,
+        "dist_sma50": 0.0207190656574753,
+        "rsi": 51.17421333055578
+      }
+    },
+    {
+      "scanner_id": "VOLATILITY_SQUEEZE",
+      "scanner_name": "Volatility Squeeze (Bandwidth)",
+      "symbol": "XOM",
+      "exchange": "NYSE",
+      "price": 162.13999938964844,
+      "why_matched": "Bollinger Bandwidth compressed to 8.1% with low ATR% of 2.5%, indicating impending expansion.",
+      "key_metrics": {
+        "bandwidth": 0.08138708512197819,
+        "atr_pct": 2.498717129989253
+      }
+    },
+    {
+      "scanner_id": "BASE_TIGHTENING",
+      "scanner_name": "Consolidation Base Tightening",
+      "symbol": "XOM",
+      "exchange": "NYSE",
+      "price": 162.13999938964844,
+      "why_matched": "Price consolidating in a tight band (8.1%) within 8.1% of yearly high.",
+      "key_metrics": {
+        "bandwidth": 0.08138708512197819,
+        "prox_52w": -0.0808911284860766
+      }
+    },
+    {
+      "scanner_id": "PULLBACK_UPTREND",
+      "scanner_name": "Pullback to Key Support",
+      "symbol": "SPY",
+      "exchange": "AMEX",
+      "price": 767.1799926757812,
+      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 52.5 shows controlled digestion.",
+      "key_metrics": {
+        "dist_sma20": 0.0024067735372182227,
+        "dist_sma50": 0.007917978204009484,
+        "rsi": 52.46743125653499
+      }
+    },
+    {
+      "scanner_id": "VOLATILITY_SQUEEZE",
+      "scanner_name": "Volatility Squeeze (Bandwidth)",
+      "symbol": "SPY",
+      "exchange": "AMEX",
+      "price": 767.1799926757812,
+      "why_matched": "Bollinger Bandwidth compressed to 2.9% with low ATR% of 0.9%, indicating impending expansion.",
+      "key_metrics": {
+        "bandwidth": 0.02908358977741752,
+        "atr_pct": 0.8771924241557545
+      }
+    },
+    {
+      "scanner_id": "STACKED_MOVING_AVERAGES",
+      "scanner_name": "Stacked Moving Average Alignment",
+      "symbol": "SPY",
+      "exchange": "AMEX",
+      "price": 767.1799926757812,
+      "why_matched": "Perfect bullish alignment: Price > 20DMA > 50DMA > 200DMA with positive 200DMA slope.",
+      "key_metrics": {
+        "close": 767.1799926757812,
+        "sma_20": 765.3379974365234,
+        "sma_50": 761.1531982421875,
+        "sma_200": 718.0133996582031
+      }
+    },
+    {
+      "scanner_id": "LOW_BETA_QUALITY",
+      "scanner_name": "Low-Volatility Trend Quality",
+      "symbol": "SPY",
+      "exchange": "AMEX",
+      "price": 767.1799926757812,
+      "why_matched": "Low ATR volatility (0.9%) paired with rising 200DMA and positive quarterly return.",
+      "key_metrics": {
+        "atr_pct": 0.8771924241557545,
+        "slope_200": 16.18727903319252,
+        "ret_3m": 0.04477734635627262
+      }
+    },
+    {
+      "scanner_id": "BASE_TIGHTENING",
+      "scanner_name": "Consolidation Base Tightening",
+      "symbol": "SPY",
+      "exchange": "AMEX",
+      "price": 767.1799926757812,
+      "why_matched": "Price consolidating in a tight band (2.9%) within 1.6% of yearly high.",
+      "key_metrics": {
+        "bandwidth": 0.02908358977741752,
+        "prox_52w": -0.015640841343363965
+      }
+    },
+    {
+      "scanner_id": "VOLATILITY_SQUEEZE",
+      "scanner_name": "Volatility Squeeze (Bandwidth)",
+      "symbol": "QQQ",
+      "exchange": "NASDAQ",
+      "price": 741.0999755859375,
+      "why_matched": "Bollinger Bandwidth compressed to 7.2% with low ATR% of 1.3%, indicating impending expansion.",
+      "key_metrics": {
+        "bandwidth": 0.0718961872756295,
+        "atr_pct": 1.272720763274438
+      }
+    },
+    {
+      "scanner_id": "STACKED_MOVING_AVERAGES",
+      "scanner_name": "Stacked Moving Average Alignment",
+      "symbol": "QQQ",
+      "exchange": "NASDAQ",
+      "price": 741.0999755859375,
+      "why_matched": "Perfect bullish alignment: Price > 20DMA > 50DMA > 200DMA with positive 200DMA slope.",
+      "key_metrics": {
+        "close": 741.0999755859375,
+        "sma_20": 719.7049957275391,
+        "sma_50": 711.8823974609375,
+        "sma_200": 664.985749206543
+      }
+    },
+    {
+      "scanner_id": "LOW_BETA_QUALITY",
+      "scanner_name": "Low-Volatility Trend Quality",
+      "symbol": "QQQ",
+      "exchange": "NASDAQ",
+      "price": 741.0999755859375,
+      "why_matched": "Low ATR volatility (1.3%) paired with rising 200DMA and positive quarterly return.",
+      "key_metrics": {
+        "atr_pct": 1.272720763274438,
+        "slope_200": 20.869568050599703,
+        "ret_3m": 0.03450678485529313
+      }
+    },
+    {
+      "scanner_id": "BASE_TIGHTENING",
+      "scanner_name": "Consolidation Base Tightening",
+      "symbol": "QQQ",
+      "exchange": "NASDAQ",
+      "price": 741.0999755859375,
+      "why_matched": "Price consolidating in a tight band (7.2%) within 1.0% of yearly high.",
+      "key_metrics": {
+        "bandwidth": 0.0718961872756295,
+        "prox_52w": -0.010084884234170866
+      }
+    },
+    {
+      "scanner_id": "PULLBACK_UPTREND",
+      "scanner_name": "Pullback to Key Support",
+      "symbol": "RY",
+      "exchange": "TSX",
+      "price": 282.1099853515625,
+      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 42.6 shows controlled digestion.",
+      "key_metrics": {
+        "dist_sma20": 0.012379012174205575,
+        "dist_sma50": 0.03137404508820765,
+        "rsi": 42.59731536264122
+      }
+    },
+    {
+      "scanner_id": "VOLATILITY_SQUEEZE",
+      "scanner_name": "Volatility Squeeze (Bandwidth)",
+      "symbol": "RY",
+      "exchange": "TSX",
+      "price": 282.1099853515625,
+      "why_matched": "Bollinger Bandwidth compressed to 4.2% with low ATR% of 1.5%, indicating impending expansion.",
+      "key_metrics": {
+        "bandwidth": 0.042349576998855505,
+        "atr_pct": 1.543217307692902
+      }
+    },
+    {
+      "scanner_id": "BASE_TIGHTENING",
+      "scanner_name": "Consolidation Base Tightening",
+      "symbol": "RY",
+      "exchange": "TSX",
+      "price": 282.1099853515625,
+      "why_matched": "Price consolidating in a tight band (4.2%) within 7.9% of yearly high.",
+      "key_metrics": {
+        "bandwidth": 0.042349576998855505,
+        "prox_52w": -0.07921541596858794
+      }
+    },
+    {
+      "scanner_id": "PULLBACK_UPTREND",
+      "scanner_name": "Pullback to Key Support",
+      "symbol": "TD",
+      "exchange": "TSX",
+      "price": 168.66000366210938,
+      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 50.4 shows controlled digestion.",
+      "key_metrics": {
+        "dist_sma20": 0.0019515357871166127,
+        "dist_sma50": 8.771812651473675e-05,
+        "rsi": 50.41997946675826
+      }
+    },
+    {
+      "scanner_id": "VOLATILITY_SQUEEZE",
+      "scanner_name": "Volatility Squeeze (Bandwidth)",
+      "symbol": "TD",
+      "exchange": "TSX",
+      "price": 168.66000366210938,
+      "why_matched": "Bollinger Bandwidth compressed to 5.0% with low ATR% of 1.7%, indicating impending expansion.",
+      "key_metrics": {
+        "bandwidth": 0.050005641344485374,
+        "atr_pct": 1.6516732155823535
+      }
+    },
+    {
+      "scanner_id": "INSTITUTIONAL_ACCUMULATION",
+      "scanner_name": "Institutional Accumulation (CMF+OBV)",
+      "symbol": "TD",
+      "exchange": "TSX",
+      "price": 168.66000366210938,
+      "why_matched": "Positive Chaikin Money Flow (+0.33) accompanied by rising 20-day OBV slope.",
+      "key_metrics": {
+        "cmf": 0.3288195371249174,
+        "obv_slope": 27187284.0,
+        "rvol": 1.0115568518125357
+      }
+    },
+    {
+      "scanner_id": "BASE_TIGHTENING",
+      "scanner_name": "Consolidation Base Tightening",
+      "symbol": "TD",
+      "exchange": "TSX",
+      "price": 168.66000366210938,
+      "why_matched": "Price consolidating in a tight band (5.0%) within 3.8% of yearly high.",
+      "key_metrics": {
+        "bandwidth": 0.050005641344485374,
+        "prox_52w": -0.03804253749664832
+      }
+    },
+    {
+      "scanner_id": "MTF_ALIGNMENT",
+      "scanner_name": "Fast & Medium MTF Alignment",
+      "symbol": "SHOP",
+      "exchange": "TSX",
+      "price": 205.3000030517578,
+      "why_matched": "Fast 8EMA > 21EMA above 50DMA with established trend strength (ADX 27.8).",
+      "key_metrics": {
+        "ema_8": 192.1990774594726,
+        "ema_21": 191.92924955909535,
+        "adx": 27.829290913137633
+      }
+    },
+    {
+      "scanner_id": "VOLATILITY_SQUEEZE",
+      "scanner_name": "Volatility Squeeze (Bandwidth)",
+      "symbol": "ENB",
+      "exchange": "TSX",
+      "price": 66.98999786376953,
+      "why_matched": "Bollinger Bandwidth compressed to 7.7% with low ATR% of 1.6%, indicating impending expansion.",
+      "key_metrics": {
+        "bandwidth": 0.07695141471794202,
+        "atr_pct": 1.568464328743825
+      }
+    },
+    {
+      "scanner_id": "MEAN_REVERSION_OVERSOLD",
+      "scanner_name": "Mean Reversion (Oversold Bounce)",
+      "symbol": "ENB",
+      "exchange": "TSX",
+      "price": 66.98999786376953,
+      "why_matched": "Oversold conditions: RSI at 34.6 interacting with lower Bollinger Band.",
+      "key_metrics": {
+        "rsi": 34.55009076494014,
+        "close": 66.98999786376953,
+        "bb_lower": 65.90575961983744
+      }
+    },
+    {
+      "scanner_id": "PULLBACK_UPTREND",
+      "scanner_name": "Pullback to Key Support",
+      "symbol": "CNR",
+      "exchange": "TSX",
+      "price": 169.57000732421875,
+      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 46.9 shows controlled digestion.",
+      "key_metrics": {
+        "dist_sma20": 0.0012250899166280653,
+        "dist_sma50": 0.030152898560669824,
+        "rsi": 46.928242527653104
+      }
+    },
+    {
+      "scanner_id": "VOLATILITY_SQUEEZE",
+      "scanner_name": "Volatility Squeeze (Bandwidth)",
+      "symbol": "CNR",
+      "exchange": "TSX",
+      "price": 169.57000732421875,
+      "why_matched": "Bollinger Bandwidth compressed to 7.2% with low ATR% of 1.7%, indicating impending expansion.",
+      "key_metrics": {
+        "bandwidth": 0.07222137154224978,
+        "atr_pct": 1.6904103298882718
+      }
+    },
+    {
+      "scanner_id": "LOW_BETA_QUALITY",
+      "scanner_name": "Low-Volatility Trend Quality",
+      "symbol": "CNR",
+      "exchange": "TSX",
+      "price": 169.57000732421875,
+      "why_matched": "Low ATR volatility (1.7%) paired with rising 200DMA and positive quarterly return.",
+      "key_metrics": {
+        "atr_pct": 1.6904103298882718,
+        "slope_200": 30.254185423033363,
+        "ret_3m": 0.03858640832301652
+      }
+    },
+    {
+      "scanner_id": "BASE_TIGHTENING",
+      "scanner_name": "Consolidation Base Tightening",
+      "symbol": "CNR",
+      "exchange": "TSX",
+      "price": 169.57000732421875,
+      "why_matched": "Price consolidating in a tight band (7.2%) within 8.5% of yearly high.",
+      "key_metrics": {
+        "bandwidth": 0.07222137154224978,
+        "prox_52w": -0.08464233563174761
+      }
+    },
+    {
+      "scanner_id": "MOMENTUM_LEADERS",
+      "scanner_name": "Momentum Leaders",
+      "symbol": "CNQ",
+      "exchange": "TSX",
+      "price": 67.81999969482422,
+      "why_matched": "Strong trend: close > 50DMA > 200DMA with +16.5% 3m return and -6.3% from 52w high.",
+      "key_metrics": {
+        "ret_3m": 0.16509192168867437,
+        "prox_52w": -0.06261228576137723,
+        "rsi": 46.419363994961685
+      }
+    },
+    {
+      "scanner_id": "PULLBACK_UPTREND",
+      "scanner_name": "Pullback to Key Support",
+      "symbol": "CNQ",
+      "exchange": "TSX",
+      "price": 67.81999969482422,
+      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 46.4 shows controlled digestion.",
+      "key_metrics": {
+        "dist_sma20": 0.027649350673429333,
+        "dist_sma50": 0.010905009729233934,
+        "rsi": 46.419363994961685
+      }
+    },
+    {
+      "scanner_id": "BASE_TIGHTENING",
+      "scanner_name": "Consolidation Base Tightening",
+      "symbol": "CNQ",
+      "exchange": "TSX",
+      "price": 67.81999969482422,
+      "why_matched": "Price consolidating in a tight band (7.8%) within 6.3% of yearly high.",
+      "key_metrics": {
+        "bandwidth": 0.0779092993283967,
+        "prox_52w": -0.06261228576137723
+      }
+    },
+    {
+      "scanner_id": "PULLBACK_UPTREND",
+      "scanner_name": "Pullback to Key Support",
+      "symbol": "CP",
+      "exchange": "TSX",
+      "price": 123.52999877929688,
+      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 44.2 shows controlled digestion.",
+      "key_metrics": {
+        "dist_sma20": 0.01425590551009727,
+        "dist_sma50": 0.031129655753103266,
+        "rsi": 44.204361564680795
+      }
+    },
+    {
+      "scanner_id": "BASE_TIGHTENING",
+      "scanner_name": "Consolidation Base Tightening",
+      "symbol": "CP",
+      "exchange": "TSX",
+      "price": 123.52999877929688,
+      "why_matched": "Price consolidating in a tight band (8.9%) within 7.4% of yearly high.",
+      "key_metrics": {
+        "bandwidth": 0.08914706749629715,
+        "prox_52w": -0.07384919585338023
+      }
+    },
+    {
+      "scanner_id": "PULLBACK_UPTREND",
+      "scanner_name": "Pullback to Key Support",
+      "symbol": "XIU",
+      "exchange": "TSX",
+      "price": 52.95000076293945,
+      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 44.7 shows controlled digestion.",
+      "key_metrics": {
+        "dist_sma20": 0.008139058103377953,
+        "dist_sma50": 0.010986537844184857,
+        "rsi": 44.68632523826676
+      }
+    },
+    {
+      "scanner_id": "VOLATILITY_SQUEEZE",
+      "scanner_name": "Volatility Squeeze (Bandwidth)",
+      "symbol": "XIU",
+      "exchange": "TSX",
+      "price": 52.95000076293945,
+      "why_matched": "Bollinger Bandwidth compressed to 4.3% with low ATR% of 1.0%, indicating impending expansion.",
+      "key_metrics": {
+        "bandwidth": 0.04270764404893496,
+        "atr_pct": 1.0103863403684556
+      }
+    },
+    {
+      "scanner_id": "BASE_TIGHTENING",
+      "scanner_name": "Consolidation Base Tightening",
+      "symbol": "XIU",
+      "exchange": "TSX",
+      "price": 52.95000076293945,
+      "why_matched": "Price consolidating in a tight band (4.3%) within 3.7% of yearly high.",
+      "key_metrics": {
+        "bandwidth": 0.04270764404893496,
+        "prox_52w": -0.03657202247117708
+      }
+    }
+  ]
+}
