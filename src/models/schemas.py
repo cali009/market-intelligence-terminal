@@ -96,6 +96,35 @@ class NewsCluster(BaseModel):
     materiality_score: Optional[int] = Field(None, ge=1, le=5)
 
 
+class CatalystEvent(BaseModel):
+    id: str
+    symbol: str
+    company_name: str
+    market: Literal["US", "CA", "MACRO"]
+    source: str
+    source_url: str
+    headline: str
+    summary: str
+    filing_date: str
+    published_at: str
+    event_category: str
+    materiality_level: Literal["HIGH", "MEDIUM", "LOW"]
+    materiality_score: int = Field(..., ge=1, le=5)
+    materiality_rationale: str
+    sentiment_score: float = Field(..., ge=-1.0, le=1.0)
+    sentiment_label: Literal["BULLISH", "LEAN_BULLISH", "NEUTRAL", "LEAN_BEARISH", "BEARISH"]
+    sentiment_drivers: List[str] = Field(default_factory=list)
+    horizon: Literal["IMMEDIATE", "SHORT_TERM", "MEDIUM_TERM", "STRUCTURAL"]
+    priced_in_status: Literal["FRESH", "PARTIAL", "PRICED_IN"]
+    reaction_1d_pct: Optional[float] = None
+    reaction_3d_pct: Optional[float] = None
+    rvol_at_event: Optional[float] = None
+    factual_claims: List[str] = Field(default_factory=list)
+    invalidation_risks: List[str] = Field(default_factory=list)
+    hard_gate_triggered: bool = False
+    score_impact_pts: float = 0.0
+
+
 class ScoreRecord(BaseModel):
     security_id: int
     as_of_date: date

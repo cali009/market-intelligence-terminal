@@ -5,7 +5,7 @@
   "currency": "CAD",
   "name": "Brookfield Asset Management",
   "as_of_date": "2026-09-25",
-  "generated_at": "2026-09-25T22:46:39.736284+00:00",
+  "generated_at": "2026-09-25T23:07:25.491858+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 63.189998626708984,
@@ -58,7 +58,7 @@
       "technical_score": 15,
       "fundamental_score": 65,
       "regime_multiplier": 1.0,
-      "news_contribution": 0.0,
+      "news_contribution": 0.9,
       "sector_contribution": 0.0,
       "risk_penalty": 8.0,
       "key_metrics": {
@@ -78,6 +78,197 @@
     "UNCERTAINTY": "Risks include broader market sentiment deterioration in the WEAK_BULL environment. A daily close below technical support at $67.43 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
   },
   "active_scanner_matches": [],
+  "catalysts_and_filings": [
+    {
+      "id": "149aa93e11a0",
+      "symbol": "BAM",
+      "company_name": "Brookfield Asset Management Ltd.",
+      "market": "CA",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1937926/000117184326006060/f8k_091526.htm",
+      "headline": "BAM SEC Form 8-K Filing \u2014 Other Events of Substantial Importance",
+      "summary": "Brookfield Asset Management Ltd. filed Form 8-K with the SEC on 2026-09-16. Document: f8k_091526.htm. Accession: 0001171843-26-006060. Primary reporting date: 2026-09-15.",
+      "filing_date": "2026-09-16",
+      "published_at": "2026-09-16T16:05:00Z",
+      "event_category": "OTHER_MATERIAL_EVENT",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "SEC Form 8-K (8.01, 9.01): Other Events of Substantial Importance",
+      "sentiment_score": 0.1,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -0.94,
+      "reaction_3d_pct": 1.07,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001937926 with accession number 0001171843-26-006060",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-09-16",
+        "Document reference: f8k_091526.htm (8-K classification)",
+        "Reported disclosure items: 8.01,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.4
+    },
+    {
+      "id": "cf575f3f1b56",
+      "symbol": "BAM",
+      "company_name": "Brookfield Asset Management Ltd.",
+      "market": "CA",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1937926/000117184326006022/f8k_091426.htm",
+      "headline": "BAM SEC Form 8-K Filing \u2014 Other Events of Substantial Importance",
+      "summary": "Brookfield Asset Management Ltd. filed Form 8-K with the SEC on 2026-09-14. Document: f8k_091426.htm. Accession: 0001171843-26-006022. Primary reporting date: 2026-09-14.",
+      "filing_date": "2026-09-14",
+      "published_at": "2026-09-14T16:05:00Z",
+      "event_category": "OTHER_MATERIAL_EVENT",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "SEC Form 8-K (8.01, 9.01): Other Events of Substantial Importance",
+      "sentiment_score": 0.1,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -0.89,
+      "reaction_3d_pct": -3.48,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001937926 with accession number 0001171843-26-006022",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-09-14",
+        "Document reference: f8k_091426.htm (8-K classification)",
+        "Reported disclosure items: 8.01,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.3
+    },
+    {
+      "id": "1aae0ccba3ee",
+      "symbol": "BAM",
+      "company_name": "Brookfield Asset Management Ltd.",
+      "market": "CA",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1937926/000117184326005900/f8k_090826.htm",
+      "headline": "BAM SEC Form 8-K Filing \u2014 Other Events of Substantial Importance",
+      "summary": "Brookfield Asset Management Ltd. filed Form 8-K with the SEC on 2026-09-08. Document: f8k_090826.htm. Accession: 0001171843-26-005900. Primary reporting date: 2026-09-08.",
+      "filing_date": "2026-09-08",
+      "published_at": "2026-09-08T16:05:00Z",
+      "event_category": "OTHER_MATERIAL_EVENT",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "SEC Form 8-K (8.01, 9.01): Other Events of Substantial Importance",
+      "sentiment_score": 0.1,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -3.69,
+      "reaction_3d_pct": -6.59,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001937926 with accession number 0001171843-26-005900",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-09-08",
+        "Document reference: f8k_090826.htm (8-K classification)",
+        "Reported disclosure items: 8.01,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.2
+    },
+    {
+      "id": "7958fe2d9ada",
+      "symbol": "BAM",
+      "company_name": "Brookfield Asset Management Ltd.",
+      "market": "CA",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1937926/000110465926097349/tm2623210d1_8k.htm",
+      "headline": "BAM SEC Form 8-K Filing \u2014 Regulation FD Disclosure (Investor Presentation / Update)",
+      "summary": "Brookfield Asset Management Ltd. filed Form 8-K with the SEC on 2026-08-14. Document: tm2623210d1_8k.htm. Accession: 0001104659-26-097349. Primary reporting date: 2026-08-14.",
+      "filing_date": "2026-08-14",
+      "published_at": "2026-08-14T16:05:00Z",
+      "event_category": "REGULATION_FD",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "SEC Form 8-K (7.01): Regulation FD Disclosure (Investor Presentation / Update)",
+      "sentiment_score": 0.15,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -3.12,
+      "reaction_3d_pct": -7.87,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001937926 with accession number 0001104659-26-097349",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-08-14",
+        "Document reference: tm2623210d1_8k.htm (8-K classification)",
+        "Reported disclosure items: 7.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.1
+    },
+    {
+      "id": "025583da53f7",
+      "symbol": "BAM",
+      "company_name": "Brookfield Asset Management Ltd.",
+      "market": "CA",
+      "source": "SEC_EDGAR_10Q",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1937926/000162828026054933/bam-20260630.htm",
+      "headline": "BAM Form 10-Q Quarterly Report \u2014 Q/E 2026-06-30",
+      "summary": "Brookfield Asset Management Ltd. filed Form 10-Q with the SEC on 2026-08-10. Document: bam-20260630.htm. Accession: 0001628280-26-054933. Primary reporting date: 2026-06-30.",
+      "filing_date": "2026-08-10",
+      "published_at": "2026-08-10T16:05:00Z",
+      "event_category": "QUARTERLY_REPORT",
+      "materiality_level": "HIGH",
+      "materiality_score": 4,
+      "materiality_rationale": "Quarterly Financial Report for period ending 2026-06-30 (Form 10-Q)",
+      "sentiment_score": 0.2,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "MEDIUM_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": 0.64,
+      "reaction_3d_pct": 3.74,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001937926 with accession number 0001628280-26-054933",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-08-10",
+        "Document reference: bam-20260630.htm (10-Q classification)"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.1
+    }
+  ],
   "chart_bars": [
     {
       "time": "2026-04-07",

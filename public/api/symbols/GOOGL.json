@@ -5,7 +5,7 @@
   "currency": "USD",
   "name": "Alphabet Inc.",
   "as_of_date": "2026-09-25",
-  "generated_at": "2026-09-25T22:46:39.736284+00:00",
+  "generated_at": "2026-09-25T23:07:25.491858+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 342.4100036621094,
@@ -113,6 +113,121 @@
       "id": "PULLBACK_UPTREND",
       "name": "Pullback to Key Support",
       "why": "Pullback into key moving average in a rising uptrend; RSI at 49.7 shows controlled digestion."
+    }
+  ],
+  "catalysts_and_filings": [
+    {
+      "id": "439acda6f832",
+      "symbol": "GOOGL",
+      "company_name": "Alphabet Inc.",
+      "market": "US",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1652044/000119312526342390/d171253d8k.htm",
+      "headline": "GOOGL SEC Form 8-K Filing \u2014 Other Events of Substantial Importance",
+      "summary": "Alphabet Inc. filed Form 8-K with the SEC on 2026-08-10. Document: d171253d8k.htm. Accession: 0001193125-26-342390. Primary reporting date: 2026-08-10.",
+      "filing_date": "2026-08-10",
+      "published_at": "2026-08-10T16:05:00Z",
+      "event_category": "OTHER_MATERIAL_EVENT",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "SEC Form 8-K (8.01, 9.01): Other Events of Substantial Importance",
+      "sentiment_score": 0.1,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": 0.91,
+      "reaction_3d_pct": -3.04,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001652044 with accession number 0001193125-26-342390",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-08-10",
+        "Document reference: d171253d8k.htm (8-K classification)",
+        "Reported disclosure items: 8.01,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
+    },
+    {
+      "id": "dd620bd40f09",
+      "symbol": "GOOGL",
+      "company_name": "Alphabet Inc.",
+      "market": "US",
+      "source": "SEC_EDGAR_10Q",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000071/goog-20260630.htm",
+      "headline": "GOOGL Form 10-Q Quarterly Report \u2014 Q/E 2026-06-30",
+      "summary": "Alphabet Inc. filed Form 10-Q with the SEC on 2026-07-23. Document: goog-20260630.htm. Accession: 0001652044-26-000071. Primary reporting date: 2026-06-30.",
+      "filing_date": "2026-07-23",
+      "published_at": "2026-07-23T16:05:00Z",
+      "event_category": "QUARTERLY_REPORT",
+      "materiality_level": "HIGH",
+      "materiality_score": 4,
+      "materiality_rationale": "Quarterly Financial Report for period ending 2026-06-30 (Form 10-Q)",
+      "sentiment_score": 0.2,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "MEDIUM_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -7.13,
+      "reaction_3d_pct": -4.54,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001652044 with accession number 0001652044-26-000071",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-07-23",
+        "Document reference: goog-20260630.htm (10-Q classification)"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
+    },
+    {
+      "id": "59f68c1e0da9",
+      "symbol": "GOOGL",
+      "company_name": "Alphabet Inc.",
+      "market": "US",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000066/goog-20260722.htm",
+      "headline": "GOOGL SEC Form 8-K Filing \u2014 Results of Operations and Financial Condition (Earnings)",
+      "summary": "Alphabet Inc. filed Form 8-K with the SEC on 2026-07-22. Document: goog-20260722.htm. Accession: 0001652044-26-000066. Primary reporting date: 2026-07-22.",
+      "filing_date": "2026-07-22",
+      "published_at": "2026-07-22T16:05:00Z",
+      "event_category": "EARNINGS_ANNOUNCEMENT",
+      "materiality_level": "HIGH",
+      "materiality_score": 4,
+      "materiality_rationale": "SEC Form 8-K (2.02, 9.01): Results of Operations and Financial Condition (Earnings)",
+      "sentiment_score": 0.35,
+      "sentiment_label": "BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -1.46,
+      "reaction_3d_pct": -7.9,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001652044 with accession number 0001652044-26-000066",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-07-22",
+        "Document reference: goog-20260722.htm (8-K classification)",
+        "Reported disclosure items: 2.02,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
     }
   ],
   "chart_bars": [

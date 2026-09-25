@@ -86,6 +86,41 @@ class SecEdgarAdapter:
         resp.raise_for_status()
         return resp.json()
 
+    def get_company_submissions(self, cik: int | str, force_refresh: bool = False) -> Dict[str, Any]:
+        """
+        Retrieve official company submissions (recent 8-K, 10-Q, 10-K, etc.) from SEC EDGAR.
+        data.sec.gov/submissions/CIK##########.json
+        Cached locally for 12 hours.
+        """
+        padded = self.pad_cik(cik)
+        cache_file = self.cache_dir / f"submissions_CIK{padded}.json"
+        if not force_refresh and cache_file.exists():
+            if time.time() - cache_file.stat().st_mtime < 43200:
+                with open(cache_file, "r") as f:
+                    return json.load(f)
+
+        self.rate_limiter.acquire(1.0)
+        url = f"https://data.sec.gov/submissions/CIK{padded}.json"
+        resp = requests.get(url, headers=self.headers, timeout=25)
+        if resp.status_code == 404:
+            raise ValueError(f"Submissions not found for CIK {padded}")
+        resp.raise_for_status()
+        data = resp.json()
+
+        with open(cache_file, "w") as f:
+            json.dump(data, f)
+
+        return data
+
+    @staticmethod
+    def format_filing_document_url(cik: int | str, accession_number: str, primary_document: str) -> str:
+        """
+        Construct verified SEC EDGAR archive hyperlink for a specific filing document.
+        """
+        clean_accession = accession_number.replace("-", "")
+        int_cik = int(cik)
+        return f"https://www.sec.gov/Archives/edgar/data/{int_cik}/{clean_accession}/{primary_document}"
+
     def extract_canonical_fundamentals(
         self,
         security_id: int,

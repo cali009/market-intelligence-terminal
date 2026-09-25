@@ -64,9 +64,10 @@ def run_pipeline():
     print("\n>>> STEP 6: Compiling Static JSON Intelligence Bundles for Edge CDN...")
     export_stats = edge_exporter.export_all()
     print(f"    Compiled {export_stats['symbol_files']} detailed symbol bundles.")
-    print(f"    Compiled core edge feeds: summary, leaderboard, scanners, signals, backtests.")
+    print(f"    Compiled core edge feeds: summary, leaderboard, scanners, signals, backtests, news_filings.")
     print(f"    Total tactical scanner matches: {export_stats['total_matches']}.")
     print(f"    Total active research signal plans: {export_stats['total_signals']}.")
+    print(f"    Total catalysts & SEC filings classified: {export_stats['total_catalysts']}.")
 
     elapsed = time.monotonic() - start_time
     print(f"\n{'='*95}")

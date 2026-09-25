@@ -5,7 +5,7 @@
   "currency": "CAD",
   "name": "Shopify Inc.",
   "as_of_date": "2026-09-25",
-  "generated_at": "2026-09-25T22:46:39.736284+00:00",
+  "generated_at": "2026-09-25T23:07:25.491858+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 205.50999450683594,
@@ -58,7 +58,7 @@
       "technical_score": 42,
       "fundamental_score": 65,
       "regime_multiplier": 1.0,
-      "news_contribution": 0.0,
+      "news_contribution": 0.2,
       "sector_contribution": 0.0,
       "risk_penalty": 4.0,
       "key_metrics": {
@@ -82,6 +82,197 @@
       "id": "MTF_ALIGNMENT",
       "name": "Fast & Medium MTF Alignment",
       "why": "Fast 8EMA > 21EMA above 50DMA with established trend strength (ADX 24.6)."
+    }
+  ],
+  "catalysts_and_filings": [
+    {
+      "id": "ab8c48c32d5e",
+      "symbol": "SHOP",
+      "company_name": "SHOPIFY INC.",
+      "market": "CA",
+      "source": "SEC_EDGAR_10Q",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1594805/000159480526000047/shop-20260630.htm",
+      "headline": "SHOP Form 10-Q Quarterly Report \u2014 Q/E 2026-06-30",
+      "summary": "SHOPIFY INC. filed Form 10-Q with the SEC on 2026-08-05. Document: shop-20260630.htm. Accession: 0001594805-26-000047. Primary reporting date: 2026-06-30.",
+      "filing_date": "2026-08-05",
+      "published_at": "2026-08-05T16:05:00Z",
+      "event_category": "QUARTERLY_REPORT",
+      "materiality_level": "HIGH",
+      "materiality_score": 4,
+      "materiality_rationale": "Quarterly Financial Report for period ending 2026-06-30 (Form 10-Q)",
+      "sentiment_score": 0.2,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "MEDIUM_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": 16.47,
+      "reaction_3d_pct": 21.89,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001594805 with accession number 0001594805-26-000047",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-08-05",
+        "Document reference: shop-20260630.htm (10-Q classification)"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.1
+    },
+    {
+      "id": "a8715000c4fa",
+      "symbol": "SHOP",
+      "company_name": "SHOPIFY INC.",
+      "market": "CA",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1594805/000159480526000046/shop-20260805.htm",
+      "headline": "SHOP SEC Form 8-K Filing \u2014 Results of Operations and Financial Condition (Earnings)",
+      "summary": "SHOPIFY INC. filed Form 8-K with the SEC on 2026-08-05. Document: shop-20260805.htm. Accession: 0001594805-26-000046. Primary reporting date: 2026-08-05.",
+      "filing_date": "2026-08-05",
+      "published_at": "2026-08-05T16:05:00Z",
+      "event_category": "EARNINGS_ANNOUNCEMENT",
+      "materiality_level": "HIGH",
+      "materiality_score": 4,
+      "materiality_rationale": "SEC Form 8-K (2.02, 9.01): Results of Operations and Financial Condition (Earnings)",
+      "sentiment_score": 0.35,
+      "sentiment_label": "BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": 16.47,
+      "reaction_3d_pct": 21.89,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001594805 with accession number 0001594805-26-000046",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-08-05",
+        "Document reference: shop-20260805.htm (8-K classification)",
+        "Reported disclosure items: 2.02,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.1
+    },
+    {
+      "id": "434cd79ae82a",
+      "symbol": "SHOP",
+      "company_name": "SHOPIFY INC.",
+      "market": "CA",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1594805/000159480526000035/shop-20260702.htm",
+      "headline": "SHOP SEC Form 8-K Filing \u2014 Departure or Appointment of Principal Executive Officers / Directors",
+      "summary": "SHOPIFY INC. filed Form 8-K with the SEC on 2026-07-02. Document: shop-20260702.htm. Accession: 0001594805-26-000035. Primary reporting date: 2026-07-02.",
+      "filing_date": "2026-07-02",
+      "published_at": "2026-07-02T16:05:00Z",
+      "event_category": "EXECUTIVE_CHANGE",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "SEC Form 8-K (5.02, 9.01): Departure or Appointment of Principal Executive Officers / Directors",
+      "sentiment_score": 0.05,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "MEDIUM_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": 4.55,
+      "reaction_3d_pct": 5.2,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001594805 with accession number 0001594805-26-000035",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-07-02",
+        "Document reference: shop-20260702.htm (8-K classification)",
+        "Reported disclosure items: 5.02,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
+    },
+    {
+      "id": "fddfa8e7a61a",
+      "symbol": "SHOP",
+      "company_name": "SHOPIFY INC.",
+      "market": "CA",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1594805/000159480526000030/shop-20260616.htm",
+      "headline": "SHOP SEC Form 8-K Filing \u2014 Other Events of Substantial Importance",
+      "summary": "SHOPIFY INC. filed Form 8-K with the SEC on 2026-06-16. Document: shop-20260616.htm. Accession: 0001594805-26-000030. Primary reporting date: 2026-06-16.",
+      "filing_date": "2026-06-16",
+      "published_at": "2026-06-16T16:05:00Z",
+      "event_category": "OTHER_MATERIAL_EVENT",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "SEC Form 8-K (5.07, 8.01, 9.01): Other Events of Substantial Importance",
+      "sentiment_score": 0.1,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": 0.78,
+      "reaction_3d_pct": -2.24,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001594805 with accession number 0001594805-26-000030",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-06-16",
+        "Document reference: shop-20260616.htm (8-K classification)",
+        "Reported disclosure items: 5.07,8.01,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
+    },
+    {
+      "id": "53fbd3c02afe",
+      "symbol": "SHOP",
+      "company_name": "SHOPIFY INC.",
+      "market": "CA",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1594805/000159480526000028/shop-20260602.htm",
+      "headline": "SHOP SEC Form 8-K Filing \u2014 Regulation FD Disclosure (Investor Presentation / Update)",
+      "summary": "SHOPIFY INC. filed Form 8-K with the SEC on 2026-06-02. Document: shop-20260602.htm. Accession: 0001594805-26-000028. Primary reporting date: 2026-06-02.",
+      "filing_date": "2026-06-02",
+      "published_at": "2026-06-02T16:05:00Z",
+      "event_category": "REGULATION_FD",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "SEC Form 8-K (7.01, 9.01): Regulation FD Disclosure (Investor Presentation / Update)",
+      "sentiment_score": 0.15,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -5.66,
+      "reaction_3d_pct": -5.9,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001594805 with accession number 0001594805-26-000028",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-06-02",
+        "Document reference: shop-20260602.htm (8-K classification)",
+        "Reported disclosure items: 7.01,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
     }
   ],
   "chart_bars": [

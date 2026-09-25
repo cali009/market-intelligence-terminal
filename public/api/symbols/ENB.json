@@ -5,7 +5,7 @@
   "currency": "CAD",
   "name": "Enbridge Inc.",
   "as_of_date": "2026-09-25",
-  "generated_at": "2026-09-25T22:46:39.736284+00:00",
+  "generated_at": "2026-09-25T23:07:25.491858+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 66.8499984741211,
@@ -43,7 +43,7 @@
     "adv_dollar_20": 637238490.7879937
   },
   "score_record": {
-    "composite_score": 30,
+    "composite_score": 31,
     "confidence_tier": "C",
     "technical_score": 24,
     "risk_penalty": 4.0,
@@ -58,7 +58,7 @@
       "technical_score": 24,
       "fundamental_score": 65,
       "regime_multiplier": 1.0,
-      "news_contribution": 0.0,
+      "news_contribution": 1.1,
       "sector_contribution": 0.0,
       "risk_penalty": 4.0,
       "key_metrics": {
@@ -73,7 +73,7 @@
   "signal_plan": null,
   "ai_explanation": {
     "FACT": "ENB (TSX - Enbridge Inc.) closed at $66.13 CAD. Trading within -18.0% of its 52-week high with a 14-day ATR of 1.7%. The primary exchange session traded on volume of 6,564,958 shares.",
-    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 30/100 (Confidence Tier C). Technical Factor sub-score: 24/100 (14-day RSI: 30.5, 20-day RVOL: 0.70x). Risk penalty applied: -4.0 points. Modulated by the WEAK_BULL macro regime.",
+    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 31/100 (Confidence Tier C). Technical Factor sub-score: 24/100 (14-day RSI: 30.5, 20-day RVOL: 0.70x). Risk penalty applied: -4.0 points. Modulated by the WEAK_BULL macro regime.",
     "INFERENCE": "Securities trading below declining 200-day moving averages with elevated risk penalties have historically underperformed the broader index by 3.8% over forward 20-session windows.",
     "UNCERTAINTY": "Risks include broader market sentiment deterioration in the WEAK_BULL environment. A daily close below technical support at $72.26 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
   },
@@ -87,6 +87,197 @@
       "id": "MEAN_REVERSION_OVERSOLD",
       "name": "Mean Reversion (Oversold Bounce)",
       "why": "Oversold conditions: RSI at 30.5 interacting with lower Bollinger Band."
+    }
+  ],
+  "catalysts_and_filings": [
+    {
+      "id": "eab29cff019d",
+      "symbol": "ENB",
+      "company_name": "ENBRIDGE INC",
+      "market": "CA",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/895728/000110465926107292/tm2624881d7_8k.htm",
+      "headline": "ENB SEC Form 8-K Filing \u2014 Other Events of Substantial Importance",
+      "summary": "ENBRIDGE INC filed Form 8-K with the SEC on 2026-09-14. Document: tm2624881d7_8k.htm. Accession: 0001104659-26-107292. Primary reporting date: 2026-09-14.",
+      "filing_date": "2026-09-14",
+      "published_at": "2026-09-14T16:05:00Z",
+      "event_category": "OTHER_MATERIAL_EVENT",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "SEC Form 8-K (8.01, 9.01): Other Events of Substantial Importance",
+      "sentiment_score": 0.1,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": 1.21,
+      "reaction_3d_pct": 2.22,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0000895728 with accession number 0001104659-26-107292",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-09-14",
+        "Document reference: tm2624881d7_8k.htm (8-K classification)",
+        "Reported disclosure items: 8.01,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.3
+    },
+    {
+      "id": "8d6e6e4ccf24",
+      "symbol": "ENB",
+      "company_name": "ENBRIDGE INC",
+      "market": "CA",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/895728/000110465926106404/tm2624881d5_8k.htm",
+      "headline": "ENB SEC Form 8-K Filing \u2014 Regulation FD Disclosure (Investor Presentation / Update)",
+      "summary": "ENBRIDGE INC filed Form 8-K with the SEC on 2026-09-09. Document: tm2624881d5_8k.htm. Accession: 0001104659-26-106404. Primary reporting date: 2026-09-09.",
+      "filing_date": "2026-09-09",
+      "published_at": "2026-09-09T16:05:00Z",
+      "event_category": "REGULATION_FD",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "SEC Form 8-K (7.01, 9.01): Regulation FD Disclosure (Investor Presentation / Update)",
+      "sentiment_score": 0.15,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -0.59,
+      "reaction_3d_pct": -4.96,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0000895728 with accession number 0001104659-26-106404",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-09-09",
+        "Document reference: tm2624881d5_8k.htm (8-K classification)",
+        "Reported disclosure items: 7.01,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.4
+    },
+    {
+      "id": "dbacd73a9d54",
+      "symbol": "ENB",
+      "company_name": "ENBRIDGE INC",
+      "market": "CA",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/895728/000110465926106344/tm2624881d6_8k.htm",
+      "headline": "ENB SEC Form 8-K Filing \u2014 Regulation FD Disclosure (Investor Presentation / Update)",
+      "summary": "ENBRIDGE INC filed Form 8-K with the SEC on 2026-09-09. Document: tm2624881d6_8k.htm. Accession: 0001104659-26-106344. Primary reporting date: 2026-09-09.",
+      "filing_date": "2026-09-09",
+      "published_at": "2026-09-09T16:05:00Z",
+      "event_category": "REGULATION_FD",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "SEC Form 8-K (7.01, 9.01): Regulation FD Disclosure (Investor Presentation / Update)",
+      "sentiment_score": 0.15,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -0.59,
+      "reaction_3d_pct": -4.96,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0000895728 with accession number 0001104659-26-106344",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-09-09",
+        "Document reference: tm2624881d6_8k.htm (8-K classification)",
+        "Reported disclosure items: 7.01,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.4
+    },
+    {
+      "id": "7f6abb369737",
+      "symbol": "ENB",
+      "company_name": "ENBRIDGE INC",
+      "market": "CA",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/895728/000110465926105899/tm2624881d2_8k.htm",
+      "headline": "ENB SEC Form 8-K Filing \u2014 Departure or Appointment of Principal Executive Officers / Directors",
+      "summary": "ENBRIDGE INC filed Form 8-K with the SEC on 2026-09-08. Document: tm2624881d2_8k.htm. Accession: 0001104659-26-105899. Primary reporting date: 2026-09-07.",
+      "filing_date": "2026-09-08",
+      "published_at": "2026-09-08T16:05:00Z",
+      "event_category": "EXECUTIVE_CHANGE",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "SEC Form 8-K (5.02, 7.01, 9.01): Departure or Appointment of Principal Executive Officers / Directors",
+      "sentiment_score": 0.05,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "MEDIUM_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": 0.53,
+      "reaction_3d_pct": -3.72,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0000895728 with accession number 0001104659-26-105899",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-09-08",
+        "Document reference: tm2624881d2_8k.htm (8-K classification)",
+        "Reported disclosure items: 5.02,7.01,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.1
+    },
+    {
+      "id": "957c633bead0",
+      "symbol": "ENB",
+      "company_name": "ENBRIDGE INC",
+      "market": "CA",
+      "source": "SEC_EDGAR_10Q",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/895728/000119312526326752/enb-20260630.htm",
+      "headline": "ENB Form 10-Q Quarterly Report \u2014 Q/E 2026-06-30",
+      "summary": "ENBRIDGE INC filed Form 10-Q with the SEC on 2026-07-31. Document: enb-20260630.htm. Accession: 0001193125-26-326752. Primary reporting date: 2026-06-30.",
+      "filing_date": "2026-07-31",
+      "published_at": "2026-07-31T16:05:00Z",
+      "event_category": "QUARTERLY_REPORT",
+      "materiality_level": "HIGH",
+      "materiality_score": 4,
+      "materiality_rationale": "Quarterly Financial Report for period ending 2026-06-30 (Form 10-Q)",
+      "sentiment_score": 0.2,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "MEDIUM_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -1.8,
+      "reaction_3d_pct": -6.4,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0000895728 with accession number 0001193125-26-326752",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-07-31",
+        "Document reference: enb-20260630.htm (10-Q classification)"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
     }
   ],
   "chart_bars": [

@@ -5,7 +5,7 @@
   "currency": "USD",
   "name": "Microsoft Corporation",
   "as_of_date": "2026-09-25",
-  "generated_at": "2026-09-25T22:46:39.736284+00:00",
+  "generated_at": "2026-09-25T23:07:25.491858+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 499.1400146484375,
@@ -58,7 +58,7 @@
       "technical_score": 58,
       "fundamental_score": 65,
       "regime_multiplier": 1.05,
-      "news_contribution": 0.0,
+      "news_contribution": 0.3,
       "sector_contribution": 0.0,
       "risk_penalty": 0.0,
       "key_metrics": {
@@ -148,6 +148,121 @@
       "id": "ATR_EXPANSION",
       "name": "Daily Range Expansion",
       "why": "Daily bar range (22.10) expanded to 2.0x the 14-day average true range."
+    }
+  ],
+  "catalysts_and_filings": [
+    {
+      "id": "04ddbd96ddd7",
+      "symbol": "MSFT",
+      "company_name": "MICROSOFT CORP",
+      "market": "US",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526380280/d291965d8k.htm",
+      "headline": "MSFT SEC Form 8-K Filing \u2014 Regulation FD Disclosure (Investor Presentation / Update)",
+      "summary": "MICROSOFT CORP filed Form 8-K with the SEC on 2026-09-02. Document: d291965d8k.htm. Accession: 0001193125-26-380280. Primary reporting date: 2026-09-02.",
+      "filing_date": "2026-09-02",
+      "published_at": "2026-09-02T16:05:00Z",
+      "event_category": "REGULATION_FD",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "SEC Form 8-K (7.01, 9.01): Regulation FD Disclosure (Investor Presentation / Update)",
+      "sentiment_score": 0.15,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -0.84,
+      "reaction_3d_pct": -0.26,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0000789019 with accession number 0001193125-26-380280",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-09-02",
+        "Document reference: d291965d8k.htm (8-K classification)",
+        "Reported disclosure items: 7.01,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.2
+    },
+    {
+      "id": "aff17376874b",
+      "symbol": "MSFT",
+      "company_name": "MICROSOFT CORP",
+      "market": "US",
+      "source": "SEC_EDGAR_10K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm",
+      "headline": "MSFT Form 10-K Comprehensive Annual Report \u2014 F/Y 2026-06-30",
+      "summary": "MICROSOFT CORP filed Form 10-K with the SEC on 2026-07-29. Document: msft-20260630.htm. Accession: 0001193125-26-323660. Primary reporting date: 2026-06-30.",
+      "filing_date": "2026-07-29",
+      "published_at": "2026-07-29T16:05:00Z",
+      "event_category": "ANNUAL_REPORT",
+      "materiality_level": "HIGH",
+      "materiality_score": 4,
+      "materiality_rationale": "Annual Comprehensive 10-K Report for fiscal year ending 2026-06-30",
+      "sentiment_score": 0.2,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "STRUCTURAL",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -0.71,
+      "reaction_3d_pct": 18.14,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0000789019 with accession number 0001193125-26-323660",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-07-29",
+        "Document reference: msft-20260630.htm (10-K classification)"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
+    },
+    {
+      "id": "d7dc98da6242",
+      "symbol": "MSFT",
+      "company_name": "MICROSOFT CORP",
+      "market": "US",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323632/msft-20260729.htm",
+      "headline": "MSFT SEC Form 8-K Filing \u2014 Results of Operations and Financial Condition (Earnings)",
+      "summary": "MICROSOFT CORP filed Form 8-K with the SEC on 2026-07-29. Document: msft-20260729.htm. Accession: 0001193125-26-323632. Primary reporting date: 2026-07-29.",
+      "filing_date": "2026-07-29",
+      "published_at": "2026-07-29T16:05:00Z",
+      "event_category": "EARNINGS_ANNOUNCEMENT",
+      "materiality_level": "HIGH",
+      "materiality_score": 4,
+      "materiality_rationale": "SEC Form 8-K (2.02, 9.01): Results of Operations and Financial Condition (Earnings)",
+      "sentiment_score": 0.35,
+      "sentiment_label": "BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -0.71,
+      "reaction_3d_pct": 18.14,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0000789019 with accession number 0001193125-26-323632",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-07-29",
+        "Document reference: msft-20260729.htm (8-K classification)",
+        "Reported disclosure items: 2.02,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.1
     }
   ],
   "chart_bars": [

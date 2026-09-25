@@ -1,0 +1,2395 @@
+{
+  "as_of_date": "2026-09-25",
+  "generated_at": "2026-09-25T23:07:25.491858+00:00",
+  "summary": {
+    "total_catalysts_analyzed": 63,
+    "high_materiality_count": 23,
+    "medium_materiality_count": 40,
+    "low_materiality_count": 0,
+    "sentiment_breakdown": {
+      "bullish_count": 55,
+      "bearish_count": 0,
+      "neutral_count": 8,
+      "average_sentiment_score": 0.17
+    },
+    "source_breakdown": {
+      "sec_edgar_filings": 61,
+      "canadian_issuers": 35,
+      "macro_announcements": 2
+    }
+  },
+  "total_catalysts": 63,
+  "catalysts": [
+    {
+      "id": "8c28d959b1c3",
+      "symbol": "XOM",
+      "company_name": "ExxonMobil Holdings Corp",
+      "market": "US",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/2115436/000119312526402986/d15072d8k.htm",
+      "headline": "XOM SEC Form 8-K Filing \u2014 Other Events of Substantial Importance",
+      "summary": "ExxonMobil Holdings Corp filed Form 8-K with the SEC on 2026-09-25. Document: d15072d8k.htm. Accession: 0001193125-26-402986. Primary reporting date: 2026-09-25.",
+      "filing_date": "2026-09-25",
+      "published_at": "2026-09-25T16:05:00Z",
+      "event_category": "OTHER_MATERIAL_EVENT",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "SEC Form 8-K (8.01, 9.01): Other Events of Substantial Importance",
+      "sentiment_score": 0.1,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "FRESH",
+      "reaction_1d_pct": -0.96,
+      "reaction_3d_pct": null,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0002115436 with accession number 0001193125-26-402986",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-09-25",
+        "Document reference: d15072d8k.htm (8-K classification)",
+        "Reported disclosure items: 8.01,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.7
+    },
+    {
+      "id": "boc_valet_fxusdcad",
+      "symbol": "MACRO_BOC",
+      "company_name": "Bank of Canada (Banque du Canada)",
+      "market": "MACRO",
+      "source": "BOC_VALET",
+      "source_url": "https://www.bankofcanada.ca/valet/observations/FXUSDCAD/json",
+      "headline": "Bank of Canada Official Exchange Rate: USD/CAD at 1.4136 CAD per USD",
+      "summary": "Bank of Canada daily noon fixing recorded at 1.4136 on 2026-09-24. USD/CAD exchange rate conditions cross-border earnings translation for dual-listed TSX leaders (CNQ, ENB, SHOP, RY).",
+      "filing_date": "2026-09-24",
+      "published_at": "2026-09-24T16:30:00Z",
+      "event_category": "MACRO_RATE_POLICY",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "Cross-border FX pricing directly shifts energy & materials reporting currency dynamics",
+      "sentiment_score": 0.1,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Official BoC FX Rate: 1.4136",
+        "Boosts CAD-denominated revenues for Canadian commodity and tech exporters"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": null,
+      "reaction_3d_pct": null,
+      "rvol_at_event": null,
+      "factual_claims": [
+        "BoC Valet series FXUSDCAD: 1.4136",
+        "Observation date: 2026-09-24"
+      ],
+      "invalidation_risks": [
+        "Excessive CAD depreciation imports inflation via imported goods and machinery"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 1.0
+    },
+    {
+      "id": "boc_yield_curve_spread",
+      "symbol": "MACRO_BOC",
+      "company_name": "Bank of Canada (Banque du Canada)",
+      "market": "MACRO",
+      "source": "BOC_VALET",
+      "source_url": "https://www.bankofcanada.ca/valet/observations/BD.CDN.10YR.DQ.YLD,BD.CDN.2YR.DQ.YLD/json",
+      "headline": "Bank of Canada Sovereign Yield Curve: 10Y-2Y Spread at +0.56% (Normalized)",
+      "summary": "Official Government of Canada benchmark 10-Year yield (3.96%) vs 2-Year yield (3.40%) yields a net term spread of +0.56% as of 2026-09-23. Slope conditions Canadian commercial banking net interest margins and institutional duration allocation.",
+      "filing_date": "2026-09-23",
+      "published_at": "2026-09-23T16:30:00Z",
+      "event_category": "MACRO_RATE_POLICY",
+      "materiality_level": "HIGH",
+      "materiality_score": 5,
+      "materiality_rationale": "Sovereign yield curve shape is the primary institutional leading indicator for macroeconomic credit expansion",
+      "sentiment_score": 0.25,
+      "sentiment_label": "BULLISH",
+      "sentiment_drivers": [
+        "GoC 10-Year Benchmark: 3.96%",
+        "GoC 2-Year Benchmark: 3.40%",
+        "Curve Term Spread: +0.56%"
+      ],
+      "horizon": "STRUCTURAL",
+      "priced_in_status": "PARTIAL",
+      "reaction_1d_pct": null,
+      "reaction_3d_pct": null,
+      "rvol_at_event": null,
+      "factual_claims": [
+        "Bank of Canada Official Valet Series BD.CDN.10YR.DQ.YLD: 3.96%",
+        "Bank of Canada Official Valet Series BD.CDN.2YR.DQ.YLD: 3.40%",
+        "Observation date: 2026-09-23"
+      ],
+      "invalidation_risks": [
+        "Rapid term premium expansion can steepen curve without underlying economic acceleration",
+        "Cross-border spillover from US Treasury volatility"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 2.0
+    },
+    {
+      "id": "fba2d602c318",
+      "symbol": "BN",
+      "company_name": "BROOKFIELD Corp /ON/",
+      "market": "CA",
+      "source": "SEC_EDGAR_6K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1001085/000110465926110024/tm2625808d7_6k.htm",
+      "headline": "BN Form 6-K Cross-Border Continuous Disclosure",
+      "summary": "BROOKFIELD Corp /ON/ filed Form 6-K with the SEC on 2026-09-23. Document: tm2625808d7_6k.htm. Accession: 0001104659-26-110024. Primary reporting date: 2026-09-23.",
+      "filing_date": "2026-09-23",
+      "published_at": "2026-09-23T16:05:00Z",
+      "event_category": "CANADIAN_FOREIGN_FILING",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "Foreign Issuer Continuous Disclosure (SEDAR cross-filing)",
+      "sentiment_score": 0.1,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PARTIAL",
+      "reaction_1d_pct": -1.86,
+      "reaction_3d_pct": -2.07,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001001085 with accession number 0001104659-26-110024",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-09-23",
+        "Document reference: tm2625808d7_6k.htm (6-K classification)"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.6
+    },
+    {
+      "id": "d637910769e7",
+      "symbol": "BN",
+      "company_name": "BROOKFIELD Corp /ON/",
+      "market": "CA",
+      "source": "SEC_EDGAR_6K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1001085/000110465926109720/tm2625808d6_6k.htm",
+      "headline": "BN Form 6-K Cross-Border Continuous Disclosure",
+      "summary": "BROOKFIELD Corp /ON/ filed Form 6-K with the SEC on 2026-09-23. Document: tm2625808d6_6k.htm. Accession: 0001104659-26-109720. Primary reporting date: 2026-09-22.",
+      "filing_date": "2026-09-23",
+      "published_at": "2026-09-23T16:05:00Z",
+      "event_category": "CANADIAN_FOREIGN_FILING",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "Foreign Issuer Continuous Disclosure (SEDAR cross-filing)",
+      "sentiment_score": 0.1,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PARTIAL",
+      "reaction_1d_pct": -1.86,
+      "reaction_3d_pct": -2.07,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001001085 with accession number 0001104659-26-109720",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-09-23",
+        "Document reference: tm2625808d6_6k.htm (6-K classification)"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.6
+    },
+    {
+      "id": "919f1ab8d8d7",
+      "symbol": "BN",
+      "company_name": "BROOKFIELD Corp /ON/",
+      "market": "CA",
+      "source": "SEC_EDGAR_6K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1001085/000110465926109654/tm2625808d4_6k.htm",
+      "headline": "BN Form 6-K Cross-Border Continuous Disclosure",
+      "summary": "BROOKFIELD Corp /ON/ filed Form 6-K with the SEC on 2026-09-22. Document: tm2625808d4_6k.htm. Accession: 0001104659-26-109654. Primary reporting date: 2026-09-22.",
+      "filing_date": "2026-09-22",
+      "published_at": "2026-09-22T16:05:00Z",
+      "event_category": "CANADIAN_FOREIGN_FILING",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "Foreign Issuer Continuous Disclosure (SEDAR cross-filing)",
+      "sentiment_score": 0.1,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PARTIAL",
+      "reaction_1d_pct": -0.22,
+      "reaction_3d_pct": -2.96,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001001085 with accession number 0001104659-26-109654",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-09-22",
+        "Document reference: tm2625808d4_6k.htm (6-K classification)"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.6
+    },
+    {
+      "id": "81ae11c5ddb4",
+      "symbol": "BN",
+      "company_name": "BROOKFIELD Corp /ON/",
+      "market": "CA",
+      "source": "SEC_EDGAR_6K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1001085/000117184326006141/f6k_092126.htm",
+      "headline": "BN Form 6-K Cross-Border Continuous Disclosure",
+      "summary": "BROOKFIELD Corp /ON/ filed Form 6-K with the SEC on 2026-09-21. Document: f6k_092126.htm. Accession: 0001171843-26-006141. Primary reporting date: 2026-09-21.",
+      "filing_date": "2026-09-21",
+      "published_at": "2026-09-21T16:05:00Z",
+      "event_category": "CANADIAN_FOREIGN_FILING",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "Foreign Issuer Continuous Disclosure (SEDAR cross-filing)",
+      "sentiment_score": 0.1,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PARTIAL",
+      "reaction_1d_pct": 1.62,
+      "reaction_3d_pct": -0.5,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001001085 with accession number 0001171843-26-006141",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-09-21",
+        "Document reference: f6k_092126.htm (6-K classification)"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.5
+    },
+    {
+      "id": "ba986c49aa05",
+      "symbol": "BN",
+      "company_name": "BROOKFIELD Corp /ON/",
+      "market": "CA",
+      "source": "SEC_EDGAR_6K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1001085/000110465926109133/tm2625808d2_6k.htm",
+      "headline": "BN Form 6-K Cross-Border Continuous Disclosure",
+      "summary": "BROOKFIELD Corp /ON/ filed Form 6-K with the SEC on 2026-09-21. Document: tm2625808d2_6k.htm. Accession: 0001104659-26-109133. Primary reporting date: 2026-09-21.",
+      "filing_date": "2026-09-21",
+      "published_at": "2026-09-21T16:05:00Z",
+      "event_category": "CANADIAN_FOREIGN_FILING",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "Foreign Issuer Continuous Disclosure (SEDAR cross-filing)",
+      "sentiment_score": 0.1,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PARTIAL",
+      "reaction_1d_pct": 1.62,
+      "reaction_3d_pct": -0.5,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001001085 with accession number 0001104659-26-109133",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-09-21",
+        "Document reference: tm2625808d2_6k.htm (6-K classification)"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.5
+    },
+    {
+      "id": "149aa93e11a0",
+      "symbol": "BAM",
+      "company_name": "Brookfield Asset Management Ltd.",
+      "market": "CA",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1937926/000117184326006060/f8k_091526.htm",
+      "headline": "BAM SEC Form 8-K Filing \u2014 Other Events of Substantial Importance",
+      "summary": "Brookfield Asset Management Ltd. filed Form 8-K with the SEC on 2026-09-16. Document: f8k_091526.htm. Accession: 0001171843-26-006060. Primary reporting date: 2026-09-15.",
+      "filing_date": "2026-09-16",
+      "published_at": "2026-09-16T16:05:00Z",
+      "event_category": "OTHER_MATERIAL_EVENT",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "SEC Form 8-K (8.01, 9.01): Other Events of Substantial Importance",
+      "sentiment_score": 0.1,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -0.94,
+      "reaction_3d_pct": 1.07,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001937926 with accession number 0001171843-26-006060",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-09-16",
+        "Document reference: f8k_091526.htm (8-K classification)",
+        "Reported disclosure items: 8.01,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.4
+    },
+    {
+      "id": "6a7b2d2aa9db",
+      "symbol": "AMZN",
+      "company_name": "AMAZON COM INC",
+      "market": "US",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1018724/000110465926107526/tm2624614d5_8k.htm",
+      "headline": "AMZN SEC Form 8-K Filing \u2014 Other Events of Substantial Importance",
+      "summary": "AMAZON COM INC filed Form 8-K with the SEC on 2026-09-14. Document: tm2624614d5_8k.htm. Accession: 0001104659-26-107526. Primary reporting date: 2026-09-14.",
+      "filing_date": "2026-09-14",
+      "published_at": "2026-09-14T16:05:00Z",
+      "event_category": "OTHER_MATERIAL_EVENT",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "SEC Form 8-K (8.01, 9.01): Other Events of Substantial Importance",
+      "sentiment_score": 0.1,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -1.26,
+      "reaction_3d_pct": -4.21,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001018724 with accession number 0001104659-26-107526",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-09-14",
+        "Document reference: tm2624614d5_8k.htm (8-K classification)",
+        "Reported disclosure items: 8.01,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.3
+    },
+    {
+      "id": "eab29cff019d",
+      "symbol": "ENB",
+      "company_name": "ENBRIDGE INC",
+      "market": "CA",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/895728/000110465926107292/tm2624881d7_8k.htm",
+      "headline": "ENB SEC Form 8-K Filing \u2014 Other Events of Substantial Importance",
+      "summary": "ENBRIDGE INC filed Form 8-K with the SEC on 2026-09-14. Document: tm2624881d7_8k.htm. Accession: 0001104659-26-107292. Primary reporting date: 2026-09-14.",
+      "filing_date": "2026-09-14",
+      "published_at": "2026-09-14T16:05:00Z",
+      "event_category": "OTHER_MATERIAL_EVENT",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "SEC Form 8-K (8.01, 9.01): Other Events of Substantial Importance",
+      "sentiment_score": 0.1,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": 1.21,
+      "reaction_3d_pct": 2.22,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0000895728 with accession number 0001104659-26-107292",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-09-14",
+        "Document reference: tm2624881d7_8k.htm (8-K classification)",
+        "Reported disclosure items: 8.01,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.3
+    },
+    {
+      "id": "cf575f3f1b56",
+      "symbol": "BAM",
+      "company_name": "Brookfield Asset Management Ltd.",
+      "market": "CA",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1937926/000117184326006022/f8k_091426.htm",
+      "headline": "BAM SEC Form 8-K Filing \u2014 Other Events of Substantial Importance",
+      "summary": "Brookfield Asset Management Ltd. filed Form 8-K with the SEC on 2026-09-14. Document: f8k_091426.htm. Accession: 0001171843-26-006022. Primary reporting date: 2026-09-14.",
+      "filing_date": "2026-09-14",
+      "published_at": "2026-09-14T16:05:00Z",
+      "event_category": "OTHER_MATERIAL_EVENT",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "SEC Form 8-K (8.01, 9.01): Other Events of Substantial Importance",
+      "sentiment_score": 0.1,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -0.89,
+      "reaction_3d_pct": -3.48,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001937926 with accession number 0001171843-26-006022",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-09-14",
+        "Document reference: f8k_091426.htm (8-K classification)",
+        "Reported disclosure items: 8.01,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.3
+    },
+    {
+      "id": "d79a928721b4",
+      "symbol": "AMZN",
+      "company_name": "AMAZON COM INC",
+      "market": "US",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000036/amzn-20260908.htm",
+      "headline": "AMZN SEC Form 8-K Filing \u2014 Departure or Appointment of Principal Executive Officers / Directors",
+      "summary": "AMAZON COM INC filed Form 8-K with the SEC on 2026-09-09. Document: amzn-20260908.htm. Accession: 0001018724-26-000036. Primary reporting date: 2026-09-08.",
+      "filing_date": "2026-09-09",
+      "published_at": "2026-09-09T16:05:00Z",
+      "event_category": "EXECUTIVE_CHANGE",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "SEC Form 8-K (5.02): Departure or Appointment of Principal Executive Officers / Directors",
+      "sentiment_score": 0.05,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "MEDIUM_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -1.78,
+      "reaction_3d_pct": -0.07,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001018724 with accession number 0001018724-26-000036",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-09-09",
+        "Document reference: amzn-20260908.htm (8-K classification)",
+        "Reported disclosure items: 5.02"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.1
+    },
+    {
+      "id": "8d6e6e4ccf24",
+      "symbol": "ENB",
+      "company_name": "ENBRIDGE INC",
+      "market": "CA",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/895728/000110465926106404/tm2624881d5_8k.htm",
+      "headline": "ENB SEC Form 8-K Filing \u2014 Regulation FD Disclosure (Investor Presentation / Update)",
+      "summary": "ENBRIDGE INC filed Form 8-K with the SEC on 2026-09-09. Document: tm2624881d5_8k.htm. Accession: 0001104659-26-106404. Primary reporting date: 2026-09-09.",
+      "filing_date": "2026-09-09",
+      "published_at": "2026-09-09T16:05:00Z",
+      "event_category": "REGULATION_FD",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "SEC Form 8-K (7.01, 9.01): Regulation FD Disclosure (Investor Presentation / Update)",
+      "sentiment_score": 0.15,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -0.59,
+      "reaction_3d_pct": -4.96,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0000895728 with accession number 0001104659-26-106404",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-09-09",
+        "Document reference: tm2624881d5_8k.htm (8-K classification)",
+        "Reported disclosure items: 7.01,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.4
+    },
+    {
+      "id": "dbacd73a9d54",
+      "symbol": "ENB",
+      "company_name": "ENBRIDGE INC",
+      "market": "CA",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/895728/000110465926106344/tm2624881d6_8k.htm",
+      "headline": "ENB SEC Form 8-K Filing \u2014 Regulation FD Disclosure (Investor Presentation / Update)",
+      "summary": "ENBRIDGE INC filed Form 8-K with the SEC on 2026-09-09. Document: tm2624881d6_8k.htm. Accession: 0001104659-26-106344. Primary reporting date: 2026-09-09.",
+      "filing_date": "2026-09-09",
+      "published_at": "2026-09-09T16:05:00Z",
+      "event_category": "REGULATION_FD",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "SEC Form 8-K (7.01, 9.01): Regulation FD Disclosure (Investor Presentation / Update)",
+      "sentiment_score": 0.15,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -0.59,
+      "reaction_3d_pct": -4.96,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0000895728 with accession number 0001104659-26-106344",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-09-09",
+        "Document reference: tm2624881d6_8k.htm (8-K classification)",
+        "Reported disclosure items: 7.01,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.4
+    },
+    {
+      "id": "7f6abb369737",
+      "symbol": "ENB",
+      "company_name": "ENBRIDGE INC",
+      "market": "CA",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/895728/000110465926105899/tm2624881d2_8k.htm",
+      "headline": "ENB SEC Form 8-K Filing \u2014 Departure or Appointment of Principal Executive Officers / Directors",
+      "summary": "ENBRIDGE INC filed Form 8-K with the SEC on 2026-09-08. Document: tm2624881d2_8k.htm. Accession: 0001104659-26-105899. Primary reporting date: 2026-09-07.",
+      "filing_date": "2026-09-08",
+      "published_at": "2026-09-08T16:05:00Z",
+      "event_category": "EXECUTIVE_CHANGE",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "SEC Form 8-K (5.02, 7.01, 9.01): Departure or Appointment of Principal Executive Officers / Directors",
+      "sentiment_score": 0.05,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "MEDIUM_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": 0.53,
+      "reaction_3d_pct": -3.72,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0000895728 with accession number 0001104659-26-105899",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-09-08",
+        "Document reference: tm2624881d2_8k.htm (8-K classification)",
+        "Reported disclosure items: 5.02,7.01,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.1
+    },
+    {
+      "id": "1aae0ccba3ee",
+      "symbol": "BAM",
+      "company_name": "Brookfield Asset Management Ltd.",
+      "market": "CA",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1937926/000117184326005900/f8k_090826.htm",
+      "headline": "BAM SEC Form 8-K Filing \u2014 Other Events of Substantial Importance",
+      "summary": "Brookfield Asset Management Ltd. filed Form 8-K with the SEC on 2026-09-08. Document: f8k_090826.htm. Accession: 0001171843-26-005900. Primary reporting date: 2026-09-08.",
+      "filing_date": "2026-09-08",
+      "published_at": "2026-09-08T16:05:00Z",
+      "event_category": "OTHER_MATERIAL_EVENT",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "SEC Form 8-K (8.01, 9.01): Other Events of Substantial Importance",
+      "sentiment_score": 0.1,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -3.69,
+      "reaction_3d_pct": -6.59,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001937926 with accession number 0001171843-26-005900",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-09-08",
+        "Document reference: f8k_090826.htm (8-K classification)",
+        "Reported disclosure items: 8.01,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.2
+    },
+    {
+      "id": "6974309fcb6f",
+      "symbol": "NVDA",
+      "company_name": "NVIDIA CORP",
+      "market": "US",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000078/nvda-20260902.htm",
+      "headline": "NVDA SEC Form 8-K Filing \u2014 Other Events of Substantial Importance",
+      "summary": "NVIDIA CORP filed Form 8-K with the SEC on 2026-09-03. Document: nvda-20260902.htm. Accession: 0001045810-26-000078. Primary reporting date: 2026-09-02.",
+      "filing_date": "2026-09-03",
+      "published_at": "2026-09-03T16:05:00Z",
+      "event_category": "OTHER_MATERIAL_EVENT",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "SEC Form 8-K (8.01): Other Events of Substantial Importance",
+      "sentiment_score": 0.1,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": 1.8,
+      "reaction_3d_pct": 0.59,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001045810 with accession number 0001045810-26-000078",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-09-03",
+        "Document reference: nvda-20260902.htm (8-K classification)",
+        "Reported disclosure items: 8.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.2
+    },
+    {
+      "id": "04ddbd96ddd7",
+      "symbol": "MSFT",
+      "company_name": "MICROSOFT CORP",
+      "market": "US",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526380280/d291965d8k.htm",
+      "headline": "MSFT SEC Form 8-K Filing \u2014 Regulation FD Disclosure (Investor Presentation / Update)",
+      "summary": "MICROSOFT CORP filed Form 8-K with the SEC on 2026-09-02. Document: d291965d8k.htm. Accession: 0001193125-26-380280. Primary reporting date: 2026-09-02.",
+      "filing_date": "2026-09-02",
+      "published_at": "2026-09-02T16:05:00Z",
+      "event_category": "REGULATION_FD",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "SEC Form 8-K (7.01, 9.01): Regulation FD Disclosure (Investor Presentation / Update)",
+      "sentiment_score": 0.15,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -0.84,
+      "reaction_3d_pct": -0.26,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0000789019 with accession number 0001193125-26-380280",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-09-02",
+        "Document reference: d291965d8k.htm (8-K classification)",
+        "Reported disclosure items: 7.01,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.2
+    },
+    {
+      "id": "fe5e5a434b7a",
+      "symbol": "XOM",
+      "company_name": "ExxonMobil Holdings Corp",
+      "market": "US",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/2115436/000119312526373026/d82162d8k.htm",
+      "headline": "XOM SEC Form 8-K Filing \u2014 Other Events of Substantial Importance",
+      "summary": "ExxonMobil Holdings Corp filed Form 8-K with the SEC on 2026-08-28. Document: d82162d8k.htm. Accession: 0001193125-26-373026. Primary reporting date: 2026-08-28.",
+      "filing_date": "2026-08-28",
+      "published_at": "2026-08-28T16:05:00Z",
+      "event_category": "OTHER_MATERIAL_EVENT",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "SEC Form 8-K (8.01, 9.01): Other Events of Substantial Importance",
+      "sentiment_score": 0.1,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": 0.17,
+      "reaction_3d_pct": 5.18,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0002115436 with accession number 0001193125-26-373026",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-08-28",
+        "Document reference: d82162d8k.htm (8-K classification)",
+        "Reported disclosure items: 8.01,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.1
+    },
+    {
+      "id": "aff51b8aa043",
+      "symbol": "NVDA",
+      "company_name": "NVIDIA CORP",
+      "market": "US",
+      "source": "SEC_EDGAR_10Q",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm",
+      "headline": "NVDA Form 10-Q Quarterly Report \u2014 Q/E 2026-07-26",
+      "summary": "NVIDIA CORP filed Form 10-Q with the SEC on 2026-08-26. Document: nvda-20260726.htm. Accession: 0001045810-26-000075. Primary reporting date: 2026-07-26.",
+      "filing_date": "2026-08-26",
+      "published_at": "2026-08-26T16:05:00Z",
+      "event_category": "QUARTERLY_REPORT",
+      "materiality_level": "HIGH",
+      "materiality_score": 4,
+      "materiality_rationale": "Quarterly Financial Report for period ending 2026-07-26 (Form 10-Q)",
+      "sentiment_score": 0.2,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "MEDIUM_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -1.59,
+      "reaction_3d_pct": 2.11,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001045810 with accession number 0001045810-26-000075",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-08-26",
+        "Document reference: nvda-20260726.htm (10-Q classification)"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.2
+    },
+    {
+      "id": "3acea2e383ef",
+      "symbol": "NVDA",
+      "company_name": "NVIDIA CORP",
+      "market": "US",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000073/nvda-20260826.htm",
+      "headline": "NVDA SEC Form 8-K Filing \u2014 Results of Operations and Financial Condition (Earnings)",
+      "summary": "NVIDIA CORP filed Form 8-K with the SEC on 2026-08-26. Document: nvda-20260826.htm. Accession: 0001045810-26-000073. Primary reporting date: 2026-08-26.",
+      "filing_date": "2026-08-26",
+      "published_at": "2026-08-26T16:05:00Z",
+      "event_category": "EARNINGS_ANNOUNCEMENT",
+      "materiality_level": "HIGH",
+      "materiality_score": 4,
+      "materiality_rationale": "SEC Form 8-K (2.02, 9.01): Results of Operations and Financial Condition (Earnings)",
+      "sentiment_score": 0.35,
+      "sentiment_label": "BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -1.59,
+      "reaction_3d_pct": 2.11,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001045810 with accession number 0001045810-26-000073",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-08-26",
+        "Document reference: nvda-20260826.htm (8-K classification)",
+        "Reported disclosure items: 2.02,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.4
+    },
+    {
+      "id": "03f6af470c75",
+      "symbol": "CNR",
+      "company_name": "Core Natural Resources, Inc.",
+      "market": "CA",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1710366/000119312526356186/d113945d8k.htm",
+      "headline": "CNR SEC Form 8-K Filing \u2014 Departure or Appointment of Principal Executive Officers / Directors",
+      "summary": "Core Natural Resources, Inc. filed Form 8-K with the SEC on 2026-08-19. Document: d113945d8k.htm. Accession: 0001193125-26-356186. Primary reporting date: 2026-08-18.",
+      "filing_date": "2026-08-19",
+      "published_at": "2026-08-19T16:05:00Z",
+      "event_category": "EXECUTIVE_CHANGE",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "SEC Form 8-K (5.02, 7.01, 9.01): Departure or Appointment of Principal Executive Officers / Directors",
+      "sentiment_score": 0.05,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "MEDIUM_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": 0.3,
+      "reaction_3d_pct": 1.61,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001710366 with accession number 0001193125-26-356186",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-08-19",
+        "Document reference: d113945d8k.htm (8-K classification)",
+        "Reported disclosure items: 5.02,7.01,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
+    },
+    {
+      "id": "b1c6b83448a4",
+      "symbol": "NVDA",
+      "company_name": "NVIDIA CORP",
+      "market": "US",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000069/nvda-20260817.htm",
+      "headline": "NVDA SEC Form 8-K Filing \u2014 Entry into a Material Definitive Agreement",
+      "summary": "NVIDIA CORP filed Form 8-K with the SEC on 2026-08-17. Document: nvda-20260817.htm. Accession: 0001045810-26-000069. Primary reporting date: 2026-08-17.",
+      "filing_date": "2026-08-17",
+      "published_at": "2026-08-17T16:05:00Z",
+      "event_category": "MATERIAL_AGREEMENT",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "SEC Form 8-K (1.01, 2.03, 7.01): Entry into a Material Definitive Agreement",
+      "sentiment_score": 0.25,
+      "sentiment_label": "BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "MEDIUM_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -0.07,
+      "reaction_3d_pct": -3.38,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001045810 with accession number 0001045810-26-000069",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-08-17",
+        "Document reference: nvda-20260817.htm (8-K classification)",
+        "Reported disclosure items: 1.01,2.03,7.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.1
+    },
+    {
+      "id": "7958fe2d9ada",
+      "symbol": "BAM",
+      "company_name": "Brookfield Asset Management Ltd.",
+      "market": "CA",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1937926/000110465926097349/tm2623210d1_8k.htm",
+      "headline": "BAM SEC Form 8-K Filing \u2014 Regulation FD Disclosure (Investor Presentation / Update)",
+      "summary": "Brookfield Asset Management Ltd. filed Form 8-K with the SEC on 2026-08-14. Document: tm2623210d1_8k.htm. Accession: 0001104659-26-097349. Primary reporting date: 2026-08-14.",
+      "filing_date": "2026-08-14",
+      "published_at": "2026-08-14T16:05:00Z",
+      "event_category": "REGULATION_FD",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "SEC Form 8-K (7.01): Regulation FD Disclosure (Investor Presentation / Update)",
+      "sentiment_score": 0.15,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -3.12,
+      "reaction_3d_pct": -7.87,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001937926 with accession number 0001104659-26-097349",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-08-14",
+        "Document reference: tm2623210d1_8k.htm (8-K classification)",
+        "Reported disclosure items: 7.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.1
+    },
+    {
+      "id": "025583da53f7",
+      "symbol": "BAM",
+      "company_name": "Brookfield Asset Management Ltd.",
+      "market": "CA",
+      "source": "SEC_EDGAR_10Q",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1937926/000162828026054933/bam-20260630.htm",
+      "headline": "BAM Form 10-Q Quarterly Report \u2014 Q/E 2026-06-30",
+      "summary": "Brookfield Asset Management Ltd. filed Form 10-Q with the SEC on 2026-08-10. Document: bam-20260630.htm. Accession: 0001628280-26-054933. Primary reporting date: 2026-06-30.",
+      "filing_date": "2026-08-10",
+      "published_at": "2026-08-10T16:05:00Z",
+      "event_category": "QUARTERLY_REPORT",
+      "materiality_level": "HIGH",
+      "materiality_score": 4,
+      "materiality_rationale": "Quarterly Financial Report for period ending 2026-06-30 (Form 10-Q)",
+      "sentiment_score": 0.2,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "MEDIUM_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": 0.64,
+      "reaction_3d_pct": 3.74,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001937926 with accession number 0001628280-26-054933",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-08-10",
+        "Document reference: bam-20260630.htm (10-Q classification)"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.1
+    },
+    {
+      "id": "439acda6f832",
+      "symbol": "GOOGL",
+      "company_name": "Alphabet Inc.",
+      "market": "US",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1652044/000119312526342390/d171253d8k.htm",
+      "headline": "GOOGL SEC Form 8-K Filing \u2014 Other Events of Substantial Importance",
+      "summary": "Alphabet Inc. filed Form 8-K with the SEC on 2026-08-10. Document: d171253d8k.htm. Accession: 0001193125-26-342390. Primary reporting date: 2026-08-10.",
+      "filing_date": "2026-08-10",
+      "published_at": "2026-08-10T16:05:00Z",
+      "event_category": "OTHER_MATERIAL_EVENT",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "SEC Form 8-K (8.01, 9.01): Other Events of Substantial Importance",
+      "sentiment_score": 0.1,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": 0.91,
+      "reaction_3d_pct": -3.04,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001652044 with accession number 0001193125-26-342390",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-08-10",
+        "Document reference: d171253d8k.htm (8-K classification)",
+        "Reported disclosure items: 8.01,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
+    },
+    {
+      "id": "4d38c3341674",
+      "symbol": "CNR",
+      "company_name": "Core Natural Resources, Inc.",
+      "market": "CA",
+      "source": "SEC_EDGAR_10Q",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1710366/000171036626000054/cnr-20260630.htm",
+      "headline": "CNR Form 10-Q Quarterly Report \u2014 Q/E 2026-06-30",
+      "summary": "Core Natural Resources, Inc. filed Form 10-Q with the SEC on 2026-08-06. Document: cnr-20260630.htm. Accession: 0001710366-26-000054. Primary reporting date: 2026-06-30.",
+      "filing_date": "2026-08-06",
+      "published_at": "2026-08-06T16:05:00Z",
+      "event_category": "QUARTERLY_REPORT",
+      "materiality_level": "HIGH",
+      "materiality_score": 4,
+      "materiality_rationale": "Quarterly Financial Report for period ending 2026-06-30 (Form 10-Q)",
+      "sentiment_score": 0.2,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "MEDIUM_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -0.79,
+      "reaction_3d_pct": -2.45,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001710366 with accession number 0001710366-26-000054",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-08-06",
+        "Document reference: cnr-20260630.htm (10-Q classification)"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.1
+    },
+    {
+      "id": "ce0b5e57c202",
+      "symbol": "CNR",
+      "company_name": "Core Natural Resources, Inc.",
+      "market": "CA",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1710366/000171036626000053/cnr-20260806.htm",
+      "headline": "CNR SEC Form 8-K Filing \u2014 Results of Operations and Financial Condition (Earnings)",
+      "summary": "Core Natural Resources, Inc. filed Form 8-K with the SEC on 2026-08-06. Document: cnr-20260806.htm. Accession: 0001710366-26-000053. Primary reporting date: 2026-08-06.",
+      "filing_date": "2026-08-06",
+      "published_at": "2026-08-06T16:05:00Z",
+      "event_category": "EARNINGS_ANNOUNCEMENT",
+      "materiality_level": "HIGH",
+      "materiality_score": 4,
+      "materiality_rationale": "SEC Form 8-K (2.02, 7.01, 9.01): Results of Operations and Financial Condition (Earnings)",
+      "sentiment_score": 0.35,
+      "sentiment_label": "BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -0.79,
+      "reaction_3d_pct": -2.45,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001710366 with accession number 0001710366-26-000053",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-08-06",
+        "Document reference: cnr-20260806.htm (8-K classification)",
+        "Reported disclosure items: 2.02,7.01,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.1
+    },
+    {
+      "id": "e334df9254be",
+      "symbol": "CNQ",
+      "company_name": "CANADIAN NATURAL RESOURCES Ltd",
+      "market": "CA",
+      "source": "SEC_EDGAR_6K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1017413/000101741326000045/a08062026dividendcover.htm",
+      "headline": "CNQ Form 6-K Cross-Border Continuous Disclosure",
+      "summary": "CANADIAN NATURAL RESOURCES Ltd filed Form 6-K with the SEC on 2026-08-06. Document: a08062026dividendcover.htm. Accession: 0001017413-26-000045. Primary reporting date: 2026-08-06.",
+      "filing_date": "2026-08-06",
+      "published_at": "2026-08-06T16:05:00Z",
+      "event_category": "CANADIAN_FOREIGN_FILING",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "Foreign Issuer Continuous Disclosure (SEDAR cross-filing)",
+      "sentiment_score": 0.1,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": 1.56,
+      "reaction_3d_pct": 4.74,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001017413 with accession number 0001017413-26-000045",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-08-06",
+        "Document reference: a08062026dividendcover.htm (6-K classification)"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
+    },
+    {
+      "id": "f495b1909534",
+      "symbol": "CNQ",
+      "company_name": "CANADIAN NATURAL RESOURCES Ltd",
+      "market": "CA",
+      "source": "SEC_EDGAR_6K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1017413/000101741326000043/a063020266-kcover.htm",
+      "headline": "CNQ Form 6-K Cross-Border Continuous Disclosure",
+      "summary": "CANADIAN NATURAL RESOURCES Ltd filed Form 6-K with the SEC on 2026-08-06. Document: a063020266-kcover.htm. Accession: 0001017413-26-000043. Primary reporting date: 2026-06-30.",
+      "filing_date": "2026-08-06",
+      "published_at": "2026-08-06T16:05:00Z",
+      "event_category": "CANADIAN_FOREIGN_FILING",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "Foreign Issuer Continuous Disclosure (SEDAR cross-filing)",
+      "sentiment_score": 0.1,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": 1.56,
+      "reaction_3d_pct": 4.74,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001017413 with accession number 0001017413-26-000043",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-08-06",
+        "Document reference: a063020266-kcover.htm (6-K classification)"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
+    },
+    {
+      "id": "ab8c48c32d5e",
+      "symbol": "SHOP",
+      "company_name": "SHOPIFY INC.",
+      "market": "CA",
+      "source": "SEC_EDGAR_10Q",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1594805/000159480526000047/shop-20260630.htm",
+      "headline": "SHOP Form 10-Q Quarterly Report \u2014 Q/E 2026-06-30",
+      "summary": "SHOPIFY INC. filed Form 10-Q with the SEC on 2026-08-05. Document: shop-20260630.htm. Accession: 0001594805-26-000047. Primary reporting date: 2026-06-30.",
+      "filing_date": "2026-08-05",
+      "published_at": "2026-08-05T16:05:00Z",
+      "event_category": "QUARTERLY_REPORT",
+      "materiality_level": "HIGH",
+      "materiality_score": 4,
+      "materiality_rationale": "Quarterly Financial Report for period ending 2026-06-30 (Form 10-Q)",
+      "sentiment_score": 0.2,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "MEDIUM_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": 16.47,
+      "reaction_3d_pct": 21.89,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001594805 with accession number 0001594805-26-000047",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-08-05",
+        "Document reference: shop-20260630.htm (10-Q classification)"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.1
+    },
+    {
+      "id": "a8715000c4fa",
+      "symbol": "SHOP",
+      "company_name": "SHOPIFY INC.",
+      "market": "CA",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1594805/000159480526000046/shop-20260805.htm",
+      "headline": "SHOP SEC Form 8-K Filing \u2014 Results of Operations and Financial Condition (Earnings)",
+      "summary": "SHOPIFY INC. filed Form 8-K with the SEC on 2026-08-05. Document: shop-20260805.htm. Accession: 0001594805-26-000046. Primary reporting date: 2026-08-05.",
+      "filing_date": "2026-08-05",
+      "published_at": "2026-08-05T16:05:00Z",
+      "event_category": "EARNINGS_ANNOUNCEMENT",
+      "materiality_level": "HIGH",
+      "materiality_score": 4,
+      "materiality_rationale": "SEC Form 8-K (2.02, 9.01): Results of Operations and Financial Condition (Earnings)",
+      "sentiment_score": 0.35,
+      "sentiment_label": "BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": 16.47,
+      "reaction_3d_pct": 21.89,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001594805 with accession number 0001594805-26-000046",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-08-05",
+        "Document reference: shop-20260805.htm (8-K classification)",
+        "Reported disclosure items: 2.02,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.1
+    },
+    {
+      "id": "a4c56baeabf3",
+      "symbol": "XOM",
+      "company_name": "ExxonMobil Holdings Corp",
+      "market": "US",
+      "source": "SEC_EDGAR_10Q",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/2115436/000003408826000093/xom-20260630.htm",
+      "headline": "XOM Form 10-Q Quarterly Report \u2014 Q/E 2026-06-30",
+      "summary": "ExxonMobil Holdings Corp filed Form 10-Q with the SEC on 2026-08-03. Document: xom-20260630.htm. Accession: 0000034088-26-000093. Primary reporting date: 2026-06-30.",
+      "filing_date": "2026-08-03",
+      "published_at": "2026-08-03T16:05:00Z",
+      "event_category": "QUARTERLY_REPORT",
+      "materiality_level": "HIGH",
+      "materiality_score": 4,
+      "materiality_rationale": "Quarterly Financial Report for period ending 2026-06-30 (Form 10-Q)",
+      "sentiment_score": 0.2,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "MEDIUM_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -0.24,
+      "reaction_3d_pct": -2.45,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0002115436 with accession number 0000034088-26-000093",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-08-03",
+        "Document reference: xom-20260630.htm (10-Q classification)"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
+    },
+    {
+      "id": "39b2bb4e08a9",
+      "symbol": "AAPL",
+      "company_name": "Apple Inc.",
+      "market": "US",
+      "source": "SEC_EDGAR_10Q",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000020/aapl-20260627.htm",
+      "headline": "AAPL Form 10-Q Quarterly Report \u2014 Q/E 2026-06-27",
+      "summary": "Apple Inc. filed Form 10-Q with the SEC on 2026-07-31. Document: aapl-20260627.htm. Accession: 0000320193-26-000020. Primary reporting date: 2026-06-27.",
+      "filing_date": "2026-07-31",
+      "published_at": "2026-07-31T16:05:00Z",
+      "event_category": "QUARTERLY_REPORT",
+      "materiality_level": "HIGH",
+      "materiality_score": 4,
+      "materiality_rationale": "Quarterly Financial Report for period ending 2026-06-27 (Form 10-Q)",
+      "sentiment_score": 0.2,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "MEDIUM_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -7.35,
+      "reaction_3d_pct": -7.21,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0000320193 with accession number 0000320193-26-000020",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-07-31",
+        "Document reference: aapl-20260627.htm (10-Q classification)"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
+    },
+    {
+      "id": "8607b64ebc04",
+      "symbol": "AMZN",
+      "company_name": "AMAZON COM INC",
+      "market": "US",
+      "source": "SEC_EDGAR_10Q",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000026/amzn-20260630.htm",
+      "headline": "AMZN Form 10-Q Quarterly Report \u2014 Q/E 2026-06-30",
+      "summary": "AMAZON COM INC filed Form 10-Q with the SEC on 2026-07-31. Document: amzn-20260630.htm. Accession: 0001018724-26-000026. Primary reporting date: 2026-06-30.",
+      "filing_date": "2026-07-31",
+      "published_at": "2026-07-31T16:05:00Z",
+      "event_category": "QUARTERLY_REPORT",
+      "materiality_level": "HIGH",
+      "materiality_score": 4,
+      "materiality_rationale": "Quarterly Financial Report for period ending 2026-06-30 (Form 10-Q)",
+      "sentiment_score": 0.2,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "MEDIUM_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": 15.32,
+      "reaction_3d_pct": 17.8,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001018724 with accession number 0001018724-26-000026",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-07-31",
+        "Document reference: amzn-20260630.htm (10-Q classification)"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
+    },
+    {
+      "id": "fe7cf651a3d7",
+      "symbol": "XOM",
+      "company_name": "ExxonMobil Holdings Corp",
+      "market": "US",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/2115436/000211543626000006/xom-20260731.htm",
+      "headline": "XOM SEC Form 8-K Filing \u2014 Results of Operations and Financial Condition (Earnings)",
+      "summary": "ExxonMobil Holdings Corp filed Form 8-K with the SEC on 2026-07-31. Document: xom-20260731.htm. Accession: 0002115436-26-000006. Primary reporting date: 2026-07-31.",
+      "filing_date": "2026-07-31",
+      "published_at": "2026-07-31T16:05:00Z",
+      "event_category": "EARNINGS_ANNOUNCEMENT",
+      "materiality_level": "HIGH",
+      "materiality_score": 4,
+      "materiality_rationale": "SEC Form 8-K (2.02, 7.01): Results of Operations and Financial Condition (Earnings)",
+      "sentiment_score": 0.35,
+      "sentiment_label": "BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -0.97,
+      "reaction_3d_pct": -1.92,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0002115436 with accession number 0002115436-26-000006",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-07-31",
+        "Document reference: xom-20260731.htm (8-K classification)",
+        "Reported disclosure items: 2.02,7.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.1
+    },
+    {
+      "id": "957c633bead0",
+      "symbol": "ENB",
+      "company_name": "ENBRIDGE INC",
+      "market": "CA",
+      "source": "SEC_EDGAR_10Q",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/895728/000119312526326752/enb-20260630.htm",
+      "headline": "ENB Form 10-Q Quarterly Report \u2014 Q/E 2026-06-30",
+      "summary": "ENBRIDGE INC filed Form 10-Q with the SEC on 2026-07-31. Document: enb-20260630.htm. Accession: 0001193125-26-326752. Primary reporting date: 2026-06-30.",
+      "filing_date": "2026-07-31",
+      "published_at": "2026-07-31T16:05:00Z",
+      "event_category": "QUARTERLY_REPORT",
+      "materiality_level": "HIGH",
+      "materiality_score": 4,
+      "materiality_rationale": "Quarterly Financial Report for period ending 2026-06-30 (Form 10-Q)",
+      "sentiment_score": 0.2,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "MEDIUM_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -1.8,
+      "reaction_3d_pct": -6.4,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0000895728 with accession number 0001193125-26-326752",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-07-31",
+        "Document reference: enb-20260630.htm (10-Q classification)"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
+    },
+    {
+      "id": "7491bcb9b061",
+      "symbol": "AAPL",
+      "company_name": "Apple Inc.",
+      "market": "US",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000018/aapl-20260730.htm",
+      "headline": "AAPL SEC Form 8-K Filing \u2014 Results of Operations and Financial Condition (Earnings)",
+      "summary": "Apple Inc. filed Form 8-K with the SEC on 2026-07-30. Document: aapl-20260730.htm. Accession: 0000320193-26-000018. Primary reporting date: 2026-07-30.",
+      "filing_date": "2026-07-30",
+      "published_at": "2026-07-30T16:05:00Z",
+      "event_category": "EARNINGS_ANNOUNCEMENT",
+      "materiality_level": "HIGH",
+      "materiality_score": 4,
+      "materiality_rationale": "SEC Form 8-K (2.02, 9.01): Results of Operations and Financial Condition (Earnings)",
+      "sentiment_score": 0.35,
+      "sentiment_label": "BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -1.41,
+      "reaction_3d_pct": -10.28,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0000320193 with accession number 0000320193-26-000018",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-07-30",
+        "Document reference: aapl-20260730.htm (8-K classification)",
+        "Reported disclosure items: 2.02,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.1
+    },
+    {
+      "id": "78c2aec6a0dd",
+      "symbol": "AMZN",
+      "company_name": "AMAZON COM INC",
+      "market": "US",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000024/amzn-20260730.htm",
+      "headline": "AMZN SEC Form 8-K Filing \u2014 Results of Operations and Financial Condition (Earnings)",
+      "summary": "AMAZON COM INC filed Form 8-K with the SEC on 2026-07-30. Document: amzn-20260730.htm. Accession: 0001018724-26-000024. Primary reporting date: 2026-07-30.",
+      "filing_date": "2026-07-30",
+      "published_at": "2026-07-30T16:05:00Z",
+      "event_category": "EARNINGS_ANNOUNCEMENT",
+      "materiality_level": "HIGH",
+      "materiality_score": 4,
+      "materiality_rationale": "SEC Form 8-K (2.02, 9.01): Results of Operations and Financial Condition (Earnings)",
+      "sentiment_score": 0.35,
+      "sentiment_label": "BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": 3.9,
+      "reaction_3d_pct": 25.31,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001018724 with accession number 0001018724-26-000024",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-07-30",
+        "Document reference: amzn-20260730.htm (8-K classification)",
+        "Reported disclosure items: 2.02,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.1
+    },
+    {
+      "id": "f2ff44a7d3f5",
+      "symbol": "CP",
+      "company_name": "CANADIAN PACIFIC KANSAS CITY LTD/CN",
+      "market": "CA",
+      "source": "SEC_EDGAR_10Q",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/16875/000001687526000026/cp-20260630.htm",
+      "headline": "CP Form 10-Q Quarterly Report \u2014 Q/E 2026-06-30",
+      "summary": "CANADIAN PACIFIC KANSAS CITY LTD/CN filed Form 10-Q with the SEC on 2026-07-30. Document: cp-20260630.htm. Accession: 0000016875-26-000026. Primary reporting date: 2026-06-30.",
+      "filing_date": "2026-07-30",
+      "published_at": "2026-07-30T16:05:00Z",
+      "event_category": "QUARTERLY_REPORT",
+      "materiality_level": "HIGH",
+      "materiality_score": 4,
+      "materiality_rationale": "Quarterly Financial Report for period ending 2026-06-30 (Form 10-Q)",
+      "sentiment_score": 0.2,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "MEDIUM_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -3.93,
+      "reaction_3d_pct": -0.73,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0000016875 with accession number 0000016875-26-000026",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-07-30",
+        "Document reference: cp-20260630.htm (10-Q classification)"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
+    },
+    {
+      "id": "97be26006469",
+      "symbol": "CP",
+      "company_name": "CANADIAN PACIFIC KANSAS CITY LTD/CN",
+      "market": "CA",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/16875/000119312526325242/d153278d8k.htm",
+      "headline": "CP SEC Form 8-K Filing \u2014 Other Events of Substantial Importance",
+      "summary": "CANADIAN PACIFIC KANSAS CITY LTD/CN filed Form 8-K with the SEC on 2026-07-30. Document: d153278d8k.htm. Accession: 0001193125-26-325242. Primary reporting date: 2026-07-29.",
+      "filing_date": "2026-07-30",
+      "published_at": "2026-07-30T16:05:00Z",
+      "event_category": "OTHER_MATERIAL_EVENT",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "SEC Form 8-K (8.01, 9.01): Other Events of Substantial Importance",
+      "sentiment_score": 0.1,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -3.93,
+      "reaction_3d_pct": -0.73,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0000016875 with accession number 0001193125-26-325242",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-07-30",
+        "Document reference: d153278d8k.htm (8-K classification)",
+        "Reported disclosure items: 8.01,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
+    },
+    {
+      "id": "aff17376874b",
+      "symbol": "MSFT",
+      "company_name": "MICROSOFT CORP",
+      "market": "US",
+      "source": "SEC_EDGAR_10K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm",
+      "headline": "MSFT Form 10-K Comprehensive Annual Report \u2014 F/Y 2026-06-30",
+      "summary": "MICROSOFT CORP filed Form 10-K with the SEC on 2026-07-29. Document: msft-20260630.htm. Accession: 0001193125-26-323660. Primary reporting date: 2026-06-30.",
+      "filing_date": "2026-07-29",
+      "published_at": "2026-07-29T16:05:00Z",
+      "event_category": "ANNUAL_REPORT",
+      "materiality_level": "HIGH",
+      "materiality_score": 4,
+      "materiality_rationale": "Annual Comprehensive 10-K Report for fiscal year ending 2026-06-30",
+      "sentiment_score": 0.2,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "STRUCTURAL",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -0.71,
+      "reaction_3d_pct": 18.14,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0000789019 with accession number 0001193125-26-323660",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-07-29",
+        "Document reference: msft-20260630.htm (10-K classification)"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
+    },
+    {
+      "id": "d7dc98da6242",
+      "symbol": "MSFT",
+      "company_name": "MICROSOFT CORP",
+      "market": "US",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323632/msft-20260729.htm",
+      "headline": "MSFT SEC Form 8-K Filing \u2014 Results of Operations and Financial Condition (Earnings)",
+      "summary": "MICROSOFT CORP filed Form 8-K with the SEC on 2026-07-29. Document: msft-20260729.htm. Accession: 0001193125-26-323632. Primary reporting date: 2026-07-29.",
+      "filing_date": "2026-07-29",
+      "published_at": "2026-07-29T16:05:00Z",
+      "event_category": "EARNINGS_ANNOUNCEMENT",
+      "materiality_level": "HIGH",
+      "materiality_score": 4,
+      "materiality_rationale": "SEC Form 8-K (2.02, 9.01): Results of Operations and Financial Condition (Earnings)",
+      "sentiment_score": 0.35,
+      "sentiment_label": "BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -0.71,
+      "reaction_3d_pct": 18.14,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0000789019 with accession number 0001193125-26-323632",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-07-29",
+        "Document reference: msft-20260729.htm (8-K classification)",
+        "Reported disclosure items: 2.02,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.1
+    },
+    {
+      "id": "3acd4a756d93",
+      "symbol": "CP",
+      "company_name": "CANADIAN PACIFIC KANSAS CITY LTD/CN",
+      "market": "CA",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/16875/000001687526000024/cp-20260729.htm",
+      "headline": "CP SEC Form 8-K Filing \u2014 Results of Operations and Financial Condition (Earnings)",
+      "summary": "CANADIAN PACIFIC KANSAS CITY LTD/CN filed Form 8-K with the SEC on 2026-07-29. Document: cp-20260729.htm. Accession: 0000016875-26-000024. Primary reporting date: 2026-07-29.",
+      "filing_date": "2026-07-29",
+      "published_at": "2026-07-29T16:05:00Z",
+      "event_category": "EARNINGS_ANNOUNCEMENT",
+      "materiality_level": "HIGH",
+      "materiality_score": 4,
+      "materiality_rationale": "SEC Form 8-K (2.02, 9.01): Results of Operations and Financial Condition (Earnings)",
+      "sentiment_score": 0.35,
+      "sentiment_label": "BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -0.83,
+      "reaction_3d_pct": -3.79,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0000016875 with accession number 0000016875-26-000024",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-07-29",
+        "Document reference: cp-20260729.htm (8-K classification)",
+        "Reported disclosure items: 2.02,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.1
+    },
+    {
+      "id": "cb29a1bf592c",
+      "symbol": "CP",
+      "company_name": "CANADIAN PACIFIC KANSAS CITY LTD/CN",
+      "market": "CA",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/16875/000119312526324144/d112154d8k.htm",
+      "headline": "CP SEC Form 8-K Filing \u2014 Departure or Appointment of Principal Executive Officers / Directors",
+      "summary": "CANADIAN PACIFIC KANSAS CITY LTD/CN filed Form 8-K with the SEC on 2026-07-29. Document: d112154d8k.htm. Accession: 0001193125-26-324144. Primary reporting date: 2026-07-29.",
+      "filing_date": "2026-07-29",
+      "published_at": "2026-07-29T16:05:00Z",
+      "event_category": "EXECUTIVE_CHANGE",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "SEC Form 8-K (5.02, 7.01, 9.01): Departure or Appointment of Principal Executive Officers / Directors",
+      "sentiment_score": 0.05,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "MEDIUM_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -0.83,
+      "reaction_3d_pct": -3.79,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0000016875 with accession number 0001193125-26-324144",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-07-29",
+        "Document reference: d112154d8k.htm (8-K classification)",
+        "Reported disclosure items: 5.02,7.01,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
+    },
+    {
+      "id": "dd620bd40f09",
+      "symbol": "GOOGL",
+      "company_name": "Alphabet Inc.",
+      "market": "US",
+      "source": "SEC_EDGAR_10Q",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000071/goog-20260630.htm",
+      "headline": "GOOGL Form 10-Q Quarterly Report \u2014 Q/E 2026-06-30",
+      "summary": "Alphabet Inc. filed Form 10-Q with the SEC on 2026-07-23. Document: goog-20260630.htm. Accession: 0001652044-26-000071. Primary reporting date: 2026-06-30.",
+      "filing_date": "2026-07-23",
+      "published_at": "2026-07-23T16:05:00Z",
+      "event_category": "QUARTERLY_REPORT",
+      "materiality_level": "HIGH",
+      "materiality_score": 4,
+      "materiality_rationale": "Quarterly Financial Report for period ending 2026-06-30 (Form 10-Q)",
+      "sentiment_score": 0.2,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "MEDIUM_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -7.13,
+      "reaction_3d_pct": -4.54,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001652044 with accession number 0001652044-26-000071",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-07-23",
+        "Document reference: goog-20260630.htm (10-Q classification)"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
+    },
+    {
+      "id": "59f68c1e0da9",
+      "symbol": "GOOGL",
+      "company_name": "Alphabet Inc.",
+      "market": "US",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000066/goog-20260722.htm",
+      "headline": "GOOGL SEC Form 8-K Filing \u2014 Results of Operations and Financial Condition (Earnings)",
+      "summary": "Alphabet Inc. filed Form 8-K with the SEC on 2026-07-22. Document: goog-20260722.htm. Accession: 0001652044-26-000066. Primary reporting date: 2026-07-22.",
+      "filing_date": "2026-07-22",
+      "published_at": "2026-07-22T16:05:00Z",
+      "event_category": "EARNINGS_ANNOUNCEMENT",
+      "materiality_level": "HIGH",
+      "materiality_score": 4,
+      "materiality_rationale": "SEC Form 8-K (2.02, 9.01): Results of Operations and Financial Condition (Earnings)",
+      "sentiment_score": 0.35,
+      "sentiment_label": "BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -1.46,
+      "reaction_3d_pct": -7.9,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001652044 with accession number 0001652044-26-000066",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-07-22",
+        "Document reference: goog-20260722.htm (8-K classification)",
+        "Reported disclosure items: 2.02,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
+    },
+    {
+      "id": "f6c58847c3d9",
+      "symbol": "AMZN",
+      "company_name": "AMAZON COM INC",
+      "market": "US",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1018724/000110465926082293/tm2619352d4_8k.htm",
+      "headline": "AMZN SEC Form 8-K Filing \u2014 Other Events of Substantial Importance",
+      "summary": "AMAZON COM INC filed Form 8-K with the SEC on 2026-07-09. Document: tm2619352d4_8k.htm. Accession: 0001104659-26-082293. Primary reporting date: 2026-07-09.",
+      "filing_date": "2026-07-09",
+      "published_at": "2026-07-09T16:05:00Z",
+      "event_category": "OTHER_MATERIAL_EVENT",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "SEC Form 8-K (8.01, 9.01): Other Events of Substantial Importance",
+      "sentiment_score": 0.1,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": 1.4,
+      "reaction_3d_pct": 1.51,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001018724 with accession number 0001104659-26-082293",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-07-09",
+        "Document reference: tm2619352d4_8k.htm (8-K classification)",
+        "Reported disclosure items: 8.01,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
+    },
+    {
+      "id": "6aff44d85f82",
+      "symbol": "CP",
+      "company_name": "CANADIAN PACIFIC KANSAS CITY LTD/CN",
+      "market": "CA",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/16875/000119312526298557/d126750d8k.htm",
+      "headline": "CP SEC Form 8-K Filing \u2014 Entry into a Material Definitive Agreement",
+      "summary": "CANADIAN PACIFIC KANSAS CITY LTD/CN filed Form 8-K with the SEC on 2026-07-08. Document: d126750d8k.htm. Accession: 0001193125-26-298557. Primary reporting date: 2026-07-06.",
+      "filing_date": "2026-07-08",
+      "published_at": "2026-07-08T16:05:00Z",
+      "event_category": "MATERIAL_AGREEMENT",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "SEC Form 8-K (1.01, 9.01): Entry into a Material Definitive Agreement",
+      "sentiment_score": 0.25,
+      "sentiment_label": "BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "MEDIUM_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": 0.51,
+      "reaction_3d_pct": 1.21,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0000016875 with accession number 0001193125-26-298557",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-07-08",
+        "Document reference: d126750d8k.htm (8-K classification)",
+        "Reported disclosure items: 1.01,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
+    },
+    {
+      "id": "a87a68c8f151",
+      "symbol": "XOM",
+      "company_name": "ExxonMobil Holdings Corp",
+      "market": "US",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/2115436/000211543626000003/xom-20260707.htm",
+      "headline": "XOM SEC Form 8-K Filing \u2014 Regulation FD Disclosure (Investor Presentation / Update)",
+      "summary": "ExxonMobil Holdings Corp filed Form 8-K with the SEC on 2026-07-07. Document: xom-20260707.htm. Accession: 0002115436-26-000003. Primary reporting date: 2026-07-07.",
+      "filing_date": "2026-07-07",
+      "published_at": "2026-07-07T16:05:00Z",
+      "event_category": "REGULATION_FD",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "SEC Form 8-K (7.01): Regulation FD Disclosure (Investor Presentation / Update)",
+      "sentiment_score": 0.15,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": 3.85,
+      "reaction_3d_pct": 0.75,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0002115436 with accession number 0002115436-26-000003",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-07-07",
+        "Document reference: xom-20260707.htm (8-K classification)",
+        "Reported disclosure items: 7.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
+    },
+    {
+      "id": "10591261f484",
+      "symbol": "NVDA",
+      "company_name": "NVIDIA CORP",
+      "market": "US",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000060/nvda-20260628.htm",
+      "headline": "NVDA SEC Form 8-K Filing \u2014 Departure or Appointment of Principal Executive Officers / Directors",
+      "summary": "NVIDIA CORP filed Form 8-K with the SEC on 2026-07-02. Document: nvda-20260628.htm. Accession: 0001045810-26-000060. Primary reporting date: 2026-06-28.",
+      "filing_date": "2026-07-02",
+      "published_at": "2026-07-02T16:05:00Z",
+      "event_category": "EXECUTIVE_CHANGE",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "SEC Form 8-K (5.02): Departure or Appointment of Principal Executive Officers / Directors",
+      "sentiment_score": 0.05,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "MEDIUM_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -1.39,
+      "reaction_3d_pct": -0.33,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001045810 with accession number 0001045810-26-000060",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-07-02",
+        "Document reference: nvda-20260628.htm (8-K classification)",
+        "Reported disclosure items: 5.02"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
+    },
+    {
+      "id": "434cd79ae82a",
+      "symbol": "SHOP",
+      "company_name": "SHOPIFY INC.",
+      "market": "CA",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1594805/000159480526000035/shop-20260702.htm",
+      "headline": "SHOP SEC Form 8-K Filing \u2014 Departure or Appointment of Principal Executive Officers / Directors",
+      "summary": "SHOPIFY INC. filed Form 8-K with the SEC on 2026-07-02. Document: shop-20260702.htm. Accession: 0001594805-26-000035. Primary reporting date: 2026-07-02.",
+      "filing_date": "2026-07-02",
+      "published_at": "2026-07-02T16:05:00Z",
+      "event_category": "EXECUTIVE_CHANGE",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "SEC Form 8-K (5.02, 9.01): Departure or Appointment of Principal Executive Officers / Directors",
+      "sentiment_score": 0.05,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "MEDIUM_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": 4.55,
+      "reaction_3d_pct": 5.2,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001594805 with accession number 0001594805-26-000035",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-07-02",
+        "Document reference: shop-20260702.htm (8-K classification)",
+        "Reported disclosure items: 5.02,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
+    },
+    {
+      "id": "fddfa8e7a61a",
+      "symbol": "SHOP",
+      "company_name": "SHOPIFY INC.",
+      "market": "CA",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1594805/000159480526000030/shop-20260616.htm",
+      "headline": "SHOP SEC Form 8-K Filing \u2014 Other Events of Substantial Importance",
+      "summary": "SHOPIFY INC. filed Form 8-K with the SEC on 2026-06-16. Document: shop-20260616.htm. Accession: 0001594805-26-000030. Primary reporting date: 2026-06-16.",
+      "filing_date": "2026-06-16",
+      "published_at": "2026-06-16T16:05:00Z",
+      "event_category": "OTHER_MATERIAL_EVENT",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "SEC Form 8-K (5.07, 8.01, 9.01): Other Events of Substantial Importance",
+      "sentiment_score": 0.1,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": 0.78,
+      "reaction_3d_pct": -2.24,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001594805 with accession number 0001594805-26-000030",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-06-16",
+        "Document reference: shop-20260616.htm (8-K classification)",
+        "Reported disclosure items: 5.07,8.01,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
+    },
+    {
+      "id": "5d0c56e0b8a4",
+      "symbol": "CNR",
+      "company_name": "Core Natural Resources, Inc.",
+      "market": "CA",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1710366/000171036626000048/cnr-20260604.htm",
+      "headline": "CNR SEC Form 8-K Filing \u2014 Regulation FD Disclosure (Investor Presentation / Update)",
+      "summary": "Core Natural Resources, Inc. filed Form 8-K with the SEC on 2026-06-04. Document: cnr-20260604.htm. Accession: 0001710366-26-000048. Primary reporting date: 2026-06-04.",
+      "filing_date": "2026-06-04",
+      "published_at": "2026-06-04T16:05:00Z",
+      "event_category": "REGULATION_FD",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "SEC Form 8-K (7.01, 9.01): Regulation FD Disclosure (Investor Presentation / Update)",
+      "sentiment_score": 0.15,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": 0.14,
+      "reaction_3d_pct": 1.64,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001710366 with accession number 0001710366-26-000048",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-06-04",
+        "Document reference: cnr-20260604.htm (8-K classification)",
+        "Reported disclosure items: 7.01,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
+    },
+    {
+      "id": "53fbd3c02afe",
+      "symbol": "SHOP",
+      "company_name": "SHOPIFY INC.",
+      "market": "CA",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1594805/000159480526000028/shop-20260602.htm",
+      "headline": "SHOP SEC Form 8-K Filing \u2014 Regulation FD Disclosure (Investor Presentation / Update)",
+      "summary": "SHOPIFY INC. filed Form 8-K with the SEC on 2026-06-02. Document: shop-20260602.htm. Accession: 0001594805-26-000028. Primary reporting date: 2026-06-02.",
+      "filing_date": "2026-06-02",
+      "published_at": "2026-06-02T16:05:00Z",
+      "event_category": "REGULATION_FD",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "SEC Form 8-K (7.01, 9.01): Regulation FD Disclosure (Investor Presentation / Update)",
+      "sentiment_score": 0.15,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -5.66,
+      "reaction_3d_pct": -5.9,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001594805 with accession number 0001594805-26-000028",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-06-02",
+        "Document reference: shop-20260602.htm (8-K classification)",
+        "Reported disclosure items: 7.01,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
+    },
+    {
+      "id": "cfe660adbd09",
+      "symbol": "CNR",
+      "company_name": "Core Natural Resources, Inc.",
+      "market": "CA",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1710366/000171036626000045/cnr-20260513.htm",
+      "headline": "CNR SEC Form 8-K Current Report (1.04)",
+      "summary": "Core Natural Resources, Inc. filed Form 8-K with the SEC on 2026-05-19. Document: cnr-20260513.htm. Accession: 0001710366-26-000045. Primary reporting date: 2026-05-13.",
+      "filing_date": "2026-05-19",
+      "published_at": "2026-05-19T16:05:00Z",
+      "event_category": "OTHER_MATERIAL_EVENT",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "Official SEC Form 8-K filing",
+      "sentiment_score": 0.05,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": 1.15,
+      "reaction_3d_pct": 2.29,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001710366 with accession number 0001710366-26-000045",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-05-19",
+        "Document reference: cnr-20260513.htm (8-K classification)",
+        "Reported disclosure items: 1.04"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
+    },
+    {
+      "id": "b0bbe68335ed",
+      "symbol": "CNQ",
+      "company_name": "CANADIAN NATURAL RESOURCES Ltd",
+      "market": "CA",
+      "source": "SEC_EDGAR_6K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1017413/000101741326000033/a05112026dividendamendinga.htm",
+      "headline": "CNQ Form 6-K Cross-Border Continuous Disclosure",
+      "summary": "CANADIAN NATURAL RESOURCES Ltd filed Form 6-K with the SEC on 2026-05-12. Document: a05112026dividendamendinga.htm. Accession: 0001017413-26-000033. Primary reporting date: 2026-05-11.",
+      "filing_date": "2026-05-12",
+      "published_at": "2026-05-12T16:05:00Z",
+      "event_category": "CANADIAN_FOREIGN_FILING",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "Foreign Issuer Continuous Disclosure (SEDAR cross-filing)",
+      "sentiment_score": 0.1,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": 4.06,
+      "reaction_3d_pct": 5.73,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001017413 with accession number 0001017413-26-000033",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-05-12",
+        "Document reference: a05112026dividendamendinga.htm (6-K classification)"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
+    },
+    {
+      "id": "061c5d172366",
+      "symbol": "CNQ",
+      "company_name": "CANADIAN NATURAL RESOURCES Ltd",
+      "market": "CA",
+      "source": "SEC_EDGAR_6K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1017413/000101741326000030/a05082026votingresultscover.htm",
+      "headline": "CNQ Form 6-K Cross-Border Continuous Disclosure",
+      "summary": "CANADIAN NATURAL RESOURCES Ltd filed Form 6-K with the SEC on 2026-05-11. Document: a05082026votingresultscover.htm. Accession: 0001017413-26-000030. Primary reporting date: 2026-05-07.",
+      "filing_date": "2026-05-11",
+      "published_at": "2026-05-11T16:05:00Z",
+      "event_category": "CANADIAN_FOREIGN_FILING",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "Foreign Issuer Continuous Disclosure (SEDAR cross-filing)",
+      "sentiment_score": 0.1,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": 1.43,
+      "reaction_3d_pct": 6.24,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001017413 with accession number 0001017413-26-000030",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-05-11",
+        "Document reference: a05082026votingresultscover.htm (6-K classification)"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
+    },
+    {
+      "id": "943306c0b364",
+      "symbol": "CNQ",
+      "company_name": "CANADIAN NATURAL RESOURCES Ltd",
+      "market": "CA",
+      "source": "SEC_EDGAR_6K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1017413/000101741326000026/a05072026dividendcover.htm",
+      "headline": "CNQ Form 6-K Cross-Border Continuous Disclosure",
+      "summary": "CANADIAN NATURAL RESOURCES Ltd filed Form 6-K with the SEC on 2026-05-07. Document: a05072026dividendcover.htm. Accession: 0001017413-26-000026. Primary reporting date: 2026-05-07.",
+      "filing_date": "2026-05-07",
+      "published_at": "2026-05-07T16:05:00Z",
+      "event_category": "CANADIAN_FOREIGN_FILING",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "Foreign Issuer Continuous Disclosure (SEDAR cross-filing)",
+      "sentiment_score": 0.1,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -2.09,
+      "reaction_3d_pct": -0.8,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001017413 with accession number 0001017413-26-000026",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-05-07",
+        "Document reference: a05072026dividendcover.htm (6-K classification)"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
+    },
+    {
+      "id": "30cd2bab104a",
+      "symbol": "AAPL",
+      "company_name": "Apple Inc.",
+      "market": "US",
+      "source": "SEC_EDGAR_10Q",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000013/aapl-20260328.htm",
+      "headline": "AAPL Form 10-Q Quarterly Report \u2014 Q/E 2026-03-28",
+      "summary": "Apple Inc. filed Form 10-Q with the SEC on 2026-05-01. Document: aapl-20260328.htm. Accession: 0000320193-26-000013. Primary reporting date: 2026-03-28.",
+      "filing_date": "2026-05-01",
+      "published_at": "2026-05-01T16:05:00Z",
+      "event_category": "QUARTERLY_REPORT",
+      "materiality_level": "HIGH",
+      "materiality_score": 4,
+      "materiality_rationale": "Quarterly Financial Report for period ending 2026-03-28 (Form 10-Q)",
+      "sentiment_score": 0.2,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "MEDIUM_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": 3.24,
+      "reaction_3d_pct": 4.73,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0000320193 with accession number 0000320193-26-000013",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-05-01",
+        "Document reference: aapl-20260328.htm (10-Q classification)"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
+    },
+    {
+      "id": "5a5c37378379",
+      "symbol": "AAPL",
+      "company_name": "Apple Inc.",
+      "market": "US",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000011/aapl-20260430.htm",
+      "headline": "AAPL SEC Form 8-K Filing \u2014 Results of Operations and Financial Condition (Earnings)",
+      "summary": "Apple Inc. filed Form 8-K with the SEC on 2026-04-30. Document: aapl-20260430.htm. Accession: 0000320193-26-000011. Primary reporting date: 2026-04-30.",
+      "filing_date": "2026-04-30",
+      "published_at": "2026-04-30T16:05:00Z",
+      "event_category": "EARNINGS_ANNOUNCEMENT",
+      "materiality_level": "HIGH",
+      "materiality_score": 4,
+      "materiality_rationale": "SEC Form 8-K (2.02, 9.01): Results of Operations and Financial Condition (Earnings)",
+      "sentiment_score": 0.35,
+      "sentiment_label": "BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": 0.44,
+      "reaction_3d_pct": 2.47,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0000320193 with accession number 0000320193-26-000011",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-04-30",
+        "Document reference: aapl-20260430.htm (8-K classification)",
+        "Reported disclosure items: 2.02,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
+    },
+    {
+      "id": "2f91455859e7",
+      "symbol": "AAPL",
+      "company_name": "Apple Inc.",
+      "market": "US",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000114036126015711/ef20071035_8k.htm",
+      "headline": "AAPL SEC Form 8-K Filing \u2014 Departure or Appointment of Principal Executive Officers / Directors",
+      "summary": "Apple Inc. filed Form 8-K with the SEC on 2026-04-20. Document: ef20071035_8k.htm. Accession: 0001140361-26-015711. Primary reporting date: 2026-04-17.",
+      "filing_date": "2026-04-20",
+      "published_at": "2026-04-20T16:05:00Z",
+      "event_category": "EXECUTIVE_CHANGE",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "SEC Form 8-K (5.02): Departure or Appointment of Principal Executive Officers / Directors",
+      "sentiment_score": 0.05,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "MEDIUM_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": 1.04,
+      "reaction_3d_pct": 1.09,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0000320193 with accession number 0001140361-26-015711",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-04-20",
+        "Document reference: ef20071035_8k.htm (8-K classification)",
+        "Reported disclosure items: 5.02"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
+    }
+  ]
+}

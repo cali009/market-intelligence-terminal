@@ -513,6 +513,94 @@
             padding: 8px 12px;
         }
 
+        /* News & Catalysts Center */
+        .catalyst-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 16px;
+            transition: all 0.2s ease;
+        }
+
+        .catalyst-card:hover {
+            border-color: rgba(59, 130, 246, 0.4);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .mat-high {
+            background: rgba(239, 68, 68, 0.15);
+            color: var(--accent-red);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            font-weight: 700;
+        }
+
+        .mat-medium {
+            background: rgba(245, 158, 11, 0.15);
+            color: var(--accent-amber);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            font-weight: 700;
+        }
+
+        .mat-low {
+            background: rgba(148, 163, 184, 0.15);
+            color: var(--text-muted);
+            border: 1px solid rgba(148, 163, 184, 0.3);
+            font-weight: 600;
+        }
+
+        .sent-bullish {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--accent-green);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            font-weight: 700;
+        }
+
+        .sent-lean_bullish {
+            background: rgba(16, 185, 129, 0.12);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            font-weight: 600;
+        }
+
+        .sent-bearish {
+            background: rgba(239, 68, 68, 0.15);
+            color: var(--accent-red);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            font-weight: 700;
+        }
+
+        .sent-lean_bearish {
+            background: rgba(239, 68, 68, 0.12);
+            color: #f87171;
+            border: 1px solid rgba(239, 68, 68, 0.25);
+            font-weight: 600;
+        }
+
+        .sent-neutral {
+            background: rgba(100, 116, 139, 0.15);
+            color: var(--text-muted);
+            border: 1px solid rgba(100, 116, 139, 0.3);
+            font-weight: 600;
+        }
+
+        .status-fresh {
+            background: rgba(6, 182, 212, 0.15);
+            color: var(--accent-cyan);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+        }
+
+        .status-partial {
+            background: rgba(245, 158, 11, 0.15);
+            color: var(--accent-amber);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+
+        .status-priced_in {
+            background: rgba(148, 163, 184, 0.15);
+            color: var(--text-muted);
+            border: 1px solid rgba(148, 163, 184, 0.3);
+        }
+
         /* Drawer / Modal */
         .drawer-overlay {
             position: fixed;
@@ -659,6 +747,7 @@
             <button class="tab-btn" data-tab="scanners" onclick="switchTab('scanners', event)">TAC-14 Market Scanners</button>
             <button class="tab-btn" data-tab="signals" onclick="switchTab('signals', event)">Research Signal Plans</button>
             <button class="tab-btn" data-tab="backtest" onclick="switchTab('backtest', event)">Backtest Lab & Strategy Performance</button>
+            <button class="tab-btn" data-tab="catalysts" onclick="switchTab('catalysts', event)">News & SEC Filings</button>
         </div>
 
         <!-- Tab 1: Leaderboard -->
@@ -872,6 +961,91 @@
             <div style="background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 8px; padding: 16px; font-size: 11px; color: #fbbf24; line-height: 1.6;">
                 <strong>MANDATORY HYPOTHETICAL PERFORMANCE DISCLOSURE (CSA Staff Notice 31-369 & SEC Rule 206(4)-1):</strong>
                 Hypothetical or simulated performance results have inherent limitations. Unlike actual trading records, simulated results do not represent actual trading and may under- or over-compensate for the impact of market factors such as liquidity, slippage, and execution latency. Simulated trading programs are designed with the benefit of hindsight. No representation is being made that any account will achieve profits or losses similar to those shown.
+            </div>
+        </div>
+
+        <!-- Tab 5: News & SEC Filings Intelligence -->
+        <div id="tab-catalysts" style="display: none;">
+            <div class="catalysts-header" style="margin-bottom: 20px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+                    <div>
+                        <h2 style="font-size: 18px; font-weight: 800; color: var(--text-primary); margin-bottom: 4px;">News, SEC Filings & Catalysts Intelligence Center</h2>
+                        <p style="font-size: 12px; color: var(--text-muted);">Continuous dual-market regulatory ingestion · SEC EDGAR 8-K / 10-Q / 10-K / 6-K · Bank of Canada Valet · Quantitative materiality & sentiment scoring · Post-event reaction tracking</p>
+                    </div>
+                    <div style="display: flex; gap: 8px; align-items: center;">
+                        <span class="exchange-tag" style="background: rgba(59, 130, 246, 0.15); color: var(--accent-blue); border: 1px solid rgba(59, 130, 246, 0.3);">SEC EDGAR XBRL Live</span>
+                        <span class="exchange-tag" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-green); border: 1px solid rgba(16, 185, 129, 0.3);">BoC Valet Synced</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top Metric Scorecards -->
+            <div class="scorecard-grid" id="catalystsMetricsGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 20px;">
+                <!-- Populated dynamically -->
+            </div>
+
+            <!-- Filter & Search Toolbar -->
+            <div class="toolbar" style="margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
+                <!-- Market Filter -->
+                <div class="filter-group">
+                    <button class="filter-btn active" id="catMarketAll" onclick="setCatalystMarketFilter('ALL')">All Markets</button>
+                    <button class="filter-btn" id="catMarketUS" onclick="setCatalystMarketFilter('US')">US Equities (SEC)</button>
+                    <button class="filter-btn" id="catMarketCA" onclick="setCatalystMarketFilter('CA')">Canadian TSX (6-K)</button>
+                    <button class="filter-btn" id="catMarketMacro" onclick="setCatalystMarketFilter('MACRO')">Macro Rates</button>
+                </div>
+
+                <!-- Materiality Filter -->
+                <div style="display: flex; align-items: center; gap: 6px;">
+                    <span style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Materiality:</span>
+                    <select id="catMaterialityFilter" onchange="filterCatalysts()" style="background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color); padding: 6px 10px; border-radius: 4px; font-size: 12px;">
+                        <option value="ALL">All Materiality Levels</option>
+                        <option value="HIGH">High Only (Tier 1: 4-5)</option>
+                        <option value="MEDIUM">Medium+ (Tier 2: 3-5)</option>
+                        <option value="LOW">Low (Tier 3: 1-2)</option>
+                    </select>
+                </div>
+
+                <!-- Category Filter -->
+                <div style="display: flex; align-items: center; gap: 6px;">
+                    <span style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Category:</span>
+                    <select id="catCategoryFilter" onchange="filterCatalysts()" style="background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color); padding: 6px 10px; border-radius: 4px; font-size: 12px;">
+                        <option value="ALL">All Event Categories</option>
+                        <option value="EARNINGS_ANNOUNCEMENT">Earnings Releases (8-K 2.02)</option>
+                        <option value="QUARTERLY_REPORT">Quarterly Reports (10-Q)</option>
+                        <option value="ANNUAL_REPORT">Annual Reports (10-K / 40-F)</option>
+                        <option value="MATERIAL_AGREEMENT">Material Agreements (8-K 1.01)</option>
+                        <option value="EXECUTIVE_CHANGE">Executive Changes (8-K 5.02)</option>
+                        <option value="MACRO_RATE_POLICY">Macro Rate Policy</option>
+                        <option value="CANADIAN_FOREIGN_FILING">Canadian Form 6-K</option>
+                        <option value="OTHER_MATERIAL_EVENT">Other Material Events (8-K 8.01)</option>
+                    </select>
+                </div>
+
+                <!-- Sentiment Filter -->
+                <div style="display: flex; align-items: center; gap: 6px;">
+                    <span style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Sentiment:</span>
+                    <select id="catSentimentFilter" onchange="filterCatalysts()" style="background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color); padding: 6px 10px; border-radius: 4px; font-size: 12px;">
+                        <option value="ALL">All Sentiments</option>
+                        <option value="BULLISH">Bullish / Positive</option>
+                        <option value="NEUTRAL">Neutral</option>
+                        <option value="BEARISH">Bearish / Risk</option>
+                    </select>
+                </div>
+
+                <!-- Search Input -->
+                <div class="search-box" style="margin-left: auto;">
+                    <input type="text" id="catalystSearchInput" placeholder="Search symbol, headline, CIK..." oninput="filterCatalysts()" style="background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color); padding: 6px 12px; border-radius: 4px; font-size: 12px; width: 220px;">
+                </div>
+            </div>
+
+            <!-- Catalysts Stream Grid / Feed -->
+            <div id="catalystsFeedContainer" style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px;">
+                <!-- Populated dynamically -->
+            </div>
+
+            <!-- Pagination Controls -->
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; padding-top: 12px; border-top: 1px solid var(--border-color); flex-wrap: wrap; gap: 10px;" id="catPaginationControls">
+                <!-- Populated dynamically -->
             </div>
         </div>
 
@@ -1189,10 +1363,24 @@
                             <!-- Populated dynamically -->
                         </div>
                     </div>
+
+                    <!-- Catalysts & SEC Filings for this Symbol -->
+                    <div style="margin-top: 24px;">
+                        <h3 style="font-size: 13px; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
+                            <span>Catalysts & SEC Filings</span>
+                            <span class="exchange-tag" style="font-size: 10px;">Official SEC EDGAR / SEDAR+</span>
+                        </h3>
+                        <div id="drawerCatalystsSection">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
                 `;
 
                 // Render symbol backtest history if bundle loaded
                 renderSymbolBacktestInDrawer(data.symbol);
+
+                // Render catalysts and SEC filings in drawer
+                renderSymbolCatalystsInDrawer(data.catalysts_and_filings || []);
 
                 // Draw chart on canvas
                 setTimeout(() => drawCandlestickChart(data.chart_bars), 50);
@@ -1301,6 +1489,55 @@
                     </div>
                 </div>
             `;
+        }
+
+        function renderSymbolCatalystsInDrawer(catalysts) {
+            const container = document.getElementById('drawerCatalystsSection');
+            if (!container) return;
+
+            if (!catalysts || catalysts.length === 0) {
+                container.innerHTML = `
+                    <div style="font-size: 12px; color: var(--text-muted); padding: 12px; background: rgba(15, 23, 42, 0.4); border-radius: 6px; border: 1px solid var(--border-color);">
+                        No recent SEC Form 8-K/10-Q continuous disclosure filings recorded in the current observation window.
+                    </div>
+                `;
+                return;
+            }
+
+            let html = '<div style="display: flex; flex-direction: column; gap: 8px;">';
+            catalysts.forEach(c => {
+                const matCls = c.materiality_level === 'HIGH' ? 'mat-high' : (c.materiality_level === 'MEDIUM' ? 'mat-medium' : 'mat-low');
+                const sentCls = `sent-${(c.sentiment_label || 'neutral').toLowerCase()}`;
+                const has1d = c.reaction_1d_pct != null;
+                const r1dColor = has1d ? (c.reaction_1d_pct >= 0 ? 'var(--accent-green)' : 'var(--accent-red)') : 'var(--text-muted)';
+                const r1dText = has1d ? `${c.reaction_1d_pct >= 0 ? '+' : ''}${c.reaction_1d_pct.toFixed(2)}%` : 'Pending';
+
+                html += `
+                    <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border-color); border-radius: 6px; padding: 10px; font-size: 12px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; flex-wrap: wrap; gap: 6px;">
+                            <div style="display: flex; gap: 6px; align-items: center;">
+                                <span class="exchange-tag ${matCls}" style="font-size: 9px;">${c.materiality_level}</span>
+                                <span class="exchange-tag" style="font-size: 9px; color: var(--accent-cyan);">${c.event_category}</span>
+                                <span class="exchange-tag ${sentCls}" style="font-size: 9px;">${c.sentiment_label} (${c.sentiment_score >= 0 ? '+' : ''}${c.sentiment_score.toFixed(2)})</span>
+                            </div>
+                            <span style="font-size: 10px; color: var(--text-muted); font-family: monospace;">${c.filing_date}</span>
+                        </div>
+                        <div style="font-weight: 700; color: var(--text-primary); margin-bottom: 4px; line-height: 1.4;">
+                            <a href="${c.source_url}" target="_blank" rel="noopener noreferrer" style="color: var(--text-primary); text-decoration: none; border-bottom: 1px dotted var(--accent-blue);">
+                                ${c.headline} ↗
+                            </a>
+                        </div>
+                        <div style="color: var(--text-secondary); font-size: 11px; margin-bottom: 6px; line-height: 1.4;">${c.summary}</div>
+                        <div style="display: flex; gap: 12px; font-size: 10px; color: var(--text-muted); border-top: 1px solid rgba(255,255,255,0.05); padding-top: 6px;">
+                            <span>1D Reaction: <strong style="color: ${r1dColor};">${r1dText}</strong></span>
+                            <span>Horizon: <strong style="color: var(--text-primary);">${c.horizon}</strong></span>
+                            <span>Score Impact: <strong style="color: ${c.score_impact_pts >= 0 ? 'var(--accent-green)' : 'var(--accent-red)'};">${c.score_impact_pts >= 0 ? '+' : ''}${c.score_impact_pts} pts</strong></span>
+                        </div>
+                    </div>
+                `;
+            });
+            html += '</div>';
+            container.innerHTML = html;
         }
 
         function drawCandlestickChart(bars) {
@@ -1412,12 +1649,19 @@
             document.getElementById('tab-scanners').style.display = tabId === 'scanners' ? 'block' : 'none';
             document.getElementById('tab-signals').style.display = tabId === 'signals' ? 'block' : 'none';
             document.getElementById('tab-backtest').style.display = tabId === 'backtest' ? 'block' : 'none';
+            document.getElementById('tab-catalysts').style.display = tabId === 'catalysts' ? 'block' : 'none';
 
             if (tabId === 'backtest') {
                 if (!backtestBundle) {
                     loadBacktestsAndRender();
                 } else {
                     setTimeout(() => renderBacktestView(), 40);
+                }
+            } else if (tabId === 'catalysts') {
+                if (!catalystsBundle) {
+                    loadCatalystsAndRender();
+                } else {
+                    renderCatalystsView();
                 }
             }
         }
@@ -2040,6 +2284,297 @@
                 }
             }
         });
+
+        // ==========================================
+        // NEWS, SEC FILINGS & CATALYSTS INTELLIGENCE
+        // ==========================================
+        let catalystsBundle = null;
+        let filteredCatalysts = [];
+        let catCurrentPage = 1;
+        let catPageSize = 15;
+        let catMarketFilter = 'ALL';
+        let catalystsLoading = false;
+
+        async function loadCatalystsAndRender() {
+            if (catalystsLoading) return;
+            catalystsLoading = true;
+
+            const feedContainer = document.getElementById('catalystsFeedContainer');
+            if (feedContainer) {
+                feedContainer.innerHTML = '<div style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 13px;"><div class="spinner" style="margin-right: 8px;"></div> Loading SEC EDGAR & Bank of Canada continuous intelligence feed...</div>';
+            }
+
+            try {
+                catalystsBundle = await fetchJson('/api/news_filings.json', '/api/news_filings');
+                renderCatalystsView();
+            } catch (err) {
+                console.error("Failed to load catalysts feed:", err);
+                if (feedContainer) {
+                    feedContainer.innerHTML = '<div style="text-align: center; padding: 30px; color: var(--accent-red); font-size: 13px;">Unable to load news and filings feed. <button class="filter-btn" style="margin-left: 10px;" onclick="loadCatalystsAndRender()">Retry</button></div>';
+                }
+            } finally {
+                catalystsLoading = false;
+            }
+        }
+
+        function renderCatalystsView() {
+            if (!catalystsBundle) return;
+            renderCatalystsMetrics();
+            filterCatalysts();
+        }
+
+        function renderCatalystsMetrics() {
+            if (!catalystsBundle || !catalystsBundle.summary) return;
+            const s = catalystsBundle.summary;
+            const grid = document.getElementById('catalystsMetricsGrid');
+            if (!grid) return;
+
+            const avgSent = s.sentiment_breakdown?.average_sentiment_score || 0;
+            const isSentBull = avgSent >= 0.05;
+
+            grid.innerHTML = `
+                <div class="scorecard-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px;">
+                    <div style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Analyzed Catalysts</div>
+                    <div style="font-size: 22px; font-weight: 800; color: var(--text-primary); margin: 4px 0;">
+                        ${s.total_catalysts_analyzed} Events
+                    </div>
+                    <div style="font-size: 11px; color: var(--accent-blue);">
+                        ${s.source_breakdown?.sec_edgar_filings || 0} SEC EDGAR · ${s.source_breakdown?.canadian_issuers || 0} TSX Dual-Listed
+                    </div>
+                </div>
+
+                <div class="scorecard-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px;">
+                    <div style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">High Materiality (Tier 1)</div>
+                    <div style="font-size: 22px; font-weight: 800; color: var(--accent-amber); margin: 4px 0;">
+                        ${s.high_materiality_count} Critical
+                    </div>
+                    <div style="font-size: 11px; color: var(--text-muted);">
+                        ${((s.high_materiality_count / Math.max(1, s.total_catalysts_analyzed)) * 100).toFixed(0)}% of total disclosures (8-K, 10-Q/K, BoC)
+                    </div>
+                </div>
+
+                <div class="scorecard-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px;">
+                    <div style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Sentiment Distribution</div>
+                    <div style="font-size: 22px; font-weight: 800; color: ${isSentBull ? 'var(--accent-green)' : 'var(--accent-red)'}; margin: 4px 0;">
+                        ${avgSent >= 0 ? '+' : ''}${avgSent.toFixed(2)} Index
+                    </div>
+                    <div style="font-size: 11px; color: var(--text-muted);">
+                        ${s.sentiment_breakdown?.bullish_count || 0} Bullish · ${s.sentiment_breakdown?.neutral_count || 0} Neutral · ${s.sentiment_breakdown?.bearish_count || 0} Bearish
+                    </div>
+                </div>
+
+                <div class="scorecard-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px;">
+                    <div style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Macro & Central Bank</div>
+                    <div style="font-size: 22px; font-weight: 800; color: var(--accent-purple); margin: 4px 0;">
+                        BoC Valet Synced
+                    </div>
+                    <div style="font-size: 11px; color: var(--text-muted);">
+                        Sovereign Yield Spread & Overnight Target
+                    </div>
+                </div>
+            `;
+        }
+
+        function setCatalystMarketFilter(mkt) {
+            catMarketFilter = mkt;
+            const btnAll = document.getElementById('catMarketAll');
+            const btnUS = document.getElementById('catMarketUS');
+            const btnCA = document.getElementById('catMarketCA');
+            const btnMacro = document.getElementById('catMarketMacro');
+
+            if (btnAll) btnAll.classList.toggle('active', mkt === 'ALL');
+            if (btnUS) btnUS.classList.toggle('active', mkt === 'US');
+            if (btnCA) btnCA.classList.toggle('active', mkt === 'CA');
+            if (btnMacro) btnMacro.classList.toggle('active', mkt === 'MACRO');
+
+            filterCatalysts();
+        }
+
+        function filterCatalysts() {
+            if (!catalystsBundle || !catalystsBundle.catalysts) return;
+
+            const matFilter = document.getElementById('catMaterialityFilter')?.value || 'ALL';
+            const catFilter = document.getElementById('catCategoryFilter')?.value || 'ALL';
+            const sentFilter = document.getElementById('catSentimentFilter')?.value || 'ALL';
+            const q = (document.getElementById('catalystSearchInput')?.value || '').trim().toLowerCase();
+
+            filteredCatalysts = catalystsBundle.catalysts.filter(c => {
+                // Market
+                if (catMarketFilter !== 'ALL' && c.market !== catMarketFilter) return false;
+
+                // Materiality
+                if (matFilter === 'HIGH' && c.materiality_level !== 'HIGH') return false;
+                if (matFilter === 'MEDIUM' && c.materiality_score < 3) return false;
+                if (matFilter === 'LOW' && c.materiality_level !== 'LOW') return false;
+
+                // Category
+                if (catFilter !== 'ALL' && c.event_category !== catFilter) return false;
+
+                // Sentiment
+                if (sentFilter === 'BULLISH' && c.sentiment_score <= 0.05) return false;
+                if (sentFilter === 'BEARISH' && c.sentiment_score >= -0.05) return false;
+                if (sentFilter === 'NEUTRAL' && (c.sentiment_score > 0.05 || c.sentiment_score < -0.05)) return false;
+
+                // Query search
+                if (q) {
+                    const matchSym = (c.symbol || '').toLowerCase().includes(q);
+                    const matchName = (c.company_name || '').toLowerCase().includes(q);
+                    const matchHead = (c.headline || '').toLowerCase().includes(q);
+                    const matchSummary = (c.summary || '').toLowerCase().includes(q);
+                    if (!matchSym && !matchName && !matchHead && !matchSummary) return false;
+                }
+
+                return true;
+            });
+
+            catCurrentPage = 1;
+            renderCatalystsFeed();
+        }
+
+        function renderCatalystsFeed() {
+            const container = document.getElementById('catalystsFeedContainer');
+            if (!container) return;
+
+            if (filteredCatalysts.length === 0) {
+                container.innerHTML = `
+                    <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 40px; text-align: center; color: var(--text-muted); font-size: 13px;">
+                        No catalysts match the selected market, materiality, or search filters.
+                    </div>
+                `;
+                renderCatalystPagination();
+                return;
+            }
+
+            const startIdx = (catCurrentPage - 1) * catPageSize;
+            const endIdx = startIdx + catPageSize;
+            const pageItems = filteredCatalysts.slice(startIdx, endIdx);
+
+            let html = '';
+            pageItems.forEach(c => {
+                const matCls = c.materiality_level === 'HIGH' ? 'mat-high' : (c.materiality_level === 'MEDIUM' ? 'mat-medium' : 'mat-low');
+                const sentCls = `sent-${(c.sentiment_label || 'neutral').toLowerCase()}`;
+                const has1d = c.reaction_1d_pct != null;
+                const r1dColor = has1d ? (c.reaction_1d_pct >= 0 ? 'var(--accent-green)' : 'var(--accent-red)') : 'var(--text-muted)';
+                const r1dText = has1d ? `${c.reaction_1d_pct >= 0 ? '+' : ''}${c.reaction_1d_pct.toFixed(2)}%` : 'Pending (T+1)';
+
+                const isMacro = c.market === 'MACRO';
+                const symButton = isMacro
+                    ? `<span class="exchange-tag" style="background: rgba(139, 92, 246, 0.2); color: var(--accent-purple); font-weight: 800; font-size: 12px; padding: 4px 8px;">🏛️ ${c.symbol}</span>`
+                    : `<button class="filter-btn" onclick="openSymbol('${c.symbol}')" style="font-weight: 800; font-size: 12px; padding: 4px 10px; cursor: pointer; background: var(--bg-secondary);">
+                        ${c.market === 'US' ? '🇺🇸' : '🇨🇦'} ${c.symbol}
+                       </button>`;
+
+                let claimsHtml = '';
+                if (c.factual_claims && c.factual_claims.length > 0) {
+                    claimsHtml = `
+                        <div style="margin-top: 10px; background: rgba(15, 23, 42, 0.5); border-radius: 6px; padding: 8px 12px; border: 1px solid rgba(255, 255, 255, 0.05);">
+                            <div style="font-size: 10px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; margin-bottom: 4px;">Verified Factual Claims:</div>
+                            <ul style="margin: 0; padding-left: 16px; font-size: 11px; color: var(--text-secondary); line-height: 1.5;">
+                                ${c.factual_claims.map(claim => `<li>${claim}</li>`).join('')}
+                            </ul>
+                        </div>
+                    `;
+                }
+
+                let risksHtml = '';
+                if (c.hard_gate_triggered) {
+                    risksHtml = `
+                        <div style="margin-top: 8px; background: rgba(239, 68, 68, 0.15); border: 1px solid var(--accent-red); border-radius: 6px; padding: 8px 12px; color: #fca5a5; font-size: 11px; font-weight: 700;">
+                            ⚠️ CRITICAL GOVERNANCE / ACCOUNTING HARD GATE TRIGGERED: Non-reliance on financial statements or insolvency proceedings active.
+                        </div>
+                    `;
+                } else if (c.invalidation_risks && c.invalidation_risks.length > 0) {
+                    risksHtml = `
+                        <div style="margin-top: 6px; font-size: 11px; color: var(--text-muted); display: flex; align-items: baseline; gap: 6px;">
+                            <span style="color: var(--accent-amber); font-weight: 700;">Risk Consideration:</span>
+                            <span>${c.invalidation_risks[0]}</span>
+                        </div>
+                    `;
+                }
+
+                html += `
+                    <div class="catalyst-card">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;">
+                            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                                ${symButton}
+                                <span style="font-weight: 700; font-size: 13px; color: var(--text-primary);">${c.company_name}</span>
+                                <span class="exchange-tag" style="color: var(--accent-cyan); font-weight: 600;">${c.event_category}</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+                                <span class="exchange-tag ${matCls}">${c.materiality_level} (Score ${c.materiality_score}/5)</span>
+                                <span class="exchange-tag ${sentCls}">${c.sentiment_label} (${c.sentiment_score >= 0 ? '+' : ''}${c.sentiment_score.toFixed(2)})</span>
+                                <span class="exchange-tag" style="color: var(--text-muted);">${c.horizon}</span>
+                                <span class="exchange-tag status-${c.priced_in_status.toLowerCase()}">${c.priced_in_status}</span>
+                                <span style="font-size: 11px; color: var(--text-muted); font-family: monospace;">${c.filing_date}</span>
+                            </div>
+                        </div>
+
+                        <div style="margin-bottom: 6px;">
+                            <a href="${c.source_url}" target="_blank" rel="noopener noreferrer" style="font-size: 14px; font-weight: 700; color: var(--text-primary); text-decoration: none; border-bottom: 1px dotted var(--accent-blue); line-height: 1.4;">
+                                ${c.headline} <span style="color: var(--accent-blue); font-size: 11px;">↗</span>
+                            </a>
+                        </div>
+
+                        <div style="color: var(--text-secondary); font-size: 12px; line-height: 1.5;">
+                            ${c.summary}
+                        </div>
+
+                        ${claimsHtml}
+                        ${risksHtml}
+
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px; border-top: 1px solid var(--border-color); padding-top: 8px; flex-wrap: wrap; gap: 8px; font-size: 11px; color: var(--text-muted);">
+                            <div style="display: flex; gap: 14px; align-items: center; flex-wrap: wrap;">
+                                <span>1D Post-Reaction: <strong style="color: ${r1dColor};">${r1dText}</strong></span>
+                                ${c.reaction_3d_pct != null ? `<span>3D Drift: <strong style="color: ${c.reaction_3d_pct >= 0 ? 'var(--accent-green)' : 'var(--accent-red)'};">${c.reaction_3d_pct >= 0 ? '+' : ''}${c.reaction_3d_pct.toFixed(2)}%</strong></span>` : ''}
+                                ${c.rvol_at_event != null ? `<span>Event RVOL: <strong style="color: var(--text-primary);">${c.rvol_at_event.toFixed(1)}x</strong></span>` : ''}
+                                <span>Score Impact: <strong style="color: ${c.score_impact_pts >= 0 ? 'var(--accent-green)' : 'var(--accent-red)'};">${c.score_impact_pts >= 0 ? '+' : ''}${c.score_impact_pts} pts</strong></span>
+                            </div>
+                            <div>
+                                <a href="${c.source_url}" target="_blank" rel="noopener noreferrer" style="color: var(--accent-blue); text-decoration: none; font-weight: 600;">
+                                    View Official SEC / Regulatory Record ↗
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+            renderCatalystPagination();
+        }
+
+        function renderCatalystPagination() {
+            const controls = document.getElementById('catPaginationControls');
+            if (!controls) return;
+
+            const total = filteredCatalysts.length;
+            const totalPages = Math.max(1, Math.ceil(total / catPageSize));
+
+            controls.innerHTML = `
+                <div style="font-size: 12px; color: var(--text-muted);">
+                    Showing ${(total === 0) ? 0 : (catCurrentPage - 1) * catPageSize + 1}–${Math.min(total, catCurrentPage * catPageSize)} of ${total} continuous intelligence events
+                </div>
+                <div style="display: flex; gap: 8px; align-items: center;">
+                    <button class="filter-btn" ${catCurrentPage <= 1 ? 'disabled style="opacity: 0.4; cursor: not-allowed;"' : ''} onclick="changeCatPage(${catCurrentPage - 1})">
+                        &larr; Previous
+                    </button>
+                    <span style="font-size: 12px; font-weight: 700; color: var(--text-primary); padding: 0 4px;">
+                        Page ${catCurrentPage} of ${totalPages}
+                    </span>
+                    <button class="filter-btn" ${catCurrentPage >= totalPages ? 'disabled style="opacity: 0.4; cursor: not-allowed;"' : ''} onclick="changeCatPage(${catCurrentPage + 1})">
+                        Next &rarr;
+                    </button>
+                </div>
+            `;
+        }
+
+        function changeCatPage(newPage) {
+            const totalPages = Math.max(1, Math.ceil(filteredCatalysts.length / catPageSize));
+            if (newPage < 1 || newPage > totalPages) return;
+            catCurrentPage = newPage;
+            renderCatalystsFeed();
+            window.scrollTo({ top: document.getElementById('tab-catalysts').offsetTop - 60, behavior: 'smooth' });
+        }
 
         window.onload = init;
     </script>

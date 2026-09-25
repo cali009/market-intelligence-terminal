@@ -5,7 +5,7 @@
   "currency": "CAD",
   "name": "Brookfield Corporation",
   "as_of_date": "2026-09-25",
-  "generated_at": "2026-09-25T22:47:31.594553+00:00",
+  "generated_at": "2026-09-25T23:19:22.853290+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 51.970001220703125,
@@ -43,7 +43,7 @@
     "adv_dollar_20": 176557751.5958519
   },
   "score_record": {
-    "composite_score": 20,
+    "composite_score": 21,
     "confidence_tier": "C",
     "technical_score": 15,
     "risk_penalty": 8.0,
@@ -58,7 +58,7 @@
       "technical_score": 15,
       "fundamental_score": 65,
       "regime_multiplier": 1.0,
-      "news_contribution": 0.0,
+      "news_contribution": 1.8,
       "sector_contribution": 0.0,
       "risk_penalty": 8.0,
       "key_metrics": {
@@ -73,11 +73,198 @@
   "signal_plan": null,
   "ai_explanation": {
     "FACT": "BN (TSX - Brookfield Corporation) closed at $52.15 CAD. Trading within -23.8% of its 52-week high with a 14-day ATR of 2.0%. The primary exchange session traded on volume of 2,713,736 shares.",
-    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 20/100 (Confidence Tier C). Technical Factor sub-score: 15/100 (14-day RSI: 33.9, 20-day RVOL: 0.82x). Risk penalty applied: -8.0 points. Modulated by the WEAK_BULL macro regime.",
+    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 21/100 (Confidence Tier C). Technical Factor sub-score: 15/100 (14-day RSI: 33.9, 20-day RVOL: 0.82x). Risk penalty applied: -8.0 points. Modulated by the WEAK_BULL macro regime.",
     "INFERENCE": "Securities trading below declining 200-day moving averages with elevated risk penalties have historically underperformed the broader index by 3.8% over forward 20-session windows.",
     "UNCERTAINTY": "Risks include broader market sentiment deterioration in the WEAK_BULL environment. A daily close below technical support at $60.54 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
   },
   "active_scanner_matches": [],
+  "catalysts_and_filings": [
+    {
+      "id": "fba2d602c318",
+      "symbol": "BN",
+      "company_name": "BROOKFIELD Corp /ON/",
+      "market": "CA",
+      "source": "SEC_EDGAR_6K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1001085/000110465926110024/tm2625808d7_6k.htm",
+      "headline": "BN Form 6-K Cross-Border Continuous Disclosure",
+      "summary": "BROOKFIELD Corp /ON/ filed Form 6-K with the SEC on 2026-09-23. Document: tm2625808d7_6k.htm. Accession: 0001104659-26-110024. Primary reporting date: 2026-09-23.",
+      "filing_date": "2026-09-23",
+      "published_at": "2026-09-23T16:05:00Z",
+      "event_category": "CANADIAN_FOREIGN_FILING",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "Foreign Issuer Continuous Disclosure (SEDAR cross-filing)",
+      "sentiment_score": 0.1,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PARTIAL",
+      "reaction_1d_pct": -1.86,
+      "reaction_3d_pct": -2.07,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001001085 with accession number 0001104659-26-110024",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-09-23",
+        "Document reference: tm2625808d7_6k.htm (6-K classification)"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.6
+    },
+    {
+      "id": "d637910769e7",
+      "symbol": "BN",
+      "company_name": "BROOKFIELD Corp /ON/",
+      "market": "CA",
+      "source": "SEC_EDGAR_6K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1001085/000110465926109720/tm2625808d6_6k.htm",
+      "headline": "BN Form 6-K Cross-Border Continuous Disclosure",
+      "summary": "BROOKFIELD Corp /ON/ filed Form 6-K with the SEC on 2026-09-23. Document: tm2625808d6_6k.htm. Accession: 0001104659-26-109720. Primary reporting date: 2026-09-22.",
+      "filing_date": "2026-09-23",
+      "published_at": "2026-09-23T16:05:00Z",
+      "event_category": "CANADIAN_FOREIGN_FILING",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "Foreign Issuer Continuous Disclosure (SEDAR cross-filing)",
+      "sentiment_score": 0.1,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PARTIAL",
+      "reaction_1d_pct": -1.86,
+      "reaction_3d_pct": -2.07,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001001085 with accession number 0001104659-26-109720",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-09-23",
+        "Document reference: tm2625808d6_6k.htm (6-K classification)"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.6
+    },
+    {
+      "id": "919f1ab8d8d7",
+      "symbol": "BN",
+      "company_name": "BROOKFIELD Corp /ON/",
+      "market": "CA",
+      "source": "SEC_EDGAR_6K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1001085/000110465926109654/tm2625808d4_6k.htm",
+      "headline": "BN Form 6-K Cross-Border Continuous Disclosure",
+      "summary": "BROOKFIELD Corp /ON/ filed Form 6-K with the SEC on 2026-09-22. Document: tm2625808d4_6k.htm. Accession: 0001104659-26-109654. Primary reporting date: 2026-09-22.",
+      "filing_date": "2026-09-22",
+      "published_at": "2026-09-22T16:05:00Z",
+      "event_category": "CANADIAN_FOREIGN_FILING",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "Foreign Issuer Continuous Disclosure (SEDAR cross-filing)",
+      "sentiment_score": 0.1,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PARTIAL",
+      "reaction_1d_pct": -0.22,
+      "reaction_3d_pct": -2.96,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001001085 with accession number 0001104659-26-109654",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-09-22",
+        "Document reference: tm2625808d4_6k.htm (6-K classification)"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.6
+    },
+    {
+      "id": "81ae11c5ddb4",
+      "symbol": "BN",
+      "company_name": "BROOKFIELD Corp /ON/",
+      "market": "CA",
+      "source": "SEC_EDGAR_6K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1001085/000117184326006141/f6k_092126.htm",
+      "headline": "BN Form 6-K Cross-Border Continuous Disclosure",
+      "summary": "BROOKFIELD Corp /ON/ filed Form 6-K with the SEC on 2026-09-21. Document: f6k_092126.htm. Accession: 0001171843-26-006141. Primary reporting date: 2026-09-21.",
+      "filing_date": "2026-09-21",
+      "published_at": "2026-09-21T16:05:00Z",
+      "event_category": "CANADIAN_FOREIGN_FILING",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "Foreign Issuer Continuous Disclosure (SEDAR cross-filing)",
+      "sentiment_score": 0.1,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PARTIAL",
+      "reaction_1d_pct": 1.62,
+      "reaction_3d_pct": -0.5,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001001085 with accession number 0001171843-26-006141",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-09-21",
+        "Document reference: f6k_092126.htm (6-K classification)"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.5
+    },
+    {
+      "id": "ba986c49aa05",
+      "symbol": "BN",
+      "company_name": "BROOKFIELD Corp /ON/",
+      "market": "CA",
+      "source": "SEC_EDGAR_6K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1001085/000110465926109133/tm2625808d2_6k.htm",
+      "headline": "BN Form 6-K Cross-Border Continuous Disclosure",
+      "summary": "BROOKFIELD Corp /ON/ filed Form 6-K with the SEC on 2026-09-21. Document: tm2625808d2_6k.htm. Accession: 0001104659-26-109133. Primary reporting date: 2026-09-21.",
+      "filing_date": "2026-09-21",
+      "published_at": "2026-09-21T16:05:00Z",
+      "event_category": "CANADIAN_FOREIGN_FILING",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "Foreign Issuer Continuous Disclosure (SEDAR cross-filing)",
+      "sentiment_score": 0.1,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PARTIAL",
+      "reaction_1d_pct": 1.62,
+      "reaction_3d_pct": -0.5,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001001085 with accession number 0001104659-26-109133",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-09-21",
+        "Document reference: tm2625808d2_6k.htm (6-K classification)"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.5
+    }
+  ],
   "chart_bars": [
     {
       "time": "2026-04-07",

@@ -1,6 +1,6 @@
 {
   "as_of_date": "2026-09-25",
-  "generated_at": "2026-09-25T22:46:39.736284+00:00",
+  "generated_at": "2026-09-25T23:07:25.491858+00:00",
   "securities": [
     {
       "symbol": "AAPL",
@@ -9,7 +9,7 @@
       "currency": "USD",
       "name": "Apple Inc.",
       "price": 341.07000732421875,
-      "composite_score": 67,
+      "composite_score": 68,
       "confidence_tier": "B",
       "technical_score": 64,
       "rsi_14": 65.7,
@@ -41,6 +41,26 @@
         "Momentum Leaders",
         "Pullback to Key Support",
         "Stacked Moving Average Alignment"
+      ]
+    },
+    {
+      "symbol": "XOM",
+      "exchange": "NYSE",
+      "country": "US",
+      "currency": "USD",
+      "name": "Exxon Mobil Corporation",
+      "price": 160.58999633789062,
+      "composite_score": 64,
+      "confidence_tier": "B",
+      "technical_score": 58,
+      "rsi_14": 48.7,
+      "rvol_20": 0.66,
+      "atr_pct": 2.5,
+      "proximity_52w_high": -9.0,
+      "scanner_tags": [
+        "Pullback to Key Support",
+        "Volatility Squeeze (Bandwidth)",
+        "Consolidation Base Tightening"
       ]
     },
     {
@@ -87,26 +107,6 @@
         "High Relative Volume Surge",
         "Consolidation Base Tightening",
         "Daily Range Expansion"
-      ]
-    },
-    {
-      "symbol": "XOM",
-      "exchange": "NYSE",
-      "country": "US",
-      "currency": "USD",
-      "name": "Exxon Mobil Corporation",
-      "price": 160.58999633789062,
-      "composite_score": 63,
-      "confidence_tier": "B",
-      "technical_score": 58,
-      "rsi_14": 48.7,
-      "rvol_20": 0.66,
-      "atr_pct": 2.5,
-      "proximity_52w_high": -9.0,
-      "scanner_tags": [
-        "Pullback to Key Support",
-        "Volatility Squeeze (Bandwidth)",
-        "Consolidation Base Tightening"
       ]
     },
     {
@@ -180,7 +180,7 @@
       "currency": "USD",
       "name": "Amazon.com Inc.",
       "price": 249.6699981689453,
-      "composite_score": 52,
+      "composite_score": 53,
       "confidence_tier": "B",
       "technical_score": 45,
       "rsi_14": 44.5,
@@ -336,7 +336,7 @@
       "currency": "CAD",
       "name": "Enbridge Inc.",
       "price": 66.12999725341797,
-      "composite_score": 30,
+      "composite_score": 31,
       "confidence_tier": "C",
       "technical_score": 24,
       "rsi_14": 30.5,
@@ -355,7 +355,7 @@
       "currency": "CAD",
       "name": "Brookfield Corporation",
       "price": 52.150001525878906,
-      "composite_score": 20,
+      "composite_score": 21,
       "confidence_tier": "C",
       "technical_score": 15,
       "rsi_14": 33.9,

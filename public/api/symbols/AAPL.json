@@ -5,7 +5,7 @@
   "currency": "USD",
   "name": "Apple Inc.",
   "as_of_date": "2026-09-25",
-  "generated_at": "2026-09-25T22:46:39.736284+00:00",
+  "generated_at": "2026-09-25T23:07:25.491858+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 336.0400085449219,
@@ -43,7 +43,7 @@
     "adv_dollar_20": 14097248880.150232
   },
   "score_record": {
-    "composite_score": 67,
+    "composite_score": 68,
     "confidence_tier": "B",
     "technical_score": 64,
     "risk_penalty": 0.0,
@@ -58,7 +58,7 @@
       "technical_score": 64,
       "fundamental_score": 65,
       "regime_multiplier": 1.05,
-      "news_contribution": 0.0,
+      "news_contribution": 0.1,
       "sector_contribution": 0.0,
       "risk_penalty": 0.0,
       "key_metrics": {
@@ -104,7 +104,7 @@
   },
   "ai_explanation": {
     "FACT": "AAPL (NASDAQ - Apple Inc.) closed at $341.07 USD. Trading within -1.2% of its 52-week high with a 14-day ATR of 2.0%. The primary exchange session traded on volume of 29,403,008 shares.",
-    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 67/100 (Confidence Tier B). Technical Factor sub-score: 64/100 (14-day RSI: 65.7, 20-day RVOL: 0.69x). Risk penalty applied: -0.0 points. Modulated by the STRONG_BULL macro regime.",
+    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 68/100 (Confidence Tier B). Technical Factor sub-score: 64/100 (14-day RSI: 65.7, 20-day RVOL: 0.69x). Risk penalty applied: -0.0 points. Modulated by the STRONG_BULL macro regime.",
     "INFERENCE": "Historical setups exhibiting stacked moving averages and low-bandwidth consolidation during a STRONG_BULL regime showed positive forward expectancy across 64% of walk-forward folds. Relative strength ranks in the upper quartile of the current dual-market universe.",
     "UNCERTAINTY": "Risks include broader market sentiment deterioration in the STRONG_BULL environment. A daily close below technical support at $287.77 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
   },
@@ -128,6 +128,196 @@
       "id": "MTF_ALIGNMENT",
       "name": "Fast & Medium MTF Alignment",
       "why": "Fast 8EMA > 21EMA above 50DMA with established trend strength (ADX 26.0)."
+    }
+  ],
+  "catalysts_and_filings": [
+    {
+      "id": "39b2bb4e08a9",
+      "symbol": "AAPL",
+      "company_name": "Apple Inc.",
+      "market": "US",
+      "source": "SEC_EDGAR_10Q",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000020/aapl-20260627.htm",
+      "headline": "AAPL Form 10-Q Quarterly Report \u2014 Q/E 2026-06-27",
+      "summary": "Apple Inc. filed Form 10-Q with the SEC on 2026-07-31. Document: aapl-20260627.htm. Accession: 0000320193-26-000020. Primary reporting date: 2026-06-27.",
+      "filing_date": "2026-07-31",
+      "published_at": "2026-07-31T16:05:00Z",
+      "event_category": "QUARTERLY_REPORT",
+      "materiality_level": "HIGH",
+      "materiality_score": 4,
+      "materiality_rationale": "Quarterly Financial Report for period ending 2026-06-27 (Form 10-Q)",
+      "sentiment_score": 0.2,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "MEDIUM_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -7.35,
+      "reaction_3d_pct": -7.21,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0000320193 with accession number 0000320193-26-000020",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-07-31",
+        "Document reference: aapl-20260627.htm (10-Q classification)"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
+    },
+    {
+      "id": "7491bcb9b061",
+      "symbol": "AAPL",
+      "company_name": "Apple Inc.",
+      "market": "US",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000018/aapl-20260730.htm",
+      "headline": "AAPL SEC Form 8-K Filing \u2014 Results of Operations and Financial Condition (Earnings)",
+      "summary": "Apple Inc. filed Form 8-K with the SEC on 2026-07-30. Document: aapl-20260730.htm. Accession: 0000320193-26-000018. Primary reporting date: 2026-07-30.",
+      "filing_date": "2026-07-30",
+      "published_at": "2026-07-30T16:05:00Z",
+      "event_category": "EARNINGS_ANNOUNCEMENT",
+      "materiality_level": "HIGH",
+      "materiality_score": 4,
+      "materiality_rationale": "SEC Form 8-K (2.02, 9.01): Results of Operations and Financial Condition (Earnings)",
+      "sentiment_score": 0.35,
+      "sentiment_label": "BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -1.41,
+      "reaction_3d_pct": -10.28,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0000320193 with accession number 0000320193-26-000018",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-07-30",
+        "Document reference: aapl-20260730.htm (8-K classification)",
+        "Reported disclosure items: 2.02,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.1
+    },
+    {
+      "id": "30cd2bab104a",
+      "symbol": "AAPL",
+      "company_name": "Apple Inc.",
+      "market": "US",
+      "source": "SEC_EDGAR_10Q",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000013/aapl-20260328.htm",
+      "headline": "AAPL Form 10-Q Quarterly Report \u2014 Q/E 2026-03-28",
+      "summary": "Apple Inc. filed Form 10-Q with the SEC on 2026-05-01. Document: aapl-20260328.htm. Accession: 0000320193-26-000013. Primary reporting date: 2026-03-28.",
+      "filing_date": "2026-05-01",
+      "published_at": "2026-05-01T16:05:00Z",
+      "event_category": "QUARTERLY_REPORT",
+      "materiality_level": "HIGH",
+      "materiality_score": 4,
+      "materiality_rationale": "Quarterly Financial Report for period ending 2026-03-28 (Form 10-Q)",
+      "sentiment_score": 0.2,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "MEDIUM_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": 3.24,
+      "reaction_3d_pct": 4.73,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0000320193 with accession number 0000320193-26-000013",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-05-01",
+        "Document reference: aapl-20260328.htm (10-Q classification)"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
+    },
+    {
+      "id": "5a5c37378379",
+      "symbol": "AAPL",
+      "company_name": "Apple Inc.",
+      "market": "US",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000011/aapl-20260430.htm",
+      "headline": "AAPL SEC Form 8-K Filing \u2014 Results of Operations and Financial Condition (Earnings)",
+      "summary": "Apple Inc. filed Form 8-K with the SEC on 2026-04-30. Document: aapl-20260430.htm. Accession: 0000320193-26-000011. Primary reporting date: 2026-04-30.",
+      "filing_date": "2026-04-30",
+      "published_at": "2026-04-30T16:05:00Z",
+      "event_category": "EARNINGS_ANNOUNCEMENT",
+      "materiality_level": "HIGH",
+      "materiality_score": 4,
+      "materiality_rationale": "SEC Form 8-K (2.02, 9.01): Results of Operations and Financial Condition (Earnings)",
+      "sentiment_score": 0.35,
+      "sentiment_label": "BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": 0.44,
+      "reaction_3d_pct": 2.47,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0000320193 with accession number 0000320193-26-000011",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-04-30",
+        "Document reference: aapl-20260430.htm (8-K classification)",
+        "Reported disclosure items: 2.02,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
+    },
+    {
+      "id": "2f91455859e7",
+      "symbol": "AAPL",
+      "company_name": "Apple Inc.",
+      "market": "US",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000114036126015711/ef20071035_8k.htm",
+      "headline": "AAPL SEC Form 8-K Filing \u2014 Departure or Appointment of Principal Executive Officers / Directors",
+      "summary": "Apple Inc. filed Form 8-K with the SEC on 2026-04-20. Document: ef20071035_8k.htm. Accession: 0001140361-26-015711. Primary reporting date: 2026-04-17.",
+      "filing_date": "2026-04-20",
+      "published_at": "2026-04-20T16:05:00Z",
+      "event_category": "EXECUTIVE_CHANGE",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "SEC Form 8-K (5.02): Departure or Appointment of Principal Executive Officers / Directors",
+      "sentiment_score": 0.05,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "MEDIUM_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": 1.04,
+      "reaction_3d_pct": 1.09,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0000320193 with accession number 0001140361-26-015711",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-04-20",
+        "Document reference: ef20071035_8k.htm (8-K classification)",
+        "Reported disclosure items: 5.02"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
     }
   ],
   "chart_bars": [

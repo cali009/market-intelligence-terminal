@@ -24,6 +24,7 @@ from src.engine.regime import regime_classifier
 from src.engine.scanners import market_scanners
 from src.engine.signals import signal_engine
 from src.engine.explanations import explanation_engine
+from src.engine.news_engine import news_engine
 
 FEEDS_DIR = DATA_DIR / "feeds"
 DIST_DIR = DATA_DIR / "dist"
@@ -91,6 +92,10 @@ class EdgeExporter:
         signals_list = []
         symbol_files_count = 0
 
+        # Compile master news & SEC filings intelligence feed
+        master_catalysts = news_engine.compile_master_catalyst_feed()
+        news_summary = news_engine.get_summary_metrics(master_catalysts)
+
         for s in securities:
             sec_id = s["security_id"]
             sym = s["symbol"]
@@ -111,6 +116,11 @@ class EdgeExporter:
             df = pd.DataFrame(bars_raw)
             metrics = TechnicalAnalysisEngine.get_latest_feature_snapshot(df)
 
+            # Catalysts & news contribution for this security
+            sym_catalysts = [e.model_dump() for e in master_catalysts if e.symbol == sym]
+            news_pts = round(sum(e.get("score_impact_pts", 0.0) for e in sym_catalysts[:3]), 1)
+            news_pts = max(-12.0, min(12.0, news_pts))
+
             # Score
             regime_info = regimes_data.get(ctry, {})
             multiplier = regime_info.get("score_multiplier", 1.0)
@@ -122,6 +132,7 @@ class EdgeExporter:
                 fundamental_score=65,
                 regime_state=regime_name,
                 regime_multiplier=multiplier,
+                news_contribution=news_pts,
                 horizon="POSITION",
             )
 
@@ -242,6 +253,7 @@ class EdgeExporter:
                     {"id": m.scanner_id, "name": m.scanner_name, "why": m.why_matched}
                     for m in matches
                 ],
+                "catalysts_and_filings": sym_catalysts,
                 "chart_bars": chart_bars,
                 "disclaimers": {
                     "canada": CSA_31_369_GENERAL_ADVICE_DISCLAIMER,
@@ -268,6 +280,7 @@ class EdgeExporter:
                         "regimes": regimes_data,
                         "market_leaders": leaderboard_items[:5],
                         "total_securities_analyzed": len(leaderboard_items),
+                        "news_intelligence_summary": news_summary,
                         "disclaimer_version": DISCLAIMER_VERSION,
                     },
                     f,
@@ -309,11 +322,25 @@ class EdgeExporter:
                     indent=2,
                 )
 
+            with open(d_dir / "news_filings.json", "w") as f:
+                json.dump(
+                    {
+                        "as_of_date": as_of_date,
+                        "generated_at": generated_at,
+                        "summary": news_summary,
+                        "total_catalysts": len(master_catalysts),
+                        "catalysts": [e.model_dump() for e in master_catalysts],
+                    },
+                    f,
+                    indent=2,
+                )
+
         return {
-            "dist_files": 4,
+            "dist_files": 5,
             "symbol_files": symbol_files_count,
             "total_matches": len(scanner_results),
             "total_signals": len(signals_list),
+            "total_catalysts": len(master_catalysts),
         }
 
 

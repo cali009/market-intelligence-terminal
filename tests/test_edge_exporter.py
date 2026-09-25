@@ -11,7 +11,8 @@ from src.data.edge_exporter import edge_exporter, DIST_DIR, SYMBOLS_DIR
 def test_edge_export_compilation():
     stats = edge_exporter.export_all()
     assert stats["symbol_files"] > 0
-    assert stats["dist_files"] == 4
+    assert stats["dist_files"] >= 4
+    assert stats["total_catalysts"] > 0
 
     # Verify daily_summary.json exists and is valid JSON
     summary_path = DIST_DIR / "daily_summary.json"
@@ -24,6 +25,16 @@ def test_edge_export_compilation():
     assert "CA" in summary_data["regimes"]
     assert "market_leaders" in summary_data
     assert len(summary_data["market_leaders"]) > 0
+    assert "news_intelligence_summary" in summary_data
+
+    # Verify news_filings.json exists and has valid structure
+    news_path = DIST_DIR / "news_filings.json"
+    assert news_path.exists()
+    with open(news_path, "r") as f:
+        news_data = json.load(f)
+    assert "catalysts" in news_data
+    assert len(news_data["catalysts"]) > 0
+    assert "summary" in news_data
 
     # Verify leaderboard.json
     leaderboard_path = DIST_DIR / "leaderboard.json"

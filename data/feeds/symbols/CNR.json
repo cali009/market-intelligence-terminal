@@ -5,7 +5,7 @@
   "currency": "CAD",
   "name": "Canadian National Railway",
   "as_of_date": "2026-09-25",
-  "generated_at": "2026-09-25T22:47:31.594553+00:00",
+  "generated_at": "2026-09-25T23:19:22.853290+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 169.8000030517578,
@@ -58,7 +58,7 @@
       "technical_score": 47,
       "fundamental_score": 65,
       "regime_multiplier": 1.0,
-      "news_contribution": 0.0,
+      "news_contribution": 0.2,
       "sector_contribution": 0.0,
       "risk_penalty": 0.0,
       "key_metrics": {
@@ -123,6 +123,197 @@
       "id": "BASE_TIGHTENING",
       "name": "Consolidation Base Tightening",
       "why": "Price consolidating in a tight band (5.2%) within 7.7% of yearly high."
+    }
+  ],
+  "catalysts_and_filings": [
+    {
+      "id": "03f6af470c75",
+      "symbol": "CNR",
+      "company_name": "Core Natural Resources, Inc.",
+      "market": "CA",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1710366/000119312526356186/d113945d8k.htm",
+      "headline": "CNR SEC Form 8-K Filing \u2014 Departure or Appointment of Principal Executive Officers / Directors",
+      "summary": "Core Natural Resources, Inc. filed Form 8-K with the SEC on 2026-08-19. Document: d113945d8k.htm. Accession: 0001193125-26-356186. Primary reporting date: 2026-08-18.",
+      "filing_date": "2026-08-19",
+      "published_at": "2026-08-19T16:05:00Z",
+      "event_category": "EXECUTIVE_CHANGE",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "SEC Form 8-K (5.02, 7.01, 9.01): Departure or Appointment of Principal Executive Officers / Directors",
+      "sentiment_score": 0.05,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "MEDIUM_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": 0.3,
+      "reaction_3d_pct": 1.61,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001710366 with accession number 0001193125-26-356186",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-08-19",
+        "Document reference: d113945d8k.htm (8-K classification)",
+        "Reported disclosure items: 5.02,7.01,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
+    },
+    {
+      "id": "4d38c3341674",
+      "symbol": "CNR",
+      "company_name": "Core Natural Resources, Inc.",
+      "market": "CA",
+      "source": "SEC_EDGAR_10Q",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1710366/000171036626000054/cnr-20260630.htm",
+      "headline": "CNR Form 10-Q Quarterly Report \u2014 Q/E 2026-06-30",
+      "summary": "Core Natural Resources, Inc. filed Form 10-Q with the SEC on 2026-08-06. Document: cnr-20260630.htm. Accession: 0001710366-26-000054. Primary reporting date: 2026-06-30.",
+      "filing_date": "2026-08-06",
+      "published_at": "2026-08-06T16:05:00Z",
+      "event_category": "QUARTERLY_REPORT",
+      "materiality_level": "HIGH",
+      "materiality_score": 4,
+      "materiality_rationale": "Quarterly Financial Report for period ending 2026-06-30 (Form 10-Q)",
+      "sentiment_score": 0.2,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "MEDIUM_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -0.79,
+      "reaction_3d_pct": -2.45,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001710366 with accession number 0001710366-26-000054",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-08-06",
+        "Document reference: cnr-20260630.htm (10-Q classification)"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.1
+    },
+    {
+      "id": "ce0b5e57c202",
+      "symbol": "CNR",
+      "company_name": "Core Natural Resources, Inc.",
+      "market": "CA",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1710366/000171036626000053/cnr-20260806.htm",
+      "headline": "CNR SEC Form 8-K Filing \u2014 Results of Operations and Financial Condition (Earnings)",
+      "summary": "Core Natural Resources, Inc. filed Form 8-K with the SEC on 2026-08-06. Document: cnr-20260806.htm. Accession: 0001710366-26-000053. Primary reporting date: 2026-08-06.",
+      "filing_date": "2026-08-06",
+      "published_at": "2026-08-06T16:05:00Z",
+      "event_category": "EARNINGS_ANNOUNCEMENT",
+      "materiality_level": "HIGH",
+      "materiality_score": 4,
+      "materiality_rationale": "SEC Form 8-K (2.02, 7.01, 9.01): Results of Operations and Financial Condition (Earnings)",
+      "sentiment_score": 0.35,
+      "sentiment_label": "BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -0.79,
+      "reaction_3d_pct": -2.45,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001710366 with accession number 0001710366-26-000053",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-08-06",
+        "Document reference: cnr-20260806.htm (8-K classification)",
+        "Reported disclosure items: 2.02,7.01,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.1
+    },
+    {
+      "id": "5d0c56e0b8a4",
+      "symbol": "CNR",
+      "company_name": "Core Natural Resources, Inc.",
+      "market": "CA",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1710366/000171036626000048/cnr-20260604.htm",
+      "headline": "CNR SEC Form 8-K Filing \u2014 Regulation FD Disclosure (Investor Presentation / Update)",
+      "summary": "Core Natural Resources, Inc. filed Form 8-K with the SEC on 2026-06-04. Document: cnr-20260604.htm. Accession: 0001710366-26-000048. Primary reporting date: 2026-06-04.",
+      "filing_date": "2026-06-04",
+      "published_at": "2026-06-04T16:05:00Z",
+      "event_category": "REGULATION_FD",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "SEC Form 8-K (7.01, 9.01): Regulation FD Disclosure (Investor Presentation / Update)",
+      "sentiment_score": 0.15,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": 0.14,
+      "reaction_3d_pct": 1.64,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001710366 with accession number 0001710366-26-000048",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-06-04",
+        "Document reference: cnr-20260604.htm (8-K classification)",
+        "Reported disclosure items: 7.01,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
+    },
+    {
+      "id": "cfe660adbd09",
+      "symbol": "CNR",
+      "company_name": "Core Natural Resources, Inc.",
+      "market": "CA",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1710366/000171036626000045/cnr-20260513.htm",
+      "headline": "CNR SEC Form 8-K Current Report (1.04)",
+      "summary": "Core Natural Resources, Inc. filed Form 8-K with the SEC on 2026-05-19. Document: cnr-20260513.htm. Accession: 0001710366-26-000045. Primary reporting date: 2026-05-13.",
+      "filing_date": "2026-05-19",
+      "published_at": "2026-05-19T16:05:00Z",
+      "event_category": "OTHER_MATERIAL_EVENT",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "Official SEC Form 8-K filing",
+      "sentiment_score": 0.05,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": 1.15,
+      "reaction_3d_pct": 2.29,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001710366 with accession number 0001710366-26-000045",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-05-19",
+        "Document reference: cnr-20260513.htm (8-K classification)",
+        "Reported disclosure items: 1.04"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
     }
   ],
   "chart_bars": [

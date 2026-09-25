@@ -5,7 +5,7 @@
   "currency": "CAD",
   "name": "Canadian Natural Resources",
   "as_of_date": "2026-09-25",
-  "generated_at": "2026-09-25T22:47:31.594553+00:00",
+  "generated_at": "2026-09-25T23:19:22.853290+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 66.9800033569336,
@@ -87,6 +87,193 @@
       "id": "BASE_TIGHTENING",
       "name": "Consolidation Base Tightening",
       "why": "Price consolidating in a tight band (8.9%) within 7.2% of yearly high."
+    }
+  ],
+  "catalysts_and_filings": [
+    {
+      "id": "e334df9254be",
+      "symbol": "CNQ",
+      "company_name": "CANADIAN NATURAL RESOURCES Ltd",
+      "market": "CA",
+      "source": "SEC_EDGAR_6K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1017413/000101741326000045/a08062026dividendcover.htm",
+      "headline": "CNQ Form 6-K Cross-Border Continuous Disclosure",
+      "summary": "CANADIAN NATURAL RESOURCES Ltd filed Form 6-K with the SEC on 2026-08-06. Document: a08062026dividendcover.htm. Accession: 0001017413-26-000045. Primary reporting date: 2026-08-06.",
+      "filing_date": "2026-08-06",
+      "published_at": "2026-08-06T16:05:00Z",
+      "event_category": "CANADIAN_FOREIGN_FILING",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "Foreign Issuer Continuous Disclosure (SEDAR cross-filing)",
+      "sentiment_score": 0.1,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": 1.56,
+      "reaction_3d_pct": 4.74,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001017413 with accession number 0001017413-26-000045",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-08-06",
+        "Document reference: a08062026dividendcover.htm (6-K classification)"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
+    },
+    {
+      "id": "f495b1909534",
+      "symbol": "CNQ",
+      "company_name": "CANADIAN NATURAL RESOURCES Ltd",
+      "market": "CA",
+      "source": "SEC_EDGAR_6K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1017413/000101741326000043/a063020266-kcover.htm",
+      "headline": "CNQ Form 6-K Cross-Border Continuous Disclosure",
+      "summary": "CANADIAN NATURAL RESOURCES Ltd filed Form 6-K with the SEC on 2026-08-06. Document: a063020266-kcover.htm. Accession: 0001017413-26-000043. Primary reporting date: 2026-06-30.",
+      "filing_date": "2026-08-06",
+      "published_at": "2026-08-06T16:05:00Z",
+      "event_category": "CANADIAN_FOREIGN_FILING",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "Foreign Issuer Continuous Disclosure (SEDAR cross-filing)",
+      "sentiment_score": 0.1,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": 1.56,
+      "reaction_3d_pct": 4.74,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001017413 with accession number 0001017413-26-000043",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-08-06",
+        "Document reference: a063020266-kcover.htm (6-K classification)"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
+    },
+    {
+      "id": "b0bbe68335ed",
+      "symbol": "CNQ",
+      "company_name": "CANADIAN NATURAL RESOURCES Ltd",
+      "market": "CA",
+      "source": "SEC_EDGAR_6K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1017413/000101741326000033/a05112026dividendamendinga.htm",
+      "headline": "CNQ Form 6-K Cross-Border Continuous Disclosure",
+      "summary": "CANADIAN NATURAL RESOURCES Ltd filed Form 6-K with the SEC on 2026-05-12. Document: a05112026dividendamendinga.htm. Accession: 0001017413-26-000033. Primary reporting date: 2026-05-11.",
+      "filing_date": "2026-05-12",
+      "published_at": "2026-05-12T16:05:00Z",
+      "event_category": "CANADIAN_FOREIGN_FILING",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "Foreign Issuer Continuous Disclosure (SEDAR cross-filing)",
+      "sentiment_score": 0.1,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": 4.06,
+      "reaction_3d_pct": 5.73,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001017413 with accession number 0001017413-26-000033",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-05-12",
+        "Document reference: a05112026dividendamendinga.htm (6-K classification)"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
+    },
+    {
+      "id": "061c5d172366",
+      "symbol": "CNQ",
+      "company_name": "CANADIAN NATURAL RESOURCES Ltd",
+      "market": "CA",
+      "source": "SEC_EDGAR_6K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1017413/000101741326000030/a05082026votingresultscover.htm",
+      "headline": "CNQ Form 6-K Cross-Border Continuous Disclosure",
+      "summary": "CANADIAN NATURAL RESOURCES Ltd filed Form 6-K with the SEC on 2026-05-11. Document: a05082026votingresultscover.htm. Accession: 0001017413-26-000030. Primary reporting date: 2026-05-07.",
+      "filing_date": "2026-05-11",
+      "published_at": "2026-05-11T16:05:00Z",
+      "event_category": "CANADIAN_FOREIGN_FILING",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "Foreign Issuer Continuous Disclosure (SEDAR cross-filing)",
+      "sentiment_score": 0.1,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": 1.43,
+      "reaction_3d_pct": 6.24,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001017413 with accession number 0001017413-26-000030",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-05-11",
+        "Document reference: a05082026votingresultscover.htm (6-K classification)"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
+    },
+    {
+      "id": "943306c0b364",
+      "symbol": "CNQ",
+      "company_name": "CANADIAN NATURAL RESOURCES Ltd",
+      "market": "CA",
+      "source": "SEC_EDGAR_6K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1017413/000101741326000026/a05072026dividendcover.htm",
+      "headline": "CNQ Form 6-K Cross-Border Continuous Disclosure",
+      "summary": "CANADIAN NATURAL RESOURCES Ltd filed Form 6-K with the SEC on 2026-05-07. Document: a05072026dividendcover.htm. Accession: 0001017413-26-000026. Primary reporting date: 2026-05-07.",
+      "filing_date": "2026-05-07",
+      "published_at": "2026-05-07T16:05:00Z",
+      "event_category": "CANADIAN_FOREIGN_FILING",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "Foreign Issuer Continuous Disclosure (SEDAR cross-filing)",
+      "sentiment_score": 0.1,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -2.09,
+      "reaction_3d_pct": -0.8,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001017413 with accession number 0001017413-26-000026",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-05-07",
+        "Document reference: a05072026dividendcover.htm (6-K classification)"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.0
     }
   ],
   "chart_bars": [

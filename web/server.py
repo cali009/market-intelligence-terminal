@@ -54,6 +54,8 @@ class MarketIntelHandler(SimpleHTTPRequestHandler):
             return self._serve_json_file(data_dir / "signals.json")
         elif path in ["/api/backtests", "/api/backtests.json"]:
             return self._serve_json_file(data_dir / "backtests.json")
+        elif path in ["/api/news_filings", "/api/news_filings.json", "/api/catalysts", "/api/catalysts.json"]:
+            return self._serve_json_file(data_dir / "news_filings.json")
         elif path.startswith("/api/symbol/") or path.startswith("/api/symbols/"):
             clean = path.replace("/api/symbols/", "").replace("/api/symbol/", "").replace(".json", "")
             sym = clean.strip().upper()
