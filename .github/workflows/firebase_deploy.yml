@@ -2,7 +2,7 @@ name: Deploy to Firebase Hosting
 
 on:
   push:
-    branches: [main, master]
+    branches: [main]
   schedule:
     # Run every weekday at 16:30 EST (21:30 UTC) after US & Canadian markets close
     - cron: '30 21 * * 1-5'
@@ -12,7 +12,7 @@ jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
       - name: Set up Python
@@ -29,21 +29,33 @@ jobs:
         run: |
           python3 scripts/run_daily_pipeline.py
 
-      - name: Build Public Firebase Bundle
+      - name: Build Public Distribution Bundle
         run: |
           python3 scripts/build_firebase_public.py
 
-      - name: Deploy to Firebase Hosting
-        if: ${{ secrets.FIREBASE_SERVICE_ACCOUNT != '' }}
+      - name: Deploy via Service Account (if configured)
+        if: env.SERVICE_ACCOUNT != ''
         uses: FirebaseExtended/action-hosting-deploy@v0
+        env:
+          SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
           channelId: live
           projectId: '${{ secrets.FIREBASE_PROJECT_ID }}'
 
-      - name: Inform Missing Firebase Secret
-        if: ${{ secrets.FIREBASE_SERVICE_ACCOUNT == '' }}
+      - name: Deploy via Firebase Token (if configured)
+        if: env.FIREBASE_TOKEN != '' && env.SERVICE_ACCOUNT == ''
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
         run: |
-          echo "Notice: FIREBASE_SERVICE_ACCOUNT secret is not yet set in repository secrets."
-          echo "To enable automated Firebase deployment, add FIREBASE_SERVICE_ACCOUNT and FIREBASE_PROJECT_ID in Settings > Secrets."
+          npx firebase-tools deploy --only hosting --token "${{ secrets.FIREBASE_TOKEN }}"
+
+      - name: Build Summary
+        run: |
+          echo "=========================================================="
+          echo " Pipeline & Staging Complete!"
+          echo " Public bundle ready in public/ directory."
+          echo " Total staged files: $(find public -type f | wc -l)"
+          echo "=========================================================="
