@@ -782,10 +782,184 @@
             </div>
         </div>
 
-        <!-- Tab 2: Scanners -->
+        <!-- Tab 2: Custom Scanner & Multi-Factor Screener Workstation -->
         <div id="tab-scanners" style="display: none;">
-            <div class="scanners-grid" id="scannersGrid">
-                <!-- Populated dynamically -->
+            <div class="scanners-header" style="margin-bottom: 20px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+                    <div>
+                        <h2 style="font-size: 18px; font-weight: 800; color: var(--text-primary); margin-bottom: 4px;">Custom Scanner & Multi-Factor Screener Workstation</h2>
+                        <p style="font-size: 12px; color: var(--text-muted);">Multi-dimensional screening across US & Canadian markets · Quantitative factor filters · 14 institutional pattern rules · Custom preset builder & live export</p>
+                    </div>
+                    <!-- View Mode Toggle -->
+                    <div style="display: flex; gap: 8px; background: var(--bg-card); padding: 4px; border-radius: 8px; border: 1px solid var(--border-color);">
+                        <button class="filter-btn active" id="btnViewScreener" onclick="switchScannerView('screener')">Custom Screener Table</button>
+                        <button class="filter-btn" id="btnViewCards" onclick="switchScannerView('cards')">TAC-14 Strategy Cards</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- View 1: Custom Multi-Factor Screener -->
+            <div id="screenerTableView">
+                <!-- Quick Strategy Presets Bar -->
+                <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; align-items: center;">
+                    <span style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Strategy Presets:</span>
+                    <button class="filter-btn" onclick="applyScreenerPreset('high_probability')">🔥 High Probability (Score ≥ 65)</button>
+                    <button class="filter-btn" onclick="applyScreenerPreset('momentum_breakout')">🚀 Momentum Breakout</button>
+                    <button class="filter-btn" onclick="applyScreenerPreset('support_pullback')">📉 Support Pullback (RSI 40-55)</button>
+                    <button class="filter-btn" onclick="applyScreenerPreset('tsx_leaders')">🍁 TSX Leaders</button>
+                    <button class="filter-btn" onclick="applyScreenerPreset('us_growth')">🇺🇸 US Leaders</button>
+                    <button class="filter-btn" onclick="applyScreenerPreset('low_volatility')">🛡️ Low-Vol Quality</button>
+                    <button class="filter-btn" style="color: var(--accent-red);" onclick="resetScreenerFilters()">🔄 Reset Filters</button>
+                </div>
+
+                <!-- Comprehensive Multi-Criteria Filter Controls Panel -->
+                <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 16px; margin-bottom: 20px;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; font-size: 12px;">
+                        <!-- Market Filter -->
+                        <div>
+                            <label style="display: block; font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 6px;">Market Universe</label>
+                            <select id="scMarket" onchange="runCustomScreener()" style="width: 100%; background: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--border-color); padding: 7px 10px; border-radius: 4px; font-size: 12px;">
+                                <option value="ALL">All Markets (US + Canada)</option>
+                                <option value="US">US Equities (NYSE / NASDAQ / AMEX)</option>
+                                <option value="CA">Canadian Equities (TSX / TSXV)</option>
+                            </select>
+                        </div>
+
+                        <!-- Min Composite Score -->
+                        <div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                                <label style="font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Min Composite Score</label>
+                                <span id="scScoreVal" style="font-weight: 800; color: var(--accent-cyan); font-family: monospace;">≥ 0</span>
+                            </div>
+                            <input type="range" id="scScore" min="0" max="95" step="5" value="0" oninput="updateScoreVal(this.value); runCustomScreener()" style="width: 100%; accent-color: var(--accent-cyan);">
+                        </div>
+
+                        <!-- Min Technical Score -->
+                        <div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                                <label style="font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Min Technical Score</label>
+                                <span id="scTechVal" style="font-weight: 800; color: var(--accent-blue); font-family: monospace;">≥ 0</span>
+                            </div>
+                            <input type="range" id="scTech" min="0" max="95" step="5" value="0" oninput="updateTechVal(this.value); runCustomScreener()" style="width: 100%; accent-color: var(--accent-blue);">
+                        </div>
+
+                        <!-- RSI(14) Filter -->
+                        <div>
+                            <label style="display: block; font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 6px;">14-Day RSI Band</label>
+                            <select id="scRsi" onchange="runCustomScreener()" style="width: 100%; background: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--border-color); padding: 7px 10px; border-radius: 4px; font-size: 12px;">
+                                <option value="ALL">Any RSI (0–100)</option>
+                                <option value="OVERSOLD">Oversold (< 40)</option>
+                                <option value="PULLBACK">Trend Pullback (40–55)</option>
+                                <option value="MOMENTUM">Strong Momentum (55–70)</option>
+                                <option value="OVERBOUGHT">Overbought / Parabolic (> 70)</option>
+                            </select>
+                        </div>
+
+                        <!-- RVOL Filter -->
+                        <div>
+                            <label style="display: block; font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 6px;">20-Day Relative Volume (RVOL)</label>
+                            <select id="scRvol" onchange="runCustomScreener()" style="width: 100%; background: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--border-color); padding: 7px 10px; border-radius: 4px; font-size: 12px;">
+                                <option value="ALL">Any Volume</option>
+                                <option value="1.0">≥ 1.0x (Average+)</option>
+                                <option value="1.2">≥ 1.2x (Elevated)</option>
+                                <option value="1.5">≥ 1.5x (Institutional Surge)</option>
+                                <option value="2.0">≥ 2.0x (Extreme Volume Expansion)</option>
+                            </select>
+                        </div>
+
+                        <!-- 52W High Proximity -->
+                        <div>
+                            <label style="display: block; font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 6px;">52-Week High Proximity</label>
+                            <select id="scProx52w" onchange="runCustomScreener()" style="width: 100%; background: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--border-color); padding: 7px 10px; border-radius: 4px; font-size: 12px;">
+                                <option value="ALL">Any Distance</option>
+                                <option value="3">Within 3% of High (Breakout Zone)</option>
+                                <option value="7">Within 7% of High</option>
+                                <option value="15">Within 15% of High</option>
+                                <option value="DISCOUNT">> 15% Off High (Deep Value / Pullback)</option>
+                            </select>
+                        </div>
+
+                        <!-- ATR Volatility Filter -->
+                        <div>
+                            <label style="display: block; font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 6px;">ATR Volatility Band</label>
+                            <select id="scAtr" onchange="runCustomScreener()" style="width: 100%; background: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--border-color); padding: 7px 10px; border-radius: 4px; font-size: 12px;">
+                                <option value="ALL">Any Volatility</option>
+                                <option value="LOW">Low Volatility (< 2.2% ATR)</option>
+                                <option value="MED">Balanced Volatility (2.2% – 3.5%)</option>
+                                <option value="HIGH">High Volatility (> 3.5%)</option>
+                            </select>
+                        </div>
+
+                        <!-- Confidence Tier -->
+                        <div>
+                            <label style="display: block; font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 6px;">Data Confidence Tier</label>
+                            <select id="scTier" onchange="runCustomScreener()" style="width: 100%; background: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--border-color); padding: 7px 10px; border-radius: 4px; font-size: 12px;">
+                                <option value="ALL">All Confidence Tiers</option>
+                                <option value="AB">Tier A & Tier B Only</option>
+                                <option value="A">Tier A Strict</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Custom Preset Save & Manager Toolbar -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border-color); flex-wrap: wrap; gap: 10px;">
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span style="font-size: 11px; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">Saved Custom Screens:</span>
+                            <select id="scSavedPresets" onchange="loadSavedPreset(this.value)" style="background: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--border-color); padding: 5px 8px; border-radius: 4px; font-size: 11px;">
+                                <option value="">-- Select Saved Screen --</option>
+                            </select>
+                            <button class="filter-btn" onclick="deleteSavedPreset()" style="padding: 4px 8px; font-size: 11px; color: var(--accent-red);">Delete</button>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <input type="text" id="scNewPresetName" placeholder="Preset name (e.g. My TSX Breakout)..." style="background: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--border-color); padding: 5px 10px; border-radius: 4px; font-size: 11px; width: 200px;">
+                            <button class="filter-btn active" onclick="saveCurrentPreset()" style="padding: 5px 12px; font-size: 11px;">💾 Save Screen</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Screener Results Header & Export Tools -->
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 10px;">
+                    <div style="font-size: 13px; font-weight: 700; color: var(--text-primary);" id="screenerResultsCount">
+                        <!-- Populated dynamically -->
+                    </div>
+                    <div style="display: flex; gap: 8px; align-items: center;">
+                        <input type="text" id="screenerSearchInput" placeholder="Quick filter symbol or name..." oninput="runCustomScreener()" style="background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color); padding: 6px 12px; border-radius: 4px; font-size: 12px; width: 180px;">
+                        <button class="filter-btn" onclick="exportScreenerCSV()" style="font-size: 11px; padding: 6px 12px;">📥 Export CSV</button>
+                        <button class="filter-btn" onclick="exportScreenerJSON()" style="font-size: 11px; padding: 6px 12px;">📋 Export JSON</button>
+                    </div>
+                </div>
+
+                <!-- Matched Results Table -->
+                <div class="table-card">
+                    <table>
+                        <thead>
+                            <tr style="cursor: pointer; user-select: none;">
+                                <th onclick="sortScreenerTable('symbol')">Symbol ↕</th>
+                                <th onclick="sortScreenerTable('name')">Company Name ↕</th>
+                                <th onclick="sortScreenerTable('country')">Market ↕</th>
+                                <th onclick="sortScreenerTable('price')">Price ↕</th>
+                                <th onclick="sortScreenerTable('composite_score')">Score ↕</th>
+                                <th onclick="sortScreenerTable('confidence_tier')">Tier ↕</th>
+                                <th onclick="sortScreenerTable('technical_score')">Tech ↕</th>
+                                <th onclick="sortScreenerTable('rsi_14')">14D RSI ↕</th>
+                                <th onclick="sortScreenerTable('rvol_20')">20D RVOL ↕</th>
+                                <th onclick="sortScreenerTable('proximity_52w_high')">52W High Prox ↕</th>
+                                <th onclick="sortScreenerTable('atr_pct')">ATR % ↕</th>
+                                <th>Matched Pattern Setups</th>
+                            </tr>
+                        </thead>
+                        <tbody id="screenerTableBody">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- View 2: TAC-14 Institutional Strategy Cards Grid -->
+            <div id="screenerCardsView" style="display: none;">
+                <div class="scanners-grid" id="scannersGrid">
+                    <!-- Populated dynamically -->
+                </div>
             </div>
         </div>
 
@@ -1091,6 +1265,8 @@
                 .then(data => {
                     fullLeaderboard = data.securities;
                     renderLeaderboard(fullLeaderboard);
+                    runCustomScreener();
+                    initSavedPresetsDropdown();
                 })
                 .catch(err => console.error("Leaderboard load error:", err));
 
@@ -1217,6 +1393,404 @@
                 `;
                 grid.appendChild(card);
             }
+        }
+
+        // ==========================================
+        // CUSTOM MULTI-FACTOR SCREENER WORKSTATION
+        // ==========================================
+        let screenerMatches = [];
+        let screenerSortCol = 'composite_score';
+        let screenerSortAsc = false;
+
+        function switchScannerView(mode) {
+            const screenerView = document.getElementById('screenerTableView');
+            const cardsView = document.getElementById('screenerCardsView');
+            const btnScreener = document.getElementById('btnViewScreener');
+            const btnCards = document.getElementById('btnViewCards');
+
+            if (mode === 'screener') {
+                if (screenerView) screenerView.style.display = 'block';
+                if (cardsView) cardsView.style.display = 'none';
+                if (btnScreener) btnScreener.classList.add('active');
+                if (btnCards) btnCards.classList.remove('active');
+                runCustomScreener();
+            } else {
+                if (screenerView) screenerView.style.display = 'none';
+                if (cardsView) cardsView.style.display = 'block';
+                if (btnCards) btnCards.classList.add('active');
+                if (btnScreener) btnScreener.classList.remove('active');
+            }
+        }
+
+        function updateScoreVal(val) {
+            const el = document.getElementById('scScoreVal');
+            if (el) el.innerText = '≥ ' + val;
+        }
+
+        function updateTechVal(val) {
+            const el = document.getElementById('scTechVal');
+            if (el) el.innerText = '≥ ' + val;
+        }
+
+        function applyScreenerPreset(preset) {
+            resetScreenerFilters(false);
+            if (preset === 'high_probability') {
+                document.getElementById('scScore').value = '65';
+                updateScoreVal(65);
+                document.getElementById('scTier').value = 'AB';
+            } else if (preset === 'momentum_breakout') {
+                document.getElementById('scScore').value = '55';
+                updateScoreVal(55);
+                document.getElementById('scRvol').value = '1.0';
+                document.getElementById('scProx52w').value = '7';
+                document.getElementById('scRsi').value = 'MOMENTUM';
+            } else if (preset === 'support_pullback') {
+                document.getElementById('scScore').value = '50';
+                updateScoreVal(50);
+                document.getElementById('scRsi').value = 'PULLBACK';
+            } else if (preset === 'tsx_leaders') {
+                document.getElementById('scMarket').value = 'CA';
+                document.getElementById('scScore').value = '55';
+                updateScoreVal(55);
+            } else if (preset === 'us_growth') {
+                document.getElementById('scMarket').value = 'US';
+                document.getElementById('scScore').value = '60';
+                updateScoreVal(60);
+            } else if (preset === 'low_volatility') {
+                document.getElementById('scAtr').value = 'LOW';
+                document.getElementById('scScore').value = '50';
+                updateScoreVal(50);
+            }
+            runCustomScreener();
+        }
+
+        function resetScreenerFilters(triggerRun = true) {
+            const mkt = document.getElementById('scMarket');
+            if (mkt) mkt.value = 'ALL';
+            const score = document.getElementById('scScore');
+            if (score) { score.value = '0'; updateScoreVal(0); }
+            const tech = document.getElementById('scTech');
+            if (tech) { tech.value = '0'; updateTechVal(0); }
+            const rsi = document.getElementById('scRsi');
+            if (rsi) rsi.value = 'ALL';
+            const rvol = document.getElementById('scRvol');
+            if (rvol) rvol.value = 'ALL';
+            const prox = document.getElementById('scProx52w');
+            if (prox) prox.value = 'ALL';
+            const atr = document.getElementById('scAtr');
+            if (atr) atr.value = 'ALL';
+            const tier = document.getElementById('scTier');
+            if (tier) tier.value = 'ALL';
+            const search = document.getElementById('screenerSearchInput');
+            if (search) search.value = '';
+
+            if (triggerRun) runCustomScreener();
+        }
+
+        function runCustomScreener() {
+            if (!fullLeaderboard || fullLeaderboard.length === 0) return;
+
+            const mkt = document.getElementById('scMarket')?.value || 'ALL';
+            const minScore = parseInt(document.getElementById('scScore')?.value || '0', 10);
+            const minTech = parseInt(document.getElementById('scTech')?.value || '0', 10);
+            const rsiBand = document.getElementById('scRsi')?.value || 'ALL';
+            const minRvol = document.getElementById('scRvol')?.value || 'ALL';
+            const proxBand = document.getElementById('scProx52w')?.value || 'ALL';
+            const atrBand = document.getElementById('scAtr')?.value || 'ALL';
+            const tierVal = document.getElementById('scTier')?.value || 'ALL';
+            const searchQ = (document.getElementById('screenerSearchInput')?.value || '').trim().toLowerCase();
+
+            screenerMatches = fullLeaderboard.filter(item => {
+                // Market
+                if (mkt !== 'ALL' && item.country !== mkt) return false;
+
+                // Composite Score
+                if (item.composite_score < minScore) return false;
+
+                // Technical Score
+                if (item.technical_score < minTech) return false;
+
+                // RSI Band
+                const rsi = item.rsi_14 || 50;
+                if (rsiBand === 'OVERSOLD' && rsi >= 40) return false;
+                if (rsiBand === 'PULLBACK' && (rsi < 40 || rsi > 55)) return false;
+                if (rsiBand === 'MOMENTUM' && (rsi < 55 || rsi > 70)) return false;
+                if (rsiBand === 'OVERBOUGHT' && rsi <= 70) return false;
+
+                // RVOL
+                const rvol = item.rvol_20 || 1.0;
+                if (minRvol !== 'ALL') {
+                    if (rvol < parseFloat(minRvol)) return false;
+                }
+
+                // 52W Proximity
+                const prox = item.proximity_52w_high || 0;
+                if (proxBand === '3' && prox < -3.0) return false;
+                if (proxBand === '7' && prox < -7.0) return false;
+                if (proxBand === '15' && prox < -15.0) return false;
+                if (proxBand === 'DISCOUNT' && prox >= -15.0) return false;
+
+                // ATR Volatility
+                const atr = item.atr_pct || 2.5;
+                if (atrBand === 'LOW' && atr >= 2.2) return false;
+                if (atrBand === 'MED' && (atr < 2.2 || atr > 3.5)) return false;
+                if (atrBand === 'HIGH' && atr <= 3.5) return false;
+
+                // Confidence Tier
+                if (tierVal === 'A' && item.confidence_tier !== 'A') return false;
+                if (tierVal === 'AB' && item.confidence_tier !== 'A' && item.confidence_tier !== 'B') return false;
+
+                // Text search
+                if (searchQ) {
+                    const symMatch = (item.symbol || '').toLowerCase().includes(searchQ);
+                    const nameMatch = (item.name || '').toLowerCase().includes(searchQ);
+                    const tagMatch = (item.scanner_tags || []).some(t => t.toLowerCase().includes(searchQ));
+                    if (!symMatch && !nameMatch && !tagMatch) return false;
+                }
+
+                return true;
+            });
+
+            // Sort
+            screenerMatches.sort((a, b) => {
+                let valA = a[screenerSortCol];
+                let valB = b[screenerSortCol];
+                if (typeof valA === 'string') valA = valA.toLowerCase();
+                if (typeof valB === 'string') valB = valB.toLowerCase();
+                if (valA < valB) return screenerSortAsc ? -1 : 1;
+                if (valA > valB) return screenerSortAsc ? 1 : -1;
+                return 0;
+            });
+
+            renderScreenerTable();
+        }
+
+        function sortScreenerTable(col) {
+            if (screenerSortCol === col) {
+                screenerSortAsc = !screenerSortAsc;
+            } else {
+                screenerSortCol = col;
+                screenerSortAsc = false;
+            }
+            runCustomScreener();
+        }
+
+        function renderScreenerTable() {
+            const tbody = document.getElementById('screenerTableBody');
+            const counter = document.getElementById('screenerResultsCount');
+            if (!tbody) return;
+
+            const total = fullLeaderboard.length;
+            const matched = screenerMatches.length;
+            const pct = total > 0 ? ((matched / total) * 100).toFixed(0) : 0;
+
+            if (counter) {
+                counter.innerHTML = `
+                    <span style="color: var(--accent-cyan); font-weight: 800;">${matched}</span> of ${total} securities matched criteria 
+                    <span style="font-weight: 400; color: var(--text-muted); font-size: 11px;">(${pct}% of universe)</span>
+                `;
+            }
+
+            if (matched === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="12" style="text-align: center; padding: 40px; color: var(--text-muted);">
+                            No securities match current screener criteria. Try lowering the minimum score or resetting filters.
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            let html = '';
+            screenerMatches.forEach(item => {
+                const scoreClass = item.composite_score >= 60 ? 'score-high' : (item.composite_score >= 45 ? 'score-mid' : 'score-low');
+                const proxColor = item.proximity_52w_high >= -5 ? 'var(--accent-green)' : (item.proximity_52w_high <= -20 ? 'var(--accent-red)' : 'var(--text-muted)');
+                const rsiColor = item.rsi_14 < 40 ? 'var(--accent-purple)' : (item.rsi_14 > 65 ? 'var(--accent-amber)' : 'var(--text-primary)');
+                const rvolColor = item.rvol_20 >= 1.5 ? 'var(--accent-green)' : (item.rvol_20 >= 1.0 ? 'var(--text-primary)' : 'var(--text-muted)');
+
+                html += `
+                    <tr onclick="openSymbol('${item.symbol}')">
+                        <td>
+                            <div class="symbol-badge">
+                                <span style="cursor: pointer; font-weight: 800; color: var(--accent-blue);">${item.country === 'US' ? '🇺🇸' : '🇨🇦'} ${item.symbol}</span>
+                            </div>
+                        </td>
+                        <td style="color: var(--text-primary); font-size: 12px; font-weight: 600;">${item.name}</td>
+                        <td>
+                            <span class="exchange-tag">${item.exchange}</span>
+                        </td>
+                        <td style="font-family: monospace; font-weight: 700;">
+                            $${item.price.toFixed(2)} <span style="font-size: 10px; color: var(--text-muted);">${item.currency}</span>
+                        </td>
+                        <td>
+                            <span class="score-pill ${scoreClass}">${item.composite_score}/100</span>
+                        </td>
+                        <td>
+                            <span style="font-weight: 700; color: ${item.confidence_tier === 'A' ? 'var(--accent-green)' : (item.confidence_tier === 'B' ? 'var(--accent-blue)' : 'var(--accent-amber)')};">
+                                Tier ${item.confidence_tier}
+                            </span>
+                        </td>
+                        <td style="font-family: monospace; font-weight: 600;">${item.technical_score}</td>
+                        <td style="font-family: monospace; font-weight: 700; color: ${rsiColor};">${item.rsi_14.toFixed(1)}</td>
+                        <td style="font-family: monospace; font-weight: 700; color: ${rvolColor};">${item.rvol_20.toFixed(2)}x</td>
+                        <td style="font-family: monospace; font-weight: 600; color: ${proxColor};">
+                            ${item.proximity_52w_high > 0 ? '+' : ''}${item.proximity_52w_high.toFixed(1)}%
+                        </td>
+                        <td style="font-family: monospace; color: var(--text-muted);">${item.atr_pct.toFixed(2)}%</td>
+                        <td>
+                            ${item.scanner_tags.slice(0, 2).map(t => `<span class="tag-pill" style="font-size: 10px; margin-right: 4px;">${t}</span>`).join('')}
+                            ${item.scanner_tags.length > 2 ? `<span class="tag-pill" style="font-size: 10px;">+${item.scanner_tags.length - 2}</span>` : ''}
+                        </td>
+                    </tr>
+                `;
+            });
+
+            tbody.innerHTML = html;
+        }
+
+        function exportScreenerCSV() {
+            if (!screenerMatches || screenerMatches.length === 0) {
+                alert("No screener results to export.");
+                return;
+            }
+            const headers = ["Symbol", "Name", "Exchange", "Country", "Currency", "Price", "CompositeScore", "ConfidenceTier", "TechnicalScore", "RSI14", "RVOL20", "52WHighProx", "ATRPct", "MatchedSetups"];
+            const rows = screenerMatches.map(m => [
+                m.symbol,
+                `"${m.name.replace(/"/g, '""')}"`,
+                m.exchange,
+                m.country,
+                m.currency,
+                m.price.toFixed(2),
+                m.composite_score,
+                m.confidence_tier,
+                m.technical_score,
+                m.rsi_14.toFixed(1),
+                m.rvol_20.toFixed(2),
+                m.proximity_52w_high.toFixed(1),
+                m.atr_pct.toFixed(2),
+                `"${(m.scanner_tags || []).join('; ')}"`
+            ]);
+
+            const csvContent = "data:text/csv;charset=utf-8," + [headers.join(","), ...rows.map(e => e.join(","))].join("\n");
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", `screener_export_${new Date().toISOString().slice(0, 10)}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function exportScreenerJSON() {
+            if (!screenerMatches || screenerMatches.length === 0) {
+                alert("No screener results to export.");
+                return;
+            }
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(screenerMatches, null, 2));
+            const dlAnchor = document.createElement('a');
+            dlAnchor.setAttribute("href", dataStr);
+            dlAnchor.setAttribute("download", `screener_export_${new Date().toISOString().slice(0, 10)}.json`);
+            document.body.appendChild(dlAnchor);
+            dlAnchor.click();
+            dlAnchor.remove();
+        }
+
+        function saveCurrentPreset() {
+            const nameInput = document.getElementById('scNewPresetName');
+            const name = (nameInput?.value || '').trim();
+            if (!name) {
+                alert("Please enter a name for your custom screen preset.");
+                return;
+            }
+
+            const presetConfig = {
+                market: document.getElementById('scMarket')?.value || 'ALL',
+                score: document.getElementById('scScore')?.value || '0',
+                tech: document.getElementById('scTech')?.value || '0',
+                rsi: document.getElementById('scRsi')?.value || 'ALL',
+                rvol: document.getElementById('scRvol')?.value || 'ALL',
+                prox: document.getElementById('scProx52w')?.value || 'ALL',
+                atr: document.getElementById('scAtr')?.value || 'ALL',
+                tier: document.getElementById('scTier')?.value || 'ALL',
+            };
+
+            try {
+                let saved = JSON.parse(localStorage.getItem('market_screener_presets') || '{}');
+                saved[name] = presetConfig;
+                localStorage.setItem('market_screener_presets', JSON.stringify(saved));
+                initSavedPresetsDropdown();
+                const sel = document.getElementById('scSavedPresets');
+                if (sel) sel.value = name;
+                if (nameInput) nameInput.value = '';
+                alert(`Saved preset "${name}" to browser local storage.`);
+            } catch (e) {
+                console.error("Failed to save preset:", e);
+            }
+        }
+
+        function loadSavedPreset(name) {
+            if (!name) return;
+            try {
+                const saved = JSON.parse(localStorage.getItem('market_screener_presets') || '{}');
+                const cfg = saved[name];
+                if (!cfg) return;
+
+                if (document.getElementById('scMarket')) document.getElementById('scMarket').value = cfg.market;
+                if (document.getElementById('scScore')) {
+                    document.getElementById('scScore').value = cfg.score;
+                    updateScoreVal(cfg.score);
+                }
+                if (document.getElementById('scTech')) {
+                    document.getElementById('scTech').value = cfg.tech;
+                    updateTechVal(cfg.tech);
+                }
+                if (document.getElementById('scRsi')) document.getElementById('scRsi').value = cfg.rsi;
+                if (document.getElementById('scRvol')) document.getElementById('scRvol').value = cfg.rvol;
+                if (document.getElementById('scProx52w')) document.getElementById('scProx52w').value = cfg.prox;
+                if (document.getElementById('scAtr')) document.getElementById('scAtr').value = cfg.atr;
+                if (document.getElementById('scTier')) document.getElementById('scTier').value = cfg.tier;
+
+                runCustomScreener();
+            } catch (e) {
+                console.error("Failed to load preset:", e);
+            }
+        }
+
+        function deleteSavedPreset() {
+            const sel = document.getElementById('scSavedPresets');
+            const name = sel?.value;
+            if (!name) {
+                alert("Please select a preset to delete.");
+                return;
+            }
+            if (!confirm(`Delete saved preset "${name}"?`)) return;
+
+            try {
+                let saved = JSON.parse(localStorage.getItem('market_screener_presets') || '{}');
+                delete saved[name];
+                localStorage.setItem('market_screener_presets', JSON.stringify(saved));
+                initSavedPresetsDropdown();
+            } catch (e) {
+                console.error("Failed to delete preset:", e);
+            }
+        }
+
+        function initSavedPresetsDropdown() {
+            const sel = document.getElementById('scSavedPresets');
+            if (!sel) return;
+            const curVal = sel.value;
+            let saved = {};
+            try {
+                saved = JSON.parse(localStorage.getItem('market_screener_presets') || '{}');
+            } catch (e) {}
+
+            let html = '<option value="">-- Select Saved Screen --</option>';
+            for (const name of Object.keys(saved)) {
+                html += `<option value="${name}">${name}</option>`;
+            }
+            sel.innerHTML = html;
+            if (saved[curVal]) sel.value = curVal;
         }
 
         function renderSignals(signals) {
