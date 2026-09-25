@@ -33,8 +33,34 @@ jobs:
         run: |
           python3 scripts/build_firebase_public.py
 
+      - name: Extract Firebase Project ID
+        env:
+          SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          EXPLICIT_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
+        run: |
+          python3 -c "
+          import json, os
+          explicit = os.environ.get('EXPLICIT_PROJECT_ID', '').strip()
+          sa_raw = os.environ.get('SERVICE_ACCOUNT', '').strip()
+          proj_id = explicit
+          if not proj_id and sa_raw:
+              try:
+                  data = json.loads(sa_raw)
+                  proj_id = data.get('project_id', '')
+              except Exception as e:
+                  print('Could not parse SERVICE_ACCOUNT JSON:', e)
+          if proj_id:
+              print(f'Detected Firebase Project ID: {proj_id}')
+              with open('.firebaserc', 'w') as f:
+                  json.dump({'projects': {'default': proj_id}}, f, indent=2)
+              with open(os.environ['GITHUB_ENV'], 'a') as f:
+                  f.write(f'DETECTED_PROJECT_ID={proj_id}\n')
+          else:
+              print('No valid project ID found in secrets or credentials.')
+          "
+
       - name: Deploy via Service Account (if configured)
-        if: env.SERVICE_ACCOUNT != ''
+        if: env.SERVICE_ACCOUNT != '' && env.DETECTED_PROJECT_ID != ''
         uses: FirebaseExtended/action-hosting-deploy@v0
         env:
           SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
@@ -42,7 +68,7 @@ jobs:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
           channelId: live
-          projectId: '${{ secrets.FIREBASE_PROJECT_ID }}'
+          projectId: '${{ env.DETECTED_PROJECT_ID }}'
 
       - name: Deploy via Firebase Token (if configured)
         if: env.FIREBASE_TOKEN != '' && env.SERVICE_ACCOUNT == ''
@@ -55,7 +81,7 @@ jobs:
       - name: Build Summary
         run: |
           echo "=========================================================="
-          echo " Pipeline & Staging Complete!"
-          echo " Public bundle ready in public/ directory."
+          echo " Pipeline Execution Complete!"
+          echo " Target Firebase Project: ${DETECTED_PROJECT_ID:-Not configured}"
           echo " Total staged files: $(find public -type f | wc -l)"
           echo "=========================================================="
