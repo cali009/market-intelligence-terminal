@@ -1433,6 +1433,7 @@
                 const currentStrat = backtestBundle.strategies[selectedStrategyId];
                 if (currentStrat) {
                     document.getElementById('equityTitle').innerText = `${currentStrat.strategy_name} — Net Equity vs ${bm === 'SPY' ? 'SPY (S&P 500)' : 'XIU (TSX 60)'}`;
+                    renderBacktestScorecards(currentStrat);
                     drawEquityCurve(currentStrat.equity_curve, currentStrat.config.train_cutoff, currentStrat.config.val_cutoff);
                 }
             }
@@ -1672,10 +1673,25 @@
             const m = currentStrat.metrics;
             document.getElementById('equityTitle').innerText = `${currentStrat.strategy_name} — Net Equity vs ${selectedBenchmarkKey === 'SPY' ? 'SPY (S&P 500)' : 'XIU (TSX 60)'}`;
 
-            // 6 Metric Scorecards
+        function renderBacktestScorecards(currentStrat) {
+            if (!currentStrat || !currentStrat.metrics) return;
+            const m = currentStrat.metrics;
             const grid = document.getElementById('backtestMetricsGrid');
+            if (!grid) return;
+
             const isProfitable = m.total_net_return_pct >= 0;
-            const isAlphaPositive = m.alpha_pct >= 0;
+
+            const isXiu = selectedBenchmarkKey === 'XIU';
+            const bmLabel = isXiu ? 'Benchmark (XIU TSX 60)' : 'Benchmark (SPY S&P 500)';
+            const bmReturn = isXiu
+                ? (m.benchmark_xiu_return_pct != null ? m.benchmark_xiu_return_pct : (m.benchmark_return_pct || 0))
+                : (m.benchmark_spy_return_pct != null ? m.benchmark_spy_return_pct : (m.benchmark_return_pct || 0));
+
+            const alphaVal = isXiu
+                ? (m.alpha_vs_blended_pct != null ? m.alpha_vs_blended_pct : (m.total_net_return_pct - bmReturn))
+                : (m.alpha_vs_spy_pct != null ? m.alpha_vs_spy_pct : (m.alpha_pct != null ? m.alpha_pct : (m.total_net_return_pct - bmReturn)));
+
+            const isAlphaPositive = alphaVal >= 0;
 
             grid.innerHTML = `
                 <div class="scorecard-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px;">
@@ -1687,12 +1703,12 @@
                 </div>
 
                 <div class="scorecard-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px;">
-                    <div style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Benchmark (SPY)</div>
+                    <div style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">${bmLabel}</div>
                     <div style="font-size: 22px; font-weight: 800; color: var(--text-primary); margin: 4px 0;">
-                        +${m.benchmark_return_pct}%
+                        +${bmReturn.toFixed(2)}%
                     </div>
-                    <div style="font-size: 11px; color: ${isAlphaPositive ? 'var(--accent-green)' : 'var(--accent-red)'};">
-                        Alpha: ${isAlphaPositive ? '+' : ''}${m.alpha_pct}%
+                    <div style="font-size: 11px; color: ${isAlphaPositive ? 'var(--accent-green)' : 'var(--accent-red)'}; font-weight: 600;">
+                        Alpha: ${isAlphaPositive ? '+' : ''}${alphaVal.toFixed(2)}%
                     </div>
                 </div>
 
@@ -1728,6 +1744,10 @@
                     <div style="font-size: 11px; color: var(--text-muted);">Avg Win: +${m.avg_win_r}R | Loss: ${m.avg_loss_r}R</div>
                 </div>
             `;
+        }
+
+            // Render scorecards
+            renderBacktestScorecards(currentStrat);
 
             // Draw Equity Curve Canvas safely
             try {

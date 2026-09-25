@@ -660,6 +660,8 @@ class BacktestEngine:
             "total_gross_return_pct": round(total_gross_return_pct, 2),
             "fee_drag_total_usd": round(total_fee_drag_usd, 2),
             "cagr_pct": round(cagr_pct, 2),
+            "benchmark_return_pct": round(benchmark_spy_return_pct, 2),
+            "alpha_pct": round(total_net_return_pct - benchmark_spy_return_pct, 2),
             "benchmark_spy_return_pct": round(benchmark_spy_return_pct, 2),
             "benchmark_xiu_return_pct": round(benchmark_xiu_return_pct, 2),
             "blended_benchmark_return_pct": round(blended_benchmark_return_pct, 2),
