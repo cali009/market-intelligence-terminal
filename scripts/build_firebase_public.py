@@ -31,23 +31,24 @@ def build_firebase_bundle():
 
     # 3. Copy core JSON feeds and create extensionless copies
     core_feeds = [
+        ("daily_summary.json", "summary.json"),
+        ("daily_summary.json", "daily_summary.json"),
         ("daily_summary.json", "summary"),
+        ("daily_summary.json", "daily_summary"),
+        ("leaderboard.json", "leaderboard.json"),
         ("leaderboard.json", "leaderboard"),
+        ("scanners.json", "scanners.json"),
         ("scanners.json", "scanners"),
+        ("signals.json", "signals.json"),
         ("signals.json", "signals"),
     ]
 
-    for src_name, clean_name in core_feeds:
+    for src_name, dest_name in core_feeds:
         src_file = FEEDS_DIR / src_name
         if src_file.exists():
-            # Copy as .json
-            dest_json = API_DIR / src_name
-            shutil.copy2(src_file, dest_json)
-            
-            # Also copy as extensionless clean alias
-            dest_clean = API_DIR / clean_name
-            shutil.copy2(src_file, dest_clean)
-            print(f"    ✓ Staged feed: /api/{src_name} and /api/{clean_name}")
+            dest_file = API_DIR / dest_name
+            shutil.copy2(src_file, dest_file)
+            print(f"    ✓ Staged feed: /api/{dest_name}")
 
     # 4. Copy individual symbol files
     feed_symbols_dir = FEEDS_DIR / "symbols"

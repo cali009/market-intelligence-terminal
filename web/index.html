@@ -726,7 +726,7 @@
         async function init() {
             try {
                 // Fetch summary
-                const sumData = await fetchJson('/api/summary.json', '/api/summary');
+                const sumData = await fetchJson('/api/summary.json', '/api/daily_summary.json');
                 renderRegimes(sumData.regimes);
 
                 // Fetch leaderboard
