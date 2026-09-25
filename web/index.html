@@ -287,6 +287,21 @@
             border-color: var(--accent-blue);
         }
 
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .spinner {
+            width: 14px;
+            height: 14px;
+            border: 2px solid var(--accent-cyan);
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
         /* Data Tables */
         .table-card {
             background-color: var(--bg-card);
@@ -640,10 +655,10 @@
 
         <!-- Navigation Tabs -->
         <div class="tabs">
-            <button class="tab-btn active" onclick="switchTab('leaderboard')">Opportunity Leaderboard</button>
-            <button class="tab-btn" onclick="switchTab('scanners')">TAC-14 Market Scanners</button>
-            <button class="tab-btn" onclick="switchTab('signals')">Research Signal Plans</button>
-            <button class="tab-btn" onclick="switchTab('backtest')">Backtest Lab & Strategy Performance</button>
+            <button class="tab-btn active" data-tab="leaderboard" onclick="switchTab('leaderboard', event)">Opportunity Leaderboard</button>
+            <button class="tab-btn" data-tab="scanners" onclick="switchTab('scanners', event)">TAC-14 Market Scanners</button>
+            <button class="tab-btn" data-tab="signals" onclick="switchTab('signals', event)">Research Signal Plans</button>
+            <button class="tab-btn" data-tab="backtest" onclick="switchTab('backtest', event)">Backtest Lab & Strategy Performance</button>
         </div>
 
         <!-- Tab 1: Leaderboard -->
@@ -698,7 +713,7 @@
                 <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
                     <div>
                         <h2 style="font-size: 18px; font-weight: 800; color: var(--text-primary); margin-bottom: 4px;">Walk-Forward Backtest Lab & Quantitative Validation</h2>
-                        <p style="font-size: 12px; color: var(--text-muted);">Event-driven historical simulation · Next-day open fills (zero look-ahead) · 20 bps round-trip transaction costs</p>
+                        <p style="font-size: 12px; color: var(--text-muted);">Event-driven historical simulation · Next-day open fills (zero look-ahead) · 20 bps round-trip transaction costs · Bank of Canada FX normalization</p>
                     </div>
                     <div style="display: flex; gap: 8px;">
                         <span class="exchange-tag" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-green); border: 1px solid rgba(16, 185, 129, 0.3);">Train: 60%</span>
@@ -722,13 +737,19 @@
             <div class="chart-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; margin-bottom: 24px;">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
                     <div>
-                        <div style="font-size: 14px; font-weight: 700; color: var(--text-primary);" id="equityTitle">Portfolio Net Equity vs Benchmark (SPY)</div>
+                        <div style="font-size: 14px; font-weight: 700; color: var(--text-primary);" id="equityTitle">Portfolio Net Equity vs Benchmark</div>
                         <div style="font-size: 11px; color: var(--text-muted);" id="equitySubtitle">Walk-forward out-of-sample simulation net of slippage and execution costs</div>
                     </div>
-                    <div style="display: flex; gap: 16px; font-size: 12px;">
-                        <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 10px; height: 10px; background: var(--accent-cyan); border-radius: 2px;"></span> Strategy Equity</span>
-                        <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 10px; height: 10px; background: var(--text-muted); border-radius: 2px;"></span> SPY Benchmark</span>
-                        <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 10px; height: 10px; background: rgba(239, 68, 68, 0.4); border-radius: 2px;"></span> Drawdown</span>
+                    <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
+                        <div class="filter-group" style="display: flex; gap: 4px;">
+                            <button class="filter-btn active" id="bmSpyBtn" onclick="toggleBacktestBenchmark('SPY')">SPY (S&P 500)</button>
+                            <button class="filter-btn" id="bmXiuBtn" onclick="toggleBacktestBenchmark('XIU')">XIU (TSX 60)</button>
+                        </div>
+                        <div style="display: flex; gap: 14px; font-size: 11px;">
+                            <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 10px; height: 10px; background: #06b6d4; border-radius: 2px;"></span> Strategy Equity</span>
+                            <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 10px; height: 10px; background: #94a3b8; border-radius: 2px;"></span> Benchmark</span>
+                            <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 10px; height: 10px; background: rgba(239, 68, 68, 0.5); border-radius: 2px;"></span> Drawdown</span>
+                        </div>
                     </div>
                 </div>
                 <div style="height: 320px; width: 100%; position: relative;">
@@ -748,28 +769,102 @@
                 </div>
             </div>
 
-            <!-- Recent Simulated Trades Table -->
-            <div class="table-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 16px; margin-bottom: 24px;">
-                <h3 style="font-size: 13px; font-weight: 700; margin-bottom: 12px; color: var(--text-primary);">Recent Simulated Trade Ledger (Audit Trail)</h3>
+            <!-- Complete Simulated Trade Ledger & Explorer -->
+            <div class="table-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; margin-bottom: 24px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 16px;">
+                    <div>
+                        <h3 style="font-size: 14px; font-weight: 700; color: var(--text-primary); margin-bottom: 4px;">Simulated Trade Ledger & Execution Audit Trail</h3>
+                        <div style="font-size: 12px; color: var(--text-muted);" id="tradeLedgerSubhead">Every simulated execution across the 501-session backtest period</div>
+                    </div>
+                    <!-- Live Metric Summary Badge -->
+                    <div id="tradeSummaryBadge" style="background: rgba(6, 182, 212, 0.1); border: 1px solid rgba(6, 182, 212, 0.3); padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: 600; color: var(--accent-cyan);">
+                        Loading trade records...
+                    </div>
+                </div>
+
+                <!-- Ledger Filter Toolbar -->
+                <div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 16px; background: rgba(15, 23, 42, 0.6); padding: 12px; border-radius: 6px; border: 1px solid var(--border-color);">
+                    <!-- Symbol Filter -->
+                    <div style="display: flex; align-items: center; gap: 6px;">
+                        <span style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Security:</span>
+                        <select id="btSymbolFilter" onchange="filterBacktestTrades()" style="background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color); padding: 6px 10px; border-radius: 4px; font-size: 12px;">
+                            <option value="ALL">All Securities</option>
+                        </select>
+                    </div>
+
+                    <!-- Partition Filter -->
+                    <div style="display: flex; align-items: center; gap: 6px;">
+                        <span style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Partition:</span>
+                        <select id="btPartitionFilter" onchange="filterBacktestTrades()" style="background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color); padding: 6px 10px; border-radius: 4px; font-size: 12px;">
+                            <option value="ALL">All Partitions</option>
+                            <option value="TEST">TEST (Out-of-Sample)</option>
+                            <option value="VALIDATION">VALIDATION (Hyperparameter)</option>
+                            <option value="TRAIN">TRAIN (In-Sample)</option>
+                        </select>
+                    </div>
+
+                    <!-- Outcome Filter -->
+                    <div style="display: flex; align-items: center; gap: 6px;">
+                        <span style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Outcome:</span>
+                        <select id="btOutcomeFilter" onchange="filterBacktestTrades()" style="background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color); padding: 6px 10px; border-radius: 4px; font-size: 12px;">
+                            <option value="ALL">All Trades</option>
+                            <option value="WIN">Winners (+)</option>
+                            <option value="LOSS">Losses (-)</option>
+                        </select>
+                    </div>
+
+                    <!-- Exit Reason Filter -->
+                    <div style="display: flex; align-items: center; gap: 6px;">
+                        <span style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Exit Trigger:</span>
+                        <select id="btExitFilter" onchange="filterBacktestTrades()" style="background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color); padding: 6px 10px; border-radius: 4px; font-size: 12px;">
+                            <option value="ALL">All Exit Reasons</option>
+                            <option value="PROFIT_TARGET_1">Profit Target 1</option>
+                            <option value="PROFIT_TARGET_2">Profit Target 2</option>
+                            <option value="STOP_LOSS">Structural Stop Loss</option>
+                            <option value="TRAILING_STOP">Trailing Stop</option>
+                            <option value="MAX_HOLDING_DAYS">Time Expiry</option>
+                        </select>
+                    </div>
+
+                    <!-- Page Size Selector -->
+                    <div style="display: flex; align-items: center; gap: 6px; margin-left: auto;">
+                        <span style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Show:</span>
+                        <select id="btPageSize" onchange="changeBtPageSize()" style="background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color); padding: 6px 10px; border-radius: 4px; font-size: 12px;">
+                            <option value="25">25 trades</option>
+                            <option value="50" selected>50 trades</option>
+                            <option value="100">100 trades</option>
+                            <option value="ALL">All trades</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Trades Table -->
                 <div style="overflow-x: auto;">
                     <table style="width: 100%; border-collapse: collapse; font-size: 12px;">
                         <thead>
-                            <tr style="border-bottom: 1px solid var(--border-color); text-align: left; color: var(--text-muted);">
-                                <th style="padding: 8px;">Date</th>
-                                <th style="padding: 8px;">Symbol</th>
-                                <th style="padding: 8px;">Entry</th>
-                                <th style="padding: 8px;">Exit</th>
-                                <th style="padding: 8px;">Hold</th>
-                                <th style="padding: 8px;">Exit Reason</th>
-                                <th style="padding: 8px;">Return %</th>
-                                <th style="padding: 8px;">R-Multiple</th>
-                                <th style="padding: 8px;">Partition</th>
+                            <tr style="border-bottom: 1px solid var(--border-color); text-align: left; color: var(--text-muted); font-size: 11px; text-transform: uppercase;">
+                                <th style="padding: 10px 8px;">Dates (Entry → Exit)</th>
+                                <th style="padding: 10px 8px;">Security</th>
+                                <th style="padding: 10px 8px;">Side</th>
+                                <th style="padding: 10px 8px;">Entry Net</th>
+                                <th style="padding: 10px 8px;">Exit Net</th>
+                                <th style="padding: 10px 8px;">Hold</th>
+                                <th style="padding: 10px 8px;">Exit Reason</th>
+                                <th style="padding: 10px 8px;">Return %</th>
+                                <th style="padding: 10px 8px;">Net P&L ($)</th>
+                                <th style="padding: 10px 8px;">R-Multiple</th>
+                                <th style="padding: 10px 8px;">Partition</th>
                             </tr>
                         </thead>
                         <tbody id="backtestTradeBody">
                             <!-- Populated dynamically -->
                         </tbody>
                     </table>
+                </div>
+
+                <!-- Pagination Footer -->
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--border-color); flex-wrap: wrap; gap: 10px;" id="btPaginationControls">
+                    <!-- Populated dynamically -->
                 </div>
             </div>
 
@@ -813,35 +908,27 @@
         }
 
         async function init() {
-            try {
-                // Fetch summary
-                const sumData = await fetchJson('/api/summary.json', '/api/daily_summary.json');
-                renderRegimes(sumData.regimes);
+            // Concurrent parallel fetches for all core feeds
+            fetchJson('/api/summary.json', '/api/daily_summary.json')
+                .then(data => renderRegimes(data.regimes))
+                .catch(err => console.error("Summary load error:", err));
 
-                // Fetch leaderboard
-                const leadData = await fetchJson('/api/leaderboard.json', '/api/leaderboard');
-                fullLeaderboard = leadData.securities;
-                renderLeaderboard(fullLeaderboard);
+            fetchJson('/api/leaderboard.json', '/api/leaderboard')
+                .then(data => {
+                    fullLeaderboard = data.securities;
+                    renderLeaderboard(fullLeaderboard);
+                })
+                .catch(err => console.error("Leaderboard load error:", err));
 
-                // Fetch scanners
-                const scanData = await fetchJson('/api/scanners.json', '/api/scanners');
-                renderScanners(scanData.matches);
+            fetchJson('/api/scanners.json', '/api/scanners')
+                .then(data => renderScanners(data.matches))
+                .catch(err => console.error("Scanners load error:", err));
 
-                // Fetch signals
-                const sigData = await fetchJson('/api/signals.json', '/api/signals');
-                renderSignals(sigData.signals);
+            fetchJson('/api/signals.json', '/api/signals')
+                .then(data => renderSignals(data.signals))
+                .catch(err => console.error("Signals load error:", err));
 
-                // Fetch backtests
-                try {
-                    backtestBundle = await fetchJson('/api/backtests.json', '/api/backtests');
-                    renderBacktestView();
-                } catch (e) {
-                    console.warn("Backtests not yet loaded:", e);
-                }
-
-            } catch (err) {
-                console.error("Failed to load initial data", err);
-            }
+            loadBacktestsAndRender();
         }
 
         function renderRegimes(regimes) {
@@ -1092,7 +1179,20 @@
                             Regime Multiplier: <strong>${data.score_record.factor_attribution.regime_multiplier}x</strong>
                         </div>
                     </div>
+
+                    <!-- Historical Strategy Backtest History for this Symbol -->
+                    <div style="margin-top: 24px;">
+                        <h3 style="font-size: 13px; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 8px;">
+                            Simulated Strategy Execution History (Last 2 Years)
+                        </h3>
+                        <div id="drawerBacktestSection">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
                 `;
+
+                // Render symbol backtest history if bundle loaded
+                renderSymbolBacktestInDrawer(data.symbol);
 
                 // Draw chart on canvas
                 setTimeout(() => drawCandlestickChart(data.chart_bars), 50);
@@ -1100,6 +1200,107 @@
             } catch (err) {
                 content.innerHTML = '<div style="color: var(--accent-red); padding: 20px;">Failed to load dossier.</div>';
             }
+        }
+
+        function renderSymbolBacktestInDrawer(symbol) {
+            const container = document.getElementById('drawerBacktestSection');
+            if (!container) return;
+
+            if (!backtestBundle || !backtestBundle.strategies) {
+                container.innerHTML = '<div style="font-size: 11px; color: var(--text-muted); padding: 8px;">Loading walk-forward strategy records...</div>';
+                return;
+            }
+
+            const strat = backtestBundle.strategies[selectedStrategyId] || backtestBundle.strategies['ENSEMBLE_8F'];
+            const allTrades = strat.all_trades || strat.trades || strat.recent_trades || [];
+            const symbolTrades = allTrades.filter(t => t.symbol === symbol);
+
+            if (symbolTrades.length === 0) {
+                container.innerHTML = `
+                    <div style="font-size: 12px; color: var(--text-muted); padding: 12px; background: rgba(15, 23, 42, 0.4); border-radius: 6px; border: 1px solid var(--border-color);">
+                        No triggered trade executions for <strong>${symbol}</strong> under <em>${strat.strategy_name}</em> during the 501-session backtest period.
+                    </div>
+                `;
+                return;
+            }
+
+            let winCount = 0;
+            let sumPnl = 0;
+            let sumR = 0;
+            symbolTrades.forEach(t => {
+                const net = t.net_pnl_usd != null ? t.net_pnl_usd : (t.net_pnl || 0);
+                if (net > 0) winCount++;
+                sumPnl += net;
+                sumR += (t.r_multiple || 0);
+            });
+
+            const wr = ((winCount / symbolTrades.length) * 100).toFixed(1);
+            const expR = (sumR / symbolTrades.length).toFixed(2);
+            const pnlColor = sumPnl >= 0 ? 'var(--accent-green)' : 'var(--accent-red)';
+            const pnlFormatted = (sumPnl >= 0 ? '+$' : '-$') + Math.abs(sumPnl).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+
+            let rows = '';
+            symbolTrades.slice().reverse().forEach(t => {
+                const net = t.net_pnl_usd != null ? t.net_pnl_usd : (t.net_pnl || 0);
+                const isWin = net > 0;
+                const pColor = t.partition === 'TRAIN' ? 'var(--accent-green)' : (t.partition === 'VALIDATION' ? 'var(--accent-purple)' : 'var(--accent-cyan)');
+                rows += `
+                    <tr style="border-bottom: 1px solid var(--border-color); font-size: 11px;">
+                        <td style="padding: 6px; font-family: monospace;">${t.entry_date}</td>
+                        <td style="padding: 6px;">$${(t.entry_price || 0).toFixed(2)}</td>
+                        <td style="padding: 6px;">$${(t.exit_price || 0).toFixed(2)}</td>
+                        <td style="padding: 6px; color: var(--text-muted);">${t.holding_days}d</td>
+                        <td style="padding: 6px;"><span class="exchange-tag" style="font-size: 9px;">${t.exit_reason}</span></td>
+                        <td style="padding: 6px; font-weight: 700; color: ${isWin ? 'var(--accent-green)' : 'var(--accent-red)'}; font-family: monospace;">
+                            ${isWin ? '+' : ''}${(t.return_pct || 0).toFixed(2)}%
+                        </td>
+                        <td style="padding: 6px; font-weight: 700; color: ${isWin ? 'var(--accent-green)' : 'var(--accent-red)'}; font-family: monospace;">
+                            ${net >= 0 ? '+$' : '-$'}${Math.abs(net).toFixed(2)}
+                        </td>
+                        <td style="padding: 6px; color: ${pColor}; font-weight: 600; font-size: 10px;">${t.partition}</td>
+                    </tr>
+                `;
+            });
+
+            container.innerHTML = `
+                <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border-color); border-radius: 8px; padding: 12px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                        <span style="font-size: 12px; font-weight: 700; color: var(--accent-cyan);">${strat.strategy_name}</span>
+                        <span style="font-size: 11px; color: var(--text-muted);">${symbolTrades.length} Simulated Orders</span>
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 10px;">
+                        <div style="background: var(--bg-card); padding: 6px; border-radius: 4px; text-align: center; border: 1px solid var(--border-color);">
+                            <div style="font-size: 9px; color: var(--text-muted); text-transform: uppercase;">Win Rate</div>
+                            <div style="font-size: 13px; font-weight: 700; color: ${parseFloat(wr) >= 50 ? 'var(--accent-green)' : 'var(--accent-amber)'};">${wr}%</div>
+                        </div>
+                        <div style="background: var(--bg-card); padding: 6px; border-radius: 4px; text-align: center; border: 1px solid var(--border-color);">
+                            <div style="font-size: 9px; color: var(--text-muted); text-transform: uppercase;">Net P&L</div>
+                            <div style="font-size: 13px; font-weight: 700; color: ${pnlColor};">${pnlFormatted}</div>
+                        </div>
+                        <div style="background: var(--bg-card); padding: 6px; border-radius: 4px; text-align: center; border: 1px solid var(--border-color);">
+                            <div style="font-size: 9px; color: var(--text-muted); text-transform: uppercase;">Avg R-Multiple</div>
+                            <div style="font-size: 13px; font-weight: 700; color: ${parseFloat(expR) >= 0 ? 'var(--accent-green)' : 'var(--accent-red)'};">${parseFloat(expR) >= 0 ? '+' : ''}${expR}R</div>
+                        </div>
+                    </div>
+                    <div style="max-height: 160px; overflow-y: auto;">
+                        <table style="width: 100%; border-collapse: collapse; text-align: left;">
+                            <thead>
+                                <tr style="border-bottom: 1px solid var(--border-color); color: var(--text-muted); font-size: 10px; text-transform: uppercase;">
+                                    <th style="padding: 4px 6px;">Entry</th>
+                                    <th style="padding: 4px 6px;">Buy</th>
+                                    <th style="padding: 4px 6px;">Sell</th>
+                                    <th style="padding: 4px 6px;">Hold</th>
+                                    <th style="padding: 4px 6px;">Trigger</th>
+                                    <th style="padding: 4px 6px;">Return</th>
+                                    <th style="padding: 4px 6px;">Net P&L</th>
+                                    <th style="padding: 4px 6px;">Part</th>
+                                </tr>
+                            </thead>
+                            <tbody>${rows}</tbody>
+                        </table>
+                    </div>
+                </div>
+            `;
         }
 
         function drawCandlestickChart(bars) {
@@ -1161,25 +1362,287 @@
             document.getElementById('drawerOverlay').style.display = 'none';
         }
 
+        // ==========================================
+        // BACKTEST LAB ENGINE & INTERACTIVE LEDGER
+        // ==========================================
         let backtestBundle = null;
         let selectedStrategyId = 'ENSEMBLE_8F';
+        let selectedBenchmarkKey = 'SPY';
+        let btCurrentPage = 1;
+        let btPageSize = 50;
+        let btFilteredTrades = [];
+        let backtestLoading = false;
 
-        function switchTab(tabId) {
+        async function loadBacktestsAndRender() {
+            if (backtestBundle) {
+                renderBacktestView();
+                return;
+            }
+            if (backtestLoading) return;
+            backtestLoading = true;
+
+            const tBody = document.getElementById('backtestTradeBody');
+            if (tBody) {
+                tBody.innerHTML = '<tr><td colspan="11" style="text-align: center; padding: 36px; color: var(--text-muted); font-size: 13px;"><div class="spinner" style="margin-right: 8px;"></div> Loading simulated strategy executions from backtest engine...</td></tr>';
+            }
+
+            try {
+                backtestBundle = await fetchJson('/api/backtests.json', '/api/backtests');
+                renderBacktestView();
+            } catch (e) {
+                console.error("Backtest load error:", e);
+                if (tBody) {
+                    tBody.innerHTML = '<tr><td colspan="11" style="text-align: center; padding: 24px; color: var(--accent-red);">Unable to load backtest bundle. <button class="filter-btn" style="margin-left: 10px;" onclick="loadBacktestsAndRender()">Retry</button></td></tr>';
+                }
+            } finally {
+                backtestLoading = false;
+            }
+        }
+
+        function switchTab(tabId, ev) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            if (window.event && window.event.target) window.event.target.classList.add('active');
+            if (ev && ev.currentTarget) {
+                ev.currentTarget.classList.add('active');
+            } else {
+                const targetBtn = document.querySelector(`.tab-btn[data-tab="${tabId}"]`);
+                if (targetBtn) targetBtn.classList.add('active');
+            }
 
             document.getElementById('tab-leaderboard').style.display = tabId === 'leaderboard' ? 'block' : 'none';
             document.getElementById('tab-scanners').style.display = tabId === 'scanners' ? 'block' : 'none';
             document.getElementById('tab-signals').style.display = tabId === 'signals' ? 'block' : 'none';
             document.getElementById('tab-backtest').style.display = tabId === 'backtest' ? 'block' : 'none';
 
-            if (tabId === 'backtest' && backtestBundle) {
-                renderBacktestView();
+            if (tabId === 'backtest') {
+                if (!backtestBundle) {
+                    loadBacktestsAndRender();
+                } else {
+                    setTimeout(() => renderBacktestView(), 40);
+                }
             }
         }
 
+        function toggleBacktestBenchmark(bm) {
+            selectedBenchmarkKey = bm;
+            const spyBtn = document.getElementById('bmSpyBtn');
+            const xiuBtn = document.getElementById('bmXiuBtn');
+            if (spyBtn) spyBtn.classList.toggle('active', bm === 'SPY');
+            if (xiuBtn) xiuBtn.classList.toggle('active', bm === 'XIU');
+
+            if (backtestBundle) {
+                const currentStrat = backtestBundle.strategies[selectedStrategyId];
+                if (currentStrat) {
+                    document.getElementById('equityTitle').innerText = `${currentStrat.strategy_name} — Net Equity vs ${bm === 'SPY' ? 'SPY (S&P 500)' : 'XIU (TSX 60)'}`;
+                    drawEquityCurve(currentStrat.equity_curve, currentStrat.config.train_cutoff, currentStrat.config.val_cutoff);
+                }
+            }
+        }
+
+        function getActiveStrategyTrades() {
+            if (!backtestBundle || !backtestBundle.strategies) return [];
+            const strat = backtestBundle.strategies[selectedStrategyId];
+            if (!strat) return [];
+            return strat.all_trades || strat.trades || strat.recent_trades || [];
+        }
+
+        function populateSymbolFilter(trades) {
+            const sel = document.getElementById('btSymbolFilter');
+            if (!sel) return;
+            const curVal = sel.value || 'ALL';
+            const symbols = Array.from(new Set(trades.map(t => t.symbol))).sort();
+            
+            let html = '<option value="ALL">All Securities (' + symbols.length + ')</option>';
+            symbols.forEach(sym => {
+                html += `<option value="${sym}">${sym}</option>`;
+            });
+            sel.innerHTML = html;
+            if (symbols.includes(curVal)) {
+                sel.value = curVal;
+            } else {
+                sel.value = 'ALL';
+            }
+        }
+
+        function filterBacktestTrades() {
+            const allTrades = getActiveStrategyTrades();
+            const symbolFilter = document.getElementById('btSymbolFilter') ? document.getElementById('btSymbolFilter').value : 'ALL';
+            const partFilter = document.getElementById('btPartitionFilter') ? document.getElementById('btPartitionFilter').value : 'ALL';
+            const outcomeFilter = document.getElementById('btOutcomeFilter') ? document.getElementById('btOutcomeFilter').value : 'ALL';
+            const exitFilter = document.getElementById('btExitFilter') ? document.getElementById('btExitFilter').value : 'ALL';
+
+            btFilteredTrades = allTrades.filter(t => {
+                if (symbolFilter !== 'ALL' && t.symbol !== symbolFilter) return false;
+                if (partFilter !== 'ALL' && t.partition !== partFilter) return false;
+                const netPnl = t.net_pnl_usd != null ? t.net_pnl_usd : (t.net_pnl || 0);
+                if (outcomeFilter === 'WIN' && netPnl <= 0) return false;
+                if (outcomeFilter === 'LOSS' && netPnl >= 0) return false;
+                if (exitFilter !== 'ALL' && t.exit_reason !== exitFilter) return false;
+                return true;
+            });
+
+            btCurrentPage = 1;
+            renderTradeTablePage();
+        }
+
+        function renderTradeTablePage() {
+            const tBody = document.getElementById('backtestTradeBody');
+            if (!tBody) return;
+            tBody.innerHTML = '';
+
+            const totalFiltered = btFilteredTrades.length;
+            const allTrades = getActiveStrategyTrades();
+
+            // Update Summary Badge
+            const badge = document.getElementById('tradeSummaryBadge');
+            if (badge) {
+                if (totalFiltered === 0) {
+                    badge.innerText = 'No matching trades';
+                    badge.style.color = 'var(--text-muted)';
+                } else {
+                    let winCount = 0;
+                    let sumPnl = 0;
+                    let sumR = 0;
+                    btFilteredTrades.forEach(t => {
+                        const net = t.net_pnl_usd != null ? t.net_pnl_usd : (t.net_pnl || 0);
+                        if (net > 0) winCount++;
+                        sumPnl += net;
+                        sumR += (t.r_multiple || 0);
+                    });
+                    const wr = ((winCount / totalFiltered) * 100).toFixed(1);
+                    const expR = (sumR / totalFiltered).toFixed(2);
+                    const pnlFormatted = (sumPnl >= 0 ? '+$' : '-$') + Math.abs(sumPnl).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+                    badge.innerHTML = `Showing <strong>${totalFiltered}</strong> of ${allTrades.length} trades · Win Rate: <strong>${wr}%</strong> · Net P&L: <strong style="color: ${sumPnl >= 0 ? 'var(--accent-green)' : 'var(--accent-red)'}">${pnlFormatted}</strong> · Expectancy: <strong>${expR}R</strong>`;
+                }
+            }
+
+            if (totalFiltered === 0) {
+                tBody.innerHTML = `<tr><td colspan="11" style="text-align: center; padding: 28px; color: var(--text-muted); font-size: 13px;">No simulated trades match the selected filter criteria.</td></tr>`;
+                renderBtPagination(0, 0, 0);
+                return;
+            }
+
+            // Determine slice
+            let startIdx = 0;
+            let endIdx = totalFiltered;
+            if (btPageSize !== 'ALL') {
+                const size = parseInt(btPageSize, 10);
+                startIdx = (btCurrentPage - 1) * size;
+                endIdx = Math.min(startIdx + size, totalFiltered);
+            }
+
+            // Reverse order to show newest trades first
+            const pageSlice = btFilteredTrades.slice().reverse().slice(startIdx, endIdx);
+
+            pageSlice.forEach(t => {
+                const netPnl = t.net_pnl_usd != null ? t.net_pnl_usd : (t.net_pnl || 0);
+                const isWin = netPnl > 0;
+                const pColor = t.partition === 'TRAIN' ? 'var(--accent-green)' : (t.partition === 'VALIDATION' ? 'var(--accent-purple)' : 'var(--accent-cyan)');
+                
+                let exitBadgeStyle = 'border-color: rgba(148, 163, 184, 0.4); color: var(--text-secondary);';
+                if (t.exit_reason.includes('PROFIT_TARGET')) {
+                    exitBadgeStyle = 'border-color: rgba(16, 185, 129, 0.4); color: var(--accent-green); background: rgba(16, 185, 129, 0.08);';
+                } else if (t.exit_reason === 'STOP_LOSS') {
+                    exitBadgeStyle = 'border-color: rgba(239, 68, 68, 0.4); color: var(--accent-red); background: rgba(239, 68, 68, 0.08);';
+                } else if (t.exit_reason === 'TRAILING_STOP') {
+                    exitBadgeStyle = 'border-color: rgba(6, 182, 212, 0.4); color: var(--accent-cyan); background: rgba(6, 182, 212, 0.08);';
+                } else if (t.exit_reason.includes('EXPIRY') || t.exit_reason.includes('TIME')) {
+                    exitBadgeStyle = 'border-color: rgba(245, 158, 11, 0.4); color: var(--accent-amber); background: rgba(245, 158, 11, 0.08);';
+                }
+
+                const tr = document.createElement('tr');
+                tr.style.borderBottom = '1px solid var(--border-color)';
+                tr.style.cursor = 'pointer';
+                tr.title = `Click to inspect quantitative dossier for ${t.symbol}`;
+                tr.onclick = () => openSymbol(t.symbol);
+                tr.innerHTML = `
+                    <td style="padding: 10px 8px; font-family: monospace; font-size: 11px;">
+                        <div>${t.entry_date}</div>
+                        <div style="color: var(--text-muted); font-size: 10px;">→ ${t.exit_date || 'Active'}</div>
+                    </td>
+                    <td style="padding: 10px 8px; font-weight: 700; color: var(--text-primary);">
+                        <div style="display: flex; align-items: center; gap: 6px;">
+                            <span>${t.symbol}</span>
+                            <span class="exchange-tag" style="font-size: 10px;">${t.country}</span>
+                        </div>
+                    </td>
+                    <td style="padding: 10px 8px;">
+                        <span class="exchange-tag" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-green); font-size: 10px;">LONG</span>
+                    </td>
+                    <td style="padding: 10px 8px; font-family: monospace;">$${(t.entry_price || 0).toFixed(2)}</td>
+                    <td style="padding: 10px 8px; font-family: monospace;">$${(t.exit_price || 0).toFixed(2)}</td>
+                    <td style="padding: 10px 8px; color: var(--text-muted);">${t.holding_days}d</td>
+                    <td style="padding: 10px 8px;">
+                        <span class="exchange-tag" style="${exitBadgeStyle} font-size: 10px;">
+                            ${t.exit_reason}
+                        </span>
+                    </td>
+                    <td style="padding: 10px 8px; font-weight: 700; font-family: monospace; color: ${isWin ? 'var(--accent-green)' : 'var(--accent-red)'};">
+                        ${isWin ? '+' : ''}${(t.return_pct || 0).toFixed(2)}%
+                    </td>
+                    <td style="padding: 10px 8px; font-weight: 700; font-family: monospace; color: ${isWin ? 'var(--accent-green)' : 'var(--accent-red)'};">
+                        ${netPnl >= 0 ? '+$' : '-$'}${Math.abs(netPnl).toFixed(2)}
+                    </td>
+                    <td style="padding: 10px 8px; font-weight: 700; font-family: monospace; color: ${isWin ? 'var(--accent-green)' : 'var(--accent-red)'};">
+                        ${(t.r_multiple || 0) >= 0 ? '+' : ''}${(t.r_multiple || 0).toFixed(2)}R
+                    </td>
+                    <td style="padding: 10px 8px; color: ${pColor}; font-weight: 600; font-size: 11px;">${t.partition}</td>
+                `;
+                tBody.appendChild(tr);
+            });
+
+            renderBtPagination(totalFiltered, startIdx, endIdx);
+        }
+
+        function renderBtPagination(totalFiltered, startIdx, endIdx) {
+            const ctrl = document.getElementById('btPaginationControls');
+            if (!ctrl) return;
+            if (totalFiltered === 0) {
+                ctrl.innerHTML = '';
+                return;
+            }
+
+            if (btPageSize === 'ALL') {
+                ctrl.innerHTML = `<span style="font-size: 12px; color: var(--text-muted);">Showing all <strong>${totalFiltered}</strong> trades</span>`;
+                return;
+            }
+
+            const size = parseInt(btPageSize, 10);
+            const totalPages = Math.ceil(totalFiltered / size);
+            
+            let html = `
+                <span style="font-size: 12px; color: var(--text-muted);">
+                    Showing <strong>${startIdx + 1}–${endIdx}</strong> of <strong>${totalFiltered}</strong> trades
+                </span>
+                <div style="display: flex; gap: 6px; align-items: center;">
+                    <button class="filter-btn" ${btCurrentPage <= 1 ? 'disabled style="opacity: 0.5; cursor: not-allowed;"' : ''} onclick="goToBtPage(1)">« First</button>
+                    <button class="filter-btn" ${btCurrentPage <= 1 ? 'disabled style="opacity: 0.5; cursor: not-allowed;"' : ''} onclick="goToBtPage(${btCurrentPage - 1})">‹ Prev</button>
+                    <span style="font-size: 12px; font-weight: 700; padding: 0 8px; color: var(--text-primary);">Page ${btCurrentPage} of ${totalPages}</span>
+                    <button class="filter-btn" ${btCurrentPage >= totalPages ? 'disabled style="opacity: 0.5; cursor: not-allowed;"' : ''} onclick="goToBtPage(${btCurrentPage + 1})">Next ›</button>
+                    <button class="filter-btn" ${btCurrentPage >= totalPages ? 'disabled style="opacity: 0.5; cursor: not-allowed;"' : ''} onclick="goToBtPage(${totalPages})">Last »</button>
+                </div>
+            `;
+            ctrl.innerHTML = html;
+        }
+
+        function goToBtPage(page) {
+            btCurrentPage = page;
+            renderTradeTablePage();
+            const tCard = document.getElementById('backtestTradeBody');
+            if (tCard) tCard.parentElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function changeBtPageSize() {
+            const sel = document.getElementById('btPageSize');
+            if (sel) btPageSize = sel.value;
+            btCurrentPage = 1;
+            renderTradeTablePage();
+        }
+
         function renderBacktestView() {
-            if (!backtestBundle || !backtestBundle.strategies) return;
+            if (!backtestBundle || !backtestBundle.strategies) {
+                loadBacktestsAndRender();
+                return;
+            }
 
             // Strategy selector buttons
             const bar = document.getElementById('strategySelectorBar');
@@ -1207,7 +1670,7 @@
             if (!currentStrat) return;
 
             const m = currentStrat.metrics;
-            document.getElementById('equityTitle').innerText = `${currentStrat.strategy_name} — Net Equity Curve vs SPY`;
+            document.getElementById('equityTitle').innerText = `${currentStrat.strategy_name} — Net Equity vs ${selectedBenchmarkKey === 'SPY' ? 'SPY (S&P 500)' : 'XIU (TSX 60)'}`;
 
             // 6 Metric Scorecards
             const grid = document.getElementById('backtestMetricsGrid');
@@ -1332,31 +1795,10 @@
                 </table>
             `;
 
-            // Recent trades table
-            const tBody = document.getElementById('backtestTradeBody');
-            tBody.innerHTML = '';
-            (currentStrat.recent_trades || []).slice().reverse().forEach(t => {
-                const isWin = t.net_pnl > 0;
-                const pColor = t.partition === 'TRAIN' ? 'var(--accent-green)' : (t.partition === 'VALIDATION' ? 'var(--accent-purple)' : 'var(--accent-cyan)');
-                const tr = document.createElement('tr');
-                tr.style.borderBottom = '1px solid var(--border-color)';
-                tr.innerHTML = `
-                    <td style="padding: 8px; font-family: monospace;">${t.entry_date}</td>
-                    <td style="padding: 8px; font-weight: 700; color: var(--text-primary);">${t.symbol} <span class="exchange-tag">${t.country}</span></td>
-                    <td style="padding: 8px;">$${t.entry_price.toFixed(2)}</td>
-                    <td style="padding: 8px;">$${(t.exit_price || 0).toFixed(2)}</td>
-                    <td style="padding: 8px;">${t.holding_days}d</td>
-                    <td style="padding: 8px;"><span class="exchange-tag">${t.exit_reason}</span></td>
-                    <td style="padding: 8px; font-weight: 700; color: ${isWin ? 'var(--accent-green)' : 'var(--accent-red)'};">
-                        ${isWin ? '+' : ''}${t.return_pct.toFixed(2)}%
-                    </td>
-                    <td style="padding: 8px; font-weight: 700; color: ${isWin ? 'var(--accent-green)' : 'var(--accent-red)'};">
-                        ${isWin ? '+' : ''}${t.r_multiple.toFixed(2)}R
-                    </td>
-                    <td style="padding: 8px; color: ${pColor}; font-weight: 600;">${t.partition}</td>
-                `;
-                tBody.appendChild(tr);
-            });
+            // Trade Ledger setup
+            const allTrades = getActiveStrategyTrades();
+            populateSymbolFilter(allTrades);
+            filterBacktestTrades();
         }
 
         function drawEquityCurve(equityData, trainCutoff, valCutoff) {
@@ -1365,13 +1807,16 @@
 
             const rect = canvas.getBoundingClientRect();
             const dpr = window.devicePixelRatio || 1;
-            canvas.width = rect.width * dpr;
-            canvas.height = rect.height * dpr;
+            const clientW = rect.width > 0 ? rect.width : (canvas.parentElement.clientWidth || 900);
+            const clientH = rect.height > 0 ? rect.height : 320;
+
+            canvas.width = clientW * dpr;
+            canvas.height = clientH * dpr;
 
             const ctx = canvas.getContext('2d');
             ctx.scale(dpr, dpr);
-            const w = rect.width;
-            const h = rect.height;
+            const w = clientW;
+            const h = clientH;
 
             ctx.clearRect(0, 0, w, h);
 
@@ -1382,17 +1827,25 @@
             const paddingRight = 20;
             const plotW = w - paddingLeft - paddingRight;
 
-            const firstBm = equityData.find(d => d.benchmark_price != null)?.benchmark_price || 1.0;
-            const normalizedData = equityData.map(d => ({
-                date: d.date,
-                portfolio: d.portfolio_equity,
-                benchmark: d.benchmark_price ? (d.benchmark_price / firstBm) * 100000.0 : null,
-                partition: d.partition
-            }));
+            // Use selected benchmark: SPY vs XIU
+            const bmKey = selectedBenchmarkKey === 'XIU' ? 'benchmark_price_xiu' : 'benchmark_price_spy';
+            const firstBm = equityData.find(d => (d[bmKey] != null || d.benchmark_price != null))?.[bmKey] 
+                         || equityData.find(d => d.benchmark_price != null)?.benchmark_price 
+                         || 1.0;
+
+            const normalizedData = equityData.map(d => {
+                const rawBm = d[bmKey] != null ? d[bmKey] : d.benchmark_price;
+                return {
+                    date: d.date,
+                    portfolio: d.portfolio_equity,
+                    benchmark: rawBm ? (rawBm / firstBm) * 100000.0 : null,
+                    partition: d.partition
+                };
+            });
 
             const portfolioVals = normalizedData.map(d => d.portfolio);
             const benchmarkVals = normalizedData.filter(d => d.benchmark != null).map(d => d.benchmark);
-            const allVals = portfolioVals.concat(benchmarkVals);
+            const allVals = portfolioVals.concat(benchmarkVals.length > 0 ? benchmarkVals : portfolioVals);
             const minVal = Math.min(...allVals) * 0.96;
             const maxVal = Math.max(...allVals) * 1.04;
 
@@ -1427,7 +1880,7 @@
                 ctx.lineTo(trainX, h - 10);
                 ctx.stroke();
                 ctx.setLineDash([]);
-                ctx.fillStyle = 'var(--accent-green)';
+                ctx.fillStyle = '#10b981';
                 ctx.textAlign = 'center';
                 ctx.fillText('TRAIN (60%)', trainX - 35, 20);
             }
@@ -1440,32 +1893,34 @@
                 ctx.lineTo(valX, h - 10);
                 ctx.stroke();
                 ctx.setLineDash([]);
-                ctx.fillStyle = 'var(--accent-purple)';
+                ctx.fillStyle = '#8b5cf6';
                 ctx.textAlign = 'center';
                 ctx.fillText('VAL', (trainX + valX) / 2, 20);
-                ctx.fillStyle = 'var(--accent-cyan)';
+                ctx.fillStyle = '#06b6d4';
                 ctx.fillText('TEST (20%)', valX + 35, 20);
             }
 
             // Benchmark line
-            ctx.strokeStyle = 'rgba(156, 163, 175, 0.7)';
-            ctx.lineWidth = 1.5;
-            ctx.setLineDash([4, 4]);
-            ctx.beginPath();
-            let startedBm = false;
-            normalizedData.forEach((d, idx) => {
-                if (d.benchmark != null) {
-                    const x = paddingLeft + (idx / (normalizedData.length - 1)) * plotW;
-                    const y = equityH - ((d.benchmark - minVal) / (maxVal - minVal)) * (equityH - 20) - 10;
-                    if (!startedBm) { ctx.moveTo(x, y); startedBm = true; }
-                    else { ctx.lineTo(x, y); }
-                }
-            });
-            ctx.stroke();
-            ctx.setLineDash([]);
+            if (benchmarkVals.length > 0) {
+                ctx.strokeStyle = 'rgba(148, 163, 184, 0.7)';
+                ctx.lineWidth = 1.5;
+                ctx.setLineDash([4, 4]);
+                ctx.beginPath();
+                let startedBm = false;
+                normalizedData.forEach((d, idx) => {
+                    if (d.benchmark != null) {
+                        const x = paddingLeft + (idx / (normalizedData.length - 1)) * plotW;
+                        const y = equityH - ((d.benchmark - minVal) / (maxVal - minVal)) * (equityH - 20) - 10;
+                        if (!startedBm) { ctx.moveTo(x, y); startedBm = true; }
+                        else { ctx.lineTo(x, y); }
+                    }
+                });
+                ctx.stroke();
+                ctx.setLineDash([]);
+            }
 
             // Strategy line & fill
-            const grad = ctx.createLinearGradient(0, 0, 0, equityH);
+            const grad = ctx.createLinearGradient(0, 0, 0, Math.max(equityH, 1));
             grad.addColorStop(0, 'rgba(6, 182, 212, 0.25)');
             grad.addColorStop(1, 'rgba(6, 182, 212, 0.0)');
 
@@ -1476,7 +1931,7 @@
                 if (idx === 0) ctx.moveTo(x, y);
                 else ctx.lineTo(x, y);
             });
-            ctx.strokeStyle = 'var(--accent-cyan)';
+            ctx.strokeStyle = '#06b6d4';
             ctx.lineWidth = 2.2;
             ctx.stroke();
 
@@ -1519,10 +1974,14 @@
             ctx.fillText('-30%', paddingLeft - 8, ddTop + ddH);
         }
 
-        function filterMarket(mkt) {
+        function filterMarket(mkt, ev) {
             currentMarketFilter = mkt;
             document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+            if (ev && ev.currentTarget) {
+                ev.currentTarget.classList.add('active');
+            } else if (window.event && window.event.target) {
+                window.event.target.classList.add('active');
+            }
             filterTable();
         }
 
@@ -1535,6 +1994,16 @@
             });
             renderLeaderboard(filtered);
         }
+
+        window.addEventListener('resize', () => {
+            const tabBt = document.getElementById('tab-backtest');
+            if (tabBt && tabBt.style.display !== 'none' && backtestBundle) {
+                const currentStrat = backtestBundle.strategies[selectedStrategyId];
+                if (currentStrat) {
+                    drawEquityCurve(currentStrat.equity_curve, currentStrat.config.train_cutoff, currentStrat.config.val_cutoff);
+                }
+            }
+        });
 
         window.onload = init;
     </script>

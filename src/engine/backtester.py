@@ -97,6 +97,8 @@ class SimulatedTrade:
             "target_2": round(float(self.target_2), 2),
             "target_3": round(float(self.target_3), 2),
             "shares": int(self.shares),
+            "gross_pnl": round(float(self.gross_pnl_usd), 2),
+            "net_pnl": round(float(self.net_pnl_usd), 2),
             "gross_pnl_usd": round(float(self.gross_pnl_usd), 2),
             "net_pnl_usd": round(float(self.net_pnl_usd), 2),
             "fee_drag_usd": round(float(self.fee_drag_usd), 2),
@@ -451,6 +453,7 @@ class BacktestEngine:
                 "portfolio_equity": round(total_portfolio_equity, 2),
                 "cash": round(cash_usd, 2),
                 "open_positions": len(open_trades),
+                "benchmark_price": bm_spy,
                 "benchmark_price_spy": bm_spy,
                 "benchmark_price_xiu": bm_xiu,
                 "partition": curr_partition,
@@ -483,7 +486,9 @@ class BacktestEngine:
             },
             "metrics": metrics,
             "equity_curve": equity_curve[::2], # Sample every 2 sessions for fast web transfer
-            "recent_trades": [t.to_dict() for t in closed_trades[-20:]],
+            "recent_trades": [t.to_dict() for t in closed_trades[-50:]],
+            "all_trades": [t.to_dict() for t in closed_trades],
+            "trades": [t.to_dict() for t in closed_trades],
             "statutory_disclaimer": HYPOTHETICAL_BACKTEST_DISCLAIMER,
             "disclaimer_version": DISCLAIMER_VERSION,
         }
