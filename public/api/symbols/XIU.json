@@ -4,113 +4,133 @@
   "country": "CA",
   "currency": "CAD",
   "name": "iShares S&P/TSX 60 Index ETF",
-  "as_of_date": "2026-09-24",
-  "generated_at": "2026-09-24T23:18:34.415016+00:00",
+  "as_of_date": "2026-09-25",
+  "generated_at": "2026-09-25T20:37:41.174711+00:00",
   "latest_metrics": {
-    "trading_date": "2026-09-24",
-    "open": 52.88999938964844,
-    "high": 53.060001373291016,
-    "low": 52.720001220703125,
-    "close": 52.95000076293945,
-    "volume": 3891627.0,
-    "adjusted_close": 52.95000076293945,
-    "sma_20": 53.38450031280517,
-    "sma_50": 53.53820022583008,
-    "sma_200": 50.32210008621216,
-    "ema_8": 53.08391564076584,
-    "ema_21": 53.324757853660614,
-    "sma_200_slope_20d": 19.950059594626673,
-    "atr_14": 0.5349995749337333,
-    "atr_pct": 1.0103863403684556,
-    "rsi_14": 44.68632523826676,
-    "macd_line": -0.19876317480291306,
-    "macd_signal": -0.15356825513137562,
-    "macd_hist": -0.04519491967153744,
-    "bb_upper": 54.52446343134994,
-    "bb_lower": 52.2445371942604,
-    "bb_bandwidth": 0.04270764404893496,
-    "rvol_20": 1.0792413365422115,
-    "obv": 156405400.0,
-    "obv_slope_20": -24890200.0,
-    "cmf_20": -0.1404793203712083,
-    "hh_hl_ratio_20": 0.4,
-    "adx_14": 24.738473063997695,
-    "return_1m": -0.027905276733974915,
-    "return_3m": 0.019838263295822056,
-    "return_12m": null,
-    "momentum_12_1": null,
-    "proximity_52w_high": -0.03657202247117708,
-    "adv_dollar_20": 192260622.8184843
+    "trading_date": "2026-09-25",
+    "open": 53.09000015258789,
+    "high": 53.150001525878906,
+    "low": 52.810001373291016,
+    "close": 53.08000183105469,
+    "volume": 5447704.0,
+    "adjusted_close": 53.08000183105469,
+    "sma_20": 53.290500259399415,
+    "sma_50": 53.5602001953125,
+    "sma_200": 50.393550090789795,
+    "ema_8": 53.14668241918487,
+    "ema_21": 53.32822562703978,
+    "sma_200_slope_20d": 19.33464321057792,
+    "atr_14": 0.5221424102783203,
+    "atr_pct": 0.9836895106752589,
+    "rsi_14": 46.507272674012455,
+    "macd_line": -0.16190932254441748,
+    "macd_signal": -0.14334147480883594,
+    "macd_hist": -0.01856784773558154,
+    "bb_upper": 54.241897716371994,
+    "bb_lower": 52.33910280242684,
+    "bb_bandwidth": 0.03570608090903672,
+    "rvol_20": 1.4384382570166225,
+    "obv": 219485704.0,
+    "obv_slope_20": -11630696.0,
+    "cmf_20": -0.06501713651040886,
+    "hh_hl_ratio_20": 0.475,
+    "adx_14": 27.559579222574047,
+    "return_1m": -0.02444399963402466,
+    "return_3m": 0.022539048104060155,
+    "return_12m": 0.19441952005716212,
+    "momentum_12_1": 0.21886351969118678,
+    "proximity_52w_high": -0.03420664637436477,
+    "adv_dollar_20": 201678575.26466674
   },
   "score_record": {
-    "composite_score": 48,
-    "confidence_tier": "C",
-    "technical_score": 43,
+    "composite_score": 52,
+    "confidence_tier": "B",
+    "technical_score": 47,
     "risk_penalty": 0.0,
     "factor_attribution": {
       "horizon": "POSITION",
       "trend_score": 17.5,
-      "relative_strength_score": 13.0,
+      "relative_strength_score": 17.0,
       "setup_geometry_score": 8.5,
-      "volume_participation_score": 1.3,
+      "volume_participation_score": 2.7,
       "mtf_alignment_score": 0.0,
-      "volatility_fit_score": 3.0,
-      "technical_score": 43,
+      "volatility_fit_score": 1.0,
+      "technical_score": 47,
       "fundamental_score": 65,
       "regime_multiplier": 1.0,
       "news_contribution": 0.0,
       "sector_contribution": 0.0,
       "risk_penalty": 0.0,
       "key_metrics": {
-        "close": 52.95000076293945,
-        "rsi_14": 44.68632523826676,
-        "rvol_20": 1.0792413365422115,
-        "atr_pct": 1.0103863403684556,
-        "proximity_52w_high": -0.03657202247117708
+        "close": 53.08000183105469,
+        "rsi_14": 46.507272674012455,
+        "rvol_20": 1.4384382570166225,
+        "atr_pct": 0.9836895106752589,
+        "proximity_52w_high": -0.03420664637436477
       }
     }
   },
-  "signal_plan": null,
+  "signal_plan": {
+    "direction": "LONG",
+    "preferred_entry": 53.08,
+    "entry_zone": [
+      52.87,
+      53.18
+    ],
+    "stop_loss": 51.93,
+    "targets": [
+      54.92,
+      56.07,
+      57.68
+    ],
+    "risk_reward_ratio": 2.6,
+    "invalidation": [
+      {
+        "predicate": "DAILY_CLOSE_BELOW_LEVEL",
+        "level": 51.93,
+        "description": "Daily closing price finishes below structural stop loss of 51.93"
+      },
+      {
+        "predicate": "RVOL_COLLAPSE",
+        "threshold": 0.4,
+        "description": "20-day Relative Volume drops below 0.40x indicating liquidity desertion"
+      },
+      {
+        "predicate": "EARNINGS_ANNOUNCEMENT_EVENT",
+        "buffer_sessions": 2,
+        "description": "Filing within 2 trading sessions triggers event risk de-risking protocol"
+      }
+    ]
+  },
   "ai_explanation": {
-    "FACT": "XIU (TSX - iShares S&P/TSX 60 Index ETF) closed at $52.95 CAD. Trading within -3.7% of its 52-week high with a 14-day ATR of 1.0%. The primary exchange session traded on volume of 3,891,627 shares.",
-    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 48/100 (Confidence Tier C). Technical Factor sub-score: 43/100 (14-day RSI: 44.7, 20-day RVOL: 1.08x). Risk penalty applied: -0.0 points. Modulated by the WEAK_BULL macro regime.",
+    "FACT": "XIU (TSX - iShares S&P/TSX 60 Index ETF) closed at $53.08 CAD. Trading within -3.4% of its 52-week high with a 14-day ATR of 1.0%. The primary exchange session traded on volume of 5,447,704 shares.",
+    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 52/100 (Confidence Tier B). Technical Factor sub-score: 47/100 (14-day RSI: 46.5, 20-day RVOL: 1.44x). Risk penalty applied: -0.0 points. Modulated by the WEAK_BULL macro regime.",
     "INFERENCE": "Current technical structure reflects neutral consolidation. Setup geometry indicates digestive trading range with no confirmed directional expansion.",
-    "UNCERTAINTY": "Risks include broader market sentiment deterioration in the WEAK_BULL environment. A daily close below technical support at $50.32 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
+    "UNCERTAINTY": "Risks include broader market sentiment deterioration in the WEAK_BULL environment. A daily close below technical support at $50.39 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
   },
   "active_scanner_matches": [
     {
       "id": "PULLBACK_UPTREND",
       "name": "Pullback to Key Support",
-      "why": "Pullback into key moving average in a rising uptrend; RSI at 44.7 shows controlled digestion."
+      "why": "Pullback into key moving average in a rising uptrend; RSI at 46.5 shows controlled digestion."
     },
     {
       "id": "VOLATILITY_SQUEEZE",
       "name": "Volatility Squeeze (Bandwidth)",
-      "why": "Bollinger Bandwidth compressed to 4.3% with low ATR% of 1.0%, indicating impending expansion."
+      "why": "Bollinger Bandwidth compressed to 3.6% with low ATR% of 1.0%, indicating impending expansion."
+    },
+    {
+      "id": "LOW_BETA_QUALITY",
+      "name": "Low-Volatility Trend Quality",
+      "why": "Low ATR volatility (1.0%) paired with rising 200DMA and positive quarterly return."
     },
     {
       "id": "BASE_TIGHTENING",
       "name": "Consolidation Base Tightening",
-      "why": "Price consolidating in a tight band (4.3%) within 3.7% of yearly high."
+      "why": "Price consolidating in a tight band (3.6%) within 3.4% of yearly high."
     }
   ],
   "chart_bars": [
-    {
-      "time": "2026-04-02",
-      "open": 47.84000015258789,
-      "high": 48.68000030517578,
-      "low": 47.790000915527344,
-      "close": 48.630001068115234,
-      "volume": 6003800.0
-    },
-    {
-      "time": "2026-04-06",
-      "open": 48.56999969482422,
-      "high": 48.810001373291016,
-      "low": 48.54999923706055,
-      "close": 48.7400016784668,
-      "volume": 3605100.0
-    },
     {
       "time": "2026-04-07",
       "open": 48.59000015258789,
@@ -1040,6 +1060,14 @@
       "volume": 2146900.0
     },
     {
+      "time": "2026-09-22",
+      "open": 53.619998931884766,
+      "high": 53.900001525878906,
+      "low": 53.59000015258789,
+      "close": 53.779998779296875,
+      "volume": 2995500.0
+    },
+    {
       "time": "2026-09-23",
       "open": 53.56999969482422,
       "high": 53.56999969482422,
@@ -1053,7 +1081,15 @@
       "high": 53.060001373291016,
       "low": 52.720001220703125,
       "close": 52.95000076293945,
-      "volume": 3891627.0
+      "volume": 3891600.0
+    },
+    {
+      "time": "2026-09-25",
+      "open": 53.09000015258789,
+      "high": 53.150001525878906,
+      "low": 52.810001373291016,
+      "close": 53.08000183105469,
+      "volume": 5447704.0
     }
   ],
   "disclaimers": {

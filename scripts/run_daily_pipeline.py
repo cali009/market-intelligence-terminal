@@ -19,6 +19,7 @@ from src.data.boc_valet import BankOfCanadaValetAdapter
 from src.data.sec_edgar import SecEdgarAdapter
 from src.data.edge_exporter import edge_exporter
 from scripts.run_scanners_and_signals import run_full_pipeline
+from scripts.run_backtests import run_all_backtests
 
 
 def run_pipeline():
@@ -54,11 +55,16 @@ def run_pipeline():
     print("\n>>> STEP 4: Evaluating Regimes, 14 Scanners & Quantitative Scores...")
     run_full_pipeline()
 
-    # Step 5: Edge Static Compilation & Export
-    print(">>> STEP 5: Compiling Static JSON Intelligence Bundles for Edge CDN...")
+    # Step 5: Historical Strategy Backtesting & Walk-Forward Validation
+    print(">>> STEP 5: Executing Walk-Forward Strategy Backtests...")
+    bt_bundle = run_all_backtests()
+    print(f"    Evaluated {len(bt_bundle['strategies'])} strategies across Walk-Forward partitions.")
+
+    # Step 6: Edge Static Compilation & Export
+    print("\n>>> STEP 6: Compiling Static JSON Intelligence Bundles for Edge CDN...")
     export_stats = edge_exporter.export_all()
     print(f"    Compiled {export_stats['symbol_files']} detailed symbol bundles.")
-    print(f"    Compiled 4 core edge feeds: daily_summary.json, leaderboard.json, scanners.json, signals.json.")
+    print(f"    Compiled core edge feeds: summary, leaderboard, scanners, signals, backtests.")
     print(f"    Total tactical scanner matches: {export_stats['total_matches']}.")
     print(f"    Total active research signal plans: {export_stats['total_signals']}.")
 

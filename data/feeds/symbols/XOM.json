@@ -5,90 +5,90 @@
   "currency": "USD",
   "name": "Exxon Mobil Corporation",
   "as_of_date": "2026-09-25",
-  "generated_at": "2026-09-25T20:03:17.133098+00:00",
+  "generated_at": "2026-09-25T20:37:41.174711+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 160.22999572753906,
     "high": 161.7899932861328,
     "low": 159.77999877929688,
-    "close": 160.55999755859375,
-    "volume": 7925389.0,
-    "adjusted_close": 160.55999755859375,
-    "sma_20": 162.4810012817383,
-    "sma_50": 159.42500091552733,
-    "sma_200": 147.9929999923706,
-    "ema_8": 161.56382560501532,
-    "ema_21": 161.73988981810552,
-    "sma_200_slope_20d": 39.81395614318634,
+    "close": 160.58999633789062,
+    "volume": 9579407.0,
+    "adjusted_close": 160.58999633789062,
+    "sma_20": 162.4825012207031,
+    "sma_50": 159.42560089111328,
+    "sma_200": 147.9931499862671,
+    "ema_8": 161.57049200041462,
+    "ema_21": 161.74261697974381,
+    "sma_200_slope_20d": 39.81527353090041,
     "atr_14": 4.012855529785156,
-    "atr_pct": 2.4992872389156147,
-    "rsi_14": 48.66713258364281,
-    "macd_line": 0.5328863881542532,
-    "macd_signal": 1.2444734277520468,
-    "macd_hist": -0.7115870395977937,
-    "bb_upper": 168.483575093524,
-    "bb_lower": 156.47842746995258,
-    "bb_bandwidth": 0.07388646998029492,
-    "rvol_20": 0.5517087026077511,
-    "obv": 504696011.0,
-    "obv_slope_20": 80737811.0,
-    "cmf_20": 0.12306161779234469,
+    "atr_pct": 2.498820363219809,
+    "rsi_14": 48.71923125672882,
+    "macd_line": 0.5352794661390305,
+    "macd_signal": 1.244952059828098,
+    "macd_hist": -0.7096725936890675,
+    "bb_upper": 168.4830685295968,
+    "bb_lower": 156.48193391180942,
+    "bb_bandwidth": 0.07386108982582693,
+    "rvol_20": 0.663032458621142,
+    "obv": 620556893.0,
+    "obv_slope_20": 79083793.0,
+    "cmf_20": 0.12206525788523435,
     "hh_hl_ratio_20": 0.525,
-    "adx_14": 15.997578724198812,
-    "return_1m": 0.014981952592518333,
-    "return_3m": 0.17591918451412747,
-    "return_12m": null,
-    "momentum_12_1": null,
-    "proximity_52w_high": -0.08984754704656239,
-    "adv_dollar_20": 2334444526.831238
+    "adx_14": 15.997578724198808,
+    "return_1m": 0.01517159023607273,
+    "return_3m": 0.1761388914188584,
+    "return_12m": 0.4017981822647474,
+    "momentum_12_1": 0.38662659202867466,
+    "proximity_52w_high": -0.08967749558307325,
+    "adv_dollar_20": 2347737351.6591506
   },
   "score_record": {
-    "composite_score": 60,
+    "composite_score": 63,
     "confidence_tier": "B",
-    "technical_score": 54,
+    "technical_score": 58,
     "risk_penalty": 0.0,
     "factor_attribution": {
       "horizon": "POSITION",
       "trend_score": 19.2,
-      "relative_strength_score": 12.0,
+      "relative_strength_score": 16.0,
       "setup_geometry_score": 10.0,
       "volume_participation_score": 5.3,
       "mtf_alignment_score": 2.5,
       "volatility_fit_score": 5.0,
-      "technical_score": 54,
+      "technical_score": 58,
       "fundamental_score": 65,
       "regime_multiplier": 1.05,
       "news_contribution": 0.0,
       "sector_contribution": 0.0,
       "risk_penalty": 0.0,
       "key_metrics": {
-        "close": 160.55999755859375,
-        "rsi_14": 48.66713258364281,
-        "rvol_20": 0.5517087026077511,
-        "atr_pct": 2.4992872389156147,
-        "proximity_52w_high": -0.08984754704656239
+        "close": 160.58999633789062,
+        "rsi_14": 48.71923125672882,
+        "rvol_20": 0.663032458621142,
+        "atr_pct": 2.498820363219809,
+        "proximity_52w_high": -0.08967749558307325
       }
     }
   },
   "signal_plan": {
     "direction": "LONG",
-    "preferred_entry": 160.56,
+    "preferred_entry": 160.59,
     "entry_zone": [
       160.86,
-      161.36
+      161.39
     ],
-    "stop_loss": 151.73,
+    "stop_loss": 151.76,
     "targets": [
-      174.69,
-      183.52,
-      195.88
+      174.72,
+      183.55,
+      195.91
     ],
     "risk_reward_ratio": 2.6,
     "invalidation": [
       {
         "predicate": "DAILY_CLOSE_BELOW_LEVEL",
-        "level": 151.73,
-        "description": "Daily closing price finishes below structural stop loss of 151.73"
+        "level": 151.76,
+        "description": "Daily closing price finishes below structural stop loss of 151.76"
       },
       {
         "predicate": "RVOL_COLLAPSE",
@@ -103,8 +103,8 @@
     ]
   },
   "ai_explanation": {
-    "FACT": "XOM (NYSE - Exxon Mobil Corporation) closed at $160.56 USD. Trading within -9.0% of its 52-week high with a 14-day ATR of 2.5%. The primary exchange session traded on volume of 7,925,389 shares.",
-    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 60/100 (Confidence Tier B). Technical Factor sub-score: 54/100 (14-day RSI: 48.7, 20-day RVOL: 0.55x). Risk penalty applied: -0.0 points. Modulated by the STRONG_BULL macro regime.",
+    "FACT": "XOM (NYSE - Exxon Mobil Corporation) closed at $160.59 USD. Trading within -9.0% of its 52-week high with a 14-day ATR of 2.5%. The primary exchange session traded on volume of 9,579,407 shares.",
+    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 63/100 (Confidence Tier B). Technical Factor sub-score: 58/100 (14-day RSI: 48.7, 20-day RVOL: 0.66x). Risk penalty applied: -0.0 points. Modulated by the STRONG_BULL macro regime.",
     "INFERENCE": "Historical setups exhibiting stacked moving averages and low-bandwidth consolidation during a STRONG_BULL regime showed positive forward expectancy across 64% of walk-forward folds. Relative strength ranks in the upper quartile of the current dual-market universe.",
     "UNCERTAINTY": "Risks include broader market sentiment deterioration in the STRONG_BULL environment. A daily close below technical support at $147.99 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
   },
@@ -1083,8 +1083,8 @@
       "open": 160.22999572753906,
       "high": 161.7899932861328,
       "low": 159.77999877929688,
-      "close": 160.55999755859375,
-      "volume": 7925389.0
+      "close": 160.58999633789062,
+      "volume": 9579407.0
     }
   ],
   "disclaimers": {

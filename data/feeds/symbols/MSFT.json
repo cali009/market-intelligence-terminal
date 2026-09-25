@@ -5,42 +5,42 @@
   "currency": "USD",
   "name": "Microsoft Corporation",
   "as_of_date": "2026-09-25",
-  "generated_at": "2026-09-25T20:03:17.133098+00:00",
+  "generated_at": "2026-09-25T20:37:41.174711+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 499.1400146484375,
     "high": 519.4000244140625,
     "low": 497.29998779296875,
     "close": 516.1699829101562,
-    "volume": 37083041.0,
+    "volume": 37897460.0,
     "adjusted_close": 516.1699829101562,
     "sma_20": 500.0404998779297,
     "sma_50": 475.81159912109376,
     "sma_200": 432.06089920043945,
     "ema_8": 502.1080746659236,
-    "ema_21": 496.7722480016082,
+    "ema_21": 496.7722480016857,
     "sma_200_slope_20d": 2.697173782067539,
     "atr_14": 10.942147391183036,
     "atr_pct": 2.11987286232559,
-    "rsi_14": 63.21666026470348,
-    "macd_line": 6.781463671295626,
-    "macd_signal": 7.55121531132003,
-    "macd_hist": -0.7697516400244044,
-    "bb_upper": 514.4078800217992,
-    "bb_lower": 485.67311973406015,
-    "bb_bandwidth": 0.05746486593536684,
-    "rvol_20": 1.7043102006956898,
-    "obv": 157930341.0,
-    "obv_slope_20": -16558659.0,
-    "cmf_20": 0.05615050369647529,
+    "rsi_14": 63.216659990439744,
+    "macd_line": 6.781463664013529,
+    "macd_signal": 7.55121530061097,
+    "macd_hist": -0.7697516365974408,
+    "bb_upper": 514.4078800217961,
+    "bb_lower": 485.6731197340632,
+    "bb_bandwidth": 0.05746486593535457,
+    "rvol_20": 1.7384867307414598,
+    "obv": 571998160.0,
+    "obv_slope_20": -15744240.0,
+    "cmf_20": 0.05736758413845781,
     "hh_hl_ratio_20": 0.525,
     "adx_14": 23.38603658822541,
     "return_1m": 0.039889574284791784,
     "return_3m": 0.3839450390668693,
-    "return_12m": null,
-    "momentum_12_1": null,
+    "return_12m": 0.011800429453486139,
+    "momentum_12_1": -0.028089144831305646,
     "proximity_52w_high": -0.06781403918895501,
-    "adv_dollar_20": 10909300355.626797
+    "adv_dollar_20": 10930319287.692383
   },
   "score_record": {
     "composite_score": 63,
@@ -63,8 +63,8 @@
       "risk_penalty": 0.0,
       "key_metrics": {
         "close": 516.1699829101562,
-        "rsi_14": 63.21666026470348,
-        "rvol_20": 1.7043102006956898,
+        "rsi_14": 63.216659990439744,
+        "rvol_20": 1.7384867307414598,
         "atr_pct": 2.11987286232559,
         "proximity_52w_high": -0.06781403918895501
       }
@@ -103,8 +103,8 @@
     ]
   },
   "ai_explanation": {
-    "FACT": "MSFT (NASDAQ - Microsoft Corporation) closed at $516.17 USD. Trading within -6.8% of its 52-week high with a 14-day ATR of 2.1%. The primary exchange session traded on volume of 37,083,041 shares.",
-    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 63/100 (Confidence Tier B). Technical Factor sub-score: 58/100 (14-day RSI: 63.2, 20-day RVOL: 1.70x). Risk penalty applied: -0.0 points. Modulated by the STRONG_BULL macro regime.",
+    "FACT": "MSFT (NASDAQ - Microsoft Corporation) closed at $516.17 USD. Trading within -6.8% of its 52-week high with a 14-day ATR of 2.1%. The primary exchange session traded on volume of 37,897,460 shares.",
+    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 63/100 (Confidence Tier B). Technical Factor sub-score: 58/100 (14-day RSI: 63.2, 20-day RVOL: 1.74x). Risk penalty applied: -0.0 points. Modulated by the STRONG_BULL macro regime.",
     "INFERENCE": "Historical setups exhibiting stacked moving averages and low-bandwidth consolidation during a STRONG_BULL regime showed positive forward expectancy across 64% of walk-forward folds. Relative strength ranks in the upper quartile of the current dual-market universe.",
     "UNCERTAINTY": "Risks include broader market sentiment deterioration in the STRONG_BULL environment. A daily close below technical support at $432.06 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
   },
@@ -137,7 +137,7 @@
     {
       "id": "HIGH_RVOL_SURGE",
       "name": "High Relative Volume Surge",
-      "why": "Elevated trading activity: Relative Volume is 1.70x above the 20-day average."
+      "why": "Elevated trading activity: Relative Volume is 1.74x above the 20-day average."
     },
     {
       "id": "BASE_TIGHTENING",
@@ -1109,7 +1109,7 @@
       "high": 519.4000244140625,
       "low": 497.29998779296875,
       "close": 516.1699829101562,
-      "volume": 37083041.0
+      "volume": 37897460.0
     }
   ],
   "disclaimers": {

@@ -5,57 +5,57 @@
   "currency": "USD",
   "name": "Amazon.com Inc.",
   "as_of_date": "2026-09-25",
-  "generated_at": "2026-09-25T20:03:17.133098+00:00",
+  "generated_at": "2026-09-25T20:37:41.174711+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 248.55999755859375,
     "high": 250.87750244140625,
     "low": 247.17999267578125,
     "close": 249.6699981689453,
-    "volume": 31562826.0,
+    "volume": 32663542.0,
     "adjusted_close": 249.6699981689453,
     "sma_20": 254.30599975585938,
     "sma_50": 256.175,
     "sma_200": 240.84784996032715,
     "ema_8": 251.5965185775465,
-    "ema_21": 253.94237719579974,
+    "ema_21": 253.94237719618175,
     "sma_200_slope_20d": 11.926429670157406,
     "atr_14": 5.324103219168527,
     "atr_pct": 2.1324561453979114,
-    "rsi_14": 44.53594334599328,
-    "macd_line": -2.0008479902378156,
-    "macd_signal": -1.5857630328253634,
-    "macd_hist": -0.4150849574124522,
-    "bb_upper": 263.96156204540154,
-    "bb_lower": 244.65043746631721,
-    "bb_bandwidth": 0.07593656696115515,
-    "rvol_20": 0.8963422890367079,
-    "obv": 698281526.0,
-    "obv_slope_20": -69314074.0,
-    "cmf_20": 0.1194307956869231,
+    "rsi_14": 44.53594307206563,
+    "macd_line": -2.000848028680906,
+    "macd_signal": -1.5857630893593957,
+    "macd_hist": -0.41508493932151036,
+    "bb_upper": 263.96156204540046,
+    "bb_lower": 244.65043746631832,
+    "bb_bandwidth": 0.07593656696114655,
+    "rvol_20": 0.9261536339673093,
+    "obv": 961064942.0,
+    "obv_slope_20": -68213358.0,
+    "cmf_20": 0.11978569281513299,
     "hh_hl_ratio_20": 0.45,
     "adx_14": 10.0689911423695,
     "return_1m": -0.04076379537464292,
     "return_3m": 0.07297260539508921,
-    "return_12m": null,
-    "momentum_12_1": null,
+    "return_12m": 0.1337813476085914,
+    "momentum_12_1": 0.1745451429832343,
     "proximity_52w_high": -0.13067553079013106,
-    "adv_dollar_20": 8964366788.719862
+    "adv_dollar_20": 8978107576.805088
   },
   "score_record": {
-    "composite_score": 48,
-    "confidence_tier": "C",
-    "technical_score": 39,
+    "composite_score": 52,
+    "confidence_tier": "B",
+    "technical_score": 45,
     "risk_penalty": 0.0,
     "factor_attribution": {
       "horizon": "POSITION",
       "trend_score": 14.2,
-      "relative_strength_score": 9.0,
+      "relative_strength_score": 13.0,
       "setup_geometry_score": 8.5,
-      "volume_participation_score": 2.7,
+      "volume_participation_score": 4.0,
       "mtf_alignment_score": 0.0,
       "volatility_fit_score": 5.0,
-      "technical_score": 39,
+      "technical_score": 45,
       "fundamental_score": 65,
       "regime_multiplier": 1.05,
       "news_contribution": 0.0,
@@ -63,17 +63,48 @@
       "risk_penalty": 0.0,
       "key_metrics": {
         "close": 249.6699981689453,
-        "rsi_14": 44.53594334599328,
-        "rvol_20": 0.8963422890367079,
+        "rsi_14": 44.53594307206563,
+        "rvol_20": 0.9261536339673093,
         "atr_pct": 2.1324561453979114,
         "proximity_52w_high": -0.13067553079013106
       }
     }
   },
-  "signal_plan": null,
+  "signal_plan": {
+    "direction": "LONG",
+    "preferred_entry": 249.67,
+    "entry_zone": [
+      251.76,
+      250.73
+    ],
+    "stop_loss": 237.96,
+    "targets": [
+      268.41,
+      280.12,
+      296.51
+    ],
+    "risk_reward_ratio": 2.6,
+    "invalidation": [
+      {
+        "predicate": "DAILY_CLOSE_BELOW_LEVEL",
+        "level": 237.96,
+        "description": "Daily closing price finishes below structural stop loss of 237.96"
+      },
+      {
+        "predicate": "RVOL_COLLAPSE",
+        "threshold": 0.4,
+        "description": "20-day Relative Volume drops below 0.40x indicating liquidity desertion"
+      },
+      {
+        "predicate": "EARNINGS_ANNOUNCEMENT_EVENT",
+        "buffer_sessions": 2,
+        "description": "Filing within 2 trading sessions triggers event risk de-risking protocol"
+      }
+    ]
+  },
   "ai_explanation": {
-    "FACT": "AMZN (NASDAQ - Amazon.com Inc.) closed at $249.67 USD. Trading within -13.1% of its 52-week high with a 14-day ATR of 2.1%. The primary exchange session traded on volume of 31,562,826 shares.",
-    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 48/100 (Confidence Tier C). Technical Factor sub-score: 39/100 (14-day RSI: 44.5, 20-day RVOL: 0.90x). Risk penalty applied: -0.0 points. Modulated by the STRONG_BULL macro regime.",
+    "FACT": "AMZN (NASDAQ - Amazon.com Inc.) closed at $249.67 USD. Trading within -13.1% of its 52-week high with a 14-day ATR of 2.1%. The primary exchange session traded on volume of 32,663,542 shares.",
+    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 52/100 (Confidence Tier B). Technical Factor sub-score: 45/100 (14-day RSI: 44.5, 20-day RVOL: 0.93x). Risk penalty applied: -0.0 points. Modulated by the STRONG_BULL macro regime.",
     "INFERENCE": "Current technical structure reflects neutral consolidation. Setup geometry indicates digestive trading range with no confirmed directional expansion.",
     "UNCERTAINTY": "Risks include broader market sentiment deterioration in the STRONG_BULL environment. A daily close below technical support at $240.85 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
   },
@@ -1053,7 +1084,7 @@
       "high": 250.87750244140625,
       "low": 247.17999267578125,
       "close": 249.6699981689453,
-      "volume": 31562826.0
+      "volume": 32663542.0
     }
   ],
   "disclaimers": {

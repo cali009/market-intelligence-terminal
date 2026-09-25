@@ -4,91 +4,91 @@
   "country": "US",
   "currency": "USD",
   "name": "Invesco QQQ Trust",
-  "as_of_date": "2026-09-24",
-  "generated_at": "2026-09-24T23:18:34.415016+00:00",
+  "as_of_date": "2026-09-25",
+  "generated_at": "2026-09-25T20:37:41.174711+00:00",
   "latest_metrics": {
-    "trading_date": "2026-09-24",
-    "open": 735.1599731445312,
-    "high": 742.6500244140625,
-    "low": 734.630126953125,
-    "close": 741.0999755859375,
-    "volume": 28622284.0,
-    "adjusted_close": 741.0999755859375,
-    "sma_20": 719.7049957275391,
-    "sma_50": 711.8823974609375,
-    "sma_200": 664.985749206543,
-    "ema_8": 731.9691457234513,
-    "ema_21": 722.7008571097746,
-    "sma_200_slope_20d": 20.869568050599703,
-    "atr_14": 9.432133265904017,
-    "atr_pct": 1.272720763274438,
-    "rsi_14": 63.13379376774603,
-    "macd_line": 6.617818661230899,
-    "macd_signal": 3.1493637408434516,
-    "macd_hist": 3.4684549203874475,
-    "bb_upper": 745.5770183055557,
-    "bb_lower": 693.8329731495224,
-    "bb_bandwidth": 0.0718961872756295,
-    "rvol_20": 0.8657301282879422,
-    "obv": 301123916.0,
-    "obv_slope_20": 102177816.0,
-    "cmf_20": 0.2184841664456973,
+    "trading_date": "2026-09-25",
+    "open": 742.8400268554688,
+    "high": 745.9149780273438,
+    "low": 739.6400146484375,
+    "close": 744.5,
+    "volume": 29536154.0,
+    "adjusted_close": 744.5,
+    "sma_20": 720.8744964599609,
+    "sma_50": 712.6535974121093,
+    "sma_200": 665.5868490600586,
+    "ema_8": 734.7537800071289,
+    "ema_21": 724.6825973722571,
+    "sma_200_slope_20d": 20.936977706897906,
+    "atr_14": 9.503208705357142,
+    "atr_pct": 1.2764551652595222,
+    "rsi_14": 64.68742047332788,
+    "macd_line": 7.468299359567823,
+    "macd_signal": 4.013150910586025,
+    "macd_hist": 3.455148448981798,
+    "bb_upper": 749.0279517964842,
+    "bb_lower": 692.7210411234377,
+    "bb_bandwidth": 0.07810917288592686,
+    "rvol_20": 0.8917650913992408,
+    "obv": 1228927554.0,
+    "obv_slope_20": 102611854.0,
+    "cmf_20": 0.20254539666854793,
     "hh_hl_ratio_20": 0.55,
-    "adx_14": 13.83558142340335,
-    "return_1m": 0.04274539359398766,
-    "return_3m": 0.03450678485529313,
-    "return_12m": null,
-    "momentum_12_1": null,
-    "proximity_52w_high": -0.010084884234170866,
-    "adv_dollar_20": 23824653072.511253
+    "adx_14": 14.190141155061557,
+    "return_1m": 0.046572114525795794,
+    "return_3m": 0.05375641088549532,
+    "return_12m": 0.24895156935410445,
+    "momentum_12_1": 0.20237945482830866,
+    "proximity_52w_high": -0.005543343723671934,
+    "adv_dollar_20": 23902525887.3668
   },
   "score_record": {
-    "composite_score": 61,
+    "composite_score": 64,
     "confidence_tier": "B",
-    "technical_score": 56,
+    "technical_score": 60,
     "risk_penalty": 0.0,
     "factor_attribution": {
       "horizon": "POSITION",
       "trend_score": 21.7,
-      "relative_strength_score": 13.0,
+      "relative_strength_score": 17.0,
       "setup_geometry_score": 8.0,
       "volume_participation_score": 5.3,
       "mtf_alignment_score": 5.0,
       "volatility_fit_score": 3.0,
-      "technical_score": 56,
+      "technical_score": 60,
       "fundamental_score": 65,
       "regime_multiplier": 1.05,
       "news_contribution": 0.0,
       "sector_contribution": 0.0,
       "risk_penalty": 0.0,
       "key_metrics": {
-        "close": 741.0999755859375,
-        "rsi_14": 63.13379376774603,
-        "rvol_20": 0.8657301282879422,
-        "atr_pct": 1.272720763274438,
-        "proximity_52w_high": -0.010084884234170866
+        "close": 744.5,
+        "rsi_14": 64.68742047332788,
+        "rvol_20": 0.8917650913992408,
+        "atr_pct": 1.2764551652595222,
+        "proximity_52w_high": -0.005543343723671934
       }
     }
   },
   "signal_plan": {
     "direction": "LONG",
-    "preferred_entry": 741.1,
+    "preferred_entry": 744.5,
     "entry_zone": [
-      737.33,
-      742.99
+      740.7,
+      746.4
     ],
-    "stop_loss": 707.17,
+    "stop_loss": 707.9,
     "targets": [
-      795.39,
-      829.32,
-      876.82
+      803.06,
+      839.66,
+      890.9
     ],
     "risk_reward_ratio": 2.6,
     "invalidation": [
       {
         "predicate": "DAILY_CLOSE_BELOW_LEVEL",
-        "level": 707.17,
-        "description": "Daily closing price finishes below structural stop loss of 707.17"
+        "level": 707.9,
+        "description": "Daily closing price finishes below structural stop loss of 707.9"
       },
       {
         "predicate": "RVOL_COLLAPSE",
@@ -103,16 +103,16 @@
     ]
   },
   "ai_explanation": {
-    "FACT": "QQQ (NASDAQ - Invesco QQQ Trust) closed at $741.10 USD. Trading within -1.0% of its 52-week high with a 14-day ATR of 1.3%. The primary exchange session traded on volume of 28,622,284 shares.",
-    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 61/100 (Confidence Tier B). Technical Factor sub-score: 56/100 (14-day RSI: 63.1, 20-day RVOL: 0.87x). Risk penalty applied: -0.0 points. Modulated by the STRONG_BULL macro regime.",
+    "FACT": "QQQ (NASDAQ - Invesco QQQ Trust) closed at $744.50 USD. Trading within -0.6% of its 52-week high with a 14-day ATR of 1.3%. The primary exchange session traded on volume of 29,536,154 shares.",
+    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 64/100 (Confidence Tier B). Technical Factor sub-score: 60/100 (14-day RSI: 64.7, 20-day RVOL: 0.89x). Risk penalty applied: -0.0 points. Modulated by the STRONG_BULL macro regime.",
     "INFERENCE": "Historical setups exhibiting stacked moving averages and low-bandwidth consolidation during a STRONG_BULL regime showed positive forward expectancy across 64% of walk-forward folds. Relative strength ranks in the upper quartile of the current dual-market universe.",
-    "UNCERTAINTY": "Risks include broader market sentiment deterioration in the STRONG_BULL environment. A daily close below technical support at $664.99 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
+    "UNCERTAINTY": "Risks include broader market sentiment deterioration in the STRONG_BULL environment. A daily close below technical support at $665.59 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
   },
   "active_scanner_matches": [
     {
       "id": "VOLATILITY_SQUEEZE",
       "name": "Volatility Squeeze (Bandwidth)",
-      "why": "Bollinger Bandwidth compressed to 7.2% with low ATR% of 1.3%, indicating impending expansion."
+      "why": "Bollinger Bandwidth compressed to 7.8% with low ATR% of 1.3%, indicating impending expansion."
     },
     {
       "id": "STACKED_MOVING_AVERAGES",
@@ -127,18 +127,10 @@
     {
       "id": "BASE_TIGHTENING",
       "name": "Consolidation Base Tightening",
-      "why": "Price consolidating in a tight band (7.2%) within 1.0% of yearly high."
+      "why": "Price consolidating in a tight band (7.8%) within 0.6% of yearly high."
     }
   ],
   "chart_bars": [
-    {
-      "time": "2026-04-06",
-      "open": 586.22998046875,
-      "high": 590.6099853515625,
-      "low": 584.6900024414062,
-      "close": 588.5,
-      "volume": 35108500.0
-    },
     {
       "time": "2026-04-07",
       "open": 585.6400146484375,
@@ -1085,11 +1077,19 @@
     },
     {
       "time": "2026-09-24",
-      "open": 735.1599731445312,
-      "high": 742.6500244140625,
-      "low": 734.630126953125,
+      "open": 735.2899780273438,
+      "high": 742.6599731445312,
+      "low": 734.6199951171875,
       "close": 741.0999755859375,
-      "volume": 28622284.0
+      "volume": 29000900.0
+    },
+    {
+      "time": "2026-09-25",
+      "open": 742.8400268554688,
+      "high": 745.9149780273438,
+      "low": 739.6400146484375,
+      "close": 744.5,
+      "volume": 29536154.0
     }
   ],
   "disclaimers": {

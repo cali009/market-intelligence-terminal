@@ -1,6 +1,6 @@
 {
   "as_of_date": "2026-09-25",
-  "generated_at": "2026-09-25T20:03:17.133098+00:00",
+  "generated_at": "2026-09-25T20:37:41.174711+00:00",
   "securities": [
     {
       "symbol": "AAPL",
@@ -9,11 +9,11 @@
       "currency": "USD",
       "name": "Apple Inc.",
       "price": 341.07000732421875,
-      "composite_score": 64,
+      "composite_score": 67,
       "confidence_tier": "B",
-      "technical_score": 60,
+      "technical_score": 64,
       "rsi_14": 65.7,
-      "rvol_20": 0.65,
+      "rvol_20": 0.69,
       "atr_pct": 2.0,
       "proximity_52w_high": -1.2,
       "scanner_tags": [
@@ -30,17 +30,38 @@
       "currency": "USD",
       "name": "NVIDIA Corporation",
       "price": 225.07000732421875,
-      "composite_score": 64,
+      "composite_score": 67,
       "confidence_tier": "B",
-      "technical_score": 59,
+      "technical_score": 63,
       "rsi_14": 55.2,
-      "rvol_20": 0.72,
+      "rvol_20": 0.75,
       "atr_pct": 2.32,
       "proximity_52w_high": -4.8,
       "scanner_tags": [
         "Momentum Leaders",
         "Pullback to Key Support",
         "Stacked Moving Average Alignment"
+      ]
+    },
+    {
+      "symbol": "QQQ",
+      "exchange": "NASDAQ",
+      "country": "US",
+      "currency": "USD",
+      "name": "Invesco QQQ Trust",
+      "price": 744.5,
+      "composite_score": 64,
+      "confidence_tier": "B",
+      "technical_score": 60,
+      "rsi_14": 64.7,
+      "rvol_20": 0.89,
+      "atr_pct": 1.28,
+      "proximity_52w_high": -0.6,
+      "scanner_tags": [
+        "Volatility Squeeze (Bandwidth)",
+        "Stacked Moving Average Alignment",
+        "Low-Volatility Trend Quality",
+        "Consolidation Base Tightening"
       ]
     },
     {
@@ -54,7 +75,7 @@
       "confidence_tier": "B",
       "technical_score": 58,
       "rsi_14": 63.2,
-      "rvol_20": 1.7,
+      "rvol_20": 1.74,
       "atr_pct": 2.12,
       "proximity_52w_high": -6.8,
       "scanner_tags": [
@@ -66,6 +87,26 @@
         "High Relative Volume Surge",
         "Consolidation Base Tightening",
         "Daily Range Expansion"
+      ]
+    },
+    {
+      "symbol": "XOM",
+      "exchange": "NYSE",
+      "country": "US",
+      "currency": "USD",
+      "name": "Exxon Mobil Corporation",
+      "price": 160.58999633789062,
+      "composite_score": 63,
+      "confidence_tier": "B",
+      "technical_score": 58,
+      "rsi_14": 48.7,
+      "rvol_20": 0.66,
+      "atr_pct": 2.5,
+      "proximity_52w_high": -9.0,
+      "scanner_tags": [
+        "Pullback to Key Support",
+        "Volatility Squeeze (Bandwidth)",
+        "Consolidation Base Tightening"
       ]
     },
     {
@@ -90,58 +131,17 @@
       ]
     },
     {
-      "symbol": "QQQ",
-      "exchange": "NASDAQ",
-      "country": "US",
-      "currency": "USD",
-      "name": "Invesco QQQ Trust",
-      "price": 744.5,
-      "composite_score": 61,
-      "confidence_tier": "B",
-      "technical_score": 56,
-      "rsi_14": 64.7,
-      "rvol_20": 0.88,
-      "atr_pct": 1.28,
-      "proximity_52w_high": -0.6,
-      "scanner_tags": [
-        "Volatility Squeeze (Bandwidth)",
-        "Stacked Moving Average Alignment",
-        "Low-Volatility Trend Quality",
-        "Consolidation Base Tightening"
-      ]
-    },
-    {
-      "symbol": "XOM",
-      "exchange": "NYSE",
-      "country": "US",
-      "currency": "USD",
-      "name": "Exxon Mobil Corporation",
-      "price": 160.55999755859375,
-      "composite_score": 60,
-      "confidence_tier": "B",
-      "technical_score": 54,
-      "rsi_14": 48.7,
-      "rvol_20": 0.55,
-      "atr_pct": 2.5,
-      "proximity_52w_high": -9.0,
-      "scanner_tags": [
-        "Pullback to Key Support",
-        "Volatility Squeeze (Bandwidth)",
-        "Consolidation Base Tightening"
-      ]
-    },
-    {
       "symbol": "SPY",
       "exchange": "AMEX",
       "country": "US",
       "currency": "USD",
       "name": "SPDR S&P 500 ETF Trust",
-      "price": 771.3599853515625,
-      "composite_score": 56,
+      "price": 771.3499755859375,
+      "composite_score": 60,
       "confidence_tier": "B",
-      "technical_score": 50,
+      "technical_score": 54,
       "rsi_14": 55.9,
-      "rvol_20": 0.7,
+      "rvol_20": 0.78,
       "atr_pct": 0.89,
       "proximity_52w_high": -1.0,
       "scanner_tags": [
@@ -150,6 +150,65 @@
         "Stacked Moving Average Alignment",
         "Low-Volatility Trend Quality",
         "Consolidation Base Tightening"
+      ]
+    },
+    {
+      "symbol": "JPM",
+      "exchange": "NYSE",
+      "country": "US",
+      "currency": "USD",
+      "name": "JPMorgan Chase & Co.",
+      "price": 343.05999755859375,
+      "composite_score": 56,
+      "confidence_tier": "B",
+      "technical_score": 50,
+      "rsi_14": 41.7,
+      "rvol_20": 1.29,
+      "atr_pct": 2.08,
+      "proximity_52w_high": -6.4,
+      "scanner_tags": [
+        "Volatility Squeeze (Bandwidth)",
+        "Institutional Accumulation (CMF+OBV)",
+        "Low-Volatility Trend Quality",
+        "Consolidation Base Tightening"
+      ]
+    },
+    {
+      "symbol": "AMZN",
+      "exchange": "NASDAQ",
+      "country": "US",
+      "currency": "USD",
+      "name": "Amazon.com Inc.",
+      "price": 249.6699981689453,
+      "composite_score": 52,
+      "confidence_tier": "B",
+      "technical_score": 45,
+      "rsi_14": 44.5,
+      "rvol_20": 0.93,
+      "atr_pct": 2.13,
+      "proximity_52w_high": -13.1,
+      "scanner_tags": [
+        "Pullback to Key Support",
+        "Volatility Squeeze (Bandwidth)",
+        "Low-Volatility Trend Quality"
+      ]
+    },
+    {
+      "symbol": "GOOGL",
+      "exchange": "NASDAQ",
+      "country": "US",
+      "currency": "USD",
+      "name": "Alphabet Inc.",
+      "price": 343.9200134277344,
+      "composite_score": 52,
+      "confidence_tier": "B",
+      "technical_score": 44,
+      "rsi_14": 49.7,
+      "rvol_20": 0.79,
+      "atr_pct": 2.63,
+      "proximity_52w_high": -15.8,
+      "scanner_tags": [
+        "Pullback to Key Support"
       ]
     },
     {
@@ -191,64 +250,6 @@
         "Volatility Squeeze (Bandwidth)",
         "Low-Volatility Trend Quality",
         "Consolidation Base Tightening"
-      ]
-    },
-    {
-      "symbol": "JPM",
-      "exchange": "NYSE",
-      "country": "US",
-      "currency": "USD",
-      "name": "JPMorgan Chase & Co.",
-      "price": 342.8999938964844,
-      "composite_score": 51,
-      "confidence_tier": "B",
-      "technical_score": 43,
-      "rsi_14": 41.5,
-      "rvol_20": 0.75,
-      "atr_pct": 2.09,
-      "proximity_52w_high": -6.4,
-      "scanner_tags": [
-        "Volatility Squeeze (Bandwidth)",
-        "Low-Volatility Trend Quality",
-        "Consolidation Base Tightening"
-      ]
-    },
-    {
-      "symbol": "GOOGL",
-      "exchange": "NASDAQ",
-      "country": "US",
-      "currency": "USD",
-      "name": "Alphabet Inc.",
-      "price": 343.9200134277344,
-      "composite_score": 49,
-      "confidence_tier": "C",
-      "technical_score": 40,
-      "rsi_14": 49.7,
-      "rvol_20": 0.74,
-      "atr_pct": 2.63,
-      "proximity_52w_high": -15.8,
-      "scanner_tags": [
-        "Pullback to Key Support"
-      ]
-    },
-    {
-      "symbol": "AMZN",
-      "exchange": "NASDAQ",
-      "country": "US",
-      "currency": "USD",
-      "name": "Amazon.com Inc.",
-      "price": 249.6699981689453,
-      "composite_score": 48,
-      "confidence_tier": "C",
-      "technical_score": 39,
-      "rsi_14": 44.5,
-      "rvol_20": 0.9,
-      "atr_pct": 2.13,
-      "proximity_52w_high": -13.1,
-      "scanner_tags": [
-        "Pullback to Key Support",
-        "Volatility Squeeze (Bandwidth)",
-        "Low-Volatility Trend Quality"
       ]
     },
     {

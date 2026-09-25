@@ -4,91 +4,91 @@
   "country": "US",
   "currency": "USD",
   "name": "NVIDIA Corporation",
-  "as_of_date": "2026-09-24",
-  "generated_at": "2026-09-24T23:18:34.415016+00:00",
+  "as_of_date": "2026-09-25",
+  "generated_at": "2026-09-25T20:37:41.174711+00:00",
   "latest_metrics": {
-    "trading_date": "2026-09-24",
-    "open": 222.11599731445312,
-    "high": 224.89999389648438,
-    "low": 221.09080505371094,
-    "close": 224.5800018310547,
-    "volume": 76420503.0,
-    "adjusted_close": 224.5800018310547,
-    "sma_20": 221.89999923706054,
-    "sma_50": 215.62359924316405,
-    "sma_200": 199.2756499481201,
-    "ema_8": 223.38210010799293,
-    "ema_21": 220.9661150932059,
-    "sma_200_slope_20d": 24.113742606239555,
-    "atr_14": 5.401369367327009,
-    "atr_pct": 2.4050981045900555,
-    "rsi_14": 54.717248892824706,
-    "macd_line": 2.236016998152479,
-    "macd_signal": 1.8241773516919537,
-    "macd_hist": 0.4118396464605254,
-    "bb_upper": 233.37121961020978,
-    "bb_lower": 210.4287788639113,
-    "bb_bandwidth": 0.10339090051906026,
-    "rvol_20": 0.6042907277911681,
-    "obv": 1067471797.0,
-    "obv_slope_20": 521549197.0,
-    "cmf_20": 0.01811329084530053,
+    "trading_date": "2026-09-25",
+    "open": 225.14999389648438,
+    "high": 226.94000244140625,
+    "low": 223.13290405273438,
+    "close": 225.07000732421875,
+    "volume": 87234141.0,
+    "adjusted_close": 225.07000732421875,
+    "sma_20": 221.75449981689454,
+    "sma_50": 215.97699951171876,
+    "sma_200": 199.47324996948242,
+    "ema_8": 223.75719060048758,
+    "ema_21": 221.33919620505995,
+    "sma_200_slope_20d": 24.07923004562398,
+    "atr_14": 5.222648620605469,
+    "atr_pct": 2.3204551697917344,
+    "rsi_14": 55.17408895732846,
+    "macd_line": 2.280777329911416,
+    "macd_signal": 1.9154973562177715,
+    "macd_hist": 0.3652799736936445,
+    "bb_upper": 232.97202794649843,
+    "bb_lower": 210.53697168729065,
+    "bb_bandwidth": 0.10117069226434047,
+    "rvol_20": 0.752460676414398,
+    "obv": 3889571641.0,
+    "obv_slope_20": 308824141.0,
+    "cmf_20": -0.041667636843122934,
     "hh_hl_ratio_20": 0.55,
-    "adx_14": 10.681263443739937,
-    "return_1m": 0.05411874496193181,
-    "return_3m": 0.1473382830721226,
-    "return_12m": null,
-    "momentum_12_1": null,
-    "proximity_52w_high": -0.05056223807620819,
-    "adv_dollar_20": 28123820055.913643
+    "adx_14": 10.823000290658106,
+    "return_1m": 0.0734999684868094,
+    "return_3m": 0.1690126668635339,
+    "return_12m": 0.27179751241301653,
+    "momentum_12_1": 0.19829754392620713,
+    "proximity_52w_high": -0.048490683552355085,
+    "adv_dollar_20": 25710020426.266335
   },
   "score_record": {
-    "composite_score": 61,
+    "composite_score": 67,
     "confidence_tier": "B",
-    "technical_score": 56,
+    "technical_score": 63,
     "risk_penalty": 0.0,
     "factor_attribution": {
       "horizon": "POSITION",
       "trend_score": 21.7,
-      "relative_strength_score": 12.0,
+      "relative_strength_score": 20.0,
       "setup_geometry_score": 8.5,
-      "volume_participation_score": 4.0,
+      "volume_participation_score": 2.7,
       "mtf_alignment_score": 5.0,
       "volatility_fit_score": 5.0,
-      "technical_score": 56,
+      "technical_score": 63,
       "fundamental_score": 65,
       "regime_multiplier": 1.05,
       "news_contribution": 0.0,
       "sector_contribution": 0.0,
       "risk_penalty": 0.0,
       "key_metrics": {
-        "close": 224.5800018310547,
-        "rsi_14": 54.717248892824706,
-        "rvol_20": 0.6042907277911681,
-        "atr_pct": 2.4050981045900555,
-        "proximity_52w_high": -0.05056223807620819
+        "close": 225.07000732421875,
+        "rsi_14": 55.17408895732846,
+        "rvol_20": 0.752460676414398,
+        "atr_pct": 2.3204551697917344,
+        "proximity_52w_high": -0.048490683552355085
       }
     }
   },
   "signal_plan": {
     "direction": "LONG",
-    "preferred_entry": 224.58,
+    "preferred_entry": 225.07,
     "entry_zone": [
-      222.42,
-      225.66
+      222.98,
+      226.11
     ],
-    "stop_loss": 212.7,
+    "stop_loss": 213.37,
     "targets": [
-      243.59,
-      255.47,
-      272.1
+      243.79,
+      255.49,
+      271.87
     ],
     "risk_reward_ratio": 2.6,
     "invalidation": [
       {
         "predicate": "DAILY_CLOSE_BELOW_LEVEL",
-        "level": 212.7,
-        "description": "Daily closing price finishes below structural stop loss of 212.7"
+        "level": 213.37,
+        "description": "Daily closing price finishes below structural stop loss of 213.37"
       },
       {
         "predicate": "RVOL_COLLAPSE",
@@ -103,21 +103,21 @@
     ]
   },
   "ai_explanation": {
-    "FACT": "NVDA (NASDAQ - NVIDIA Corporation) closed at $224.58 USD. Trading within -5.1% of its 52-week high with a 14-day ATR of 2.4%. The primary exchange session traded on volume of 76,420,503 shares.",
-    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 61/100 (Confidence Tier B). Technical Factor sub-score: 56/100 (14-day RSI: 54.7, 20-day RVOL: 0.60x). Risk penalty applied: -0.0 points. Modulated by the STRONG_BULL macro regime.",
+    "FACT": "NVDA (NASDAQ - NVIDIA Corporation) closed at $225.07 USD. Trading within -4.8% of its 52-week high with a 14-day ATR of 2.3%. The primary exchange session traded on volume of 87,234,141 shares.",
+    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 67/100 (Confidence Tier B). Technical Factor sub-score: 63/100 (14-day RSI: 55.2, 20-day RVOL: 0.75x). Risk penalty applied: -0.0 points. Modulated by the STRONG_BULL macro regime.",
     "INFERENCE": "Historical setups exhibiting stacked moving averages and low-bandwidth consolidation during a STRONG_BULL regime showed positive forward expectancy across 64% of walk-forward folds. Relative strength ranks in the upper quartile of the current dual-market universe.",
-    "UNCERTAINTY": "Risks include broader market sentiment deterioration in the STRONG_BULL environment. A daily close below technical support at $199.28 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
+    "UNCERTAINTY": "Risks include broader market sentiment deterioration in the STRONG_BULL environment. A daily close below technical support at $199.47 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
   },
   "active_scanner_matches": [
     {
       "id": "MOMENTUM_LEADERS",
       "name": "Momentum Leaders",
-      "why": "Strong trend: close > 50DMA > 200DMA with +14.7% 3m return and -5.1% from 52w high."
+      "why": "Strong trend: close > 50DMA > 200DMA with +16.9% 3m return and -4.8% from 52w high."
     },
     {
       "id": "PULLBACK_UPTREND",
       "name": "Pullback to Key Support",
-      "why": "Pullback into key moving average in a rising uptrend; RSI at 54.7 shows controlled digestion."
+      "why": "Pullback into key moving average in a rising uptrend; RSI at 55.2 shows controlled digestion."
     },
     {
       "id": "STACKED_MOVING_AVERAGES",
@@ -126,14 +126,6 @@
     }
   ],
   "chart_bars": [
-    {
-      "time": "2026-04-06",
-      "open": 177.16000366210938,
-      "high": 177.7899932861328,
-      "low": 175.75999450683594,
-      "close": 177.63999938964844,
-      "volume": 107564300.0
-    },
     {
       "time": "2026-04-07",
       "open": 175.72999572753906,
@@ -1080,11 +1072,19 @@
     },
     {
       "time": "2026-09-24",
-      "open": 222.11599731445312,
-      "high": 224.89999389648438,
-      "low": 221.09080505371094,
+      "open": 222.0800018310547,
+      "high": 224.94000244140625,
+      "low": 221.08999633789062,
       "close": 224.5800018310547,
-      "volume": 76420503.0
+      "volume": 77469900.0
+    },
+    {
+      "time": "2026-09-25",
+      "open": 225.14999389648438,
+      "high": 226.94000244140625,
+      "low": 223.13290405273438,
+      "close": 225.07000732421875,
+      "volume": 87234141.0
     }
   ],
   "disclaimers": {

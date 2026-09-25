@@ -5,57 +5,57 @@
   "currency": "USD",
   "name": "Alphabet Inc.",
   "as_of_date": "2026-09-25",
-  "generated_at": "2026-09-25T20:03:17.133098+00:00",
+  "generated_at": "2026-09-25T20:37:41.174711+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 342.4100036621094,
     "high": 347.0299987792969,
     "low": 341.1099853515625,
     "close": 343.9200134277344,
-    "volume": 19895433.0,
+    "volume": 21242195.0,
     "adjusted_close": 343.9200134277344,
     "sma_20": 342.1739990234375,
     "sma_50": 344.29039794921874,
     "sma_200": 338.20684936523435,
     "ema_8": 344.5784302400242,
-    "ema_21": 344.0438573291202,
+    "ema_21": 344.0438573288044,
     "sma_200_slope_20d": 14.776668700494694,
     "atr_14": 9.03928702218192,
     "atr_pct": 2.628310848237765,
-    "rsi_14": 49.71626647358675,
-    "macd_line": 0.08329046223877867,
-    "macd_signal": -0.36735363224911766,
-    "macd_hist": 0.45064409448789633,
-    "bb_upper": 354.9745428795579,
-    "bb_lower": 329.3734551673171,
-    "bb_bandwidth": 0.07481891606406717,
-    "rvol_20": 0.742171344989614,
-    "obv": -46610967.0,
-    "obv_slope_20": 51510633.0,
-    "cmf_20": -0.026708185787688923,
+    "rsi_14": 49.716266492557246,
+    "macd_line": 0.0832905100409107,
+    "macd_signal": -0.36735356195184315,
+    "macd_hist": 0.45064407199275386,
+    "bb_upper": 354.9745428795564,
+    "bb_lower": 329.3734551673186,
+    "bb_bandwidth": 0.07481891606405852,
+    "rvol_20": 0.7904249098624054,
+    "obv": 872911095.0,
+    "obv_slope_20": 52857395.0,
+    "cmf_20": -0.026768221789543023,
     "hh_hl_ratio_20": 0.525,
     "adx_14": 18.050201255587123,
     "return_1m": 0.005614074350100529,
     "return_3m": 0.019354451808839546,
-    "return_12m": null,
-    "momentum_12_1": null,
+    "return_12m": 0.3915999606583296,
+    "momentum_12_1": 0.38598588630822905,
     "proximity_52w_high": -0.15831715876490327,
-    "adv_dollar_20": 9182506232.355564
+    "adv_dollar_20": 9205665152.611763
   },
   "score_record": {
-    "composite_score": 49,
-    "confidence_tier": "C",
-    "technical_score": 40,
+    "composite_score": 52,
+    "confidence_tier": "B",
+    "technical_score": 44,
     "risk_penalty": 0.0,
     "factor_attribution": {
       "horizon": "POSITION",
       "trend_score": 14.2,
-      "relative_strength_score": 6.0,
+      "relative_strength_score": 10.0,
       "setup_geometry_score": 10.0,
       "volume_participation_score": 2.7,
       "mtf_alignment_score": 2.5,
       "volatility_fit_score": 5.0,
-      "technical_score": 40,
+      "technical_score": 44,
       "fundamental_score": 65,
       "regime_multiplier": 1.05,
       "news_contribution": 0.0,
@@ -63,17 +63,48 @@
       "risk_penalty": 0.0,
       "key_metrics": {
         "close": 343.9200134277344,
-        "rsi_14": 49.71626647358675,
-        "rvol_20": 0.742171344989614,
+        "rsi_14": 49.716266492557246,
+        "rvol_20": 0.7904249098624054,
         "atr_pct": 2.628310848237765,
         "proximity_52w_high": -0.15831715876490327
       }
     }
   },
-  "signal_plan": null,
+  "signal_plan": {
+    "direction": "LONG",
+    "preferred_entry": 343.92,
+    "entry_zone": [
+      340.3,
+      345.73
+    ],
+    "stop_loss": 324.03,
+    "targets": [
+      375.74,
+      395.63,
+      423.48
+    ],
+    "risk_reward_ratio": 2.6,
+    "invalidation": [
+      {
+        "predicate": "DAILY_CLOSE_BELOW_LEVEL",
+        "level": 324.03,
+        "description": "Daily closing price finishes below structural stop loss of 324.03"
+      },
+      {
+        "predicate": "RVOL_COLLAPSE",
+        "threshold": 0.4,
+        "description": "20-day Relative Volume drops below 0.40x indicating liquidity desertion"
+      },
+      {
+        "predicate": "EARNINGS_ANNOUNCEMENT_EVENT",
+        "buffer_sessions": 2,
+        "description": "Filing within 2 trading sessions triggers event risk de-risking protocol"
+      }
+    ]
+  },
   "ai_explanation": {
-    "FACT": "GOOGL (NASDAQ - Alphabet Inc.) closed at $343.92 USD. Trading within -15.8% of its 52-week high with a 14-day ATR of 2.6%. The primary exchange session traded on volume of 19,895,433 shares.",
-    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 49/100 (Confidence Tier C). Technical Factor sub-score: 40/100 (14-day RSI: 49.7, 20-day RVOL: 0.74x). Risk penalty applied: -0.0 points. Modulated by the STRONG_BULL macro regime.",
+    "FACT": "GOOGL (NASDAQ - Alphabet Inc.) closed at $343.92 USD. Trading within -15.8% of its 52-week high with a 14-day ATR of 2.6%. The primary exchange session traded on volume of 21,242,195 shares.",
+    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 52/100 (Confidence Tier B). Technical Factor sub-score: 44/100 (14-day RSI: 49.7, 20-day RVOL: 0.79x). Risk penalty applied: -0.0 points. Modulated by the STRONG_BULL macro regime.",
     "INFERENCE": "Current technical structure reflects neutral consolidation. Setup geometry indicates digestive trading range with no confirmed directional expansion.",
     "UNCERTAINTY": "Risks include broader market sentiment deterioration in the STRONG_BULL environment. A daily close below technical support at $338.21 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
   },
@@ -1043,7 +1074,7 @@
       "high": 347.0299987792969,
       "low": 341.1099853515625,
       "close": 343.9200134277344,
-      "volume": 19895433.0
+      "volume": 21242195.0
     }
   ],
   "disclaimers": {

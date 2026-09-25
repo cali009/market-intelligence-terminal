@@ -4,118 +4,128 @@
   "country": "CA",
   "currency": "CAD",
   "name": "Canadian National Railway",
-  "as_of_date": "2026-09-24",
-  "generated_at": "2026-09-24T23:18:34.415016+00:00",
+  "as_of_date": "2026-09-25",
+  "generated_at": "2026-09-25T20:37:41.174711+00:00",
   "latest_metrics": {
-    "trading_date": "2026-09-24",
-    "open": 168.74000549316406,
-    "high": 171.1999969482422,
-    "low": 168.47999572753906,
-    "close": 169.57000732421875,
-    "volume": 1452656.0,
-    "adjusted_close": 169.57000732421875,
-    "sma_20": 169.77800064086915,
-    "sma_50": 174.8420004272461,
-    "sma_200": 155.71959983825684,
-    "ema_8": 168.24125399429494,
-    "ema_21": 170.00617101940134,
-    "sma_200_slope_20d": 30.254185423033363,
-    "atr_14": 2.866428920200893,
-    "atr_pct": 1.6904103298882718,
-    "rsi_14": 46.928242527653104,
-    "macd_line": -1.8949787601771675,
-    "macd_signal": -1.9779143069541696,
-    "macd_hist": 0.0829355467770021,
-    "bb_upper": 175.90880067286142,
-    "bb_lower": 163.6472006088769,
-    "bb_bandwidth": 0.07222137154224978,
-    "rvol_20": 0.9392560261755636,
-    "obv": 34779056.0,
-    "obv_slope_20": -3625544.0,
-    "cmf_20": -0.03581849733729331,
-    "hh_hl_ratio_20": 0.375,
-    "adx_14": 35.26924609676242,
-    "return_1m": -0.03948105940288127,
-    "return_3m": 0.03858640832301652,
-    "return_12m": null,
-    "momentum_12_1": null,
-    "proximity_52w_high": -0.08464233563174761,
-    "adv_dollar_20": 261547900.2762909
+    "trading_date": "2026-09-25",
+    "open": 169.8000030517578,
+    "high": 171.47999572753906,
+    "low": 168.50999450683594,
+    "close": 170.89999389648438,
+    "volume": 870736.0,
+    "adjusted_close": 170.89999389648438,
+    "sma_20": 169.13000030517577,
+    "sma_50": 174.62840026855469,
+    "sma_200": 156.05549980163573,
+    "ema_8": 168.89639465398446,
+    "ema_21": 169.95541670898567,
+    "sma_200_slope_20d": 29.378281164255455,
+    "atr_14": 2.6878574916294644,
+    "atr_pct": 1.5727662888376248,
+    "rsi_14": 51.015002827502,
+    "macd_line": -1.4521452196645726,
+    "macd_signal": -1.8534454442612962,
+    "macd_hist": 0.40130022459672365,
+    "bb_upper": 173.5576361674457,
+    "bb_lower": 164.70236444290583,
+    "bb_bandwidth": 0.052357782230009746,
+    "rvol_20": 0.5551015079113516,
+    "obv": 6218036.0,
+    "obv_slope_20": -1870864.0,
+    "cmf_20": 0.02327116746579061,
+    "hh_hl_ratio_20": 0.45,
+    "adx_14": 34.18712510762636,
+    "return_1m": -0.0342996399522465,
+    "return_3m": 0.0006440694108305056,
+    "return_12m": 0.334530666520505,
+    "momentum_12_1": 0.3688303064727515,
+    "proximity_52w_high": -0.07746292093665652,
+    "adv_dollar_20": 264870543.9206482
   },
   "score_record": {
-    "composite_score": 47,
-    "confidence_tier": "C",
-    "technical_score": 41,
+    "composite_score": 52,
+    "confidence_tier": "B",
+    "technical_score": 47,
     "risk_penalty": 0.0,
     "factor_attribution": {
       "horizon": "POSITION",
       "trend_score": 17.5,
-      "relative_strength_score": 9.0,
-      "setup_geometry_score": 8.5,
+      "relative_strength_score": 13.0,
+      "setup_geometry_score": 10.0,
       "volume_participation_score": 1.3,
       "mtf_alignment_score": 0.0,
       "volatility_fit_score": 5.0,
-      "technical_score": 41,
+      "technical_score": 47,
       "fundamental_score": 65,
       "regime_multiplier": 1.0,
       "news_contribution": 0.0,
       "sector_contribution": 0.0,
       "risk_penalty": 0.0,
       "key_metrics": {
-        "close": 169.57000732421875,
-        "rsi_14": 46.928242527653104,
-        "rvol_20": 0.9392560261755636,
-        "atr_pct": 1.6904103298882718,
-        "proximity_52w_high": -0.08464233563174761
+        "close": 170.89999389648438,
+        "rsi_14": 51.015002827502,
+        "rvol_20": 0.5551015079113516,
+        "atr_pct": 1.5727662888376248,
+        "proximity_52w_high": -0.07746292093665652
       }
     }
   },
-  "signal_plan": null,
+  "signal_plan": {
+    "direction": "LONG",
+    "preferred_entry": 170.9,
+    "entry_zone": [
+      169.82,
+      171.44
+    ],
+    "stop_loss": 164.99,
+    "targets": [
+      180.36,
+      186.27,
+      194.54
+    ],
+    "risk_reward_ratio": 2.6,
+    "invalidation": [
+      {
+        "predicate": "DAILY_CLOSE_BELOW_LEVEL",
+        "level": 164.99,
+        "description": "Daily closing price finishes below structural stop loss of 164.99"
+      },
+      {
+        "predicate": "RVOL_COLLAPSE",
+        "threshold": 0.4,
+        "description": "20-day Relative Volume drops below 0.40x indicating liquidity desertion"
+      },
+      {
+        "predicate": "EARNINGS_ANNOUNCEMENT_EVENT",
+        "buffer_sessions": 2,
+        "description": "Filing within 2 trading sessions triggers event risk de-risking protocol"
+      }
+    ]
+  },
   "ai_explanation": {
-    "FACT": "CNR (TSX - Canadian National Railway) closed at $169.57 CAD. Trading within -8.5% of its 52-week high with a 14-day ATR of 1.7%. The primary exchange session traded on volume of 1,452,656 shares.",
-    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 47/100 (Confidence Tier C). Technical Factor sub-score: 41/100 (14-day RSI: 46.9, 20-day RVOL: 0.94x). Risk penalty applied: -0.0 points. Modulated by the WEAK_BULL macro regime.",
+    "FACT": "CNR (TSX - Canadian National Railway) closed at $170.90 CAD. Trading within -7.7% of its 52-week high with a 14-day ATR of 1.6%. The primary exchange session traded on volume of 870,736 shares.",
+    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 52/100 (Confidence Tier B). Technical Factor sub-score: 47/100 (14-day RSI: 51.0, 20-day RVOL: 0.56x). Risk penalty applied: -0.0 points. Modulated by the WEAK_BULL macro regime.",
     "INFERENCE": "Current technical structure reflects neutral consolidation. Setup geometry indicates digestive trading range with no confirmed directional expansion.",
-    "UNCERTAINTY": "Risks include broader market sentiment deterioration in the WEAK_BULL environment. A daily close below technical support at $155.72 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
+    "UNCERTAINTY": "Risks include broader market sentiment deterioration in the WEAK_BULL environment. A daily close below technical support at $156.06 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
   },
   "active_scanner_matches": [
     {
       "id": "PULLBACK_UPTREND",
       "name": "Pullback to Key Support",
-      "why": "Pullback into key moving average in a rising uptrend; RSI at 46.9 shows controlled digestion."
+      "why": "Pullback into key moving average in a rising uptrend; RSI at 51.0 shows controlled digestion."
     },
     {
       "id": "VOLATILITY_SQUEEZE",
       "name": "Volatility Squeeze (Bandwidth)",
-      "why": "Bollinger Bandwidth compressed to 7.2% with low ATR% of 1.7%, indicating impending expansion."
-    },
-    {
-      "id": "LOW_BETA_QUALITY",
-      "name": "Low-Volatility Trend Quality",
-      "why": "Low ATR volatility (1.7%) paired with rising 200DMA and positive quarterly return."
+      "why": "Bollinger Bandwidth compressed to 5.2% with low ATR% of 1.6%, indicating impending expansion."
     },
     {
       "id": "BASE_TIGHTENING",
       "name": "Consolidation Base Tightening",
-      "why": "Price consolidating in a tight band (7.2%) within 8.5% of yearly high."
+      "why": "Price consolidating in a tight band (5.2%) within 7.7% of yearly high."
     }
   ],
   "chart_bars": [
-    {
-      "time": "2026-04-02",
-      "open": 143.02000427246094,
-      "high": 145.6699981689453,
-      "low": 142.5,
-      "close": 144.92999267578125,
-      "volume": 1634300.0
-    },
-    {
-      "time": "2026-04-06",
-      "open": 144.1699981689453,
-      "high": 146.66000366210938,
-      "low": 143.97999572753906,
-      "close": 146.14999389648438,
-      "volume": 2159700.0
-    },
     {
       "time": "2026-04-07",
       "open": 146.16000366210938,
@@ -1045,6 +1055,14 @@
       "volume": 1102800.0
     },
     {
+      "time": "2026-09-22",
+      "open": 165.27000427246094,
+      "high": 168.30999755859375,
+      "low": 165.07000732421875,
+      "close": 168.25999450683594,
+      "volume": 836100.0
+    },
+    {
       "time": "2026-09-23",
       "open": 167.47000122070312,
       "high": 170.77000427246094,
@@ -1058,7 +1076,15 @@
       "high": 171.1999969482422,
       "low": 168.47999572753906,
       "close": 169.57000732421875,
-      "volume": 1452656.0
+      "volume": 1460300.0
+    },
+    {
+      "time": "2026-09-25",
+      "open": 169.8000030517578,
+      "high": 171.47999572753906,
+      "low": 168.50999450683594,
+      "close": 170.89999389648438,
+      "volume": 870736.0
     }
   ],
   "disclaimers": {

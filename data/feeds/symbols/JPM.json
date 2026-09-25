@@ -5,90 +5,90 @@
   "currency": "USD",
   "name": "JPMorgan Chase & Co.",
   "as_of_date": "2026-09-25",
-  "generated_at": "2026-09-25T20:03:17.133098+00:00",
+  "generated_at": "2026-09-25T20:37:41.174711+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 340.7650146484375,
     "high": 343.2650146484375,
     "low": 338.6400146484375,
-    "close": 342.8999938964844,
-    "volume": 5582943.0,
-    "adjusted_close": 342.8999938964844,
-    "sma_20": 351.25350189208984,
-    "sma_50": 353.3405999755859,
-    "sma_200": 321.2592007446289,
-    "ema_8": 344.34095861396764,
-    "ema_21": 349.15260615054956,
-    "sma_200_slope_20d": 17.146266293401705,
+    "close": 343.05999755859375,
+    "volume": 9834443.0,
+    "adjusted_close": 343.05999755859375,
+    "sma_20": 351.2615020751953,
+    "sma_50": 353.34380004882814,
+    "sma_200": 321.26000076293946,
+    "ema_8": 344.37651498332525,
+    "ema_21": 349.16715193772677,
+    "sma_200_slope_20d": 17.14944671717145,
     "atr_14": 7.151072910853794,
-    "atr_pct": 2.085468952505313,
-    "rsi_14": 41.45066871734009,
-    "macd_line": -3.3894875120196843,
-    "macd_signal": -1.7047685211526606,
-    "macd_hist": -1.6847189908670237,
-    "bb_upper": 364.8729084582023,
-    "bb_lower": 337.6340953259774,
-    "bb_bandwidth": 0.07754744930797315,
-    "rvol_20": 0.7529649409915528,
-    "obv": 109101843.0,
-    "obv_slope_20": 19895443.0,
-    "cmf_20": 0.09863466166345564,
+    "atr_pct": 2.0844962868725054,
+    "rsi_14": 41.6634502268154,
+    "macd_line": -3.376723651795544,
+    "macd_signal": -1.7022157042222599,
+    "macd_hist": -1.674507947573284,
+    "bb_upper": 364.86042041169463,
+    "bb_lower": 337.662583738696,
+    "bb_bandwidth": 0.07742902798148463,
+    "rvol_20": 1.2893931677027224,
+    "obv": 461522143.0,
+    "obv_slope_20": 24146943.0,
+    "cmf_20": 0.12381774457399028,
     "hh_hl_ratio_20": 0.45,
     "adx_14": 26.425462754471653,
-    "return_1m": -0.038148684722344006,
-    "return_3m": 0.04209088775967307,
-    "return_12m": null,
-    "momentum_12_1": null,
-    "proximity_52w_high": -0.06439292251982431,
-    "adv_dollar_20": 2597570447.7553115
+    "return_1m": -0.03769986659580993,
+    "return_3m": 0.04257714719758576,
+    "return_12m": 0.09456953245167776,
+    "momentum_12_1": 0.1322693990474877,
+    "proximity_52w_high": -0.06395635045404158,
+    "adv_dollar_20": 2670541091.302597
   },
   "score_record": {
-    "composite_score": 51,
+    "composite_score": 56,
     "confidence_tier": "B",
-    "technical_score": 43,
+    "technical_score": 50,
     "risk_penalty": 0.0,
     "factor_attribution": {
       "horizon": "POSITION",
       "trend_score": 17.5,
-      "relative_strength_score": 9.0,
+      "relative_strength_score": 13.0,
       "setup_geometry_score": 6.5,
-      "volume_participation_score": 5.3,
+      "volume_participation_score": 8.0,
       "mtf_alignment_score": 0.0,
       "volatility_fit_score": 5.0,
-      "technical_score": 43,
+      "technical_score": 50,
       "fundamental_score": 65,
       "regime_multiplier": 1.05,
       "news_contribution": 0.0,
       "sector_contribution": 0.0,
       "risk_penalty": 0.0,
       "key_metrics": {
-        "close": 342.8999938964844,
-        "rsi_14": 41.45066871734009,
-        "rvol_20": 0.7529649409915528,
-        "atr_pct": 2.085468952505313,
-        "proximity_52w_high": -0.06439292251982431
+        "close": 343.05999755859375,
+        "rsi_14": 41.6634502268154,
+        "rvol_20": 1.2893931677027224,
+        "atr_pct": 2.0844962868725054,
+        "proximity_52w_high": -0.06395635045404158
       }
     }
   },
   "signal_plan": {
     "direction": "LONG",
-    "preferred_entry": 342.9,
+    "preferred_entry": 343.06,
     "entry_zone": [
-      347.74,
-      344.33
+      347.75,
+      344.49
     ],
-    "stop_loss": 327.17,
+    "stop_loss": 327.33,
     "targets": [
-      368.07,
-      383.8,
-      405.82
+      368.23,
+      383.96,
+      405.98
     ],
     "risk_reward_ratio": 2.6,
     "invalidation": [
       {
         "predicate": "DAILY_CLOSE_BELOW_LEVEL",
-        "level": 327.17,
-        "description": "Daily closing price finishes below structural stop loss of 327.17"
+        "level": 327.33,
+        "description": "Daily closing price finishes below structural stop loss of 327.33"
       },
       {
         "predicate": "RVOL_COLLAPSE",
@@ -103,8 +103,8 @@
     ]
   },
   "ai_explanation": {
-    "FACT": "JPM (NYSE - JPMorgan Chase & Co.) closed at $342.90 USD. Trading within -6.4% of its 52-week high with a 14-day ATR of 2.1%. The primary exchange session traded on volume of 5,582,943 shares.",
-    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 51/100 (Confidence Tier B). Technical Factor sub-score: 43/100 (14-day RSI: 41.5, 20-day RVOL: 0.75x). Risk penalty applied: -0.0 points. Modulated by the STRONG_BULL macro regime.",
+    "FACT": "JPM (NYSE - JPMorgan Chase & Co.) closed at $343.06 USD. Trading within -6.4% of its 52-week high with a 14-day ATR of 2.1%. The primary exchange session traded on volume of 9,834,443 shares.",
+    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 56/100 (Confidence Tier B). Technical Factor sub-score: 50/100 (14-day RSI: 41.7, 20-day RVOL: 1.29x). Risk penalty applied: -0.0 points. Modulated by the STRONG_BULL macro regime.",
     "INFERENCE": "Current technical structure reflects neutral consolidation. Setup geometry indicates digestive trading range with no confirmed directional expansion.",
     "UNCERTAINTY": "Risks include broader market sentiment deterioration in the STRONG_BULL environment. A daily close below technical support at $321.26 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
   },
@@ -112,7 +112,12 @@
     {
       "id": "VOLATILITY_SQUEEZE",
       "name": "Volatility Squeeze (Bandwidth)",
-      "why": "Bollinger Bandwidth compressed to 7.8% with low ATR% of 2.1%, indicating impending expansion."
+      "why": "Bollinger Bandwidth compressed to 7.7% with low ATR% of 2.1%, indicating impending expansion."
+    },
+    {
+      "id": "INSTITUTIONAL_ACCUMULATION",
+      "name": "Institutional Accumulation (CMF+OBV)",
+      "why": "Positive Chaikin Money Flow (+0.12) accompanied by rising 20-day OBV slope."
     },
     {
       "id": "LOW_BETA_QUALITY",
@@ -122,7 +127,7 @@
     {
       "id": "BASE_TIGHTENING",
       "name": "Consolidation Base Tightening",
-      "why": "Price consolidating in a tight band (7.8%) within 6.4% of yearly high."
+      "why": "Price consolidating in a tight band (7.7%) within 6.4% of yearly high."
     }
   ],
   "chart_bars": [
@@ -1083,8 +1088,8 @@
       "open": 340.7650146484375,
       "high": 343.2650146484375,
       "low": 338.6400146484375,
-      "close": 342.8999938964844,
-      "volume": 5582943.0
+      "close": 343.05999755859375,
+      "volume": 9834443.0
     }
   ],
   "disclaimers": {

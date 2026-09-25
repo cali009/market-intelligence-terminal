@@ -41,6 +41,8 @@ def build_firebase_bundle():
         ("scanners.json", "scanners"),
         ("signals.json", "signals.json"),
         ("signals.json", "signals"),
+        ("backtests.json", "backtests.json"),
+        ("backtests.json", "backtests"),
     ]
 
     for src_name, dest_name in core_feeds:

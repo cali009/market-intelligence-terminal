@@ -4,91 +4,91 @@
   "country": "CA",
   "currency": "CAD",
   "name": "Toronto-Dominion Bank",
-  "as_of_date": "2026-09-24",
-  "generated_at": "2026-09-24T23:18:34.415016+00:00",
+  "as_of_date": "2026-09-25",
+  "generated_at": "2026-09-25T20:37:41.174711+00:00",
   "latest_metrics": {
-    "trading_date": "2026-09-24",
-    "open": 168.42999267578125,
-    "high": 169.8300018310547,
-    "low": 167.49000549316406,
-    "close": 168.66000366210938,
-    "volume": 4189984.0,
-    "adjusted_close": 168.66000366210938,
-    "sma_20": 168.3314987182617,
-    "sma_50": 168.67479949951172,
-    "sma_200": 148.05454967498778,
-    "ema_8": 169.57277755938009,
-    "ema_21": 168.67182646614208,
-    "sma_200_slope_20d": 46.27402948149684,
-    "atr_14": 2.785712105887277,
-    "atr_pct": 1.6516732155823535,
-    "rsi_14": 50.41997946675826,
-    "macd_line": 0.6858377433116232,
-    "macd_signal": 0.39404096587086757,
-    "macd_hist": 0.2917967774407556,
-    "bb_upper": 172.54026099420426,
-    "bb_lower": 164.12273644231917,
-    "bb_bandwidth": 0.050005641344485374,
-    "rvol_20": 1.0115568518125357,
-    "obv": 311974884.0,
-    "obv_slope_20": 27187284.0,
-    "cmf_20": 0.3288195371249174,
+    "trading_date": "2026-09-25",
+    "open": 169.69000244140625,
+    "high": 170.92999267578125,
+    "low": 169.10000610351562,
+    "close": 170.69000244140625,
+    "volume": 2799738.0,
+    "adjusted_close": 170.69000244140625,
+    "sma_20": 168.81599960327148,
+    "sma_50": 168.5811996459961,
+    "sma_200": 148.54979972839357,
+    "ema_8": 170.081665035509,
+    "ema_21": 169.12977946550754,
+    "sma_200_slope_20d": 45.77879410887903,
+    "atr_14": 2.6949964250837053,
+    "atr_pct": 1.5788835822466125,
+    "rsi_14": 54.42423907309402,
+    "macd_line": 0.8112573680871265,
+    "macd_signal": 0.6050116232111379,
+    "macd_hist": 0.20624574487598857,
+    "bb_upper": 173.35538177461615,
+    "bb_lower": 164.2766174319268,
+    "bb_bandwidth": 0.05377905153554772,
+    "rvol_20": 0.6646716894750713,
+    "obv": 488696638.0,
+    "obv_slope_20": 19668438.0,
+    "cmf_20": 0.2866196750079499,
     "hh_hl_ratio_20": 0.675,
-    "adx_14": 15.751150529908008,
-    "return_1m": 0.04485197358004256,
-    "return_3m": -0.006947672522517601,
-    "return_12m": null,
-    "momentum_12_1": null,
-    "proximity_52w_high": -0.03804253749664832,
-    "adv_dollar_20": 699166278.9206451
+    "adx_14": 15.995815572833026,
+    "return_1m": 0.02905894656121144,
+    "return_3m": -0.0012287388097000917,
+    "return_12m": 0.5718759388321932,
+    "momentum_12_1": 0.5428169922709818,
+    "proximity_52w_high": -0.026464377694579988,
+    "adv_dollar_20": 712651118.5667572
   },
   "score_record": {
-    "composite_score": 54,
+    "composite_score": 62,
     "confidence_tier": "B",
-    "technical_score": 51,
+    "technical_score": 61,
     "risk_penalty": 0.0,
     "factor_attribution": {
       "horizon": "POSITION",
-      "trend_score": 16.7,
-      "relative_strength_score": 10.0,
+      "trend_score": 21.7,
+      "relative_strength_score": 14.0,
       "setup_geometry_score": 10.0,
-      "volume_participation_score": 6.7,
-      "mtf_alignment_score": 2.5,
+      "volume_participation_score": 5.3,
+      "mtf_alignment_score": 5.0,
       "volatility_fit_score": 5.0,
-      "technical_score": 51,
+      "technical_score": 61,
       "fundamental_score": 65,
       "regime_multiplier": 1.0,
       "news_contribution": 0.0,
       "sector_contribution": 0.0,
       "risk_penalty": 0.0,
       "key_metrics": {
-        "close": 168.66000366210938,
-        "rsi_14": 50.41997946675826,
-        "rvol_20": 1.0115568518125357,
-        "atr_pct": 1.6516732155823535,
-        "proximity_52w_high": -0.03804253749664832
+        "close": 170.69000244140625,
+        "rsi_14": 54.42423907309402,
+        "rvol_20": 0.6646716894750713,
+        "atr_pct": 1.5788835822466125,
+        "proximity_52w_high": -0.026464377694579988
       }
     }
   },
   "signal_plan": {
     "direction": "LONG",
-    "preferred_entry": 168.66,
+    "preferred_entry": 170.69,
     "entry_zone": [
-      167.55,
-      169.22
+      169.61,
+      171.23
     ],
-    "stop_loss": 162.53,
+    "stop_loss": 164.76,
     "targets": [
-      178.47,
-      184.6,
-      193.18
+      180.18,
+      186.11,
+      194.41
     ],
     "risk_reward_ratio": 2.6,
     "invalidation": [
       {
         "predicate": "DAILY_CLOSE_BELOW_LEVEL",
-        "level": 162.53,
-        "description": "Daily closing price finishes below structural stop loss of 162.53"
+        "level": 164.76,
+        "description": "Daily closing price finishes below structural stop loss of 164.76"
       },
       {
         "predicate": "RVOL_COLLAPSE",
@@ -103,50 +103,34 @@
     ]
   },
   "ai_explanation": {
-    "FACT": "TD (TSX - Toronto-Dominion Bank) closed at $168.66 CAD. Trading within -3.8% of its 52-week high with a 14-day ATR of 1.7%. The primary exchange session traded on volume of 4,189,984 shares.",
-    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 54/100 (Confidence Tier B). Technical Factor sub-score: 51/100 (14-day RSI: 50.4, 20-day RVOL: 1.01x). Risk penalty applied: -0.0 points. Modulated by the WEAK_BULL macro regime.",
-    "INFERENCE": "Current technical structure reflects neutral consolidation. Setup geometry indicates digestive trading range with no confirmed directional expansion.",
-    "UNCERTAINTY": "Risks include broader market sentiment deterioration in the WEAK_BULL environment. A daily close below technical support at $148.05 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
+    "FACT": "TD (TSX - Toronto-Dominion Bank) closed at $170.69 CAD. Trading within -2.6% of its 52-week high with a 14-day ATR of 1.6%. The primary exchange session traded on volume of 2,799,738 shares.",
+    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 62/100 (Confidence Tier B). Technical Factor sub-score: 61/100 (14-day RSI: 54.4, 20-day RVOL: 0.66x). Risk penalty applied: -0.0 points. Modulated by the WEAK_BULL macro regime.",
+    "INFERENCE": "Historical setups exhibiting stacked moving averages and low-bandwidth consolidation during a WEAK_BULL regime showed positive forward expectancy across 64% of walk-forward folds. Relative strength ranks in the upper quartile of the current dual-market universe.",
+    "UNCERTAINTY": "Risks include broader market sentiment deterioration in the WEAK_BULL environment. A daily close below technical support at $148.55 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
   },
   "active_scanner_matches": [
     {
       "id": "PULLBACK_UPTREND",
       "name": "Pullback to Key Support",
-      "why": "Pullback into key moving average in a rising uptrend; RSI at 50.4 shows controlled digestion."
+      "why": "Pullback into key moving average in a rising uptrend; RSI at 54.4 shows controlled digestion."
     },
     {
       "id": "VOLATILITY_SQUEEZE",
       "name": "Volatility Squeeze (Bandwidth)",
-      "why": "Bollinger Bandwidth compressed to 5.0% with low ATR% of 1.7%, indicating impending expansion."
+      "why": "Bollinger Bandwidth compressed to 5.4% with low ATR% of 1.6%, indicating impending expansion."
     },
     {
-      "id": "INSTITUTIONAL_ACCUMULATION",
-      "name": "Institutional Accumulation (CMF+OBV)",
-      "why": "Positive Chaikin Money Flow (+0.33) accompanied by rising 20-day OBV slope."
+      "id": "STACKED_MOVING_AVERAGES",
+      "name": "Stacked Moving Average Alignment",
+      "why": "Perfect bullish alignment: Price > 20DMA > 50DMA > 200DMA with positive 200DMA slope."
     },
     {
       "id": "BASE_TIGHTENING",
       "name": "Consolidation Base Tightening",
-      "why": "Price consolidating in a tight band (5.0%) within 3.8% of yearly high."
+      "why": "Price consolidating in a tight band (5.4%) within 2.6% of yearly high."
     }
   ],
   "chart_bars": [
-    {
-      "time": "2026-04-02",
-      "open": 130.1999969482422,
-      "high": 132.6999969482422,
-      "low": 129.89999389648438,
-      "close": 132.50999450683594,
-      "volume": 11788100.0
-    },
-    {
-      "time": "2026-04-06",
-      "open": 132.49000549316406,
-      "high": 133.50999450683594,
-      "low": 132.32000732421875,
-      "close": 133.44000244140625,
-      "volume": 13158800.0
-    },
     {
       "time": "2026-04-07",
       "open": 133.72999572753906,
@@ -1076,6 +1060,14 @@
       "volume": 5577100.0
     },
     {
+      "time": "2026-09-22",
+      "open": 174.44000244140625,
+      "high": 174.8300018310547,
+      "low": 171.75999450683594,
+      "close": 172.7100067138672,
+      "volume": 4460400.0
+    },
+    {
       "time": "2026-09-23",
       "open": 172.24000549316406,
       "high": 172.75,
@@ -1089,7 +1081,15 @@
       "high": 169.8300018310547,
       "low": 167.49000549316406,
       "close": 168.66000366210938,
-      "volume": 4189984.0
+      "volume": 4190000.0
+    },
+    {
+      "time": "2026-09-25",
+      "open": 169.69000244140625,
+      "high": 170.92999267578125,
+      "low": 169.10000610351562,
+      "close": 170.69000244140625,
+      "volume": 2799738.0
     }
   ],
   "disclaimers": {

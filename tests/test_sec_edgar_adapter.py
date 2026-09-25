@@ -24,9 +24,15 @@ def test_sec_ticker_mapping_cache():
 
 
 def test_sec_company_facts_extraction():
+    import pytest
     adapter = SecEdgarAdapter()
-    # Test on Apple (CIK 320193)
-    facts = adapter.extract_canonical_fundamentals(security_id=1, cik=320193, recent_years=2)
+    try:
+        facts = adapter.extract_canonical_fundamentals(security_id=1, cik=320193, recent_years=2)
+    except Exception as e:
+        if "403" in str(e) or "Forbidden" in str(e):
+            pytest.skip("SEC EDGAR data.sec.gov returned 403 (rate limit / IP block on shared runner)")
+        raise e
+
     assert len(facts) > 0
 
     concepts = {f.concept for f in facts}

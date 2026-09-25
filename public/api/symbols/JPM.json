@@ -4,91 +4,91 @@
   "country": "US",
   "currency": "USD",
   "name": "JPMorgan Chase & Co.",
-  "as_of_date": "2026-09-24",
-  "generated_at": "2026-09-24T23:18:34.415016+00:00",
+  "as_of_date": "2026-09-25",
+  "generated_at": "2026-09-25T20:37:41.174711+00:00",
   "latest_metrics": {
-    "trading_date": "2026-09-24",
-    "open": 338.1199951171875,
-    "high": 339.3699951171875,
-    "low": 335.2799987792969,
-    "close": 338.55999755859375,
-    "volume": 6931795.0,
-    "adjusted_close": 338.55999755859375,
-    "sma_20": 351.81950225830076,
-    "sma_50": 353.3455999755859,
-    "sma_200": 321.12075073242187,
-    "ema_8": 344.75266281896285,
-    "ema_21": 349.77786737595613,
-    "sma_200_slope_20d": 17.402137344044753,
-    "atr_14": 7.362141200474331,
-    "atr_pct": 2.1745455025885576,
-    "rsi_14": 35.02202580404749,
-    "macd_line": -3.303611834143851,
-    "macd_signal": -1.2835887734359046,
-    "macd_hist": -2.0200230607079463,
-    "bb_upper": 364.9077131963535,
-    "bb_lower": 338.73129132024803,
-    "bb_bandwidth": 0.07440298706604133,
-    "rvol_20": 0.937256609201551,
-    "obv": 103516395.0,
-    "obv_slope_20": 9100095.0,
-    "cmf_20": 0.05811830000752283,
-    "hh_hl_ratio_20": 0.4,
-    "adx_14": 25.53893612934147,
-    "return_1m": -0.050828463816534164,
-    "return_3m": 0.010264987143495663,
-    "return_12m": null,
-    "momentum_12_1": null,
-    "proximity_52w_high": -0.0762346587760061,
-    "adv_dollar_20": 2594081026.3023834
+    "trading_date": "2026-09-25",
+    "open": 340.7650146484375,
+    "high": 343.2650146484375,
+    "low": 338.6400146484375,
+    "close": 343.05999755859375,
+    "volume": 9834443.0,
+    "adjusted_close": 343.05999755859375,
+    "sma_20": 351.2615020751953,
+    "sma_50": 353.34380004882814,
+    "sma_200": 321.26000076293946,
+    "ema_8": 344.37651498332525,
+    "ema_21": 349.16715193772677,
+    "sma_200_slope_20d": 17.14944671717145,
+    "atr_14": 7.151072910853794,
+    "atr_pct": 2.0844962868725054,
+    "rsi_14": 41.6634502268154,
+    "macd_line": -3.376723651795544,
+    "macd_signal": -1.7022157042222599,
+    "macd_hist": -1.674507947573284,
+    "bb_upper": 364.86042041169463,
+    "bb_lower": 337.662583738696,
+    "bb_bandwidth": 0.07742902798148463,
+    "rvol_20": 1.2893931677027224,
+    "obv": 461522143.0,
+    "obv_slope_20": 24146943.0,
+    "cmf_20": 0.12381774457399028,
+    "hh_hl_ratio_20": 0.45,
+    "adx_14": 26.425462754471653,
+    "return_1m": -0.03769986659580993,
+    "return_3m": 0.04257714719758576,
+    "return_12m": 0.09456953245167776,
+    "momentum_12_1": 0.1322693990474877,
+    "proximity_52w_high": -0.06395635045404158,
+    "adv_dollar_20": 2670541091.302597
   },
   "score_record": {
-    "composite_score": 50,
+    "composite_score": 56,
     "confidence_tier": "B",
-    "technical_score": 42,
+    "technical_score": 50,
     "risk_penalty": 0.0,
     "factor_attribution": {
       "horizon": "POSITION",
       "trend_score": 17.5,
-      "relative_strength_score": 9.0,
-      "setup_geometry_score": 5.0,
-      "volume_participation_score": 5.3,
+      "relative_strength_score": 13.0,
+      "setup_geometry_score": 6.5,
+      "volume_participation_score": 8.0,
       "mtf_alignment_score": 0.0,
       "volatility_fit_score": 5.0,
-      "technical_score": 42,
+      "technical_score": 50,
       "fundamental_score": 65,
       "regime_multiplier": 1.05,
       "news_contribution": 0.0,
       "sector_contribution": 0.0,
       "risk_penalty": 0.0,
       "key_metrics": {
-        "close": 338.55999755859375,
-        "rsi_14": 35.02202580404749,
-        "rvol_20": 0.937256609201551,
-        "atr_pct": 2.1745455025885576,
-        "proximity_52w_high": -0.0762346587760061
+        "close": 343.05999755859375,
+        "rsi_14": 41.6634502268154,
+        "rvol_20": 1.2893931677027224,
+        "atr_pct": 2.0844962868725054,
+        "proximity_52w_high": -0.06395635045404158
       }
     }
   },
   "signal_plan": {
     "direction": "LONG",
-    "preferred_entry": 338.56,
+    "preferred_entry": 343.06,
     "entry_zone": [
-      348.3,
-      340.03
+      347.75,
+      344.49
     ],
-    "stop_loss": 322.36,
+    "stop_loss": 327.33,
     "targets": [
-      364.48,
-      380.68,
-      403.36
+      368.23,
+      383.96,
+      405.98
     ],
     "risk_reward_ratio": 2.6,
     "invalidation": [
       {
         "predicate": "DAILY_CLOSE_BELOW_LEVEL",
-        "level": 322.36,
-        "description": "Daily closing price finishes below structural stop loss of 322.36"
+        "level": 327.33,
+        "description": "Daily closing price finishes below structural stop loss of 327.33"
       },
       {
         "predicate": "RVOL_COLLAPSE",
@@ -103,37 +103,34 @@
     ]
   },
   "ai_explanation": {
-    "FACT": "JPM (NYSE - JPMorgan Chase & Co.) closed at $338.56 USD. Trading within -7.6% of its 52-week high with a 14-day ATR of 2.2%. The primary exchange session traded on volume of 6,931,795 shares.",
-    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 50/100 (Confidence Tier B). Technical Factor sub-score: 42/100 (14-day RSI: 35.0, 20-day RVOL: 0.94x). Risk penalty applied: -0.0 points. Modulated by the STRONG_BULL macro regime.",
+    "FACT": "JPM (NYSE - JPMorgan Chase & Co.) closed at $343.06 USD. Trading within -6.4% of its 52-week high with a 14-day ATR of 2.1%. The primary exchange session traded on volume of 9,834,443 shares.",
+    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 56/100 (Confidence Tier B). Technical Factor sub-score: 50/100 (14-day RSI: 41.7, 20-day RVOL: 1.29x). Risk penalty applied: -0.0 points. Modulated by the STRONG_BULL macro regime.",
     "INFERENCE": "Current technical structure reflects neutral consolidation. Setup geometry indicates digestive trading range with no confirmed directional expansion.",
-    "UNCERTAINTY": "Risks include broader market sentiment deterioration in the STRONG_BULL environment. A daily close below technical support at $321.12 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
+    "UNCERTAINTY": "Risks include broader market sentiment deterioration in the STRONG_BULL environment. A daily close below technical support at $321.26 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
   },
   "active_scanner_matches": [
     {
       "id": "VOLATILITY_SQUEEZE",
       "name": "Volatility Squeeze (Bandwidth)",
-      "why": "Bollinger Bandwidth compressed to 7.4% with low ATR% of 2.2%, indicating impending expansion."
+      "why": "Bollinger Bandwidth compressed to 7.7% with low ATR% of 2.1%, indicating impending expansion."
     },
     {
-      "id": "MEAN_REVERSION_OVERSOLD",
-      "name": "Mean Reversion (Oversold Bounce)",
-      "why": "Oversold conditions: RSI at 35.0 interacting with lower Bollinger Band."
+      "id": "INSTITUTIONAL_ACCUMULATION",
+      "name": "Institutional Accumulation (CMF+OBV)",
+      "why": "Positive Chaikin Money Flow (+0.12) accompanied by rising 20-day OBV slope."
+    },
+    {
+      "id": "LOW_BETA_QUALITY",
+      "name": "Low-Volatility Trend Quality",
+      "why": "Low ATR volatility (2.1%) paired with rising 200DMA and positive quarterly return."
     },
     {
       "id": "BASE_TIGHTENING",
       "name": "Consolidation Base Tightening",
-      "why": "Price consolidating in a tight band (7.4%) within 7.6% of yearly high."
+      "why": "Price consolidating in a tight band (7.7%) within 6.4% of yearly high."
     }
   ],
   "chart_bars": [
-    {
-      "time": "2026-04-06",
-      "open": 294.05999755859375,
-      "high": 296.8299865722656,
-      "low": 293.20001220703125,
-      "close": 295.45001220703125,
-      "volume": 7142600.0
-    },
     {
       "time": "2026-04-07",
       "open": 293.1400146484375,
@@ -1084,7 +1081,15 @@
       "high": 339.3699951171875,
       "low": 335.2799987792969,
       "close": 338.55999755859375,
-      "volume": 6931795.0
+      "volume": 6934300.0
+    },
+    {
+      "time": "2026-09-25",
+      "open": 340.7650146484375,
+      "high": 343.2650146484375,
+      "low": 338.6400146484375,
+      "close": 343.05999755859375,
+      "volume": 9834443.0
     }
   ],
   "disclaimers": {

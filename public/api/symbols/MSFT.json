@@ -4,91 +4,91 @@
   "country": "US",
   "currency": "USD",
   "name": "Microsoft Corporation",
-  "as_of_date": "2026-09-24",
-  "generated_at": "2026-09-24T23:18:34.415016+00:00",
+  "as_of_date": "2026-09-25",
+  "generated_at": "2026-09-25T20:37:41.174711+00:00",
   "latest_metrics": {
-    "trading_date": "2026-09-24",
-    "open": 495.3900146484375,
-    "high": 498.8800048828125,
-    "low": 491.2200012207031,
-    "close": 497.92999267578125,
-    "volume": 16611248.0,
-    "adjusted_close": 497.92999267578125,
-    "sma_20": 499.48500061035156,
-    "sma_50": 473.51019958496096,
-    "sma_200": 431.93514923095705,
-    "ema_8": 498.09038659614276,
-    "ema_21": 494.8324745107534,
-    "sma_200_slope_20d": 2.4503106648986694,
-    "atr_14": 10.195002964564733,
-    "atr_pct": 2.047477178423963,
-    "rsi_14": 54.36286894579904,
-    "macd_line": 5.732352651455187,
-    "macd_signal": 7.743653221326131,
-    "macd_hist": -2.0113005698709436,
-    "bb_upper": 511.96121970105526,
-    "bb_lower": 487.00878151964787,
-    "bb_bandwidth": 0.049956331323095717,
-    "rvol_20": 0.7785418892542548,
-    "obv": 120893652.0,
-    "obv_slope_20": -24906548.0,
-    "cmf_20": 0.05144605492507055,
+    "trading_date": "2026-09-25",
+    "open": 499.1400146484375,
+    "high": 519.4000244140625,
+    "low": 497.29998779296875,
+    "close": 516.1699829101562,
+    "volume": 37897460.0,
+    "adjusted_close": 516.1699829101562,
+    "sma_20": 500.0404998779297,
+    "sma_50": 475.81159912109376,
+    "sma_200": 432.06089920043945,
+    "ema_8": 502.1080746659236,
+    "ema_21": 496.7722480016857,
+    "sma_200_slope_20d": 2.697173782067539,
+    "atr_14": 10.942147391183036,
+    "atr_pct": 2.11987286232559,
+    "rsi_14": 63.216659990439744,
+    "macd_line": 6.781463664013529,
+    "macd_signal": 7.55121530061097,
+    "macd_hist": -0.7697516365974408,
+    "bb_upper": 514.4078800217961,
+    "bb_lower": 485.6731197340632,
+    "bb_bandwidth": 0.05746486593535457,
+    "rvol_20": 1.7384867307414598,
+    "obv": 571998160.0,
+    "obv_slope_20": -15744240.0,
+    "cmf_20": 0.05736758413845781,
     "hh_hl_ratio_20": 0.525,
-    "adx_14": 25.269045725973665,
-    "return_1m": 0.012649735268337237,
-    "return_3m": 0.4112462421722103,
-    "return_12m": null,
-    "momentum_12_1": null,
-    "proximity_52w_high": -0.10075485981930632,
-    "adv_dollar_20": 10675566984.01239
+    "adx_14": 23.38603658822541,
+    "return_1m": 0.039889574284791784,
+    "return_3m": 0.3839450390668693,
+    "return_12m": 0.011800429453486139,
+    "momentum_12_1": -0.028089144831305646,
+    "proximity_52w_high": -0.06781403918895501,
+    "adv_dollar_20": 10930319287.692383
   },
   "score_record": {
-    "composite_score": 61,
+    "composite_score": 63,
     "confidence_tier": "B",
-    "technical_score": 56,
+    "technical_score": 58,
     "risk_penalty": 0.0,
     "factor_attribution": {
       "horizon": "POSITION",
       "trend_score": 22.5,
       "relative_strength_score": 12.0,
-      "setup_geometry_score": 10.0,
-      "volume_participation_score": 1.3,
+      "setup_geometry_score": 8.0,
+      "volume_participation_score": 6.0,
       "mtf_alignment_score": 5.0,
       "volatility_fit_score": 5.0,
-      "technical_score": 56,
+      "technical_score": 58,
       "fundamental_score": 65,
       "regime_multiplier": 1.05,
       "news_contribution": 0.0,
       "sector_contribution": 0.0,
       "risk_penalty": 0.0,
       "key_metrics": {
-        "close": 497.92999267578125,
-        "rsi_14": 54.36286894579904,
-        "rvol_20": 0.7785418892542548,
-        "atr_pct": 2.047477178423963,
-        "proximity_52w_high": -0.10075485981930632
+        "close": 516.1699829101562,
+        "rsi_14": 63.216659990439744,
+        "rvol_20": 1.7384867307414598,
+        "atr_pct": 2.11987286232559,
+        "proximity_52w_high": -0.06781403918895501
       }
     }
   },
   "signal_plan": {
     "direction": "LONG",
-    "preferred_entry": 497.93,
+    "preferred_entry": 516.17,
     "entry_zone": [
-      494.49,
-      499.97
+      511.79,
+      518.36
     ],
-    "stop_loss": 468.41,
+    "stop_loss": 470.34,
     "targets": [
-      545.16,
-      574.68,
-      616.01
+      589.5,
+      635.33,
+      699.49
     ],
     "risk_reward_ratio": 2.6,
     "invalidation": [
       {
         "predicate": "DAILY_CLOSE_BELOW_LEVEL",
-        "level": 468.41,
-        "description": "Daily closing price finishes below structural stop loss of 468.41"
+        "level": 470.34,
+        "description": "Daily closing price finishes below structural stop loss of 470.34"
       },
       {
         "predicate": "RVOL_COLLAPSE",
@@ -103,47 +103,54 @@
     ]
   },
   "ai_explanation": {
-    "FACT": "MSFT (NASDAQ - Microsoft Corporation) closed at $497.93 USD. Trading within -10.1% of its 52-week high with a 14-day ATR of 2.0%. The primary exchange session traded on volume of 16,611,248 shares.",
-    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 61/100 (Confidence Tier B). Technical Factor sub-score: 56/100 (14-day RSI: 54.4, 20-day RVOL: 0.78x). Risk penalty applied: -0.0 points. Modulated by the STRONG_BULL macro regime.",
+    "FACT": "MSFT (NASDAQ - Microsoft Corporation) closed at $516.17 USD. Trading within -6.8% of its 52-week high with a 14-day ATR of 2.1%. The primary exchange session traded on volume of 37,897,460 shares.",
+    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 63/100 (Confidence Tier B). Technical Factor sub-score: 58/100 (14-day RSI: 63.2, 20-day RVOL: 1.74x). Risk penalty applied: -0.0 points. Modulated by the STRONG_BULL macro regime.",
     "INFERENCE": "Historical setups exhibiting stacked moving averages and low-bandwidth consolidation during a STRONG_BULL regime showed positive forward expectancy across 64% of walk-forward folds. Relative strength ranks in the upper quartile of the current dual-market universe.",
-    "UNCERTAINTY": "Risks include broader market sentiment deterioration in the STRONG_BULL environment. A daily close below technical support at $431.94 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
+    "UNCERTAINTY": "Risks include broader market sentiment deterioration in the STRONG_BULL environment. A daily close below technical support at $432.06 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
   },
   "active_scanner_matches": [
     {
-      "id": "PULLBACK_UPTREND",
-      "name": "Pullback to Key Support",
-      "why": "Pullback into key moving average in a rising uptrend; RSI at 54.4 shows controlled digestion."
+      "id": "MOMENTUM_LEADERS",
+      "name": "Momentum Leaders",
+      "why": "Strong trend: close > 50DMA > 200DMA with +38.4% 3m return and -6.8% from 52w high."
     },
     {
       "id": "VOLATILITY_SQUEEZE",
       "name": "Volatility Squeeze (Bandwidth)",
-      "why": "Bollinger Bandwidth compressed to 5.0% with low ATR% of 2.0%, indicating impending expansion."
+      "why": "Bollinger Bandwidth compressed to 5.7% with low ATR% of 2.1%, indicating impending expansion."
+    },
+    {
+      "id": "STACKED_MOVING_AVERAGES",
+      "name": "Stacked Moving Average Alignment",
+      "why": "Perfect bullish alignment: Price > 20DMA > 50DMA > 200DMA with positive 200DMA slope."
     },
     {
       "id": "LOW_BETA_QUALITY",
       "name": "Low-Volatility Trend Quality",
-      "why": "Low ATR volatility (2.0%) paired with rising 200DMA and positive quarterly return."
+      "why": "Low ATR volatility (2.1%) paired with rising 200DMA and positive quarterly return."
     },
     {
       "id": "MTF_ALIGNMENT",
       "name": "Fast & Medium MTF Alignment",
-      "why": "Fast 8EMA > 21EMA above 50DMA with established trend strength (ADX 25.3)."
+      "why": "Fast 8EMA > 21EMA above 50DMA with established trend strength (ADX 23.4)."
+    },
+    {
+      "id": "HIGH_RVOL_SURGE",
+      "name": "High Relative Volume Surge",
+      "why": "Elevated trading activity: Relative Volume is 1.74x above the 20-day average."
     },
     {
       "id": "BASE_TIGHTENING",
       "name": "Consolidation Base Tightening",
-      "why": "Price consolidating in a tight band (5.0%) within 10.1% of yearly high."
+      "why": "Price consolidating in a tight band (5.7%) within 6.8% of yearly high."
+    },
+    {
+      "id": "ATR_EXPANSION",
+      "name": "Daily Range Expansion",
+      "why": "Daily bar range (22.10) expanded to 2.0x the 14-day average true range."
     }
   ],
   "chart_bars": [
-    {
-      "time": "2026-04-06",
-      "open": 373.489990234375,
-      "high": 373.7300109863281,
-      "low": 369.5,
-      "close": 372.8800048828125,
-      "volume": 16146600.0
-    },
     {
       "time": "2026-04-07",
       "open": 370.3399963378906,
@@ -1090,11 +1097,19 @@
     },
     {
       "time": "2026-09-24",
-      "open": 495.3900146484375,
-      "high": 498.8800048828125,
+      "open": 495.07000732421875,
+      "high": 498.8999938964844,
       "low": 491.2200012207031,
       "close": 497.92999267578125,
-      "volume": 16611248.0
+      "volume": 16657600.0
+    },
+    {
+      "time": "2026-09-25",
+      "open": 499.1400146484375,
+      "high": 519.4000244140625,
+      "low": 497.29998779296875,
+      "close": 516.1699829101562,
+      "volume": 37897460.0
     }
   ],
   "disclaimers": {

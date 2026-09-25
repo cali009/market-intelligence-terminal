@@ -52,6 +52,10 @@
         "destination": "/api/signals.json"
       },
       {
+        "source": "/api/backtests",
+        "destination": "/api/backtests.json"
+      },
+      {
         "source": "**",
         "destination": "/index.html"
       }

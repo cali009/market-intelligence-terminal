@@ -4,103 +4,87 @@
   "country": "CA",
   "currency": "CAD",
   "name": "Shopify Inc.",
-  "as_of_date": "2026-09-24",
-  "generated_at": "2026-09-24T23:18:34.415016+00:00",
+  "as_of_date": "2026-09-25",
+  "generated_at": "2026-09-25T20:37:41.174711+00:00",
   "latest_metrics": {
-    "trading_date": "2026-09-24",
-    "open": 197.85000610351562,
-    "high": 206.35000610351562,
-    "low": 197.85000610351562,
-    "close": 205.3000030517578,
-    "volume": 1690506.0,
-    "adjusted_close": 205.3000030517578,
-    "sma_20": 192.63300018310548,
-    "sma_50": 191.51559997558593,
-    "sma_200": 179.8657997894287,
-    "ema_8": 192.1990774594726,
-    "ema_21": 191.92924955909535,
-    "sma_200_slope_20d": -15.174328224717131,
-    "atr_14": 9.708928789411273,
-    "atr_pct": 4.729142058007457,
-    "rsi_14": 59.62058028246474,
-    "macd_line": -0.6909717683057295,
-    "macd_signal": -2.029173031361471,
-    "macd_hist": 1.3382012630557414,
-    "bb_upper": 218.20465657516132,
-    "bb_lower": 167.06134379104964,
-    "bb_bandwidth": 0.2654961129998385,
-    "rvol_20": 0.8279690224607779,
-    "obv": -2414794.0,
-    "obv_slope_20": 30806.0,
-    "cmf_20": -0.07379431669181465,
+    "trading_date": "2026-09-25",
+    "open": 205.50999450683594,
+    "high": 205.50999450683594,
+    "low": 199.39999389648438,
+    "close": 201.1999969482422,
+    "volume": 1467319.0,
+    "adjusted_close": 201.1999969482422,
+    "sma_20": 191.96900024414063,
+    "sma_50": 192.68440002441406,
+    "sma_200": 179.69794982910156,
+    "ema_8": 196.5689434151729,
+    "ema_21": 194.00724807384725,
+    "sma_200_slope_20d": -15.832335720879797,
+    "atr_14": 10.535356794084821,
+    "atr_pct": 5.236260911472576,
+    "rsi_14": 55.05228155839826,
+    "macd_line": 1.0832802223888507,
+    "macd_signal": -0.9327292714361601,
+    "macd_hist": 2.0160094938250106,
+    "bb_upper": 215.8240119222115,
+    "bb_lower": 168.11398856606976,
+    "bb_bandwidth": 0.2485298318763212,
+    "rvol_20": 0.7278743726827767,
+    "obv": 25964981.0,
+    "obv_slope_20": -7879719.0,
+    "cmf_20": -0.09652941048121202,
     "hh_hl_ratio_20": 0.425,
-    "adx_14": 27.829290913137633,
-    "return_1m": -0.011221893638974523,
-    "return_3m": 0.33999082341385933,
-    "return_12m": null,
-    "momentum_12_1": null,
-    "proximity_52w_high": -0.18885816633369834,
-    "adv_dollar_20": 393563342.9888504
+    "adx_14": 24.645635066923255,
+    "return_1m": -0.03501200504440194,
+    "return_3m": 0.2702822004139207,
+    "return_12m": -0.0272674506357804,
+    "momentum_12_1": 0.00774455440862154,
+    "proximity_52w_high": -0.20505732083643968,
+    "adv_dollar_20": 386535987.962278
   },
   "score_record": {
-    "composite_score": 42,
+    "composite_score": 44,
     "confidence_tier": "C",
-    "technical_score": 40,
+    "technical_score": 42,
     "risk_penalty": 4.0,
     "factor_attribution": {
       "horizon": "POSITION",
       "trend_score": 17.5,
-      "relative_strength_score": 9.0,
+      "relative_strength_score": 13.0,
       "setup_geometry_score": 3.0,
-      "volume_participation_score": 2.7,
+      "volume_participation_score": 0.0,
       "mtf_alignment_score": 5.0,
       "volatility_fit_score": 3.0,
-      "technical_score": 40,
+      "technical_score": 42,
       "fundamental_score": 65,
       "regime_multiplier": 1.0,
       "news_contribution": 0.0,
       "sector_contribution": 0.0,
       "risk_penalty": 4.0,
       "key_metrics": {
-        "close": 205.3000030517578,
-        "rsi_14": 59.62058028246474,
-        "rvol_20": 0.8279690224607779,
-        "atr_pct": 4.729142058007457,
-        "proximity_52w_high": -0.18885816633369834
+        "close": 201.1999969482422,
+        "rsi_14": 55.05228155839826,
+        "rvol_20": 0.7278743726827767,
+        "atr_pct": 5.236260911472576,
+        "proximity_52w_high": -0.20505732083643968
       }
     }
   },
   "signal_plan": null,
   "ai_explanation": {
-    "FACT": "SHOP (TSX - Shopify Inc.) closed at $205.30 CAD. Trading within -18.9% of its 52-week high with a 14-day ATR of 4.7%. The primary exchange session traded on volume of 1,690,506 shares.",
-    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 42/100 (Confidence Tier C). Technical Factor sub-score: 40/100 (14-day RSI: 59.6, 20-day RVOL: 0.83x). Risk penalty applied: -4.0 points. Modulated by the WEAK_BULL macro regime.",
+    "FACT": "SHOP (TSX - Shopify Inc.) closed at $201.20 CAD. Trading within -20.5% of its 52-week high with a 14-day ATR of 5.2%. The primary exchange session traded on volume of 1,467,319 shares.",
+    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 44/100 (Confidence Tier C). Technical Factor sub-score: 42/100 (14-day RSI: 55.1, 20-day RVOL: 0.73x). Risk penalty applied: -4.0 points. Modulated by the WEAK_BULL macro regime.",
     "INFERENCE": "Current technical structure reflects neutral consolidation. Setup geometry indicates digestive trading range with no confirmed directional expansion.",
-    "UNCERTAINTY": "Risks include broader market sentiment deterioration in the WEAK_BULL environment. A daily close below technical support at $179.87 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
+    "UNCERTAINTY": "Risks include broader market sentiment deterioration in the WEAK_BULL environment. A daily close below technical support at $179.70 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
   },
   "active_scanner_matches": [
     {
       "id": "MTF_ALIGNMENT",
       "name": "Fast & Medium MTF Alignment",
-      "why": "Fast 8EMA > 21EMA above 50DMA with established trend strength (ADX 27.8)."
+      "why": "Fast 8EMA > 21EMA above 50DMA with established trend strength (ADX 24.6)."
     }
   ],
   "chart_bars": [
-    {
-      "time": "2026-04-02",
-      "open": 159.97999572753906,
-      "high": 166.50999450683594,
-      "low": 155.9199981689453,
-      "close": 164.5800018310547,
-      "volume": 1515600.0
-    },
-    {
-      "time": "2026-04-06",
-      "open": 164.57000732421875,
-      "high": 168.1199951171875,
-      "low": 163.10000610351562,
-      "close": 165.3699951171875,
-      "volume": 1305000.0
-    },
     {
       "time": "2026-04-07",
       "open": 163.14999389648438,
@@ -1030,6 +1014,14 @@
       "volume": 3003100.0
     },
     {
+      "time": "2026-09-22",
+      "open": 203.72999572753906,
+      "high": 211.0,
+      "low": 203.38999938964844,
+      "close": 207.69000244140625,
+      "volume": 2853400.0
+    },
+    {
       "time": "2026-09-23",
       "open": 206.4199981689453,
       "high": 213.0800018310547,
@@ -1043,7 +1035,15 @@
       "high": 206.35000610351562,
       "low": 197.85000610351562,
       "close": 205.3000030517578,
-      "volume": 1690506.0
+      "volume": 1689900.0
+    },
+    {
+      "time": "2026-09-25",
+      "open": 205.50999450683594,
+      "high": 205.50999450683594,
+      "low": 199.39999389648438,
+      "close": 201.1999969482422,
+      "volume": 1467319.0
     }
   ],
   "disclaimers": {
