@@ -5,75 +5,75 @@
   "currency": "CAD",
   "name": "Enbridge Inc.",
   "as_of_date": "2026-09-25",
-  "generated_at": "2026-09-25T00:12:28.204962+00:00",
+  "generated_at": "2026-09-25T20:03:17.133098+00:00",
   "latest_metrics": {
-    "trading_date": "2026-09-24",
-    "open": 67.75,
-    "high": 67.8499984741211,
-    "low": 66.91999816894531,
-    "close": 66.98999786376953,
-    "volume": 4335934.0,
-    "adjusted_close": 66.98999786376953,
-    "sma_20": 68.54300003051758,
-    "sma_50": 72.18059982299805,
-    "sma_200": 72.25690042495728,
-    "ema_8": 67.63810041055532,
-    "ema_21": 68.67489109053749,
-    "sma_200_slope_20d": 1.8231375733620547,
-    "atr_14": 1.0507142203194755,
-    "atr_pct": 1.568464328743825,
-    "rsi_14": 34.55009076494014,
-    "macd_line": -1.2431892938752043,
-    "macd_signal": -1.3765125807751613,
-    "macd_hist": 0.13332328689995698,
-    "bb_upper": 71.18024044119771,
-    "bb_lower": 65.90575961983744,
-    "bb_bandwidth": 0.07695141471794202,
-    "rvol_20": 0.4590803132470393,
-    "obv": -89110034.0,
-    "obv_slope_20": -28197334.0,
-    "cmf_20": -0.14604443069799963,
-    "hh_hl_ratio_20": 0.475,
-    "adx_14": 26.068437473070507,
-    "return_1m": -0.0341695894712597,
-    "return_3m": -0.15448699955271317,
-    "return_12m": null,
-    "momentum_12_1": null,
-    "proximity_52w_high": -0.16937387977266394,
-    "adv_dollar_20": 646596443.2152717
+    "trading_date": "2026-09-25",
+    "open": 66.8499984741211,
+    "high": 67.0199966430664,
+    "low": 65.76000213623047,
+    "close": 66.12999725341797,
+    "volume": 6564958.0,
+    "adjusted_close": 66.12999725341797,
+    "sma_20": 68.2689998626709,
+    "sma_50": 71.70019989013672,
+    "sma_200": 72.25795042037964,
+    "ema_8": 67.25547585174631,
+    "ema_21": 68.3403530938864,
+    "sma_200_slope_20d": 1.4052857459870838,
+    "atr_14": 1.117142813546317,
+    "atr_pct": 1.6893132616735091,
+    "rsi_14": 30.52909587538315,
+    "macd_line": -1.2414610224176243,
+    "macd_signal": -1.3154895383560614,
+    "macd_hist": 0.07402851593843707,
+    "bb_upper": 71.03669276205325,
+    "bb_lower": 65.50130696328854,
+    "bb_bandwidth": 0.08108198171790451,
+    "rvol_20": 0.7035530966131187,
+    "obv": -93236258.0,
+    "obv_slope_20": -31519258.0,
+    "cmf_20": -0.17161342961099837,
+    "hh_hl_ratio_20": 0.425,
+    "adx_14": 31.803020097543165,
+    "return_1m": -0.05257887733355082,
+    "return_3m": -0.17057576233417937,
+    "return_12m": -0.04821539927547114,
+    "momentum_12_1": 0.004363478058079684,
+    "proximity_52w_high": -0.18003724733720894,
+    "adv_dollar_20": 637238490.7879937
   },
   "score_record": {
-    "composite_score": 28,
+    "composite_score": 30,
     "confidence_tier": "C",
-    "technical_score": 21,
+    "technical_score": 24,
     "risk_penalty": 4.0,
     "factor_attribution": {
       "horizon": "POSITION",
       "trend_score": 8.3,
-      "relative_strength_score": 3.0,
-      "setup_geometry_score": 5.0,
+      "relative_strength_score": 7.0,
+      "setup_geometry_score": 3.5,
       "volume_participation_score": 0.0,
       "mtf_alignment_score": 0.0,
       "volatility_fit_score": 5.0,
-      "technical_score": 21,
+      "technical_score": 24,
       "fundamental_score": 65,
       "regime_multiplier": 1.0,
       "news_contribution": 0.0,
       "sector_contribution": 0.0,
       "risk_penalty": 4.0,
       "key_metrics": {
-        "close": 66.98999786376953,
-        "rsi_14": 34.55009076494014,
-        "rvol_20": 0.4590803132470393,
-        "atr_pct": 1.568464328743825,
-        "proximity_52w_high": -0.16937387977266394
+        "close": 66.12999725341797,
+        "rsi_14": 30.52909587538315,
+        "rvol_20": 0.7035530966131187,
+        "atr_pct": 1.6893132616735091,
+        "proximity_52w_high": -0.18003724733720894
       }
     }
   },
   "signal_plan": null,
   "ai_explanation": {
-    "FACT": "ENB (TSX - Enbridge Inc.) closed at $66.99 CAD. Trading within -16.9% of its 52-week high with a 14-day ATR of 1.6%. The primary exchange session traded on volume of 4,335,934 shares.",
-    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 28/100 (Confidence Tier C). Technical Factor sub-score: 21/100 (14-day RSI: 34.6, 20-day RVOL: 0.46x). Risk penalty applied: -4.0 points. Modulated by the WEAK_BULL macro regime.",
+    "FACT": "ENB (TSX - Enbridge Inc.) closed at $66.13 CAD. Trading within -18.0% of its 52-week high with a 14-day ATR of 1.7%. The primary exchange session traded on volume of 6,564,958 shares.",
+    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 30/100 (Confidence Tier C). Technical Factor sub-score: 24/100 (14-day RSI: 30.5, 20-day RVOL: 0.70x). Risk penalty applied: -4.0 points. Modulated by the WEAK_BULL macro regime.",
     "INFERENCE": "Securities trading below declining 200-day moving averages with elevated risk penalties have historically underperformed the broader index by 3.8% over forward 20-session windows.",
     "UNCERTAINTY": "Risks include broader market sentiment deterioration in the WEAK_BULL environment. A daily close below technical support at $72.26 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
   },
@@ -81,31 +81,15 @@
     {
       "id": "VOLATILITY_SQUEEZE",
       "name": "Volatility Squeeze (Bandwidth)",
-      "why": "Bollinger Bandwidth compressed to 7.7% with low ATR% of 1.6%, indicating impending expansion."
+      "why": "Bollinger Bandwidth compressed to 8.1% with low ATR% of 1.7%, indicating impending expansion."
     },
     {
       "id": "MEAN_REVERSION_OVERSOLD",
       "name": "Mean Reversion (Oversold Bounce)",
-      "why": "Oversold conditions: RSI at 34.6 interacting with lower Bollinger Band."
+      "why": "Oversold conditions: RSI at 30.5 interacting with lower Bollinger Band."
     }
   ],
   "chart_bars": [
-    {
-      "time": "2026-04-02",
-      "open": 75.19999694824219,
-      "high": 75.80999755859375,
-      "low": 74.79000091552734,
-      "close": 75.4000015258789,
-      "volume": 3502300.0
-    },
-    {
-      "time": "2026-04-06",
-      "open": 75.19999694824219,
-      "high": 75.54000091552734,
-      "low": 74.73999786376953,
-      "close": 74.77999877929688,
-      "volume": 4202500.0
-    },
     {
       "time": "2026-04-07",
       "open": 75.0,
@@ -1035,6 +1019,14 @@
       "volume": 8155300.0
     },
     {
+      "time": "2026-09-22",
+      "open": 67.5,
+      "high": 68.19999694824219,
+      "low": 67.13999938964844,
+      "close": 67.47000122070312,
+      "volume": 3309900.0
+    },
+    {
       "time": "2026-09-23",
       "open": 67.5,
       "high": 67.97000122070312,
@@ -1048,7 +1040,15 @@
       "high": 67.8499984741211,
       "low": 66.91999816894531,
       "close": 66.98999786376953,
-      "volume": 4335934.0
+      "volume": 4346000.0
+    },
+    {
+      "time": "2026-09-25",
+      "open": 66.8499984741211,
+      "high": 67.0199966430664,
+      "low": 65.76000213623047,
+      "close": 66.12999725341797,
+      "volume": 6564958.0
     }
   ],
   "disclaimers": {

@@ -5,104 +5,96 @@
   "currency": "USD",
   "name": "Amazon.com Inc.",
   "as_of_date": "2026-09-25",
-  "generated_at": "2026-09-25T00:12:28.204962+00:00",
+  "generated_at": "2026-09-25T20:03:17.133098+00:00",
   "latest_metrics": {
-    "trading_date": "2026-09-24",
-    "open": 245.97000122070312,
-    "high": 250.42999267578125,
-    "low": 245.60499572753906,
-    "close": 249.3800048828125,
-    "volume": 32701576.0,
-    "adjusted_close": 249.3800048828125,
-    "sma_20": 254.63550033569337,
-    "sma_50": 256.17940002441406,
-    "sma_200": 240.73394996643066,
-    "ema_8": 252.146952980004,
-    "ema_21": 254.36961509848518,
-    "sma_200_slope_20d": 11.640711978035924,
-    "atr_14": 5.476067679268973,
-    "atr_pct": 2.195872793346949,
-    "rsi_14": 44.19518218781976,
-    "macd_line": -1.8807950058523488,
-    "macd_signal": -1.48199179347225,
-    "macd_hist": -0.39880321238009886,
-    "bb_upper": 264.07222787526496,
-    "bb_lower": 245.1987727961218,
-    "bb_bandwidth": 0.0741194965127083,
-    "rvol_20": 0.9234019170842662,
-    "obv": 666380176.0,
-    "obv_slope_20": -137143224.0,
-    "cmf_20": 0.07939098906692967,
-    "hh_hl_ratio_20": 0.4,
-    "adx_14": 9.992002205721715,
-    "return_1m": -0.04474064500502317,
-    "return_3m": 0.09854196254475012,
+    "trading_date": "2026-09-25",
+    "open": 248.55999755859375,
+    "high": 250.87750244140625,
+    "low": 247.17999267578125,
+    "close": 249.6699981689453,
+    "volume": 31562826.0,
+    "adjusted_close": 249.6699981689453,
+    "sma_20": 254.30599975585938,
+    "sma_50": 256.175,
+    "sma_200": 240.84784996032715,
+    "ema_8": 251.5965185775465,
+    "ema_21": 253.94237719579974,
+    "sma_200_slope_20d": 11.926429670157406,
+    "atr_14": 5.324103219168527,
+    "atr_pct": 2.1324561453979114,
+    "rsi_14": 44.53594334599328,
+    "macd_line": -2.0008479902378156,
+    "macd_signal": -1.5857630328253634,
+    "macd_hist": -0.4150849574124522,
+    "bb_upper": 263.96156204540154,
+    "bb_lower": 244.65043746631721,
+    "bb_bandwidth": 0.07593656696115515,
+    "rvol_20": 0.8963422890367079,
+    "obv": 698281526.0,
+    "obv_slope_20": -69314074.0,
+    "cmf_20": 0.1194307956869231,
+    "hh_hl_ratio_20": 0.45,
+    "adx_14": 10.0689911423695,
+    "return_1m": -0.04076379537464292,
+    "return_3m": 0.07297260539508921,
     "return_12m": null,
     "momentum_12_1": null,
-    "proximity_52w_high": -0.13168525667386044,
-    "adv_dollar_20": 9026474116.342749
+    "proximity_52w_high": -0.13067553079013106,
+    "adv_dollar_20": 8964366788.719862
   },
   "score_record": {
-    "composite_score": 46,
+    "composite_score": 48,
     "confidence_tier": "C",
-    "technical_score": 37,
+    "technical_score": 39,
     "risk_penalty": 0.0,
     "factor_attribution": {
       "horizon": "POSITION",
       "trend_score": 14.2,
       "relative_strength_score": 9.0,
-      "setup_geometry_score": 6.5,
+      "setup_geometry_score": 8.5,
       "volume_participation_score": 2.7,
       "mtf_alignment_score": 0.0,
       "volatility_fit_score": 5.0,
-      "technical_score": 37,
+      "technical_score": 39,
       "fundamental_score": 65,
       "regime_multiplier": 1.05,
       "news_contribution": 0.0,
       "sector_contribution": 0.0,
       "risk_penalty": 0.0,
       "key_metrics": {
-        "close": 249.3800048828125,
-        "rsi_14": 44.19518218781976,
-        "rvol_20": 0.9234019170842662,
-        "atr_pct": 2.195872793346949,
-        "proximity_52w_high": -0.13168525667386044
+        "close": 249.6699981689453,
+        "rsi_14": 44.53594334599328,
+        "rvol_20": 0.8963422890367079,
+        "atr_pct": 2.1324561453979114,
+        "proximity_52w_high": -0.13067553079013106
       }
     }
   },
   "signal_plan": null,
   "ai_explanation": {
-    "FACT": "AMZN (NASDAQ - Amazon.com Inc.) closed at $249.38 USD. Trading within -13.2% of its 52-week high with a 14-day ATR of 2.2%. The primary exchange session traded on volume of 32,701,576 shares.",
-    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 46/100 (Confidence Tier C). Technical Factor sub-score: 37/100 (14-day RSI: 44.2, 20-day RVOL: 0.92x). Risk penalty applied: -0.0 points. Modulated by the STRONG_BULL macro regime.",
+    "FACT": "AMZN (NASDAQ - Amazon.com Inc.) closed at $249.67 USD. Trading within -13.1% of its 52-week high with a 14-day ATR of 2.1%. The primary exchange session traded on volume of 31,562,826 shares.",
+    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 48/100 (Confidence Tier C). Technical Factor sub-score: 39/100 (14-day RSI: 44.5, 20-day RVOL: 0.90x). Risk penalty applied: -0.0 points. Modulated by the STRONG_BULL macro regime.",
     "INFERENCE": "Current technical structure reflects neutral consolidation. Setup geometry indicates digestive trading range with no confirmed directional expansion.",
-    "UNCERTAINTY": "Risks include broader market sentiment deterioration in the STRONG_BULL environment. A daily close below technical support at $240.73 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
+    "UNCERTAINTY": "Risks include broader market sentiment deterioration in the STRONG_BULL environment. A daily close below technical support at $240.85 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
   },
   "active_scanner_matches": [
     {
       "id": "PULLBACK_UPTREND",
       "name": "Pullback to Key Support",
-      "why": "Pullback into key moving average in a rising uptrend; RSI at 44.2 shows controlled digestion."
+      "why": "Pullback into key moving average in a rising uptrend; RSI at 44.5 shows controlled digestion."
     },
     {
       "id": "VOLATILITY_SQUEEZE",
       "name": "Volatility Squeeze (Bandwidth)",
-      "why": "Bollinger Bandwidth compressed to 7.4% with low ATR% of 2.2%, indicating impending expansion."
+      "why": "Bollinger Bandwidth compressed to 7.6% with low ATR% of 2.1%, indicating impending expansion."
     },
     {
       "id": "LOW_BETA_QUALITY",
       "name": "Low-Volatility Trend Quality",
-      "why": "Low ATR volatility (2.2%) paired with rising 200DMA and positive quarterly return."
+      "why": "Low ATR volatility (2.1%) paired with rising 200DMA and positive quarterly return."
     }
   ],
   "chart_bars": [
-    {
-      "time": "2026-04-06",
-      "open": 209.8000030517578,
-      "high": 212.9499969482422,
-      "low": 209.58999633789062,
-      "close": 212.7899932861328,
-      "volume": 25385500.0
-    },
     {
       "time": "2026-04-07",
       "open": 211.24000549316406,
@@ -1049,11 +1041,19 @@
     },
     {
       "time": "2026-09-24",
-      "open": 245.97000122070312,
+      "open": 246.02000427246094,
       "high": 250.42999267578125,
-      "low": 245.60499572753906,
+      "low": 245.60000610351562,
       "close": 249.3800048828125,
-      "volume": 32701576.0
+      "volume": 33040100.0
+    },
+    {
+      "time": "2026-09-25",
+      "open": 248.55999755859375,
+      "high": 250.87750244140625,
+      "low": 247.17999267578125,
+      "close": 249.6699981689453,
+      "volume": 31562826.0
     }
   ],
   "disclaimers": {

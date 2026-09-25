@@ -5,90 +5,90 @@
   "currency": "USD",
   "name": "SPDR S&P 500 ETF Trust",
   "as_of_date": "2026-09-25",
-  "generated_at": "2026-09-25T00:12:28.204962+00:00",
+  "generated_at": "2026-09-25T20:03:17.133098+00:00",
   "latest_metrics": {
-    "trading_date": "2026-09-24",
-    "open": 764.0650024414062,
-    "high": 768.9500122070312,
-    "low": 763.2449951171875,
-    "close": 767.1799926757812,
-    "volume": 42694185.0,
-    "adjusted_close": 767.1799926757812,
-    "sma_20": 765.3379974365234,
-    "sma_50": 761.1531982421875,
-    "sma_200": 718.0133996582031,
-    "ema_8": 766.5646610987433,
-    "ema_21": 765.1654514107554,
-    "sma_200_slope_20d": 16.18727903319252,
-    "atr_14": 6.729644775390625,
-    "atr_pct": 0.8771924241557545,
-    "rsi_14": 52.46743125653499,
-    "macd_line": 1.2394831448415289,
-    "macd_signal": 0.8388829302023842,
-    "macd_hist": 0.40060021463914464,
-    "bb_upper": 776.4673856157805,
-    "bb_lower": 754.2086092572664,
-    "bb_bandwidth": 0.02908358977741752,
-    "rvol_20": 0.9797098042787793,
-    "obv": 332861715.0,
-    "obv_slope_20": -364957785.0,
-    "cmf_20": 0.019400024957581988,
+    "trading_date": "2026-09-25",
+    "open": 768.780029296875,
+    "high": 772.280029296875,
+    "low": 766.2899780273438,
+    "close": 771.3599853515625,
+    "volume": 30334819.0,
+    "adjusted_close": 771.3599853515625,
+    "sma_20": 765.3509979248047,
+    "sma_50": 761.5659985351563,
+    "sma_200": 718.4520495605469,
+    "ema_8": 767.6302887104808,
+    "ema_21": 765.7285908599197,
+    "sma_200_slope_20d": 16.06573476895257,
+    "atr_14": 6.859292166573661,
+    "atr_pct": 0.8892465640990441,
+    "rsi_14": 55.897658065902974,
+    "macd_line": 1.5841084736264293,
+    "macd_signal": 0.9879280388871933,
+    "macd_hist": 0.596180434739236,
+    "bb_upper": 776.5092957756838,
+    "bb_lower": 754.1927000739256,
+    "bb_bandwidth": 0.029158641933267268,
+    "rvol_20": 0.698447825657412,
+    "obv": 361907019.0,
+    "obv_slope_20": -370469581.0,
+    "cmf_20": 0.023692302785925316,
     "hh_hl_ratio_20": 0.45,
-    "adx_14": 12.047314678508725,
-    "return_1m": 0.001658183828101567,
-    "return_3m": 0.04477734635627262,
+    "adx_14": 13.515150040021053,
+    "return_1m": 0.006892188993228299,
+    "return_3m": 0.05812150466368582,
     "return_12m": null,
     "momentum_12_1": null,
-    "proximity_52w_high": -0.015640841343363965,
-    "adv_dollar_20": 33333731397.333202
+    "proximity_52w_high": -0.010277544447192422,
+    "adv_dollar_20": 33220800231.404045
   },
   "score_record": {
-    "composite_score": 57,
+    "composite_score": 56,
     "confidence_tier": "B",
-    "technical_score": 51,
+    "technical_score": 50,
     "risk_penalty": 0.0,
     "factor_attribution": {
       "horizon": "POSITION",
       "trend_score": 19.2,
       "relative_strength_score": 13.0,
       "setup_geometry_score": 10.0,
-      "volume_participation_score": 2.7,
+      "volume_participation_score": 1.3,
       "mtf_alignment_score": 5.0,
       "volatility_fit_score": 1.0,
-      "technical_score": 51,
+      "technical_score": 50,
       "fundamental_score": 65,
       "regime_multiplier": 1.05,
       "news_contribution": 0.0,
       "sector_contribution": 0.0,
       "risk_penalty": 0.0,
       "key_metrics": {
-        "close": 767.1799926757812,
-        "rsi_14": 52.46743125653499,
-        "rvol_20": 0.9797098042787793,
-        "atr_pct": 0.8771924241557545,
-        "proximity_52w_high": -0.015640841343363965
+        "close": 771.3599853515625,
+        "rsi_14": 55.897658065902974,
+        "rvol_20": 0.698447825657412,
+        "atr_pct": 0.8892465640990441,
+        "proximity_52w_high": -0.010277544447192422
       }
     }
   },
   "signal_plan": {
     "direction": "LONG",
-    "preferred_entry": 767.18,
+    "preferred_entry": 771.36,
     "entry_zone": [
-      764.49,
-      768.53
+      768.62,
+      772.73
     ],
-    "stop_loss": 752.37,
+    "stop_loss": 756.27,
     "targets": [
-      790.88,
-      805.69,
-      826.42
+      795.5,
+      810.59,
+      831.72
     ],
     "risk_reward_ratio": 2.6,
     "invalidation": [
       {
         "predicate": "DAILY_CLOSE_BELOW_LEVEL",
-        "level": 752.37,
-        "description": "Daily closing price finishes below structural stop loss of 752.37"
+        "level": 756.27,
+        "description": "Daily closing price finishes below structural stop loss of 756.27"
       },
       {
         "predicate": "RVOL_COLLAPSE",
@@ -103,16 +103,16 @@
     ]
   },
   "ai_explanation": {
-    "FACT": "SPY (AMEX - SPDR S&P 500 ETF Trust) closed at $767.18 USD. Trading within -1.6% of its 52-week high with a 14-day ATR of 0.9%. The primary exchange session traded on volume of 42,694,185 shares.",
-    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 57/100 (Confidence Tier B). Technical Factor sub-score: 51/100 (14-day RSI: 52.5, 20-day RVOL: 0.98x). Risk penalty applied: -0.0 points. Modulated by the STRONG_BULL macro regime.",
+    "FACT": "SPY (AMEX - SPDR S&P 500 ETF Trust) closed at $771.36 USD. Trading within -1.0% of its 52-week high with a 14-day ATR of 0.9%. The primary exchange session traded on volume of 30,334,819 shares.",
+    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 56/100 (Confidence Tier B). Technical Factor sub-score: 50/100 (14-day RSI: 55.9, 20-day RVOL: 0.70x). Risk penalty applied: -0.0 points. Modulated by the STRONG_BULL macro regime.",
     "INFERENCE": "Current technical structure reflects neutral consolidation. Setup geometry indicates digestive trading range with no confirmed directional expansion.",
-    "UNCERTAINTY": "Risks include broader market sentiment deterioration in the STRONG_BULL environment. A daily close below technical support at $718.01 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
+    "UNCERTAINTY": "Risks include broader market sentiment deterioration in the STRONG_BULL environment. A daily close below technical support at $718.45 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
   },
   "active_scanner_matches": [
     {
       "id": "PULLBACK_UPTREND",
       "name": "Pullback to Key Support",
-      "why": "Pullback into key moving average in a rising uptrend; RSI at 52.5 shows controlled digestion."
+      "why": "Pullback into key moving average in a rising uptrend; RSI at 55.9 shows controlled digestion."
     },
     {
       "id": "VOLATILITY_SQUEEZE",
@@ -132,18 +132,10 @@
     {
       "id": "BASE_TIGHTENING",
       "name": "Consolidation Base Tightening",
-      "why": "Price consolidating in a tight band (2.9%) within 1.6% of yearly high."
+      "why": "Price consolidating in a tight band (2.9%) within 1.0% of yearly high."
     }
   ],
   "chart_bars": [
-    {
-      "time": "2026-04-06",
-      "open": 655.8599853515625,
-      "high": 659.719970703125,
-      "low": 655.52001953125,
-      "close": 658.9299926757812,
-      "volume": 39105800.0
-    },
     {
       "time": "2026-04-07",
       "open": 656.6500244140625,
@@ -1090,11 +1082,19 @@
     },
     {
       "time": "2026-09-24",
-      "open": 764.0650024414062,
+      "open": 764.0700073242188,
       "high": 768.9500122070312,
-      "low": 763.2449951171875,
+      "low": 763.25,
       "close": 767.1799926757812,
-      "volume": 42694185.0
+      "volume": 43983700.0
+    },
+    {
+      "time": "2026-09-25",
+      "open": 768.780029296875,
+      "high": 772.280029296875,
+      "low": 766.2899780273438,
+      "close": 771.3599853515625,
+      "volume": 30334819.0
     }
   ],
   "disclaimers": {

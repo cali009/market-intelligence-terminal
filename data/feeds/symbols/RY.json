@@ -5,112 +5,96 @@
   "currency": "CAD",
   "name": "Royal Bank of Canada",
   "as_of_date": "2026-09-25",
-  "generated_at": "2026-09-25T00:12:28.204962+00:00",
+  "generated_at": "2026-09-25T20:03:17.133098+00:00",
   "latest_metrics": {
-    "trading_date": "2026-09-24",
-    "open": 280.82000732421875,
-    "high": 282.9200134277344,
-    "low": 280.1600036621094,
-    "close": 282.1099853515625,
-    "volume": 2398897.0,
-    "adjusted_close": 282.1099853515625,
-    "sma_20": 285.64600067138673,
-    "sma_50": 291.24760070800784,
-    "sma_200": 256.4897001647949,
-    "ema_8": 284.35029474076305,
-    "ema_21": 286.10042006123456,
-    "sma_200_slope_20d": 37.622183803026545,
-    "atr_14": 4.353570120675223,
-    "atr_pct": 1.543217307692902,
-    "rsi_14": 42.59731536264122,
-    "macd_line": -1.7245507178226944,
-    "macd_signal": -1.6286164485245724,
-    "macd_hist": -0.09593426929812199,
-    "bb_upper": 291.69449432131074,
-    "bb_lower": 279.5975070214627,
-    "bb_bandwidth": 0.042349576998855505,
-    "rvol_20": 0.8535405762379222,
-    "obv": 105338097.0,
-    "obv_slope_20": -13292903.0,
-    "cmf_20": 0.15266804412433913,
-    "hh_hl_ratio_20": 0.4,
-    "adx_14": 17.34875560914923,
-    "return_1m": -0.0018045777879711622,
-    "return_3m": -0.021843965987836333,
-    "return_12m": null,
-    "momentum_12_1": null,
-    "proximity_52w_high": -0.07921541596858794,
-    "adv_dollar_20": 801753516.0123596
+    "trading_date": "2026-09-25",
+    "open": 283.20001220703125,
+    "high": 286.19000244140625,
+    "low": 283.05999755859375,
+    "close": 285.6300048828125,
+    "volume": 2377917.0,
+    "adjusted_close": 285.6300048828125,
+    "sma_20": 285.7070022583008,
+    "sma_50": 290.56980102539063,
+    "sma_200": 257.0978502655029,
+    "ema_8": 284.7538200977804,
+    "ema_21": 286.0682830180124,
+    "sma_200_slope_20d": 36.48934592621399,
+    "atr_14": 4.275002615792411,
+    "atr_pct": 1.4966924142112965,
+    "rsi_14": 48.369925477420686,
+    "macd_line": -1.4289625850898346,
+    "macd_signal": -1.497741773324984,
+    "macd_hist": 0.06877918823514939,
+    "bb_upper": 291.60468353449005,
+    "bb_lower": 279.80932098211156,
+    "bb_bandwidth": 0.04128482136995225,
+    "rvol_20": 0.8764411311667392,
+    "obv": 106114717.0,
+    "obv_slope_20": -11912383.0,
+    "cmf_20": 0.169686914724576,
+    "hh_hl_ratio_20": 0.425,
+    "adx_14": 16.480855861905663,
+    "return_1m": -0.008607756047482429,
+    "return_3m": -0.012071078767694421,
+    "return_12m": 0.3948820575437486,
+    "momentum_12_1": 0.40348981359123104,
+    "proximity_52w_high": -0.06772635181573516,
+    "adv_dollar_20": 774085280.1765563
   },
   "score_record": {
-    "composite_score": 43,
+    "composite_score": 46,
     "confidence_tier": "C",
-    "technical_score": 36,
+    "technical_score": 40,
     "risk_penalty": 0.0,
     "factor_attribution": {
       "horizon": "POSITION",
       "trend_score": 14.2,
-      "relative_strength_score": 6.0,
-      "setup_geometry_score": 8.5,
+      "relative_strength_score": 10.0,
+      "setup_geometry_score": 10.0,
       "volume_participation_score": 2.7,
       "mtf_alignment_score": 0.0,
-      "volatility_fit_score": 5.0,
-      "technical_score": 36,
+      "volatility_fit_score": 3.0,
+      "technical_score": 40,
       "fundamental_score": 65,
       "regime_multiplier": 1.0,
       "news_contribution": 0.0,
       "sector_contribution": 0.0,
       "risk_penalty": 0.0,
       "key_metrics": {
-        "close": 282.1099853515625,
-        "rsi_14": 42.59731536264122,
-        "rvol_20": 0.8535405762379222,
-        "atr_pct": 1.543217307692902,
-        "proximity_52w_high": -0.07921541596858794
+        "close": 285.6300048828125,
+        "rsi_14": 48.369925477420686,
+        "rvol_20": 0.8764411311667392,
+        "atr_pct": 1.4966924142112965,
+        "proximity_52w_high": -0.06772635181573516
       }
     }
   },
   "signal_plan": null,
   "ai_explanation": {
-    "FACT": "RY (TSX - Royal Bank of Canada) closed at $282.11 CAD. Trading within -7.9% of its 52-week high with a 14-day ATR of 1.5%. The primary exchange session traded on volume of 2,398,897 shares.",
-    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 43/100 (Confidence Tier C). Technical Factor sub-score: 36/100 (14-day RSI: 42.6, 20-day RVOL: 0.85x). Risk penalty applied: -0.0 points. Modulated by the WEAK_BULL macro regime.",
+    "FACT": "RY (TSX - Royal Bank of Canada) closed at $285.63 CAD. Trading within -6.8% of its 52-week high with a 14-day ATR of 1.5%. The primary exchange session traded on volume of 2,377,917 shares.",
+    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 46/100 (Confidence Tier C). Technical Factor sub-score: 40/100 (14-day RSI: 48.4, 20-day RVOL: 0.88x). Risk penalty applied: -0.0 points. Modulated by the WEAK_BULL macro regime.",
     "INFERENCE": "Current technical structure reflects neutral consolidation. Setup geometry indicates digestive trading range with no confirmed directional expansion.",
-    "UNCERTAINTY": "Risks include broader market sentiment deterioration in the WEAK_BULL environment. A daily close below technical support at $256.49 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
+    "UNCERTAINTY": "Risks include broader market sentiment deterioration in the WEAK_BULL environment. A daily close below technical support at $257.10 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
   },
   "active_scanner_matches": [
     {
       "id": "PULLBACK_UPTREND",
       "name": "Pullback to Key Support",
-      "why": "Pullback into key moving average in a rising uptrend; RSI at 42.6 shows controlled digestion."
+      "why": "Pullback into key moving average in a rising uptrend; RSI at 48.4 shows controlled digestion."
     },
     {
       "id": "VOLATILITY_SQUEEZE",
       "name": "Volatility Squeeze (Bandwidth)",
-      "why": "Bollinger Bandwidth compressed to 4.2% with low ATR% of 1.5%, indicating impending expansion."
+      "why": "Bollinger Bandwidth compressed to 4.1% with low ATR% of 1.5%, indicating impending expansion."
     },
     {
       "id": "BASE_TIGHTENING",
       "name": "Consolidation Base Tightening",
-      "why": "Price consolidating in a tight band (4.2%) within 7.9% of yearly high."
+      "why": "Price consolidating in a tight band (4.1%) within 6.8% of yearly high."
     }
   ],
   "chart_bars": [
-    {
-      "time": "2026-04-02",
-      "open": 224.97999572753906,
-      "high": 227.85000610351562,
-      "low": 224.52000427246094,
-      "close": 227.33999633789062,
-      "volume": 2782500.0
-    },
-    {
-      "time": "2026-04-06",
-      "open": 227.35000610351562,
-      "high": 229.4499969482422,
-      "low": 227.35000610351562,
-      "close": 228.8300018310547,
-      "volume": 4619500.0
-    },
     {
       "time": "2026-04-07",
       "open": 228.41000366210938,
@@ -1040,6 +1024,14 @@
       "volume": 1579400.0
     },
     {
+      "time": "2026-09-22",
+      "open": 289.8999938964844,
+      "high": 290.55999755859375,
+      "low": 285.04998779296875,
+      "close": 287.1700134277344,
+      "volume": 1612100.0
+    },
+    {
       "time": "2026-09-23",
       "open": 285.760009765625,
       "high": 286.7699890136719,
@@ -1053,7 +1045,15 @@
       "high": 282.9200134277344,
       "low": 280.1600036621094,
       "close": 282.1099853515625,
-      "volume": 2398897.0
+      "volume": 2409700.0
+    },
+    {
+      "time": "2026-09-25",
+      "open": 283.20001220703125,
+      "high": 286.19000244140625,
+      "low": 283.05999755859375,
+      "close": 285.6300048828125,
+      "volume": 2377917.0
     }
   ],
   "disclaimers": {
