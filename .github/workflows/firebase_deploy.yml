@@ -23,7 +23,7 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          pip install pandas numpy requests
+          pip install -r requirements.txt
 
       - name: Run Master Market Intelligence Pipeline
         run: |
