@@ -1729,71 +1729,87 @@
                 </div>
             `;
 
-            // Draw Equity Curve Canvas
-            drawEquityCurve(currentStrat.equity_curve, currentStrat.config.train_cutoff, currentStrat.config.val_cutoff);
+            // Draw Equity Curve Canvas safely
+            try {
+                drawEquityCurve(currentStrat.equity_curve, currentStrat.config.train_cutoff, currentStrat.config.val_cutoff);
+            } catch (err) {
+                console.warn("Canvas draw non-fatal warning:", err);
+            }
 
             // Walk-forward partitions table
-            const pTable = document.getElementById('partitionTable');
-            const partitions = m.walk_forward_partitions || {};
-            let pRows = '';
-            for (const [pName, pData] of Object.entries(partitions)) {
-                const badgeColor = pName === 'TRAIN' ? 'var(--accent-green)' : (pName === 'VALIDATION' ? 'var(--accent-purple)' : 'var(--accent-cyan)');
-                pRows += `
-                    <tr style="border-bottom: 1px solid var(--border-color);">
-                        <td style="padding: 10px 8px; font-weight: 700; color: ${badgeColor};">${pName}</td>
-                        <td style="padding: 10px 8px;">${pData.total_trades}</td>
-                        <td style="padding: 10px 8px;">${pData.win_rate_pct}%</td>
-                        <td style="padding: 10px 8px; font-weight: 700; color: ${pData.net_pnl >= 0 ? 'var(--accent-green)' : 'var(--accent-red)'};">
-                            ${pData.net_pnl >= 0 ? '+' : ''}$${pData.net_pnl.toLocaleString()}
-                        </td>
-                        <td style="padding: 10px 8px;">${pData.expectancy_r >= 0 ? '+' : ''}${pData.expectancy_r}R</td>
-                    </tr>
-                `;
-            }
-            pTable.innerHTML = `
-                <table style="width: 100%; border-collapse: collapse; font-size: 12px; text-align: left;">
-                    <thead>
-                        <tr style="border-bottom: 1px solid var(--border-color); color: var(--text-muted);">
-                            <th style="padding: 8px;">Partition</th>
-                            <th style="padding: 8px;">Trades</th>
-                            <th style="padding: 8px;">Win Rate</th>
-                            <th style="padding: 8px;">Net P&L</th>
-                            <th style="padding: 8px;">Expectancy</th>
+            try {
+                const pTable = document.getElementById('partitionTable');
+                const partitions = m.walk_forward_partitions || {};
+                let pRows = '';
+                for (const [pName, pData] of Object.entries(partitions)) {
+                    const badgeColor = pName === 'TRAIN' ? 'var(--accent-green)' : (pName === 'VALIDATION' ? 'var(--accent-purple)' : 'var(--accent-cyan)');
+                    const pnlVal = pData.net_pnl_usd != null ? pData.net_pnl_usd : (pData.net_pnl != null ? pData.net_pnl : 0);
+                    const isPos = pnlVal >= 0;
+                    pRows += `
+                        <tr style="border-bottom: 1px solid var(--border-color);">
+                            <td style="padding: 10px 8px; font-weight: 700; color: ${badgeColor};">${pName}</td>
+                            <td style="padding: 10px 8px;">${pData.total_trades || 0}</td>
+                            <td style="padding: 10px 8px;">${(pData.win_rate_pct || 0).toFixed(1)}%</td>
+                            <td style="padding: 10px 8px; font-weight: 700; color: ${isPos ? 'var(--accent-green)' : 'var(--accent-red)'};">
+                                ${isPos ? '+' : '-'}$${Math.abs(pnlVal).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}
+                            </td>
+                            <td style="padding: 10px 8px;">${(pData.expectancy_r || 0) >= 0 ? '+' : ''}${(pData.expectancy_r || 0).toFixed(2)}R</td>
                         </tr>
-                    </thead>
-                    <tbody>${pRows}</tbody>
-                </table>
-            `;
+                    `;
+                }
+                pTable.innerHTML = `
+                    <table style="width: 100%; border-collapse: collapse; font-size: 12px; text-align: left;">
+                        <thead>
+                            <tr style="border-bottom: 1px solid var(--border-color); color: var(--text-muted);">
+                                <th style="padding: 8px;">Partition</th>
+                                <th style="padding: 8px;">Trades</th>
+                                <th style="padding: 8px;">Win Rate</th>
+                                <th style="padding: 8px;">Net P&L</th>
+                                <th style="padding: 8px;">Expectancy</th>
+                            </tr>
+                        </thead>
+                        <tbody>${pRows}</tbody>
+                    </table>
+                `;
+            } catch (err) {
+                console.warn("Partition table non-fatal error:", err);
+            }
 
             // Regime breakdown table
-            const rTable = document.getElementById('regimeTable');
-            const regimes = m.regime_breakdown || {};
-            let rRows = '';
-            for (const [rName, rData] of Object.entries(regimes)) {
-                rRows += `
-                    <tr style="border-bottom: 1px solid var(--border-color);">
-                        <td style="padding: 10px 8px; font-weight: 700;">${rName}</td>
-                        <td style="padding: 10px 8px;">${rData.trades}</td>
-                        <td style="padding: 10px 8px;">${rData.win_rate_pct}%</td>
-                        <td style="padding: 10px 8px; font-weight: 700; color: ${rData.avg_r_multiple >= 0 ? 'var(--accent-green)' : 'var(--accent-red)'};">
-                            ${rData.avg_r_multiple >= 0 ? '+' : ''}${rData.avg_r_multiple}R
-                        </td>
-                    </tr>
-                `;
-            }
-            rTable.innerHTML = `
-                <table style="width: 100%; border-collapse: collapse; font-size: 12px; text-align: left;">
-                    <thead>
-                        <tr style="border-bottom: 1px solid var(--border-color); color: var(--text-muted);">
-                            <th style="padding: 8px;">Regime</th>
-                            <th style="padding: 8px;">Trades</th>
-                            <th style="padding: 8px;">Win Rate</th>
-                            <th style="padding: 8px;">Avg R-Multiple</th>
+            try {
+                const rTable = document.getElementById('regimeTable');
+                const regimes = m.regime_breakdown || {};
+                let rRows = '';
+                for (const [rName, rData] of Object.entries(regimes)) {
+                    const avgR = (rData.avg_r_multiple != null ? rData.avg_r_multiple : 0);
+                    const isPosR = avgR >= 0;
+                    rRows += `
+                        <tr style="border-bottom: 1px solid var(--border-color);">
+                            <td style="padding: 10px 8px; font-weight: 700;">${rName}</td>
+                            <td style="padding: 10px 8px;">${rData.trades || 0}</td>
+                            <td style="padding: 10px 8px;">${(rData.win_rate_pct || 0).toFixed(1)}%</td>
+                            <td style="padding: 10px 8px; font-weight: 700; color: ${isPosR ? 'var(--accent-green)' : 'var(--accent-red)'};">
+                                ${isPosR ? '+' : ''}${avgR.toFixed(2)}R
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>${rRows}</tbody>
-                </table>
-            `;
+                    `;
+                }
+                rTable.innerHTML = `
+                    <table style="width: 100%; border-collapse: collapse; font-size: 12px; text-align: left;">
+                        <thead>
+                            <tr style="border-bottom: 1px solid var(--border-color); color: var(--text-muted);">
+                                <th style="padding: 8px;">Regime</th>
+                                <th style="padding: 8px;">Trades</th>
+                                <th style="padding: 8px;">Win Rate</th>
+                                <th style="padding: 8px;">Avg R-Multiple</th>
+                            </tr>
+                        </thead>
+                        <tbody>${rRows}</tbody>
+                    </table>
+                `;
+            } catch (err) {
+                console.warn("Regime table non-fatal error:", err);
+            }
 
             // Trade Ledger setup
             const allTrades = getActiveStrategyTrades();

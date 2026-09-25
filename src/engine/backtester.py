@@ -636,6 +636,7 @@ class BacktestEngine:
             partitions[p_name] = {
                 "total_trades": len(p_trades),
                 "win_rate_pct": round(p_win_rate, 1),
+                "net_pnl": round(p_pnl, 2),
                 "net_pnl_usd": round(p_pnl, 2),
                 "expectancy_r": round(float(np.mean([t.r_multiple for t in p_trades])), 2) if p_trades else 0.0,
             }
