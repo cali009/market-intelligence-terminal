@@ -5,7 +5,7 @@
   "currency": "USD",
   "name": "Amazon.com Inc.",
   "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T06:23:21.080292+00:00",
+  "generated_at": "2026-09-26T06:41:23.594670+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 248.55999755859375,
@@ -360,7 +360,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 16,
     "gjr_garch_gamma": 0.08,
-    "last_updated": "2026-09-26T06:23:22.371759+00:00"
+    "last_updated": "2026-09-26T06:41:24.379423+00:00"
   },
   "conformal_bounds": {
     "symbol": "AMZN",
@@ -377,7 +377,7 @@
     "adapted_alpha": 0.185,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-09-26T06:23:22.395784+00:00"
+    "calibrated_at": "2026-09-26T06:41:24.389273+00:00"
   },
   "cross_border_parity": null,
   "shap_attribution": {
@@ -443,6 +443,24 @@
       "conformal_rr": 0.48,
       "dual_basis_bps": 1.14
     }
+  },
+  "idiosyncratic_risk": {
+    "symbol": "AMZN",
+    "risk_posture": "ELEVATED_CAUTION",
+    "position_size_multiplier": 0.75,
+    "hurst_flip_alert": false,
+    "hurst_exponent": 0.486,
+    "conformal_stop_price": 204.1,
+    "conformal_ratchet_recommended": true,
+    "effective_stop_price": 204.1,
+    "volatility_expansion_alert": false,
+    "cross_border_parity_stretch": false,
+    "basis_spread_bps": null,
+    "basis_zscore": null,
+    "shap_detractor_drag_pts": -8.5,
+    "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-8.5 pts)",
+    "actionable_mitigation": "Minor basis disparity or factor detractor identified; 25% exposure haircut recommended under risk rules.",
+    "as_of_date": "2026-09-25"
   },
   "score_record": {
     "composite_score": 49,

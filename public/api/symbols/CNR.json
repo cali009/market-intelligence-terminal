@@ -5,7 +5,7 @@
   "currency": "CAD",
   "name": "Canadian National Railway",
   "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T06:23:21.080292+00:00",
+  "generated_at": "2026-09-26T06:41:23.594670+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 169.8000030517578,
@@ -356,7 +356,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 14,
     "gjr_garch_gamma": 0.16,
-    "last_updated": "2026-09-26T06:23:24.034709+00:00"
+    "last_updated": "2026-09-26T06:41:25.969808+00:00"
   },
   "conformal_bounds": {
     "symbol": "CNR",
@@ -373,7 +373,7 @@
     "adapted_alpha": 0.135,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-09-26T06:23:24.052199+00:00"
+    "calibrated_at": "2026-09-26T06:41:25.985806+00:00"
   },
   "cross_border_parity": {
     "tsx_symbol": "CNR",
@@ -461,6 +461,24 @@
       "conformal_rr": 0.67,
       "dual_basis_bps": -2.59
     }
+  },
+  "idiosyncratic_risk": {
+    "symbol": "CNR",
+    "risk_posture": "DEFENSIVE_DE_RISK",
+    "position_size_multiplier": 0.5,
+    "hurst_flip_alert": true,
+    "hurst_exponent": 0.386,
+    "conformal_stop_price": 121.14,
+    "conformal_ratchet_recommended": true,
+    "effective_stop_price": 121.14,
+    "volatility_expansion_alert": false,
+    "cross_border_parity_stretch": false,
+    "basis_spread_bps": -9.1,
+    "basis_zscore": -1.08,
+    "shap_detractor_drag_pts": -6.5,
+    "primary_risk_driver": "Hurst Memory Flip (H=0.386)",
+    "actionable_mitigation": "Idiosyncratic memory flip or volatility expansion active; 50% exposure haircut recommended by systematic risk budget.",
+    "as_of_date": "2026-09-25"
   },
   "score_record": {
     "composite_score": 50,

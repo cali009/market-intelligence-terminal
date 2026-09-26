@@ -1,6 +1,6 @@
 {
   "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T06:23:21.080292+00:00",
+  "generated_at": "2026-09-26T06:41:23.594670+00:00",
   "securities": [
     {
       "symbol": "QQQ",
@@ -50,7 +50,9 @@
       "basis_spread_bps": null,
       "basis_zscore": null,
       "primary_liquidity": null,
-      "shap_score": 76.8
+      "shap_score": 76.8,
+      "risk_posture": "NORMAL_EQUILIBRIUM",
+      "size_multiplier": 1.0
     },
     {
       "symbol": "SPY",
@@ -101,7 +103,9 @@
       "basis_spread_bps": null,
       "basis_zscore": null,
       "primary_liquidity": null,
-      "shap_score": 74.2
+      "shap_score": 74.2,
+      "risk_posture": "NORMAL_EQUILIBRIUM",
+      "size_multiplier": 1.0
     },
     {
       "symbol": "MSFT",
@@ -155,7 +159,9 @@
       "basis_spread_bps": null,
       "basis_zscore": null,
       "primary_liquidity": null,
-      "shap_score": 63.9
+      "shap_score": 63.9,
+      "risk_posture": "NORMAL_EQUILIBRIUM",
+      "size_multiplier": 1.0
     },
     {
       "symbol": "AAPL",
@@ -205,7 +211,9 @@
       "basis_spread_bps": null,
       "basis_zscore": null,
       "primary_liquidity": null,
-      "shap_score": 63.1
+      "shap_score": 63.1,
+      "risk_posture": "ELEVATED_CAUTION",
+      "size_multiplier": 0.75
     },
     {
       "symbol": "NVDA",
@@ -254,7 +262,9 @@
       "basis_spread_bps": null,
       "basis_zscore": null,
       "primary_liquidity": null,
-      "shap_score": 62.2
+      "shap_score": 62.2,
+      "risk_posture": "NORMAL_EQUILIBRIUM",
+      "size_multiplier": 1.0
     },
     {
       "symbol": "XIU",
@@ -304,7 +314,9 @@
       "basis_spread_bps": null,
       "basis_zscore": null,
       "primary_liquidity": null,
-      "shap_score": 59.3
+      "shap_score": 59.3,
+      "risk_posture": "ELEVATED_CAUTION",
+      "size_multiplier": 0.75
     },
     {
       "symbol": "TD",
@@ -354,7 +366,9 @@
       "basis_spread_bps": 1.8,
       "basis_zscore": -0.14,
       "primary_liquidity": "TSX",
-      "shap_score": 56.2
+      "shap_score": 56.2,
+      "risk_posture": "ELEVATED_CAUTION",
+      "size_multiplier": 0.75
     },
     {
       "symbol": "XOM",
@@ -403,7 +417,9 @@
       "basis_spread_bps": null,
       "basis_zscore": null,
       "primary_liquidity": null,
-      "shap_score": 53.7
+      "shap_score": 53.7,
+      "risk_posture": "DEFENSIVE_DE_RISK",
+      "size_multiplier": 0.5
     },
     {
       "symbol": "CNQ",
@@ -451,7 +467,9 @@
       "basis_spread_bps": 16.2,
       "basis_zscore": 1.09,
       "primary_liquidity": "TSX",
-      "shap_score": 52.9
+      "shap_score": 52.9,
+      "risk_posture": "ELEVATED_CAUTION",
+      "size_multiplier": 0.75
     },
     {
       "symbol": "JPM",
@@ -501,7 +519,9 @@
       "basis_spread_bps": null,
       "basis_zscore": null,
       "primary_liquidity": null,
-      "shap_score": 52.6
+      "shap_score": 52.6,
+      "risk_posture": "ELEVATED_CAUTION",
+      "size_multiplier": 0.75
     },
     {
       "symbol": "GOOGL",
@@ -548,7 +568,9 @@
       "basis_spread_bps": null,
       "basis_zscore": null,
       "primary_liquidity": null,
-      "shap_score": 50.0
+      "shap_score": 50.0,
+      "risk_posture": "ELEVATED_CAUTION",
+      "size_multiplier": 0.75
     },
     {
       "symbol": "CNR",
@@ -597,7 +619,9 @@
       "basis_spread_bps": -9.1,
       "basis_zscore": -1.08,
       "primary_liquidity": "BALANCED",
-      "shap_score": 48.2
+      "shap_score": 48.2,
+      "risk_posture": "DEFENSIVE_DE_RISK",
+      "size_multiplier": 0.5
     },
     {
       "symbol": "AMZN",
@@ -646,7 +670,9 @@
       "basis_spread_bps": null,
       "basis_zscore": null,
       "primary_liquidity": null,
-      "shap_score": 49.4
+      "shap_score": 49.4,
+      "risk_posture": "ELEVATED_CAUTION",
+      "size_multiplier": 0.75
     },
     {
       "symbol": "RY",
@@ -695,7 +721,9 @@
       "basis_spread_bps": -2.5,
       "basis_zscore": -0.55,
       "primary_liquidity": "TSX",
-      "shap_score": 46.2
+      "shap_score": 46.2,
+      "risk_posture": "ELEVATED_CAUTION",
+      "size_multiplier": 0.75
     },
     {
       "symbol": "CP",
@@ -744,7 +772,9 @@
       "basis_spread_bps": -2.8,
       "basis_zscore": -0.45,
       "primary_liquidity": "NYSE",
-      "shap_score": 42.1
+      "shap_score": 42.1,
+      "risk_posture": "ELEVATED_CAUTION",
+      "size_multiplier": 0.75
     },
     {
       "symbol": "SHOP",
@@ -791,7 +821,9 @@
       "basis_spread_bps": -0.6,
       "basis_zscore": -0.24,
       "primary_liquidity": "NYSE",
-      "shap_score": 39.0
+      "shap_score": 39.0,
+      "risk_posture": "ELEVATED_CAUTION",
+      "size_multiplier": 0.75
     },
     {
       "symbol": "ENB",
@@ -839,7 +871,9 @@
       "basis_spread_bps": 2.5,
       "basis_zscore": -0.13,
       "primary_liquidity": "TSX",
-      "shap_score": 31.0
+      "shap_score": 31.0,
+      "risk_posture": "DEFENSIVE_DE_RISK",
+      "size_multiplier": 0.5
     },
     {
       "symbol": "BAM",
@@ -884,7 +918,9 @@
       "basis_spread_bps": 1.2,
       "basis_zscore": 0.02,
       "primary_liquidity": "BALANCED",
-      "shap_score": 23.1
+      "shap_score": 23.1,
+      "risk_posture": "ELEVATED_CAUTION",
+      "size_multiplier": 0.75
     },
     {
       "symbol": "BN",
@@ -929,7 +965,9 @@
       "basis_spread_bps": -0.5,
       "basis_zscore": -0.31,
       "primary_liquidity": "BALANCED",
-      "shap_score": 23.1
+      "shap_score": 23.1,
+      "risk_posture": "ELEVATED_CAUTION",
+      "size_multiplier": 0.75
     }
   ]
 }

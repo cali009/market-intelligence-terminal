@@ -881,6 +881,49 @@ class SHAPValidationFeed(BaseModel):
         return self.model_dump()
 
 
+# ==========================================
+# PHASE 18: IDIOSYNCRATIC RISK MATRIX SCHEMAS
+# ==========================================
+
+
+class IdiosyncraticRiskProfile(BaseModel):
+    symbol: str
+    risk_posture: Literal["NORMAL_EQUILIBRIUM", "ELEVATED_CAUTION", "DEFENSIVE_DE_RISK", "IMMEDIATE_INVALIDATION"]
+    position_size_multiplier: float
+    hurst_flip_alert: bool
+    hurst_exponent: float
+    conformal_stop_price: float
+    conformal_ratchet_recommended: bool
+    effective_stop_price: float
+    volatility_expansion_alert: bool
+    cross_border_parity_stretch: bool
+    basis_spread_bps: Optional[float]
+    basis_zscore: Optional[float]
+    shap_detractor_drag_pts: float
+    primary_risk_driver: str
+    actionable_mitigation: str
+    as_of_date: str
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class IdiosyncraticRiskMatrixFeed(BaseModel):
+    as_of_date: str
+    total_securities_monitored: int
+    normal_equilibrium_count: int
+    elevated_caution_count: int
+    defensive_de_risk_count: int
+    immediate_invalidation_count: int
+    average_size_multiplier: float
+    profiles: List[IdiosyncraticRiskProfile]
+    disclaimers: List[str]
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+
 
 
 

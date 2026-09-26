@@ -38,6 +38,7 @@ from src.engine.conformal_bounds import adaptive_conformal_engine
 from src.engine.cross_border_parity import cross_border_parity_engine, DUAL_LISTED_PAIRS
 from src.engine.cpcv_engine import cpcv_engine
 from src.engine.shap_engine import shap_engine
+from src.engine.idiosyncratic_risk import idiosyncratic_risk_engine
 
 FEEDS_DIR = DATA_DIR / "feeds"
 DIST_DIR = DATA_DIR / "dist"
@@ -276,6 +277,10 @@ class EdgeExporter:
             shap_rec = shap_engine.get_attribution_for_symbol(sym)
             shap_dict = shap_rec.to_dict() if shap_rec else None
 
+            # Phase 18: Deterministic Idiosyncratic Risk Matrix
+            risk_prof = idiosyncratic_risk_engine.evaluate_symbol_risk(sym)
+            risk_dict = risk_prof.to_dict() if risk_prof else None
+
             # Add to leaderboard
             leaderboard_items.append({
                 "symbol": sym,
@@ -321,6 +326,8 @@ class EdgeExporter:
                 "basis_zscore": parity_rec.basis_zscore_60d if parity_rec else None,
                 "primary_liquidity": parity_rec.primary_liquidity_center if parity_rec else None,
                 "shap_score": shap_rec.model_score if shap_rec else None,
+                "risk_posture": risk_prof.risk_posture if risk_prof else "NORMAL_EQUILIBRIUM",
+                "size_multiplier": risk_prof.position_size_multiplier if risk_prof else 1.0,
             })
 
             # Write Symbol Detail JSON (includes last 120 bars for lightweight charting)
@@ -351,6 +358,7 @@ class EdgeExporter:
                 "conformal_bounds": conformal_bounds.to_dict(),
                 "cross_border_parity": parity_dict,
                 "shap_attribution": shap_dict,
+                "idiosyncratic_risk": risk_dict,
                 "score_record": {
                     "composite_score": score_rec.composite_score,
                     "confidence_tier": score_rec.confidence_tier,
@@ -594,8 +602,13 @@ class EdgeExporter:
             with open(d_dir / "shap_attributions.json", "w") as f:
                 json.dump(shap_payload, f, indent=2)
 
+            # Phase 18: Deterministic Idiosyncratic Risk Matrix Feed
+            risk_payload = idiosyncratic_risk_engine.generate_feed().to_dict()
+            with open(d_dir / "idiosyncratic_risk_matrix.json", "w") as f:
+                json.dump(risk_payload, f, indent=2)
+
         return {
-            "dist_files": 20,
+            "dist_files": 21,
             "symbol_files": symbol_files_count,
             "total_matches": len(scanner_results),
             "total_signals": len(signals_list),

@@ -5,7 +5,7 @@
   "currency": "CAD",
   "name": "Toronto-Dominion Bank",
   "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T06:23:21.080292+00:00",
+  "generated_at": "2026-09-26T06:41:23.594670+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 169.69000244140625,
@@ -358,7 +358,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 14,
     "gjr_garch_gamma": 0.24,
-    "last_updated": "2026-09-26T06:23:23.443336+00:00"
+    "last_updated": "2026-09-26T06:41:25.230008+00:00"
   },
   "conformal_bounds": {
     "symbol": "TD",
@@ -375,7 +375,7 @@
     "adapted_alpha": 0.105,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-09-26T06:23:23.461328+00:00"
+    "calibrated_at": "2026-09-26T06:41:25.243567+00:00"
   },
   "cross_border_parity": {
     "tsx_symbol": "TD",
@@ -463,6 +463,24 @@
       "conformal_rr": -1.17,
       "dual_basis_bps": 1.07
     }
+  },
+  "idiosyncratic_risk": {
+    "symbol": "TD",
+    "risk_posture": "ELEVATED_CAUTION",
+    "position_size_multiplier": 0.75,
+    "hurst_flip_alert": false,
+    "hurst_exponent": 0.5,
+    "conformal_stop_price": 104.7,
+    "conformal_ratchet_recommended": true,
+    "effective_stop_price": 104.7,
+    "volatility_expansion_alert": false,
+    "cross_border_parity_stretch": false,
+    "basis_spread_bps": 1.8,
+    "basis_zscore": -0.14,
+    "shap_detractor_drag_pts": -3.31,
+    "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-3.31 pts)",
+    "actionable_mitigation": "Minor basis disparity or factor detractor identified; 25% exposure haircut recommended under risk rules.",
+    "as_of_date": "2026-09-25"
   },
   "score_record": {
     "composite_score": 56,

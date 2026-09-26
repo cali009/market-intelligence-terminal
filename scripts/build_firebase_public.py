@@ -77,6 +77,8 @@ def build_firebase_bundle():
         ("cpcv_validation.json", "cpcv_validation"),
         ("shap_attributions.json", "shap_attributions.json"),
         ("shap_attributions.json", "shap_attributions"),
+        ("idiosyncratic_risk_matrix.json", "idiosyncratic_risk_matrix.json"),
+        ("idiosyncratic_risk_matrix.json", "idiosyncratic_risk_matrix"),
     ]
 
     for src_name, dest_name in core_feeds:

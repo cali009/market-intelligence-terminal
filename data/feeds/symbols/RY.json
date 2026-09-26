@@ -5,7 +5,7 @@
   "currency": "CAD",
   "name": "Royal Bank of Canada",
   "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T06:26:48.884829+00:00",
+  "generated_at": "2026-09-26T06:43:51.887233+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 283.20001220703125,
@@ -358,7 +358,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 14,
     "gjr_garch_gamma": 0.24,
-    "last_updated": "2026-09-26T06:26:50.595920+00:00"
+    "last_updated": "2026-09-26T06:43:53.389550+00:00"
   },
   "conformal_bounds": {
     "symbol": "RY",
@@ -375,7 +375,7 @@
     "adapted_alpha": 0.09,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-09-26T06:26:50.613298+00:00"
+    "calibrated_at": "2026-09-26T06:43:53.400935+00:00"
   },
   "cross_border_parity": {
     "tsx_symbol": "RY",
@@ -463,6 +463,24 @@
       "conformal_rr": -0.94,
       "dual_basis_bps": -2.59
     }
+  },
+  "idiosyncratic_risk": {
+    "symbol": "RY",
+    "risk_posture": "ELEVATED_CAUTION",
+    "position_size_multiplier": 0.75,
+    "hurst_flip_alert": false,
+    "hurst_exponent": 0.465,
+    "conformal_stop_price": 196.22,
+    "conformal_ratchet_recommended": true,
+    "effective_stop_price": 196.22,
+    "volatility_expansion_alert": false,
+    "cross_border_parity_stretch": false,
+    "basis_spread_bps": -2.5,
+    "basis_zscore": -0.55,
+    "shap_detractor_drag_pts": -8.41,
+    "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-8.41 pts)",
+    "actionable_mitigation": "Minor basis disparity or factor detractor identified; 25% exposure haircut recommended under risk rules.",
+    "as_of_date": "2026-09-25"
   },
   "score_record": {
     "composite_score": 44,

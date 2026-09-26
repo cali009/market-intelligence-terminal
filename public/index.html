@@ -3567,6 +3567,17 @@
                             <!-- Populated dynamically via JS -->
                         </div>
                     </div>
+
+                    <!-- Phase 18 Deterministic Idiosyncratic Risk Matrix -->
+                    <div style="margin-top: 24px;" id="drawerRiskMatrixWrapper">
+                        <h3 style="font-size: 13px; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
+                            <span>Deterministic Idiosyncratic Risk Matrix (Phase 18)</span>
+                            <span class="exchange-tag" style="font-size: 10px; background: rgba(245, 158, 11, 0.15); color: var(--accent-amber); border: 1px solid rgba(245, 158, 11, 0.3);">Microstructure De-Risking · Ratchet Stop</span>
+                        </h3>
+                        <div id="drawerRiskMatrixSection">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+                    </div>
                 `;
 
                 // Render Phase 13 Asset Microstructure Fingerprint
@@ -3580,6 +3591,9 @@
 
                 // Render Phase 17 LightGBM TreeSHAP Factor Attributions
                 renderSHAPAttributionInDrawer(data.shap_attribution);
+
+                // Render Phase 18 Deterministic Idiosyncratic Risk Matrix
+                renderIdiosyncraticRiskInDrawer(data.idiosyncratic_risk);
 
                 // Render Phase 4 Technical Engine Lab
                 renderTechnicalEngineInDrawer(data.technical_dossier);
@@ -4063,6 +4077,108 @@
                     <div style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 4px; padding: 8px; font-size: 11px; color: var(--text-muted); display: flex; justify-content: space-between; align-items: center;">
                         <span>Exact Mathematical Additivity: <strong style="color: var(--accent-green);">100% Verified (0.000 pts error)</strong></span>
                         <span style="color: var(--accent-cyan); font-weight: 600;">CSA 31-369 / SEC PDA Audit</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderIdiosyncraticRiskInDrawer(r) {
+            const container = document.getElementById('drawerRiskMatrixSection');
+            if (!container) return;
+
+            if (!r) {
+                container.innerHTML = '<div style="font-size: 11px; color: var(--text-muted); padding: 8px;">Idiosyncratic risk matrix evaluating...</div>';
+                return;
+            }
+
+            const pColor = r.risk_posture === 'NORMAL_EQUILIBRIUM' 
+                ? 'var(--accent-green)' 
+                : (r.risk_posture === 'ELEVATED_CAUTION' 
+                    ? 'var(--accent-amber)' 
+                    : (r.risk_posture === 'DEFENSIVE_DE_RISK' ? 'var(--accent-orange, #f97316)' : 'var(--accent-red)'));
+
+            const pBg = r.risk_posture === 'NORMAL_EQUILIBRIUM' 
+                ? 'rgba(16, 185, 129, 0.15)' 
+                : (r.risk_posture === 'ELEVATED_CAUTION' 
+                    ? 'rgba(245, 158, 11, 0.15)' 
+                    : (r.risk_posture === 'DEFENSIVE_DE_RISK' ? 'rgba(249, 115, 22, 0.15)' : 'rgba(239, 68, 68, 0.15)'));
+
+            const pLabel = r.risk_posture.replace(/_/g, ' ');
+
+            container.innerHTML = `
+                <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 16px;">
+                    <!-- Top Summary Bar -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">
+                        <div>
+                            <div style="font-size: 10px; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Systematic Risk Posture</div>
+                            <div style="margin-top: 4px;">
+                                <span class="score-pill" style="font-size: 11px; font-weight: 800; background: ${pBg}; color: ${pColor}; border: 1px solid ${pColor}; padding: 4px 10px;">
+                                    ● ${pLabel}
+                                </span>
+                            </div>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-size: 10px; color: var(--text-muted); text-transform: uppercase;">Size Multiplier / Haircut</div>
+                            <div style="font-size: 15px; font-weight: 800; font-family: monospace; color: ${pColor}; margin-top: 2px;">
+                                ${r.position_size_multiplier.toFixed(2)}x <span style="font-size: 10px; color: var(--text-muted); font-weight: 600;">(${((1 - r.position_size_multiplier) * 100).toFixed(0)}% Cut)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stop Ratchet Level -->
+                    <div style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 6px; padding: 10px 12px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <span style="font-size: 11px; font-weight: 700; color: var(--text-primary);">Effective Conformal Ratchet Stop:</span>
+                            <span style="font-family: monospace; font-size: 13px; font-weight: 800; color: var(--accent-red); margin-left: 6px;">$${r.effective_stop_price.toFixed(2)}</span>
+                        </div>
+                        <span class="exchange-tag" style="font-size: 9px; background: ${r.conformal_ratchet_recommended ? 'rgba(16, 185, 129, 0.15)' : 'rgba(255,255,255,0.06)'}; color: ${r.conformal_ratchet_recommended ? 'var(--accent-green)' : 'var(--text-muted)'};">
+                            ${r.conformal_ratchet_recommended ? 'RATCHET ACTIVE' : 'STANDARD STOP'}
+                        </span>
+                    </div>
+
+                    <!-- Risk Indicators Grid -->
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 12px;">
+                        <div style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 4px; padding: 8px;">
+                            <div style="font-size: 9px; color: var(--text-muted); text-transform: uppercase;">Hurst Memory State</div>
+                            <div style="font-size: 11px; font-weight: 800; color: ${r.hurst_flip_alert ? 'var(--accent-red)' : 'var(--accent-green)'}; margin-top: 3px;">
+                                ${r.hurst_flip_alert ? '⚠ FLIP ALERT (H=' + r.hurst_exponent + ')' : '● INTACT (H=' + r.hurst_exponent + ')'}
+                            </div>
+                        </div>
+
+                        <div style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 4px; padding: 8px;">
+                            <div style="font-size: 9px; color: var(--text-muted); text-transform: uppercase;">Volatility Expansion</div>
+                            <div style="font-size: 11px; font-weight: 800; color: ${r.volatility_expansion_alert ? 'var(--accent-red)' : 'var(--accent-green)'}; margin-top: 3px;">
+                                ${r.volatility_expansion_alert ? '⚠ SURGE (>35% ATR)' : '● NORMAL BANDWIDTH'}
+                            </div>
+                        </div>
+
+                        <div style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 4px; padding: 8px;">
+                            <div style="font-size: 9px; color: var(--text-muted); text-transform: uppercase;">Cross-Border Parity</div>
+                            <div style="font-size: 11px; font-weight: 800; color: ${r.cross_border_parity_stretch ? 'var(--accent-red)' : 'var(--accent-cyan)'}; margin-top: 3px;">
+                                ${r.basis_zscore != null ? (r.cross_border_parity_stretch ? '⚠ STRETCH (' + r.basis_zscore + 'σ)' : '● BASIS ' + r.basis_spread_bps + ' bps') : 'N/A (US PURE-PLAY)'}
+                            </div>
+                        </div>
+
+                        <div style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 4px; padding: 8px;">
+                            <div style="font-size: 9px; color: var(--text-muted); text-transform: uppercase;">TreeSHAP Factor Drag</div>
+                            <div style="font-size: 11px; font-weight: 800; color: ${r.shap_detractor_drag_pts < -2.5 ? 'var(--accent-red)' : 'var(--accent-green)'}; margin-top: 3px;">
+                                ${r.shap_detractor_drag_pts < -2.5 ? '⚠ DETRACTOR ' + r.shap_detractor_drag_pts + ' pts' : '● MINIMAL (' + r.shap_detractor_drag_pts + ' pts)'}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mitigation Protocol Guidance -->
+                    <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border-color); border-radius: 6px; padding: 10px 12px; margin-bottom: 10px;">
+                        <div style="font-size: 10px; font-weight: 700; color: var(--accent-cyan); text-transform: uppercase; margin-bottom: 3px;">
+                            Primary Driver: ${r.primary_risk_driver}
+                        </div>
+                        <div style="font-size: 11px; color: var(--text-secondary); line-height: 1.4;">
+                            ${r.actionable_mitigation}
+                        </div>
+                    </div>
+
+                    <div style="font-size: 10px; color: var(--text-muted); text-align: center; border-top: 1px solid var(--border-color); padding-top: 8px;">
+                        Systematic Quantitative Risk Protocol (CSA 31-369 / SEC Publisher Exclusion)
                     </div>
                 </div>
             `;
