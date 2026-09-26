@@ -3502,10 +3502,24 @@
                             <!-- Populated dynamically via JS -->
                         </div>
                     </div>
+
+                    <!-- Phase 14 Adaptive Conformal Prediction Bounds -->
+                    <div style="margin-top: 24px;">
+                        <h3 style="font-size: 13px; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
+                            <span>Adaptive Conformal Prediction Bounds (Phase 14)</span>
+                            <span class="exchange-tag" style="font-size: 10px; background: rgba(16, 185, 129, 0.15); color: var(--accent-green); border: 1px solid rgba(16, 185, 129, 0.3);">90% Certified Coverage · ACI</span>
+                        </h3>
+                        <div id="drawerConformalSection">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+                    </div>
                 `;
 
                 // Render Phase 13 Asset Microstructure Fingerprint
                 renderAssetFingerprintInDrawer(data.asset_fingerprint);
+
+                // Render Phase 14 Adaptive Conformal Prediction Bounds
+                renderConformalBoundsInDrawer(data.conformal_bounds);
 
                 // Render Phase 4 Technical Engine Lab
                 renderTechnicalEngineInDrawer(data.technical_dossier);
@@ -3725,6 +3739,91 @@
                         <span>Dominant Harmonic Cycle: <strong style="color: var(--text-primary);">${fp.dominant_cycle_bars} trading sessions</strong></span>
                         <span>Downside Volatility Leverage (γ): <strong style="color: var(--accent-amber);">${fp.gjr_garch_gamma}</strong></span>
                         <span style="font-family: monospace;">Calibrated: ${fp.last_updated.substring(0, 10)}</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderConformalBoundsInDrawer(cb) {
+            const container = document.getElementById('drawerConformalSection');
+            if (!container) return;
+
+            if (!cb) {
+                container.innerHTML = '<div style="font-size: 11px; color: var(--text-muted); padding: 8px;">Conformal prediction calibration pending.</div>';
+                return;
+            }
+
+            const isCovered = cb.realized_coverage_pct >= 88.0;
+            const covColor = isCovered ? 'var(--accent-green)' : 'var(--accent-amber)';
+
+            const warningBanner = cb.volatility_expansion_warning ? `
+                <div style="background: rgba(239, 68, 68, 0.12); border: 1px solid rgba(239, 68, 68, 0.35); border-radius: 6px; padding: 10px 14px; margin-bottom: 12px; font-size: 11px; color: #fca5a5;">
+                    <strong style="color: #ef4444;">⚠ VOLATILITY EXPANSION REGIME ALERT:</strong> Current bandwidth is &gt; 35% wider than the 60-day baseline. Asymmetric downside risk is elevated; R:R may degrade rapidly.
+                </div>
+            ` : '';
+
+            container.innerHTML = `
+                <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 16px;">
+                    ${warningBanner}
+
+                    <!-- Top Summary Bar -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">
+                        <div>
+                            <div style="font-size: 10px; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Finite-Sample Coverage Guarantee</div>
+                            <div style="font-size: 14px; font-weight: 800; color: ${covColor}; margin-top: 2px;">
+                                ${cb.realized_coverage_pct}% Realized <span style="font-size: 11px; color: var(--text-muted); font-weight: 600;">(vs ${cb.nominal_coverage_pct}% Target)</span>
+                            </div>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-size: 10px; color: var(--text-muted); text-transform: uppercase;">ACI Adapted Alpha</div>
+                            <div style="font-size: 12px; font-weight: 700; font-family: monospace; color: var(--accent-cyan); margin-top: 2px;">
+                                α_t = ${cb.adapted_alpha}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Asymmetric Price Boundary Ladder -->
+                    <div style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 6px; padding: 12px; margin-bottom: 12px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; padding: 4px 0; border-bottom: 1px dashed rgba(255,255,255,0.08);">
+                            <span style="font-size: 11px; font-weight: 700; color: var(--accent-green);">Upper Exhaustion Target</span>
+                            <span style="font-family: monospace; font-size: 13px; font-weight: 800; color: var(--accent-green);">$${cb.conformal_upper_target.toFixed(2)} <span style="font-size: 10px;">(+${cb.target_distance_pct}%)</span></span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; padding: 4px 0; border-bottom: 1px dashed rgba(255,255,255,0.08);">
+                            <span style="font-size: 11px; color: var(--text-muted);">Expected Path Median</span>
+                            <span style="font-family: monospace; font-size: 12px; color: var(--text-secondary);">$${cb.conformal_median_path.toFixed(2)}</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; padding: 4px 0; border-bottom: 1px dashed rgba(255,255,255,0.08);">
+                            <span style="font-size: 11px; font-weight: 700; color: var(--text-primary);">Current Spot Price</span>
+                            <span style="font-family: monospace; font-size: 13px; font-weight: 800; color: var(--text-primary);">$${cb.current_price.toFixed(2)}</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; padding: 4px 0;">
+                            <span style="font-size: 11px; font-weight: 700; color: var(--accent-red);">Structural Invalidation Stop</span>
+                            <span style="font-family: monospace; font-size: 13px; font-weight: 800; color: var(--accent-red);">$${cb.conformal_lower_stop.toFixed(2)} <span style="font-size: 10px;">(-${cb.stop_distance_pct}%)</span></span>
+                        </div>
+                    </div>
+
+                    <!-- Metric Footer Grid -->
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; text-align: center;">
+                        <div style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 4px; padding: 8px;">
+                            <div style="font-size: 10px; color: var(--text-muted); text-transform: uppercase;">Conformal R:R</div>
+                            <div style="font-size: 14px; font-weight: 800; color: ${cb.conformal_risk_reward_ratio >= 1.5 ? 'var(--accent-green)' : 'var(--accent-amber)'}; margin-top: 2px;">
+                                ${cb.conformal_risk_reward_ratio}x
+                            </div>
+                        </div>
+
+                        <div style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 4px; padding: 8px;">
+                            <div style="font-size: 10px; color: var(--text-muted); text-transform: uppercase;">Bandwidth Multiple</div>
+                            <div style="font-size: 14px; font-weight: 800; color: var(--text-primary); margin-top: 2px;">
+                                ${cb.bandwidth_atr_multiple} ATR
+                            </div>
+                        </div>
+
+                        <div style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 4px; padding: 8px;">
+                            <div style="font-size: 10px; color: var(--text-muted); text-transform: uppercase;">Boundary State</div>
+                            <div style="font-size: 11px; font-weight: 800; color: var(--accent-green); margin-top: 4px;">
+                                ● ${cb.invalidation_status}
+                            </div>
+                        </div>
                     </div>
                 </div>
             `;

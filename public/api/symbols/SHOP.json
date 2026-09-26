@@ -5,7 +5,7 @@
   "currency": "CAD",
   "name": "Shopify Inc.",
   "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T04:37:21.277064+00:00",
+  "generated_at": "2026-09-26T05:24:45.680723+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 205.50999450683594,
@@ -361,7 +361,24 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 24,
     "gjr_garch_gamma": 0.14,
-    "last_updated": "2026-09-26T04:37:22.914824+00:00"
+    "last_updated": "2026-09-26T05:24:47.444052+00:00"
+  },
+  "conformal_bounds": {
+    "symbol": "SHOP",
+    "nominal_coverage_pct": 90.0,
+    "realized_coverage_pct": 87.1,
+    "current_price": 199.96,
+    "conformal_lower_stop": 173.58,
+    "conformal_median_path": 202.34,
+    "conformal_upper_target": 233.13,
+    "stop_distance_pct": 13.19,
+    "target_distance_pct": 16.59,
+    "conformal_risk_reward_ratio": 1.26,
+    "bandwidth_atr_multiple": 8.58,
+    "adapted_alpha": 0.165,
+    "volatility_expansion_warning": false,
+    "invalidation_status": "BOUNDS_INTACT",
+    "calibrated_at": "2026-09-26T05:24:47.458360+00:00"
   },
   "score_record": {
     "composite_score": 36,

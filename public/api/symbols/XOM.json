@@ -5,7 +5,7 @@
   "currency": "USD",
   "name": "Exxon Mobil Corporation",
   "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T04:37:21.277064+00:00",
+  "generated_at": "2026-09-26T05:24:45.680723+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 160.22999572753906,
@@ -358,7 +358,24 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 22,
     "gjr_garch_gamma": 0.22,
-    "last_updated": "2026-09-26T04:37:22.477192+00:00"
+    "last_updated": "2026-09-26T05:24:46.952662+00:00"
+  },
+  "conformal_bounds": {
+    "symbol": "XOM",
+    "nominal_coverage_pct": 90.0,
+    "realized_coverage_pct": 85.0,
+    "current_price": 114.22,
+    "conformal_lower_stop": 107.34,
+    "conformal_median_path": 114.21,
+    "conformal_upper_target": 121.07,
+    "stop_distance_pct": 6.02,
+    "target_distance_pct": 6.0,
+    "conformal_risk_reward_ratio": 1.0,
+    "bandwidth_atr_multiple": 6.7,
+    "adapted_alpha": 0.195,
+    "volatility_expansion_warning": false,
+    "invalidation_status": "BOUNDS_INTACT",
+    "calibrated_at": "2026-09-26T05:24:46.967134+00:00"
   },
   "score_record": {
     "composite_score": 54,

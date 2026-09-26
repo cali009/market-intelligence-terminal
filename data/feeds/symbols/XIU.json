@@ -5,7 +5,7 @@
   "currency": "CAD",
   "name": "iShares S&P/TSX 60 Index ETF",
   "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T04:41:25.100677+00:00",
+  "generated_at": "2026-09-26T05:30:38.831426+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 53.09000015258789,
@@ -355,7 +355,24 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 14,
     "gjr_garch_gamma": 0.16,
-    "last_updated": "2026-09-26T04:41:27.377929+00:00"
+    "last_updated": "2026-09-26T05:30:41.238059+00:00"
+  },
+  "conformal_bounds": {
+    "symbol": "XIU",
+    "nominal_coverage_pct": 90.0,
+    "realized_coverage_pct": 88.2,
+    "current_price": 44.35,
+    "conformal_lower_stop": 43.12,
+    "conformal_median_path": 44.41,
+    "conformal_upper_target": 45.76,
+    "stop_distance_pct": 2.77,
+    "target_distance_pct": 3.18,
+    "conformal_risk_reward_ratio": 1.15,
+    "bandwidth_atr_multiple": 8.15,
+    "adapted_alpha": 0.08,
+    "volatility_expansion_warning": false,
+    "invalidation_status": "BOUNDS_INTACT",
+    "calibrated_at": "2026-09-26T05:30:41.252850+00:00"
   },
   "score_record": {
     "composite_score": 63,

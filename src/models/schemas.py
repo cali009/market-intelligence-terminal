@@ -698,6 +698,33 @@ class AssetFingerprint(BaseModel):
         return self.model_dump()
 
 
+# ==========================================
+# PHASE 14: ADAPTIVE CONFORMAL PREDICTION (ACI) SCHEMAS
+# ==========================================
+
+
+class AdaptiveConformalBounds(BaseModel):
+    symbol: str
+    nominal_coverage_pct: float
+    realized_coverage_pct: float
+    current_price: float
+    conformal_lower_stop: float
+    conformal_median_path: float
+    conformal_upper_target: float
+    stop_distance_pct: float
+    target_distance_pct: float
+    conformal_risk_reward_ratio: float
+    bandwidth_atr_multiple: float
+    adapted_alpha: float
+    volatility_expansion_warning: bool
+    invalidation_status: Literal["BOUNDS_INTACT", "LOWER_BREACH_STOPPED", "UPPER_EXHAUSTION_REACHED"] = "BOUNDS_INTACT"
+    calibrated_at: str
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+
 
 
 

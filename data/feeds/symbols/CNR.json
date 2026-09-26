@@ -5,7 +5,7 @@
   "currency": "CAD",
   "name": "Canadian National Railway",
   "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T04:41:25.100677+00:00",
+  "generated_at": "2026-09-26T05:30:38.831426+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 169.8000030517578,
@@ -356,7 +356,24 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 14,
     "gjr_garch_gamma": 0.16,
-    "last_updated": "2026-09-26T04:41:26.901844+00:00"
+    "last_updated": "2026-09-26T05:30:40.727960+00:00"
+  },
+  "conformal_bounds": {
+    "symbol": "CNR",
+    "nominal_coverage_pct": 90.0,
+    "realized_coverage_pct": 87.6,
+    "current_price": 128.8,
+    "conformal_lower_stop": 121.14,
+    "conformal_median_path": 128.68,
+    "conformal_upper_target": 136.11,
+    "stop_distance_pct": 5.95,
+    "target_distance_pct": 5.68,
+    "conformal_risk_reward_ratio": 0.95,
+    "bandwidth_atr_multiple": 7.43,
+    "adapted_alpha": 0.135,
+    "volatility_expansion_warning": false,
+    "invalidation_status": "BOUNDS_INTACT",
+    "calibrated_at": "2026-09-26T05:30:40.742288+00:00"
   },
   "score_record": {
     "composite_score": 50,

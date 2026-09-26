@@ -5,7 +5,7 @@
   "currency": "CAD",
   "name": "Brookfield Corporation",
   "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T04:37:21.277064+00:00",
+  "generated_at": "2026-09-26T05:24:45.680723+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 51.970001220703125,
@@ -358,7 +358,24 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 14,
     "gjr_garch_gamma": 0.16,
-    "last_updated": "2026-09-26T04:37:23.265390+00:00"
+    "last_updated": "2026-09-26T05:24:47.838568+00:00"
+  },
+  "conformal_bounds": {
+    "symbol": "BN",
+    "nominal_coverage_pct": 90.0,
+    "realized_coverage_pct": 85.0,
+    "current_price": 63.61,
+    "conformal_lower_stop": 57.83,
+    "conformal_median_path": 64.03,
+    "conformal_upper_target": 70.58,
+    "stop_distance_pct": 9.08,
+    "target_distance_pct": 10.96,
+    "conformal_risk_reward_ratio": 1.21,
+    "bandwidth_atr_multiple": 8.39,
+    "adapted_alpha": 0.055,
+    "volatility_expansion_warning": false,
+    "invalidation_status": "BOUNDS_INTACT",
+    "calibrated_at": "2026-09-26T05:24:47.853012+00:00"
   },
   "score_record": {
     "composite_score": 18,

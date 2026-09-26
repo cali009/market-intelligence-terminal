@@ -34,6 +34,7 @@ from src.engine.alerts import alert_engine
 from src.engine.filing_deep_read import filing_deep_read_engine
 from src.engine.production_scale import production_scale_engine
 from src.engine.asset_fingerprint import asset_fingerprint_engine
+from src.engine.conformal_bounds import adaptive_conformal_engine
 
 FEEDS_DIR = DATA_DIR / "feeds"
 DIST_DIR = DATA_DIR / "dist"
@@ -261,6 +262,9 @@ class EdgeExporter:
             # Phase 13: Idiosyncratic Asset Fingerprint & Stationarity Model
             fingerprint = asset_fingerprint_engine.generate_fingerprint_for_symbol(sym)
 
+            # Phase 14: Adaptive Conformal Prediction (ACI) Statistical Bounds
+            conformal_bounds = adaptive_conformal_engine.calibrate_bounds_for_symbol(sym)
+
             # Add to leaderboard
             leaderboard_items.append({
                 "symbol": sym,
@@ -295,6 +299,11 @@ class EdgeExporter:
                 "fractional_d_order": fingerprint.fractional_d_order,
                 "memory_retention_pct": fingerprint.memory_retention_pct,
                 "amihud_illiquidity": fingerprint.amihud_illiquidity,
+                "conformal_stop": conformal_bounds.conformal_lower_stop,
+                "conformal_target": conformal_bounds.conformal_upper_target,
+                "conformal_rr": conformal_bounds.conformal_risk_reward_ratio,
+                "conformal_coverage_pct": conformal_bounds.realized_coverage_pct,
+                "vol_expansion_warning": conformal_bounds.volatility_expansion_warning,
             })
 
             # Write Symbol Detail JSON (includes last 120 bars for lightweight charting)
@@ -322,6 +331,7 @@ class EdgeExporter:
                 "technical_dossier": tech_dossier,
                 "fundamental_dossier": fund_dossier,
                 "asset_fingerprint": fingerprint.to_dict(),
+                "conformal_bounds": conformal_bounds.to_dict(),
                 "score_record": {
                     "composite_score": score_rec.composite_score,
                     "confidence_tier": score_rec.confidence_tier,
@@ -545,8 +555,13 @@ class EdgeExporter:
             with open(d_dir / "asset_fingerprints.json", "w") as f:
                 json.dump(fingerprints_payload, f, indent=2)
 
+            # Phase 14: Adaptive Conformal Prediction (ACI) Statistical Bounds Feed
+            conformal_payload = adaptive_conformal_engine.generate_conformal_bounds_feed()
+            with open(d_dir / "conformal_bounds.json", "w") as f:
+                json.dump(conformal_payload, f, indent=2)
+
         return {
-            "dist_files": 16,
+            "dist_files": 17,
             "symbol_files": symbol_files_count,
             "total_matches": len(scanner_results),
             "total_signals": len(signals_list),

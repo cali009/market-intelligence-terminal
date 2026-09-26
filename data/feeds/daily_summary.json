@@ -1,6 +1,6 @@
 {
   "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T04:41:25.100677+00:00",
+  "generated_at": "2026-09-26T05:30:38.831426+00:00",
   "regimes": {
     "US": {
       "market_label": "US Equities",
@@ -69,7 +69,12 @@
       "hurst_class": "RANDOM_WALK",
       "fractional_d_order": 0.39,
       "memory_retention_pct": 82.5,
-      "amihud_illiquidity": 0.001
+      "amihud_illiquidity": 0.001,
+      "conformal_stop": 576.08,
+      "conformal_target": 618.32,
+      "conformal_rr": 0.87,
+      "conformal_coverage_pct": 90.0,
+      "vol_expansion_warning": false
     },
     {
       "symbol": "SPY",
@@ -109,7 +114,12 @@
       "hurst_class": "RANDOM_WALK",
       "fractional_d_order": 0.51,
       "memory_retention_pct": 77.0,
-      "amihud_illiquidity": 0.001
+      "amihud_illiquidity": 0.001,
+      "conformal_stop": 644.81,
+      "conformal_target": 678.61,
+      "conformal_rr": 0.79,
+      "conformal_coverage_pct": 90.0,
+      "vol_expansion_warning": false
     },
     {
       "symbol": "MSFT",
@@ -152,7 +162,12 @@
       "hurst_class": "RANDOM_WALK",
       "fractional_d_order": 0.38,
       "memory_retention_pct": 82.9,
-      "amihud_illiquidity": 0.001
+      "amihud_illiquidity": 0.001,
+      "conformal_stop": 489.87,
+      "conformal_target": 545.44,
+      "conformal_rr": 1.25,
+      "conformal_coverage_pct": 87.6,
+      "vol_expansion_warning": false
     },
     {
       "symbol": "AAPL",
@@ -191,7 +206,12 @@
       "hurst_class": "RANDOM_WALK",
       "fractional_d_order": 0.39,
       "memory_retention_pct": 82.5,
-      "amihud_illiquidity": 0.001
+      "amihud_illiquidity": 0.001,
+      "conformal_stop": 235.91,
+      "conformal_target": 280.62,
+      "conformal_rr": 1.41,
+      "conformal_coverage_pct": 90.6,
+      "vol_expansion_warning": false
     },
     {
       "symbol": "NVDA",
@@ -229,7 +249,12 @@
       "hurst_class": "RANDOM_WALK",
       "fractional_d_order": 0.39,
       "memory_retention_pct": 82.5,
-      "amihud_illiquidity": 0.001
+      "amihud_illiquidity": 0.001,
+      "conformal_stop": 161.36,
+      "conformal_target": 201.25,
+      "conformal_rr": 0.95,
+      "conformal_coverage_pct": 91.2,
+      "vol_expansion_warning": false
     }
   ],
   "total_securities_analyzed": 19,

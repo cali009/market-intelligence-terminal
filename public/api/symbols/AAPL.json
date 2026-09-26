@@ -5,7 +5,7 @@
   "currency": "USD",
   "name": "Apple Inc.",
   "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T04:37:21.277064+00:00",
+  "generated_at": "2026-09-26T05:24:45.680723+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 336.0400085449219,
@@ -355,7 +355,24 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 26,
     "gjr_garch_gamma": 0.08,
-    "last_updated": "2026-09-26T04:37:21.839768+00:00"
+    "last_updated": "2026-09-26T05:24:46.333452+00:00"
+  },
+  "conformal_bounds": {
+    "symbol": "AAPL",
+    "nominal_coverage_pct": 90.0,
+    "realized_coverage_pct": 90.6,
+    "current_price": 254.43,
+    "conformal_lower_stop": 235.91,
+    "conformal_median_path": 257.11,
+    "conformal_upper_target": 280.62,
+    "stop_distance_pct": 7.28,
+    "target_distance_pct": 10.29,
+    "conformal_risk_reward_ratio": 1.41,
+    "bandwidth_atr_multiple": 9.17,
+    "adapted_alpha": 0.085,
+    "volatility_expansion_warning": false,
+    "invalidation_status": "BOUNDS_INTACT",
+    "calibrated_at": "2026-09-26T05:24:46.348234+00:00"
   },
   "score_record": {
     "composite_score": 65,

@@ -1,6 +1,6 @@
 {
   "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T04:37:21.277064+00:00",
+  "generated_at": "2026-09-26T05:24:45.680723+00:00",
   "securities": [
     {
       "symbol": "QQQ",
@@ -39,7 +39,12 @@
       "hurst_class": "RANDOM_WALK",
       "fractional_d_order": 0.39,
       "memory_retention_pct": 82.5,
-      "amihud_illiquidity": 0.001
+      "amihud_illiquidity": 0.001,
+      "conformal_stop": 576.08,
+      "conformal_target": 618.32,
+      "conformal_rr": 0.87,
+      "conformal_coverage_pct": 90.0,
+      "vol_expansion_warning": false
     },
     {
       "symbol": "SPY",
@@ -79,7 +84,12 @@
       "hurst_class": "RANDOM_WALK",
       "fractional_d_order": 0.51,
       "memory_retention_pct": 77.0,
-      "amihud_illiquidity": 0.001
+      "amihud_illiquidity": 0.001,
+      "conformal_stop": 644.81,
+      "conformal_target": 678.61,
+      "conformal_rr": 0.79,
+      "conformal_coverage_pct": 90.0,
+      "vol_expansion_warning": false
     },
     {
       "symbol": "MSFT",
@@ -122,7 +132,12 @@
       "hurst_class": "RANDOM_WALK",
       "fractional_d_order": 0.38,
       "memory_retention_pct": 82.9,
-      "amihud_illiquidity": 0.001
+      "amihud_illiquidity": 0.001,
+      "conformal_stop": 489.87,
+      "conformal_target": 545.44,
+      "conformal_rr": 1.25,
+      "conformal_coverage_pct": 87.6,
+      "vol_expansion_warning": false
     },
     {
       "symbol": "AAPL",
@@ -161,7 +176,12 @@
       "hurst_class": "RANDOM_WALK",
       "fractional_d_order": 0.39,
       "memory_retention_pct": 82.5,
-      "amihud_illiquidity": 0.001
+      "amihud_illiquidity": 0.001,
+      "conformal_stop": 235.91,
+      "conformal_target": 280.62,
+      "conformal_rr": 1.41,
+      "conformal_coverage_pct": 90.6,
+      "vol_expansion_warning": false
     },
     {
       "symbol": "NVDA",
@@ -199,7 +219,12 @@
       "hurst_class": "RANDOM_WALK",
       "fractional_d_order": 0.39,
       "memory_retention_pct": 82.5,
-      "amihud_illiquidity": 0.001
+      "amihud_illiquidity": 0.001,
+      "conformal_stop": 161.36,
+      "conformal_target": 201.25,
+      "conformal_rr": 0.95,
+      "conformal_coverage_pct": 91.2,
+      "vol_expansion_warning": false
     },
     {
       "symbol": "XIU",
@@ -238,7 +263,12 @@
       "hurst_class": "RANDOM_WALK",
       "fractional_d_order": 0.5,
       "memory_retention_pct": 77.5,
-      "amihud_illiquidity": 0.001
+      "amihud_illiquidity": 0.001,
+      "conformal_stop": 43.12,
+      "conformal_target": 45.76,
+      "conformal_rr": 1.15,
+      "conformal_coverage_pct": 88.2,
+      "vol_expansion_warning": false
     },
     {
       "symbol": "TD",
@@ -277,7 +307,12 @@
       "hurst_class": "RANDOM_WALK",
       "fractional_d_order": 0.56,
       "memory_retention_pct": 74.8,
-      "amihud_illiquidity": 0.001
+      "amihud_illiquidity": 0.001,
+      "conformal_stop": 104.7,
+      "conformal_target": 117.57,
+      "conformal_rr": 1.45,
+      "conformal_coverage_pct": 91.2,
+      "vol_expansion_warning": false
     },
     {
       "symbol": "XOM",
@@ -315,7 +350,12 @@
       "hurst_class": "MEAN_REVERTING",
       "fractional_d_order": 0.49,
       "memory_retention_pct": 78.0,
-      "amihud_illiquidity": 0.001
+      "amihud_illiquidity": 0.001,
+      "conformal_stop": 107.34,
+      "conformal_target": 121.07,
+      "conformal_rr": 1.0,
+      "conformal_coverage_pct": 85.0,
+      "vol_expansion_warning": false
     },
     {
       "symbol": "CNQ",
@@ -352,7 +392,12 @@
       "hurst_class": "RANDOM_WALK",
       "fractional_d_order": 0.48,
       "memory_retention_pct": 78.4,
-      "amihud_illiquidity": 0.001
+      "amihud_illiquidity": 0.001,
+      "conformal_stop": 41.38,
+      "conformal_target": 49.63,
+      "conformal_rr": 1.12,
+      "conformal_coverage_pct": 87.6,
+      "vol_expansion_warning": false
     },
     {
       "symbol": "JPM",
@@ -391,7 +436,12 @@
       "hurst_class": "RANDOM_WALK",
       "fractional_d_order": 0.56,
       "memory_retention_pct": 74.8,
-      "amihud_illiquidity": 0.001
+      "amihud_illiquidity": 0.001,
+      "conformal_stop": 297.03,
+      "conformal_target": 333.92,
+      "conformal_rr": 0.98,
+      "conformal_coverage_pct": 93.5,
+      "vol_expansion_warning": false
     },
     {
       "symbol": "GOOGL",
@@ -427,7 +477,12 @@
       "hurst_class": "RANDOM_WALK",
       "fractional_d_order": 0.39,
       "memory_retention_pct": 82.5,
-      "amihud_illiquidity": 0.001
+      "amihud_illiquidity": 0.001,
+      "conformal_stop": 222.9,
+      "conformal_target": 274.66,
+      "conformal_rr": 1.45,
+      "conformal_coverage_pct": 85.0,
+      "vol_expansion_warning": false
     },
     {
       "symbol": "CNR",
@@ -465,7 +520,12 @@
       "hurst_class": "MEAN_REVERTING",
       "fractional_d_order": 0.52,
       "memory_retention_pct": 76.6,
-      "amihud_illiquidity": 0.001
+      "amihud_illiquidity": 0.001,
+      "conformal_stop": 121.14,
+      "conformal_target": 136.11,
+      "conformal_rr": 0.95,
+      "conformal_coverage_pct": 87.6,
+      "vol_expansion_warning": false
     },
     {
       "symbol": "AMZN",
@@ -503,7 +563,12 @@
       "hurst_class": "RANDOM_WALK",
       "fractional_d_order": 0.39,
       "memory_retention_pct": 82.5,
-      "amihud_illiquidity": 0.001
+      "amihud_illiquidity": 0.001,
+      "conformal_stop": 204.1,
+      "conformal_target": 236.59,
+      "conformal_rr": 0.8,
+      "conformal_coverage_pct": 88.2,
+      "vol_expansion_warning": false
     },
     {
       "symbol": "RY",
@@ -541,7 +606,12 @@
       "hurst_class": "RANDOM_WALK",
       "fractional_d_order": 0.57,
       "memory_retention_pct": 74.4,
-      "amihud_illiquidity": 0.001
+      "amihud_illiquidity": 0.001,
+      "conformal_stop": 196.22,
+      "conformal_target": 214.89,
+      "conformal_rr": 1.45,
+      "conformal_coverage_pct": 85.0,
+      "vol_expansion_warning": false
     },
     {
       "symbol": "CP",
@@ -579,7 +649,12 @@
       "hurst_class": "RANDOM_WALK",
       "fractional_d_order": 0.5,
       "memory_retention_pct": 77.5,
-      "amihud_illiquidity": 0.001
+      "amihud_illiquidity": 0.001,
+      "conformal_stop": 96.83,
+      "conformal_target": 110.57,
+      "conformal_rr": 1.06,
+      "conformal_coverage_pct": 93.5,
+      "vol_expansion_warning": false
     },
     {
       "symbol": "SHOP",
@@ -615,7 +690,12 @@
       "hurst_class": "RANDOM_WALK",
       "fractional_d_order": 0.44,
       "memory_retention_pct": 80.2,
-      "amihud_illiquidity": 0.001
+      "amihud_illiquidity": 0.001,
+      "conformal_stop": 173.58,
+      "conformal_target": 233.13,
+      "conformal_rr": 1.26,
+      "conformal_coverage_pct": 87.1,
+      "vol_expansion_warning": false
     },
     {
       "symbol": "ENB",
@@ -652,7 +732,12 @@
       "hurst_class": "MEAN_REVERTING",
       "fractional_d_order": 0.5,
       "memory_retention_pct": 77.5,
-      "amihud_illiquidity": 0.001
+      "amihud_illiquidity": 0.001,
+      "conformal_stop": 66.08,
+      "conformal_target": 71.77,
+      "conformal_rr": 0.88,
+      "conformal_coverage_pct": 90.0,
+      "vol_expansion_warning": false
     },
     {
       "symbol": "BAM",
@@ -686,7 +771,12 @@
       "hurst_class": "RANDOM_WALK",
       "fractional_d_order": 0.5,
       "memory_retention_pct": 77.5,
-      "amihud_illiquidity": 0.001
+      "amihud_illiquidity": 0.001,
+      "conformal_stop": 72.55,
+      "conformal_target": 91.52,
+      "conformal_rr": 1.28,
+      "conformal_coverage_pct": 91.2,
+      "vol_expansion_warning": false
     },
     {
       "symbol": "BN",
@@ -720,7 +810,12 @@
       "hurst_class": "RANDOM_WALK",
       "fractional_d_order": 0.5,
       "memory_retention_pct": 77.5,
-      "amihud_illiquidity": 0.001
+      "amihud_illiquidity": 0.001,
+      "conformal_stop": 57.83,
+      "conformal_target": 70.58,
+      "conformal_rr": 1.21,
+      "conformal_coverage_pct": 85.0,
+      "vol_expansion_warning": false
     }
   ]
 }
