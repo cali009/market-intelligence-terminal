@@ -44,23 +44,31 @@ class MarketIntelHandler(SimpleHTTPRequestHandler):
         data_dir = get_data_dir()
 
         # Route API requests to data/feeds or data/dist
-        if path in ["/api/summary", "/api/summary.json"]:
-            return self._serve_json_file(data_dir / "daily_summary.json")
-        elif path in ["/api/leaderboard", "/api/leaderboard.json"]:
-            return self._serve_json_file(data_dir / "leaderboard.json")
-        elif path in ["/api/scanners", "/api/scanners.json"]:
-            return self._serve_json_file(data_dir / "scanners.json")
-        elif path in ["/api/signals", "/api/signals.json"]:
-            return self._serve_json_file(data_dir / "signals.json")
-        elif path in ["/api/backtests", "/api/backtests.json"]:
-            return self._serve_json_file(data_dir / "backtests.json")
-        elif path in ["/api/news_filings", "/api/news_filings.json", "/api/catalysts", "/api/catalysts.json"]:
-            return self._serve_json_file(data_dir / "news_filings.json")
-        elif path.startswith("/api/symbol/") or path.startswith("/api/symbols/"):
-            clean = path.replace("/api/symbols/", "").replace("/api/symbol/", "").replace(".json", "")
-            sym = clean.strip().upper()
-            sym_file = data_dir / "symbols" / f"{sym}.json"
-            return self._serve_json_file(sym_file)
+        if path.startswith("/api/"):
+            clean_sub = path[len("/api/"):].lstrip("/")
+            if clean_sub.startswith("symbols/") or clean_sub.startswith("symbol/"):
+                clean = clean_sub.replace("symbols/", "").replace("symbol/", "").replace(".json", "")
+                sym = clean.strip().upper()
+                sym_file = data_dir / "symbols" / f"{sym}.json"
+                return self._serve_json_file(sym_file)
+
+            alias_map = {
+                "summary": "daily_summary.json",
+                "summary.json": "daily_summary.json",
+                "daily_summary": "daily_summary.json",
+                "daily_summary.json": "daily_summary.json",
+                "catalysts": "news_filings.json",
+                "catalysts.json": "news_filings.json",
+            }
+            if clean_sub in alias_map:
+                return self._serve_json_file(data_dir / alias_map[clean_sub])
+
+            target_filename = clean_sub if clean_sub.endswith(".json") else f"{clean_sub}.json"
+            candidate_file = data_dir / target_filename
+            if candidate_file.exists():
+                return self._serve_json_file(candidate_file)
+            elif (data_dir / clean_sub).exists():
+                return self._serve_json_file(data_dir / clean_sub)
 
         # Default to static file serving
         return super().do_GET()
