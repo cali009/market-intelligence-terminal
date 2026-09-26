@@ -5,7 +5,7 @@
   "currency": "USD",
   "name": "Amazon.com Inc.",
   "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T06:43:51.887233+00:00",
+  "generated_at": "2026-09-26T07:02:22.640635+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 248.55999755859375,
@@ -360,7 +360,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 16,
     "gjr_garch_gamma": 0.08,
-    "last_updated": "2026-09-26T06:43:52.763263+00:00"
+    "last_updated": "2026-09-26T07:02:23.458019+00:00"
   },
   "conformal_bounds": {
     "symbol": "AMZN",
@@ -377,71 +377,64 @@
     "adapted_alpha": 0.185,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-09-26T06:43:52.776078+00:00"
+    "calibrated_at": "2026-09-26T07:02:23.469768+00:00"
   },
   "cross_border_parity": null,
   "shap_attribution": {
     "symbol": "AMZN",
     "base_value": 50.89,
-    "model_score": 49.4,
+    "model_score": 49.6,
     "top_drivers": [
+      {
+        "feature_name": "proximity_52w",
+        "feature_label": "Proximity to 52W High",
+        "feature_value": -0.131,
+        "shap_contribution": 3.42,
+        "direction": "POSITIVE"
+      },
+      {
+        "feature_name": "conformal_rr",
+        "feature_label": "Certified Conformal R:R",
+        "feature_value": 0.8,
+        "shap_contribution": 2.15,
+        "direction": "POSITIVE"
+      },
       {
         "feature_name": "fractional_d",
         "feature_label": "Fractional Memory Order d*",
         "feature_value": 0.39,
-        "shap_contribution": 3.13,
-        "direction": "POSITIVE"
-      },
-      {
-        "feature_name": "trend_sma200_ratio",
-        "feature_label": "Trend vs 200DMA",
-        "feature_value": 1.037,
-        "shap_contribution": 2.54,
-        "direction": "POSITIVE"
-      },
-      {
-        "feature_name": "dual_basis_bps",
-        "feature_label": "Cross-Border Basis Spread",
-        "feature_value": 0.0,
-        "shap_contribution": 1.14,
+        "shap_contribution": 1.59,
         "direction": "POSITIVE"
       }
     ],
     "top_detractors": [
       {
-        "feature_name": "proximity_52w",
-        "feature_label": "Proximity to 52W High",
-        "feature_value": -0.131,
-        "shap_contribution": -5.76,
+        "feature_name": "mtf_confluence",
+        "feature_label": "Multi-Timeframe Confluence",
+        "feature_value": 40.0,
+        "shap_contribution": -5.07,
         "direction": "NEGATIVE"
       },
       {
         "feature_name": "momentum_rsi",
         "feature_label": "14-Day RSI Momentum",
         "feature_value": 44.5,
-        "shap_contribution": -2.34,
-        "direction": "NEGATIVE"
-      },
-      {
-        "feature_name": "hurst_persistence",
-        "feature_label": "Lo HAC Hurst Exponent",
-        "feature_value": 0.486,
-        "shap_contribution": -0.4,
+        "shap_contribution": -4.37,
         "direction": "NEGATIVE"
       }
     ],
     "all_attributions": {
-      "trend_sma200_ratio": 2.54,
-      "momentum_rsi": -2.34,
-      "proximity_52w": -5.76,
-      "mtf_confluence": -0.26,
+      "trend_sma200_ratio": 0.0,
+      "momentum_rsi": -4.37,
+      "proximity_52w": 3.42,
+      "mtf_confluence": -5.07,
       "roic_pct": 0.0,
       "pe_multiple": 0.0,
-      "hurst_persistence": -0.4,
-      "fractional_d": 3.13,
+      "hurst_persistence": 0.0,
+      "fractional_d": 1.59,
       "amihud_illiquidity": 0.0,
-      "conformal_rr": 0.48,
-      "dual_basis_bps": 1.14
+      "conformal_rr": 2.15,
+      "dual_basis_bps": 1.01
     }
   },
   "idiosyncratic_risk": {
@@ -457,8 +450,8 @@
     "cross_border_parity_stretch": false,
     "basis_spread_bps": null,
     "basis_zscore": null,
-    "shap_detractor_drag_pts": -8.5,
-    "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-8.5 pts)",
+    "shap_detractor_drag_pts": -9.44,
+    "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-9.44 pts)",
     "actionable_mitigation": "Minor basis disparity or factor detractor identified; 25% exposure haircut recommended under risk rules.",
     "as_of_date": "2026-09-25"
   },

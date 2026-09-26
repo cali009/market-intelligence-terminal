@@ -5,7 +5,7 @@
   "currency": "CAD",
   "name": "Shopify Inc.",
   "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T06:43:51.887233+00:00",
+  "generated_at": "2026-09-26T07:02:22.640635+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 205.50999450683594,
@@ -361,7 +361,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 24,
     "gjr_garch_gamma": 0.14,
-    "last_updated": "2026-09-26T06:43:53.850750+00:00"
+    "last_updated": "2026-09-26T07:02:24.453252+00:00"
   },
   "conformal_bounds": {
     "symbol": "SHOP",
@@ -378,7 +378,7 @@
     "adapted_alpha": 0.165,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-09-26T06:43:53.862725+00:00"
+    "calibrated_at": "2026-09-26T07:02:24.466663+00:00"
   },
   "cross_border_parity": {
     "tsx_symbol": "SHOP",
@@ -406,20 +406,27 @@
   "shap_attribution": {
     "symbol": "SHOP",
     "base_value": 50.89,
-    "model_score": 39.0,
+    "model_score": 38.7,
     "top_drivers": [
-      {
-        "feature_name": "trend_sma200_ratio",
-        "feature_label": "Trend vs 200DMA",
-        "feature_value": 1.12,
-        "shap_contribution": 2.51,
-        "direction": "POSITIVE"
-      },
       {
         "feature_name": "hurst_persistence",
         "feature_label": "Lo HAC Hurst Exponent",
         "feature_value": 0.469,
-        "shap_contribution": 0.86,
+        "shap_contribution": 4.25,
+        "direction": "POSITIVE"
+      },
+      {
+        "feature_name": "mtf_confluence",
+        "feature_label": "Multi-Timeframe Confluence",
+        "feature_value": 85.0,
+        "shap_contribution": 1.48,
+        "direction": "POSITIVE"
+      },
+      {
+        "feature_name": "fractional_d",
+        "feature_label": "Fractional Memory Order d*",
+        "feature_value": 0.44,
+        "shap_contribution": 1.08,
         "direction": "POSITIVE"
       }
     ],
@@ -428,36 +435,36 @@
         "feature_name": "proximity_52w",
         "feature_label": "Proximity to 52W High",
         "feature_value": -0.205,
-        "shap_contribution": -12.29,
+        "shap_contribution": -17.03,
         "direction": "NEGATIVE"
       },
       {
-        "feature_name": "dual_basis_bps",
-        "feature_label": "Cross-Border Basis Spread",
-        "feature_value": -0.6,
-        "shap_contribution": -1.94,
+        "feature_name": "conformal_rr",
+        "feature_label": "Certified Conformal R:R",
+        "feature_value": 1.26,
+        "shap_contribution": -1.7,
         "direction": "NEGATIVE"
       },
       {
-        "feature_name": "fractional_d",
-        "feature_label": "Fractional Memory Order d*",
-        "feature_value": 0.44,
-        "shap_contribution": -0.79,
+        "feature_name": "momentum_rsi",
+        "feature_label": "14-Day RSI Momentum",
+        "feature_value": 55.1,
+        "shap_contribution": -0.58,
         "direction": "NEGATIVE"
       }
     ],
     "all_attributions": {
-      "trend_sma200_ratio": 2.51,
-      "momentum_rsi": 0.04,
-      "proximity_52w": -12.29,
-      "mtf_confluence": 0.03,
+      "trend_sma200_ratio": 0.46,
+      "momentum_rsi": -0.58,
+      "proximity_52w": -17.03,
+      "mtf_confluence": 1.48,
       "roic_pct": 0.0,
       "pe_multiple": 0.0,
-      "hurst_persistence": 0.86,
-      "fractional_d": -0.79,
+      "hurst_persistence": 4.25,
+      "fractional_d": 1.08,
       "amihud_illiquidity": 0.0,
-      "conformal_rr": -0.36,
-      "dual_basis_bps": -1.94
+      "conformal_rr": -1.7,
+      "dual_basis_bps": -0.14
     }
   },
   "idiosyncratic_risk": {
@@ -473,8 +480,8 @@
     "cross_border_parity_stretch": false,
     "basis_spread_bps": -0.6,
     "basis_zscore": -0.24,
-    "shap_detractor_drag_pts": -15.02,
-    "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-15.02 pts)",
+    "shap_detractor_drag_pts": -19.31,
+    "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-19.31 pts)",
     "actionable_mitigation": "Minor basis disparity or factor detractor identified; 25% exposure haircut recommended under risk rules.",
     "as_of_date": "2026-09-25"
   },

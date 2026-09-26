@@ -5,7 +5,7 @@
   "currency": "CAD",
   "name": "Canadian Natural Resources",
   "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T06:43:51.887233+00:00",
+  "generated_at": "2026-09-26T07:02:22.640635+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 66.9800033569336,
@@ -358,7 +358,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 14,
     "gjr_garch_gamma": 0.22,
-    "last_updated": "2026-09-26T06:43:54.577126+00:00"
+    "last_updated": "2026-09-26T07:02:25.173932+00:00"
   },
   "conformal_bounds": {
     "symbol": "CNQ",
@@ -375,7 +375,7 @@
     "adapted_alpha": 0.105,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-09-26T06:43:54.588387+00:00"
+    "calibrated_at": "2026-09-26T07:02:25.185394+00:00"
   },
   "cross_border_parity": {
     "tsx_symbol": "CNQ",
@@ -403,27 +403,27 @@
   "shap_attribution": {
     "symbol": "CNQ",
     "base_value": 50.89,
-    "model_score": 52.9,
+    "model_score": 52.7,
     "top_drivers": [
       {
         "feature_name": "proximity_52w",
         "feature_label": "Proximity to 52W High",
         "feature_value": -0.072,
-        "shap_contribution": 4.15,
+        "shap_contribution": 2.93,
         "direction": "POSITIVE"
       },
       {
-        "feature_name": "trend_sma200_ratio",
-        "feature_label": "Trend vs 200DMA",
-        "feature_value": 1.112,
-        "shap_contribution": 2.68,
+        "feature_name": "mtf_confluence",
+        "feature_label": "Multi-Timeframe Confluence",
+        "feature_value": 60.0,
+        "shap_contribution": 1.78,
         "direction": "POSITIVE"
       },
       {
-        "feature_name": "dual_basis_bps",
-        "feature_label": "Cross-Border Basis Spread",
-        "feature_value": 16.2,
-        "shap_contribution": 1.52,
+        "feature_name": "conformal_rr",
+        "feature_label": "Certified Conformal R:R",
+        "feature_value": 1.12,
+        "shap_contribution": 1.15,
         "direction": "POSITIVE"
       }
     ],
@@ -432,36 +432,22 @@
         "feature_name": "momentum_rsi",
         "feature_label": "14-Day RSI Momentum",
         "feature_value": 44.2,
-        "shap_contribution": -6.12,
-        "direction": "NEGATIVE"
-      },
-      {
-        "feature_name": "hurst_persistence",
-        "feature_label": "Lo HAC Hurst Exponent",
-        "feature_value": 0.48,
-        "shap_contribution": -0.39,
-        "direction": "NEGATIVE"
-      },
-      {
-        "feature_name": "conformal_rr",
-        "feature_label": "Certified Conformal R:R",
-        "feature_value": 1.12,
-        "shap_contribution": -0.29,
+        "shap_contribution": -5.27,
         "direction": "NEGATIVE"
       }
     ],
     "all_attributions": {
-      "trend_sma200_ratio": 2.68,
-      "momentum_rsi": -6.12,
-      "proximity_52w": 4.15,
-      "mtf_confluence": 0.07,
+      "trend_sma200_ratio": 0.0,
+      "momentum_rsi": -5.27,
+      "proximity_52w": 2.93,
+      "mtf_confluence": 1.78,
       "roic_pct": 0.0,
       "pe_multiple": 0.0,
-      "hurst_persistence": -0.39,
-      "fractional_d": 0.35,
+      "hurst_persistence": 0.0,
+      "fractional_d": 0.09,
       "amihud_illiquidity": 0.0,
-      "conformal_rr": -0.29,
-      "dual_basis_bps": 1.52
+      "conformal_rr": 1.15,
+      "dual_basis_bps": 1.09
     }
   },
   "idiosyncratic_risk": {
@@ -477,8 +463,8 @@
     "cross_border_parity_stretch": false,
     "basis_spread_bps": 16.2,
     "basis_zscore": 1.09,
-    "shap_detractor_drag_pts": -6.8,
-    "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-6.8 pts)",
+    "shap_detractor_drag_pts": -5.27,
+    "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-5.27 pts)",
     "actionable_mitigation": "Minor basis disparity or factor detractor identified; 25% exposure haircut recommended under risk rules.",
     "as_of_date": "2026-09-25"
   },

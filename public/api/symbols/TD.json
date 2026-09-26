@@ -5,7 +5,7 @@
   "currency": "CAD",
   "name": "Toronto-Dominion Bank",
   "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T06:43:51.887233+00:00",
+  "generated_at": "2026-09-26T07:02:22.640635+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 169.69000244140625,
@@ -358,7 +358,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 14,
     "gjr_garch_gamma": 0.24,
-    "last_updated": "2026-09-26T06:43:53.612517+00:00"
+    "last_updated": "2026-09-26T07:02:24.249344+00:00"
   },
   "conformal_bounds": {
     "symbol": "TD",
@@ -375,7 +375,7 @@
     "adapted_alpha": 0.105,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-09-26T06:43:53.623546+00:00"
+    "calibrated_at": "2026-09-26T07:02:24.261906+00:00"
   },
   "cross_border_parity": {
     "tsx_symbol": "TD",
@@ -403,65 +403,65 @@
   "shap_attribution": {
     "symbol": "TD",
     "base_value": 50.89,
-    "model_score": 56.2,
+    "model_score": 55.6,
     "top_drivers": [
       {
         "feature_name": "proximity_52w",
         "feature_label": "Proximity to 52W High",
         "feature_value": -0.026,
-        "shap_contribution": 5.64,
+        "shap_contribution": 8.94,
+        "direction": "POSITIVE"
+      },
+      {
+        "feature_name": "mtf_confluence",
+        "feature_label": "Multi-Timeframe Confluence",
+        "feature_value": 85.0,
+        "shap_contribution": 1.78,
         "direction": "POSITIVE"
       },
       {
         "feature_name": "dual_basis_bps",
         "feature_label": "Cross-Border Basis Spread",
         "feature_value": 1.8,
-        "shap_contribution": 1.07,
-        "direction": "POSITIVE"
-      },
-      {
-        "feature_name": "trend_sma200_ratio",
-        "feature_label": "Trend vs 200DMA",
-        "feature_value": 1.149,
-        "shap_contribution": 0.99,
+        "shap_contribution": 1.09,
         "direction": "POSITIVE"
       }
     ],
     "top_detractors": [
       {
-        "feature_name": "fractional_d",
-        "feature_label": "Fractional Memory Order d*",
-        "feature_value": 0.56,
-        "shap_contribution": -1.4,
+        "feature_name": "momentum_rsi",
+        "feature_label": "14-Day RSI Momentum",
+        "feature_value": 54.4,
+        "shap_contribution": -5.07,
+        "direction": "NEGATIVE"
+      },
+      {
+        "feature_name": "trend_sma200_ratio",
+        "feature_label": "Trend vs 200DMA",
+        "feature_value": 1.149,
+        "shap_contribution": -1.14,
         "direction": "NEGATIVE"
       },
       {
         "feature_name": "conformal_rr",
         "feature_label": "Certified Conformal R:R",
         "feature_value": 1.45,
-        "shap_contribution": -1.17,
-        "direction": "NEGATIVE"
-      },
-      {
-        "feature_name": "hurst_persistence",
-        "feature_label": "Lo HAC Hurst Exponent",
-        "feature_value": 0.5,
-        "shap_contribution": -0.74,
+        "shap_contribution": -0.76,
         "direction": "NEGATIVE"
       }
     ],
     "all_attributions": {
-      "trend_sma200_ratio": 0.99,
-      "momentum_rsi": 0.82,
-      "proximity_52w": 5.64,
-      "mtf_confluence": 0.07,
+      "trend_sma200_ratio": -1.14,
+      "momentum_rsi": -5.07,
+      "proximity_52w": 8.94,
+      "mtf_confluence": 1.78,
       "roic_pct": 0.0,
       "pe_multiple": 0.0,
-      "hurst_persistence": -0.74,
-      "fractional_d": -1.4,
+      "hurst_persistence": 0.0,
+      "fractional_d": -0.12,
       "amihud_illiquidity": 0.0,
-      "conformal_rr": -1.17,
-      "dual_basis_bps": 1.07
+      "conformal_rr": -0.76,
+      "dual_basis_bps": 1.09
     }
   },
   "idiosyncratic_risk": {
@@ -477,8 +477,8 @@
     "cross_border_parity_stretch": false,
     "basis_spread_bps": 1.8,
     "basis_zscore": -0.14,
-    "shap_detractor_drag_pts": -3.31,
-    "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-3.31 pts)",
+    "shap_detractor_drag_pts": -6.97,
+    "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-6.97 pts)",
     "actionable_mitigation": "Minor basis disparity or factor detractor identified; 25% exposure haircut recommended under risk rules.",
     "as_of_date": "2026-09-25"
   },

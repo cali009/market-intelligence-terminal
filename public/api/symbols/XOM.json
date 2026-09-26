@@ -5,7 +5,7 @@
   "currency": "USD",
   "name": "Exxon Mobil Corporation",
   "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T06:43:51.887233+00:00",
+  "generated_at": "2026-09-26T07:02:22.640635+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 160.22999572753906,
@@ -358,7 +358,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 22,
     "gjr_garch_gamma": 0.22,
-    "last_updated": "2026-09-26T06:43:53.086738+00:00"
+    "last_updated": "2026-09-26T07:02:23.750837+00:00"
   },
   "conformal_bounds": {
     "symbol": "XOM",
@@ -375,33 +375,33 @@
     "adapted_alpha": 0.195,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-09-26T06:43:53.098258+00:00"
+    "calibrated_at": "2026-09-26T07:02:23.762313+00:00"
   },
   "cross_border_parity": null,
   "shap_attribution": {
     "symbol": "XOM",
     "base_value": 50.89,
-    "model_score": 53.7,
+    "model_score": 52.9,
     "top_drivers": [
-      {
-        "feature_name": "trend_sma200_ratio",
-        "feature_label": "Trend vs 200DMA",
-        "feature_value": 1.085,
-        "shap_contribution": 2.68,
-        "direction": "POSITIVE"
-      },
-      {
-        "feature_name": "dual_basis_bps",
-        "feature_label": "Cross-Border Basis Spread",
-        "feature_value": 0.0,
-        "shap_contribution": 1.52,
-        "direction": "POSITIVE"
-      },
       {
         "feature_name": "proximity_52w",
         "feature_label": "Proximity to 52W High",
         "feature_value": -0.09,
-        "shap_contribution": 1.01,
+        "shap_contribution": 2.66,
+        "direction": "POSITIVE"
+      },
+      {
+        "feature_name": "mtf_confluence",
+        "feature_label": "Multi-Timeframe Confluence",
+        "feature_value": 70.0,
+        "shap_contribution": 1.84,
+        "direction": "POSITIVE"
+      },
+      {
+        "feature_name": "conformal_rr",
+        "feature_label": "Certified Conformal R:R",
+        "feature_value": 1.0,
+        "shap_contribution": 1.15,
         "direction": "POSITIVE"
       }
     ],
@@ -410,29 +410,22 @@
         "feature_name": "momentum_rsi",
         "feature_label": "14-Day RSI Momentum",
         "feature_value": 48.7,
-        "shap_contribution": -2.53,
-        "direction": "NEGATIVE"
-      },
-      {
-        "feature_name": "fractional_d",
-        "feature_label": "Fractional Memory Order d*",
-        "feature_value": 0.49,
-        "shap_contribution": -0.07,
+        "shap_contribution": -4.69,
         "direction": "NEGATIVE"
       }
     ],
     "all_attributions": {
-      "trend_sma200_ratio": 2.68,
-      "momentum_rsi": -2.53,
-      "proximity_52w": 1.01,
-      "mtf_confluence": 0.07,
+      "trend_sma200_ratio": 0.0,
+      "momentum_rsi": -4.69,
+      "proximity_52w": 2.66,
+      "mtf_confluence": 1.84,
       "roic_pct": 0.0,
       "pe_multiple": 0.0,
-      "hurst_persistence": 0.11,
-      "fractional_d": -0.07,
+      "hurst_persistence": 0.0,
+      "fractional_d": 0.0,
       "amihud_illiquidity": 0.0,
-      "conformal_rr": -0.01,
-      "dual_basis_bps": 1.52
+      "conformal_rr": 1.15,
+      "dual_basis_bps": 1.09
     }
   },
   "idiosyncratic_risk": {
@@ -448,7 +441,7 @@
     "cross_border_parity_stretch": false,
     "basis_spread_bps": null,
     "basis_zscore": null,
-    "shap_detractor_drag_pts": -2.6,
+    "shap_detractor_drag_pts": -4.69,
     "primary_risk_driver": "Hurst Memory Flip (H=0.444)",
     "actionable_mitigation": "Idiosyncratic memory flip or volatility expansion active; 50% exposure haircut recommended by systematic risk budget.",
     "as_of_date": "2026-09-25"

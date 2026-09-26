@@ -5,7 +5,7 @@
   "currency": "CAD",
   "name": "Enbridge Inc.",
   "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T06:43:51.887233+00:00",
+  "generated_at": "2026-09-26T07:02:22.640635+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 66.8499984741211,
@@ -353,7 +353,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 16,
     "gjr_garch_gamma": 0.22,
-    "last_updated": "2026-09-26T06:43:54.080349+00:00"
+    "last_updated": "2026-09-26T07:02:24.675552+00:00"
   },
   "conformal_bounds": {
     "symbol": "ENB",
@@ -370,7 +370,7 @@
     "adapted_alpha": 0.235,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-09-26T06:43:54.091849+00:00"
+    "calibrated_at": "2026-09-26T07:02:24.686433+00:00"
   },
   "cross_border_parity": {
     "tsx_symbol": "ENB",
@@ -398,65 +398,51 @@
   "shap_attribution": {
     "symbol": "ENB",
     "base_value": 50.89,
-    "model_score": 31.0,
+    "model_score": 30.9,
     "top_drivers": [
       {
         "feature_name": "hurst_persistence",
         "feature_label": "Lo HAC Hurst Exponent",
         "feature_value": 0.408,
-        "shap_contribution": 0.85,
-        "direction": "POSITIVE"
-      },
-      {
-        "feature_name": "dual_basis_bps",
-        "feature_label": "Cross-Border Basis Spread",
-        "feature_value": 2.5,
-        "shap_contribution": 0.61,
-        "direction": "POSITIVE"
-      },
-      {
-        "feature_name": "conformal_rr",
-        "feature_label": "Certified Conformal R:R",
-        "feature_value": 0.88,
-        "shap_contribution": 0.46,
+        "shap_contribution": 2.73,
         "direction": "POSITIVE"
       }
     ],
     "top_detractors": [
       {
-        "feature_name": "trend_sma200_ratio",
-        "feature_label": "Trend vs 200DMA",
-        "feature_value": 0.915,
-        "shap_contribution": -9.89,
-        "direction": "NEGATIVE"
-      },
-      {
         "feature_name": "proximity_52w",
         "feature_label": "Proximity to 52W High",
         "feature_value": -0.18,
-        "shap_contribution": -6.62,
+        "shap_contribution": -15.71,
         "direction": "NEGATIVE"
       },
       {
-        "feature_name": "momentum_rsi",
-        "feature_label": "14-Day RSI Momentum",
-        "feature_value": 30.5,
-        "shap_contribution": -4.14,
+        "feature_name": "mtf_confluence",
+        "feature_label": "Multi-Timeframe Confluence",
+        "feature_value": 10.0,
+        "shap_contribution": -4.66,
+        "direction": "NEGATIVE"
+      },
+      {
+        "feature_name": "fractional_d",
+        "feature_label": "Fractional Memory Order d*",
+        "feature_value": 0.5,
+        "shap_contribution": -1.48,
         "direction": "NEGATIVE"
       }
     ],
     "all_attributions": {
-      "trend_sma200_ratio": -9.89,
-      "momentum_rsi": -4.14,
-      "proximity_52w": -6.62,
-      "mtf_confluence": -0.25,
+      "trend_sma200_ratio": -0.46,
+      "momentum_rsi": -0.19,
+      "proximity_52w": -15.71,
+      "mtf_confluence": -4.66,
       "roic_pct": 0.0,
       "pe_multiple": 0.0,
-      "hurst_persistence": 0.85,
-      "fractional_d": -0.9,
+      "hurst_persistence": 2.73,
+      "fractional_d": -1.48,
       "amihud_illiquidity": 0.0,
-      "conformal_rr": 0.46,
-      "dual_basis_bps": 0.61
+      "conformal_rr": -0.23,
+      "dual_basis_bps": -0.02
     }
   },
   "idiosyncratic_risk": {
@@ -472,7 +458,7 @@
     "cross_border_parity_stretch": false,
     "basis_spread_bps": 2.5,
     "basis_zscore": -0.13,
-    "shap_detractor_drag_pts": -20.65,
+    "shap_detractor_drag_pts": -21.85,
     "primary_risk_driver": "Hurst Memory Flip (H=0.408)",
     "actionable_mitigation": "Idiosyncratic memory flip or volatility expansion active; 50% exposure haircut recommended by systematic risk budget.",
     "as_of_date": "2026-09-25"

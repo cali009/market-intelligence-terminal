@@ -5,7 +5,7 @@
   "currency": "USD",
   "name": "Apple Inc.",
   "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T06:43:51.887233+00:00",
+  "generated_at": "2026-09-26T07:02:22.640635+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 336.0400085449219,
@@ -355,7 +355,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 26,
     "gjr_garch_gamma": 0.08,
-    "last_updated": "2026-09-26T06:43:52.382653+00:00"
+    "last_updated": "2026-09-26T07:02:23.057475+00:00"
   },
   "conformal_bounds": {
     "symbol": "AAPL",
@@ -372,64 +372,64 @@
     "adapted_alpha": 0.085,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-09-26T06:43:52.392968+00:00"
+    "calibrated_at": "2026-09-26T07:02:23.070045+00:00"
   },
   "cross_border_parity": null,
   "shap_attribution": {
     "symbol": "AAPL",
     "base_value": 50.89,
-    "model_score": 63.1,
+    "model_score": 63.6,
     "top_drivers": [
       {
         "feature_name": "momentum_rsi",
         "feature_label": "14-Day RSI Momentum",
         "feature_value": 65.7,
-        "shap_contribution": 6.56,
+        "shap_contribution": 10.04,
         "direction": "POSITIVE"
       },
       {
         "feature_name": "proximity_52w",
         "feature_label": "Proximity to 52W High",
         "feature_value": -0.012,
-        "shap_contribution": 4.71,
+        "shap_contribution": 4.81,
         "direction": "POSITIVE"
       },
       {
-        "feature_name": "fractional_d",
-        "feature_label": "Fractional Memory Order d*",
-        "feature_value": 0.39,
-        "shap_contribution": 1.38,
+        "feature_name": "mtf_confluence",
+        "feature_label": "Multi-Timeframe Confluence",
+        "feature_value": 85.0,
+        "shap_contribution": 1.66,
         "direction": "POSITIVE"
       }
     ],
     "top_detractors": [
       {
-        "feature_name": "conformal_rr",
-        "feature_label": "Certified Conformal R:R",
-        "feature_value": 1.41,
-        "shap_contribution": -0.89,
+        "feature_name": "trend_sma200_ratio",
+        "feature_label": "Trend vs 200DMA",
+        "feature_value": 1.185,
+        "shap_contribution": -2.18,
         "direction": "NEGATIVE"
       },
       {
-        "feature_name": "hurst_persistence",
-        "feature_label": "Lo HAC Hurst Exponent",
-        "feature_value": 0.474,
-        "shap_contribution": -0.29,
+        "feature_name": "conformal_rr",
+        "feature_label": "Certified Conformal R:R",
+        "feature_value": 1.41,
+        "shap_contribution": -1.71,
         "direction": "NEGATIVE"
       }
     ],
     "all_attributions": {
-      "trend_sma200_ratio": 0.13,
-      "momentum_rsi": 6.56,
-      "proximity_52w": 4.71,
-      "mtf_confluence": 0.08,
+      "trend_sma200_ratio": -2.18,
+      "momentum_rsi": 10.04,
+      "proximity_52w": 4.81,
+      "mtf_confluence": 1.66,
       "roic_pct": 0.0,
       "pe_multiple": 0.0,
-      "hurst_persistence": -0.29,
-      "fractional_d": 1.38,
+      "hurst_persistence": 0.0,
+      "fractional_d": 0.09,
       "amihud_illiquidity": 0.0,
-      "conformal_rr": -0.89,
-      "dual_basis_bps": 0.57
+      "conformal_rr": -1.71,
+      "dual_basis_bps": 0.0
     }
   },
   "idiosyncratic_risk": {
@@ -445,8 +445,8 @@
     "cross_border_parity_stretch": false,
     "basis_spread_bps": null,
     "basis_zscore": null,
-    "shap_detractor_drag_pts": -1.18,
-    "primary_risk_driver": "Minor Detractor Drag",
+    "shap_detractor_drag_pts": -3.89,
+    "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-3.89 pts)",
     "actionable_mitigation": "Minor basis disparity or factor detractor identified; 25% exposure haircut recommended under risk rules.",
     "as_of_date": "2026-09-25"
   },

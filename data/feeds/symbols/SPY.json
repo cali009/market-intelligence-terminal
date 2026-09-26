@@ -5,7 +5,7 @@
   "currency": "USD",
   "name": "SPDR S&P 500 ETF Trust",
   "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T06:43:51.887233+00:00",
+  "generated_at": "2026-09-26T07:02:22.640635+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 768.780029296875,
@@ -352,7 +352,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 14,
     "gjr_garch_gamma": 0.16,
-    "last_updated": "2026-09-26T06:43:53.189280+00:00"
+    "last_updated": "2026-09-26T07:02:23.849481+00:00"
   },
   "conformal_bounds": {
     "symbol": "SPY",
@@ -369,64 +369,49 @@
     "adapted_alpha": 0.235,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-09-26T06:43:53.200722+00:00"
+    "calibrated_at": "2026-09-26T07:02:23.861034+00:00"
   },
   "cross_border_parity": null,
   "shap_attribution": {
     "symbol": "SPY",
     "base_value": 50.89,
-    "model_score": 74.2,
+    "model_score": 72.8,
     "top_drivers": [
       {
         "feature_name": "momentum_rsi",
         "feature_label": "14-Day RSI Momentum",
         "feature_value": 55.9,
-        "shap_contribution": 9.66,
+        "shap_contribution": 10.04,
         "direction": "POSITIVE"
       },
       {
         "feature_name": "proximity_52w",
         "feature_label": "Proximity to 52W High",
         "feature_value": -0.01,
-        "shap_contribution": 6.23,
+        "shap_contribution": 4.81,
         "direction": "POSITIVE"
       },
       {
         "feature_name": "trend_sma200_ratio",
         "feature_label": "Trend vs 200DMA",
         "feature_value": 1.074,
-        "shap_contribution": 5.57,
+        "shap_contribution": 2.69,
         "direction": "POSITIVE"
       }
     ],
-    "top_detractors": [
-      {
-        "feature_name": "fractional_d",
-        "feature_label": "Fractional Memory Order d*",
-        "feature_value": 0.51,
-        "shap_contribution": -0.74,
-        "direction": "NEGATIVE"
-      },
-      {
-        "feature_name": "hurst_persistence",
-        "feature_label": "Lo HAC Hurst Exponent",
-        "feature_value": 0.471,
-        "shap_contribution": -0.12,
-        "direction": "NEGATIVE"
-      }
-    ],
+    "top_detractors": [],
     "all_attributions": {
-      "trend_sma200_ratio": 5.57,
-      "momentum_rsi": 9.66,
-      "proximity_52w": 6.23,
-      "mtf_confluence": 0.11,
+      "trend_sma200_ratio": 2.69,
+      "momentum_rsi": 10.04,
+      "proximity_52w": 4.81,
+      "mtf_confluence": 1.66,
       "roic_pct": 0.0,
       "pe_multiple": 0.0,
-      "hurst_persistence": -0.12,
-      "fractional_d": -0.74,
+      "hurst_persistence": 0.0,
+      "fractional_d": 0.09,
       "amihud_illiquidity": 0.0,
-      "conformal_rr": 1.98,
-      "dual_basis_bps": 0.57
+      "conformal_rr": 2.57,
+      "dual_basis_bps": 0.0
     }
   },
   "idiosyncratic_risk": {
@@ -442,7 +427,7 @@
     "cross_border_parity_stretch": false,
     "basis_spread_bps": null,
     "basis_zscore": null,
-    "shap_detractor_drag_pts": -0.86,
+    "shap_detractor_drag_pts": 0.0,
     "primary_risk_driver": "Stable Quantitative Fingerprint",
     "actionable_mitigation": "All idiosyncratic bounds intact; nominal position sizing permitted under risk framework.",
     "as_of_date": "2026-09-25"
