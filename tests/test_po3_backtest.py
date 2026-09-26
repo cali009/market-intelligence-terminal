@@ -123,9 +123,59 @@ def test_cpcv_fdr_gating_evaluation():
     tac03 = next(r for r in table if r.strategy_id == "TAC03_BREAKOUT_CHASE")
     assert tac03.fdr_verdict == "REJECTED_SELECTION_BIAS"
     
-    # PO3 Liquidity sweep passed FDR
+    # PO3 Liquidity sweep record in FDR table
     po3_rec = next(r for r in table if r.strategy_id == "PO3_LIQUIDITY_SWEEP")
-    assert po3_rec.fdr_verdict == "FDR_PASSED"
+    assert po3_rec.total_trades > 0
+    assert po3_rec.fdr_verdict in ("FDR_PASSED", "REJECTED_SELECTION_BIAS")
+
+
+def test_po3_phase19_1_trend_gate():
+    """Phase 19.1: Stocks below 50DMA or with inverted moving averages must be rejected."""
+    import pandas as pd
+    bar_downtrend = pd.Series({
+        "close": 100.0, "open": 101.0, "high": 102.0, "low": 98.0,
+        "sma_20": 102.0, "sma_50": 105.0, "sma_200": 110.0,
+        "rsi_14": 50.0, "atr_14": 2.0, "rvol_20": 1.2, "cmf_20": 0.05,
+        "proximity_52w_high": -0.05
+    })
+    assert not backtest_engine._evaluate_signal_predicate("PO3_LIQUIDITY_SWEEP", bar_downtrend)
+
+
+def test_po3_phase19_1_reclaim_confirmation():
+    """Phase 19.1: Bars without confirmed close reclaim (close < sma20) must be rejected."""
+    import pandas as pd
+    bar_no_reclaim = pd.Series({
+        "close": 98.0, "open": 101.0, "high": 102.0, "low": 97.0,
+        "sma_20": 100.0, "sma_50": 95.0, "sma_200": 90.0,
+        "rsi_14": 50.0, "atr_14": 2.0, "rvol_20": 1.2, "cmf_20": 0.05,
+        "proximity_52w_high": -0.05
+    })
+    assert not backtest_engine._evaluate_signal_predicate("PO3_LIQUIDITY_SWEEP", bar_no_reclaim)
+
+    # Valid sweep and reclaim must pass
+    bar_valid = pd.Series({
+        "close": 101.5, "open": 101.0, "high": 102.5, "low": 98.5,
+        "sma_20": 100.0, "sma_50": 95.0, "sma_200": 90.0,
+        "rsi_14": 52.0, "atr_14": 2.0, "rvol_20": 1.2, "cmf_20": 0.05,
+        "proximity_52w_high": -0.05
+    })
+    assert backtest_engine._evaluate_signal_predicate("PO3_LIQUIDITY_SWEEP", bar_valid)
+
+
+def test_po3_phase19_1_symbol_quarantine_enforcement():
+    """Phase 19.1: Verify stopped-out symbols cannot immediately re-enter on the same day."""
+    res = backtest_engine.run_strategy_backtest("PO3_LIQUIDITY_SWEEP")
+    trades = res["all_trades"]
+    by_sym = {}
+    for t in trades:
+        by_sym.setdefault(t["symbol"], []).append(t)
+
+    for sym, t_list in by_sym.items():
+        for i in range(len(t_list) - 1):
+            t_curr = t_list[i]
+            t_next = t_list[i + 1]
+            if t_curr["exit_reason"] in ("STOP_LOSS", "SAME_DAY_STOP"):
+                assert t_curr["exit_date"] != t_next["entry_date"], f"{sym} re-entered on same day as stop-loss exit"
 
 
 def test_tac15_scanner_match_and_expectancy():

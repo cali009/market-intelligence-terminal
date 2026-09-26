@@ -307,6 +307,7 @@ class BacktestEngine:
         equity_curve: List[Dict[str, Any]] = []
 
         is_po3_type = strategy_id in ("PO3_LIQUIDITY_SWEEP", "ADAPTIVE_DUAL_REGIME")
+        symbol_quarantine_until: Dict[str, str] = {}
 
         # Load Phase 18 Idiosyncratic Risk multipliers for dynamic sizing modulation
         try:
@@ -439,6 +440,11 @@ class BacktestEngine:
                     cash_usd += (trade.exit_price_usd_net * trade.shares)
                     trade.shares = total_orig_shares
                     closed_trades.append(trade)
+
+                    # Phase 19.1: Enforce 7-session post-loss quarantine on stopped-out symbols
+                    if is_po3_type and exit_reason in ("STOP_LOSS", "SAME_DAY_STOP"):
+                        quar_idx = min(len(timeline) - 1, t_idx + 7)
+                        symbol_quarantine_until[trade.symbol] = timeline[quar_idx]
                 else:
                     still_open.append(trade)
 
@@ -453,6 +459,10 @@ class BacktestEngine:
 
                     sym = s["symbol"]
                     if any(t.symbol == sym for t in open_trades):
+                        continue
+
+                    # Phase 19.1: Skip symbols under post-loss quarantine
+                    if is_po3_type and sym in symbol_quarantine_until and curr_date <= symbol_quarantine_until[sym]:
                         continue
 
                     s_id = s["security_id"]
@@ -710,26 +720,26 @@ class BacktestEngine:
             return bool(c > sma20 > sma50 and prox52 >= -0.06 and rsi >= 55.0)
 
         elif strategy_id == "PO3_LIQUIDITY_SWEEP":
-            # TAC-15: Power of Three (PO3) Liquidity Sweep & Manipulation Reversal
-            # 1. Macro Trend: Not broken long-term (Close >= SMA200 or SMA50 >= SMA200)
-            trend_ok = c >= (sma200 or 0) * 0.95
-            # 2. Manipulation Liquidity Sweep: Intraday low tests or undercuts 20DMA, 50DMA, or lower BB
-            bb_lower_val = bb_lower if bb_lower and not math.isnan(bb_lower) else (sma20 * 0.95)
+            # Phase 19.1: Power of Three (PO3) Liquidity Sweep & Manipulation Reversal
+            # 1. Macro Trend: Strict primary uptrend alignment (Close > SMA50 > SMA200)
+            trend_ok = (c > sma50) and (sma50 > sma200)
+            # 2. Manipulation Liquidity Sweep: Intraday low strictly sweeps 20DMA or Lower BB, Close firmly reclaims
+            bb_lower_val = bb_lower if bb_lower and not math.isnan(bb_lower) else (sma20 * 0.96)
             low_p = bar["low"]
-            swept = (low_p <= sma20 * 1.005) or (low_p <= bb_lower_val * 1.01) or (low_p <= sma50 * 1.005)
-            # 3. Absorption Rejection: Lower wick >= 25% of bar range, close finishes in upper 48%
+            swept_and_reclaimed = ((low_p < sma20 and c >= sma20 * 0.998) or (low_p < bb_lower_val and c >= bb_lower_val * 0.998))
+            # 3. Absorption Rejection Pinbar: Lower wick >= 28% of bar range, close in upper 50%
             high_p = bar["high"]
             open_p = bar["open"]
             rng = max(0.01, high_p - low_p)
             lower_wick = min(open_p, c) - low_p
             wick_ratio = lower_wick / rng
             close_loc = (c - low_p) / rng
-            rejection = (wick_ratio >= 0.25 and close_loc >= 0.48 and c >= open_p * 0.995)
-            # 4. Momentum & Participation
+            rejection = (wick_ratio >= 0.28 and close_loc >= 0.50 and c >= open_p * 0.995)
+            # 4. Momentum & Volume Participation
             rvol = bar.get("rvol_20", 1.0) or 1.0
             cmf = bar.get("cmf_20", 0.0) or 0.0
-            participation = (40.0 <= rsi <= 66.0) and (rvol >= 0.95 or cmf >= -0.05) and (prox52 >= -0.15)
-            return bool(trend_ok and swept and rejection and participation)
+            participation = (42.0 <= rsi <= 66.0) and (rvol >= 1.05 or cmf >= 0.0) and (prox52 >= -0.15)
+            return bool(trend_ok and swept_and_reclaimed and rejection and participation)
 
         elif strategy_id == "ADAPTIVE_DUAL_REGIME":
             # Dual-Regime Adaptive Ensemble:
