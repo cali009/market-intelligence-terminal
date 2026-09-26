@@ -32,6 +32,7 @@ from src.engine.paper_trading import paper_trading_engine
 from src.engine.portfolio import portfolio_engine
 from src.engine.alerts import alert_engine
 from src.engine.filing_deep_read import filing_deep_read_engine
+from src.engine.production_scale import production_scale_engine
 
 FEEDS_DIR = DATA_DIR / "feeds"
 DIST_DIR = DATA_DIR / "dist"
@@ -522,8 +523,13 @@ class EdgeExporter:
             with open(d_dir / "ai_deep_read.json", "w") as f:
                 json.dump(ai_deep_read_payload, f, indent=2)
 
+            # Phase 12: Production Scaling, Exchange Entitlements & DR Health
+            production_payload = production_scale_engine.generate_production_health_feed()
+            with open(d_dir / "production_health.json", "w") as f:
+                json.dump(production_payload, f, indent=2)
+
         return {
-            "dist_files": 14,
+            "dist_files": 15,
             "symbol_files": symbol_files_count,
             "total_matches": len(scanner_results),
             "total_signals": len(signals_list),

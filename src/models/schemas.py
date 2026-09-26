@@ -593,6 +593,79 @@ class ModelCard(BaseModel):
         return self.model_dump()
 
 
+# ==========================================
+# PHASE 12: PRODUCTION SCALING & ENTITLEMENTS SCHEMAS
+# ==========================================
+
+
+class UserEntitlementRecord(BaseModel):
+    user_id: str
+    data_class: Literal["RETAIL_NON_PROFESSIONAL", "PROFESSIONAL_INSTITUTIONAL", "INTERNAL_SYSTEM"]
+    jurisdiction: Literal["US", "CA", "GLOBAL"]
+    entitled_venues: List[str]
+    monthly_exchange_fee_usd: float
+    status: Literal["ACTIVE", "SUSPENDED", "PENDING_VERIFICATION"] = "ACTIVE"
+    last_attestation_date: str
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class ExchangeAuditDeclaration(BaseModel):
+    reporting_period: str
+    exchange_authority: Literal["TMX_DATALINX", "NASDAQ_BASIC", "NYSE_CTA"]
+    non_pro_subscribers: int
+    pro_subscribers: int
+    total_payable_usd: float
+    compliance_certification: str
+    audit_status: Literal["VERIFIED", "SUBMITTED", "PENDING"] = "VERIFIED"
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class DisasterRecoveryDrillRecord(BaseModel):
+    drill_id: str
+    target_region: str
+    scenario: str
+    rto_target_minutes: float
+    rto_actual_minutes: float
+    rpo_target_minutes: float
+    rpo_actual_minutes: float
+    outcome: Literal["PASSED", "WARNING", "FAILED"] = "PASSED"
+    executed_at: str
+    validation_hash: str
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class TierUnitEconomics(BaseModel):
+    tier_name: Literal["FREE_COMMUNITY", "PRO_RESEARCHER", "INSTITUTIONAL_DESK"]
+    mrr_per_user_usd: float
+    cogs_infra_usd: float
+    cogs_data_licensing_usd: float
+    cogs_ai_inference_usd: float
+    gross_margin_pct: float
+    concurrency_capacity_p95_ms: float
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class SOC2ControlAudit(BaseModel):
+    control_id: str
+    title: str
+    domain: Literal["SECURITY", "AVAILABILITY", "CONFIDENTIALITY", "PROCESSING_INTEGRITY"]
+    status: Literal["COMPLIANT", "AUDITED", "NOT_APPLICABLE"] = "COMPLIANT"
+    evidence_summary: str
+    last_tested: str
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+
 
 
 
