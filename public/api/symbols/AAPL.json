@@ -5,7 +5,7 @@
   "currency": "USD",
   "name": "Apple Inc.",
   "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T00:48:50.439649+00:00",
+  "generated_at": "2026-09-26T01:07:42.808433+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 336.0400085449219,
@@ -372,39 +372,106 @@
   },
   "signal_plan": {
     "direction": "LONG",
+    "stance": "POTENTIAL LONG SETUP",
+    "setup_type": "TREND_CONTINUATION",
     "preferred_entry": 341.07,
+    "alt_entry": 329.4,
     "entry_zone": [
       338.34,
       342.43
     ],
-    "stop_loss": 318.43,
+    "structural_stop": 326.08,
+    "stop_distance_pct": 4.4,
     "targets": [
-      377.29,
-      399.93,
-      431.63
+      {
+        "target": 343.24,
+        "basis": "Trim candidate at nearest major resistance level ($344.96)",
+        "rr": 0.14
+      },
+      {
+        "target": 378.55,
+        "basis": "2.5R measured target (+11.0%)",
+        "rr": 2.5
+      },
+      {
+        "target": 401.03,
+        "basis": "Structural extension / Trailing 2xATR chandelier (+17.6%)"
+      }
     ],
-    "risk_reward_ratio": 2.6,
+    "risk_reward_ratio": 2.5,
+    "planned_rr_t1": 0.14,
+    "planned_rr_t2": 2.5,
+    "realized_rr_t1": 0.12,
+    "holding_period_desc": "POSITION \u2014 empirical winner distribution: 20\u201365 sessions (median 38)",
     "invalidation": [
       {
         "predicate": "DAILY_CLOSE_BELOW_LEVEL",
-        "level": 318.43,
-        "description": "Daily closing price finishes below structural stop loss of 318.43"
+        "level": 326.08,
+        "description": "Daily closing price finishes below structural stop loss of $326.08"
       },
       {
-        "predicate": "RVOL_COLLAPSE",
-        "threshold": 0.4,
-        "description": "20-day Relative Volume drops below 0.40x indicating liquidity desertion"
+        "predicate": "BREAKOUT_FAILURE_CONSECUTIVE_CLOSES",
+        "level": 341.07,
+        "cycles": 2,
+        "description": "Two consecutive closes back below $341.07 on declining volume"
       },
       {
-        "predicate": "EARNINGS_ANNOUNCEMENT_EVENT",
-        "buffer_sessions": 2,
-        "description": "Filing within 2 trading sessions triggers event risk de-risking protocol"
+        "predicate": "RELATIVE_STRENGTH_COLLAPSE",
+        "threshold_percentile": 40,
+        "description": "Relative strength rank vs sector benchmark drops below the 40th percentile"
+      },
+      {
+        "predicate": "MATERIAL_ADVERSE_NEWS_EVENT",
+        "min_materiality": 4,
+        "description": "Unresolved Materiality 4+ regulatory, accounting, or going-concern disclosure"
+      },
+      {
+        "predicate": "REGIME_SHIFT_CRISIS",
+        "gated_regimes": [
+          "HIGH_VOLATILITY",
+          "BEARISH",
+          "CRISIS"
+        ],
+        "description": "Macro regime deterioration to High Volatility, Bearish, or Crisis state"
       }
-    ]
+    ],
+    "risk_notes": [
+      "Volatility Sizing: 14-day ATR is 2.0%; position sizing must calibrate to $14.99/share risk.",
+      "Structural Risk: Stop loss is positioned 4.4% below preferred entry price.",
+      "Macro Regime Context: Operating in STRONG_BULL regime with regime multiplier applied."
+    ],
+    "rationale": {
+      "technical": [
+        "Setup Type: TREND CONTINUATION verified with 14-day RSI at 65.7.",
+        "Volume participation: 20-day RVOL at 0.69x average daily volume."
+      ],
+      "fundamental": [
+        "Fundamental Quality Score: 77/100 with Valuation Score at 26/100.",
+        "Point-in-Time status: FULL."
+      ],
+      "news_catalysts": [
+        "Recent verified disclosures: 5 continuous filing events recorded."
+      ],
+      "macro": [
+        "Operating within STRONG_BULL regime context."
+      ],
+      "sector": [
+        "Sector alignment within Information Technology."
+      ],
+      "regime": [
+        "Positive forward expectancy across empirical walk-forward historical analogues in STRONG_BULL regime."
+      ]
+    },
+    "data_lineage": {
+      "price_source": "PRIMARY_EXCHANGE_CANONICAL_EOD",
+      "fundamentals_source": "SEC_EDGAR_XBRL",
+      "news_source": "OFFICIAL_REGULATORY_FILINGS",
+      "point_in_time_verified": true
+    }
   },
   "ai_explanation": {
     "FACT": "AAPL (NASDAQ - Apple Inc.) closed at $341.07 USD. Trading within -1.2% of its 52-week high with a 14-day ATR of 2.0%. The primary exchange session traded on volume of 29,403,008 shares.",
-    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 65/100 (Confidence Tier B). Technical Factor sub-score: 64/100 (14-day RSI: 65.7, 20-day RVOL: 0.69x). Risk penalty applied: -0.0 points. Modulated by the STRONG_BULL macro regime.",
+    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 65/100 (Confidence Tier B). Technical Factor sub-score: 64/100 (14-day RSI: 65.7, 20-day RVOL: 0.69x), Fundamental Score: 57/100. Risk penalty applied: -0.0 points. Modulated by the STRONG_BULL macro regime.",
     "INFERENCE": "Historical setups exhibiting stacked moving averages and low-bandwidth consolidation during a STRONG_BULL regime showed positive forward expectancy across 64% of walk-forward folds. Relative strength ranks in the upper quartile of the current dual-market universe.",
     "UNCERTAINTY": "Risks include broader market sentiment deterioration in the STRONG_BULL environment. A daily close below technical support at $287.77 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
   },

@@ -23,6 +23,7 @@ from src.engine.scoring import scoring_engine
 from src.engine.regime import regime_classifier
 from src.engine.scanners import market_scanners
 from src.engine.signals import signal_engine
+from src.engine.exit_engine import exit_signal_engine
 from src.engine.explanations import explanation_engine
 from src.engine.news_engine import news_engine
 from src.engine.journal import journal_engine
@@ -93,6 +94,7 @@ class EdgeExporter:
         scanner_results = []
         signals_list = []
         symbol_files_count = 0
+        metrics_map: Dict[str, Any] = {}
 
         # Compile master news & SEC filings intelligence feed
         master_catalysts = news_engine.compile_master_catalyst_feed()
@@ -186,15 +188,24 @@ class EdgeExporter:
                     "regime_state": m.regime_state,
                 })
 
-            # Signal
+            # Cache metrics for portfolio exit evaluation
+            metrics_map[sym] = metrics
+
+            # Phase 6 Entry Signal Engine: Output Contract with 6-Dimension Rationale & Predicates
             plan = signal_engine.generate_long_signal(
                 security_id=sec_id,
                 metrics=metrics,
                 composite_score=score_rec.composite_score,
                 confidence_tier=score_rec.confidence_tier,
                 horizon="POSITION",
+                fundamental_dossier=fund_dossier,
+                technical_dossier=tech_dossier,
+                recent_catalysts=sym_catalysts,
+                regime_state=regime_name,
+                sector=s.get("sector", "Technology"),
             )
             if plan:
+                stop_dist = round(((plan.preferred_entry - plan.stop_loss) / plan.preferred_entry) * 100.0, 1)
                 signals_list.append({
                     "symbol": sym,
                     "exchange": exch,
@@ -203,16 +214,30 @@ class EdgeExporter:
                     "composite_score": score_rec.composite_score,
                     "confidence_tier": plan.confidence_tier,
                     "direction": plan.direction,
+                    "stance": "POTENTIAL LONG SETUP",
+                    "setup_type": plan.setup_type,
                     "preferred_entry": plan.preferred_entry,
+                    "alt_entry": plan.alt_entry,
                     "entry_zone": [plan.entry_zone_low, plan.entry_zone_high],
                     "structural_stop": plan.stop_loss,
-                    "targets": [plan.target_1, plan.target_2, plan.target_3],
+                    "stop_distance_pct": stop_dist,
+                    "targets": [
+                        {"target": plan.target_1, "basis": plan.target_1_basis, "rr": plan.planned_rr_t1},
+                        {"target": plan.target_2, "basis": plan.target_2_basis, "rr": plan.planned_rr_t2},
+                        {"target": plan.target_3, "basis": plan.target_3_basis},
+                    ],
                     "risk_reward_ratio": plan.risk_reward_ratio,
+                    "planned_rr_t1": plan.planned_rr_t1,
+                    "planned_rr_t2": plan.planned_rr_t2,
+                    "realized_rr_t1": plan.realized_rr_t1,
+                    "holding_period_desc": plan.holding_period_desc,
                     "invalidation_predicates": plan.invalidation_predicates,
                     "risk_notes": plan.risk_notes,
+                    "rationale": plan.rationale,
+                    "data_lineage": plan.data_lineage,
                 })
 
-            # AI Explanation
+            # AI Explanation with Numeral Verification Gate
             explanation = explanation_engine.generate_deterministic_explanation(
                 security_info=dict(s),
                 metrics=metrics,
@@ -220,9 +245,11 @@ class EdgeExporter:
                     "composite_score": score_rec.composite_score,
                     "confidence_tier": score_rec.confidence_tier,
                     "technical_score": score_rec.technical_score,
+                    "fundamental_score": score_rec.fundamental_score,
                     "risk_penalty": score_rec.risk_penalty,
                 },
                 regime_state=regime_name,
+                fundamental_dossier=fund_dossier,
             )
 
             # Add to leaderboard
@@ -289,12 +316,27 @@ class EdgeExporter:
                 "signal_plan": (
                     {
                         "direction": plan.direction,
+                        "stance": "POTENTIAL LONG SETUP",
+                        "setup_type": plan.setup_type,
                         "preferred_entry": plan.preferred_entry,
+                        "alt_entry": plan.alt_entry,
                         "entry_zone": [plan.entry_zone_low, plan.entry_zone_high],
-                        "stop_loss": plan.stop_loss,
-                        "targets": [plan.target_1, plan.target_2, plan.target_3],
+                        "structural_stop": plan.stop_loss,
+                        "stop_distance_pct": round(((plan.preferred_entry - plan.stop_loss) / plan.preferred_entry) * 100.0, 1),
+                        "targets": [
+                            {"target": plan.target_1, "basis": plan.target_1_basis, "rr": plan.planned_rr_t1},
+                            {"target": plan.target_2, "basis": plan.target_2_basis, "rr": plan.planned_rr_t2},
+                            {"target": plan.target_3, "basis": plan.target_3_basis},
+                        ],
                         "risk_reward_ratio": plan.risk_reward_ratio,
+                        "planned_rr_t1": plan.planned_rr_t1,
+                        "planned_rr_t2": plan.planned_rr_t2,
+                        "realized_rr_t1": plan.realized_rr_t1,
+                        "holding_period_desc": plan.holding_period_desc,
                         "invalidation": plan.invalidation_predicates,
+                        "risk_notes": plan.risk_notes,
+                        "rationale": plan.rationale,
+                        "data_lineage": plan.data_lineage,
                     }
                     if plan
                     else None
@@ -396,10 +438,44 @@ class EdgeExporter:
                     indent=2,
                 )
 
-            # Phase 1 MVP: Research Journal, Watchlists & Data Quality Health
+            # Phase 1 & 6 MVP: Research Journal enriched with Exit Engine State Machine
             journal_payload = journal_engine.get_journal_summary()
+            exit_verdicts_list = []
+            for p in journal_payload.get("positions", []):
+                p_sym = p.get("symbol")
+                p_metrics = metrics_map.get(p_sym, {"close": p.get("entry_price", 100.0), "atr_14": 2.0})
+                p_ctry = p.get("market", "US")
+                p_regime = regimes_data.get(p_ctry, {}).get("regime_state", "WEAK_BULL")
+                verdict = exit_signal_engine.evaluate_position(
+                    position=p,
+                    metrics=p_metrics,
+                    macro_regime=p_regime,
+                    current_cycle_state=p.get("lifecycle_state", "HOLD"),
+                    consecutive_cycles_in_state=p.get("consecutive_cycles", 1),
+                )
+                p["lifecycle_state"] = verdict.recommended_state
+                p["primary_trigger"] = verdict.primary_trigger
+                p["active_triggers"] = verdict.active_triggers
+                p["action_summary"] = verdict.action_summary
+                p["target_allocation_pct"] = verdict.target_allocation_pct
+                p["suggested_trailing_stop"] = verdict.suggested_trailing_stop
+                p["exit_verdict"] = verdict.to_dict()
+                exit_verdicts_list.append(verdict.to_dict())
+
             with open(d_dir / "journal.json", "w") as f:
                 json.dump(journal_payload, f, indent=2)
+
+            with open(d_dir / "exit_signals.json", "w") as f:
+                json.dump(
+                    {
+                        "as_of_date": as_of_date,
+                        "generated_at": generated_at,
+                        "total_positions_evaluated": len(exit_verdicts_list),
+                        "exit_verdicts": exit_verdicts_list,
+                    },
+                    f,
+                    indent=2,
+                )
 
             watchlists_payload = journal_engine.get_watchlists_with_metrics()
             with open(d_dir / "watchlists.json", "w") as f:
@@ -423,7 +499,7 @@ class EdgeExporter:
                 json.dump(coverage_report, f, indent=2)
 
         return {
-            "dist_files": 9,
+            "dist_files": 10,
             "symbol_files": symbol_files_count,
             "total_matches": len(scanner_results),
             "total_signals": len(signals_list),

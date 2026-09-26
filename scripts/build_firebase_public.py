@@ -55,6 +55,8 @@ def build_firebase_bundle():
         ("feed_health.json", "feed_health"),
         ("fundamentals_coverage.json", "fundamentals_coverage.json"),
         ("fundamentals_coverage.json", "fundamentals_coverage"),
+        ("exit_signals.json", "exit_signals.json"),
+        ("exit_signals.json", "exit_signals"),
     ]
 
     for src_name, dest_name in core_feeds:

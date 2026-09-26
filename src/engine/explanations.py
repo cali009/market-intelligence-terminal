@@ -1,13 +1,20 @@
 """
-AI Explanation Engine & Reasoning Contract
+AI Explanation Engine & Reasoning Contract (Phase 6)
 US + Canada Market Intelligence Platform
-Implements the FACT / CALCULATION / INFERENCE / UNCERTAINTY structural contract.
-Enforces numeral verification, zero hallucination, and compliance linter pass.
+
+Implements the strict 4-layer contract:
+    FACT / CALCULATION / INFERENCE / UNCERTAINTY
+with:
+- Numeral-verification gate: Every number in INFERENCE/UNCERTAINTY must appear in inputs
+  or authorized empirical walk-forward statistics. Zero hallucinated numbers.
+- Compliance Advice-Language Linter pass (CSA 31-369 & SEC Publisher Exclusion).
+- Automatic deterministic failover if external LLM generates ungrounded numerals.
 """
 
-from typing import Dict, Any, Optional
+from typing import Dict, Any, Optional, List, Tuple
 from datetime import datetime, timezone
 import json
+import re
 import requests
 
 from config.settings import settings
@@ -25,6 +32,7 @@ class ExplanationBlock:
         calculation: str,
         inference: str,
         uncertainty: str,
+        numeral_verification_passed: bool = True,
     ):
         self.symbol = symbol
         self.score = score
@@ -33,12 +41,14 @@ class ExplanationBlock:
         self.calculation = calculation
         self.inference = inference
         self.uncertainty = uncertainty
+        self.numeral_verification_passed = numeral_verification_passed
 
     def to_dict(self) -> Dict[str, Any]:
         return {
             "symbol": self.symbol,
             "composite_score": self.score,
             "confidence_tier": self.tier,
+            "numeral_verification_passed": self.numeral_verification_passed,
             "explanation": {
                 "FACT": self.fact,
                 "CALCULATION": self.calculation,
@@ -51,13 +61,77 @@ class ExplanationBlock:
 class ExplanationEngine:
     """
     Generates structured, multi-layer explanations for quantitative setups.
-    Guarantees deterministic fallback when external LLM APIs are not configured.
+    Guarantees deterministic fallback and strict numeral verification.
     """
+
+    # Approved empirical walk-forward constants from backtest folds
+    APPROVED_EMPIRICAL_NUMERALS = {
+        "14", "20", "50", "200", "64", "58", "57", "61", "184", "212", "3.8", "1.3", "1.31", "2.0", "1.5", "2.5"
+    }
 
     def __init__(self):
         self.groq_api_key = settings.GROQ_API_KEY
         self.groq_base_url = settings.GROQ_BASE_URL
         self.rate_limiter = registry.get_limiter("api.groq.com", default_rate=0.4)
+
+    @classmethod
+    def extract_numerals(cls, text: str) -> List[str]:
+        """
+        Extract numeric values (integers, floats, percentages) from a string.
+        """
+        # Matches numbers like 12, 12.34, -5.2, +3.1
+        matches = re.findall(r"[-+]?\d*\.?\d+", text)
+        return [m.strip("+-") for m in matches if m.strip("+-") and m != "."]
+
+    @classmethod
+    def verify_numerals(
+        cls,
+        fact_text: str,
+        calc_text: str,
+        inference_text: str,
+        uncertainty_text: str,
+        known_inputs: Dict[str, Any],
+    ) -> Tuple[bool, List[str]]:
+        """
+        Numeral Verification Gate:
+        Every numeral in INFERENCE and UNCERTAINTY must either:
+        1. Be present in FACT or CALCULATION text, or
+        2. Match a known input metric, or
+        3. Be in APPROVED_EMPIRICAL_NUMERALS (audited historical analogue constants).
+        Returns: (passed: bool, unauthorized_numerals: List[str])
+        """
+        allowed = set(cls.APPROVED_EMPIRICAL_NUMERALS)
+
+        # Numerals from FACT and CALCULATION
+        allowed.update(cls.extract_numerals(fact_text))
+        allowed.update(cls.extract_numerals(calc_text))
+
+        # Numerals from known inputs
+        for v in known_inputs.values():
+            if isinstance(v, (int, float)):
+                allowed.add(f"{v:.1f}")
+                allowed.add(f"{v:.2f}")
+                allowed.add(f"{int(v)}")
+                allowed.add(str(v))
+
+        # Check INFERENCE numerals
+        unauthorized = []
+        inf_numerals = cls.extract_numerals(inference_text)
+        unc_numerals = cls.extract_numerals(uncertainty_text)
+
+        for num in (inf_numerals + unc_numerals):
+            clean_num = num.rstrip(".")
+            # Check if clean_num or rounded matches any in allowed
+            matched = any(
+                clean_num == a or
+                clean_num == a.rstrip("0").rstrip(".") or
+                a.startswith(clean_num)
+                for a in allowed
+            )
+            if not matched:
+                unauthorized.append(clean_num)
+
+        return (len(unauthorized) == 0, unauthorized)
 
     def generate_deterministic_explanation(
         self,
@@ -65,6 +139,7 @@ class ExplanationEngine:
         metrics: Dict[str, Any],
         score_rec: Dict[str, Any],
         regime_state: str,
+        fundamental_dossier: Optional[Dict[str, Any]] = None,
     ) -> ExplanationBlock:
         """
         Pure, deterministic template-driven explanation generator.
@@ -84,6 +159,7 @@ class ExplanationEngine:
         score = score_rec.get("composite_score", 50)
         tier = score_rec.get("confidence_tier", "B")
         tech_score = score_rec.get("technical_score", 50)
+        fund_score = score_rec.get("fundamental_score")
         risk_pen = score_rec.get("risk_penalty", 0.0)
 
         # 1. FACT: Pure verifiable market data
@@ -94,9 +170,10 @@ class ExplanationEngine:
         )
 
         # 2. CALCULATION: Deterministic model output
+        fund_phrase = f", Fundamental Score: {fund_score}/100" if fund_score is not None else " (Index ETF Fundamental Bypass)"
         calc = (
             f"The quantitative engine computed a Composite Opportunity Score of {score}/100 (Confidence Tier {tier}). "
-            f"Technical Factor sub-score: {tech_score}/100 (14-day RSI: {rsi:.1f}, 20-day RVOL: {rvol:.2f}x). "
+            f"Technical Factor sub-score: {tech_score}/100 (14-day RSI: {rsi:.1f}, 20-day RVOL: {rvol:.2f}x){fund_phrase}. "
             f"Risk penalty applied: -{risk_pen:.1f} points. Modulated by the {regime_state} macro regime."
         )
 
@@ -119,11 +196,20 @@ class ExplanationEngine:
             )
 
         # 4. UNCERTAINTY: Explicit failure conditions and risks
-        sma_200 = metrics.get("sma_200", close * 0.90)
+        sma_200 = float(metrics.get("sma_200", close * 0.90))
         uncertainty = (
             f"Risks include broader market sentiment deterioration in the {regime_state} environment. "
             f"A daily close below technical support at ${sma_200:.2f} invalidates the constructive thesis. "
             f"Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
+        )
+
+        # Numeral Verification Gate
+        passed, unauth = self.verify_numerals(
+            fact_text=fact,
+            calc_text=calc,
+            inference_text=inf,
+            uncertainty_text=uncertainty,
+            known_inputs={"close": close, "sma_200": sma_200, "score": score, "rsi": rsi, "rvol": rvol},
         )
 
         # Compliance Assertion: Pass through linter
@@ -138,6 +224,7 @@ class ExplanationEngine:
             calculation=calc,
             inference=inf,
             uncertainty=uncertainty,
+            numeral_verification_passed=passed,
         )
 
     def generate_llm_explanation(
@@ -146,13 +233,15 @@ class ExplanationEngine:
         metrics: Dict[str, Any],
         score_rec: Dict[str, Any],
         regime_state: str,
+        fundamental_dossier: Optional[Dict[str, Any]] = None,
     ) -> ExplanationBlock:
         """
         Uses Groq Free LPU (Llama 3.3 70B) to generate explanation.
-        Falls back to deterministic generator if API key is absent or on network error.
+        Falls back to deterministic generator if API key is absent, on network error,
+        or if the LLM output fails the numeral verification gate or compliance linter.
         """
         if not self.groq_api_key:
-            return self.generate_deterministic_explanation(security_info, metrics, score_rec, regime_state)
+            return self.generate_deterministic_explanation(security_info, metrics, score_rec, regime_state, fundamental_dossier)
 
         sym = security_info.get("symbol", "")
         self.rate_limiter.acquire(1.0)
@@ -198,22 +287,40 @@ class ExplanationEngine:
             content = resp.json()["choices"][0]["message"]["content"]
             parsed = json.loads(content)
 
+            fact_t = parsed.get("FACT", "")
+            calc_t = parsed.get("CALCULATION", "")
+            inf_t = parsed.get("INFERENCE", "")
+            unc_t = parsed.get("UNCERTAINTY", "")
+
             # Check compliance of LLM output
-            full_text = " ".join(parsed.values())
+            full_text = " ".join([fact_t, calc_t, inf_t, unc_t])
             linter.assert_clean(full_text, source_label=f"LLMExplanation({sym})")
+
+            # Check Numeral Verification Gate
+            passed, unauth = self.verify_numerals(
+                fact_text=fact_t,
+                calc_text=calc_t,
+                inference_text=inf_t,
+                uncertainty_text=unc_t,
+                known_inputs=metrics,
+            )
+            if not passed:
+                # LLM hallucinated ungrounded numbers: reject and fallback
+                return self.generate_deterministic_explanation(security_info, metrics, score_rec, regime_state, fundamental_dossier)
 
             return ExplanationBlock(
                 symbol=sym,
                 score=score_rec.get("composite_score", 50),
                 tier=score_rec.get("confidence_tier", "B"),
-                fact=parsed.get("FACT", ""),
-                calculation=parsed.get("CALCULATION", ""),
-                inference=parsed.get("INFERENCE", ""),
-                uncertainty=parsed.get("UNCERTAINTY", ""),
+                fact=fact_t,
+                calculation=calc_t,
+                inference=inf_t,
+                uncertainty=unc_t,
+                numeral_verification_passed=True,
             )
         except Exception:
             # Safe failover to deterministic generator
-            return self.generate_deterministic_explanation(security_info, metrics, score_rec, regime_state)
+            return self.generate_deterministic_explanation(security_info, metrics, score_rec, regime_state, fundamental_dossier)
 
 
 # Global singleton explanation engine

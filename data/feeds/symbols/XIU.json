@@ -5,7 +5,7 @@
   "currency": "CAD",
   "name": "iShares S&P/TSX 60 Index ETF",
   "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T00:48:50.439649+00:00",
+  "generated_at": "2026-09-26T01:07:42.808433+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 53.09000015258789,
@@ -372,39 +372,106 @@
   },
   "signal_plan": {
     "direction": "LONG",
+    "stance": "POTENTIAL LONG SETUP",
+    "setup_type": "BREAKOUT",
     "preferred_entry": 53.08,
+    "alt_entry": 52.66,
     "entry_zone": [
-      52.87,
-      53.18
+      52.92,
+      53.29
     ],
-    "stop_loss": 51.93,
+    "structural_stop": 51.93,
+    "stop_distance_pct": 2.2,
     "targets": [
-      54.92,
-      56.07,
-      57.68
+      {
+        "target": 53.56,
+        "basis": "Trim candidate at nearest major resistance level ($53.83)",
+        "rr": 0.42
+      },
+      {
+        "target": 55.95,
+        "basis": "2.5R measured target (+5.4%)",
+        "rr": 2.5
+      },
+      {
+        "target": 57.68,
+        "basis": "Structural extension / Trailing 2xATR chandelier (+8.7%)"
+      }
     ],
-    "risk_reward_ratio": 2.6,
+    "risk_reward_ratio": 2.5,
+    "planned_rr_t1": 0.42,
+    "planned_rr_t2": 2.5,
+    "realized_rr_t1": 0.37,
+    "holding_period_desc": "POSITION \u2014 empirical winner distribution: 20\u201365 sessions (median 38)",
     "invalidation": [
       {
         "predicate": "DAILY_CLOSE_BELOW_LEVEL",
         "level": 51.93,
-        "description": "Daily closing price finishes below structural stop loss of 51.93"
+        "description": "Daily closing price finishes below structural stop loss of $51.93"
       },
       {
-        "predicate": "RVOL_COLLAPSE",
-        "threshold": 0.4,
-        "description": "20-day Relative Volume drops below 0.40x indicating liquidity desertion"
+        "predicate": "BREAKOUT_FAILURE_CONSECUTIVE_CLOSES",
+        "level": 53.08,
+        "cycles": 2,
+        "description": "Two consecutive closes back below $53.08 on declining volume"
       },
       {
-        "predicate": "EARNINGS_ANNOUNCEMENT_EVENT",
-        "buffer_sessions": 2,
-        "description": "Filing within 2 trading sessions triggers event risk de-risking protocol"
+        "predicate": "RELATIVE_STRENGTH_COLLAPSE",
+        "threshold_percentile": 40,
+        "description": "Relative strength rank vs sector benchmark drops below the 40th percentile"
+      },
+      {
+        "predicate": "MATERIAL_ADVERSE_NEWS_EVENT",
+        "min_materiality": 4,
+        "description": "Unresolved Materiality 4+ regulatory, accounting, or going-concern disclosure"
+      },
+      {
+        "predicate": "REGIME_SHIFT_CRISIS",
+        "gated_regimes": [
+          "HIGH_VOLATILITY",
+          "BEARISH",
+          "CRISIS"
+        ],
+        "description": "Macro regime deterioration to High Volatility, Bearish, or Crisis state"
       }
-    ]
+    ],
+    "risk_notes": [
+      "Volatility Sizing: 14-day ATR is 1.0%; position sizing must calibrate to $1.15/share risk.",
+      "Structural Risk: Stop loss is positioned 2.2% below preferred entry price.",
+      "Macro Regime Context: Operating in WEAK_BULL regime with regime multiplier applied."
+    ],
+    "rationale": {
+      "technical": [
+        "Setup Type: BREAKOUT verified with 14-day RSI at 46.5.",
+        "Volume participation: 20-day RVOL at 1.44x average daily volume."
+      ],
+      "fundamental": [
+        "Fundamental Quality Score: 50/100 with Valuation Score at 50/100.",
+        "Point-in-Time status: INDEX_ETF_BYPASS."
+      ],
+      "news_catalysts": [
+        "Recent verified disclosures: 0 continuous filing events recorded."
+      ],
+      "macro": [
+        "Operating within WEAK_BULL regime context."
+      ],
+      "sector": [
+        "Sector alignment within Index ETF."
+      ],
+      "regime": [
+        "Positive forward expectancy across empirical walk-forward historical analogues in WEAK_BULL regime."
+      ]
+    },
+    "data_lineage": {
+      "price_source": "PRIMARY_EXCHANGE_CANONICAL_EOD",
+      "fundamentals_source": "SEC_EDGAR_XBRL",
+      "news_source": "OFFICIAL_REGULATORY_FILINGS",
+      "point_in_time_verified": true
+    }
   },
   "ai_explanation": {
     "FACT": "XIU (TSX - iShares S&P/TSX 60 Index ETF) closed at $53.08 CAD. Trading within -3.4% of its 52-week high with a 14-day ATR of 1.0%. The primary exchange session traded on volume of 5,447,704 shares.",
-    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 63/100 (Confidence Tier B). Technical Factor sub-score: 47/100 (14-day RSI: 46.5, 20-day RVOL: 1.44x). Risk penalty applied: -0.0 points. Modulated by the WEAK_BULL macro regime.",
+    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 63/100 (Confidence Tier B). Technical Factor sub-score: 47/100 (14-day RSI: 46.5, 20-day RVOL: 1.44x) (Index ETF Fundamental Bypass). Risk penalty applied: -0.0 points. Modulated by the WEAK_BULL macro regime.",
     "INFERENCE": "Historical setups exhibiting stacked moving averages and low-bandwidth consolidation during a WEAK_BULL regime showed positive forward expectancy across 64% of walk-forward folds. Relative strength ranks in the upper quartile of the current dual-market universe.",
     "UNCERTAINTY": "Risks include broader market sentiment deterioration in the WEAK_BULL environment. A daily close below technical support at $50.39 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
   },

@@ -5,7 +5,7 @@
   "currency": "USD",
   "name": "Exxon Mobil Corporation",
   "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T00:48:50.439649+00:00",
+  "generated_at": "2026-09-26T01:07:42.808433+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 160.22999572753906,
@@ -375,39 +375,107 @@
   },
   "signal_plan": {
     "direction": "LONG",
+    "stance": "POTENTIAL LONG SETUP",
+    "setup_type": "TREND_CONTINUATION",
     "preferred_entry": 160.59,
+    "alt_entry": 158.18,
     "entry_zone": [
-      160.86,
+      158.98,
       161.39
     ],
-    "stop_loss": 151.76,
+    "structural_stop": 151.76,
+    "stop_distance_pct": 5.5,
     "targets": [
-      174.72,
-      183.55,
-      195.91
+      {
+        "target": 162.85,
+        "basis": "Trim candidate at nearest major resistance level ($163.67)",
+        "rr": 0.26
+      },
+      {
+        "target": 182.66,
+        "basis": "2.5R measured target (+13.7%)",
+        "rr": 2.5
+      },
+      {
+        "target": 195.91,
+        "basis": "Structural extension / Trailing 2xATR chandelier (+22.0%)"
+      }
     ],
-    "risk_reward_ratio": 2.6,
+    "risk_reward_ratio": 2.5,
+    "planned_rr_t1": 0.26,
+    "planned_rr_t2": 2.5,
+    "realized_rr_t1": 0.23,
+    "holding_period_desc": "POSITION \u2014 empirical winner distribution: 20\u201365 sessions (median 38)",
     "invalidation": [
       {
         "predicate": "DAILY_CLOSE_BELOW_LEVEL",
         "level": 151.76,
-        "description": "Daily closing price finishes below structural stop loss of 151.76"
+        "description": "Daily closing price finishes below structural stop loss of $151.76"
       },
       {
-        "predicate": "RVOL_COLLAPSE",
-        "threshold": 0.4,
-        "description": "20-day Relative Volume drops below 0.40x indicating liquidity desertion"
+        "predicate": "BREAKOUT_FAILURE_CONSECUTIVE_CLOSES",
+        "level": 160.59,
+        "cycles": 2,
+        "description": "Two consecutive closes back below $160.59 on declining volume"
       },
       {
-        "predicate": "EARNINGS_ANNOUNCEMENT_EVENT",
-        "buffer_sessions": 2,
-        "description": "Filing within 2 trading sessions triggers event risk de-risking protocol"
+        "predicate": "RELATIVE_STRENGTH_COLLAPSE",
+        "threshold_percentile": 40,
+        "description": "Relative strength rank vs sector benchmark drops below the 40th percentile"
+      },
+      {
+        "predicate": "MATERIAL_ADVERSE_NEWS_EVENT",
+        "min_materiality": 4,
+        "description": "Unresolved Materiality 4+ regulatory, accounting, or going-concern disclosure"
+      },
+      {
+        "predicate": "REGIME_SHIFT_CRISIS",
+        "gated_regimes": [
+          "HIGH_VOLATILITY",
+          "BEARISH",
+          "CRISIS"
+        ],
+        "description": "Macro regime deterioration to High Volatility, Bearish, or Crisis state"
       }
-    ]
+    ],
+    "risk_notes": [
+      "Volatility Sizing: 14-day ATR is 2.5%; position sizing must calibrate to $8.83/share risk.",
+      "Structural Risk: Stop loss is positioned 5.5% below preferred entry price.",
+      "Macro Regime Context: Operating in STRONG_BULL regime with regime multiplier applied.",
+      "Data Gap Note: Non-reported concepts: OperatingIncome. Weights renormalized."
+    ],
+    "rationale": {
+      "technical": [
+        "Setup Type: TREND CONTINUATION verified with 14-day RSI at 48.7.",
+        "Volume participation: 20-day RVOL at 0.66x average daily volume."
+      ],
+      "fundamental": [
+        "Fundamental Quality Score: 20/100 with Valuation Score at 42/100.",
+        "Point-in-Time status: PARTIAL."
+      ],
+      "news_catalysts": [
+        "Recent verified disclosures: 5 continuous filing events recorded."
+      ],
+      "macro": [
+        "Operating within STRONG_BULL regime context."
+      ],
+      "sector": [
+        "Sector alignment within Energy."
+      ],
+      "regime": [
+        "Positive forward expectancy across empirical walk-forward historical analogues in STRONG_BULL regime."
+      ]
+    },
+    "data_lineage": {
+      "price_source": "PRIMARY_EXCHANGE_CANONICAL_EOD",
+      "fundamentals_source": "SEC_EDGAR_XBRL",
+      "news_source": "OFFICIAL_REGULATORY_FILINGS",
+      "point_in_time_verified": true
+    }
   },
   "ai_explanation": {
     "FACT": "XOM (NYSE - Exxon Mobil Corporation) closed at $160.59 USD. Trading within -9.0% of its 52-week high with a 14-day ATR of 2.5%. The primary exchange session traded on volume of 9,579,407 shares.",
-    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 54/100 (Confidence Tier B). Technical Factor sub-score: 58/100 (14-day RSI: 48.7, 20-day RVOL: 0.66x). Risk penalty applied: -0.0 points. Modulated by the STRONG_BULL macro regime.",
+    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 54/100 (Confidence Tier B). Technical Factor sub-score: 58/100 (14-day RSI: 48.7, 20-day RVOL: 0.66x), Fundamental Score: 29/100. Risk penalty applied: -0.0 points. Modulated by the STRONG_BULL macro regime.",
     "INFERENCE": "Current technical structure reflects neutral consolidation. Setup geometry indicates digestive trading range with no confirmed directional expansion.",
     "UNCERTAINTY": "Risks include broader market sentiment deterioration in the STRONG_BULL environment. A daily close below technical support at $147.99 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
   },

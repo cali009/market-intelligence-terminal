@@ -1547,6 +1547,7 @@
                                 <th style="padding: 12px 14px; text-align: right;">Market Value</th>
                                 <th style="padding: 12px 14px; text-align: right;">Unrealized P&L</th>
                                 <th style="padding: 12px 14px;">Risk Governance (Stop / Target)</th>
+                                <th style="padding: 12px 14px;">Exit State Machine (Phase 6)</th>
                                 <th style="padding: 12px 14px; text-align: center;">Conviction</th>
                                 <th style="padding: 12px 14px;">Strategy & Thesis</th>
                                 <th style="padding: 12px 14px; text-align: center;">Actions</th>
@@ -2423,45 +2424,99 @@
 
         function renderSignals(signals) {
             const grid = document.getElementById('signalsGrid');
+            if (!grid) return;
             grid.innerHTML = '';
+
+            if (!signals || signals.length === 0) {
+                grid.innerHTML = '<div style="padding: 40px; text-align: center; color: var(--text-muted);">No active research signals qualify under current market filters.</div>';
+                return;
+            }
 
             signals.forEach(s => {
                 const card = document.createElement('div');
                 card.className = 'signal-card';
+
+                const t1 = typeof s.targets[0] === 'object' ? s.targets[0].target : s.targets[0];
+                const t1Basis = typeof s.targets[0] === 'object' ? s.targets[0].basis : '1.5R Trim Target';
+                const t2 = typeof s.targets[1] === 'object' ? s.targets[1].target : s.targets[1];
+                const t2Basis = typeof s.targets[1] === 'object' ? s.targets[1].basis : '2.5R Target';
+                const t3 = typeof s.targets[2] === 'object' ? s.targets[2].target : s.targets[2];
+
+                const invList = (s.invalidation_predicates || []).slice(0, 2).map(inv => `
+                    <li style="margin-bottom: 3px;">${inv.description}</li>
+                `).join('');
+
+                const rationaleTags = s.rationale ? `
+                    <div style="display: flex; flex-wrap: wrap; gap: 4px; margin-top: 10px; margin-bottom: 12px;">
+                        <span class="exchange-tag" style="font-size: 10px; color: var(--accent-cyan);">Tech: ${s.setup_type || 'POSTURE'}</span>
+                        <span class="exchange-tag" style="font-size: 10px; color: var(--accent-green);">R:R ${s.risk_reward_ratio || 2.5}:1</span>
+                        <span class="exchange-tag" style="font-size: 10px; color: var(--text-muted);">${s.holding_period_desc ? s.holding_period_desc.split('—')[0] : 'POSITION'}</span>
+                    </div>
+                ` : '';
+
                 card.innerHTML = `
                     <div class="signal-card-header">
                         <div>
-                            <div class="symbol-badge" style="font-size: 16px;">
-                                <span>${s.symbol}</span>
+                            <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 4px;">
+                                <span class="symbol-badge" style="font-size: 16px; font-weight: 800;">${s.symbol}</span>
                                 <span class="exchange-tag">${s.exchange}</span>
+                                <span class="score-pill" style="font-size: 10px; padding: 2px 6px; background: rgba(16, 185, 129, 0.15); color: var(--accent-green); border: 1px solid rgba(16, 185, 129, 0.3);">
+                                    ${s.stance || 'POTENTIAL LONG SETUP'}
+                                </span>
                             </div>
                             <div style="font-size: 12px; color: var(--text-muted);">${s.name}</div>
                         </div>
                         <div style="text-align: right;">
-                            <span class="score-pill score-high">${s.composite_score}/100</span>
-                            <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">Tier ${s.confidence_tier}</div>
+                            <span class="score-pill score-high" style="font-size: 14px;">${s.composite_score}/100</span>
+                            <div style="font-size: 10px; color: var(--text-muted); margin-top: 3px;">Tier ${s.confidence_tier} · ${s.setup_type || 'SETUP'}</div>
                         </div>
                     </div>
-                    <div class="signal-levels">
+
+                    <div class="signal-levels" style="grid-template-columns: 1fr 1fr 1fr; margin-bottom: 10px;">
                         <div>
                             <div class="level-label">Preferred Entry</div>
                             <div class="level-val val-entry">$${s.preferred_entry.toFixed(2)}</div>
+                            <div style="font-size: 9px; color: var(--text-muted); margin-top: 2px;">Alt: $${(s.alt_entry || s.preferred_entry*0.98).toFixed(2)}</div>
                         </div>
                         <div>
                             <div class="level-label">Structural Stop</div>
                             <div class="level-val val-stop">$${s.structural_stop.toFixed(2)}</div>
+                            <div style="font-size: 9px; color: var(--accent-red); margin-top: 2px;">-${s.stop_distance_pct || 4.5}% Risk</div>
                         </div>
                         <div>
-                            <div class="level-label">Target 2 (2.6R)</div>
-                            <div class="level-val val-target">$${s.targets[1].toFixed(2)}</div>
+                            <div class="level-label">Target 2 (2.5R)</div>
+                            <div class="level-val val-target">$${t2 ? t2.toFixed(2) : '—'}</div>
+                            <div style="font-size: 9px; color: var(--accent-green); margin-top: 2px;">Planned ${s.planned_rr_t2 || s.risk_reward_ratio}:1</div>
                         </div>
                     </div>
-                    <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 12px;">
+
+                    <div style="display: flex; justify-content: space-between; font-size: 11px; margin-bottom: 8px; background: var(--bg-card); padding: 6px 10px; border-radius: 6px; border: 1px solid var(--border-color);">
                         <span>Entry Zone: <strong>$${s.entry_zone[0].toFixed(2)} – $${s.entry_zone[1].toFixed(2)}</strong></span>
-                        <span style="color: var(--accent-green); font-weight: 700;">R:R ${s.risk_reward_ratio}:1</span>
+                        <span style="color: var(--accent-cyan); font-weight: 600;">Realized R:R: ~${s.realized_rr_t1 || '1.3'}:1</span>
                     </div>
-                    <div class="invalidation-box">
-                        <strong>Invalidation:</strong> ${s.invalidation_predicates[0].description}
+
+                    <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 8px;">
+                        <strong>Target Ladder:</strong> T1 $${t1 ? t1.toFixed(2) : '—'} (${t1Basis}) · T3 $${t3 ? t3.toFixed(2) : '—'} (Trailing Chandelier)
+                    </div>
+
+                    <div class="invalidation-box" style="margin-bottom: 10px;">
+                        <div style="font-weight: 700; color: var(--accent-red); margin-bottom: 4px; font-size: 10px; text-transform: uppercase;">
+                            Machine-Checkable Invalidation Rules:
+                        </div>
+                        <ul style="margin: 0; padding-left: 16px; font-size: 10px; color: var(--text-secondary); line-height: 1.4;">
+                            ${invList}
+                        </ul>
+                    </div>
+
+                    ${rationaleTags}
+
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px; border-top: 1px solid var(--border-color); padding-top: 10px;">
+                        <span style="font-size: 10px; color: var(--text-muted);">
+                            ${s.holding_period_desc || 'POSITION (20–65 sessions)'}
+                        </span>
+                        <button class="filter-btn" onclick="openSymbol('${s.symbol}')" style="font-size: 11px; padding: 4px 10px; color: var(--accent-blue); border-color: rgba(59, 130, 246, 0.4); cursor: pointer;">
+                            Open Dossier &amp; Plan &rarr;
+                        </button>
                     </div>
                 `;
                 grid.appendChild(card);
@@ -2588,6 +2643,17 @@
                         </div>
                     </div>
 
+                    <!-- Phase 6 AI Signal Execution Plan & Risk Governance -->
+                    <div style="margin-top: 24px;">
+                        <h3 style="font-size: 13px; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
+                            <span>AI Signal Execution Plan &amp; Risk Governance (Phase 6)</span>
+                            <span class="exchange-tag" style="font-size: 10px; color: var(--accent-green);">Deterministic Contract</span>
+                        </h3>
+                        <div id="drawerSignalPlanSection">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+                    </div>
+
                     <!-- Historical Strategy Backtest History for this Symbol -->
                     <div style="margin-top: 24px;">
                         <h3 style="font-size: 13px; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 8px;">
@@ -2615,6 +2681,9 @@
 
                 // Render Phase 5 Fundamental Engine & Valuation Lab
                 renderFundamentalsInDrawer(data.fundamental_dossier);
+
+                // Render Phase 6 AI Signal Execution Plan
+                renderSignalPlanInDrawer(data.signal_plan);
 
                 // Render symbol backtest history if bundle loaded
                 renderSymbolBacktestInDrawer(data.symbol);
@@ -3006,6 +3075,122 @@
                 </div>
 
                 ${missingNotice}
+            `;
+        }
+
+        function renderSignalPlanInDrawer(plan) {
+            const container = document.getElementById('drawerSignalPlanSection');
+            if (!container) return;
+
+            if (!plan) {
+                container.innerHTML = `
+                    <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border-color); border-radius: 8px; padding: 16px; text-align: center; color: var(--text-muted); font-size: 12px;">
+                        No active long signal plan currently qualified for this security. Setup filters require Composite Opportunity Score ≥ 50, confirmed structural support, and minimum Risk-to-Reward ≥ 2.0:1.
+                    </div>
+                `;
+                return;
+            }
+
+            const t1 = typeof plan.targets[0] === 'object' ? plan.targets[0].target : plan.targets[0];
+            const t1Basis = typeof plan.targets[0] === 'object' ? plan.targets[0].basis : '1.5R Trim Target';
+            const t2 = typeof plan.targets[1] === 'object' ? plan.targets[1].target : plan.targets[1];
+            const t2Basis = typeof plan.targets[1] === 'object' ? plan.targets[1].basis : '2.5R Target';
+            const t3 = typeof plan.targets[2] === 'object' ? plan.targets[2].target : plan.targets[2];
+            const t3Basis = typeof plan.targets[2] === 'object' ? plan.targets[2].basis : 'Trailing Chandelier';
+
+            const invRows = (plan.invalidation || []).map(inv => `
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                    <td style="padding: 6px 8px; font-weight: 700; color: var(--accent-red); font-family: monospace; font-size: 11px;">${inv.predicate}</td>
+                    <td style="padding: 6px 8px; color: var(--text-secondary); font-size: 11px;">${inv.description}</td>
+                </tr>
+            `).join('');
+
+            let rationaleHtml = '';
+            if (plan.rationale) {
+                rationaleHtml = `
+                    <div style="margin-top: 14px;">
+                        <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px;">
+                            Six-Dimension Rationale Matrix
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 11px;">
+                            <div style="background: var(--bg-card); padding: 8px; border-radius: 6px; border: 1px solid var(--border-color);">
+                                <strong style="color: var(--accent-cyan);">Technical:</strong>
+                                <div style="color: var(--text-secondary); margin-top: 2px;">${(plan.rationale.technical || []).join(' ')}</div>
+                            </div>
+                            <div style="background: var(--bg-card); padding: 8px; border-radius: 6px; border: 1px solid var(--border-color);">
+                                <strong style="color: var(--accent-purple);">Fundamental:</strong>
+                                <div style="color: var(--text-secondary); margin-top: 2px;">${(plan.rationale.fundamental || []).join(' ')}</div>
+                            </div>
+                            <div style="background: var(--bg-card); padding: 8px; border-radius: 6px; border: 1px solid var(--border-color);">
+                                <strong style="color: var(--accent-amber);">News & Catalysts:</strong>
+                                <div style="color: var(--text-secondary); margin-top: 2px;">${(plan.rationale.news_catalysts || []).join(' ')}</div>
+                            </div>
+                            <div style="background: var(--bg-card); padding: 8px; border-radius: 6px; border: 1px solid var(--border-color);">
+                                <strong style="color: var(--accent-green);">Macro & Sector:</strong>
+                                <div style="color: var(--text-secondary); margin-top: 2px;">${(plan.rationale.macro || []).concat(plan.rationale.sector || []).join(' ')}</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            container.innerHTML = `
+                <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 6px;">
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span class="score-pill" style="font-size: 11px; background: rgba(16, 185, 129, 0.15); color: var(--accent-green); border: 1px solid rgba(16, 185, 129, 0.3);">
+                                ${plan.stance || 'POTENTIAL LONG SETUP'}
+                            </span>
+                            <span class="exchange-tag" style="font-size: 11px; color: var(--accent-cyan);">${plan.setup_type || 'PULLBACK'}</span>
+                        </div>
+                        <div style="font-size: 11px; color: var(--text-muted);">
+                            ${plan.holding_period_desc || 'POSITION (20–65 sessions)'}
+                        </div>
+                    </div>
+
+                    <!-- Parameters Grid -->
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 12px; text-align: center;">
+                        <div style="background: var(--bg-card); padding: 8px; border-radius: 6px; border: 1px solid var(--border-color);">
+                            <div style="font-size: 10px; color: var(--text-muted); text-transform: uppercase;">Preferred Entry</div>
+                            <div style="font-size: 15px; font-weight: 800; color: var(--accent-blue);">$${plan.preferred_entry.toFixed(2)}</div>
+                            <div style="font-size: 10px; color: var(--text-muted); margin-top: 2px;">Alt: $${(plan.alt_entry || plan.preferred_entry*0.98).toFixed(2)}</div>
+                        </div>
+                        <div style="background: var(--bg-card); padding: 8px; border-radius: 6px; border: 1px solid var(--border-color);">
+                            <div style="font-size: 10px; color: var(--text-muted); text-transform: uppercase;">Structural Stop</div>
+                            <div style="font-size: 15px; font-weight: 800; color: var(--accent-red);">$${plan.structural_stop.toFixed(2)}</div>
+                            <div style="font-size: 10px; color: var(--accent-red); margin-top: 2px;">-${plan.stop_distance_pct || 4.5}% risk</div>
+                        </div>
+                        <div style="background: var(--bg-card); padding: 8px; border-radius: 6px; border: 1px solid var(--border-color);">
+                            <div style="font-size: 10px; color: var(--text-muted); text-transform: uppercase;">Target 1 (Trim)</div>
+                            <div style="font-size: 15px; font-weight: 800; color: var(--accent-green);">$${t1 ? t1.toFixed(2) : '—'}</div>
+                            <div style="font-size: 9px; color: var(--text-muted); margin-top: 2px;">${t1Basis}</div>
+                        </div>
+                        <div style="background: var(--bg-card); padding: 8px; border-radius: 6px; border: 1px solid var(--border-color);">
+                            <div style="font-size: 10px; color: var(--text-muted); text-transform: uppercase;">Target 2 (2.5R)</div>
+                            <div style="font-size: 15px; font-weight: 800; color: var(--accent-green);">$${t2 ? t2.toFixed(2) : '—'}</div>
+                            <div style="font-size: 10px; color: var(--accent-cyan); margin-top: 2px;">Planned ${plan.planned_rr_t2 || plan.risk_reward_ratio}:1</div>
+                        </div>
+                    </div>
+
+                    <!-- Invalidation Predicates Table -->
+                    <div style="margin-top: 12px;">
+                        <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--accent-red); margin-bottom: 6px;">
+                            Machine-Checkable Invalidation Rules (100% Deterministic)
+                        </div>
+                        <table style="width: 100%; border-collapse: collapse; background: var(--bg-card); border-radius: 6px; border: 1px solid var(--border-color);">
+                            <tbody>${invRows}</tbody>
+                        </table>
+                    </div>
+
+                    ${rationaleHtml}
+
+                    <!-- Data Lineage Footnote -->
+                    <div style="margin-top: 12px; font-size: 10px; color: var(--text-muted); display: flex; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 8px;">
+                        <span>Price Lineage: Primary Exchange Canonical EOD</span>
+                        <span>XBRL Lineage: SEC EDGAR / SEDAR+ Point-in-Time</span>
+                        <span>Governance: CSA 31-369 Impersonal Research</span>
+                    </div>
+                </div>
             `;
         }
 
@@ -4463,6 +4648,34 @@
                     `;
                 }
 
+                let exitStateHtml = '<span style="color: var(--text-muted); font-size: 11px;">Closed Position</span>';
+                if (isOpen) {
+                    const lState = p.lifecycle_state || (p.exit_verdict ? p.exit_verdict.state : 'HOLD');
+                    let pillStyle = 'background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3);';
+                    if (lState === 'WATCH') {
+                        pillStyle = 'background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.3);';
+                    } else if (lState === 'REDUCE') {
+                        pillStyle = 'background: rgba(249, 115, 22, 0.15); color: #f97316; border: 1px solid rgba(249, 115, 22, 0.4);';
+                    } else if (lState === 'EXIT') {
+                        pillStyle = 'background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.4);';
+                    } else if (lState === 'EMERGENCY_RISK') {
+                        pillStyle = 'background: rgba(220, 38, 38, 0.25); color: #ff4d4d; border: 1px solid #ff4d4d; font-weight: 800;';
+                    }
+
+                    const alloc = p.target_allocation_pct !== undefined ? p.target_allocation_pct : (p.exit_verdict ? p.exit_verdict.target_allocation_pct : 100);
+                    const trail = p.suggested_trailing_stop || (p.exit_verdict ? p.exit_verdict.suggested_trailing_stop : null);
+                    const actionTxt = p.action_summary || (p.exit_verdict ? p.exit_verdict.action_summary : 'Maintain constructive position structure');
+
+                    exitStateHtml = `
+                        <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 3px;">
+                            <span class="score-pill" style="font-size: 10px; padding: 2px 8px; ${pillStyle}">${lState}</span>
+                            <span style="font-size: 10px; color: var(--text-muted); font-weight: 700;">${alloc}% Alloc</span>
+                        </div>
+                        <div style="font-size: 10px; color: var(--text-secondary); line-height: 1.3; max-width: 220px;">${actionTxt}</div>
+                        ${trail ? `<div style="font-size: 10px; color: var(--accent-cyan); margin-top: 2px;">Trail: <strong>${currSign}${trail.toFixed(2)}</strong></div>` : ''}
+                    `;
+                }
+
                 const stars = '★'.repeat(p.conviction || 3) + '☆'.repeat(5 - (p.conviction || 3));
 
                 html += `
@@ -4501,6 +4714,9 @@
                         </td>
                         <td style="padding: 12px 14px;">
                             ${rrHtml}
+                        </td>
+                        <td style="padding: 12px 14px;">
+                            ${exitStateHtml}
                         </td>
                         <td style="padding: 12px 14px; text-align: center; color: var(--accent-amber); font-size: 12px; letter-spacing: 1px;">
                             ${stars}

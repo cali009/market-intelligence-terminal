@@ -5,7 +5,7 @@
   "currency": "CAD",
   "name": "Toronto-Dominion Bank",
   "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T00:48:50.439649+00:00",
+  "generated_at": "2026-09-26T01:07:42.808433+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 169.69000244140625,
@@ -375,39 +375,107 @@
   },
   "signal_plan": {
     "direction": "LONG",
+    "stance": "POTENTIAL LONG SETUP",
+    "setup_type": "PULLBACK",
     "preferred_entry": 170.69,
+    "alt_entry": 168.01,
     "entry_zone": [
-      169.61,
+      169.34,
       171.23
     ],
-    "stop_loss": 164.76,
+    "structural_stop": 164.76,
+    "stop_distance_pct": 3.5,
     "targets": [
-      180.18,
-      186.11,
-      194.41
+      {
+        "target": 171.24,
+        "basis": "Trim candidate at nearest major resistance level ($172.10)",
+        "rr": 0.09
+      },
+      {
+        "target": 185.51,
+        "basis": "2.5R measured target (+8.7%)",
+        "rr": 2.5
+      },
+      {
+        "target": 194.41,
+        "basis": "Structural extension / Trailing 2xATR chandelier (+13.9%)"
+      }
     ],
-    "risk_reward_ratio": 2.6,
+    "risk_reward_ratio": 2.5,
+    "planned_rr_t1": 0.09,
+    "planned_rr_t2": 2.5,
+    "realized_rr_t1": 0.08,
+    "holding_period_desc": "POSITION \u2014 empirical winner distribution: 20\u201365 sessions (median 38)",
     "invalidation": [
       {
         "predicate": "DAILY_CLOSE_BELOW_LEVEL",
         "level": 164.76,
-        "description": "Daily closing price finishes below structural stop loss of 164.76"
+        "description": "Daily closing price finishes below structural stop loss of $164.76"
       },
       {
-        "predicate": "RVOL_COLLAPSE",
-        "threshold": 0.4,
-        "description": "20-day Relative Volume drops below 0.40x indicating liquidity desertion"
+        "predicate": "BREAKOUT_FAILURE_CONSECUTIVE_CLOSES",
+        "level": 170.69,
+        "cycles": 2,
+        "description": "Two consecutive closes back below $170.69 on declining volume"
       },
       {
-        "predicate": "EARNINGS_ANNOUNCEMENT_EVENT",
-        "buffer_sessions": 2,
-        "description": "Filing within 2 trading sessions triggers event risk de-risking protocol"
+        "predicate": "RELATIVE_STRENGTH_COLLAPSE",
+        "threshold_percentile": 40,
+        "description": "Relative strength rank vs sector benchmark drops below the 40th percentile"
+      },
+      {
+        "predicate": "MATERIAL_ADVERSE_NEWS_EVENT",
+        "min_materiality": 4,
+        "description": "Unresolved Materiality 4+ regulatory, accounting, or going-concern disclosure"
+      },
+      {
+        "predicate": "REGIME_SHIFT_CRISIS",
+        "gated_regimes": [
+          "HIGH_VOLATILITY",
+          "BEARISH",
+          "CRISIS"
+        ],
+        "description": "Macro regime deterioration to High Volatility, Bearish, or Crisis state"
       }
-    ]
+    ],
+    "risk_notes": [
+      "Volatility Sizing: 14-day ATR is 1.6%; position sizing must calibrate to $5.93/share risk.",
+      "Structural Risk: Stop loss is positioned 3.5% below preferred entry price.",
+      "Macro Regime Context: Operating in WEAK_BULL regime with regime multiplier applied.",
+      "Data Gap Note: Non-reported concepts: OperatingIncome, TotalDebt. Weights renormalized."
+    ],
+    "rationale": {
+      "technical": [
+        "Setup Type: PULLBACK verified with 14-day RSI at 54.4.",
+        "Volume participation: 20-day RVOL at 0.66x average daily volume."
+      ],
+      "fundamental": [
+        "Fundamental Quality Score: 31/100 with Valuation Score at 62/100.",
+        "Point-in-Time status: PARTIAL."
+      ],
+      "news_catalysts": [
+        "Recent verified disclosures: 0 continuous filing events recorded."
+      ],
+      "macro": [
+        "Operating within WEAK_BULL regime context."
+      ],
+      "sector": [
+        "Sector alignment within Financials."
+      ],
+      "regime": [
+        "Positive forward expectancy across empirical walk-forward historical analogues in WEAK_BULL regime."
+      ]
+    },
+    "data_lineage": {
+      "price_source": "PRIMARY_EXCHANGE_CANONICAL_EOD",
+      "fundamentals_source": "SEC_EDGAR_XBRL",
+      "news_source": "OFFICIAL_REGULATORY_FILINGS",
+      "point_in_time_verified": true
+    }
   },
   "ai_explanation": {
     "FACT": "TD (TSX - Toronto-Dominion Bank) closed at $170.69 CAD. Trading within -2.6% of its 52-week high with a 14-day ATR of 1.6%. The primary exchange session traded on volume of 2,799,738 shares.",
-    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 56/100 (Confidence Tier B). Technical Factor sub-score: 61/100 (14-day RSI: 54.4, 20-day RVOL: 0.66x). Risk penalty applied: -0.0 points. Modulated by the WEAK_BULL macro regime.",
+    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 56/100 (Confidence Tier B). Technical Factor sub-score: 61/100 (14-day RSI: 54.4, 20-day RVOL: 0.66x), Fundamental Score: 43/100. Risk penalty applied: -0.0 points. Modulated by the WEAK_BULL macro regime.",
     "INFERENCE": "Current technical structure reflects neutral consolidation. Setup geometry indicates digestive trading range with no confirmed directional expansion.",
     "UNCERTAINTY": "Risks include broader market sentiment deterioration in the WEAK_BULL environment. A daily close below technical support at $148.55 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
   },

@@ -187,6 +187,70 @@ class ScoreRecord(BaseModel):
     model_version: str
 
 
+class SignalPlanContract(BaseModel):
+    stance: Literal["POTENTIAL LONG SETUP", "NO_SETUP", "EXIT_ADVISORY"] = "POTENTIAL LONG SETUP"
+    setup_type: Literal[
+        "BREAKOUT",
+        "PULLBACK",
+        "BASE_BREAKOUT",
+        "TREND_CONTINUATION",
+        "OVERSOLD_REVERSAL",
+        "EARNINGS_DRIFT",
+    ] = "PULLBACK"
+    entry_zone_low: float
+    entry_zone_high: float
+    preferred_entry: float
+    alt_entry: float
+    stop_loss: float
+    stop_method: str = "ATR_AND_STRUCTURE"
+    stop_distance_pct: float
+    risk_per_share: float
+    target_1: float
+    target_1_basis: str
+    target_2: float
+    target_2_basis: str
+    target_3: float
+    target_3_basis: str
+    planned_rr_t1: float
+    planned_rr_t2: float
+    realized_rr_t1: float
+    holding_period_desc: str
+    strength: int = Field(..., ge=0, le=100)
+    confidence_tier: Literal["A", "B", "C", "D"]
+    rationale: Dict[str, List[str]]
+    invalidation_predicates: List[Dict[str, Any]]
+    risks: List[str]
+    data_lineage: Dict[str, Any]
+    disclaimer_version: str
+
+
+class ExitVerdict(BaseModel):
+    position_id: Optional[int] = None
+    symbol: str
+    state: Literal["HOLD", "WATCH", "REDUCE", "EXIT", "EMERGENCY_RISK"]
+    active_triggers: List[str]
+    trigger_severity: Literal["INFO", "WATCH", "REDUCE", "EXIT", "EMERGENCY"]
+    trigger_details: List[Dict[str, Any]]
+    pnl_pct: float
+    r_multiple: float
+    reversal_condition: str
+    escalation_cycles: int = 0
+    timestamp: str
+    primary_trigger: Optional[str] = None
+    action_summary: Optional[str] = None
+    target_allocation_pct: float = 100.0
+    suggested_trailing_stop: Optional[float] = None
+
+    @property
+    def recommended_state(self) -> str:
+        return self.state
+
+    def to_dict(self) -> Dict[str, Any]:
+        d = self.model_dump()
+        d["recommended_state"] = self.state
+        return d
+
+
 class JournalPosition(BaseModel):
     id: Optional[int] = None
     user_id: str = "default_user"

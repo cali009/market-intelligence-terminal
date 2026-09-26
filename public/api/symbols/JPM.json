@@ -5,7 +5,7 @@
   "currency": "USD",
   "name": "JPMorgan Chase & Co.",
   "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T00:48:50.439649+00:00",
+  "generated_at": "2026-09-26T01:07:42.808433+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 340.7650146484375,
@@ -376,39 +376,107 @@
   },
   "signal_plan": {
     "direction": "LONG",
+    "stance": "POTENTIAL LONG SETUP",
+    "setup_type": "BASE_BREAKOUT",
     "preferred_entry": 343.06,
+    "alt_entry": 337.91,
     "entry_zone": [
-      347.75,
+      340.2,
       344.49
     ],
-    "stop_loss": 327.33,
+    "structural_stop": 327.33,
+    "stop_distance_pct": 4.6,
     "targets": [
-      368.23,
-      383.96,
-      405.98
+      {
+        "target": 347.57,
+        "basis": "Trim candidate at nearest major resistance level ($349.32)",
+        "rr": 0.29
+      },
+      {
+        "target": 382.38,
+        "basis": "2.5R measured target (+11.5%)",
+        "rr": 2.5
+      },
+      {
+        "target": 405.98,
+        "basis": "Structural extension / Trailing 2xATR chandelier (+18.3%)"
+      }
     ],
-    "risk_reward_ratio": 2.6,
+    "risk_reward_ratio": 2.5,
+    "planned_rr_t1": 0.29,
+    "planned_rr_t2": 2.5,
+    "realized_rr_t1": 0.26,
+    "holding_period_desc": "POSITION \u2014 empirical winner distribution: 20\u201365 sessions (median 38)",
     "invalidation": [
       {
         "predicate": "DAILY_CLOSE_BELOW_LEVEL",
         "level": 327.33,
-        "description": "Daily closing price finishes below structural stop loss of 327.33"
+        "description": "Daily closing price finishes below structural stop loss of $327.33"
       },
       {
-        "predicate": "RVOL_COLLAPSE",
-        "threshold": 0.4,
-        "description": "20-day Relative Volume drops below 0.40x indicating liquidity desertion"
+        "predicate": "BREAKOUT_FAILURE_CONSECUTIVE_CLOSES",
+        "level": 343.06,
+        "cycles": 2,
+        "description": "Two consecutive closes back below $343.06 on declining volume"
       },
       {
-        "predicate": "EARNINGS_ANNOUNCEMENT_EVENT",
-        "buffer_sessions": 2,
-        "description": "Filing within 2 trading sessions triggers event risk de-risking protocol"
+        "predicate": "RELATIVE_STRENGTH_COLLAPSE",
+        "threshold_percentile": 40,
+        "description": "Relative strength rank vs sector benchmark drops below the 40th percentile"
+      },
+      {
+        "predicate": "MATERIAL_ADVERSE_NEWS_EVENT",
+        "min_materiality": 4,
+        "description": "Unresolved Materiality 4+ regulatory, accounting, or going-concern disclosure"
+      },
+      {
+        "predicate": "REGIME_SHIFT_CRISIS",
+        "gated_regimes": [
+          "HIGH_VOLATILITY",
+          "BEARISH",
+          "CRISIS"
+        ],
+        "description": "Macro regime deterioration to High Volatility, Bearish, or Crisis state"
       }
-    ]
+    ],
+    "risk_notes": [
+      "Volatility Sizing: 14-day ATR is 2.1%; position sizing must calibrate to $15.73/share risk.",
+      "Structural Risk: Stop loss is positioned 4.6% below preferred entry price.",
+      "Macro Regime Context: Operating in STRONG_BULL regime with regime multiplier applied.",
+      "Data Gap Note: Non-reported concepts: OperatingIncome, TotalDebt. Weights renormalized."
+    ],
+    "rationale": {
+      "technical": [
+        "Setup Type: BASE BREAKOUT verified with 14-day RSI at 41.7.",
+        "Volume participation: 20-day RVOL at 1.29x average daily volume."
+      ],
+      "fundamental": [
+        "Fundamental Quality Score: 43/100 with Valuation Score at 57/100.",
+        "Point-in-Time status: PARTIAL."
+      ],
+      "news_catalysts": [
+        "Recent verified disclosures: 0 continuous filing events recorded."
+      ],
+      "macro": [
+        "Operating within STRONG_BULL regime context."
+      ],
+      "sector": [
+        "Sector alignment within Financials."
+      ],
+      "regime": [
+        "Positive forward expectancy across empirical walk-forward historical analogues in STRONG_BULL regime."
+      ]
+    },
+    "data_lineage": {
+      "price_source": "PRIMARY_EXCHANGE_CANONICAL_EOD",
+      "fundamentals_source": "SEC_EDGAR_XBRL",
+      "news_source": "OFFICIAL_REGULATORY_FILINGS",
+      "point_in_time_verified": true
+    }
   },
   "ai_explanation": {
     "FACT": "JPM (NYSE - JPMorgan Chase & Co.) closed at $343.06 USD. Trading within -6.4% of its 52-week high with a 14-day ATR of 2.1%. The primary exchange session traded on volume of 9,834,443 shares.",
-    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 52/100 (Confidence Tier B). Technical Factor sub-score: 50/100 (14-day RSI: 41.7, 20-day RVOL: 1.29x). Risk penalty applied: -0.0 points. Modulated by the STRONG_BULL macro regime.",
+    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 52/100 (Confidence Tier B). Technical Factor sub-score: 50/100 (14-day RSI: 41.7, 20-day RVOL: 1.29x), Fundamental Score: 49/100. Risk penalty applied: -0.0 points. Modulated by the STRONG_BULL macro regime.",
     "INFERENCE": "Current technical structure reflects neutral consolidation. Setup geometry indicates digestive trading range with no confirmed directional expansion.",
     "UNCERTAINTY": "Risks include broader market sentiment deterioration in the STRONG_BULL environment. A daily close below technical support at $321.26 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
   },
