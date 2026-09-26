@@ -5,7 +5,7 @@
   "currency": "USD",
   "name": "SPDR S&P 500 ETF Trust",
   "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T00:11:35.065365+00:00",
+  "generated_at": "2026-09-26T00:18:17.776706+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 768.780029296875,
@@ -41,6 +41,265 @@
     "momentum_12_1": 0.15988839207726602,
     "proximity_52w_high": -0.010290387853645888,
     "adv_dollar_20": 33366642470.061077
+  },
+  "technical_dossier": {
+    "snapshot": {
+      "trading_date": "2026-09-25",
+      "open": 768.780029296875,
+      "high": 772.280029296875,
+      "low": 766.2899780273438,
+      "close": 771.3499755859375,
+      "volume": 34116693.0,
+      "adjusted_close": 771.3499755859375,
+      "sma_20": 765.3504974365235,
+      "sma_50": 761.5657983398437,
+      "sma_200": 718.4519995117188,
+      "ema_8": 767.6280643181198,
+      "ema_21": 765.7276808811087,
+      "sma_200_slope_20d": 16.06564587562347,
+      "atr_14": 6.859292166573661,
+      "atr_pct": 0.8892581038021248,
+      "rsi_14": 55.89003490300169,
+      "macd_line": 1.583309994231513,
+      "macd_signal": 0.9877683689625286,
+      "macd_hist": 0.5955416252689844,
+      "bb_upper": 776.5076612903065,
+      "bb_lower": 754.1933335827405,
+      "bb_bandwidth": 0.02915569766049144,
+      "rvol_20": 0.7821188574534268,
+      "obv": 1017025393.0,
+      "obv_slope_20": -366687707.0,
+      "cmf_20": 0.02646218643446854,
+      "hh_hl_ratio_20": 0.45,
+      "adx_14": 13.515150040021053,
+      "return_1m": 0.006879122778992608,
+      "return_3m": 0.058107773658103934,
+      "return_12m": 0.16676751485625863,
+      "momentum_12_1": 0.15988839207726602,
+      "proximity_52w_high": -0.010290387853645888,
+      "adv_dollar_20": 33366642470.061077
+    },
+    "volume_profile": {
+      "poc_price": 768.06,
+      "vah_price": 776.86,
+      "val_price": 749.21,
+      "value_area_state": "INSIDE_VALUE",
+      "total_profile_volume": 2648662893,
+      "profile_bins": [
+        {
+          "price": 730.36,
+          "volume": 13085217,
+          "pct_of_max": 5.3,
+          "is_poc": false,
+          "in_value_area": false
+        },
+        {
+          "price": 732.87,
+          "volume": 13085217,
+          "pct_of_max": 5.3,
+          "is_poc": false,
+          "in_value_area": false
+        },
+        {
+          "price": 735.38,
+          "volume": 49200364,
+          "pct_of_max": 19.8,
+          "is_poc": false,
+          "in_value_area": false
+        },
+        {
+          "price": 737.9,
+          "volume": 102848236,
+          "pct_of_max": 41.4,
+          "is_poc": false,
+          "in_value_area": false
+        },
+        {
+          "price": 740.41,
+          "volume": 145191523,
+          "pct_of_max": 58.5,
+          "is_poc": false,
+          "in_value_area": false
+        },
+        {
+          "price": 742.92,
+          "volume": 136719813,
+          "pct_of_max": 55.1,
+          "is_poc": false,
+          "in_value_area": false
+        },
+        {
+          "price": 745.44,
+          "volume": 126509413,
+          "pct_of_max": 51.0,
+          "is_poc": false,
+          "in_value_area": false
+        },
+        {
+          "price": 747.95,
+          "volume": 169088462,
+          "pct_of_max": 68.1,
+          "is_poc": false,
+          "in_value_area": false
+        },
+        {
+          "price": 750.46,
+          "volume": 180859410,
+          "pct_of_max": 72.8,
+          "is_poc": false,
+          "in_value_area": true
+        },
+        {
+          "price": 752.98,
+          "volume": 117185224,
+          "pct_of_max": 47.2,
+          "is_poc": false,
+          "in_value_area": true
+        },
+        {
+          "price": 755.49,
+          "volume": 55767477,
+          "pct_of_max": 22.5,
+          "is_poc": false,
+          "in_value_area": true
+        },
+        {
+          "price": 758.01,
+          "volume": 113607693,
+          "pct_of_max": 45.8,
+          "is_poc": false,
+          "in_value_area": true
+        },
+        {
+          "price": 760.52,
+          "volume": 152741410,
+          "pct_of_max": 61.5,
+          "is_poc": false,
+          "in_value_area": true
+        },
+        {
+          "price": 763.03,
+          "volume": 186894558,
+          "pct_of_max": 75.3,
+          "is_poc": false,
+          "in_value_area": true
+        },
+        {
+          "price": 765.55,
+          "volume": 230647015,
+          "pct_of_max": 92.9,
+          "is_poc": false,
+          "in_value_area": true
+        },
+        {
+          "price": 768.06,
+          "volume": 248290925,
+          "pct_of_max": 100.0,
+          "is_poc": true,
+          "in_value_area": true
+        },
+        {
+          "price": 770.57,
+          "volume": 245083127,
+          "pct_of_max": 98.7,
+          "is_poc": false,
+          "in_value_area": true
+        },
+        {
+          "price": 773.09,
+          "volume": 227612380,
+          "pct_of_max": 91.7,
+          "is_poc": false,
+          "in_value_area": true
+        },
+        {
+          "price": 775.6,
+          "volume": 99127405,
+          "pct_of_max": 39.9,
+          "is_poc": false,
+          "in_value_area": true
+        },
+        {
+          "price": 778.11,
+          "volume": 35118012,
+          "pct_of_max": 14.1,
+          "is_poc": false,
+          "in_value_area": false
+        }
+      ]
+    },
+    "support_resistance": {
+      "support_1": 763.18,
+      "support_2": 737.29,
+      "resistance_1": 809.92,
+      "resistance_2": 848.48,
+      "dist_support_pct": 1.06,
+      "dist_resistance_pct": 5.0,
+      "support_clusters": [
+        763.18,
+        737.29,
+        714.01
+      ],
+      "resistance_clusters": []
+    },
+    "trend_structure": {
+      "trend_structure": "CONSOLIDATION_RANGE",
+      "structure_label": "Range-Bound Sideways Consolidation",
+      "msb_detected": false,
+      "last_swing_high": 775.14,
+      "last_swing_low": 749.6
+    },
+    "anchored_vwap": {
+      "ytd_vwap": 709.85,
+      "dist_ytd_vwap_pct": 8.66,
+      "high_52w_vwap": 766.17,
+      "dist_high_vwap_pct": 0.68
+    },
+    "multi_timeframe": {
+      "confluence_score": 85,
+      "confluence_label": "STRONG_BULLISH_CONFLUENCE",
+      "timeframes": {
+        "1h": {
+          "timeframe": "1H",
+          "name": "Hourly Intraday",
+          "trend": "NEUTRAL",
+          "ema_8_21_cross": "NEUTRAL",
+          "rsi": 53.4,
+          "macd_state": "CONTRACTING",
+          "adx": 13.5
+        },
+        "1d": {
+          "timeframe": "1D",
+          "name": "Daily Swing",
+          "trend": "BULLISH",
+          "ema_8_21_cross": "BULLISH",
+          "rsi": 55.9,
+          "macd_state": "EXPANDING",
+          "adx": 13.5
+        },
+        "1w": {
+          "timeframe": "1W",
+          "name": "Weekly Intermediate",
+          "trend": "BULLISH",
+          "ema_8_21_cross": "BULLISH",
+          "rsi": 63.2,
+          "macd_state": "CONTRACTING",
+          "adx": 16.2
+        },
+        "1m": {
+          "timeframe": "1M",
+          "name": "Monthly Secular",
+          "trend": "BULLISH",
+          "ema_8_21_cross": "BULLISH",
+          "rsi": 58.0,
+          "macd_state": "EXPANDING",
+          "adx": 26.0
+        }
+      }
+    },
+    "confluence_score": 85,
+    "confluence_label": "STRONG_BULLISH_CONFLUENCE",
+    "feature_version": "v4.0"
   },
   "score_record": {
     "composite_score": 60,

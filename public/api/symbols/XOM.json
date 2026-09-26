@@ -5,7 +5,7 @@
   "currency": "USD",
   "name": "Exxon Mobil Corporation",
   "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T00:11:35.065365+00:00",
+  "generated_at": "2026-09-26T00:18:17.776706+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 160.22999572753906,
@@ -41,6 +41,269 @@
     "momentum_12_1": 0.38662659202867466,
     "proximity_52w_high": -0.08967749558307325,
     "adv_dollar_20": 2347737351.6591506
+  },
+  "technical_dossier": {
+    "snapshot": {
+      "trading_date": "2026-09-25",
+      "open": 160.22999572753906,
+      "high": 161.7899932861328,
+      "low": 159.77999877929688,
+      "close": 160.58999633789062,
+      "volume": 9579407.0,
+      "adjusted_close": 160.58999633789062,
+      "sma_20": 162.4825012207031,
+      "sma_50": 159.42560089111328,
+      "sma_200": 147.9931499862671,
+      "ema_8": 161.57049200041462,
+      "ema_21": 161.74261697974381,
+      "sma_200_slope_20d": 39.81527353090041,
+      "atr_14": 4.012855529785156,
+      "atr_pct": 2.498820363219809,
+      "rsi_14": 48.71923125672882,
+      "macd_line": 0.5352794661390305,
+      "macd_signal": 1.244952059828098,
+      "macd_hist": -0.7096725936890675,
+      "bb_upper": 168.4830685295968,
+      "bb_lower": 156.48193391180942,
+      "bb_bandwidth": 0.07386108982582693,
+      "rvol_20": 0.663032458621142,
+      "obv": 620556893.0,
+      "obv_slope_20": 79083793.0,
+      "cmf_20": 0.12206525788523435,
+      "hh_hl_ratio_20": 0.525,
+      "adx_14": 15.997578724198808,
+      "return_1m": 0.01517159023607273,
+      "return_3m": 0.1761388914188584,
+      "return_12m": 0.4017981822647474,
+      "momentum_12_1": 0.38662659202867466,
+      "proximity_52w_high": -0.08967749558307325,
+      "adv_dollar_20": 2347737351.6591506
+    },
+    "volume_profile": {
+      "poc_price": 160.39,
+      "vah_price": 167.96,
+      "val_price": 152.82,
+      "value_area_state": "INSIDE_VALUE",
+      "total_profile_volume": 864344106,
+      "profile_bins": [
+        {
+          "price": 136.85,
+          "volume": 26246137,
+          "pct_of_max": 27.7,
+          "is_poc": false,
+          "in_value_area": false
+        },
+        {
+          "price": 138.53,
+          "volume": 27026053,
+          "pct_of_max": 28.6,
+          "is_poc": false,
+          "in_value_area": false
+        },
+        {
+          "price": 140.21,
+          "volume": 17768133,
+          "pct_of_max": 18.8,
+          "is_poc": false,
+          "in_value_area": false
+        },
+        {
+          "price": 141.9,
+          "volume": 19887706,
+          "pct_of_max": 21.0,
+          "is_poc": false,
+          "in_value_area": false
+        },
+        {
+          "price": 143.58,
+          "volume": 23541816,
+          "pct_of_max": 24.9,
+          "is_poc": false,
+          "in_value_area": false
+        },
+        {
+          "price": 145.26,
+          "volume": 27262238,
+          "pct_of_max": 28.8,
+          "is_poc": false,
+          "in_value_area": false
+        },
+        {
+          "price": 146.94,
+          "volume": 15184417,
+          "pct_of_max": 16.0,
+          "is_poc": false,
+          "in_value_area": false
+        },
+        {
+          "price": 148.62,
+          "volume": 21734418,
+          "pct_of_max": 23.0,
+          "is_poc": false,
+          "in_value_area": false
+        },
+        {
+          "price": 150.3,
+          "volume": 14552804,
+          "pct_of_max": 15.4,
+          "is_poc": false,
+          "in_value_area": false
+        },
+        {
+          "price": 151.98,
+          "volume": 35554555,
+          "pct_of_max": 37.6,
+          "is_poc": false,
+          "in_value_area": false
+        },
+        {
+          "price": 153.67,
+          "volume": 63630092,
+          "pct_of_max": 67.3,
+          "is_poc": false,
+          "in_value_area": true
+        },
+        {
+          "price": 155.35,
+          "volume": 52095528,
+          "pct_of_max": 55.1,
+          "is_poc": false,
+          "in_value_area": true
+        },
+        {
+          "price": 157.03,
+          "volume": 64892055,
+          "pct_of_max": 68.6,
+          "is_poc": false,
+          "in_value_area": true
+        },
+        {
+          "price": 158.71,
+          "volume": 72281152,
+          "pct_of_max": 76.4,
+          "is_poc": false,
+          "in_value_area": true
+        },
+        {
+          "price": 160.39,
+          "volume": 94616864,
+          "pct_of_max": 100.0,
+          "is_poc": true,
+          "in_value_area": true
+        },
+        {
+          "price": 162.07,
+          "volume": 91072140,
+          "pct_of_max": 96.3,
+          "is_poc": false,
+          "in_value_area": true
+        },
+        {
+          "price": 163.75,
+          "volume": 80728529,
+          "pct_of_max": 85.3,
+          "is_poc": false,
+          "in_value_area": true
+        },
+        {
+          "price": 165.44,
+          "volume": 60729170,
+          "pct_of_max": 64.2,
+          "is_poc": false,
+          "in_value_area": true
+        },
+        {
+          "price": 167.12,
+          "volume": 42276842,
+          "pct_of_max": 44.7,
+          "is_poc": false,
+          "in_value_area": true
+        },
+        {
+          "price": 168.8,
+          "volume": 13263447,
+          "pct_of_max": 14.0,
+          "is_poc": false,
+          "in_value_area": false
+        }
+      ]
+    },
+    "support_resistance": {
+      "support_1": 158.89,
+      "support_2": 156.84,
+      "resistance_1": 163.67,
+      "resistance_2": 169.14,
+      "dist_support_pct": 1.06,
+      "dist_resistance_pct": 1.92,
+      "support_clusters": [
+        158.89,
+        156.84,
+        153.95,
+        151.88
+      ],
+      "resistance_clusters": [
+        163.67,
+        169.14
+      ]
+    },
+    "trend_structure": {
+      "trend_structure": "CONSOLIDATION_RANGE",
+      "structure_label": "Range-Bound Sideways Consolidation",
+      "msb_detected": false,
+      "last_swing_high": 169.64,
+      "last_swing_low": 155.85
+    },
+    "anchored_vwap": {
+      "ytd_vwap": 150.29,
+      "dist_ytd_vwap_pct": 6.86,
+      "high_52w_vwap": 152.97,
+      "dist_high_vwap_pct": 4.98
+    },
+    "multi_timeframe": {
+      "confluence_score": 70,
+      "confluence_label": "MODERATE_BULLISH_ALIGNMENT",
+      "timeframes": {
+        "1h": {
+          "timeframe": "1H",
+          "name": "Hourly Intraday",
+          "trend": "NEUTRAL",
+          "ema_8_21_cross": "NEUTRAL",
+          "rsi": 46.2,
+          "macd_state": "CONTRACTING",
+          "adx": 16.0
+        },
+        "1d": {
+          "timeframe": "1D",
+          "name": "Daily Swing",
+          "trend": "NEUTRAL",
+          "ema_8_21_cross": "BEARISH",
+          "rsi": 48.7,
+          "macd_state": "CONTRACTING",
+          "adx": 16.0
+        },
+        "1w": {
+          "timeframe": "1W",
+          "name": "Weekly Intermediate",
+          "trend": "BULLISH",
+          "ema_8_21_cross": "BULLISH",
+          "rsi": 57.0,
+          "macd_state": "EXPANDING",
+          "adx": 24.8
+        },
+        "1m": {
+          "timeframe": "1M",
+          "name": "Monthly Secular",
+          "trend": "BULLISH",
+          "ema_8_21_cross": "BULLISH",
+          "rsi": 58.0,
+          "macd_state": "EXPANDING",
+          "adx": 26.0
+        }
+      }
+    },
+    "confluence_score": 70,
+    "confluence_label": "MODERATE_BULLISH_ALIGNMENT",
+    "feature_version": "v4.0"
   },
   "score_record": {
     "composite_score": 64,

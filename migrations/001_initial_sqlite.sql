@@ -294,3 +294,35 @@ CREATE TABLE IF NOT EXISTS scanner_result (
 
 CREATE INDEX IF NOT EXISTS idx_scanner_result_lookup ON scanner_result(scanner_id, as_of_date);
 CREATE INDEX IF NOT EXISTS idx_scanner_result_symbol ON scanner_result(symbol);
+
+-- 15. Technical Feature Store & Multi-Timeframe Confluence (Phase 4)
+CREATE TABLE IF NOT EXISTS feature_store (
+    feature_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    security_id INTEGER NOT NULL REFERENCES security(security_id),
+    symbol TEXT NOT NULL,
+    as_of_date TEXT NOT NULL,
+    timeframe TEXT NOT NULL,                 -- 1h | 1d | 1w | 1m
+    trend_state TEXT NOT NULL,               -- BULLISH | NEUTRAL | BEARISH
+    ema_8 REAL,
+    ema_21 REAL,
+    sma_50 REAL,
+    sma_200 REAL,
+    rsi_14 REAL,
+    adx_14 REAL,
+    atr_14 REAL,
+    support_1 REAL,
+    support_2 REAL,
+    resistance_1 REAL,
+    resistance_2 REAL,
+    poc_price REAL,
+    vah_price REAL,
+    val_price REAL,
+    value_area_state TEXT,                   -- ABOVE_VALUE | INSIDE_VALUE | BELOW_VALUE
+    mtf_confluence_score INTEGER NOT NULL,   -- 0 - 100
+    features_json TEXT NOT NULL,
+    knowledge_at TEXT NOT NULL DEFAULT (datetime('now')),
+    feature_version TEXT NOT NULL DEFAULT 'v4.0',
+    UNIQUE(security_id, as_of_date, timeframe, feature_version)
+);
+
+CREATE INDEX IF NOT EXISTS idx_feature_store_lookup ON feature_store(symbol, as_of_date, timeframe);

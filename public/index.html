@@ -867,6 +867,8 @@
                             <th>Security</th>
                             <th>Market Price</th>
                             <th>Opportunity Score</th>
+                            <th>MTF Confluence</th>
+                            <th>Value Area</th>
                             <th>Confidence</th>
                             <th>14-Day RSI</th>
                             <th>20-Day RVOL</th>
@@ -1842,6 +1844,13 @@
                 const scoreClass = item.composite_score >= 60 ? 'score-high' : (item.composite_score >= 45 ? 'score-mid' : 'score-low');
                 const proxClass = item.proximity_52w_high >= -5 ? 'color: var(--accent-green);' : (item.proximity_52w_high <= -20 ? 'color: var(--accent-red);' : '');
 
+                const confScore = item.mtf_confluence_score ?? 50;
+                const confLabel = item.mtf_confluence_label || 'NEUTRAL';
+                const confColor = confScore >= 75 ? 'var(--accent-green)' : (confScore >= 50 ? 'var(--accent-blue)' : 'var(--accent-amber)');
+
+                const vaState = item.value_area_state || 'INSIDE_VALUE';
+                const vaColor = vaState === 'ABOVE_VALUE' ? 'var(--accent-cyan)' : (vaState === 'INSIDE_VALUE' ? 'var(--accent-green)' : 'var(--accent-amber)');
+
                 tr.innerHTML = `
                     <td>
                         <div class="symbol-badge">
@@ -1857,6 +1866,15 @@
                         <div class="score-box">
                             <span class="score-pill ${scoreClass}">${item.composite_score}/100</span>
                         </div>
+                    </td>
+                    <td>
+                        <div style="font-size: 12px; font-weight: 700; color: ${confColor};">${confScore}%</div>
+                        <div style="font-size: 10px; color: var(--text-muted);">${confLabel.replace(/_/g, ' ')}</div>
+                    </td>
+                    <td>
+                        <span class="exchange-tag" style="color: ${vaColor}; font-weight: 700; font-size: 10px;">
+                            ${vaState.replace(/_/g, ' ')}
+                        </span>
                     </td>
                     <td>
                         <span style="font-weight: 700; color: ${item.confidence_tier === 'A' ? 'var(--accent-green)' : (item.confidence_tier === 'B' ? 'var(--accent-blue)' : 'var(--accent-amber)')};">
@@ -2509,6 +2527,17 @@
                         </div>
                     </div>
 
+                    <!-- Phase 4 Technical Engine & Multi-Timeframe Lab -->
+                    <div style="margin-top: 24px;">
+                        <h3 style="font-size: 13px; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
+                            <span>Technical Engine &amp; Multi-Timeframe Lab (Phase 4)</span>
+                            <span class="exchange-tag" style="font-size: 10px; color: var(--accent-cyan);">Feature Store v4.0</span>
+                        </h3>
+                        <div id="drawerTechnicalEngineSection">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+                    </div>
+
                     <!-- Historical Strategy Backtest History for this Symbol -->
                     <div style="margin-top: 24px;">
                         <h3 style="font-size: 13px; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 8px;">
@@ -2530,6 +2559,9 @@
                         </div>
                     </div>
                 `;
+
+                // Render Phase 4 Technical Engine Lab
+                renderTechnicalEngineInDrawer(data.technical_dossier);
 
                 // Render symbol backtest history if bundle loaded
                 renderSymbolBacktestInDrawer(data.symbol);
@@ -2641,6 +2673,135 @@
                             </thead>
                             <tbody>${rows}</tbody>
                         </table>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderTechnicalEngineInDrawer(td) {
+            const container = document.getElementById('drawerTechnicalEngineSection');
+            if (!container) return;
+
+            if (!td) {
+                container.innerHTML = '<div style="font-size: 11px; color: var(--text-muted); padding: 8px;">Technical dossier loading...</div>';
+                return;
+            }
+
+            const mtf = td.multi_timeframe || { timeframes: {}, confluence_score: 50, confluence_label: 'NEUTRAL' };
+            const vp = td.volume_profile || { poc_price: 0, vah_price: 0, val_price: 0, value_area_state: 'INSIDE_VALUE', profile_bins: [] };
+            const sr = td.support_resistance || { support_1: 0, support_2: 0, resistance_1: 0, resistance_2: 0, dist_support_pct: 0, dist_resistance_pct: 0 };
+            const ts = td.trend_structure || { trend_structure: 'CONSOLIDATION_RANGE', structure_label: 'Consolidation', msb_detected: false };
+            const av = td.anchored_vwap || { ytd_vwap: 0, dist_ytd_vwap_pct: 0, high_52w_vwap: 0 };
+
+            const confScore = td.confluence_score || mtf.confluence_score || 50;
+            const confLabel = td.confluence_label || mtf.confluence_label || 'NEUTRAL';
+            const confColor = confScore >= 75 ? 'var(--accent-green)' : (confScore >= 50 ? 'var(--accent-blue)' : 'var(--accent-amber)');
+
+            const vaState = vp.value_area_state || 'INSIDE_VALUE';
+            const vaColor = vaState === 'ABOVE_VALUE' ? 'var(--accent-cyan)' : (vaState === 'INSIDE_VALUE' ? 'var(--accent-green)' : 'var(--accent-amber)');
+
+            let binsHtml = '';
+            if (vp.profile_bins && vp.profile_bins.length > 0) {
+                binsHtml = `
+                    <div style="margin-top: 8px; background: rgba(15, 23, 42, 0.5); border-radius: 6px; padding: 8px; border: 1px solid var(--border-color);">
+                        <div style="font-size: 10px; color: var(--text-muted); text-transform: uppercase; font-weight: 700; margin-bottom: 6px;">Volume Distribution by Price (60D Rolling)</div>
+                        <div style="display: flex; flex-direction: column; gap: 3px;">
+                            ${vp.profile_bins.slice(0, 8).map(b => `
+                                <div style="display: flex; align-items: center; gap: 6px; font-size: 10px;">
+                                    <span style="width: 48px; font-family: monospace; color: ${b.is_poc ? 'var(--accent-amber); font-weight: 800;' : 'var(--text-secondary);'}">$${b.price.toFixed(1)}</span>
+                                    <div style="flex-grow: 1; background: rgba(255, 255, 255, 0.05); height: 7px; border-radius: 2px; overflow: hidden;">
+                                        <div style="width: ${b.pct_of_max}%; height: 100%; background: ${b.is_poc ? 'var(--accent-amber)' : (b.in_value_area ? 'var(--accent-blue)' : 'rgba(148, 163, 184, 0.35)')};"></div>
+                                    </div>
+                                    <span style="width: 45px; text-align: right; color: var(--text-muted); font-family: monospace;">${b.is_poc ? '★ POC' : (b.in_value_area ? 'VA' : '')}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            container.innerHTML = `
+                <!-- MTF Header & Confluence Gauge -->
+                <div style="display: flex; justify-content: space-between; align-items: center; background: var(--bg-card); padding: 10px 14px; border-radius: 6px; border: 1px solid var(--border-color); margin-bottom: 12px;">
+                    <div>
+                        <div style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Multi-Timeframe Confluence</div>
+                        <div style="font-size: 14px; font-weight: 800; color: ${confColor}; margin-top: 2px;">
+                            ${confScore}% · ${confLabel.replace(/_/g, ' ')}
+                        </div>
+                    </div>
+                    <span class="exchange-tag" style="background: rgba(59, 130, 246, 0.15); color: var(--accent-blue); font-weight: 800;">
+                        1H / 1D / 1W / 1M Confluence
+                    </span>
+                </div>
+
+                <!-- MTF Alignment Table -->
+                <div style="background: var(--bg-card); border-radius: 6px; border: 1px solid var(--border-color); overflow: hidden; margin-bottom: 14px;">
+                    <table style="width: 100%; border-collapse: collapse; font-size: 11px;">
+                        <thead>
+                            <tr style="background: var(--bg-secondary); border-bottom: 1px solid var(--border-color); color: var(--text-muted); text-transform: uppercase;">
+                                <th style="padding: 6px 10px; text-align: left;">TF</th>
+                                <th style="padding: 6px 10px; text-align: left;">Horizon</th>
+                                <th style="padding: 6px 10px; text-align: center;">Trend</th>
+                                <th style="padding: 6px 10px; text-align: center;">8/21 EMA</th>
+                                <th style="padding: 6px 10px; text-align: right;">RSI (14)</th>
+                                <th style="padding: 6px 10px; text-align: right;">ADX (14)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${Object.values(mtf.timeframes || {}).map(tf => {
+                                const trCol = tf.trend === 'BULLISH' ? 'var(--accent-green)' : (tf.trend === 'BEARISH' ? 'var(--accent-red)' : 'var(--text-muted)');
+                                return `
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
+                                        <td style="padding: 6px 10px; font-weight: 800; font-family: monospace;">${tf.timeframe}</td>
+                                        <td style="padding: 6px 10px; color: var(--text-secondary);">${tf.name}</td>
+                                        <td style="padding: 6px 10px; text-align: center;">
+                                            <span style="color: ${trCol}; font-weight: 700;">${tf.trend}</span>
+                                        </td>
+                                        <td style="padding: 6px 10px; text-align: center;">
+                                            <span style="color: ${tf.ema_8_21_cross === 'BULLISH' ? 'var(--accent-green)' : 'var(--accent-amber)'}; font-weight: 600;">${tf.ema_8_21_cross}</span>
+                                        </td>
+                                        <td style="padding: 6px 10px; text-align: right; font-family: monospace; font-weight: 700;">${tf.rsi}</td>
+                                        <td style="padding: 6px 10px; text-align: right; font-family: monospace;">${tf.adx}</td>
+                                    </tr>
+                                `;
+                            }).join('')}
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Volume Profile & S/R Grid -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px;">
+                    <!-- Volume Profile & Value Area -->
+                    <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 6px; padding: 10px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                            <span style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Volume Profile</span>
+                            <span class="exchange-tag" style="color: ${vaColor}; font-weight: 800; font-size: 9px;">${vaState.replace(/_/g, ' ')}</span>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; font-size: 11px;">
+                            <div>POC Price: <strong style="color: var(--accent-amber);">$${(vp.poc_price || 0).toFixed(2)}</strong></div>
+                            <div>Value Area: <strong>$${(vp.val_price || 0).toFixed(1)} – $${(vp.vah_price || 0).toFixed(1)}</strong></div>
+                        </div>
+                        ${binsHtml}
+                    </div>
+
+                    <!-- Support & Resistance Radar -->
+                    <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 6px; padding: 10px;">
+                        <div style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; margin-bottom: 6px;">Support / Resistance Pivots</div>
+                        <div style="display: flex; flex-direction: column; gap: 6px; font-size: 11px;">
+                            <div style="display: flex; justify-content: space-between; padding: 4px 6px; background: rgba(239, 68, 68, 0.1); border-radius: 4px; border: 1px solid rgba(239, 68, 68, 0.2);">
+                                <span style="color: var(--accent-red); font-weight: 700;">Resistance 1 (R1):</span>
+                                <span style="font-family: monospace; font-weight: 700;">$${(sr.resistance_1 || 0).toFixed(2)} (+${(sr.dist_resistance_pct || 0).toFixed(1)}%)</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding: 4px 6px; background: rgba(16, 185, 129, 0.1); border-radius: 4px; border: 1px solid rgba(16, 185, 129, 0.2);">
+                                <span style="color: var(--accent-green); font-weight: 700;">Support 1 (S1):</span>
+                                <span style="font-family: monospace; font-weight: 700;">$${(sr.support_1 || 0).toFixed(2)} (-${(sr.dist_support_pct || 0).toFixed(1)}%)</span>
+                            </div>
+                            <div style="margin-top: 4px; font-size: 10px; color: var(--text-muted); line-height: 1.5;">
+                                <div>Trend Structure: <strong style="color: var(--text-primary);">${ts.structure_label || 'Consolidation'}</strong></div>
+                                ${ts.msb_detected ? '<div style="color: var(--accent-red); font-weight: 700; margin-top: 2px;">⚠️ Market Structure Break Detected</div>' : ''}
+                                <div style="margin-top: 2px;">YTD Anchored VWAP: <strong style="color: var(--accent-cyan);">$${(av.ytd_vwap || 0).toFixed(2)}</strong> (${(av.dist_ytd_vwap_pct || 0) >= 0 ? '+' : ''}${(av.dist_ytd_vwap_pct || 0).toFixed(1)}%)</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             `;

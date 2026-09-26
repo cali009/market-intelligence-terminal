@@ -121,6 +121,18 @@ class EdgeExporter:
             df = pd.DataFrame(bars_raw)
             metrics = TechnicalAnalysisEngine.get_latest_feature_snapshot(df)
 
+            # Phase 4 Technical Engine: MTF Confluence, Volume Profile, S/R & Trend Structure
+            tech_dossier = TechnicalAnalysisEngine.compile_full_technical_dossier(df)
+            try:
+                TechnicalAnalysisEngine.persist_to_feature_store(
+                    security_id=sec_id,
+                    symbol=sym,
+                    as_of_date=as_of_date,
+                    dossier=tech_dossier,
+                )
+            except Exception as e:
+                print(f"Warning: Failed to persist feature_store for {sym}: {e}")
+
             # Catalysts & news contribution for this security
             sym_catalysts = [e.model_dump() for e in master_catalysts if e.symbol == sym]
             news_pts = round(sum(e.get("score_impact_pts", 0.0) for e in sym_catalysts[:3]), 1)
@@ -211,6 +223,11 @@ class EdgeExporter:
                 "atr_pct": round(metrics.get("atr_pct", 2.0), 2),
                 "proximity_52w_high": round((metrics.get("proximity_52w_high", 0.0)) * 100, 1),
                 "scanner_tags": [m.scanner_name for m in matches],
+                "mtf_confluence_score": tech_dossier["confluence_score"],
+                "mtf_confluence_label": tech_dossier["confluence_label"],
+                "value_area_state": tech_dossier["volume_profile"]["value_area_state"],
+                "poc_price": tech_dossier["volume_profile"]["poc_price"],
+                "trend_structure": tech_dossier["trend_structure"]["trend_structure"],
             })
 
             # Write Symbol Detail JSON (includes last 120 bars for lightweight charting)
@@ -235,6 +252,7 @@ class EdgeExporter:
                 "as_of_date": as_of_date,
                 "generated_at": generated_at,
                 "latest_metrics": metrics,
+                "technical_dossier": tech_dossier,
                 "score_record": {
                     "composite_score": score_rec.composite_score,
                     "confidence_tier": score_rec.confidence_tier,
