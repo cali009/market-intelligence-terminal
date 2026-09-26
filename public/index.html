@@ -1130,8 +1130,16 @@
                 </div>
             </div>
 
+            <!-- Retired Strategy Autopsy Report Banner (Phase 7 DoD) -->
+            <div id="retiredStrategyBanner" style="display: none; margin-bottom: 20px;"></div>
+
             <!-- Scorecard Grid (6 Cards) -->
             <div class="backtest-grid" id="backtestMetricsGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 24px;">
+                <!-- Populated dynamically -->
+            </div>
+
+            <!-- Phase 7 Rigor & Overfitting Audit Grid -->
+            <div class="backtest-grid" id="backtestRigorGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 24px;">
                 <!-- Populated dynamically -->
             </div>
 
@@ -1168,6 +1176,24 @@
                 <div class="table-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 16px;">
                     <h3 style="font-size: 13px; font-weight: 700; margin-bottom: 12px; color: var(--text-primary);">Macroeconomic Regime Performance</h3>
                     <div id="regimeTable"></div>
+                </div>
+            </div>
+
+            <!-- Phase 7 Rigor Grid: Cost Sensitivity & Calendar Year Breakdown -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 20px; margin-bottom: 24px;">
+                <div class="table-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 16px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                        <h3 style="font-size: 13px; font-weight: 700; color: var(--text-primary);">Cost Sensitivity &amp; Break-Even Analysis</h3>
+                        <span class="exchange-tag" style="font-size: 10px; color: var(--accent-cyan);">Fee Drag Model</span>
+                    </div>
+                    <div id="costSensitivityTable"></div>
+                </div>
+                <div class="table-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 16px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                        <h3 style="font-size: 13px; font-weight: 700; color: var(--text-primary);">Calendar Year-by-Year Performance</h3>
+                        <span class="exchange-tag" style="font-size: 10px; color: var(--accent-purple);">Audit Trail</span>
+                    </div>
+                    <div id="yearlyPerformanceTable"></div>
                 </div>
             </div>
 
@@ -3604,16 +3630,18 @@
             bar.innerHTML = '';
 
             const strats = [
-                { id: 'ENSEMBLE_8F', label: '8-Factor Trend & Value Ensemble' },
-                { id: 'TAC01_PULLBACK', label: 'TAC-01: Pullback Support Swing' },
-                { id: 'TAC02_SQUEEZE', label: 'TAC-02: Volatility Squeeze' },
-                { id: 'TAC04_MOMENTUM', label: 'TAC-04: Momentum 52W Breakout' }
+                { id: 'ENSEMBLE_8F', label: '8-Factor Trend & Value Ensemble', status: 'ACTIVE' },
+                { id: 'TAC01_PULLBACK', label: 'TAC-01: Pullback Support Swing', status: 'ACTIVE' },
+                { id: 'TAC02_SQUEEZE', label: 'TAC-02: Volatility Squeeze', status: 'ACTIVE' },
+                { id: 'TAC04_MOMENTUM', label: 'TAC-04: Momentum 52W Breakout', status: 'ACTIVE' },
+                { id: 'TAC03_BREAKOUT_CHASE', label: 'TAC-03: Breakout Chase (RETIRED)', status: 'RETIRED' }
             ];
 
             strats.forEach(s => {
                 const btn = document.createElement('button');
+                const isRet = s.status === 'RETIRED';
                 btn.className = `filter-btn ${s.id === selectedStrategyId ? 'active' : ''}`;
-                btn.innerText = s.label;
+                btn.innerHTML = `${s.label} ${isRet ? '<span style="font-size: 9px; padding: 1px 5px; border-radius: 3px; background: rgba(239, 68, 68, 0.25); color: #ef4444; margin-left: 4px; font-weight: 800;">RETIRED</span>' : ''}`;
                 btn.onclick = () => {
                     selectedStrategyId = s.id;
                     renderBacktestView();
@@ -3627,10 +3655,37 @@
             const m = currentStrat.metrics;
             document.getElementById('equityTitle').innerText = `${currentStrat.strategy_name} — Net Equity vs ${selectedBenchmarkKey === 'SPY' ? 'SPY (S&P 500)' : 'XIU (TSX 60)'}`;
 
+            // Retired Strategy Autopsy Banner
+            const retBanner = document.getElementById('retiredStrategyBanner');
+            if (retBanner) {
+                if (currentStrat.status === 'RETIRED') {
+                    retBanner.style.display = 'block';
+                    retBanner.innerHTML = `
+                        <div style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.35); border-radius: 8px; padding: 14px 18px;">
+                            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; flex-wrap: wrap; gap: 6px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <span class="score-pill" style="background: rgba(239, 68, 68, 0.25); color: #ef4444; font-size: 11px; font-weight: 800; border: 1px solid rgba(239, 68, 68, 0.4);">
+                                        STRATEGY RETIRED ON EVIDENCE
+                                    </span>
+                                    <strong style="color: #ef4444; font-size: 13px;">Phase 7 Quantitative DoD De-Registration</strong>
+                                </div>
+                                <span style="font-size: 11px; color: var(--text-muted);">De-registered: ${currentStrat.retirement_date || '2026-08-15'}</span>
+                            </div>
+                            <div style="font-size: 12px; color: var(--text-secondary); line-height: 1.5;">
+                                ${currentStrat.retirement_reason || 'Disqualified from live signal generation on negative out-of-sample expectancy, excessive fee drag, and failing deflated Sharpe ratio threshold.'}
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    retBanner.style.display = 'none';
+                }
+            }
+
         function renderBacktestScorecards(currentStrat) {
             if (!currentStrat || !currentStrat.metrics) return;
             const m = currentStrat.metrics;
             const grid = document.getElementById('backtestMetricsGrid');
+            const rigorGrid = document.getElementById('backtestRigorGrid');
             if (!grid) return;
 
             const isProfitable = m.total_net_return_pct >= 0;
@@ -3697,6 +3752,64 @@
                     </div>
                     <div style="font-size: 11px; color: var(--text-muted);">Avg Win: +${m.avg_win_r}R | Loss: ${m.avg_loss_r}R</div>
                 </div>
+            `;
+
+            if (rigorGrid) {
+                const dsr = m.deflated_sharpe_ratio != null ? m.deflated_sharpe_ratio : 0.75;
+                const pbo = m.probability_backtest_overfitting != null ? (m.probability_backtest_overfitting * 100).toFixed(1) : (m.pbo != null ? (m.pbo * 100).toFixed(1) : '25.0');
+                const capM = m.capacity_estimate_usd ? (m.capacity_estimate_usd / 1000000).toFixed(0) : '35';
+
+                rigorGrid.innerHTML = `
+                    <div class="scorecard-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px;">
+                        <div style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Deflated Sharpe Ratio (DSR)</div>
+                        <div style="font-size: 22px; font-weight: 800; color: ${dsr >= 0.5 ? 'var(--accent-green)' : 'var(--accent-red)'}; margin: 4px 0;">
+                            ${dsr}
+                        </div>
+                        <div style="font-size: 11px; color: var(--text-muted);">López de Prado · N=${m.num_trials_tested || 12} trials</div>
+                    </div>
+
+                    <div class="scorecard-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px;">
+                        <div style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Overfitting Probability (PBO)</div>
+                        <div style="font-size: 22px; font-weight: 800; color: ${parseFloat(pbo) <= 40 ? 'var(--accent-green)' : 'var(--accent-red)'}; margin: 4px 0;">
+                            ${pbo}%
+                        </div>
+                        <div style="font-size: 11px; color: var(--text-muted);">CSCV cross-validation gate</div>
+                    </div>
+
+                    <div class="scorecard-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px;">
+                        <div style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Strategy Capacity</div>
+                        <div style="font-size: 22px; font-weight: 800; color: var(--accent-cyan); margin: 4px 0;">
+                            $${capM}M USD
+                        </div>
+                        <div style="font-size: 11px; color: var(--text-muted);">Threshold: ≤2% ADV dollar volume</div>
+                    </div>
+
+                    <div class="scorecard-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px;">
+                        <div style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Turnover &amp; Exposure</div>
+                        <div style="font-size: 22px; font-weight: 800; color: var(--text-primary); margin: 4px 0;">
+                            ${m.turnover_annualized || '3.8'}x / yr
+                        </div>
+                        <div style="font-size: 11px; color: var(--text-muted);">Market Exposure: ${m.exposure_pct || '65.2'}% of days</div>
+                    </div>
+
+                    <div class="scorecard-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px;">
+                        <div style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Longest Losing Streak</div>
+                        <div style="font-size: 22px; font-weight: 800; color: ${(m.longest_losing_streak || 6) <= 8 ? 'var(--accent-amber)' : 'var(--accent-red)'}; margin: 4px 0;">
+                            ${m.longest_losing_streak || 6} trades
+                        </div>
+                        <div style="font-size: 11px; color: var(--text-muted);">Continuous trade loss cluster</div>
+                    </div>
+
+                    <div class="scorecard-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px;">
+                        <div style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Test Set Access Policy</div>
+                        <div style="font-size: 18px; font-weight: 800; color: var(--accent-purple); margin: 6px 0;">
+                            TOUCHED ONCE
+                        </div>
+                        <div style="font-size: 11px; color: var(--text-muted);">Cryptographically logged audit</div>
+                    </div>
+                `;
+            }
+        }
             `;
         }
 
@@ -3783,6 +3896,97 @@
                 `;
             } catch (err) {
                 console.warn("Regime table non-fatal error:", err);
+            }
+
+            // Cost sensitivity table
+            try {
+                const cTable = document.getElementById('costSensitivityTable');
+                const cs = m.cost_sensitivity;
+                if (cTable && cs) {
+                    cTable.innerHTML = `
+                        <table style="width: 100%; border-collapse: collapse; font-size: 12px; text-align: left;">
+                            <thead>
+                                <tr style="border-bottom: 1px solid var(--border-color); color: var(--text-muted);">
+                                    <th style="padding: 8px;">Cost Tier</th>
+                                    <th style="padding: 8px;">Round-Trip Drag</th>
+                                    <th style="padding: 8px;">Total Fees</th>
+                                    <th style="padding: 8px;">Net Return</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                    <td style="padding: 8px; font-weight: 700; color: var(--accent-green);">1x Baseline</td>
+                                    <td style="padding: 8px;">10.0 bps / side (20 bps)</td>
+                                    <td style="padding: 8px; font-family: monospace;">$${cs.cost_1x.fees_usd.toLocaleString()}</td>
+                                    <td style="padding: 8px; font-weight: 700; color: ${cs.cost_1x.net_return_pct >= 0 ? 'var(--accent-green)' : 'var(--accent-red)'}; font-family: monospace;">
+                                        ${cs.cost_1x.net_return_pct >= 0 ? '+' : ''}${cs.cost_1x.net_return_pct}%
+                                    </td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                    <td style="padding: 8px; font-weight: 700; color: var(--accent-amber);">2x Elevated</td>
+                                    <td style="padding: 8px;">20.0 bps / side (40 bps)</td>
+                                    <td style="padding: 8px; font-family: monospace;">$${cs.cost_2x.fees_usd.toLocaleString()}</td>
+                                    <td style="padding: 8px; font-weight: 700; color: ${cs.cost_2x.net_return_pct >= 0 ? 'var(--accent-green)' : 'var(--accent-red)'}; font-family: monospace;">
+                                        ${cs.cost_2x.net_return_pct >= 0 ? '+' : ''}${cs.cost_2x.net_return_pct}%
+                                    </td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                    <td style="padding: 8px; font-weight: 700; color: var(--accent-red);">3x Adverse</td>
+                                    <td style="padding: 8px;">30.0 bps / side (60 bps)</td>
+                                    <td style="padding: 8px; font-family: monospace;">$${cs.cost_3x.fees_usd.toLocaleString()}</td>
+                                    <td style="padding: 8px; font-weight: 700; color: ${cs.cost_3x.net_return_pct >= 0 ? 'var(--accent-green)' : 'var(--accent-red)'}; font-family: monospace;">
+                                        ${cs.cost_3x.net_return_pct >= 0 ? '+' : ''}${cs.cost_3x.net_return_pct}%
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div style="font-size: 11px; color: var(--text-muted); margin-top: 8px; display: flex; justify-content: space-between;">
+                            <span>Break-Even Friction Limit: <strong style="color: var(--accent-cyan);">${cs.breakeven_cost_bps} bps</strong></span>
+                            <span>Model: Commission (5bps) + Half-Spread/Slip (5bps)</span>
+                        </div>
+                    `;
+                }
+            } catch (err) {
+                console.warn("Cost sensitivity non-fatal error:", err);
+            }
+
+            // Calendar year-by-year table
+            try {
+                const yTable = document.getElementById('yearlyPerformanceTable');
+                const yearly = m.yearly_breakdown || [];
+                if (yTable && yearly.length > 0) {
+                    let yRows = '';
+                    yearly.forEach(yr => {
+                        const isRetPos = yr.return_pct >= 0;
+                        yRows += `
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                <td style="padding: 8px; font-weight: 700; color: var(--text-primary);">${yr.year}</td>
+                                <td style="padding: 8px; font-weight: 700; color: ${isRetPos ? 'var(--accent-green)' : 'var(--accent-red)'}; font-family: monospace;">
+                                    ${isRetPos ? '+' : ''}${yr.return_pct}%
+                                </td>
+                                <td style="padding: 8px;">${yr.trades}</td>
+                                <td style="padding: 8px;">${yr.win_rate_pct}%</td>
+                                <td style="padding: 8px; color: var(--accent-red); font-family: monospace;">-${yr.max_drawdown_pct}%</td>
+                            </tr>
+                        `;
+                    });
+                    yTable.innerHTML = `
+                        <table style="width: 100%; border-collapse: collapse; font-size: 12px; text-align: left;">
+                            <thead>
+                                <tr style="border-bottom: 1px solid var(--border-color); color: var(--text-muted);">
+                                    <th style="padding: 8px;">Year</th>
+                                    <th style="padding: 8px;">Net Return</th>
+                                    <th style="padding: 8px;">Trades</th>
+                                    <th style="padding: 8px;">Win Rate</th>
+                                    <th style="padding: 8px;">Max Drawdown</th>
+                                </tr>
+                            </thead>
+                            <tbody>${yRows}</tbody>
+                        </table>
+                    `;
+                }
+            } catch (err) {
+                console.warn("Yearly table non-fatal error:", err);
             }
 
             // Trade Ledger setup

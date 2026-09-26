@@ -35,7 +35,7 @@ def run_all_backtests():
     print(f" Execution Date: {today_str} | Strict Anti-Lookahead Protocol")
     print(f"{'='*95}\n")
 
-    strategies = ["ENSEMBLE_8F", "TAC01_PULLBACK", "TAC02_SQUEEZE", "TAC04_MOMENTUM"]
+    strategies = ["ENSEMBLE_8F", "TAC01_PULLBACK", "TAC02_SQUEEZE", "TAC04_MOMENTUM", "TAC03_BREAKOUT_CHASE"]
     results = {}
 
     for strat_id in strategies:
@@ -44,13 +44,15 @@ def run_all_backtests():
         res = backtest_engine.run_strategy_backtest(strat_id)
         m = res["metrics"]
         elapsed_s = time.monotonic() - s_start
-        print(f"    ✓ {res['strategy_name']} ({elapsed_s:.2f}s):")
-        print(f"      Trades: {m['total_trades']} | Win Rate: {m['win_rate_pct']}% | Net Return: {m['total_net_return_pct']}% | Sharpe: {m['sharpe_ratio']} | Max DD: -{m['max_drawdown_pct']}%")
+        status_tag = f"[{res.get('status', 'ACTIVE')}]"
+        print(f"    ✓ {status_tag} {res['strategy_name']} ({elapsed_s:.2f}s):")
+        print(f"      Trades: {m['total_trades']} | Win Rate: {m['win_rate_pct']}% | Net Return: {m['total_net_return_pct']}% | Sharpe: {m['sharpe_ratio']} | DSR: {m.get('deflated_sharpe_ratio')} | PBO: {m.get('probability_backtest_overfitting')}")
         results[strat_id] = res
 
     bundle = {
         "as_of_date": today_str,
         "generated_at": generated_at,
+        "strategy_registry": backtest_engine.get_strategy_registry(),
         "strategies": results,
         "default_strategy": "ENSEMBLE_8F",
         "benchmark_symbol": "SPY",
