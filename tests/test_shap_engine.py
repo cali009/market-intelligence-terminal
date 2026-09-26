@@ -29,7 +29,8 @@ def test_shap_additivity_guarantee():
 
     for s in feed.symbol_attributions:
         reconstructed = s.base_value + sum(s.all_attributions.values())
-        assert abs(s.model_score - reconstructed) <= 0.05, f"Additivity violated for {s.symbol}"
+        # With 10 features rounded to 2 decimals, display sum can differ by at most 10 * 0.005 = 0.05 + 0.05 for 1-dec score
+        assert abs(s.model_score - reconstructed) <= 0.10, f"Additivity violated for {s.symbol}"
 
 
 def test_feature_matrix_completeness():
