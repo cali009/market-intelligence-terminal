@@ -2621,6 +2621,20 @@
         let fullLeaderboard = [];
         let currentMarketFilter = 'ALL';
 
+        function escapeHtml(str) {
+            if (str == null) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        function openSymbolDrawer(sym) {
+            return openSymbol(sym);
+        }
+
         async function fetchJson(primaryUrl, fallbackUrl) {
             try {
                 const res = await fetch(primaryUrl);
