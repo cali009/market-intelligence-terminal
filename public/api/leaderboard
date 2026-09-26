@@ -1,6 +1,6 @@
 {
   "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T05:24:45.680723+00:00",
+  "generated_at": "2026-09-26T05:38:07.782056+00:00",
   "securities": [
     {
       "symbol": "QQQ",
@@ -44,7 +44,12 @@
       "conformal_target": 618.32,
       "conformal_rr": 0.87,
       "conformal_coverage_pct": 90.0,
-      "vol_expansion_warning": false
+      "vol_expansion_warning": false,
+      "is_dual_listed": false,
+      "dual_listed_us_sym": null,
+      "basis_spread_bps": null,
+      "basis_zscore": null,
+      "primary_liquidity": null
     },
     {
       "symbol": "SPY",
@@ -89,7 +94,12 @@
       "conformal_target": 678.61,
       "conformal_rr": 0.79,
       "conformal_coverage_pct": 90.0,
-      "vol_expansion_warning": false
+      "vol_expansion_warning": false,
+      "is_dual_listed": false,
+      "dual_listed_us_sym": null,
+      "basis_spread_bps": null,
+      "basis_zscore": null,
+      "primary_liquidity": null
     },
     {
       "symbol": "MSFT",
@@ -137,7 +147,12 @@
       "conformal_target": 545.44,
       "conformal_rr": 1.25,
       "conformal_coverage_pct": 87.6,
-      "vol_expansion_warning": false
+      "vol_expansion_warning": false,
+      "is_dual_listed": false,
+      "dual_listed_us_sym": null,
+      "basis_spread_bps": null,
+      "basis_zscore": null,
+      "primary_liquidity": null
     },
     {
       "symbol": "AAPL",
@@ -181,7 +196,12 @@
       "conformal_target": 280.62,
       "conformal_rr": 1.41,
       "conformal_coverage_pct": 90.6,
-      "vol_expansion_warning": false
+      "vol_expansion_warning": false,
+      "is_dual_listed": false,
+      "dual_listed_us_sym": null,
+      "basis_spread_bps": null,
+      "basis_zscore": null,
+      "primary_liquidity": null
     },
     {
       "symbol": "NVDA",
@@ -224,7 +244,12 @@
       "conformal_target": 201.25,
       "conformal_rr": 0.95,
       "conformal_coverage_pct": 91.2,
-      "vol_expansion_warning": false
+      "vol_expansion_warning": false,
+      "is_dual_listed": false,
+      "dual_listed_us_sym": null,
+      "basis_spread_bps": null,
+      "basis_zscore": null,
+      "primary_liquidity": null
     },
     {
       "symbol": "XIU",
@@ -268,7 +293,12 @@
       "conformal_target": 45.76,
       "conformal_rr": 1.15,
       "conformal_coverage_pct": 88.2,
-      "vol_expansion_warning": false
+      "vol_expansion_warning": false,
+      "is_dual_listed": false,
+      "dual_listed_us_sym": null,
+      "basis_spread_bps": null,
+      "basis_zscore": null,
+      "primary_liquidity": null
     },
     {
       "symbol": "TD",
@@ -312,7 +342,12 @@
       "conformal_target": 117.57,
       "conformal_rr": 1.45,
       "conformal_coverage_pct": 91.2,
-      "vol_expansion_warning": false
+      "vol_expansion_warning": false,
+      "is_dual_listed": true,
+      "dual_listed_us_sym": "TD",
+      "basis_spread_bps": 1.8,
+      "basis_zscore": -0.14,
+      "primary_liquidity": "TSX"
     },
     {
       "symbol": "XOM",
@@ -355,7 +390,12 @@
       "conformal_target": 121.07,
       "conformal_rr": 1.0,
       "conformal_coverage_pct": 85.0,
-      "vol_expansion_warning": false
+      "vol_expansion_warning": false,
+      "is_dual_listed": false,
+      "dual_listed_us_sym": null,
+      "basis_spread_bps": null,
+      "basis_zscore": null,
+      "primary_liquidity": null
     },
     {
       "symbol": "CNQ",
@@ -397,7 +437,12 @@
       "conformal_target": 49.63,
       "conformal_rr": 1.12,
       "conformal_coverage_pct": 87.6,
-      "vol_expansion_warning": false
+      "vol_expansion_warning": false,
+      "is_dual_listed": true,
+      "dual_listed_us_sym": "CNQ",
+      "basis_spread_bps": 16.2,
+      "basis_zscore": 1.09,
+      "primary_liquidity": "TSX"
     },
     {
       "symbol": "JPM",
@@ -441,7 +486,12 @@
       "conformal_target": 333.92,
       "conformal_rr": 0.98,
       "conformal_coverage_pct": 93.5,
-      "vol_expansion_warning": false
+      "vol_expansion_warning": false,
+      "is_dual_listed": false,
+      "dual_listed_us_sym": null,
+      "basis_spread_bps": null,
+      "basis_zscore": null,
+      "primary_liquidity": null
     },
     {
       "symbol": "GOOGL",
@@ -482,7 +532,12 @@
       "conformal_target": 274.66,
       "conformal_rr": 1.45,
       "conformal_coverage_pct": 85.0,
-      "vol_expansion_warning": false
+      "vol_expansion_warning": false,
+      "is_dual_listed": false,
+      "dual_listed_us_sym": null,
+      "basis_spread_bps": null,
+      "basis_zscore": null,
+      "primary_liquidity": null
     },
     {
       "symbol": "CNR",
@@ -525,7 +580,12 @@
       "conformal_target": 136.11,
       "conformal_rr": 0.95,
       "conformal_coverage_pct": 87.6,
-      "vol_expansion_warning": false
+      "vol_expansion_warning": false,
+      "is_dual_listed": true,
+      "dual_listed_us_sym": "CNI",
+      "basis_spread_bps": -9.1,
+      "basis_zscore": -1.08,
+      "primary_liquidity": "BALANCED"
     },
     {
       "symbol": "AMZN",
@@ -568,7 +628,12 @@
       "conformal_target": 236.59,
       "conformal_rr": 0.8,
       "conformal_coverage_pct": 88.2,
-      "vol_expansion_warning": false
+      "vol_expansion_warning": false,
+      "is_dual_listed": false,
+      "dual_listed_us_sym": null,
+      "basis_spread_bps": null,
+      "basis_zscore": null,
+      "primary_liquidity": null
     },
     {
       "symbol": "RY",
@@ -611,7 +676,12 @@
       "conformal_target": 214.89,
       "conformal_rr": 1.45,
       "conformal_coverage_pct": 85.0,
-      "vol_expansion_warning": false
+      "vol_expansion_warning": false,
+      "is_dual_listed": true,
+      "dual_listed_us_sym": "RY",
+      "basis_spread_bps": -2.5,
+      "basis_zscore": -0.55,
+      "primary_liquidity": "TSX"
     },
     {
       "symbol": "CP",
@@ -654,7 +724,12 @@
       "conformal_target": 110.57,
       "conformal_rr": 1.06,
       "conformal_coverage_pct": 93.5,
-      "vol_expansion_warning": false
+      "vol_expansion_warning": false,
+      "is_dual_listed": true,
+      "dual_listed_us_sym": "CP",
+      "basis_spread_bps": -2.8,
+      "basis_zscore": -0.45,
+      "primary_liquidity": "NYSE"
     },
     {
       "symbol": "SHOP",
@@ -695,7 +770,12 @@
       "conformal_target": 233.13,
       "conformal_rr": 1.26,
       "conformal_coverage_pct": 87.1,
-      "vol_expansion_warning": false
+      "vol_expansion_warning": false,
+      "is_dual_listed": true,
+      "dual_listed_us_sym": "SHOP",
+      "basis_spread_bps": -0.6,
+      "basis_zscore": -0.24,
+      "primary_liquidity": "NYSE"
     },
     {
       "symbol": "ENB",
@@ -737,7 +817,12 @@
       "conformal_target": 71.77,
       "conformal_rr": 0.88,
       "conformal_coverage_pct": 90.0,
-      "vol_expansion_warning": false
+      "vol_expansion_warning": false,
+      "is_dual_listed": true,
+      "dual_listed_us_sym": "ENB",
+      "basis_spread_bps": 2.5,
+      "basis_zscore": -0.13,
+      "primary_liquidity": "TSX"
     },
     {
       "symbol": "BAM",
@@ -776,7 +861,12 @@
       "conformal_target": 91.52,
       "conformal_rr": 1.28,
       "conformal_coverage_pct": 91.2,
-      "vol_expansion_warning": false
+      "vol_expansion_warning": false,
+      "is_dual_listed": true,
+      "dual_listed_us_sym": "BAM",
+      "basis_spread_bps": 1.2,
+      "basis_zscore": 0.02,
+      "primary_liquidity": "BALANCED"
     },
     {
       "symbol": "BN",
@@ -815,7 +905,12 @@
       "conformal_target": 70.58,
       "conformal_rr": 1.21,
       "conformal_coverage_pct": 85.0,
-      "vol_expansion_warning": false
+      "vol_expansion_warning": false,
+      "is_dual_listed": true,
+      "dual_listed_us_sym": "BN",
+      "basis_spread_bps": -0.5,
+      "basis_zscore": -0.31,
+      "primary_liquidity": "BALANCED"
     }
   ]
 }

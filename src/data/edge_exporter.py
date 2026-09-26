@@ -35,6 +35,7 @@ from src.engine.filing_deep_read import filing_deep_read_engine
 from src.engine.production_scale import production_scale_engine
 from src.engine.asset_fingerprint import asset_fingerprint_engine
 from src.engine.conformal_bounds import adaptive_conformal_engine
+from src.engine.cross_border_parity import cross_border_parity_engine, DUAL_LISTED_PAIRS
 
 FEEDS_DIR = DATA_DIR / "feeds"
 DIST_DIR = DATA_DIR / "dist"
@@ -265,6 +266,10 @@ class EdgeExporter:
             # Phase 14: Adaptive Conformal Prediction (ACI) Statistical Bounds
             conformal_bounds = adaptive_conformal_engine.calibrate_bounds_for_symbol(sym)
 
+            # Phase 15: Cross-Border Dual-Listed Parity & Basis
+            parity_rec = cross_border_parity_engine.compute_pair_parity(sym) if sym in DUAL_LISTED_PAIRS else None
+            parity_dict = parity_rec.to_dict() if parity_rec else None
+
             # Add to leaderboard
             leaderboard_items.append({
                 "symbol": sym,
@@ -304,6 +309,11 @@ class EdgeExporter:
                 "conformal_rr": conformal_bounds.conformal_risk_reward_ratio,
                 "conformal_coverage_pct": conformal_bounds.realized_coverage_pct,
                 "vol_expansion_warning": conformal_bounds.volatility_expansion_warning,
+                "is_dual_listed": sym in DUAL_LISTED_PAIRS,
+                "dual_listed_us_sym": parity_rec.us_symbol if parity_rec else None,
+                "basis_spread_bps": parity_rec.basis_spread_bps if parity_rec else None,
+                "basis_zscore": parity_rec.basis_zscore_60d if parity_rec else None,
+                "primary_liquidity": parity_rec.primary_liquidity_center if parity_rec else None,
             })
 
             # Write Symbol Detail JSON (includes last 120 bars for lightweight charting)
@@ -332,6 +342,7 @@ class EdgeExporter:
                 "fundamental_dossier": fund_dossier,
                 "asset_fingerprint": fingerprint.to_dict(),
                 "conformal_bounds": conformal_bounds.to_dict(),
+                "cross_border_parity": parity_dict,
                 "score_record": {
                     "composite_score": score_rec.composite_score,
                     "confidence_tier": score_rec.confidence_tier,
@@ -560,8 +571,13 @@ class EdgeExporter:
             with open(d_dir / "conformal_bounds.json", "w") as f:
                 json.dump(conformal_payload, f, indent=2)
 
+            # Phase 15: Cross-Border Dual-Listed Parity & Basis Feed
+            parity_payload = cross_border_parity_engine.generate_feed().to_dict()
+            with open(d_dir / "cross_border_parity.json", "w") as f:
+                json.dump(parity_payload, f, indent=2)
+
         return {
-            "dist_files": 17,
+            "dist_files": 18,
             "symbol_files": symbol_files_count,
             "total_matches": len(scanner_results),
             "total_signals": len(signals_list),

@@ -71,6 +71,8 @@ def build_firebase_bundle():
         ("asset_fingerprints.json", "asset_fingerprints"),
         ("conformal_bounds.json", "conformal_bounds.json"),
         ("conformal_bounds.json", "conformal_bounds"),
+        ("cross_border_parity.json", "cross_border_parity.json"),
+        ("cross_border_parity.json", "cross_border_parity"),
     ]
 
     for src_name, dest_name in core_feeds:

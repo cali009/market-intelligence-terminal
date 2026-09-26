@@ -2704,6 +2704,7 @@
                         <div class="symbol-badge">
                             <span>${item.symbol}</span>
                             <span class="exchange-tag">${item.exchange}</span>
+                            ${item.is_dual_listed ? `<span class="exchange-tag" style="font-size: 9px; background: rgba(59, 130, 246, 0.15); color: var(--accent-blue);" title="Dual-listed on NYSE as ${item.dual_listed_us_sym}">US:${item.dual_listed_us_sym}</span>` : ''}
                         </div>
                         <div style="font-size: 11px; color: var(--text-muted);">${item.name}</div>
                     </td>
@@ -3513,6 +3514,17 @@
                             <!-- Populated dynamically via JS -->
                         </div>
                     </div>
+
+                    <!-- Phase 15 Cross-Border Dual-Listed Parity & FX Basis -->
+                    <div style="margin-top: 24px;" id="drawerParityWrapper">
+                        <h3 style="font-size: 13px; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
+                            <span>Cross-Border Dual-Listed Parity (Phase 15)</span>
+                            <span class="exchange-tag" style="font-size: 10px; background: rgba(59, 130, 246, 0.15); color: var(--accent-blue); border: 1px solid rgba(59, 130, 246, 0.3);">BoC Valet Fixing · Cointegration</span>
+                        </h3>
+                        <div id="drawerParitySection">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+                    </div>
                 `;
 
                 // Render Phase 13 Asset Microstructure Fingerprint
@@ -3520,6 +3532,9 @@
 
                 // Render Phase 14 Adaptive Conformal Prediction Bounds
                 renderConformalBoundsInDrawer(data.conformal_bounds);
+
+                // Render Phase 15 Cross-Border Dual-Listed Parity
+                renderDualListedParityInDrawer(data.cross_border_parity);
 
                 // Render Phase 4 Technical Engine Lab
                 renderTechnicalEngineInDrawer(data.technical_dossier);
@@ -3824,6 +3839,114 @@
                                 ● ${cb.invalidation_status}
                             </div>
                         </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderDualListedParityInDrawer(p) {
+            const wrapper = document.getElementById('drawerParityWrapper');
+            const container = document.getElementById('drawerParitySection');
+            if (!container || !wrapper) return;
+
+            if (!p) {
+                wrapper.style.display = 'none';
+                return;
+            }
+            wrapper.style.display = 'block';
+
+            const stateColor = p.parity_state === 'PARITY_EQUILIBRIUM' 
+                ? 'var(--accent-green)' 
+                : (p.parity_state === 'MILD_DISPARITY' ? 'var(--accent-amber)' : 'var(--accent-red)');
+            const stateLabel = p.parity_state.replace(/_/g, ' ');
+
+            const spreadColor = Math.abs(p.basis_spread_bps) <= 10.0 
+                ? 'var(--accent-green)' 
+                : (Math.abs(p.basis_spread_bps) <= 25.0 ? 'var(--accent-amber)' : 'var(--accent-red)');
+            const spreadSign = p.basis_spread_bps >= 0 ? '+' : '';
+
+            const zColor = Math.abs(p.basis_zscore_60d) <= 1.0 
+                ? 'var(--accent-green)' 
+                : (Math.abs(p.basis_zscore_60d) <= 2.0 ? 'var(--accent-amber)' : 'var(--accent-red)');
+            const zSign = p.basis_zscore_60d >= 0 ? '+' : '';
+
+            const cointColor = p.is_cointegrated ? 'var(--accent-green)' : 'var(--accent-red)';
+            const liqCenterColor = p.primary_liquidity_center === 'TSX' ? 'var(--accent-cyan)' : 'var(--accent-blue)';
+
+            container.innerHTML = `
+                <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 16px;">
+                    <!-- Top Summary Bar -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">
+                        <div>
+                            <div style="font-size: 10px; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Dual-Listed Parity Anchor</div>
+                            <div style="font-size: 14px; font-weight: 800; color: var(--text-primary); margin-top: 2px;">
+                                TSX:${p.tsx_symbol} <span style="font-size: 11px; color: var(--text-muted);">vs</span> ${p.us_exchange}:${p.us_symbol}
+                            </div>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-size: 10px; color: var(--text-muted); text-transform: uppercase;">BoC USD/CAD Valet Fixing</div>
+                            <div style="font-size: 13px; font-weight: 800; font-family: monospace; color: var(--accent-cyan); margin-top: 2px;">
+                                $1 USD = ${p.boc_fx_rate.toFixed(4)} CAD
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Parity Pricing Comparison Ladder -->
+                    <div style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 6px; padding: 12px; margin-bottom: 12px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; padding: 4px 0; border-bottom: 1px dashed rgba(255,255,255,0.08);">
+                            <span style="font-size: 11px; color: var(--text-muted);">US Settlement Close (${p.us_exchange})</span>
+                            <span style="font-family: monospace; font-size: 13px; font-weight: 700; color: var(--text-primary);">$${p.us_close_usd.toFixed(2)} USD</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; padding: 4px 0; border-bottom: 1px dashed rgba(255,255,255,0.08);">
+                            <span style="font-size: 11px; color: var(--text-muted);">Implied CAD Parity Price (USD × FX)</span>
+                            <span style="font-family: monospace; font-size: 13px; font-weight: 700; color: var(--accent-cyan);">$${p.implied_cad_price.toFixed(2)} CAD</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; padding: 4px 0; border-bottom: 1px dashed rgba(255,255,255,0.08);">
+                            <span style="font-size: 11px; font-weight: 700; color: var(--text-primary);">TSX Actual Close</span>
+                            <span style="font-family: monospace; font-size: 13px; font-weight: 800; color: var(--text-primary);">$${p.tsx_close_cad.toFixed(2)} CAD</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; padding: 4px 0;">
+                            <span style="font-size: 11px; font-weight: 700; color: ${spreadColor};">Cross-Border Basis Disparity</span>
+                            <span style="font-family: monospace; font-size: 13px; font-weight: 800; color: ${spreadColor};">
+                                ${spreadSign}${p.basis_spread_bps} bps <span style="font-size: 10px; font-weight: 600;">(${spreadSign}${p.basis_spread_pct}%)</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Econometrics & Microstructure Grid -->
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; text-align: center; margin-bottom: 10px;">
+                        <div style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 4px; padding: 8px;">
+                            <div style="font-size: 9px; color: var(--text-muted); text-transform: uppercase;">60d Basis Z-Score</div>
+                            <div style="font-size: 13px; font-weight: 800; color: ${zColor}; margin-top: 2px;">
+                                ${zSign}${p.basis_zscore_60d}σ
+                            </div>
+                        </div>
+
+                        <div style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 4px; padding: 8px;">
+                            <div style="font-size: 9px; color: var(--text-muted); text-transform: uppercase;">Cointegration Beta</div>
+                            <div style="font-size: 13px; font-weight: 800; color: ${cointColor}; margin-top: 2px;">
+                                β = ${p.cointegration_beta}
+                            </div>
+                        </div>
+
+                        <div style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 4px; padding: 8px;">
+                            <div style="font-size: 9px; color: var(--text-muted); text-transform: uppercase;">Half-Life (AR1)</div>
+                            <div style="font-size: 13px; font-weight: 800; color: var(--accent-cyan); margin-top: 2px;">
+                                ${p.half_life_days}d
+                            </div>
+                        </div>
+
+                        <div style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 4px; padding: 8px;">
+                            <div style="font-size: 9px; color: var(--text-muted); text-transform: uppercase;">Primary Liquidity</div>
+                            <div style="font-size: 11px; font-weight: 800; color: ${liqCenterColor}; margin-top: 4px;">
+                                ${p.primary_liquidity_center} (${p.volume_ratio_tsx_to_us}x)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--text-muted); padding-top: 6px; border-top: 1px solid var(--border-color);">
+                        <span>Parity State: <strong style="color: ${stateColor};">● ${stateLabel}</strong></span>
+                        <span>Arbitrage Friction: <strong style="color: ${p.actionable_arbitrage_friction ? 'var(--accent-red)' : 'var(--accent-green)'};">${p.actionable_arbitrage_friction ? 'ACTIVE (>25 bps)' : 'SUB-FRICTION NOISE'}</strong></span>
                     </div>
                 </div>
             `;

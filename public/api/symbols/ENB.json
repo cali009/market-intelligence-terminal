@@ -5,7 +5,7 @@
   "currency": "CAD",
   "name": "Enbridge Inc.",
   "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T05:24:45.680723+00:00",
+  "generated_at": "2026-09-26T05:38:07.782056+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 66.8499984741211,
@@ -353,7 +353,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 16,
     "gjr_garch_gamma": 0.22,
-    "last_updated": "2026-09-26T05:24:47.542216+00:00"
+    "last_updated": "2026-09-26T05:38:10.405730+00:00"
   },
   "conformal_bounds": {
     "symbol": "ENB",
@@ -370,7 +370,30 @@
     "adapted_alpha": 0.235,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-09-26T05:24:47.556580+00:00"
+    "calibrated_at": "2026-09-26T05:38:10.423811+00:00"
+  },
+  "cross_border_parity": {
+    "tsx_symbol": "ENB",
+    "us_symbol": "ENB",
+    "us_exchange": "NYSE",
+    "tsx_close_cad": 66.13,
+    "us_close_usd": 46.74,
+    "boc_fx_rate": 1.4145,
+    "implied_cad_price": 66.11,
+    "basis_spread_pct": 0.0246,
+    "basis_spread_bps": 2.5,
+    "basis_zscore_60d": -0.13,
+    "parity_state": "PARITY_EQUILIBRIUM",
+    "cointegration_beta": 1.0008,
+    "cointegration_alpha": -0.0383,
+    "is_cointegrated": true,
+    "adf_t_stat": -9.88,
+    "adf_pvalue": 0.0,
+    "half_life_days": 0.5,
+    "volume_ratio_tsx_to_us": 1.56,
+    "primary_liquidity_center": "TSX",
+    "actionable_arbitrage_friction": false,
+    "as_of_date": "2026-09-25"
   },
   "score_record": {
     "composite_score": 28,

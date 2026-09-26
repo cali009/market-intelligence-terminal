@@ -724,6 +724,52 @@ class AdaptiveConformalBounds(BaseModel):
         return self.model_dump()
 
 
+# ==========================================
+# PHASE 15: DUAL-LISTED PARITY & BASIS SCHEMAS
+# ==========================================
+
+
+class DualListedParityRecord(BaseModel):
+    tsx_symbol: str
+    us_symbol: str
+    us_exchange: str
+    tsx_close_cad: float
+    us_close_usd: float
+    boc_fx_rate: float
+    implied_cad_price: float
+    basis_spread_pct: float
+    basis_spread_bps: float
+    basis_zscore_60d: float
+    parity_state: Literal["PARITY_EQUILIBRIUM", "MILD_DISPARITY", "STATISTICAL_STRETCH"]
+    cointegration_beta: float
+    cointegration_alpha: float
+    is_cointegrated: bool
+    adf_t_stat: float
+    adf_pvalue: float
+    half_life_days: float
+    volume_ratio_tsx_to_us: float
+    primary_liquidity_center: Literal["TSX", "NYSE", "BALANCED"]
+    actionable_arbitrage_friction: bool
+    as_of_date: str
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class DualListedFeed(BaseModel):
+    as_of_date: str
+    boc_valet_fx_usdcad: float
+    total_pairs_tracked: int
+    cointegration_rate_pct: float
+    average_basis_spread_bps: float
+    pairs: List[DualListedParityRecord]
+    disclaimers: List[str]
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+
 
 
 
