@@ -30,6 +30,7 @@ from src.engine.journal import journal_engine
 from src.engine.fundamentals import FundamentalAnalysisEngine
 from src.engine.paper_trading import paper_trading_engine
 from src.engine.portfolio import portfolio_engine
+from src.engine.alerts import alert_engine
 
 FEEDS_DIR = DATA_DIR / "feeds"
 DIST_DIR = DATA_DIR / "dist"
@@ -510,8 +511,13 @@ class EdgeExporter:
             with open(d_dir / "portfolio.json", "w") as f:
                 json.dump(portfolio_payload, f, indent=2)
 
+            # Phase 10: Multi-Channel Alerts & CASL/TCPA Consent Ledger
+            alerts_payload = alert_engine.generate_alerts_feed()
+            with open(d_dir / "alerts.json", "w") as f:
+                json.dump(alerts_payload, f, indent=2)
+
         return {
-            "dist_files": 12,
+            "dist_files": 13,
             "symbol_files": symbol_files_count,
             "total_matches": len(scanner_results),
             "total_signals": len(signals_list),

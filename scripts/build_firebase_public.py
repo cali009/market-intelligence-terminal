@@ -61,6 +61,8 @@ def build_firebase_bundle():
         ("paper_trading.json", "paper_trading"),
         ("portfolio.json", "portfolio.json"),
         ("portfolio.json", "portfolio"),
+        ("alerts.json", "alerts.json"),
+        ("alerts.json", "alerts"),
     ]
 
     for src_name, dest_name in core_feeds:

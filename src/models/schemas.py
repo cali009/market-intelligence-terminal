@@ -442,4 +442,75 @@ class PortfolioAnalyticsReport(BaseModel):
         return self.model_dump()
 
 
+class AlertRecord(BaseModel):
+    alert_id: str
+    timestamp: str
+    symbol: Optional[str] = None
+    taxonomy: Literal[
+        "TECHNICAL_BREAKOUT",
+        "EXIT_TRIGGER_ESCALATION",
+        "REGIME_SHIFT",
+        "CATALYST_MATERIALITY",
+        "PORTFOLIO_CIRCUIT_BREAKER",
+        "PRICE_VOLUME_SPIKE"
+    ]
+    severity: Literal["INFO", "NOTICE", "WARNING", "CRITICAL"]
+    headline: str
+    body: str
+    channels: List[Literal["IN_APP", "EMAIL", "WEB_PUSH", "SMS"]]
+    dedupe_key: str
+    data_payload: Dict[str, Any] = {}
+    is_quiet_hours_eligible: bool = True
+    disclaimer: str
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class ConsentRecord(BaseModel):
+    consent_id: str
+    user_id: str
+    channel: Literal["EMAIL", "SMS", "WEB_PUSH", "IN_APP"]
+    consent_type: Literal["EXPRESS_OPT_IN", "DOUBLE_OPT_IN_SMS", "IMPLIED_TRANSACTIONAL"]
+    jurisdiction: Literal["CA", "US"]
+    ip_address: str
+    user_agent: str
+    granted_at: str
+    expires_at: Optional[str] = None
+    revoked_at: Optional[str] = None
+    unsubscribe_token: str
+    evidence_text: str
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class AlertPolicyConfig(BaseModel):
+    quiet_hours_enabled: bool = True
+    quiet_hours_start: str = "21:00"
+    quiet_hours_end: str = "07:00"
+    user_timezone: str = "America/Vancouver"
+    max_alerts_per_day_email: int = 10
+    max_alerts_per_day_sms: int = 5
+    cooldown_minutes_per_symbol: int = 120
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class AlertDeliveryTelemetry(BaseModel):
+    p95_latency_email_seconds: float
+    p95_latency_in_app_seconds: float
+    bounce_rate_pct: float
+    monthly_opt_out_rate_pct: float
+    total_delivered_24h: int
+    total_suppressed_quiet_hours: int
+    total_suppressed_budget: int
+    total_suppressed_cooldown: int
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+
 

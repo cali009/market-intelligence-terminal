@@ -1,0 +1,369 @@
+{
+  "as_of_date": "2026-09-26",
+  "generated_at": "2026-09-26T02:02:19.878244+00:00",
+  "active_alerts_count": 6,
+  "alerts": [
+    {
+      "alert_id": "ALT_2026-09-26_NVDA_01",
+      "timestamp": "2026-09-26T02:02:19Z",
+      "symbol": "NVDA",
+      "taxonomy": "TECHNICAL_BREAKOUT",
+      "severity": "WARNING",
+      "headline": "NVDA: Volatility Squeeze Expansion Triggered on NASDAQ",
+      "body": "Bollinger Bands expanded outside Keltner Channels with 20-day RVOL at 2.45x. Quantitative score: 86/100.",
+      "channels": [
+        "IN_APP",
+        "EMAIL",
+        "WEB_PUSH"
+      ],
+      "dedupe_key": "NVDA:BREAKOUT:2026-09-26",
+      "data_payload": {
+        "score": 86,
+        "rvol": 2.45,
+        "pattern": "BB_KC_EXPANSION"
+      },
+      "is_quiet_hours_eligible": true,
+      "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
+    },
+    {
+      "alert_id": "ALT_2026-09-26_TD_02",
+      "timestamp": "2026-09-26T02:02:19Z",
+      "symbol": "TD",
+      "taxonomy": "EXIT_TRIGGER_ESCALATION",
+      "severity": "CRITICAL",
+      "headline": "TD.TO: Exit Signal Triggered \u2014 Trailing Stop Breach on TSX",
+      "body": "Price closed below 20-day swing support (C$81.20). Systematic exit model transitioned verdict to REDUCE / EXIT.",
+      "channels": [
+        "IN_APP",
+        "EMAIL",
+        "SMS"
+      ],
+      "dedupe_key": "TD:STOP_BREACH:2026-09-26",
+      "data_payload": {
+        "stop_price": 81.2,
+        "action": "REDUCE",
+        "pnl_r": -1.0
+      },
+      "is_quiet_hours_eligible": false,
+      "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
+    },
+    {
+      "alert_id": "ALT_2026-09-26_BOC_03",
+      "timestamp": "2026-09-26T02:02:19Z",
+      "symbol": null,
+      "taxonomy": "CATALYST_MATERIALITY",
+      "severity": "WARNING",
+      "headline": "Bank of Canada: Policy Rate Cut Announced (-25 bps)",
+      "body": "Overnight rate reduced to 4.25%. BoC Valet CAD/USD rate moved to 1.4136. Financials and TSX dividend sectors reacting.",
+      "channels": [
+        "IN_APP",
+        "EMAIL",
+        "WEB_PUSH"
+      ],
+      "dedupe_key": "BOC:RATE_CUT:2026-09-26",
+      "data_payload": {
+        "rate": 4.25,
+        "cut_bps": 25,
+        "fx_usdcad": 1.4136
+      },
+      "is_quiet_hours_eligible": true,
+      "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
+    },
+    {
+      "alert_id": "ALT_2026-09-26_REG_04",
+      "timestamp": "2026-09-26T02:02:19Z",
+      "symbol": null,
+      "taxonomy": "REGIME_SHIFT",
+      "severity": "NOTICE",
+      "headline": "Cross-Market Regime Transition: Elevated Volatility Neutral",
+      "body": "VIX climbed to 21.4 while CAD/USD yields flattened. Dual-market multi-input regime classifier shifted to ELEVATED_VOLATILITY.",
+      "channels": [
+        "IN_APP",
+        "EMAIL"
+      ],
+      "dedupe_key": "MACRO:REGIME:2026-09-26",
+      "data_payload": {
+        "vix": 21.4,
+        "regime": "ELEVATED_VOLATILITY"
+      },
+      "is_quiet_hours_eligible": true,
+      "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
+    },
+    {
+      "alert_id": "ALT_2026-09-26_PORT_05",
+      "timestamp": "2026-09-26T02:02:19Z",
+      "symbol": null,
+      "taxonomy": "PORTFOLIO_CIRCUIT_BREAKER",
+      "severity": "CRITICAL",
+      "headline": "Portfolio Intelligence: Drawdown Approaching Level 1 Caution (-4.3%)",
+      "body": "Aggressive profile allocation drawdown reached -4.3% vs. -6.0% Level 1 threshold. Trailing stop tightening recommended.",
+      "channels": [
+        "IN_APP",
+        "EMAIL",
+        "SMS"
+      ],
+      "dedupe_key": "PORTFOLIO:CIRCUIT:2026-09-26",
+      "data_payload": {
+        "drawdown_pct": -4.3,
+        "threshold_pct": -6.0
+      },
+      "is_quiet_hours_eligible": false,
+      "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
+    },
+    {
+      "alert_id": "ALT_2026-09-26_SHOP_06",
+      "timestamp": "2026-09-26T02:02:19Z",
+      "symbol": "SHOP",
+      "taxonomy": "PRICE_VOLUME_SPIKE",
+      "severity": "NOTICE",
+      "headline": "SHOP.TO: Institutional Volume Inflow (RVOL 2.8x) on TSX",
+      "body": "Intraday volume surge detected with positive spread expansion. Opportunity score upgraded to 79/100.",
+      "channels": [
+        "IN_APP",
+        "WEB_PUSH"
+      ],
+      "dedupe_key": "SHOP:VOL_SPIKE:2026-09-26",
+      "data_payload": {
+        "rvol": 2.8,
+        "score": 79
+      },
+      "is_quiet_hours_eligible": true,
+      "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
+    }
+  ],
+  "delivery_telemetry": {
+    "p95_latency_email_seconds": 5.81,
+    "p95_latency_in_app_seconds": 0.21,
+    "bounce_rate_pct": 0.12,
+    "monthly_opt_out_rate_pct": 0.12,
+    "total_delivered_24h": 840,
+    "total_suppressed_quiet_hours": 0,
+    "total_suppressed_budget": 0,
+    "total_suppressed_cooldown": 0
+  },
+  "policy_config": {
+    "quiet_hours_enabled": true,
+    "quiet_hours_start": "21:00",
+    "quiet_hours_end": "07:00",
+    "user_timezone": "America/Vancouver",
+    "max_alerts_per_day_email": 10,
+    "max_alerts_per_day_sms": 5,
+    "cooldown_minutes_per_symbol": 120
+  },
+  "consent_ledger_audit": [
+    {
+      "consent_id": 16,
+      "user_id": "cooldown_user@example.com",
+      "channel": "EMAIL",
+      "consent_type": "EXPRESS_OPT_IN",
+      "ip_address": "198.51.100.42",
+      "granted_at": "2026-09-26T02:01:46.094638+00:00",
+      "revoked_at": null,
+      "is_active": true,
+      "jurisdiction": "CA",
+      "double_opt_in": false,
+      "evidence_snippet": "I expressly consent to receive electronic research alerts from NorthIntel. ..."
+    },
+    {
+      "consent_id": 15,
+      "user_id": "+16045558888",
+      "channel": "SMS",
+      "consent_type": "DOUBLE_OPT_IN_SMS",
+      "ip_address": "198.51.100.42",
+      "granted_at": "2026-09-26T02:01:46.079703+00:00",
+      "revoked_at": null,
+      "is_active": true,
+      "jurisdiction": "CA",
+      "double_opt_in": true,
+      "evidence_snippet": "I expressly consent to receive electronic research alerts from NorthIntel. ..."
+    },
+    {
+      "consent_id": 14,
+      "user_id": "quiet_user@example.com",
+      "channel": "EMAIL",
+      "consent_type": "EXPRESS_OPT_IN",
+      "ip_address": "198.51.100.42",
+      "granted_at": "2026-09-26T02:01:46.063875+00:00",
+      "revoked_at": null,
+      "is_active": true,
+      "jurisdiction": "CA",
+      "double_opt_in": false,
+      "evidence_snippet": "I expressly consent to receive electronic research alerts from NorthIntel. ..."
+    },
+    {
+      "consent_id": 13,
+      "user_id": "opt_out_test@example.com",
+      "channel": "EMAIL",
+      "consent_type": "EXPRESS_OPT_IN",
+      "ip_address": "198.51.100.42",
+      "granted_at": "2026-09-26T02:01:46.054471+00:00",
+      "revoked_at": "2026-09-26T02:01:46.058221+00:00",
+      "is_active": false,
+      "jurisdiction": "CA",
+      "double_opt_in": false,
+      "evidence_snippet": "I expressly consent to receive electronic research alerts from NorthIntel. ..."
+    },
+    {
+      "consent_id": 12,
+      "user_id": "+16045550999",
+      "channel": "SMS",
+      "consent_type": "DOUBLE_OPT_IN_SMS",
+      "ip_address": "198.51.100.42",
+      "granted_at": "2026-09-26T02:01:46.044355+00:00",
+      "revoked_at": null,
+      "is_active": true,
+      "jurisdiction": "CA",
+      "double_opt_in": true,
+      "evidence_snippet": "I expressly consent to receive electronic research alerts from NorthIntel. ..."
+    },
+    {
+      "consent_id": 11,
+      "user_id": "test_ca_user@example.ca",
+      "channel": "EMAIL",
+      "consent_type": "EXPRESS_OPT_IN",
+      "ip_address": "198.51.100.77",
+      "granted_at": "2026-09-26T02:01:46.037368+00:00",
+      "revoked_at": null,
+      "is_active": true,
+      "jurisdiction": "CA",
+      "double_opt_in": false,
+      "evidence_snippet": "I expressly consent to receive electronic research alerts from NorthIntel. ..."
+    },
+    {
+      "consent_id": 10,
+      "user_id": "cooldown_user@example.com",
+      "channel": "EMAIL",
+      "consent_type": "EXPRESS_OPT_IN",
+      "ip_address": "198.51.100.42",
+      "granted_at": "2026-09-26T02:01:35.069485+00:00",
+      "revoked_at": null,
+      "is_active": true,
+      "jurisdiction": "CA",
+      "double_opt_in": false,
+      "evidence_snippet": "I expressly consent to receive electronic research alerts from NorthIntel. ..."
+    },
+    {
+      "consent_id": 9,
+      "user_id": "+16045558888",
+      "channel": "SMS",
+      "consent_type": "DOUBLE_OPT_IN_SMS",
+      "ip_address": "198.51.100.42",
+      "granted_at": "2026-09-26T02:01:35.054762+00:00",
+      "revoked_at": null,
+      "is_active": true,
+      "jurisdiction": "CA",
+      "double_opt_in": true,
+      "evidence_snippet": "I expressly consent to receive electronic research alerts from NorthIntel. ..."
+    },
+    {
+      "consent_id": 8,
+      "user_id": "quiet_user@example.com",
+      "channel": "EMAIL",
+      "consent_type": "EXPRESS_OPT_IN",
+      "ip_address": "198.51.100.42",
+      "granted_at": "2026-09-26T02:01:35.037158+00:00",
+      "revoked_at": null,
+      "is_active": true,
+      "jurisdiction": "CA",
+      "double_opt_in": false,
+      "evidence_snippet": "I expressly consent to receive electronic research alerts from NorthIntel. ..."
+    },
+    {
+      "consent_id": 7,
+      "user_id": "opt_out_test@example.com",
+      "channel": "EMAIL",
+      "consent_type": "EXPRESS_OPT_IN",
+      "ip_address": "198.51.100.42",
+      "granted_at": "2026-09-26T02:01:35.027701+00:00",
+      "revoked_at": "2026-09-26T02:01:35.031571+00:00",
+      "is_active": false,
+      "jurisdiction": "CA",
+      "double_opt_in": false,
+      "evidence_snippet": "I expressly consent to receive electronic research alerts from NorthIntel. ..."
+    },
+    {
+      "consent_id": 6,
+      "user_id": "+16045550999",
+      "channel": "SMS",
+      "consent_type": "DOUBLE_OPT_IN_SMS",
+      "ip_address": "198.51.100.42",
+      "granted_at": "2026-09-26T02:01:35.017973+00:00",
+      "revoked_at": null,
+      "is_active": true,
+      "jurisdiction": "CA",
+      "double_opt_in": true,
+      "evidence_snippet": "I expressly consent to receive electronic research alerts from NorthIntel. ..."
+    },
+    {
+      "consent_id": 5,
+      "user_id": "test_ca_user@example.ca",
+      "channel": "EMAIL",
+      "consent_type": "EXPRESS_OPT_IN",
+      "ip_address": "198.51.100.77",
+      "granted_at": "2026-09-26T02:01:35.011046+00:00",
+      "revoked_at": null,
+      "is_active": true,
+      "jurisdiction": "CA",
+      "double_opt_in": false,
+      "evidence_snippet": "I expressly consent to receive electronic research alerts from NorthIntel. ..."
+    },
+    {
+      "consent_id": 4,
+      "user_id": "+12125550144",
+      "channel": "SMS",
+      "consent_type": "DOUBLE_OPT_IN_SMS",
+      "ip_address": "203.0.113.88",
+      "granted_at": "2026-09-26T01:56:52.510119+00:00",
+      "revoked_at": null,
+      "is_active": true,
+      "jurisdiction": "US",
+      "double_opt_in": true,
+      "evidence_snippet": "I provide prior express written consent to receive automated transactional ..."
+    },
+    {
+      "consent_id": 3,
+      "user_id": "us_trader@northintel.ai",
+      "channel": "EMAIL",
+      "consent_type": "EXPRESS_OPT_IN",
+      "ip_address": "203.0.113.88",
+      "granted_at": "2026-09-26T01:56:52.508617+00:00",
+      "revoked_at": null,
+      "is_active": true,
+      "jurisdiction": "US",
+      "double_opt_in": false,
+      "evidence_snippet": "I provide prior express written consent to receive automated transactional ..."
+    },
+    {
+      "consent_id": 2,
+      "user_id": "+16045550199",
+      "channel": "SMS",
+      "consent_type": "DOUBLE_OPT_IN_SMS",
+      "ip_address": "198.51.100.12",
+      "granted_at": "2026-09-26T01:56:52.507365+00:00",
+      "revoked_at": null,
+      "is_active": true,
+      "jurisdiction": "CA",
+      "double_opt_in": true,
+      "evidence_snippet": "I expressly consent to receive electronic research alerts from NorthIntel. ..."
+    },
+    {
+      "consent_id": 1,
+      "user_id": "ca_investor@northintel.ai",
+      "channel": "EMAIL",
+      "consent_type": "EXPRESS_OPT_IN",
+      "ip_address": "198.51.100.12",
+      "granted_at": "2026-09-26T01:56:52.505267+00:00",
+      "revoked_at": null,
+      "is_active": true,
+      "jurisdiction": "CA",
+      "double_opt_in": false,
+      "evidence_snippet": "I expressly consent to receive electronic research alerts from NorthIntel. ..."
+    }
+  ],
+  "compliance_attestation": {
+    "casl_compliance": "Enforced: Express opt-in audit records, immediate 1-click revocation, sender address verified",
+    "tcpa_compliance": "Enforced: Prior express written consent, CTIA double opt-in SMS verification, transactional content isolation",
+    "quiet_hours_policy": "Enforced: Non-critical messages suppressed between 21:00 and 07:00 recipient timezone",
+    "impersonal_research": "Verified: ImpersonalAdviceLinter passed on 100% of alert copy"
+  }
+}
