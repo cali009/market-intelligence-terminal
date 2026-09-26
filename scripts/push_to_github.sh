@@ -3,13 +3,25 @@
 set -e
 
 if [ -z "$1" ]; then
-    echo "Usage: ./scripts/push_to_github.sh <GITHUB_REPO_URL>"
-    echo "Example: ./scripts/push_to_github.sh https://github.com/your-username/market-intel.git"
-    echo "Or with PAT: ./scripts/push_to_github.sh https://<TOKEN>@github.com/your-username/market-intel.git"
-    exit 1
+    if [ -f "deploy" ]; then
+        # Load credentials from deploy file
+        AUTH_URL=$(grep '^AUTH_REPO_URL=' deploy | cut -d'=' -f2-)
+        if [ -n "$AUTH_URL" ]; then
+            REPO_URL="$AUTH_URL"
+        else
+            TOKEN=$(grep '^GITHUB_TOKEN=' deploy | cut -d'=' -f2-)
+            BASE_URL=$(grep '^REPO_URL=' deploy | cut -d'=' -f2- | sed 's#https://##')
+            REPO_URL="https://${TOKEN}@${BASE_URL}.git"
+        fi
+    else
+        echo "Usage: ./scripts/push_to_github.sh <GITHUB_REPO_URL>"
+        echo "Example: ./scripts/push_to_github.sh https://github.com/your-username/market-intel.git"
+        echo "Or with PAT: ./scripts/push_to_github.sh https://<TOKEN>@github.com/your-username/market-intel.git"
+        exit 1
+    fi
+else
+    REPO_URL="$1"
 fi
-
-REPO_URL="$1"
 
 echo ">>> Setting git remote origin to $REPO_URL..."
 git remote remove origin 2>/dev/null || true
