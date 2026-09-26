@@ -67,6 +67,8 @@ def build_firebase_bundle():
         ("ai_deep_read.json", "ai_deep_read"),
         ("production_health.json", "production_health.json"),
         ("production_health.json", "production_health"),
+        ("asset_fingerprints.json", "asset_fingerprints.json"),
+        ("asset_fingerprints.json", "asset_fingerprints"),
     ]
 
     for src_name, dest_name in core_feeds:

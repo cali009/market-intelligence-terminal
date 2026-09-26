@@ -3491,7 +3491,21 @@
                             <!-- Populated dynamically -->
                         </div>
                     </div>
+
+                    <!-- Phase 13 Idiosyncratic Asset Microstructure DNA -->
+                    <div style="margin-top: 24px;">
+                        <h3 style="font-size: 13px; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
+                            <span>Asset Microstructure DNA &amp; Fingerprint (Phase 13)</span>
+                            <span class="exchange-tag" style="font-size: 10px; background: rgba(139, 92, 246, 0.15); color: var(--accent-purple); border: 1px solid rgba(139, 92, 246, 0.3);">Lo HAC R/S · Stationarity d*</span>
+                        </h3>
+                        <div id="drawerFingerprintSection">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+                    </div>
                 `;
+
+                // Render Phase 13 Asset Microstructure Fingerprint
+                renderAssetFingerprintInDrawer(data.asset_fingerprint);
 
                 // Render Phase 4 Technical Engine Lab
                 renderTechnicalEngineInDrawer(data.technical_dossier);
@@ -3612,6 +3626,105 @@
                             </thead>
                             <tbody>${rows}</tbody>
                         </table>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderAssetFingerprintInDrawer(fp) {
+            const container = document.getElementById('drawerFingerprintSection');
+            if (!container) return;
+
+            if (!fp) {
+                container.innerHTML = '<div style="font-size: 11px; color: var(--text-muted); padding: 8px;">Microstructure DNA fingerprinting pending computation.</div>';
+                return;
+            }
+
+            const isTrending = fp.hurst_class === 'TRENDING';
+            const isMeanRev = fp.hurst_class === 'MEAN_REVERTING';
+            const hurstColor = isTrending ? 'var(--accent-green)' : (isMeanRev ? 'var(--accent-cyan)' : 'var(--accent-amber)');
+            const hurstBg = isTrending ? 'rgba(16, 185, 129, 0.15)' : (isMeanRev ? 'rgba(6, 182, 212, 0.15)' : 'rgba(245, 158, 11, 0.15)');
+
+            const fdiTurbulent = fp.fractal_dimension_index >= 1.5;
+            const fdiColor = fdiTurbulent ? 'var(--accent-amber)' : 'var(--accent-green)';
+            const fdiLabel = fdiTurbulent ? 'Consolidation Chop' : 'Directional Trend';
+
+            container.innerHTML = `
+                <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 16px;">
+                    <!-- Archetype Classification Banner -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">
+                        <div>
+                            <div style="font-size: 10px; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Microstructure Archetype</div>
+                            <div style="font-size: 14px; font-weight: 800; color: var(--accent-purple); margin-top: 2px;">
+                                ${escapeHtml(fp.archetype_label)}
+                            </div>
+                        </div>
+                        <span style="font-size: 11px; padding: 3px 8px; border-radius: 4px; background: rgba(139, 92, 246, 0.15); color: #a78bfa; font-family: monospace; font-weight: 800; border: 1px solid rgba(139, 92, 246, 0.3);">
+                            ${escapeHtml(fp.archetype)}
+                        </span>
+                    </div>
+
+                    <!-- Microstructure Parameter Grid -->
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; margin-bottom: 12px;">
+                        <!-- Hurst Exponent -->
+                        <div style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 6px; padding: 10px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <span style="font-size: 10px; color: var(--text-muted); text-transform: uppercase;">Lo HAC Hurst (H)</span>
+                                <span style="font-size: 9px; padding: 1px 4px; border-radius: 2px; background: ${hurstBg}; color: ${hurstColor}; font-weight: 800;">${fp.hurst_class}</span>
+                            </div>
+                            <div style="font-size: 18px; font-weight: 800; color: ${hurstColor}; margin-top: 4px;">
+                                ${fp.hurst_exponent}
+                            </div>
+                            <div style="font-size: 10px; color: var(--text-muted); margin-top: 2px;">
+                                ${isTrending ? 'Persistent momentum' : (isMeanRev ? 'Anti-persistent cyclical' : 'Random walk equilibrium')}
+                            </div>
+                        </div>
+
+                        <!-- Fractional Differentiation d* -->
+                        <div style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 6px; padding: 10px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <span style="font-size: 10px; color: var(--text-muted); text-transform: uppercase;">Optimal Order d*</span>
+                                <span style="font-size: 9px; padding: 1px 4px; border-radius: 2px; background: rgba(59, 130, 246, 0.15); color: #60a5fa; font-weight: 800;">${fp.memory_retention_pct}% MEM</span>
+                            </div>
+                            <div style="font-size: 18px; font-weight: 800; color: var(--text-primary); margin-top: 4px;">
+                                d* = ${fp.fractional_d_order}
+                            </div>
+                            <div style="font-size: 10px; color: var(--text-muted); margin-top: 2px;">
+                                ADF stationary memory
+                            </div>
+                        </div>
+
+                        <!-- Fractal Dimension Index -->
+                        <div style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 6px; padding: 10px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <span style="font-size: 10px; color: var(--text-muted); text-transform: uppercase;">Fractal Index (FDI)</span>
+                                <span style="font-size: 9px; padding: 1px 4px; border-radius: 2px; color: ${fdiColor}; font-weight: 800;">${fdiLabel}</span>
+                            </div>
+                            <div style="font-size: 18px; font-weight: 800; color: var(--text-primary); margin-top: 4px;">
+                                ${fp.fractal_dimension_index}
+                            </div>
+                            <div style="font-size: 10px; color: var(--text-muted); margin-top: 2px;">
+                                Range: 1.0 (Trend) to 2.0 (Chop)
+                            </div>
+                        </div>
+
+                        <!-- Amihud Illiquidity -->
+                        <div style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 6px; padding: 10px;">
+                            <div style="font-size: 10px; color: var(--text-muted); text-transform: uppercase;">Amihud Illiquidity</div>
+                            <div style="font-size: 18px; font-weight: 800; color: var(--accent-cyan); margin-top: 4px;">
+                                ${fp.amihud_illiquidity} <span style="font-size: 10px; color: var(--text-muted);">bps</span>
+                            </div>
+                            <div style="font-size: 10px; color: var(--text-muted); margin-top: 2px;">
+                                Price impact per $100k traded
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Auxiliary Parameters -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--text-muted); background: var(--bg-secondary); padding: 8px 12px; border-radius: 4px; flex-wrap: wrap; gap: 6px;">
+                        <span>Dominant Harmonic Cycle: <strong style="color: var(--text-primary);">${fp.dominant_cycle_bars} trading sessions</strong></span>
+                        <span>Downside Volatility Leverage (γ): <strong style="color: var(--accent-amber);">${fp.gjr_garch_gamma}</strong></span>
+                        <span style="font-family: monospace;">Calibrated: ${fp.last_updated.substring(0, 10)}</span>
                     </div>
                 </div>
             `;

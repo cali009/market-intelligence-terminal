@@ -33,6 +33,7 @@ from src.engine.portfolio import portfolio_engine
 from src.engine.alerts import alert_engine
 from src.engine.filing_deep_read import filing_deep_read_engine
 from src.engine.production_scale import production_scale_engine
+from src.engine.asset_fingerprint import asset_fingerprint_engine
 
 FEEDS_DIR = DATA_DIR / "feeds"
 DIST_DIR = DATA_DIR / "dist"
@@ -257,6 +258,9 @@ class EdgeExporter:
                 fundamental_dossier=fund_dossier,
             )
 
+            # Phase 13: Idiosyncratic Asset Fingerprint & Stationarity Model
+            fingerprint = asset_fingerprint_engine.generate_fingerprint_for_symbol(sym)
+
             # Add to leaderboard
             leaderboard_items.append({
                 "symbol": sym,
@@ -284,6 +288,13 @@ class EdgeExporter:
                 "coverage_status": fr["coverage_status"] if fr else "UNKNOWN",
                 "roic": fr["quality_ratios"].get("roic") if fr else None,
                 "pe_ratio": fr["valuation_multiples"].get("pe_ratio") if fr else None,
+                "archetype": fingerprint.archetype,
+                "archetype_label": fingerprint.archetype_label,
+                "hurst_exponent": fingerprint.hurst_exponent,
+                "hurst_class": fingerprint.hurst_class,
+                "fractional_d_order": fingerprint.fractional_d_order,
+                "memory_retention_pct": fingerprint.memory_retention_pct,
+                "amihud_illiquidity": fingerprint.amihud_illiquidity,
             })
 
             # Write Symbol Detail JSON (includes last 120 bars for lightweight charting)
@@ -310,6 +321,7 @@ class EdgeExporter:
                 "latest_metrics": metrics,
                 "technical_dossier": tech_dossier,
                 "fundamental_dossier": fund_dossier,
+                "asset_fingerprint": fingerprint.to_dict(),
                 "score_record": {
                     "composite_score": score_rec.composite_score,
                     "confidence_tier": score_rec.confidence_tier,
@@ -528,8 +540,13 @@ class EdgeExporter:
             with open(d_dir / "production_health.json", "w") as f:
                 json.dump(production_payload, f, indent=2)
 
+            # Phase 13: Idiosyncratic Asset Fingerprints Feed
+            fingerprints_payload = asset_fingerprint_engine.generate_asset_fingerprints_feed()
+            with open(d_dir / "asset_fingerprints.json", "w") as f:
+                json.dump(fingerprints_payload, f, indent=2)
+
         return {
-            "dist_files": 15,
+            "dist_files": 16,
             "symbol_files": symbol_files_count,
             "total_matches": len(scanner_results),
             "total_signals": len(signals_list),

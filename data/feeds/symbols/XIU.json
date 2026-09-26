@@ -5,7 +5,7 @@
   "currency": "CAD",
   "name": "iShares S&P/TSX 60 Index ETF",
   "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T02:47:45.955415+00:00",
+  "generated_at": "2026-09-26T04:41:25.100677+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 53.09000015258789,
@@ -340,6 +340,22 @@
     "missing_fields": [],
     "provenance_source": "SEC_EDGAR_XBRL",
     "point_in_time_verified": true
+  },
+  "asset_fingerprint": {
+    "symbol": "XIU",
+    "company_name": "iShares S&P/TSX 60 Index ETF",
+    "market": "CA",
+    "archetype": "ARCHETYPE_E_DEFENSIVE_YIELD",
+    "archetype_label": "Archetype E: Defensive Yield & Sovereign Benchmark",
+    "hurst_exponent": 0.498,
+    "hurst_class": "RANDOM_WALK",
+    "fractional_d_order": 0.5,
+    "memory_retention_pct": 77.5,
+    "fractal_dimension_index": 1.491,
+    "amihud_illiquidity": 0.001,
+    "dominant_cycle_bars": 14,
+    "gjr_garch_gamma": 0.16,
+    "last_updated": "2026-09-26T04:41:27.377929+00:00"
   },
   "score_record": {
     "composite_score": 63,

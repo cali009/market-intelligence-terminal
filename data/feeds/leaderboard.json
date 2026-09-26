@@ -1,6 +1,6 @@
 {
   "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T02:47:45.955415+00:00",
+  "generated_at": "2026-09-26T04:41:25.100677+00:00",
   "securities": [
     {
       "symbol": "QQQ",
@@ -32,7 +32,14 @@
       "valuation_score": 50,
       "coverage_status": "INDEX_ETF_BYPASS",
       "roic": null,
-      "pe_ratio": null
+      "pe_ratio": null,
+      "archetype": "ARCHETYPE_A_TECH_GAMMA",
+      "archetype_label": "Archetype A: Mega-Cap Tech (Gamma-Momentum)",
+      "hurst_exponent": 0.496,
+      "hurst_class": "RANDOM_WALK",
+      "fractional_d_order": 0.39,
+      "memory_retention_pct": 82.5,
+      "amihud_illiquidity": 0.001
     },
     {
       "symbol": "SPY",
@@ -65,7 +72,14 @@
       "valuation_score": 50,
       "coverage_status": "INDEX_ETF_BYPASS",
       "roic": null,
-      "pe_ratio": null
+      "pe_ratio": null,
+      "archetype": "ARCHETYPE_E_DEFENSIVE_YIELD",
+      "archetype_label": "Archetype E: Defensive Yield & Sovereign Benchmark",
+      "hurst_exponent": 0.471,
+      "hurst_class": "RANDOM_WALK",
+      "fractional_d_order": 0.51,
+      "memory_retention_pct": 77.0,
+      "amihud_illiquidity": 0.001
     },
     {
       "symbol": "MSFT",
@@ -101,7 +115,14 @@
       "valuation_score": 69,
       "coverage_status": "FULL",
       "roic": 28.25,
-      "pe_ratio": 28.76
+      "pe_ratio": 28.76,
+      "archetype": "ARCHETYPE_A_TECH_GAMMA",
+      "archetype_label": "Archetype A: Mega-Cap Tech (Gamma-Momentum)",
+      "hurst_exponent": 0.546,
+      "hurst_class": "RANDOM_WALK",
+      "fractional_d_order": 0.38,
+      "memory_retention_pct": 82.9,
+      "amihud_illiquidity": 0.001
     },
     {
       "symbol": "AAPL",
@@ -133,7 +154,14 @@
       "valuation_score": 26,
       "coverage_status": "FULL",
       "roic": 16.65,
-      "pe_ratio": 168.48
+      "pe_ratio": 168.48,
+      "archetype": "ARCHETYPE_A_TECH_GAMMA",
+      "archetype_label": "Archetype A: Mega-Cap Tech (Gamma-Momentum)",
+      "hurst_exponent": 0.474,
+      "hurst_class": "RANDOM_WALK",
+      "fractional_d_order": 0.39,
+      "memory_retention_pct": 82.5,
+      "amihud_illiquidity": 0.001
     },
     {
       "symbol": "NVDA",
@@ -164,7 +192,14 @@
       "valuation_score": 23,
       "coverage_status": "FULL",
       "roic": 22.84,
-      "pe_ratio": 91.57
+      "pe_ratio": 91.57,
+      "archetype": "ARCHETYPE_A_TECH_GAMMA",
+      "archetype_label": "Archetype A: Mega-Cap Tech (Gamma-Momentum)",
+      "hurst_exponent": 0.464,
+      "hurst_class": "RANDOM_WALK",
+      "fractional_d_order": 0.39,
+      "memory_retention_pct": 82.5,
+      "amihud_illiquidity": 0.001
     },
     {
       "symbol": "XIU",
@@ -196,7 +231,14 @@
       "valuation_score": 50,
       "coverage_status": "INDEX_ETF_BYPASS",
       "roic": null,
-      "pe_ratio": null
+      "pe_ratio": null,
+      "archetype": "ARCHETYPE_E_DEFENSIVE_YIELD",
+      "archetype_label": "Archetype E: Defensive Yield & Sovereign Benchmark",
+      "hurst_exponent": 0.498,
+      "hurst_class": "RANDOM_WALK",
+      "fractional_d_order": 0.5,
+      "memory_retention_pct": 77.5,
+      "amihud_illiquidity": 0.001
     },
     {
       "symbol": "TD",
@@ -228,7 +270,14 @@
       "valuation_score": 62,
       "coverage_status": "PARTIAL",
       "roic": 3.22,
-      "pe_ratio": 70.94
+      "pe_ratio": 70.94,
+      "archetype": "ARCHETYPE_C_BANK_REGULATED",
+      "archetype_label": "Archetype C: Chartered Banks (Regulated Yield-Drift)",
+      "hurst_exponent": 0.5,
+      "hurst_class": "RANDOM_WALK",
+      "fractional_d_order": 0.56,
+      "memory_retention_pct": 74.8,
+      "amihud_illiquidity": 0.001
     },
     {
       "symbol": "XOM",
@@ -259,7 +308,14 @@
       "valuation_score": 42,
       "coverage_status": "PARTIAL",
       "roic": 1.45,
-      "pe_ratio": 159.13
+      "pe_ratio": 159.13,
+      "archetype": "ARCHETYPE_B_COMMODITY_CYCLICAL",
+      "archetype_label": "Archetype B: Natural Resources & Energy (Cycle Mean-Reversion)",
+      "hurst_exponent": 0.444,
+      "hurst_class": "MEAN_REVERTING",
+      "fractional_d_order": 0.49,
+      "memory_retention_pct": 78.0,
+      "amihud_illiquidity": 0.001
     },
     {
       "symbol": "CNQ",
@@ -289,7 +345,14 @@
       "valuation_score": 86,
       "coverage_status": "FULL",
       "roic": 17.74,
-      "pe_ratio": 12.98
+      "pe_ratio": 12.98,
+      "archetype": "ARCHETYPE_B_COMMODITY_CYCLICAL",
+      "archetype_label": "Archetype B: Natural Resources & Energy (Cycle Mean-Reversion)",
+      "hurst_exponent": 0.48,
+      "hurst_class": "RANDOM_WALK",
+      "fractional_d_order": 0.48,
+      "memory_retention_pct": 78.4,
+      "amihud_illiquidity": 0.001
     },
     {
       "symbol": "JPM",
@@ -321,7 +384,14 @@
       "valuation_score": 57,
       "coverage_status": "PARTIAL",
       "roic": 5.65,
-      "pe_ratio": 43.69
+      "pe_ratio": 43.69,
+      "archetype": "ARCHETYPE_C_BANK_REGULATED",
+      "archetype_label": "Archetype C: Chartered Banks (Regulated Yield-Drift)",
+      "hurst_exponent": 0.505,
+      "hurst_class": "RANDOM_WALK",
+      "fractional_d_order": 0.56,
+      "memory_retention_pct": 74.8,
+      "amihud_illiquidity": 0.001
     },
     {
       "symbol": "GOOGL",
@@ -350,7 +420,14 @@
       "valuation_score": 44,
       "coverage_status": "FULL",
       "roic": 15.19,
-      "pe_ratio": 37.73
+      "pe_ratio": 37.73,
+      "archetype": "ARCHETYPE_A_TECH_GAMMA",
+      "archetype_label": "Archetype A: Mega-Cap Tech (Gamma-Momentum)",
+      "hurst_exponent": 0.495,
+      "hurst_class": "RANDOM_WALK",
+      "fractional_d_order": 0.39,
+      "memory_retention_pct": 82.5,
+      "amihud_illiquidity": 0.001
     },
     {
       "symbol": "CNR",
@@ -381,7 +458,14 @@
       "valuation_score": 69,
       "coverage_status": "FULL",
       "roic": 3.13,
-      "pe_ratio": 68.2
+      "pe_ratio": 68.2,
+      "archetype": "ARCHETYPE_E_DEFENSIVE_YIELD",
+      "archetype_label": "Archetype E: Defensive Yield & Sovereign Benchmark",
+      "hurst_exponent": 0.386,
+      "hurst_class": "MEAN_REVERTING",
+      "fractional_d_order": 0.52,
+      "memory_retention_pct": 76.6,
+      "amihud_illiquidity": 0.001
     },
     {
       "symbol": "AMZN",
@@ -412,7 +496,14 @@
       "valuation_score": 53,
       "coverage_status": "PARTIAL",
       "roic": 9.21,
-      "pe_ratio": 43.45
+      "pe_ratio": 43.45,
+      "archetype": "ARCHETYPE_A_TECH_GAMMA",
+      "archetype_label": "Archetype A: Mega-Cap Tech (Gamma-Momentum)",
+      "hurst_exponent": 0.486,
+      "hurst_class": "RANDOM_WALK",
+      "fractional_d_order": 0.39,
+      "memory_retention_pct": 82.5,
+      "amihud_illiquidity": 0.001
     },
     {
       "symbol": "RY",
@@ -443,7 +534,14 @@
       "valuation_score": 61,
       "coverage_status": "PARTIAL",
       "roic": 4.14,
-      "pe_ratio": 69.05
+      "pe_ratio": 69.05,
+      "archetype": "ARCHETYPE_C_BANK_REGULATED",
+      "archetype_label": "Archetype C: Chartered Banks (Regulated Yield-Drift)",
+      "hurst_exponent": 0.465,
+      "hurst_class": "RANDOM_WALK",
+      "fractional_d_order": 0.57,
+      "memory_retention_pct": 74.4,
+      "amihud_illiquidity": 0.001
     },
     {
       "symbol": "CP",
@@ -474,7 +572,14 @@
       "valuation_score": 38,
       "coverage_status": "FULL",
       "roic": 1.49,
-      "pe_ratio": 106.47
+      "pe_ratio": 106.47,
+      "archetype": "ARCHETYPE_E_DEFENSIVE_YIELD",
+      "archetype_label": "Archetype E: Defensive Yield & Sovereign Benchmark",
+      "hurst_exponent": 0.478,
+      "hurst_class": "RANDOM_WALK",
+      "fractional_d_order": 0.5,
+      "memory_retention_pct": 77.5,
+      "amihud_illiquidity": 0.001
     },
     {
       "symbol": "SHOP",
@@ -503,7 +608,14 @@
       "valuation_score": 12,
       "coverage_status": "PARTIAL",
       "roic": 11.84,
-      "pe_ratio": 173.87
+      "pe_ratio": 173.87,
+      "archetype": "ARCHETYPE_D_CROSS_BORDER_GROWTH",
+      "archetype_label": "Archetype D: Dual-Listed Cross-Border Growth",
+      "hurst_exponent": 0.469,
+      "hurst_class": "RANDOM_WALK",
+      "fractional_d_order": 0.44,
+      "memory_retention_pct": 80.2,
+      "amihud_illiquidity": 0.001
     },
     {
       "symbol": "ENB",
@@ -533,7 +645,14 @@
       "valuation_score": 59,
       "coverage_status": "FULL",
       "roic": 2.28,
-      "pe_ratio": 96.49
+      "pe_ratio": 96.49,
+      "archetype": "ARCHETYPE_B_COMMODITY_CYCLICAL",
+      "archetype_label": "Archetype B: Natural Resources & Energy (Cycle Mean-Reversion)",
+      "hurst_exponent": 0.408,
+      "hurst_class": "MEAN_REVERTING",
+      "fractional_d_order": 0.5,
+      "memory_retention_pct": 77.5,
+      "amihud_illiquidity": 0.001
     },
     {
       "symbol": "BAM",
@@ -560,7 +679,14 @@
       "valuation_score": 60,
       "coverage_status": "PARTIAL",
       "roic": 13.85,
-      "pe_ratio": 21.34
+      "pe_ratio": 21.34,
+      "archetype": "ARCHETYPE_E_DEFENSIVE_YIELD",
+      "archetype_label": "Archetype E: Defensive Yield & Sovereign Benchmark",
+      "hurst_exponent": 0.521,
+      "hurst_class": "RANDOM_WALK",
+      "fractional_d_order": 0.5,
+      "memory_retention_pct": 77.5,
+      "amihud_illiquidity": 0.001
     },
     {
       "symbol": "BN",
@@ -587,7 +713,14 @@
       "valuation_score": 90,
       "coverage_status": "PARTIAL",
       "roic": 1.79,
-      "pe_ratio": 36.23
+      "pe_ratio": 36.23,
+      "archetype": "ARCHETYPE_E_DEFENSIVE_YIELD",
+      "archetype_label": "Archetype E: Defensive Yield & Sovereign Benchmark",
+      "hurst_exponent": 0.483,
+      "hurst_class": "RANDOM_WALK",
+      "fractional_d_order": 0.5,
+      "memory_retention_pct": 77.5,
+      "amihud_illiquidity": 0.001
     }
   ]
 }

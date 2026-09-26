@@ -1,6 +1,6 @@
 {
   "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T02:20:29.421949+00:00",
+  "generated_at": "2026-09-26T04:37:21.277064+00:00",
   "regimes": {
     "US": {
       "market_label": "US Equities",
@@ -62,7 +62,14 @@
       "valuation_score": 50,
       "coverage_status": "INDEX_ETF_BYPASS",
       "roic": null,
-      "pe_ratio": null
+      "pe_ratio": null,
+      "archetype": "ARCHETYPE_A_TECH_GAMMA",
+      "archetype_label": "Archetype A: Mega-Cap Tech (Gamma-Momentum)",
+      "hurst_exponent": 0.496,
+      "hurst_class": "RANDOM_WALK",
+      "fractional_d_order": 0.39,
+      "memory_retention_pct": 82.5,
+      "amihud_illiquidity": 0.001
     },
     {
       "symbol": "SPY",
@@ -95,7 +102,14 @@
       "valuation_score": 50,
       "coverage_status": "INDEX_ETF_BYPASS",
       "roic": null,
-      "pe_ratio": null
+      "pe_ratio": null,
+      "archetype": "ARCHETYPE_E_DEFENSIVE_YIELD",
+      "archetype_label": "Archetype E: Defensive Yield & Sovereign Benchmark",
+      "hurst_exponent": 0.471,
+      "hurst_class": "RANDOM_WALK",
+      "fractional_d_order": 0.51,
+      "memory_retention_pct": 77.0,
+      "amihud_illiquidity": 0.001
     },
     {
       "symbol": "MSFT",
@@ -131,7 +145,14 @@
       "valuation_score": 69,
       "coverage_status": "FULL",
       "roic": 28.25,
-      "pe_ratio": 28.76
+      "pe_ratio": 28.76,
+      "archetype": "ARCHETYPE_A_TECH_GAMMA",
+      "archetype_label": "Archetype A: Mega-Cap Tech (Gamma-Momentum)",
+      "hurst_exponent": 0.546,
+      "hurst_class": "RANDOM_WALK",
+      "fractional_d_order": 0.38,
+      "memory_retention_pct": 82.9,
+      "amihud_illiquidity": 0.001
     },
     {
       "symbol": "AAPL",
@@ -163,7 +184,14 @@
       "valuation_score": 26,
       "coverage_status": "FULL",
       "roic": 16.65,
-      "pe_ratio": 168.48
+      "pe_ratio": 168.48,
+      "archetype": "ARCHETYPE_A_TECH_GAMMA",
+      "archetype_label": "Archetype A: Mega-Cap Tech (Gamma-Momentum)",
+      "hurst_exponent": 0.474,
+      "hurst_class": "RANDOM_WALK",
+      "fractional_d_order": 0.39,
+      "memory_retention_pct": 82.5,
+      "amihud_illiquidity": 0.001
     },
     {
       "symbol": "NVDA",
@@ -194,7 +222,14 @@
       "valuation_score": 23,
       "coverage_status": "FULL",
       "roic": 22.84,
-      "pe_ratio": 91.57
+      "pe_ratio": 91.57,
+      "archetype": "ARCHETYPE_A_TECH_GAMMA",
+      "archetype_label": "Archetype A: Mega-Cap Tech (Gamma-Momentum)",
+      "hurst_exponent": 0.464,
+      "hurst_class": "RANDOM_WALK",
+      "fractional_d_order": 0.39,
+      "memory_retention_pct": 82.5,
+      "amihud_illiquidity": 0.001
     }
   ],
   "total_securities_analyzed": 19,

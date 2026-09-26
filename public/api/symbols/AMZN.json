@@ -5,7 +5,7 @@
   "currency": "USD",
   "name": "Amazon.com Inc.",
   "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T02:20:29.421949+00:00",
+  "generated_at": "2026-09-26T04:37:21.277064+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 248.55999755859375,
@@ -345,6 +345,22 @@
     ],
     "provenance_source": "SEC_EDGAR_XBRL",
     "point_in_time_verified": true
+  },
+  "asset_fingerprint": {
+    "symbol": "AMZN",
+    "company_name": "Amazon.com Inc.",
+    "market": "US",
+    "archetype": "ARCHETYPE_A_TECH_GAMMA",
+    "archetype_label": "Archetype A: Mega-Cap Tech (Gamma-Momentum)",
+    "hurst_exponent": 0.486,
+    "hurst_class": "RANDOM_WALK",
+    "fractional_d_order": 0.39,
+    "memory_retention_pct": 82.5,
+    "fractal_dimension_index": 1.583,
+    "amihud_illiquidity": 0.001,
+    "dominant_cycle_bars": 16,
+    "gjr_garch_gamma": 0.08,
+    "last_updated": "2026-09-26T04:37:22.190381+00:00"
   },
   "score_record": {
     "composite_score": 49,

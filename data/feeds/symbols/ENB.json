@@ -5,7 +5,7 @@
   "currency": "CAD",
   "name": "Enbridge Inc.",
   "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T02:47:45.955415+00:00",
+  "generated_at": "2026-09-26T04:41:25.100677+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 66.8499984741211,
@@ -338,6 +338,22 @@
     "missing_fields": [],
     "provenance_source": "SEC_EDGAR_XBRL",
     "point_in_time_verified": true
+  },
+  "asset_fingerprint": {
+    "symbol": "ENB",
+    "company_name": "Enbridge Inc.",
+    "market": "CA",
+    "archetype": "ARCHETYPE_B_COMMODITY_CYCLICAL",
+    "archetype_label": "Archetype B: Natural Resources & Energy (Cycle Mean-Reversion)",
+    "hurst_exponent": 0.408,
+    "hurst_class": "MEAN_REVERTING",
+    "fractional_d_order": 0.5,
+    "memory_retention_pct": 77.5,
+    "fractal_dimension_index": 1.548,
+    "amihud_illiquidity": 0.001,
+    "dominant_cycle_bars": 16,
+    "gjr_garch_gamma": 0.22,
+    "last_updated": "2026-09-26T04:41:26.805862+00:00"
   },
   "score_record": {
     "composite_score": 28,

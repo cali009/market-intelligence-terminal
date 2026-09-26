@@ -665,6 +665,40 @@ class SOC2ControlAudit(BaseModel):
         return self.model_dump()
 
 
+# ==========================================
+# PHASE 13: IDIOSYNCRATIC ASSET FINGERPRINTING & STATIONARITY SCHEMAS
+# ==========================================
+
+MicrostructureArchetype = Literal[
+    "ARCHETYPE_A_TECH_GAMMA",
+    "ARCHETYPE_B_COMMODITY_CYCLICAL",
+    "ARCHETYPE_C_BANK_REGULATED",
+    "ARCHETYPE_D_CROSS_BORDER_GROWTH",
+    "ARCHETYPE_E_DEFENSIVE_YIELD",
+]
+
+
+class AssetFingerprint(BaseModel):
+    symbol: str
+    company_name: str
+    market: Literal["US", "CA"]
+    archetype: MicrostructureArchetype
+    archetype_label: str
+    hurst_exponent: float
+    hurst_class: Literal["TRENDING", "RANDOM_WALK", "MEAN_REVERTING"]
+    fractional_d_order: float
+    memory_retention_pct: float
+    fractal_dimension_index: float
+    amihud_illiquidity: float
+    dominant_cycle_bars: int
+    gjr_garch_gamma: float
+    last_updated: str
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+
 
 
 
