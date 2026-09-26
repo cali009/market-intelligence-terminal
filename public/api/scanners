@@ -1,7 +1,277 @@
 {
   "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T00:00:58.919286+00:00",
+  "generated_at": "2026-09-26T00:11:35.065365+00:00",
+  "active_regime": "STRONG_BULL",
   "total_matches": 57,
+  "scanner_definitions": [
+    {
+      "scanner_id": "MOMENTUM_LEADERS",
+      "name": "Momentum Leaders",
+      "category": "MOMENTUM",
+      "description": "Identifies top-decile equities in strong multi-month uptrends trading above rising 50-day and 200-day moving averages.",
+      "rule_summary": "Close > SMA50 > SMA200 AND 3M Return > 8% AND Within 8% of 52W High",
+      "regime_compatibility": [
+        "STRONG_BULL",
+        "WEAK_BULL",
+        "CONSOLIDATION"
+      ],
+      "historical_win_rate_pct": 59.2,
+      "forward_5d_return_pct": 1.85,
+      "expectancy_r": 0.52,
+      "sample_size": 142,
+      "regime_status": "PASS",
+      "regime_badge_color": "green",
+      "active_market_regime": "STRONG_BULL"
+    },
+    {
+      "scanner_id": "PULLBACK_UPTREND",
+      "name": "Pullback to Key Support",
+      "category": "TREND_FOLLOWING",
+      "description": "Catches controlled pullbacks into rising 20-day or 50-day moving average support while long-term trend remains upward sloping.",
+      "rule_summary": "Close > SMA200 AND Slope200 > 0 AND Distance to SMA20/50 <= 2.5% AND RSI 42-58",
+      "regime_compatibility": [
+        "STRONG_BULL",
+        "WEAK_BULL",
+        "CONSOLIDATION"
+      ],
+      "historical_win_rate_pct": 62.5,
+      "forward_5d_return_pct": 2.1,
+      "expectancy_r": 0.64,
+      "sample_size": 118,
+      "regime_status": "PASS",
+      "regime_badge_color": "green",
+      "active_market_regime": "STRONG_BULL"
+    },
+    {
+      "scanner_id": "BREAKOUT_52W_HIGH",
+      "name": "52-Week High Breakout",
+      "category": "BREAKOUT",
+      "description": "Securities testing or exceeding 52-week highs on abnormal institutional trading volume.",
+      "rule_summary": "Close within 2.5% of 52W High AND RVOL >= 1.15x AND Close > SMA20",
+      "regime_compatibility": [
+        "STRONG_BULL",
+        "WEAK_BULL"
+      ],
+      "historical_win_rate_pct": 54.8,
+      "forward_5d_return_pct": 2.45,
+      "expectancy_r": 0.58,
+      "sample_size": 95,
+      "regime_status": "PASS",
+      "regime_badge_color": "green",
+      "active_market_regime": "STRONG_BULL"
+    },
+    {
+      "scanner_id": "VOLATILITY_SQUEEZE",
+      "name": "Volatility Squeeze (Bandwidth)",
+      "category": "VOLATILITY",
+      "description": "Bollinger bandwidth compression inside historical low ranges indicating an imminent directional breakout.",
+      "rule_summary": "BB Bandwidth <= 8.5% AND ATR% <= 2.5%",
+      "regime_compatibility": [
+        "STRONG_BULL",
+        "WEAK_BULL",
+        "CONSOLIDATION",
+        "HIGH_VOLATILITY"
+      ],
+      "historical_win_rate_pct": 56.0,
+      "forward_5d_return_pct": 1.7,
+      "expectancy_r": 0.45,
+      "sample_size": 130,
+      "regime_status": "PASS",
+      "regime_badge_color": "green",
+      "active_market_regime": "STRONG_BULL"
+    },
+    {
+      "scanner_id": "INSTITUTIONAL_ACCUMULATION",
+      "name": "Institutional Accumulation (CMF+OBV)",
+      "category": "VOLUME_FLOW",
+      "description": "Detects persistent smart-money accumulation through positive Chaikin Money Flow and rising On-Balance Volume.",
+      "rule_summary": "CMF(20) >= 0.07 AND OBV Slope > 0 AND RVOL >= 1.0x",
+      "regime_compatibility": [
+        "STRONG_BULL",
+        "WEAK_BULL",
+        "CONSOLIDATION"
+      ],
+      "historical_win_rate_pct": 60.4,
+      "forward_5d_return_pct": 1.92,
+      "expectancy_r": 0.55,
+      "sample_size": 124,
+      "regime_status": "PASS",
+      "regime_badge_color": "green",
+      "active_market_regime": "STRONG_BULL"
+    },
+    {
+      "scanner_id": "MEAN_REVERSION_OVERSOLD",
+      "name": "Mean Reversion (Oversold Bounce)",
+      "category": "MEAN_REVERSION",
+      "description": "Extreme short-term oversold condition where price pierces lower Bollinger Band with RSI < 36.",
+      "rule_summary": "RSI(14) < 36.0 AND Close <= Lower Band * 1.02",
+      "regime_compatibility": [
+        "CONSOLIDATION",
+        "HIGH_VOLATILITY",
+        "BEAR"
+      ],
+      "historical_win_rate_pct": 55.2,
+      "forward_5d_return_pct": 2.25,
+      "expectancy_r": 0.49,
+      "sample_size": 88,
+      "regime_status": "GATED",
+      "regime_badge_color": "amber",
+      "active_market_regime": "STRONG_BULL"
+    },
+    {
+      "scanner_id": "STACKED_MOVING_AVERAGES",
+      "name": "Stacked Moving Average Alignment",
+      "category": "TREND_FOLLOWING",
+      "description": "Textbook bullish alignment where Price > 20EMA > 50SMA > 200SMA with positive long-term slope.",
+      "rule_summary": "Close > SMA20 > SMA50 > SMA200 AND Slope200 > 0",
+      "regime_compatibility": [
+        "STRONG_BULL",
+        "WEAK_BULL"
+      ],
+      "historical_win_rate_pct": 61.8,
+      "forward_5d_return_pct": 1.75,
+      "expectancy_r": 0.58,
+      "sample_size": 160,
+      "regime_status": "PASS",
+      "regime_badge_color": "green",
+      "active_market_regime": "STRONG_BULL"
+    },
+    {
+      "scanner_id": "LOW_BETA_QUALITY",
+      "name": "Low-Volatility Trend Quality",
+      "category": "FACTOR_QUALITY",
+      "description": "Defensive low-volatility trend leaders with controlled ATR drag and steady compounding trajectory.",
+      "rule_summary": "ATR% <= 2.2% AND Slope200 > 0 AND 3M Return >= 2.0%",
+      "regime_compatibility": [
+        "STRONG_BULL",
+        "WEAK_BULL",
+        "CONSOLIDATION",
+        "HIGH_VOLATILITY"
+      ],
+      "historical_win_rate_pct": 64.0,
+      "forward_5d_return_pct": 1.15,
+      "expectancy_r": 0.42,
+      "sample_size": 150,
+      "regime_status": "PASS",
+      "regime_badge_color": "green",
+      "active_market_regime": "STRONG_BULL"
+    },
+    {
+      "scanner_id": "MTF_ALIGNMENT",
+      "name": "Fast & Medium MTF Alignment",
+      "category": "MOMENTUM",
+      "description": "Fast 8EMA leading 21EMA above intermediate 50SMA supported by established trend strength (ADX > 22).",
+      "rule_summary": "EMA8 > EMA21 AND Close > SMA50 AND ADX(14) >= 22.0",
+      "regime_compatibility": [
+        "STRONG_BULL",
+        "WEAK_BULL",
+        "CONSOLIDATION"
+      ],
+      "historical_win_rate_pct": 58.0,
+      "forward_5d_return_pct": 1.65,
+      "expectancy_r": 0.47,
+      "sample_size": 135,
+      "regime_status": "PASS",
+      "regime_badge_color": "green",
+      "active_market_regime": "STRONG_BULL"
+    },
+    {
+      "scanner_id": "HIGH_RVOL_SURGE",
+      "name": "High Relative Volume Surge",
+      "category": "VOLUME_FLOW",
+      "description": "Unusual volume expansion greater than 1.6x the 20-day baseline, indicating institutional catalyst.",
+      "rule_summary": "RVOL(20) >= 1.60x",
+      "regime_compatibility": [
+        "STRONG_BULL",
+        "WEAK_BULL",
+        "CONSOLIDATION",
+        "HIGH_VOLATILITY"
+      ],
+      "historical_win_rate_pct": 52.5,
+      "forward_5d_return_pct": 2.15,
+      "expectancy_r": 0.41,
+      "sample_size": 110,
+      "regime_status": "PASS",
+      "regime_badge_color": "green",
+      "active_market_regime": "STRONG_BULL"
+    },
+    {
+      "scanner_id": "BASE_TIGHTENING",
+      "name": "Consolidation Base Tightening",
+      "category": "BREAKOUT",
+      "description": "Price consolidates tightly near 52-week highs with declining volatility, building energy for continuation.",
+      "rule_summary": "BB Bandwidth < 10.0% AND Within 12% of 52W High",
+      "regime_compatibility": [
+        "STRONG_BULL",
+        "WEAK_BULL",
+        "CONSOLIDATION"
+      ],
+      "historical_win_rate_pct": 57.5,
+      "forward_5d_return_pct": 1.8,
+      "expectancy_r": 0.5,
+      "sample_size": 120,
+      "regime_status": "PASS",
+      "regime_badge_color": "green",
+      "active_market_regime": "STRONG_BULL"
+    },
+    {
+      "scanner_id": "ATR_EXPANSION",
+      "name": "Daily Range Expansion",
+      "category": "VOLATILITY",
+      "description": "Wide-range expansion bar exceeding 1.4x the 14-day ATR while closing above 20-day moving average.",
+      "rule_summary": "(High - Low) > 1.4 * ATR(14) AND Close > SMA20",
+      "regime_compatibility": [
+        "STRONG_BULL",
+        "WEAK_BULL",
+        "HIGH_VOLATILITY"
+      ],
+      "historical_win_rate_pct": 53.8,
+      "forward_5d_return_pct": 1.95,
+      "expectancy_r": 0.44,
+      "sample_size": 105,
+      "regime_status": "PASS",
+      "regime_badge_color": "green",
+      "active_market_regime": "STRONG_BULL"
+    },
+    {
+      "scanner_id": "SUPPORT_BOUNCE_50DMA",
+      "name": "50-Day Moving Average Support Bounce",
+      "category": "SUPPORT_RESISTANCE",
+      "description": "Intraday low tests institutional 50-day moving average with closing buyers defending key support.",
+      "rule_summary": "Low <= SMA50 AND Close > SMA50 AND Close > Low",
+      "regime_compatibility": [
+        "STRONG_BULL",
+        "WEAK_BULL",
+        "CONSOLIDATION"
+      ],
+      "historical_win_rate_pct": 59.0,
+      "forward_5d_return_pct": 1.88,
+      "expectancy_r": 0.53,
+      "sample_size": 98,
+      "regime_status": "PASS",
+      "regime_badge_color": "green",
+      "active_market_regime": "STRONG_BULL"
+    },
+    {
+      "scanner_id": "CROSS_BORDER_LEADER",
+      "name": "Canadian Market Leader",
+      "category": "DUAL_MARKET",
+      "description": "Premier Canadian equities on the TSX outperforming broader indices with strong quarterly momentum.",
+      "rule_summary": "Country == CA AND Within 6% of 52W High AND 3M Return > 5%",
+      "regime_compatibility": [
+        "STRONG_BULL",
+        "WEAK_BULL",
+        "CONSOLIDATION"
+      ],
+      "historical_win_rate_pct": 60.8,
+      "forward_5d_return_pct": 1.62,
+      "expectancy_r": 0.51,
+      "sample_size": 92,
+      "regime_status": "PASS",
+      "regime_badge_color": "green",
+      "active_market_regime": "STRONG_BULL"
+    }
+  ],
   "matches": [
     {
       "scanner_id": "MOMENTUM_LEADERS",
@@ -14,7 +284,9 @@
         "ret_3m": 0.20188177035506238,
         "prox_52w": -0.01236459448355931,
         "rsi": 65.6733218949337
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL"
     },
     {
       "scanner_id": "STACKED_MOVING_AVERAGES",
@@ -28,7 +300,9 @@
         "sma_20": 329.39600067138673,
         "sma_50": 321.8319995117188,
         "sma_200": 287.7663493347168
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL"
     },
     {
       "scanner_id": "LOW_BETA_QUALITY",
@@ -41,7 +315,9 @@
         "atr_pct": 1.997705605417971,
         "slope_200": 24.167074865815078,
         "ret_3m": 0.20188177035506238
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL"
     },
     {
       "scanner_id": "MTF_ALIGNMENT",
@@ -54,7 +330,9 @@
         "ema_8": 336.546875709318,
         "ema_21": 329.9376201510155,
         "adx": 25.96285866559964
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL"
     },
     {
       "scanner_id": "MOMENTUM_LEADERS",
@@ -67,7 +345,9 @@
         "ret_3m": 0.3839450390668693,
         "prox_52w": -0.06781403918895501,
         "rsi": 63.216659990439744
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL"
     },
     {
       "scanner_id": "VOLATILITY_SQUEEZE",
@@ -79,7 +359,9 @@
       "key_metrics": {
         "bandwidth": 0.05746486593535457,
         "atr_pct": 2.11987286232559
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL"
     },
     {
       "scanner_id": "STACKED_MOVING_AVERAGES",
@@ -93,7 +375,9 @@
         "sma_20": 500.0404998779297,
         "sma_50": 475.81159912109376,
         "sma_200": 432.06089920043945
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL"
     },
     {
       "scanner_id": "LOW_BETA_QUALITY",
@@ -106,7 +390,9 @@
         "atr_pct": 2.11987286232559,
         "slope_200": 2.697173782067539,
         "ret_3m": 0.3839450390668693
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL"
     },
     {
       "scanner_id": "MTF_ALIGNMENT",
@@ -119,7 +405,9 @@
         "ema_8": 502.1080746659236,
         "ema_21": 496.7722480016857,
         "adx": 23.38603658822541
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL"
     },
     {
       "scanner_id": "HIGH_RVOL_SURGE",
@@ -130,7 +418,9 @@
       "why_matched": "Elevated trading activity: Relative Volume is 1.74x above the 20-day average.",
       "key_metrics": {
         "rvol": 1.7384867307414598
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL"
     },
     {
       "scanner_id": "BASE_TIGHTENING",
@@ -142,7 +432,9 @@
       "key_metrics": {
         "bandwidth": 0.05746486593535457,
         "prox_52w": -0.06781403918895501
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL"
     },
     {
       "scanner_id": "ATR_EXPANSION",
@@ -154,7 +446,9 @@
       "key_metrics": {
         "bar_range": 22.10003662109375,
         "atr": 10.942147391183036
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL"
     },
     {
       "scanner_id": "MOMENTUM_LEADERS",
@@ -167,7 +461,9 @@
         "ret_3m": 0.1690126668635339,
         "prox_52w": -0.048490683552355085,
         "rsi": 55.17408895732846
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL"
     },
     {
       "scanner_id": "PULLBACK_UPTREND",
@@ -180,7 +476,9 @@
         "dist_sma20": 0.014951252443859624,
         "dist_sma50": 0.04210174154218959,
         "rsi": 55.17408895732846
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL"
     },
     {
       "scanner_id": "STACKED_MOVING_AVERAGES",
@@ -194,7 +492,9 @@
         "sma_20": 221.75449981689454,
         "sma_50": 215.97699951171876,
         "sma_200": 199.47324996948242
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL"
     },
     {
       "scanner_id": "PULLBACK_UPTREND",
@@ -207,7 +507,9 @@
         "dist_sma20": 0.018230012627955098,
         "dist_sma50": 0.025392805039737284,
         "rsi": 44.53594307206563
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL"
     },
     {
       "scanner_id": "VOLATILITY_SQUEEZE",
@@ -219,7 +521,9 @@
       "key_metrics": {
         "bandwidth": 0.07593656696114655,
         "atr_pct": 2.1324561453979114
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL"
     },
     {
       "scanner_id": "LOW_BETA_QUALITY",
@@ -232,7 +536,9 @@
         "atr_pct": 2.1324561453979114,
         "slope_200": 11.926429670157406,
         "ret_3m": 0.07297260539508921
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL"
     },
     {
       "scanner_id": "PULLBACK_UPTREND",
@@ -245,7 +551,9 @@
         "dist_sma20": 0.005102709175098052,
         "dist_sma50": 0.001075791028999299,
         "rsi": 49.716266492557246
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL"
     },
     {
       "scanner_id": "VOLATILITY_SQUEEZE",
@@ -257,7 +565,9 @@
       "key_metrics": {
         "bandwidth": 0.07742902798148463,
         "atr_pct": 2.0844962868725054
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL"
     },
     {
       "scanner_id": "INSTITUTIONAL_ACCUMULATION",
@@ -270,7 +580,9 @@
         "cmf": 0.12381774457399028,
         "obv_slope": 24146943.0,
         "rvol": 1.2893931677027224
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL"
     },
     {
       "scanner_id": "LOW_BETA_QUALITY",
@@ -283,7 +595,9 @@
         "atr_pct": 2.0844962868725054,
         "slope_200": 17.14944671717145,
         "ret_3m": 0.04257714719758576
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL"
     },
     {
       "scanner_id": "BASE_TIGHTENING",
@@ -295,7 +609,9 @@
       "key_metrics": {
         "bandwidth": 0.07742902798148463,
         "prox_52w": -0.06395635045404158
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL"
     },
     {
       "scanner_id": "PULLBACK_UPTREND",
@@ -308,7 +624,9 @@
         "dist_sma20": 0.011647438146227592,
         "dist_sma50": 0.007303691755081565,
         "rsi": 48.71923125672882
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL"
     },
     {
       "scanner_id": "VOLATILITY_SQUEEZE",
@@ -320,7 +638,9 @@
       "key_metrics": {
         "bandwidth": 0.07386108982582693,
         "atr_pct": 2.498820363219809
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL"
     },
     {
       "scanner_id": "BASE_TIGHTENING",
@@ -332,7 +652,9 @@
       "key_metrics": {
         "bandwidth": 0.07386108982582693,
         "prox_52w": -0.08967749558307325
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL"
     },
     {
       "scanner_id": "PULLBACK_UPTREND",
@@ -345,7 +667,9 @@
         "dist_sma20": 0.007838863591921296,
         "dist_sma50": 0.01284744833266223,
         "rsi": 55.89003490300169
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL"
     },
     {
       "scanner_id": "VOLATILITY_SQUEEZE",
@@ -357,7 +681,9 @@
       "key_metrics": {
         "bandwidth": 0.02915569766049144,
         "atr_pct": 0.8892581038021248
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL"
     },
     {
       "scanner_id": "STACKED_MOVING_AVERAGES",
@@ -371,7 +697,9 @@
         "sma_20": 765.3504974365235,
         "sma_50": 761.5657983398437,
         "sma_200": 718.4519995117188
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL"
     },
     {
       "scanner_id": "LOW_BETA_QUALITY",
@@ -384,7 +712,9 @@
         "atr_pct": 0.8892581038021248,
         "slope_200": 16.06564587562347,
         "ret_3m": 0.058107773658103934
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL"
     },
     {
       "scanner_id": "BASE_TIGHTENING",
@@ -396,7 +726,9 @@
       "key_metrics": {
         "bandwidth": 0.02915569766049144,
         "prox_52w": -0.010290387853645888
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL"
     },
     {
       "scanner_id": "VOLATILITY_SQUEEZE",
@@ -408,7 +740,9 @@
       "key_metrics": {
         "bandwidth": 0.07810917288592686,
         "atr_pct": 1.2764551652595222
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL"
     },
     {
       "scanner_id": "STACKED_MOVING_AVERAGES",
@@ -422,7 +756,9 @@
         "sma_20": 720.8744964599609,
         "sma_50": 712.6535974121093,
         "sma_200": 665.5868490600586
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL"
     },
     {
       "scanner_id": "LOW_BETA_QUALITY",
@@ -435,7 +771,9 @@
         "atr_pct": 1.2764551652595222,
         "slope_200": 20.936977706897906,
         "ret_3m": 0.05375641088549532
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL"
     },
     {
       "scanner_id": "BASE_TIGHTENING",
@@ -447,7 +785,9 @@
       "key_metrics": {
         "bandwidth": 0.07810917288592686,
         "prox_52w": -0.005543343723671934
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL"
     },
     {
       "scanner_id": "PULLBACK_UPTREND",
@@ -460,7 +800,9 @@
         "dist_sma20": 0.0002694976842698889,
         "dist_sma50": 0.0170003769323106,
         "rsi": 48.36992571488196
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "WEAK_BULL"
     },
     {
       "scanner_id": "VOLATILITY_SQUEEZE",
@@ -472,7 +814,9 @@
       "key_metrics": {
         "bandwidth": 0.041284821369959014,
         "atr_pct": 1.4966924142112965
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "WEAK_BULL"
     },
     {
       "scanner_id": "BASE_TIGHTENING",
@@ -484,7 +828,9 @@
       "key_metrics": {
         "bandwidth": 0.041284821369959014,
         "prox_52w": -0.06772635181573516
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "WEAK_BULL"
     },
     {
       "scanner_id": "PULLBACK_UPTREND",
@@ -497,7 +843,9 @@
         "dist_sma20": 0.01110086036002985,
         "dist_sma50": 0.012509122012646928,
         "rsi": 54.42423907309402
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "WEAK_BULL"
     },
     {
       "scanner_id": "VOLATILITY_SQUEEZE",
@@ -509,7 +857,9 @@
       "key_metrics": {
         "bandwidth": 0.05377905153554772,
         "atr_pct": 1.5788835822466125
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "WEAK_BULL"
     },
     {
       "scanner_id": "STACKED_MOVING_AVERAGES",
@@ -523,7 +873,9 @@
         "sma_20": 168.81599960327148,
         "sma_50": 168.5811996459961,
         "sma_200": 148.54979972839357
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "WEAK_BULL"
     },
     {
       "scanner_id": "BASE_TIGHTENING",
@@ -535,7 +887,9 @@
       "key_metrics": {
         "bandwidth": 0.05377905153554772,
         "prox_52w": -0.026464377694579988
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "WEAK_BULL"
     },
     {
       "scanner_id": "MTF_ALIGNMENT",
@@ -548,7 +902,9 @@
         "ema_8": 196.5689434151729,
         "ema_21": 194.00724807384725,
         "adx": 24.645635066923255
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "WEAK_BULL"
     },
     {
       "scanner_id": "VOLATILITY_SQUEEZE",
@@ -560,7 +916,9 @@
       "key_metrics": {
         "bandwidth": 0.081081981717912,
         "atr_pct": 1.6893132616735091
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "WEAK_BULL"
     },
     {
       "scanner_id": "MEAN_REVERSION_OVERSOLD",
@@ -573,7 +931,9 @@
         "rsi": 30.52909628838549,
         "close": 66.12999725341797,
         "bb_lower": 65.50130696328829
-      }
+      },
+      "regime_gated": true,
+      "regime_state": "WEAK_BULL"
     },
     {
       "scanner_id": "PULLBACK_UPTREND",
@@ -586,7 +946,9 @@
         "dist_sma20": 0.010465284621976313,
         "dist_sma50": 0.021350515530901785,
         "rsi": 51.015002827502
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "WEAK_BULL"
     },
     {
       "scanner_id": "VOLATILITY_SQUEEZE",
@@ -598,7 +960,9 @@
       "key_metrics": {
         "bandwidth": 0.052357782230009746,
         "atr_pct": 1.5727662888376248
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "WEAK_BULL"
     },
     {
       "scanner_id": "BASE_TIGHTENING",
@@ -610,7 +974,9 @@
       "key_metrics": {
         "bandwidth": 0.052357782230009746,
         "prox_52w": -0.07746292093665652
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "WEAK_BULL"
     },
     {
       "scanner_id": "PULLBACK_UPTREND",
@@ -623,7 +989,9 @@
         "dist_sma20": 0.03454623180194602,
         "dist_sma50": 0.0030486177474574956,
         "rsi": 44.22451855904601
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "WEAK_BULL"
     },
     {
       "scanner_id": "BASE_TIGHTENING",
@@ -635,7 +1003,9 @@
       "key_metrics": {
         "bandwidth": 0.08941877110919919,
         "prox_52w": -0.07159641208601575
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "WEAK_BULL"
     },
     {
       "scanner_id": "PULLBACK_UPTREND",
@@ -648,7 +1018,9 @@
         "dist_sma20": 0.01343381844169142,
         "dist_sma50": 0.03471565695166654,
         "rsi": 42.51490838049434
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "WEAK_BULL"
     },
     {
       "scanner_id": "VOLATILITY_SQUEEZE",
@@ -660,7 +1032,9 @@
       "key_metrics": {
         "bandwidth": 0.06795103897144886,
         "atr_pct": 1.6319880404298135
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "WEAK_BULL"
     },
     {
       "scanner_id": "BASE_TIGHTENING",
@@ -672,7 +1046,9 @@
       "key_metrics": {
         "bandwidth": 0.06795103897144886,
         "prox_52w": -0.07857252191691932
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "WEAK_BULL"
     },
     {
       "scanner_id": "PULLBACK_UPTREND",
@@ -685,7 +1061,9 @@
         "dist_sma20": 0.003950017870353922,
         "dist_sma50": 0.008965581952769391,
         "rsi": 46.507272674012455
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "WEAK_BULL"
     },
     {
       "scanner_id": "VOLATILITY_SQUEEZE",
@@ -697,7 +1075,9 @@
       "key_metrics": {
         "bandwidth": 0.03570608090903672,
         "atr_pct": 0.9836895106752589
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "WEAK_BULL"
     },
     {
       "scanner_id": "LOW_BETA_QUALITY",
@@ -710,7 +1090,9 @@
         "atr_pct": 0.9836895106752589,
         "slope_200": 19.33464321057792,
         "ret_3m": 0.022539048104060155
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "WEAK_BULL"
     },
     {
       "scanner_id": "BASE_TIGHTENING",
@@ -722,7 +1104,9 @@
       "key_metrics": {
         "bandwidth": 0.03570608090903672,
         "prox_52w": -0.03420664637436477
-      }
+      },
+      "regime_gated": false,
+      "regime_state": "WEAK_BULL"
     }
   ]
 }

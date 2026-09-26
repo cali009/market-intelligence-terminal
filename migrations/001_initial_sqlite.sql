@@ -249,3 +249,48 @@ CREATE TABLE IF NOT EXISTS journal_position (
     created_at TEXT NOT NULL DEFAULT (datetime('now')),
     updated_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
+
+-- 14. Quantitative Scanner Definitions & Outcome Tracking (Phase 2)
+CREATE TABLE IF NOT EXISTS scanner_definition (
+    scanner_id TEXT PRIMARY KEY,
+    name TEXT NOT NULL,
+    category TEXT NOT NULL,                  -- MOMENTUM | MEAN_REVERSION | BREAKOUT | VOLUME | VOLATILITY
+    description TEXT NOT NULL,
+    rule_summary TEXT NOT NULL,
+    regime_compatibility TEXT NOT NULL,      -- Comma-separated compatible regimes
+    historical_win_rate_pct REAL NOT NULL,
+    forward_5d_return_pct REAL NOT NULL,
+    expectancy_r REAL NOT NULL,
+    sample_size INTEGER NOT NULL DEFAULT 0,
+    created_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+CREATE TABLE IF NOT EXISTS scanner_run (
+    run_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    as_of_date TEXT NOT NULL,
+    executed_at TEXT NOT NULL DEFAULT (datetime('now')),
+    total_universe_scanned INTEGER NOT NULL,
+    total_matches_found INTEGER NOT NULL,
+    regime_state TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS scanner_result (
+    result_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    run_id INTEGER REFERENCES scanner_run(run_id),
+    scanner_id TEXT NOT NULL REFERENCES scanner_definition(scanner_id),
+    security_id INTEGER REFERENCES security(security_id),
+    symbol TEXT NOT NULL,
+    as_of_date TEXT NOT NULL,
+    price REAL NOT NULL,
+    why_matched TEXT NOT NULL,
+    key_metrics_json TEXT NOT NULL,
+    regime_gated INTEGER NOT NULL DEFAULT 0,
+    outcome_1d_pct REAL,
+    outcome_5d_pct REAL,
+    outcome_20d_pct REAL,
+    created_at TEXT NOT NULL DEFAULT (datetime('now')),
+    UNIQUE(scanner_id, symbol, as_of_date)
+);
+
+CREATE INDEX IF NOT EXISTS idx_scanner_result_lookup ON scanner_result(scanner_id, as_of_date);
+CREATE INDEX IF NOT EXISTS idx_scanner_result_symbol ON scanner_result(symbol);

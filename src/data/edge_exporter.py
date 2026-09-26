@@ -142,7 +142,7 @@ class EdgeExporter:
             )
 
             # Scanners
-            matches = market_scanners.scan_all(dict(s), metrics)
+            matches = market_scanners.scan_all(dict(s), metrics, regime_state=regime_name)
             for m in matches:
                 scanner_results.append({
                     "scanner_id": m.scanner_id,
@@ -152,6 +152,8 @@ class EdgeExporter:
                     "price": m.price,
                     "why_matched": m.why_matched,
                     "key_metrics": m.key_metrics,
+                    "regime_gated": m.regime_gated,
+                    "regime_state": m.regime_state,
                 })
 
             # Signal
@@ -303,12 +305,20 @@ class EdgeExporter:
                     indent=2,
                 )
 
+            active_us_regime = regimes_data.get("US", {}).get("regime_state", "WEAK_BULL")
+            scanner_defs = market_scanners.get_scanner_definitions_with_expectancy(active_us_regime)
+
+            # Persist scanner run and definitions to SQLite
+            market_scanners.init_scanner_definitions_in_db()
+
             with open(d_dir / "scanners.json", "w") as f:
                 json.dump(
                     {
                         "as_of_date": as_of_date,
                         "generated_at": generated_at,
+                        "active_regime": active_us_regime,
                         "total_matches": len(scanner_results),
+                        "scanner_definitions": scanner_defs,
                         "matches": scanner_results,
                     },
                     f,

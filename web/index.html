@@ -890,9 +890,10 @@
                         <p style="font-size: 12px; color: var(--text-muted);">Multi-dimensional screening across US & Canadian markets · Quantitative factor filters · 14 institutional pattern rules · Custom preset builder & live export</p>
                     </div>
                     <!-- View Mode Toggle -->
-                    <div style="display: flex; gap: 8px; background: var(--bg-card); padding: 4px; border-radius: 8px; border: 1px solid var(--border-color);">
+                    <div style="display: flex; gap: 8px; background: var(--bg-card); padding: 4px; border-radius: 8px; border: 1px solid var(--border-color); flex-wrap: wrap;">
                         <button class="filter-btn active" id="btnViewScreener" onclick="switchScannerView('screener')">Custom Screener Table</button>
                         <button class="filter-btn" id="btnViewCards" onclick="switchScannerView('cards')">TAC-14 Strategy Cards</button>
+                        <button class="filter-btn" id="btnViewExpectancy" onclick="switchScannerView('expectancy')">📊 Strategy Expectancy &amp; Regime Gating</button>
                     </div>
                 </div>
             </div>
@@ -1058,6 +1059,39 @@
             <div id="screenerCardsView" style="display: none;">
                 <div class="scanners-grid" id="scannersGrid">
                     <!-- Populated dynamically -->
+                </div>
+            </div>
+
+            <!-- View 3: Strategy Expectancy & Regime Gating Matrix -->
+            <div id="screenerExpectancyView" style="display: none;">
+                <div style="background: rgba(59, 130, 246, 0.08); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 8px; padding: 14px; margin-bottom: 20px; font-size: 12px; line-height: 1.5; color: var(--text-secondary);">
+                    <div style="font-weight: 800; color: var(--accent-blue); margin-bottom: 4px; display: flex; align-items: center; gap: 6px;">
+                        <span>🔬 TAC-14 STRATEGY REGIME GATING &amp; EMPIRICAL EXPECTANCY SPECIFICATION</span>
+                        <span class="exchange-tag" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-green);">Phase 2 Standard</span>
+                    </div>
+                    <span>
+                        Every scanner strategy is mapped to specific macroeconomic and market regime compatibility rules. In accordance with quantitative risk governance, strategies incompatible with the active macro regime are systematically gated (<code>GATED</code>) to prevent false-positive whipsaws during crisis, stagflation, or high-volatility shocks. Forward 5-day expectancy is measured on historical out-of-sample data.
+                    </span>
+                </div>
+
+                <div class="table-container" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; overflow-x: auto; margin-bottom: 24px;">
+                    <table style="width: 100%; border-collapse: collapse; font-size: 12px;">
+                        <thead>
+                            <tr style="background: var(--bg-secondary); border-bottom: 1px solid var(--border-color); text-align: left; color: var(--text-muted); font-size: 11px; text-transform: uppercase;">
+                                <th style="padding: 12px 14px;">Scanner Strategy</th>
+                                <th style="padding: 12px 14px;">Category</th>
+                                <th style="padding: 12px 14px;">Deterministic Mathematical Rules</th>
+                                <th style="padding: 12px 14px; text-align: center;">Regime Gate</th>
+                                <th style="padding: 12px 14px; text-align: right;">Forward 5D Return</th>
+                                <th style="padding: 12px 14px; text-align: right;">Win Rate %</th>
+                                <th style="padding: 12px 14px; text-align: right;">Expectancy (R)</th>
+                                <th style="padding: 12px 14px; text-align: right;">Sample (n)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="scannerExpectancyTableBody">
+                            <!-- Populated dynamically via JS -->
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -1746,7 +1780,13 @@
                 .catch(err => console.error("Leaderboard load error:", err));
 
             fetchJson('/api/scanners.json', '/api/scanners')
-                .then(data => renderScanners(data.matches))
+                .then(data => {
+                    rawScannersData = data;
+                    renderScanners(data.matches || []);
+                    if (data.scanner_definitions) {
+                        renderScannerExpectancyTable(data.scanner_definitions, data.active_regime || 'WEAK_BULL');
+                    }
+                })
                 .catch(err => console.error("Scanners load error:", err));
 
             fetchJson('/api/signals.json', '/api/signals')
@@ -1850,10 +1890,18 @@
             for (const [name, list] of Object.entries(grouped)) {
                 const card = document.createElement('div');
                 card.className = 'scanner-card';
+                const isGated = list[0].regime_gated;
+                const gateTag = isGated
+                    ? `<span class="exchange-tag" style="background: rgba(245, 158, 11, 0.15); color: var(--accent-amber); border: 1px solid rgba(245, 158, 11, 0.4); font-size: 10px; font-weight: 700;">⚠️ REGIME GATED</span>`
+                    : `<span class="exchange-tag" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-green); border: 1px solid rgba(16, 185, 129, 0.4); font-size: 10px; font-weight: 700;">✓ REGIME PASS</span>`;
+
                 card.innerHTML = `
                     <div class="scanner-header">
                         <span class="scanner-title">${name}</span>
-                        <span class="scanner-count">${list.length}</span>
+                        <div style="display: flex; align-items: center; gap: 6px;">
+                            ${gateTag}
+                            <span class="scanner-count">${list.length}</span>
+                        </div>
                     </div>
                     <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 8px;">
                         ${list[0].why_matched.split(';')[0]}
@@ -1873,6 +1921,7 @@
         // ==========================================
         // CUSTOM MULTI-FACTOR SCREENER WORKSTATION
         // ==========================================
+        let rawScannersData = null;
         let screenerMatches = [];
         let screenerSortCol = 'composite_score';
         let screenerSortAsc = false;
@@ -1880,21 +1929,68 @@
         function switchScannerView(mode) {
             const screenerView = document.getElementById('screenerTableView');
             const cardsView = document.getElementById('screenerCardsView');
+            const expView = document.getElementById('screenerExpectancyView');
             const btnScreener = document.getElementById('btnViewScreener');
             const btnCards = document.getElementById('btnViewCards');
+            const btnExp = document.getElementById('btnViewExpectancy');
 
-            if (mode === 'screener') {
-                if (screenerView) screenerView.style.display = 'block';
-                if (cardsView) cardsView.style.display = 'none';
-                if (btnScreener) btnScreener.classList.add('active');
-                if (btnCards) btnCards.classList.remove('active');
-                runCustomScreener();
-            } else {
-                if (screenerView) screenerView.style.display = 'none';
-                if (cardsView) cardsView.style.display = 'block';
-                if (btnCards) btnCards.classList.add('active');
-                if (btnScreener) btnScreener.classList.remove('active');
+            if (screenerView) screenerView.style.display = mode === 'screener' ? 'block' : 'none';
+            if (cardsView) cardsView.style.display = mode === 'cards' ? 'block' : 'none';
+            if (expView) expView.style.display = mode === 'expectancy' ? 'block' : 'none';
+
+            btnScreener?.classList.toggle('active', mode === 'screener');
+            btnCards?.classList.toggle('active', mode === 'cards');
+            btnExp?.classList.toggle('active', mode === 'expectancy');
+
+            if (mode === 'screener') runCustomScreener();
+            if (mode === 'expectancy' && rawScannersData) {
+                renderScannerExpectancyTable(rawScannersData.scanner_definitions, rawScannersData.active_regime || 'WEAK_BULL');
             }
+        }
+
+        function renderScannerExpectancyTable(defs, activeRegime) {
+            const tbody = document.getElementById('scannerExpectancyTableBody');
+            if (!tbody || !defs) return;
+
+            let html = '';
+            defs.forEach(d => {
+                const isPass = d.regime_status === 'PASS';
+                const gateBadge = isPass
+                    ? `<span class="verdict-badge-edge" style="font-size: 10px;">✓ PASS (${d.active_market_regime})</span>`
+                    : `<span class="verdict-badge-conditional" style="font-size: 10px; color: var(--accent-amber); border-color: rgba(245, 158, 11, 0.4); background: rgba(245, 158, 11, 0.1);">⚠️ GATED (${d.active_market_regime})</span>`;
+
+                html += `
+                    <tr style="border-bottom: 1px solid var(--border-color); transition: background 0.15s ease;">
+                        <td style="padding: 12px 14px;">
+                            <div style="font-weight: 700; color: var(--text-primary); font-size: 13px;">${d.name}</div>
+                            <div style="font-size: 10px; color: var(--text-muted); font-family: monospace;">${d.scanner_id}</div>
+                        </td>
+                        <td style="padding: 12px 14px;">
+                            <span class="exchange-tag" style="font-size: 10px;">${d.category}</span>
+                        </td>
+                        <td style="padding: 12px 14px; font-family: monospace; font-size: 11px; color: var(--accent-cyan); max-width: 320px;">
+                            ${d.rule_summary}
+                        </td>
+                        <td style="padding: 12px 14px; text-align: center;">
+                            ${gateBadge}
+                        </td>
+                        <td style="padding: 12px 14px; text-align: right; font-family: monospace; font-weight: 800; color: var(--accent-green);">
+                            +${d.forward_5d_return_pct.toFixed(2)}%
+                        </td>
+                        <td style="padding: 12px 14px; text-align: right; font-family: monospace; font-weight: 800; color: var(--text-primary);">
+                            ${d.historical_win_rate_pct.toFixed(1)}%
+                        </td>
+                        <td style="padding: 12px 14px; text-align: right; font-family: monospace; font-weight: 800; color: var(--accent-blue);">
+                            +${d.expectancy_r.toFixed(2)}R
+                        </td>
+                        <td style="padding: 12px 14px; text-align: right; font-family: monospace; font-weight: 700; color: var(--text-secondary);">
+                            ${d.sample_size}
+                        </td>
+                    </tr>
+                `;
+            });
+
+            tbody.innerHTML = html;
         }
 
         function updateScoreVal(val) {
