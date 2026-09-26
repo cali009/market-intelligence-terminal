@@ -215,9 +215,12 @@
         /* Nav Tabs */
         .tabs {
             display: flex;
+            flex-wrap: wrap;
             gap: 8px;
+            row-gap: 6px;
             border-bottom: 1px solid var(--border-color);
             margin-bottom: 20px;
+            padding-bottom: 4px;
         }
 
         .tab-btn {
@@ -4162,17 +4165,14 @@
                 if (targetBtn) targetBtn.classList.add('active');
             }
 
-            document.getElementById('tab-leaderboard').style.display = tabId === 'leaderboard' ? 'block' : 'none';
-            document.getElementById('tab-scanners').style.display = tabId === 'scanners' ? 'block' : 'none';
-            document.getElementById('tab-signals').style.display = tabId === 'signals' ? 'block' : 'none';
-            document.getElementById('tab-backtest').style.display = tabId === 'backtest' ? 'block' : 'none';
-            document.getElementById('tab-paper').style.display = tabId === 'paper' ? 'block' : 'none';
-            document.getElementById('tab-portfolio').style.display = tabId === 'portfolio' ? 'block' : 'none';
-            document.getElementById('tab-alerts').style.display = tabId === 'alerts' ? 'block' : 'none';
-            document.getElementById('tab-deepread').style.display = tabId === 'deepread' ? 'block' : 'none';
-            document.getElementById('tab-production').style.display = tabId === 'production' ? 'block' : 'none';
-            document.getElementById('tab-catalysts').style.display = tabId === 'catalysts' ? 'block' : 'none';
-            document.getElementById('tab-journal').style.display = tabId === 'journal' ? 'block' : 'none';
+            const tabIds = [
+                'leaderboard', 'scanners', 'signals', 'backtest', 'paper',
+                'portfolio', 'alerts', 'deepread', 'production', 'catalysts', 'journal'
+            ];
+            tabIds.forEach(id => {
+                const el = document.getElementById(`tab-${id}`);
+                if (el) el.style.display = (id === tabId) ? 'block' : 'none';
+            });
 
             if (tabId === 'backtest') {
                 if (!backtestBundle) {
@@ -4632,8 +4632,6 @@
                     </div>
                 `;
             }
-        }
-            `;
         }
 
             // Render scorecards
