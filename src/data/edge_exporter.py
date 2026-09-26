@@ -31,6 +31,7 @@ from src.engine.fundamentals import FundamentalAnalysisEngine
 from src.engine.paper_trading import paper_trading_engine
 from src.engine.portfolio import portfolio_engine
 from src.engine.alerts import alert_engine
+from src.engine.filing_deep_read import filing_deep_read_engine
 
 FEEDS_DIR = DATA_DIR / "feeds"
 DIST_DIR = DATA_DIR / "dist"
@@ -516,8 +517,13 @@ class EdgeExporter:
             with open(d_dir / "alerts.json", "w") as f:
                 json.dump(alerts_payload, f, indent=2)
 
+            # Phase 11: Advanced AI & Regulatory Filing Deep-Read Engine
+            ai_deep_read_payload = filing_deep_read_engine.generate_ai_deep_read_feed()
+            with open(d_dir / "ai_deep_read.json", "w") as f:
+                json.dump(ai_deep_read_payload, f, indent=2)
+
         return {
-            "dist_files": 13,
+            "dist_files": 14,
             "symbol_files": symbol_files_count,
             "total_matches": len(scanner_results),
             "total_signals": len(signals_list),

@@ -63,6 +63,8 @@ def build_firebase_bundle():
         ("portfolio.json", "portfolio"),
         ("alerts.json", "alerts.json"),
         ("alerts.json", "alerts"),
+        ("ai_deep_read.json", "ai_deep_read.json"),
+        ("ai_deep_read.json", "ai_deep_read"),
     ]
 
     for src_name, dest_name in core_feeds:

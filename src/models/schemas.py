@@ -512,5 +512,87 @@ class AlertDeliveryTelemetry(BaseModel):
         return self.model_dump()
 
 
+class CitationSpan(BaseModel):
+    citation_id: str
+    doc_ref: str
+    form_type: str
+    section: str
+    filing_date: str
+    start_char: int
+    end_char: int
+    verbatim_text: str
+    is_verified: bool = True
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class SectionDiffRecord(BaseModel):
+    diff_id: str
+    symbol: str
+    section: str
+    current_filing: str
+    prior_filing: str
+    current_date: str
+    prior_date: str
+    significance_score: int
+    added_items: List[Dict[str, Any]]
+    removed_items: List[Dict[str, Any]]
+    material_shifts: List[Dict[str, Any]]
+    summary: str
+    citation: CitationSpan
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class GuidanceTargetRecord(BaseModel):
+    symbol: str
+    metric: str
+    period: str
+    range_low: float
+    range_high: float
+    consensus: Optional[float] = None
+    comparison_vs_consensus: Literal["ABOVE", "IN_LINE", "BELOW", "UNTRACKED"] = "IN_LINE"
+    verbatim_excerpt: str
+    citation: CitationSpan
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class ManagementChangeRecord(BaseModel):
+    symbol: str
+    event_type: Literal["DEPARTURE", "APPOINTMENT", "PROMOTION", "RETIREMENT"]
+    executive_name: str
+    title: str
+    effective_date: str
+    filing_ref: str
+    citation: CitationSpan
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class ModelCard(BaseModel):
+    model_id: str
+    name: str
+    version: str
+    task: str
+    architecture: str
+    context_window: int
+    citation_resolution_pct: float
+    hallucination_rate_pct: float
+    cost_per_query_usd: float
+    intended_use: str
+    out_of_scope: str
+    bias_considerations: str
+    prompt_versions: Dict[str, str]
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+
 
 
