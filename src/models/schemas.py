@@ -313,3 +313,71 @@ class FeedHealth(BaseModel):
     coverage_pct: float = 100.0
     notes: str
 
+
+# ==============================================================================
+# PHASE 8: PAPER TRADING & RESOLUTION TRACKING (MFE / MAE / SCOREBOARD)
+# ==============================================================================
+
+class PaperTradeRecord(BaseModel):
+    trade_id: Optional[int] = None
+    portfolio_id: str = "default_paper_book"
+    strategy_id: str
+    symbol: str
+    direction: Literal["LONG", "SHORT"] = "LONG"
+    status: Literal["OPEN", "CLOSED"] = "OPEN"
+    signal_date: str
+    entry_date: str
+    entry_price: float
+    entry_price_net: float
+    shares: int
+    stop_loss: float
+    target_1: float
+    target_2: float
+    target_3: float
+    initial_risk_per_share: float
+    exit_date: Optional[str] = None
+    exit_price: Optional[float] = None
+    exit_price_net: Optional[float] = None
+    exit_reason: Optional[str] = None
+    gross_pnl_usd: float = 0.0
+    net_pnl_usd: float = 0.0
+    fee_drag_usd: float = 0.0
+    return_pct: float = 0.0
+    r_multiple: float = 0.0
+    mfe_pct: float = 0.0
+    mfe_r: float = 0.0
+    mae_pct: float = 0.0
+    mae_r: float = 0.0
+    holding_days: int = 0
+    currency: Literal["USD", "CAD"] = "USD"
+    is_random_control: bool = False
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class StrategyPaperScorecard(BaseModel):
+    strategy_id: str
+    strategy_name: str
+    status: Literal["LIVE_QUALIFIED", "INCUBATING", "DEGRADED", "RETIRED"]
+    total_trades: int
+    win_rate_pct: float
+    expectancy_r: float
+    sharpe_ratio: float
+    profit_factor: float
+    max_drawdown_pct: float
+    backtest_expectancy_r: float
+    backtest_win_rate_pct: float
+    degradation_pct: float
+    random_control_expectancy_r: float
+    random_control_win_rate_pct: float
+    excess_over_random_r: float
+    avg_mfe_r: float
+    avg_mae_r: float
+    mfe_mae_ratio: float
+    promotion_verdict: str
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+

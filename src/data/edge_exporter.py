@@ -28,6 +28,7 @@ from src.engine.explanations import explanation_engine
 from src.engine.news_engine import news_engine
 from src.engine.journal import journal_engine
 from src.engine.fundamentals import FundamentalAnalysisEngine
+from src.engine.paper_trading import paper_trading_engine
 
 FEEDS_DIR = DATA_DIR / "feeds"
 DIST_DIR = DATA_DIR / "dist"
@@ -498,8 +499,13 @@ class EdgeExporter:
             with open(d_dir / "fundamentals_coverage.json", "w") as f:
                 json.dump(coverage_report, f, indent=2)
 
+            # Phase 8: Systematic Paper Trading Scoreboard & Resolution Ledger
+            paper_payload = paper_trading_engine.generate_paper_trading_ledger()
+            with open(d_dir / "paper_trading.json", "w") as f:
+                json.dump(paper_payload, f, indent=2)
+
         return {
-            "dist_files": 10,
+            "dist_files": 11,
             "symbol_files": symbol_files_count,
             "total_matches": len(scanner_results),
             "total_signals": len(signals_list),
