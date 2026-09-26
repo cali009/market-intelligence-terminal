@@ -50,10 +50,10 @@ def sync_macro():
 
 
 def sync_fundamentals():
-    print("Syncing SEC EDGAR XBRL fundamentals for US securities...")
+    print("Syncing SEC EDGAR XBRL fundamentals for US and Canadian corporate securities...")
     edgar = SecEdgarAdapter()
     securities = db.execute_query(
-        "SELECT security_id, symbol, cik_padded FROM security WHERE country = 'US' AND cik_padded IS NOT NULL;"
+        "SELECT security_id, symbol, country, currency, cik_padded FROM security WHERE cik_padded IS NOT NULL AND is_active = 1;"
     )
 
     total_facts = 0
@@ -74,10 +74,11 @@ def sync_fundamentals():
             sec_id = s["security_id"]
             sym = s["symbol"]
             cik = s["cik_padded"]
+            curr = s.get("currency", "USD")
 
             try:
                 print(f"  Extracting facts for {sym} (CIK {cik})...", end="", flush=True)
-                facts = edgar.extract_canonical_fundamentals(security_id=sec_id, cik=cik, recent_years=2)
+                facts = edgar.extract_canonical_fundamentals(security_id=sec_id, cik=cik, recent_years=3, default_currency=curr)
                 data_tuples = [
                     (
                         f.security_id,
@@ -102,7 +103,7 @@ def sync_fundamentals():
             except Exception as e:
                 print(f" FAILED ({e})")
 
-        print(f"  Successfully synced {total_facts} canonical fundamental facts from SEC EDGAR.")
+        print(f"  Successfully synced {total_facts} canonical fundamental facts from SEC EDGAR (Dual-Market US + Canada).")
     finally:
         conn.close()
 

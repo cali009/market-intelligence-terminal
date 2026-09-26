@@ -18,10 +18,10 @@ SYMBOLS_DIR = API_DIR / "symbols"
 def build_firebase_bundle():
     print(">>> Building Firebase Hosting distribution bundle in public/...")
     
-    # 1. Clean and recreate public/
-    if PUBLIC_DIR.exists():
-        shutil.rmtree(PUBLIC_DIR)
+    # 1. Clean and recreate contents inside public/
     PUBLIC_DIR.mkdir(parents=True, exist_ok=True)
+    if API_DIR.exists():
+        shutil.rmtree(API_DIR)
     API_DIR.mkdir(parents=True, exist_ok=True)
     SYMBOLS_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -53,6 +53,8 @@ def build_firebase_bundle():
         ("watchlists.json", "watchlists"),
         ("feed_health.json", "feed_health.json"),
         ("feed_health.json", "feed_health"),
+        ("fundamentals_coverage.json", "fundamentals_coverage.json"),
+        ("fundamentals_coverage.json", "fundamentals_coverage"),
     ]
 
     for src_name, dest_name in core_feeds:

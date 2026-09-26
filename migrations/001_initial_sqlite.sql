@@ -326,3 +326,41 @@ CREATE TABLE IF NOT EXISTS feature_store (
 );
 
 CREATE INDEX IF NOT EXISTS idx_feature_store_lookup ON feature_store(symbol, as_of_date, timeframe);
+
+-- 21. Canonical Fundamental Ratios & Valuation Metrics (Point-In-Time)
+CREATE TABLE IF NOT EXISTS fundamental_metric (
+    metric_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    security_id INTEGER NOT NULL REFERENCES security(security_id),
+    symbol TEXT NOT NULL,
+    as_of_date TEXT NOT NULL,
+    filing_date TEXT NOT NULL,
+    fiscal_period TEXT NOT NULL,
+    fiscal_year INTEGER NOT NULL,
+    currency TEXT NOT NULL,
+    roic REAL,                              -- Return on Invested Capital (%)
+    roe REAL,                               -- Return on Equity (%)
+    accruals_ratio REAL,                    -- Sloan Accruals Ratio
+    gross_margin_pct REAL,                  -- Gross Margin (%)
+    gross_margin_trend_bps REAL,            -- Gross Margin YoY Trend in Basis Points
+    operating_margin_pct REAL,              -- Operating Margin (%)
+    operating_margin_trend_bps REAL,        -- Operating Margin YoY Trend in Basis Points
+    debt_to_equity REAL,                    -- Total Debt / Equity
+    pe_ratio REAL,                          -- Price / Earnings TTM
+    ps_ratio REAL,                          -- Price / Sales TTM
+    pb_ratio REAL,                          -- Price / Book Value
+    fcf_yield_pct REAL,                     -- FCF Yield (%)
+    dividend_yield_pct REAL,                -- Annual Dividend Yield (%)
+    payout_ratio_pct REAL,                  -- Dividend Payout Ratio (%)
+    dividend_safety_score INTEGER,          -- 0 - 100 Dividend Safety Score
+    quality_score INTEGER NOT NULL,         -- 0 - 100 Fundamental Quality Score
+    valuation_score INTEGER NOT NULL,       -- 0 - 100 Valuation Score
+    composite_fundamental_score INTEGER NOT NULL, -- 0 - 100 Blended Score
+    coverage_status TEXT NOT NULL,          -- FULL | PARTIAL | INDEX_ETF_BYPASS
+    missing_fields_json TEXT NOT NULL DEFAULT '[]',
+    metrics_json TEXT NOT NULL DEFAULT '{}',
+    created_at TEXT NOT NULL DEFAULT (datetime('now')),
+    UNIQUE (security_id, as_of_date)
+);
+
+CREATE INDEX IF NOT EXISTS idx_fundamental_metric_lookup ON fundamental_metric(symbol, as_of_date);
+

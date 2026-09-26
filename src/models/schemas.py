@@ -82,6 +82,50 @@ class FundamentalFact(BaseModel):
         return self
 
 
+class FundamentalQualityMetrics(BaseModel):
+    roic: Optional[float] = None
+    roe: Optional[float] = None
+    accruals_ratio: Optional[float] = None
+    operating_margin_pct: Optional[float] = None
+    margin_trend_yoy_bps: Optional[float] = None
+    debt_to_equity: Optional[float] = None
+    quality_score: int = Field(50, ge=0, le=100)
+
+
+class ValuationMultiples(BaseModel):
+    pe_ratio: Optional[float] = None
+    ps_ratio: Optional[float] = None
+    pb_ratio: Optional[float] = None
+    fcf_yield_pct: Optional[float] = None
+    dividend_yield_pct: Optional[float] = None
+    valuation_score: int = Field(50, ge=0, le=100)
+
+
+class DividendSafetyMetrics(BaseModel):
+    dividend_yield_pct: Optional[float] = None
+    payout_ratio_pct: Optional[float] = None
+    fcf_coverage: Optional[float] = None
+    safety_score: int = Field(50, ge=0, le=100)
+    safety_tier: Literal["HIGH_SAFETY", "MODERATE_SAFETY", "AT_RISK", "N/A_NO_DIVIDEND"] = "MODERATE_SAFETY"
+
+
+class FundamentalDossier(BaseModel):
+    symbol: str
+    as_of_date: str
+    filing_date: str
+    currency: str
+    fiscal_period: str
+    fiscal_year: int
+    quality: FundamentalQualityMetrics
+    valuation: ValuationMultiples
+    dividend_safety: DividendSafetyMetrics
+    composite_fundamental_score: int = Field(50, ge=0, le=100)
+    coverage_status: Literal["FULL", "PARTIAL", "INDEX_ETF_BYPASS"]
+    missing_fields: List[str] = Field(default_factory=list)
+    raw_concepts: Dict[str, float] = Field(default_factory=dict)
+    provenance_source: str = "SEC_EDGAR_XBRL"
+
+
 class NewsCluster(BaseModel):
     dedup_hash: str
     primary_security_id: Optional[int] = None

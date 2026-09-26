@@ -857,6 +857,7 @@
                     <button class="filter-btn active" onclick="filterMarket('ALL')">All Markets</button>
                     <button class="filter-btn" onclick="filterMarket('US')">United States</button>
                     <button class="filter-btn" onclick="filterMarket('CA')">Canada (TSX)</button>
+                    <button class="filter-btn" onclick="openFundamentalsAuditModal()" style="color: var(--accent-purple); border-color: rgba(168, 85, 247, 0.4);">📊 Fundamentals Coverage (P5)</button>
                 </div>
             </div>
 
@@ -867,6 +868,9 @@
                             <th>Security</th>
                             <th>Market Price</th>
                             <th>Opportunity Score</th>
+                            <th>Fund Score</th>
+                            <th>ROIC</th>
+                            <th>P/E</th>
                             <th>MTF Confluence</th>
                             <th>Value Area</th>
                             <th>Confidence</th>
@@ -1750,6 +1754,20 @@
         </form>
     </div>
 
+    <!-- Fundamentals Coverage Audit Matrix Modal (Phase 5 DoD) -->
+    <div class="modal-dialog" id="fundamentalsAuditModal" style="max-width: 840px;">
+        <div class="modal-header">
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <span class="dot-green"></span>
+                <h3 style="font-size: 16px; font-weight: 800; color: var(--text-primary); margin: 0;">Dual-Market Fundamentals &amp; Accounting Coverage Audit (Phase 5)</h3>
+            </div>
+            <button class="drawer-close" style="position: static;" onclick="closeAllModals()">&times;</button>
+        </div>
+        <div id="fundamentalsAuditContent">
+            <!-- Populated dynamically via JS -->
+        </div>
+    </div>
+
     <script>
         let fullLeaderboard = [];
         let currentMarketFilter = 'ALL';
@@ -1851,6 +1869,18 @@
                 const vaState = item.value_area_state || 'INSIDE_VALUE';
                 const vaColor = vaState === 'ABOVE_VALUE' ? 'var(--accent-cyan)' : (vaState === 'INSIDE_VALUE' ? 'var(--accent-green)' : 'var(--accent-amber)');
 
+                const fundScore = item.fundamental_score;
+                const isEtf = item.coverage_status === 'INDEX_ETF_BYPASS';
+                const fundColor = fundScore >= 65 ? 'var(--accent-green)' : (fundScore >= 45 ? 'var(--accent-blue)' : 'var(--accent-amber)');
+                const fundDisplay = isEtf 
+                    ? `<span class="exchange-tag" style="font-size: 10px; color: var(--accent-blue);">ETF BYPASS</span>`
+                    : (fundScore != null 
+                        ? `<div><span style="font-weight: 800; color: ${fundColor}; font-size: 12px;">${fundScore}/100</span><div style="font-size: 9px; color: var(--text-muted);">Q:${item.quality_score} · V:${item.valuation_score}</div></div>`
+                        : `<span style="color: var(--text-muted); font-size: 11px;">N/A</span>`);
+
+                const roicDisplay = item.roic != null ? `<span style="font-family: monospace; font-weight: 700;">${item.roic.toFixed(1)}%</span>` : `<span style="color: var(--text-muted);">-</span>`;
+                const peDisplay = item.pe_ratio != null ? `<span style="font-family: monospace;">${item.pe_ratio.toFixed(1)}x</span>` : `<span style="color: var(--text-muted);">-</span>`;
+
                 tr.innerHTML = `
                     <td>
                         <div class="symbol-badge">
@@ -1866,6 +1896,15 @@
                         <div class="score-box">
                             <span class="score-pill ${scoreClass}">${item.composite_score}/100</span>
                         </div>
+                    </td>
+                    <td>
+                        ${fundDisplay}
+                    </td>
+                    <td>
+                        ${roicDisplay}
+                    </td>
+                    <td>
+                        ${peDisplay}
                     </td>
                     <td>
                         <div style="font-size: 12px; font-weight: 700; color: ${confColor};">${confScore}%</div>
@@ -2538,6 +2577,17 @@
                         </div>
                     </div>
 
+                    <!-- Phase 5 Fundamental Engine & Valuation Lab -->
+                    <div style="margin-top: 24px;">
+                        <h3 style="font-size: 13px; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
+                            <span>Fundamental Engine &amp; Valuation Lab (Phase 5)</span>
+                            <span class="exchange-tag" style="font-size: 10px; color: var(--accent-purple);">PIT XBRL Audited</span>
+                        </h3>
+                        <div id="drawerFundamentalsSection">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+                    </div>
+
                     <!-- Historical Strategy Backtest History for this Symbol -->
                     <div style="margin-top: 24px;">
                         <h3 style="font-size: 13px; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 8px;">
@@ -2562,6 +2612,9 @@
 
                 // Render Phase 4 Technical Engine Lab
                 renderTechnicalEngineInDrawer(data.technical_dossier);
+
+                // Render Phase 5 Fundamental Engine & Valuation Lab
+                renderFundamentalsInDrawer(data.fundamental_dossier);
 
                 // Render symbol backtest history if bundle loaded
                 renderSymbolBacktestInDrawer(data.symbol);
@@ -2804,6 +2857,155 @@
                         </div>
                     </div>
                 </div>
+            `;
+        }
+
+        function renderFundamentalsInDrawer(fd) {
+            const container = document.getElementById('drawerFundamentalsSection');
+            if (!container) return;
+
+            if (!fd) {
+                container.innerHTML = '<div style="font-size: 11px; color: var(--text-muted); padding: 8px;">No fundamental data available for this instrument.</div>';
+                return;
+            }
+
+            if (fd.coverage_status === 'INDEX_ETF_BYPASS') {
+                container.innerHTML = `
+                    <div style="background: rgba(15, 23, 42, 0.5); border: 1px solid var(--border-color); border-radius: 6px; padding: 12px; font-size: 12px;">
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+                            <span class="exchange-tag" style="background: rgba(59, 130, 246, 0.15); color: var(--accent-blue); font-weight: 700;">INDEX ETF BYPASS</span>
+                            <span style="font-weight: 700; color: var(--text-primary);">Composite Index Benchmark Instrument</span>
+                        </div>
+                        <div style="color: var(--text-secondary); font-size: 11px; line-height: 1.5;">
+                            This security is an Index Exchange-Traded Fund (ETF). Corporate 10-K/10-Q balance sheet concepts are structurally non-applicable.
+                            The Scoring Engine automatically renormalizes 100% of the raw model weight to tactical technical and trend factors, preventing ungrounded fundamental dilution.
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+
+            const q = fd.quality || {};
+            const v = fd.valuation || {};
+            const ds = fd.dividend_safety || {};
+
+            const fScore = fd.composite_fundamental_score || 50;
+            const qScore = q.quality_score || 50;
+            const vScore = v.valuation_score || 50;
+
+            const fScoreColor = fScore >= 65 ? 'var(--accent-green)' : (fScore >= 45 ? 'var(--accent-blue)' : 'var(--accent-amber)');
+            const covStatus = fd.coverage_status || 'FULL';
+            const covTagColor = covStatus === 'FULL' ? 'var(--accent-green)' : 'var(--accent-amber)';
+
+            const accrualsClass = (q.accruals_ratio != null && q.accruals_ratio < 0) ? 'color: var(--accent-green);' : (q.accruals_ratio > 0.05 ? 'color: var(--accent-amber);' : '');
+            const accrualsDesc = (q.accruals_ratio != null && q.accruals_ratio < 0) ? 'Cash-Backed' : (q.accruals_ratio > 0.05 ? 'Accrual-Heavy' : 'Neutral');
+
+            const marginTrendColor = (q.margin_trend_yoy_bps != null && q.margin_trend_yoy_bps >= 0) ? 'var(--accent-green)' : 'var(--accent-red)';
+            const marginTrendSign = (q.margin_trend_yoy_bps != null && q.margin_trend_yoy_bps >= 0) ? '+' : '';
+
+            // Missing concepts rendering
+            let missingNotice = '';
+            if (fd.missing_fields && fd.missing_fields.length > 0) {
+                missingNotice = `
+                    <div style="margin-top: 10px; padding: 8px 10px; background: rgba(245, 158, 11, 0.08); border-radius: 4px; border: 1px solid rgba(245, 158, 11, 0.25); font-size: 11px;">
+                        <span style="font-weight: 700; color: var(--accent-amber);">Canadian Reporting Gap Transparency:</span>
+                        <span style="color: var(--text-secondary);"> Non-reported concepts: <code>${fd.missing_fields.join(', ')}</code>. Weights automatically renormalized across active factors without silent defaults.</span>
+                    </div>
+                `;
+            }
+
+            container.innerHTML = `
+                <!-- Fundamental Header -->
+                <div style="display: flex; justify-content: space-between; align-items: center; background: var(--bg-card); padding: 10px 14px; border-radius: 6px; border: 1px solid var(--border-color); margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+                    <div>
+                        <div style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Fundamental Opportunity Score</div>
+                        <div style="font-size: 16px; font-weight: 800; color: ${fScoreColor}; margin-top: 2px;">
+                            ${fScore}/100 <span style="font-size: 12px; color: var(--text-secondary); font-weight: 600;">(Quality: ${qScore} · Valuation: ${vScore})</span>
+                        </div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="display: flex; gap: 6px; justify-content: flex-end; align-items: center;">
+                            <span class="exchange-tag" style="color: ${covTagColor}; font-weight: 800;">${covStatus} COVERAGE</span>
+                            <span class="exchange-tag" style="font-size: 10px;">${fd.fiscal_period} ${fd.fiscal_year}</span>
+                        </div>
+                        <div style="font-size: 10px; color: var(--text-muted); margin-top: 4px; font-family: monospace;">Filing: ${fd.filing_date} (${fd.provenance_source})</div>
+                    </div>
+                </div>
+
+                <!-- Quality & Valuation Grids -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px;">
+                    <!-- Business Quality Metrics -->
+                    <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 6px; padding: 10px; font-size: 11px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                            <span style="text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Business Quality</span>
+                            <span class="exchange-tag" style="color: var(--accent-green); font-size: 10px; font-weight: 700;">Rank ${qScore}/100</span>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 5px;">
+                            <div style="display: flex; justify-content: space-between;">
+                                <span style="color: var(--text-secondary);">ROIC (Invested Capital):</span>
+                                <strong style="font-family: monospace;">${q.roic != null ? q.roic.toFixed(2) + '%' : 'N/A'}</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span style="color: var(--text-secondary);">Return on Equity (ROE):</span>
+                                <strong style="font-family: monospace;">${q.roe != null ? q.roe.toFixed(2) + '%' : 'N/A'}</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span style="color: var(--text-secondary);">Operating Margin:</span>
+                                <strong style="font-family: monospace;">${q.operating_margin_pct != null ? q.operating_margin_pct.toFixed(1) + '%' : 'N/A'}</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span style="color: var(--text-secondary);">Margin YoY Trend:</span>
+                                <strong style="font-family: monospace; color: ${marginTrendColor};">${q.margin_trend_yoy_bps != null ? marginTrendSign + q.margin_trend_yoy_bps.toFixed(0) + ' bps' : 'N/A'}</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span style="color: var(--text-secondary);">Sloan Accruals Ratio:</span>
+                                <strong style="font-family: monospace; ${accrualsClass}">${q.accruals_ratio != null ? q.accruals_ratio.toFixed(3) + ' (' + accrualsDesc + ')' : 'N/A'}</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span style="color: var(--text-secondary);">Debt-to-Equity (D/E):</span>
+                                <strong style="font-family: monospace;">${q.debt_to_equity != null ? q.debt_to_equity.toFixed(2) + 'x' : 'N/A'}</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Valuation & Dividend Safety -->
+                    <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 6px; padding: 10px; font-size: 11px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                            <span style="text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Valuation &amp; Yields</span>
+                            <span class="exchange-tag" style="color: var(--accent-cyan); font-size: 10px; font-weight: 700;">Value ${vScore}/100</span>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 5px;">
+                            <div style="display: flex; justify-content: space-between;">
+                                <span style="color: var(--text-secondary);">Trailing P/E:</span>
+                                <strong style="font-family: monospace;">${v.pe_ratio != null ? v.pe_ratio.toFixed(1) + 'x' : 'N/A'}</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span style="color: var(--text-secondary);">Price-to-Sales (P/S):</span>
+                                <strong style="font-family: monospace;">${v.ps_ratio != null ? v.ps_ratio.toFixed(1) + 'x' : 'N/A'}</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span style="color: var(--text-secondary);">Price-to-Book (P/B):</span>
+                                <strong style="font-family: monospace;">${v.pb_ratio != null ? v.pb_ratio.toFixed(1) + 'x' : 'N/A'}</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span style="color: var(--text-secondary);">FCF Yield:</span>
+                                <strong style="font-family: monospace; color: var(--accent-green);">${v.fcf_yield_pct != null ? v.fcf_yield_pct.toFixed(2) + '%' : 'N/A'}</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span style="color: var(--text-secondary);">Dividend Yield:</span>
+                                <strong style="font-family: monospace;">${v.dividend_yield_pct != null ? v.dividend_yield_pct.toFixed(2) + '%' : '0.0%'}</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 4px; margin-top: 2px;">
+                                <span style="color: var(--text-secondary);">Dividend Safety:</span>
+                                <span class="exchange-tag" style="font-size: 9px; font-weight: 800; color: ${ds.safety_score >= 70 ? 'var(--accent-green)' : (ds.safety_tier === 'N/A_NO_DIVIDEND' ? 'var(--text-muted)' : 'var(--accent-amber)')};">
+                                    ${(ds.safety_tier || 'N/A').replace(/_/g, ' ')} (${ds.safety_score || 50}/100)
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                ${missingNotice}
             `;
         }
 
@@ -4532,11 +4734,94 @@
             document.getElementById('jPosEntryDate').value = new Date().toISOString().split('T')[0];
         }
 
+        async function openFundamentalsAuditModal() {
+            const modal = document.getElementById('fundamentalsAuditModal');
+            const overlay = document.getElementById('modalOverlay');
+            const content = document.getElementById('fundamentalsAuditContent');
+
+            overlay.style.display = 'block';
+            modal.style.display = 'block';
+            content.innerHTML = '<div style="padding: 30px; text-align: center; color: var(--text-muted);">Auditing Point-In-Time Fundamentals coverage...</div>';
+
+            try {
+                const data = await fetchJson('/api/fundamentals_coverage.json', '/api/fundamentals_coverage');
+                const usStatusColor = data.us_dod_passed ? 'var(--accent-green)' : 'var(--accent-red)';
+                const caStatusColor = data.ca_dod_passed ? 'var(--accent-green)' : 'var(--accent-red)';
+
+                let rowsHtml = '';
+                data.matrix.forEach(row => {
+                    const stColor = row.status === 'FULL' ? 'var(--accent-green)' : (row.status === 'PARTIAL' ? 'var(--accent-amber)' : 'var(--accent-blue)');
+                    const missingText = (row.missing && row.missing.length > 0) ? `<code>${row.missing.join(', ')}</code>` : '<span style="color: var(--text-muted);">-</span>';
+                    rowsHtml += `
+                        <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05); font-size: 11px;">
+                            <td style="padding: 6px 10px; font-weight: 800; color: var(--text-primary); cursor: pointer;" onclick="closeAllModals(); openSymbol('${row.symbol}')">
+                                ${row.country === 'US' ? '🇺🇸' : '🇨🇦'} ${row.symbol}
+                            </td>
+                            <td style="padding: 6px 10px; color: var(--text-secondary);">${row.exchange}</td>
+                            <td style="padding: 6px 10px;">
+                                <span class="exchange-tag" style="color: ${stColor}; font-weight: 700; font-size: 10px;">${row.status.replace(/_/g, ' ')}</span>
+                            </td>
+                            <td style="padding: 6px 10px; text-align: right; font-weight: 700; font-family: monospace;">${row.fundamental_score}/100</td>
+                            <td style="padding: 6px 10px; text-align: right; font-family: monospace; color: var(--accent-green);">${row.quality_score}</td>
+                            <td style="padding: 6px 10px; text-align: right; font-family: monospace; color: var(--accent-cyan);">${row.valuation_score}</td>
+                            <td style="padding: 6px 10px; font-size: 10px;">${missingText}</td>
+                        </tr>
+                    `;
+                });
+
+                content.innerHTML = `
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
+                        <div style="background: var(--bg-card); padding: 12px; border-radius: 6px; border: 1px solid var(--border-color);">
+                            <div style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">US Core Equities Coverage (DoD &ge; 95%)</div>
+                            <div style="font-size: 20px; font-weight: 800; color: ${usStatusColor}; margin-top: 4px;">
+                                ${data.us_coverage_pct}% <span style="font-size: 12px; color: var(--text-muted); font-weight: 600;">(${data.us_covered_count} / ${data.us_core_count} covered)</span>
+                            </div>
+                            <div style="font-size: 10px; color: var(--text-secondary); margin-top: 4px;">SEC EDGAR 10-K/10-Q XBRL point-in-time canonical concepts</div>
+                        </div>
+                        <div style="background: var(--bg-card); padding: 12px; border-radius: 6px; border: 1px solid var(--border-color);">
+                            <div style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Canadian Core Equities Coverage (DoD &ge; 80%)</div>
+                            <div style="font-size: 20px; font-weight: 800; color: ${caStatusColor}; margin-top: 4px;">
+                                ${data.ca_coverage_pct}% <span style="font-size: 12px; color: var(--text-muted); font-weight: 600;">(${data.ca_covered_count} / ${data.ca_core_count} covered)</span>
+                            </div>
+                            <div style="font-size: 10px; color: var(--text-secondary); margin-top: 4px;">IFRS-Full + US-GAAP 40-F/6-K filing-date gated with weight renormalization</div>
+                        </div>
+                    </div>
+
+                    <div style="max-height: 260px; overflow-y: auto; border: 1px solid var(--border-color); border-radius: 6px; margin-bottom: 16px;">
+                        <table style="width: 100%; border-collapse: collapse; text-align: left;">
+                            <thead style="background: var(--bg-secondary); position: sticky; top: 0; font-size: 10px; text-transform: uppercase; color: var(--text-muted);">
+                                <tr>
+                                    <th style="padding: 6px 10px;">Security</th>
+                                    <th style="padding: 6px 10px;">Exch</th>
+                                    <th style="padding: 6px 10px;">Status</th>
+                                    <th style="padding: 6px 10px; text-align: right;">Fund Score</th>
+                                    <th style="padding: 6px 10px; text-align: right;">Quality</th>
+                                    <th style="padding: 6px 10px; text-align: right;">Valuation</th>
+                                    <th style="padding: 6px 10px;">Missing Concepts (Renormalized)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${rowsHtml}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div style="display: flex; justify-content: flex-end;">
+                        <button class="filter-btn" onclick="closeAllModals()">Close Audit Console</button>
+                    </div>
+                `;
+            } catch (err) {
+                content.innerHTML = '<div style="color: var(--accent-red); padding: 20px;">Failed to load fundamentals coverage audit.</div>';
+            }
+        }
+
         function closeAllModals() {
             document.getElementById('modalOverlay').style.display = 'none';
             document.getElementById('feedHealthModal').style.display = 'none';
             document.getElementById('consentModal').style.display = 'none';
             document.getElementById('journalEntryModal').style.display = 'none';
+            const fModal = document.getElementById('fundamentalsAuditModal');
+            if (fModal) fModal.style.display = 'none';
         }
 
         function toggleAttestation() {

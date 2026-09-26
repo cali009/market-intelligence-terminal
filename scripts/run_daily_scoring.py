@@ -16,6 +16,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from src.data.db import db
 from src.engine.technicals import TechnicalAnalysisEngine
 from src.engine.scoring import scoring_engine
+from src.engine.fundamentals import FundamentalAnalysisEngine
 
 
 def run_scoring(horizon: str = "POSITION"):
@@ -26,6 +27,16 @@ def run_scoring(horizon: str = "POSITION"):
     print(f" US + CANADA DUAL-MARKET QUANTITATIVE INTELLIGENCE TERMINAL — {date.today().isoformat()}")
     print(f" Horizon: {horizon} | Model: 2026.1-factor8 | Provenance: 100% Deterministic")
     print(f"{'='*95}\n")
+
+    print(">>> STEP 1: Evaluating Point-In-Time Fundamentals & Valuation...")
+    fund_records = FundamentalAnalysisEngine.evaluate_universe_fundamentals()
+    fund_map = {}
+    for fr in fund_records:
+        sec_id = fr["security_id"]
+        fund_map[sec_id] = fr
+        if not fr.get("is_etf"):
+            FundamentalAnalysisEngine.persist_fundamental_metric(fr)
+    print(f"    Evaluated {len(fund_records)} securities (US + Canada). Persisted fundamental metrics.\n")
 
     results = []
 
@@ -50,11 +61,14 @@ def run_scoring(horizon: str = "POSITION"):
         df = pd.DataFrame(bars_data)
         metrics = TechnicalAnalysisEngine.get_latest_feature_snapshot(df)
 
-        # In Sprint 1, evaluate with baseline regime multiplier
+        # Get PIT fundamental score (None for Index ETFs)
+        fr = fund_map.get(sec_id)
+        fund_score = fr["composite_fundamental_score"] if (fr and not fr.get("is_etf")) else None
+
         score_rec = scoring_engine.evaluate_security(
             security_id=sec_id,
             metrics=metrics,
-            fundamental_score=65,  # Baseline neutral fundamental
+            fundamental_score=fund_score,
             regime_state="WEAK_BULL",
             regime_multiplier=1.00,
             news_contribution=0.0,
@@ -73,6 +87,7 @@ def run_scoring(horizon: str = "POSITION"):
             ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ON CONFLICT(security_id, as_of_date) DO UPDATE SET
                 technical_score=excluded.technical_score,
+                fundamental_score=excluded.fundamental_score,
                 composite_score=excluded.composite_score,
                 confidence_tier=excluded.confidence_tier,
                 factor_attribution_json=excluded.factor_attribution_json

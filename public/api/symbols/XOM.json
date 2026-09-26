@@ -5,7 +5,7 @@
   "currency": "USD",
   "name": "Exxon Mobil Corporation",
   "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T00:18:17.776706+00:00",
+  "generated_at": "2026-09-26T00:48:50.439649+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 160.22999572753906,
@@ -305,10 +305,50 @@
     "confluence_label": "MODERATE_BULLISH_ALIGNMENT",
     "feature_version": "v4.0"
   },
+  "fundamental_dossier": {
+    "symbol": "XOM",
+    "as_of_date": "2026-09-26",
+    "filing_date": "2026-05-04",
+    "currency": "USD",
+    "fiscal_period": "Q1",
+    "fiscal_year": 2026,
+    "coverage_status": "PARTIAL",
+    "quality": {
+      "roic": 1.45,
+      "roe": 1.64,
+      "accruals_ratio": -0.0097,
+      "operating_margin_pct": 5.18,
+      "margin_trend_yoy_bps": -2930.4,
+      "debt_to_equity": 0.13,
+      "quality_score": 20
+    },
+    "valuation": {
+      "pe_ratio": 159.13,
+      "ps_ratio": 8.24,
+      "pb_ratio": 2.62,
+      "fcf_yield_pct": 1.31,
+      "dividend_yield_pct": 0.65,
+      "valuation_score": 42
+    },
+    "dividend_safety": {
+      "dividend_yield_pct": 0.65,
+      "payout_ratio_pct": 103.6,
+      "fcf_coverage": 2.01,
+      "safety_score": 40,
+      "safety_tier": "AT_RISK"
+    },
+    "composite_fundamental_score": 29,
+    "missing_fields": [
+      "OperatingIncome"
+    ],
+    "provenance_source": "SEC_EDGAR_XBRL",
+    "point_in_time_verified": true
+  },
   "score_record": {
-    "composite_score": 64,
+    "composite_score": 54,
     "confidence_tier": "B",
     "technical_score": 58,
+    "fundamental_score": 29,
     "risk_penalty": 0.0,
     "factor_attribution": {
       "horizon": "POSITION",
@@ -319,7 +359,7 @@
       "mtf_alignment_score": 2.5,
       "volatility_fit_score": 5.0,
       "technical_score": 58,
-      "fundamental_score": 65,
+      "fundamental_score": 29,
       "regime_multiplier": 1.05,
       "news_contribution": 0.8,
       "sector_contribution": 0.0,
@@ -367,8 +407,8 @@
   },
   "ai_explanation": {
     "FACT": "XOM (NYSE - Exxon Mobil Corporation) closed at $160.59 USD. Trading within -9.0% of its 52-week high with a 14-day ATR of 2.5%. The primary exchange session traded on volume of 9,579,407 shares.",
-    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 64/100 (Confidence Tier B). Technical Factor sub-score: 58/100 (14-day RSI: 48.7, 20-day RVOL: 0.66x). Risk penalty applied: -0.0 points. Modulated by the STRONG_BULL macro regime.",
-    "INFERENCE": "Historical setups exhibiting stacked moving averages and low-bandwidth consolidation during a STRONG_BULL regime showed positive forward expectancy across 64% of walk-forward folds. Relative strength ranks in the upper quartile of the current dual-market universe.",
+    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 54/100 (Confidence Tier B). Technical Factor sub-score: 58/100 (14-day RSI: 48.7, 20-day RVOL: 0.66x). Risk penalty applied: -0.0 points. Modulated by the STRONG_BULL macro regime.",
+    "INFERENCE": "Current technical structure reflects neutral consolidation. Setup geometry indicates digestive trading range with no confirmed directional expansion.",
     "UNCERTAINTY": "Risks include broader market sentiment deterioration in the STRONG_BULL environment. A daily close below technical support at $147.99 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
   },
   "active_scanner_matches": [

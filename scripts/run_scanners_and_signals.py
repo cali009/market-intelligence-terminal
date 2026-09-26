@@ -19,6 +19,7 @@ from src.engine.scoring import scoring_engine
 from src.engine.regime import regime_classifier
 from src.engine.scanners import market_scanners
 from src.engine.signals import signal_engine
+from src.engine.fundamentals import FundamentalAnalysisEngine
 
 
 def evaluate_market_regimes():
@@ -82,6 +83,13 @@ def run_full_pipeline():
     all_scanner_matches = []
     generated_signals = []
 
+    print("Evaluating Point-In-Time Fundamentals & Valuation Ratios...")
+    fund_records = FundamentalAnalysisEngine.evaluate_universe_fundamentals()
+    fund_map = {fr["security_id"]: fr for fr in fund_records}
+    for fr in fund_records:
+        if not fr.get("is_etf"):
+            FundamentalAnalysisEngine.persist_fundamental_metric(fr)
+
     for s in securities:
         sec_id = s["security_id"]
         sym = s["symbol"]
@@ -109,10 +117,13 @@ def run_full_pipeline():
         multiplier = regime_info.regime_multiplier if regime_info else 1.0
         regime_name = regime_info.regime_state if regime_info else "WEAK_BULL"
 
+        fr = fund_map.get(sec_id)
+        fund_score = fr["composite_fundamental_score"] if (fr and not fr.get("is_etf")) else None
+
         score_rec = scoring_engine.evaluate_security(
             security_id=sec_id,
             metrics=m,
-            fundamental_score=65,
+            fundamental_score=fund_score,
             regime_state=regime_name,
             regime_multiplier=multiplier,
             horizon="POSITION",

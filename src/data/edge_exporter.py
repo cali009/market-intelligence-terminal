@@ -26,6 +26,7 @@ from src.engine.signals import signal_engine
 from src.engine.explanations import explanation_engine
 from src.engine.news_engine import news_engine
 from src.engine.journal import journal_engine
+from src.engine.fundamentals import FundamentalAnalysisEngine
 
 FEEDS_DIR = DATA_DIR / "feeds"
 DIST_DIR = DATA_DIR / "dist"
@@ -101,6 +102,18 @@ class EdgeExporter:
         news_engine.persist_news_to_database(master_catalysts)
         news_engine.persist_calendar_to_database(event_calendar)
 
+        # Step 2: Evaluate Point-In-Time Fundamentals & Valuation Ratios
+        fund_records = FundamentalAnalysisEngine.evaluate_universe_fundamentals(as_of_date)
+        fund_map = {}
+        for fr in fund_records:
+            sec_id = fr["security_id"]
+            fund_map[sec_id] = fr
+            if not fr.get("is_etf"):
+                try:
+                    FundamentalAnalysisEngine.persist_fundamental_metric(fr)
+                except Exception as e:
+                    print(f"Warning: Failed to persist fundamental_metric for {fr['symbol']}: {e}")
+
         for s in securities:
             sec_id = s["security_id"]
             sym = s["symbol"]
@@ -133,6 +146,11 @@ class EdgeExporter:
             except Exception as e:
                 print(f"Warning: Failed to persist feature_store for {sym}: {e}")
 
+            # Phase 5 Fundamental Engine: Quality Ratios, Valuation Multiples & Dividend Safety
+            fr = fund_map.get(sec_id)
+            fund_dossier = FundamentalAnalysisEngine.compile_fundamental_dossier(fr) if fr else None
+            fund_score = fr["composite_fundamental_score"] if (fr and not fr.get("is_etf")) else None
+
             # Catalysts & news contribution for this security
             sym_catalysts = [e.model_dump() for e in master_catalysts if e.symbol == sym]
             news_pts = round(sum(e.get("score_impact_pts", 0.0) for e in sym_catalysts[:3]), 1)
@@ -146,7 +164,7 @@ class EdgeExporter:
             score_rec = scoring_engine.evaluate_security(
                 security_id=sec_id,
                 metrics=metrics,
-                fundamental_score=65,
+                fundamental_score=fund_score,
                 regime_state=regime_name,
                 regime_multiplier=multiplier,
                 news_contribution=news_pts,
@@ -228,6 +246,12 @@ class EdgeExporter:
                 "value_area_state": tech_dossier["volume_profile"]["value_area_state"],
                 "poc_price": tech_dossier["volume_profile"]["poc_price"],
                 "trend_structure": tech_dossier["trend_structure"]["trend_structure"],
+                "fundamental_score": fr["composite_fundamental_score"] if fr else None,
+                "quality_score": fr["quality_score"] if fr else None,
+                "valuation_score": fr["valuation_score"] if fr else None,
+                "coverage_status": fr["coverage_status"] if fr else "UNKNOWN",
+                "roic": fr["quality_ratios"].get("roic") if fr else None,
+                "pe_ratio": fr["valuation_multiples"].get("pe_ratio") if fr else None,
             })
 
             # Write Symbol Detail JSON (includes last 120 bars for lightweight charting)
@@ -253,10 +277,12 @@ class EdgeExporter:
                 "generated_at": generated_at,
                 "latest_metrics": metrics,
                 "technical_dossier": tech_dossier,
+                "fundamental_dossier": fund_dossier,
                 "score_record": {
                     "composite_score": score_rec.composite_score,
                     "confidence_tier": score_rec.confidence_tier,
                     "technical_score": score_rec.technical_score,
+                    "fundamental_score": score_rec.fundamental_score,
                     "risk_penalty": score_rec.risk_penalty,
                     "factor_attribution": score_rec.factor_attribution_json,
                 },
@@ -391,8 +417,13 @@ class EdgeExporter:
             with open(d_dir / "feed_health.json", "w") as f:
                 json.dump(feed_health_payload, f, indent=2)
 
+            # Phase 5 Fundamentals Coverage Report
+            coverage_report = FundamentalAnalysisEngine.generate_coverage_report(as_of_date)
+            with open(d_dir / "fundamentals_coverage.json", "w") as f:
+                json.dump(coverage_report, f, indent=2)
+
         return {
-            "dist_files": 8,
+            "dist_files": 9,
             "symbol_files": symbol_files_count,
             "total_matches": len(scanner_results),
             "total_signals": len(signals_list),

@@ -1,6 +1,6 @@
 {
   "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T00:18:17.776706+00:00",
+  "generated_at": "2026-09-26T00:48:50.439649+00:00",
   "total_active_signals": 12,
   "signals": [
     {
@@ -8,7 +8,7 @@
       "exchange": "NASDAQ",
       "name": "Apple Inc.",
       "currency": "USD",
-      "composite_score": 68,
+      "composite_score": 65,
       "confidence_tier": "B",
       "direction": "LONG",
       "preferred_entry": 341.07,
@@ -50,7 +50,7 @@
       "exchange": "NASDAQ",
       "name": "Microsoft Corporation",
       "currency": "USD",
-      "composite_score": 63,
+      "composite_score": 66,
       "confidence_tier": "B",
       "direction": "LONG",
       "preferred_entry": 516.17,
@@ -92,7 +92,7 @@
       "exchange": "NASDAQ",
       "name": "NVIDIA Corporation",
       "currency": "USD",
-      "composite_score": 67,
+      "composite_score": 65,
       "confidence_tier": "B",
       "direction": "LONG",
       "preferred_entry": 225.07,
@@ -130,53 +130,11 @@
       ]
     },
     {
-      "symbol": "AMZN",
-      "exchange": "NASDAQ",
-      "name": "Amazon.com Inc.",
-      "currency": "USD",
-      "composite_score": 53,
-      "confidence_tier": "B",
-      "direction": "LONG",
-      "preferred_entry": 249.67,
-      "entry_zone": [
-        251.76,
-        250.73
-      ],
-      "structural_stop": 237.96,
-      "targets": [
-        268.41,
-        280.12,
-        296.51
-      ],
-      "risk_reward_ratio": 2.6,
-      "invalidation_predicates": [
-        {
-          "predicate": "DAILY_CLOSE_BELOW_LEVEL",
-          "level": 237.96,
-          "description": "Daily closing price finishes below structural stop loss of 237.96"
-        },
-        {
-          "predicate": "RVOL_COLLAPSE",
-          "threshold": 0.4,
-          "description": "20-day Relative Volume drops below 0.40x indicating liquidity desertion"
-        },
-        {
-          "predicate": "EARNINGS_ANNOUNCEMENT_EVENT",
-          "buffer_sessions": 2,
-          "description": "Filing within 2 trading sessions triggers event risk de-risking protocol"
-        }
-      ],
-      "risk_notes": [
-        "Daily ATR volatility is 2.1%; position sizing must calibrate to $11.71/share risk.",
-        "Stop loss is positioned 4.7% below preferred entry price."
-      ]
-    },
-    {
       "symbol": "GOOGL",
       "exchange": "NASDAQ",
       "name": "Alphabet Inc.",
       "currency": "USD",
-      "composite_score": 52,
+      "composite_score": 50,
       "confidence_tier": "B",
       "direction": "LONG",
       "preferred_entry": 343.92,
@@ -218,7 +176,7 @@
       "exchange": "NYSE",
       "name": "JPMorgan Chase & Co.",
       "currency": "USD",
-      "composite_score": 56,
+      "composite_score": 52,
       "confidence_tier": "B",
       "direction": "LONG",
       "preferred_entry": 343.06,
@@ -260,7 +218,7 @@
       "exchange": "NYSE",
       "name": "Exxon Mobil Corporation",
       "currency": "USD",
-      "composite_score": 64,
+      "composite_score": 54,
       "confidence_tier": "B",
       "direction": "LONG",
       "preferred_entry": 160.59,
@@ -302,8 +260,8 @@
       "exchange": "AMEX",
       "name": "SPDR S&P 500 ETF Trust",
       "currency": "USD",
-      "composite_score": 60,
-      "confidence_tier": "B",
+      "composite_score": 76,
+      "confidence_tier": "A",
       "direction": "LONG",
       "preferred_entry": 771.35,
       "entry_zone": [
@@ -344,8 +302,8 @@
       "exchange": "NASDAQ",
       "name": "Invesco QQQ Trust",
       "currency": "USD",
-      "composite_score": 64,
-      "confidence_tier": "B",
+      "composite_score": 84,
+      "confidence_tier": "A",
       "direction": "LONG",
       "preferred_entry": 744.5,
       "entry_zone": [
@@ -386,7 +344,7 @@
       "exchange": "TSX",
       "name": "Toronto-Dominion Bank",
       "currency": "CAD",
-      "composite_score": 62,
+      "composite_score": 56,
       "confidence_tier": "B",
       "direction": "LONG",
       "preferred_entry": 170.69,
@@ -428,7 +386,7 @@
       "exchange": "TSX",
       "name": "Canadian National Railway",
       "currency": "CAD",
-      "composite_score": 52,
+      "composite_score": 50,
       "confidence_tier": "B",
       "direction": "LONG",
       "preferred_entry": 170.9,
@@ -466,11 +424,53 @@
       ]
     },
     {
+      "symbol": "CNQ",
+      "exchange": "TSX",
+      "name": "Canadian Natural Resources",
+      "currency": "CAD",
+      "composite_score": 53,
+      "confidence_tier": "B",
+      "direction": "LONG",
+      "preferred_entry": 67.17,
+      "entry_zone": [
+        68.88,
+        67.53
+      ],
+      "structural_stop": 63.22,
+      "targets": [
+        73.49,
+        77.44,
+        82.97
+      ],
+      "risk_reward_ratio": 2.6,
+      "invalidation_predicates": [
+        {
+          "predicate": "DAILY_CLOSE_BELOW_LEVEL",
+          "level": 63.22,
+          "description": "Daily closing price finishes below structural stop loss of 63.22"
+        },
+        {
+          "predicate": "RVOL_COLLAPSE",
+          "threshold": 0.4,
+          "description": "20-day Relative Volume drops below 0.40x indicating liquidity desertion"
+        },
+        {
+          "predicate": "EARNINGS_ANNOUNCEMENT_EVENT",
+          "buffer_sessions": 2,
+          "description": "Filing within 2 trading sessions triggers event risk de-risking protocol"
+        }
+      ],
+      "risk_notes": [
+        "Daily ATR volatility is 2.7%; position sizing must calibrate to $3.95/share risk.",
+        "Stop loss is positioned 5.9% below preferred entry price."
+      ]
+    },
+    {
       "symbol": "XIU",
       "exchange": "TSX",
       "name": "iShares S&P/TSX 60 Index ETF",
       "currency": "CAD",
-      "composite_score": 52,
+      "composite_score": 63,
       "confidence_tier": "B",
       "direction": "LONG",
       "preferred_entry": 53.08,

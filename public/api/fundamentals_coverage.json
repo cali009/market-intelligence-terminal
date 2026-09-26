@@ -1,0 +1,225 @@
+{
+  "as_of_date": "2026-09-26",
+  "us_core_count": 7,
+  "us_covered_count": 7,
+  "us_coverage_pct": 100.0,
+  "us_dod_passed": true,
+  "ca_core_count": 9,
+  "ca_covered_count": 9,
+  "ca_coverage_pct": 100.0,
+  "ca_dod_passed": true,
+  "total_coverage_passed": true,
+  "matrix": [
+    {
+      "symbol": "AAPL",
+      "country": "US",
+      "exchange": "NASDAQ",
+      "status": "FULL",
+      "missing": [],
+      "fundamental_score": 57,
+      "quality_score": 77,
+      "valuation_score": 26
+    },
+    {
+      "symbol": "MSFT",
+      "country": "US",
+      "exchange": "NASDAQ",
+      "status": "FULL",
+      "missing": [],
+      "fundamental_score": 78,
+      "quality_score": 84,
+      "valuation_score": 69
+    },
+    {
+      "symbol": "NVDA",
+      "country": "US",
+      "exchange": "NASDAQ",
+      "status": "FULL",
+      "missing": [],
+      "fundamental_score": 57,
+      "quality_score": 79,
+      "valuation_score": 23
+    },
+    {
+      "symbol": "AMZN",
+      "country": "US",
+      "exchange": "NASDAQ",
+      "status": "PARTIAL",
+      "missing": [
+        "DividendsPaid"
+      ],
+      "fundamental_score": 49,
+      "quality_score": 46,
+      "valuation_score": 53
+    },
+    {
+      "symbol": "GOOGL",
+      "country": "US",
+      "exchange": "NASDAQ",
+      "status": "FULL",
+      "missing": [],
+      "fundamental_score": 57,
+      "quality_score": 66,
+      "valuation_score": 44
+    },
+    {
+      "symbol": "JPM",
+      "country": "US",
+      "exchange": "NYSE",
+      "status": "PARTIAL",
+      "missing": [
+        "OperatingIncome",
+        "TotalDebt"
+      ],
+      "fundamental_score": 49,
+      "quality_score": 43,
+      "valuation_score": 57
+    },
+    {
+      "symbol": "XOM",
+      "country": "US",
+      "exchange": "NYSE",
+      "status": "PARTIAL",
+      "missing": [
+        "OperatingIncome"
+      ],
+      "fundamental_score": 29,
+      "quality_score": 20,
+      "valuation_score": 42
+    },
+    {
+      "symbol": "SPY",
+      "country": "US",
+      "exchange": "AMEX",
+      "status": "INDEX_ETF_BYPASS",
+      "missing": [],
+      "fundamental_score": 50,
+      "quality_score": 50,
+      "valuation_score": 50
+    },
+    {
+      "symbol": "QQQ",
+      "country": "US",
+      "exchange": "NASDAQ",
+      "status": "INDEX_ETF_BYPASS",
+      "missing": [],
+      "fundamental_score": 50,
+      "quality_score": 50,
+      "valuation_score": 50
+    },
+    {
+      "symbol": "RY",
+      "country": "CA",
+      "exchange": "TSX",
+      "status": "PARTIAL",
+      "missing": [
+        "TotalDebt"
+      ],
+      "fundamental_score": 56,
+      "quality_score": 52,
+      "valuation_score": 61
+    },
+    {
+      "symbol": "TD",
+      "country": "CA",
+      "exchange": "TSX",
+      "status": "PARTIAL",
+      "missing": [
+        "OperatingIncome",
+        "TotalDebt"
+      ],
+      "fundamental_score": 43,
+      "quality_score": 31,
+      "valuation_score": 62
+    },
+    {
+      "symbol": "SHOP",
+      "country": "CA",
+      "exchange": "TSX",
+      "status": "PARTIAL",
+      "missing": [
+        "TotalDebt",
+        "DividendsPaid"
+      ],
+      "fundamental_score": 34,
+      "quality_score": 48,
+      "valuation_score": 12
+    },
+    {
+      "symbol": "ENB",
+      "country": "CA",
+      "exchange": "TSX",
+      "status": "FULL",
+      "missing": [],
+      "fundamental_score": 51,
+      "quality_score": 46,
+      "valuation_score": 59
+    },
+    {
+      "symbol": "CNR",
+      "country": "CA",
+      "exchange": "TSX",
+      "status": "FULL",
+      "missing": [],
+      "fundamental_score": 60,
+      "quality_score": 54,
+      "valuation_score": 69
+    },
+    {
+      "symbol": "CNQ",
+      "country": "CA",
+      "exchange": "TSX",
+      "status": "FULL",
+      "missing": [],
+      "fundamental_score": 86,
+      "quality_score": 86,
+      "valuation_score": 86
+    },
+    {
+      "symbol": "BN",
+      "country": "CA",
+      "exchange": "TSX",
+      "status": "PARTIAL",
+      "missing": [
+        "OperatingIncome",
+        "DividendsPaid"
+      ],
+      "fundamental_score": 53,
+      "quality_score": 28,
+      "valuation_score": 90
+    },
+    {
+      "symbol": "BAM",
+      "country": "CA",
+      "exchange": "TSX",
+      "status": "PARTIAL",
+      "missing": [
+        "OperatingIncome",
+        "TotalDebt"
+      ],
+      "fundamental_score": 61,
+      "quality_score": 62,
+      "valuation_score": 60
+    },
+    {
+      "symbol": "CP",
+      "country": "CA",
+      "exchange": "TSX",
+      "status": "FULL",
+      "missing": [],
+      "fundamental_score": 33,
+      "quality_score": 29,
+      "valuation_score": 38
+    },
+    {
+      "symbol": "XIU",
+      "country": "CA",
+      "exchange": "TSX",
+      "status": "INDEX_ETF_BYPASS",
+      "missing": [],
+      "fundamental_score": 50,
+      "quality_score": 50,
+      "valuation_score": 50
+    }
+  ]
+}

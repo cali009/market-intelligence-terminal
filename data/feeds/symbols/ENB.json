@@ -5,7 +5,7 @@
   "currency": "CAD",
   "name": "Enbridge Inc.",
   "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T00:21:49.516573+00:00",
+  "generated_at": "2026-09-26T00:48:50.439649+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 66.8499984741211,
@@ -302,10 +302,48 @@
     "confluence_label": "BEARISH_DIVERGENCE",
     "feature_version": "v4.0"
   },
+  "fundamental_dossier": {
+    "symbol": "ENB",
+    "as_of_date": "2026-09-26",
+    "filing_date": "2026-07-31",
+    "currency": "CAD",
+    "fiscal_period": "Q2",
+    "fiscal_year": 2026,
+    "coverage_status": "FULL",
+    "quality": {
+      "roic": 2.28,
+      "roe": 2.3,
+      "accruals_ratio": -0.0214,
+      "operating_margin_pct": 44.14,
+      "margin_trend_yoy_bps": 817.9,
+      "debt_to_equity": 0.01,
+      "quality_score": 46
+    },
+    "valuation": {
+      "pe_ratio": 96.49,
+      "ps_ratio": 21.97,
+      "pb_ratio": 2.22,
+      "fcf_yield_pct": 4.46,
+      "dividend_yield_pct": 2.92,
+      "valuation_score": 59
+    },
+    "dividend_safety": {
+      "dividend_yield_pct": 2.92,
+      "payout_ratio_pct": 282.2,
+      "fcf_coverage": 1.52,
+      "safety_score": 40,
+      "safety_tier": "AT_RISK"
+    },
+    "composite_fundamental_score": 51,
+    "missing_fields": [],
+    "provenance_source": "SEC_EDGAR_XBRL",
+    "point_in_time_verified": true
+  },
   "score_record": {
-    "composite_score": 31,
+    "composite_score": 28,
     "confidence_tier": "C",
     "technical_score": 24,
+    "fundamental_score": 51,
     "risk_penalty": 4.0,
     "factor_attribution": {
       "horizon": "POSITION",
@@ -316,7 +354,7 @@
       "mtf_alignment_score": 0.0,
       "volatility_fit_score": 5.0,
       "technical_score": 24,
-      "fundamental_score": 65,
+      "fundamental_score": 51,
       "regime_multiplier": 1.0,
       "news_contribution": 0.9,
       "sector_contribution": 0.0,
@@ -333,7 +371,7 @@
   "signal_plan": null,
   "ai_explanation": {
     "FACT": "ENB (TSX - Enbridge Inc.) closed at $66.13 CAD. Trading within -18.0% of its 52-week high with a 14-day ATR of 1.7%. The primary exchange session traded on volume of 6,564,958 shares.",
-    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 31/100 (Confidence Tier C). Technical Factor sub-score: 24/100 (14-day RSI: 30.5, 20-day RVOL: 0.70x). Risk penalty applied: -4.0 points. Modulated by the WEAK_BULL macro regime.",
+    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 28/100 (Confidence Tier C). Technical Factor sub-score: 24/100 (14-day RSI: 30.5, 20-day RVOL: 0.70x). Risk penalty applied: -4.0 points. Modulated by the WEAK_BULL macro regime.",
     "INFERENCE": "Securities trading below declining 200-day moving averages with elevated risk penalties have historically underperformed the broader index by 3.8% over forward 20-session windows.",
     "UNCERTAINTY": "Risks include broader market sentiment deterioration in the WEAK_BULL environment. A daily close below technical support at $72.26 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
   },

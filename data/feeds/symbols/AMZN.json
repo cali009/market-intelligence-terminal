@@ -5,7 +5,7 @@
   "currency": "USD",
   "name": "Amazon.com Inc.",
   "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T00:21:49.516573+00:00",
+  "generated_at": "2026-09-26T00:48:50.439649+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 248.55999755859375,
@@ -307,10 +307,50 @@
     "confluence_label": "MIXED_CONSOLIDATION",
     "feature_version": "v4.0"
   },
+  "fundamental_dossier": {
+    "symbol": "AMZN",
+    "as_of_date": "2026-09-26",
+    "filing_date": "2026-07-31",
+    "currency": "USD",
+    "fiscal_period": "Q2",
+    "fiscal_year": 2026,
+    "coverage_status": "PARTIAL",
+    "quality": {
+      "roic": 9.21,
+      "roe": 11.36,
+      "accruals_ratio": 0.0158,
+      "operating_margin_pct": 13.69,
+      "margin_trend_yoy_bps": 55.0,
+      "debt_to_equity": 0.23,
+      "quality_score": 46
+    },
+    "valuation": {
+      "pe_ratio": 43.45,
+      "ps_ratio": 13.57,
+      "pb_ratio": 4.93,
+      "fcf_yield_pct": 1.67,
+      "dividend_yield_pct": null,
+      "valuation_score": 53
+    },
+    "dividend_safety": {
+      "dividend_yield_pct": 0.0,
+      "payout_ratio_pct": null,
+      "fcf_coverage": null,
+      "safety_score": 50,
+      "safety_tier": "N/A_NO_DIVIDEND"
+    },
+    "composite_fundamental_score": 49,
+    "missing_fields": [
+      "DividendsPaid"
+    ],
+    "provenance_source": "SEC_EDGAR_XBRL",
+    "point_in_time_verified": true
+  },
   "score_record": {
-    "composite_score": 53,
-    "confidence_tier": "B",
+    "composite_score": 49,
+    "confidence_tier": "C",
     "technical_score": 45,
+    "fundamental_score": 49,
     "risk_penalty": 0.0,
     "factor_attribution": {
       "horizon": "POSITION",
@@ -321,7 +361,7 @@
       "mtf_alignment_score": 0.0,
       "volatility_fit_score": 5.0,
       "technical_score": 45,
-      "fundamental_score": 65,
+      "fundamental_score": 49,
       "regime_multiplier": 1.05,
       "news_contribution": 0.4,
       "sector_contribution": 0.0,
@@ -335,41 +375,10 @@
       }
     }
   },
-  "signal_plan": {
-    "direction": "LONG",
-    "preferred_entry": 249.67,
-    "entry_zone": [
-      251.76,
-      250.73
-    ],
-    "stop_loss": 237.96,
-    "targets": [
-      268.41,
-      280.12,
-      296.51
-    ],
-    "risk_reward_ratio": 2.6,
-    "invalidation": [
-      {
-        "predicate": "DAILY_CLOSE_BELOW_LEVEL",
-        "level": 237.96,
-        "description": "Daily closing price finishes below structural stop loss of 237.96"
-      },
-      {
-        "predicate": "RVOL_COLLAPSE",
-        "threshold": 0.4,
-        "description": "20-day Relative Volume drops below 0.40x indicating liquidity desertion"
-      },
-      {
-        "predicate": "EARNINGS_ANNOUNCEMENT_EVENT",
-        "buffer_sessions": 2,
-        "description": "Filing within 2 trading sessions triggers event risk de-risking protocol"
-      }
-    ]
-  },
+  "signal_plan": null,
   "ai_explanation": {
     "FACT": "AMZN (NASDAQ - Amazon.com Inc.) closed at $249.67 USD. Trading within -13.1% of its 52-week high with a 14-day ATR of 2.1%. The primary exchange session traded on volume of 32,663,542 shares.",
-    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 53/100 (Confidence Tier B). Technical Factor sub-score: 45/100 (14-day RSI: 44.5, 20-day RVOL: 0.93x). Risk penalty applied: -0.0 points. Modulated by the STRONG_BULL macro regime.",
+    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 49/100 (Confidence Tier C). Technical Factor sub-score: 45/100 (14-day RSI: 44.5, 20-day RVOL: 0.93x). Risk penalty applied: -0.0 points. Modulated by the STRONG_BULL macro regime.",
     "INFERENCE": "Current technical structure reflects neutral consolidation. Setup geometry indicates digestive trading range with no confirmed directional expansion.",
     "UNCERTAINTY": "Risks include broader market sentiment deterioration in the STRONG_BULL environment. A daily close below technical support at $240.85 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
   },

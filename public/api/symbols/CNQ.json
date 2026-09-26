@@ -5,7 +5,7 @@
   "currency": "CAD",
   "name": "Canadian Natural Resources",
   "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T00:18:17.776706+00:00",
+  "generated_at": "2026-09-26T00:48:50.439649+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 66.9800033569336,
@@ -307,10 +307,48 @@
     "confluence_label": "MODERATE_BULLISH_ALIGNMENT",
     "feature_version": "v4.0"
   },
+  "fundamental_dossier": {
+    "symbol": "CNQ",
+    "as_of_date": "2026-09-26",
+    "filing_date": "2026-03-26",
+    "currency": "CAD",
+    "fiscal_period": "FY",
+    "fiscal_year": 2025,
+    "coverage_status": "FULL",
+    "quality": {
+      "roic": 17.74,
+      "roe": 24.39,
+      "accruals_ratio": -0.0467,
+      "operating_margin_pct": 34.16,
+      "margin_trend_yoy_bps": 1155.8,
+      "debt_to_equity": 0.37,
+      "quality_score": 86
+    },
+    "valuation": {
+      "pe_ratio": 12.98,
+      "ps_ratio": 3.62,
+      "pb_ratio": 3.17,
+      "fcf_yield_pct": 10.75,
+      "dividend_yield_pct": 3.47,
+      "valuation_score": 86
+    },
+    "dividend_safety": {
+      "dividend_yield_pct": 3.47,
+      "payout_ratio_pct": 45.0,
+      "fcf_coverage": 3.1,
+      "safety_score": 100,
+      "safety_tier": "HIGH_SAFETY"
+    },
+    "composite_fundamental_score": 86,
+    "missing_fields": [],
+    "provenance_source": "SEC_EDGAR_XBRL",
+    "point_in_time_verified": true
+  },
   "score_record": {
-    "composite_score": 48,
-    "confidence_tier": "C",
+    "composite_score": 53,
+    "confidence_tier": "B",
     "technical_score": 42,
+    "fundamental_score": 86,
     "risk_penalty": 0.0,
     "factor_attribution": {
       "horizon": "POSITION",
@@ -321,7 +359,7 @@
       "mtf_alignment_score": 0.0,
       "volatility_fit_score": 5.0,
       "technical_score": 42,
-      "fundamental_score": 65,
+      "fundamental_score": 86,
       "regime_multiplier": 1.0,
       "news_contribution": 0.0,
       "sector_contribution": 0.0,
@@ -335,10 +373,41 @@
       }
     }
   },
-  "signal_plan": null,
+  "signal_plan": {
+    "direction": "LONG",
+    "preferred_entry": 67.17,
+    "entry_zone": [
+      68.88,
+      67.53
+    ],
+    "stop_loss": 63.22,
+    "targets": [
+      73.49,
+      77.44,
+      82.97
+    ],
+    "risk_reward_ratio": 2.6,
+    "invalidation": [
+      {
+        "predicate": "DAILY_CLOSE_BELOW_LEVEL",
+        "level": 63.22,
+        "description": "Daily closing price finishes below structural stop loss of 63.22"
+      },
+      {
+        "predicate": "RVOL_COLLAPSE",
+        "threshold": 0.4,
+        "description": "20-day Relative Volume drops below 0.40x indicating liquidity desertion"
+      },
+      {
+        "predicate": "EARNINGS_ANNOUNCEMENT_EVENT",
+        "buffer_sessions": 2,
+        "description": "Filing within 2 trading sessions triggers event risk de-risking protocol"
+      }
+    ]
+  },
   "ai_explanation": {
     "FACT": "CNQ (TSX - Canadian Natural Resources) closed at $67.17 CAD. Trading within -7.2% of its 52-week high with a 14-day ATR of 2.7%. The primary exchange session traded on volume of 12,911,111 shares.",
-    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 48/100 (Confidence Tier C). Technical Factor sub-score: 42/100 (14-day RSI: 44.2, 20-day RVOL: 0.64x). Risk penalty applied: -0.0 points. Modulated by the WEAK_BULL macro regime.",
+    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 53/100 (Confidence Tier B). Technical Factor sub-score: 42/100 (14-day RSI: 44.2, 20-day RVOL: 0.64x). Risk penalty applied: -0.0 points. Modulated by the WEAK_BULL macro regime.",
     "INFERENCE": "Current technical structure reflects neutral consolidation. Setup geometry indicates digestive trading range with no confirmed directional expansion.",
     "UNCERTAINTY": "Risks include broader market sentiment deterioration in the WEAK_BULL environment. A daily close below technical support at $60.38 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
   },

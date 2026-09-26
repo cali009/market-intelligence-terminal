@@ -126,85 +126,191 @@ class SecEdgarAdapter:
         security_id: int,
         cik: int | str,
         recent_years: int = 3,
+        default_currency: str = "USD",
     ) -> List[FundamentalFact]:
         """
-        Extract canonical fundamentals using deterministic fallback priority chains:
-        - Revenue
-        - Net Income
-        - Operating Cash Flow
-        - Stockholders Equity
-        - Diluted Shares Outstanding
+        Extract canonical fundamentals using deterministic fallback priority chains
+        across both US-GAAP and IFRS-Full taxonomies.
+        Covers US 10-K/10-Q and Canadian/Foreign 40-F/6-K/20-F filings.
         """
         facts_payload = self.get_company_facts(cik)
-        us_gaap = facts_payload.get("facts", {}).get("us-gaap", {})
+        facts_dict = facts_payload.get("facts", {})
+        us_gaap = facts_dict.get("us-gaap", {})
+        ifrs = facts_dict.get("ifrs-full", {})
+
+        is_ifrs = bool(ifrs and not us_gaap)
+        source_taxonomy = ifrs if is_ifrs else us_gaap
+        source_label = "SEC_EDGAR_XBRL"
+
         knowledge_at = datetime.now(timezone.utc)
         current_year = date.today().year
 
         results: List[FundamentalFact] = []
 
-        # Concept priority fallback definitions
         concept_chains = {
-            "Revenues": [
-                "RevenueFromContractWithCustomerExcludingAssessedTax",
-                "Revenues",
-                "SalesRevenueNet",
-                "InterestAndDividendIncomeOperating",
-                "OperatingRevenueUnrealizedGainLossOnDerivativeInstruments",
-            ],
-            "NetIncomeLoss": [
-                "NetIncomeLoss",
-                "ProfitLoss",
-                "NetIncomeLossAvailableToCommonStockholdersBasic",
-            ],
-            "OperatingCashFlow": [
-                "NetCashProvidedByUsedInOperatingActivities",
-                "NetCashProvidedByUsedInOperatingActivitiesContinuingOperations",
-            ],
-            "StockholdersEquity": [
-                "StockholdersEquity",
-                "CommonStockholdersEquity",
-                "StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest",
-            ],
-            "DilutedSharesOutstanding": [
-                "WeightedAverageNumberOfDilutedSharesOutstanding",
-                "CommonStockSharesOutstanding",
-            ],
+            "Revenues": {
+                "gaap": [
+                    "RevenueFromContractWithCustomerExcludingAssessedTax",
+                    "Revenues",
+                    "SalesRevenueNet",
+                    "InterestAndDividendIncomeOperating",
+                    "OperatingRevenueUnrealizedGainLossOnDerivativeInstruments",
+                ],
+                "ifrs": [
+                    "Revenue",
+                    "RevenueFromContractsWithCustomers",
+                    "InterestRevenueCalculatedUsingEffectiveInterestMethod",
+                    "RevenueFromSaleOfOilAndGasProducts",
+                    "OperatingIncome",
+                ],
+            },
+            "NetIncomeLoss": {
+                "gaap": [
+                    "NetIncomeLoss",
+                    "ProfitLoss",
+                    "NetIncomeLossAvailableToCommonStockholdersBasic",
+                ],
+                "ifrs": [
+                    "ProfitLoss",
+                    "ProfitLossAttributableToOwnersOfParent",
+                ],
+            },
+            "OperatingIncome": {
+                "gaap": [
+                    "OperatingIncomeLoss",
+                ],
+                "ifrs": [
+                    "ProfitLossFromOperatingActivities",
+                    "OperatingProfit",
+                    "ProfitLossBeforeTax",
+                ],
+            },
+            "OperatingCashFlow": {
+                "gaap": [
+                    "NetCashProvidedByUsedInOperatingActivities",
+                    "NetCashProvidedByUsedInOperatingActivitiesContinuingOperations",
+                ],
+                "ifrs": [
+                    "CashFlowsFromUsedInOperatingActivities",
+                ],
+            },
+            "StockholdersEquity": {
+                "gaap": [
+                    "StockholdersEquity",
+                    "CommonStockholdersEquity",
+                    "StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest",
+                ],
+                "ifrs": [
+                    "Equity",
+                    "EquityAttributableToOwnersOfParent",
+                ],
+            },
+            "TotalAssets": {
+                "gaap": [
+                    "Assets",
+                ],
+                "ifrs": [
+                    "Assets",
+                ],
+            },
+            "TotalDebt": {
+                "gaap": [
+                    "LongTermDebtNoncurrent",
+                    "LongTermDebtAndCapitalLeaseObligations",
+                    "DebtInstrumentCarryingAmount",
+                ],
+                "ifrs": [
+                    "Borrowings",
+                    "NoncurrentFinancialLiabilities",
+                    "FinancialLiabilitiesAtAmortisedCost",
+                ],
+            },
+            "GrossProfit": {
+                "gaap": [
+                    "GrossProfit",
+                ],
+                "ifrs": [
+                    "GrossProfit",
+                ],
+            },
+            "DilutedSharesOutstanding": {
+                "gaap": [
+                    "WeightedAverageNumberOfDilutedSharesOutstanding",
+                    "CommonStockSharesOutstanding",
+                ],
+                "ifrs": [
+                    "WeightedAverageShares",
+                    "AdjustedWeightedAverageShares",
+                ],
+            },
+            "DividendsPaid": {
+                "gaap": [
+                    "PaymentsOfDividends",
+                    "PaymentsOfDividendsCommonStock",
+                ],
+                "ifrs": [
+                    "DividendsPaidClassifiedAsFinancingActivities",
+                    "DividendsPaidOrdinaryShares",
+                ],
+            },
         }
 
-        for canonical_name, tag_list in concept_chains.items():
+        valid_forms = ("10-K", "10-Q", "40-F", "6-K", "20-F")
+
+        for canonical_name, tax_mapping in concept_chains.items():
+            tag_list = tax_mapping["ifrs"] if is_ifrs else tax_mapping["gaap"]
             matched_tag = None
+            matched_unit = None
+            matched_observations = []
+
             for tag in tag_list:
-                if tag in us_gaap:
+                if tag not in source_taxonomy:
+                    continue
+
+                tag_data = source_taxonomy[tag]
+                units_dict = tag_data.get("units", {})
+
+                # Determine candidate unit key
+                if canonical_name == "DilutedSharesOutstanding":
+                    unit_key = "shares" if "shares" in units_dict else next(iter(units_dict.keys()), None)
+                else:
+                    if default_currency in units_dict:
+                        unit_key = default_currency
+                    elif "USD" in units_dict:
+                        unit_key = "USD"
+                    elif "CAD" in units_dict:
+                        unit_key = "CAD"
+                    else:
+                        unit_key = next(iter(units_dict.keys()), None)
+
+                if not unit_key or unit_key not in units_dict:
+                    continue
+
+                # Filter for valid observations within the observation window
+                valid_obs = [
+                    obs for obs in units_dict[unit_key]
+                    if obs.get("form") in valid_forms
+                    and obs.get("fy") and obs.get("fy") >= (current_year - recent_years)
+                    and obs.get("val") is not None
+                    and obs.get("end") and obs.get("filed")
+                ]
+
+                if valid_obs:
                     matched_tag = tag
+                    matched_unit = unit_key
+                    matched_observations = valid_obs
                     break
 
             if not matched_tag:
                 continue
 
-            tag_data = us_gaap[matched_tag]
-            units_dict = tag_data.get("units", {})
-            # Look for USD units, or pure/shares for share count
-            unit_key = "USD" if "USD" in units_dict else next(iter(units_dict.keys()), None)
-            if not unit_key:
-                continue
-
-            observations = units_dict[unit_key]
-            for obs in observations:
-                form = obs.get("form", "")
-                if form not in ("10-K", "10-Q"):
-                    continue
-
+            for obs in matched_observations:
                 fy = obs.get("fy")
-                if not fy or fy < (current_year - recent_years):
-                    continue
-
                 fp = obs.get("fp", "FY")
                 val = obs.get("val")
                 end_str = obs.get("end")
                 filed_str = obs.get("filed")
-
-                if val is None or not end_str or not filed_str:
-                    continue
+                form = obs.get("form")
 
                 period_end = date.fromisoformat(end_str)
                 filing_date = date.fromisoformat(filed_str)
@@ -213,7 +319,10 @@ class SecEdgarAdapter:
                 if filing_date < period_end:
                     filing_date = period_end
 
-                currency = "USD" if unit_key == "USD" else "USD"
+                if matched_unit in ("CAD", "USD"):
+                    curr = matched_unit
+                else:
+                    curr = "CAD" if default_currency == "CAD" else "USD"
 
                 results.append(
                     FundamentalFact(
@@ -226,10 +335,12 @@ class SecEdgarAdapter:
                         fiscal_period=fp if fp in ("Q1", "Q2", "Q3", "FY") else "FY",
                         form=form,
                         value=float(val),
-                        currency=currency,
-                        source="SEC_EDGAR_XBRL",
+                        currency=curr,
+                        source=source_label,
                         confidence="HIGH",
                     )
                 )
+
+        return results
 
         return results

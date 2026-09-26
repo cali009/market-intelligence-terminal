@@ -5,7 +5,7 @@
   "currency": "USD",
   "name": "Invesco QQQ Trust",
   "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T00:21:49.516573+00:00",
+  "generated_at": "2026-09-26T00:48:50.439649+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 742.8400268554688,
@@ -302,10 +302,48 @@
     "confluence_label": "STRONG_BULLISH_CONFLUENCE",
     "feature_version": "v4.0"
   },
+  "fundamental_dossier": {
+    "symbol": "QQQ",
+    "as_of_date": "2026-09-26",
+    "filing_date": "2026-09-26",
+    "currency": "USD",
+    "fiscal_period": "N/A",
+    "fiscal_year": 2026,
+    "coverage_status": "INDEX_ETF_BYPASS",
+    "quality": {
+      "roic": null,
+      "roe": null,
+      "accruals_ratio": null,
+      "operating_margin_pct": null,
+      "margin_trend_yoy_bps": null,
+      "debt_to_equity": null,
+      "quality_score": 50
+    },
+    "valuation": {
+      "pe_ratio": null,
+      "ps_ratio": null,
+      "pb_ratio": null,
+      "fcf_yield_pct": null,
+      "dividend_yield_pct": null,
+      "valuation_score": 50
+    },
+    "dividend_safety": {
+      "dividend_yield_pct": 0.0,
+      "payout_ratio_pct": null,
+      "fcf_coverage": null,
+      "safety_score": 50,
+      "safety_tier": "N/A_NO_DIVIDEND"
+    },
+    "composite_fundamental_score": 50,
+    "missing_fields": [],
+    "provenance_source": "SEC_EDGAR_XBRL",
+    "point_in_time_verified": true
+  },
   "score_record": {
-    "composite_score": 64,
-    "confidence_tier": "B",
+    "composite_score": 84,
+    "confidence_tier": "A",
     "technical_score": 60,
+    "fundamental_score": null,
     "risk_penalty": 0.0,
     "factor_attribution": {
       "horizon": "POSITION",
@@ -316,7 +354,7 @@
       "mtf_alignment_score": 5.0,
       "volatility_fit_score": 3.0,
       "technical_score": 60,
-      "fundamental_score": 65,
+      "fundamental_score": null,
       "regime_multiplier": 1.05,
       "news_contribution": 0,
       "sector_contribution": 0.0,
@@ -364,7 +402,7 @@
   },
   "ai_explanation": {
     "FACT": "QQQ (NASDAQ - Invesco QQQ Trust) closed at $744.50 USD. Trading within -0.6% of its 52-week high with a 14-day ATR of 1.3%. The primary exchange session traded on volume of 29,536,154 shares.",
-    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 64/100 (Confidence Tier B). Technical Factor sub-score: 60/100 (14-day RSI: 64.7, 20-day RVOL: 0.89x). Risk penalty applied: -0.0 points. Modulated by the STRONG_BULL macro regime.",
+    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 84/100 (Confidence Tier A). Technical Factor sub-score: 60/100 (14-day RSI: 64.7, 20-day RVOL: 0.89x). Risk penalty applied: -0.0 points. Modulated by the STRONG_BULL macro regime.",
     "INFERENCE": "Historical setups exhibiting stacked moving averages and low-bandwidth consolidation during a STRONG_BULL regime showed positive forward expectancy across 64% of walk-forward folds. Relative strength ranks in the upper quartile of the current dual-market universe.",
     "UNCERTAINTY": "Risks include broader market sentiment deterioration in the STRONG_BULL environment. A daily close below technical support at $665.59 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
   },

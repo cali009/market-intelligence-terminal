@@ -257,8 +257,11 @@ class ScoringEngine:
             raw_score = float(tech_score)
         else:
             # Position: 75% Technical + 25% Fundamental
-            fund = fundamental_score if fundamental_score is not None else 50
-            raw_score = (tech_score * 0.75) + (fund * 0.25)
+            if fundamental_score is not None:
+                raw_score = (tech_score * 0.75) + (fundamental_score * 0.25)
+            else:
+                # Renormalize 100% to technical when fundamental is bypassed (e.g. Index ETFs)
+                raw_score = tech_score * (100.0 / 75.0)
 
         # 2. Modulation & Risk Penalty
         modulated = (raw_score * regime_multiplier) + news_contribution + sector_contribution
