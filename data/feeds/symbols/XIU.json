@@ -5,7 +5,7 @@
   "currency": "CAD",
   "name": "iShares S&P/TSX 60 Index ETF",
   "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T07:02:22.640635+00:00",
+  "generated_at": "2026-09-26T17:13:28.130330+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 53.09000015258789,
@@ -355,7 +355,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 14,
     "gjr_garch_gamma": 0.16,
-    "last_updated": "2026-09-26T07:02:26.765884+00:00"
+    "last_updated": "2026-09-26T17:13:33.157084+00:00"
   },
   "conformal_bounds": {
     "symbol": "XIU",
@@ -372,7 +372,7 @@
     "adapted_alpha": 0.08,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-09-26T07:02:26.777460+00:00"
+    "calibrated_at": "2026-09-26T17:13:33.178838+00:00"
   },
   "cross_border_parity": null,
   "shap_attribution": {
@@ -597,6 +597,11 @@
       "id": "BASE_TIGHTENING",
       "name": "Consolidation Base Tightening",
       "why": "Price consolidating in a tight band (3.6%) within 3.4% of yearly high."
+    },
+    {
+      "id": "PO3_LIQUIDITY_SWEEP",
+      "name": "TAC-15: PO3 Liquidity Sweep & Manipulation Reversal",
+      "why": "Institutional liquidity sweep: Low ($52.81) swept support with 79.4% lower rejection wick and close in upper 79.4% of daily range."
     }
   ],
   "catalysts_and_filings": [],

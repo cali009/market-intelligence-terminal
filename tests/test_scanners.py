@@ -70,7 +70,7 @@ def test_mean_reversion_oversold_scanner():
 
 def test_all_14_definitions_exist():
     defs = market_scanners.get_scanner_definitions_with_expectancy("STRONG_BULL")
-    assert len(defs) == 14
+    assert len(defs) == 15
     for d in defs:
         assert "scanner_id" in d
         assert "name" in d
@@ -81,6 +81,30 @@ def test_all_14_definitions_exist():
         assert "forward_5d_return_pct" in d
         assert "expectancy_r" in d
         assert d["regime_status"] in ("PASS", "GATED")
+
+
+def test_po3_liquidity_sweep_scanner():
+    """Verify TAC-15 PO3 Liquidity Sweep scanner triggers on false breakdown rejection candle."""
+    sec_info = {"symbol": "AAPL", "exchange": "NASDAQ", "country": "US"}
+    metrics = {
+        "open": 220.0,
+        "high": 225.0,
+        "low": 215.0,               # Intraday low swept below 20DMA (217.0)
+        "close": 224.0,              # Strong reclamation in upper 50%
+        "sma_20": 217.0,
+        "sma_50": 210.0,
+        "sma_200": 195.0,
+        "rsi_14": 54.0,
+        "rvol_20": 1.25,
+        "proximity_52w_high": -0.04,
+        "atr_14": 4.5,
+    }
+    matches = market_scanners.scan_all(sec_info, metrics, regime_state="STRONG_BULL")
+    matched_ids = [m.scanner_id for m in matches]
+    assert "PO3_LIQUIDITY_SWEEP" in matched_ids
+    po3_match = next(m for m in matches if m.scanner_id == "PO3_LIQUIDITY_SWEEP")
+    assert "Institutional liquidity sweep" in po3_match.why_matched
+    assert po3_match.regime_gated is False
 
 
 def test_regime_gating_behavior():
@@ -95,7 +119,7 @@ def test_regime_gating_behavior():
 
 def test_scanner_database_persistence():
     inserted = market_scanners.init_scanner_definitions_in_db()
-    assert inserted == 14
+    assert inserted == 15
 
     sec_info = {"symbol": "NVDA", "exchange": "NASDAQ", "country": "US"}
     metrics = {

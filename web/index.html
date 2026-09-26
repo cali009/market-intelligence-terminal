@@ -845,7 +845,7 @@
         <!-- Navigation Tabs -->
         <div class="tabs">
             <button class="tab-btn active" data-tab="leaderboard" onclick="switchTab('leaderboard', event)">Opportunity Leaderboard</button>
-            <button class="tab-btn" data-tab="scanners" onclick="switchTab('scanners', event)">TAC-14 Market Scanners</button>
+            <button class="tab-btn" data-tab="scanners" onclick="switchTab('scanners', event)">TAC-15 Market Scanners</button>
             <button class="tab-btn" data-tab="signals" onclick="switchTab('signals', event)">Research Signal Plans</button>
             <button class="tab-btn" data-tab="backtest" onclick="switchTab('backtest', event)">Backtest Lab & Strategy Performance</button>
             <button class="tab-btn" data-tab="paper" onclick="switchTab('paper', event)">Live Paper Trading & Scoreboard (Phase 8)</button>
@@ -906,7 +906,7 @@
                     <!-- View Mode Toggle -->
                     <div style="display: flex; gap: 8px; background: var(--bg-card); padding: 4px; border-radius: 8px; border: 1px solid var(--border-color); flex-wrap: wrap;">
                         <button class="filter-btn active" id="btnViewScreener" onclick="switchScannerView('screener')">Custom Screener Table</button>
-                        <button class="filter-btn" id="btnViewCards" onclick="switchScannerView('cards')">TAC-14 Strategy Cards</button>
+                        <button class="filter-btn" id="btnViewCards" onclick="switchScannerView('cards')">TAC-15 Strategy Cards</button>
                         <button class="filter-btn" id="btnViewExpectancy" onclick="switchScannerView('expectancy')">📊 Strategy Expectancy &amp; Regime Gating</button>
                     </div>
                 </div>
@@ -918,6 +918,7 @@
                 <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; align-items: center;">
                     <span style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Strategy Presets:</span>
                     <button class="filter-btn" onclick="applyScreenerPreset('high_probability')">🔥 High Probability (Score ≥ 65)</button>
+                    <button class="filter-btn" onclick="applyScreenerPreset('po3_sweep')">⚡ TAC-15 PO3 Sweep</button>
                     <button class="filter-btn" onclick="applyScreenerPreset('momentum_breakout')">🚀 Momentum Breakout</button>
                     <button class="filter-btn" onclick="applyScreenerPreset('support_pullback')">📉 Support Pullback (RSI 40-55)</button>
                     <button class="filter-btn" onclick="applyScreenerPreset('tsx_leaders')">🍁 TSX Leaders</button>
@@ -1069,7 +1070,7 @@
                 </div>
             </div>
 
-            <!-- View 2: TAC-14 Institutional Strategy Cards Grid -->
+            <!-- View 2: TAC-15 Institutional Strategy Cards Grid -->
             <div id="screenerCardsView" style="display: none;">
                 <div class="scanners-grid" id="scannersGrid">
                     <!-- Populated dynamically -->
@@ -1080,7 +1081,7 @@
             <div id="screenerExpectancyView" style="display: none;">
                 <div style="background: rgba(59, 130, 246, 0.08); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 8px; padding: 14px; margin-bottom: 20px; font-size: 12px; line-height: 1.5; color: var(--text-secondary);">
                     <div style="font-weight: 800; color: var(--accent-blue); margin-bottom: 4px; display: flex; align-items: center; gap: 6px;">
-                        <span>🔬 TAC-14 STRATEGY REGIME GATING &amp; EMPIRICAL EXPECTANCY SPECIFICATION</span>
+                        <span>🔬 TAC-15 STRATEGY REGIME GATING &amp; EMPIRICAL EXPECTANCY SPECIFICATION</span>
                         <span class="exchange-tag" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-green);">Phase 2 Standard</span>
                     </div>
                     <span>
@@ -2930,6 +2931,11 @@
                 document.getElementById('scScore').value = '65';
                 updateScoreVal(65);
                 document.getElementById('scTier').value = 'AB';
+            } else if (preset === 'po3_sweep') {
+                document.getElementById('scScore').value = '50';
+                updateScoreVal(50);
+                document.getElementById('scRsi').value = 'NEUTRAL';
+                document.getElementById('scRvol').value = '1.0';
             } else if (preset === 'momentum_breakout') {
                 document.getElementById('scScore').value = '55';
                 updateScoreVal(55);
@@ -5035,6 +5041,8 @@
 
             const strats = [
                 { id: 'ENSEMBLE_8F', label: '8-Factor Trend & Value Ensemble', status: 'ACTIVE' },
+                { id: 'PO3_LIQUIDITY_SWEEP', label: 'TAC-15: PO3 Liquidity Sweep Reversal', status: 'ACTIVE' },
+                { id: 'ADAPTIVE_DUAL_REGIME', label: 'Dual-Regime Adaptive Ensemble', status: 'ACTIVE' },
                 { id: 'TAC01_PULLBACK', label: 'TAC-01: Pullback Support Swing', status: 'ACTIVE' },
                 { id: 'TAC02_SQUEEZE', label: 'TAC-02: Volatility Squeeze', status: 'ACTIVE' },
                 { id: 'TAC04_MOMENTUM', label: 'TAC-04: Momentum 52W Breakout', status: 'ACTIVE' },
@@ -5106,6 +5114,15 @@
 
             const isAlphaPositive = alphaVal >= 0;
 
+            const isBmPositive = typeof bmReturn === 'number' && !isNaN(bmReturn) && bmReturn >= 0;
+            const formattedBm = (typeof bmReturn === 'number' && !isNaN(bmReturn))
+                ? `${isBmPositive ? '+' : ''}${bmReturn.toFixed(2)}%`
+                : '0.00%';
+
+            const formattedAlpha = (typeof alphaVal === 'number' && !isNaN(alphaVal))
+                ? `${isAlphaPositive ? '+' : ''}${alphaVal.toFixed(2)}%`
+                : '0.00%';
+
             grid.innerHTML = `
                 <div class="scorecard-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px;">
                     <div style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Net Cumulative Return</div>
@@ -5118,10 +5135,10 @@
                 <div class="scorecard-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px;">
                     <div style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">${bmLabel}</div>
                     <div style="font-size: 22px; font-weight: 800; color: var(--text-primary); margin: 4px 0;">
-                        +${bmReturn.toFixed(2)}%
+                        ${formattedBm}
                     </div>
                     <div style="font-size: 11px; color: ${isAlphaPositive ? 'var(--accent-green)' : 'var(--accent-red)'}; font-weight: 600;">
-                        Alpha: ${isAlphaPositive ? '+' : ''}${alphaVal.toFixed(2)}%
+                        Alpha: ${formattedAlpha}
                     </div>
                 </div>
 

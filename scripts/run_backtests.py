@@ -36,7 +36,7 @@ def run_all_backtests():
     print(f" Execution Date: {today_str} | Strict Anti-Lookahead Protocol")
     print(f"{'='*95}\n")
 
-    strategies = ["ENSEMBLE_8F", "TAC01_PULLBACK", "TAC02_SQUEEZE", "TAC04_MOMENTUM", "TAC03_BREAKOUT_CHASE"]
+    strategies = list(backtest_engine.get_strategy_registry().keys())
     results = {}
 
     for strat_id in strategies:

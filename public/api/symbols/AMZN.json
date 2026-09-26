@@ -5,7 +5,7 @@
   "currency": "USD",
   "name": "Amazon.com Inc.",
   "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T07:02:22.640635+00:00",
+  "generated_at": "2026-09-26T17:13:28.130330+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 248.55999755859375,
@@ -360,7 +360,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 16,
     "gjr_garch_gamma": 0.08,
-    "last_updated": "2026-09-26T07:02:23.458019+00:00"
+    "last_updated": "2026-09-26T17:13:29.292723+00:00"
   },
   "conformal_bounds": {
     "symbol": "AMZN",
@@ -377,7 +377,7 @@
     "adapted_alpha": 0.185,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-09-26T07:02:23.469768+00:00"
+    "calibrated_at": "2026-09-26T17:13:29.312497+00:00"
   },
   "cross_border_parity": null,
   "shap_attribution": {
@@ -506,6 +506,11 @@
       "id": "LOW_BETA_QUALITY",
       "name": "Low-Volatility Trend Quality",
       "why": "Low ATR volatility (2.1%) paired with rising 200DMA and positive quarterly return."
+    },
+    {
+      "id": "PO3_LIQUIDITY_SWEEP",
+      "name": "TAC-15: PO3 Liquidity Sweep & Manipulation Reversal",
+      "why": "Institutional liquidity sweep: Low ($247.18) swept support with 37.3% lower rejection wick and close in upper 67.3% of daily range."
     }
   ],
   "catalysts_and_filings": [

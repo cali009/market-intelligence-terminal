@@ -92,6 +92,11 @@ class SimulatedTrade:
     exit_reason: str = "OPEN"
     regime_at_entry: str = "NEUTRAL"
     partition: str = "TRAIN"
+    trimmed_shares: int = 0
+    trim_price_net: Optional[float] = None
+    trim_pnl_usd: float = 0.0
+    is_partially_trimmed: bool = False
+    strategy_id: Optional[str] = None
 
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -112,6 +117,11 @@ class SimulatedTrade:
             "target_2": round(float(self.target_2), 2),
             "target_3": round(float(self.target_3), 2),
             "shares": int(self.shares),
+            "trimmed_shares": int(self.trimmed_shares),
+            "trim_price_net": round(float(self.trim_price_net), 2) if self.trim_price_net else None,
+            "trim_pnl_usd": round(float(self.trim_pnl_usd), 2),
+            "is_partially_trimmed": bool(self.is_partially_trimmed),
+            "strategy_id": str(self.strategy_id) if self.strategy_id else None,
             "gross_pnl": round(float(self.gross_pnl_usd), 2),
             "net_pnl": round(float(self.net_pnl_usd), 2),
             "gross_pnl_usd": round(float(self.gross_pnl_usd), 2),
@@ -163,6 +173,22 @@ class BacktestEngine:
             "status": "ACTIVE",
             "pre_registration_date": "2025-01-15",
             "hypothesis": "Leading relative strength securities breaking into new 52-week highs with volume expansion exhibit post-earnings and post-breakout drift.",
+            "universe": "US + Canada Core Liquid (Cap > $2B, ADV > $10M)",
+        },
+        "PO3_LIQUIDITY_SWEEP": {
+            "strategy_id": "PO3_LIQUIDITY_SWEEP",
+            "strategy_name": "TAC-15: Power of Three (PO3) Liquidity Sweep & Manipulation Reversal",
+            "status": "ACTIVE",
+            "pre_registration_date": "2026-09-26",
+            "hypothesis": "Institutional accumulation sequence (Accumulation -> Manipulation Judas Swing -> Distribution Expansion). Captures false breakdown liquidity sweeps below key moving averages/prior swing lows with an adaptive conformal buffer stop and two-stage partial trim ladder (50% trim at Target 1, breakeven stop ratchet, Target 2 runner).",
+            "universe": "US + Canada Core Liquid (Cap > $2B, ADV > $10M)",
+        },
+        "ADAPTIVE_DUAL_REGIME": {
+            "strategy_id": "ADAPTIVE_DUAL_REGIME",
+            "strategy_name": "Dual-Regime Adaptive Ensemble (PO3 + Momentum/Pullback)",
+            "status": "ACTIVE",
+            "pre_registration_date": "2026-09-26",
+            "hypothesis": "Regime-adaptive meta-strategy dynamically routing between PO3 Liquidity Sweeps in Mean-Reverting/Chop regimes and Momentum/Pullback in Trending regimes, modulated by Phase 18 Deterministic Idiosyncratic Risk sizing multipliers.",
             "universe": "US + Canada Core Liquid (Cap > $2B, ADV > $10M)",
         },
         "TAC03_BREAKOUT_CHASE": {
@@ -280,6 +306,16 @@ class BacktestEngine:
         closed_trades: List[SimulatedTrade] = []
         equity_curve: List[Dict[str, Any]] = []
 
+        is_po3_type = strategy_id in ("PO3_LIQUIDITY_SWEEP", "ADAPTIVE_DUAL_REGIME")
+
+        # Load Phase 18 Idiosyncratic Risk multipliers for dynamic sizing modulation
+        try:
+            from src.engine.idiosyncratic_risk import idiosyncratic_risk_engine
+            risk_feed = idiosyncratic_risk_engine.generate_feed()
+            idiosyncratic_multipliers = {p.symbol: p.position_size_multiplier for p in risk_feed.profiles}
+        except Exception:
+            idiosyncratic_multipliers = {}
+
         # Fee rate per side (5 bps commission + 5 bps slippage = 10 bps per side, 20 bps round-trip)
         fee_rate = (self.config.commission_bps + self.config.slippage_bps) / 10000.0
 
@@ -330,6 +366,30 @@ class BacktestEngine:
                     exit_price_net = raw_exit * (1.0 - fee_rate)
                     exit_reason = "STOP_LOSS" if trade.stop_loss < trade.raw_entry_price else "BREAKEVEN_STOP"
 
+                # Check Two-Stage Trim Ladder: 50% Trim at Target 1 + Breakeven Stop Ratchet
+                elif is_po3_type and not trade.is_partially_trimmed and b_high >= trade.target_1 and trade.shares >= 2:
+                    trim_shares = trade.shares // 2
+                    trade.trimmed_shares = trim_shares
+                    trade.shares -= trim_shares
+                    trade.is_partially_trimmed = True
+                    trade.stop_loss = trade.raw_entry_price  # Ratchet stop to Breakeven
+
+                    trim_fx = get_fx_to_usd(curr_date, trade.currency)
+                    trim_price_net = trade.target_1 * (1.0 - fee_rate)
+                    trim_pnl = ((trim_price_net * trim_fx) - trade.entry_price_usd_net) * trim_shares
+                    trade.trim_price_net = trim_price_net
+                    trade.trim_pnl_usd = trim_pnl
+                    cash_usd += (trim_price_net * trim_fx * trim_shares)
+
+                    # If the bar also reached Target 2 on the same day:
+                    if b_high >= trade.target_2:
+                        raw_exit_price = trade.target_2
+                        exit_price_net = trade.target_2 * (1.0 - fee_rate)
+                        exit_reason = "TARGET_2"
+                    else:
+                        still_open.append(trade)
+                        continue
+
                 # Check Profit Target 2 Trigger (only if Stop was NOT hit)
                 elif b_high >= trade.target_2:
                     raw_exit_price = trade.target_2
@@ -363,15 +423,21 @@ class BacktestEngine:
                     trade.exit_fx_rate = exit_fx
                     trade.exit_price_usd_net = exit_price_net * exit_fx
 
-                    # P&L Calculations (USD Base)
-                    trade.gross_pnl_usd = ((raw_exit_price * exit_fx) - (trade.raw_entry_price * trade.entry_fx_rate)) * trade.shares
-                    trade.net_pnl_usd = (trade.exit_price_usd_net - trade.entry_price_usd_net) * trade.shares
+                    # P&L Calculations (USD Base) accounting for partial trim ladder
+                    total_orig_shares = trade.shares + trade.trimmed_shares
+                    runner_gross = ((raw_exit_price * exit_fx) - (trade.raw_entry_price * trade.entry_fx_rate)) * trade.shares
+                    trim_gross = (((trade.target_1 * exit_fx) - (trade.raw_entry_price * trade.entry_fx_rate)) * trade.trimmed_shares) if trade.is_partially_trimmed else 0.0
+                    runner_net = (trade.exit_price_usd_net - trade.entry_price_usd_net) * trade.shares
+
+                    trade.gross_pnl_usd = runner_gross + trim_gross
+                    trade.net_pnl_usd = runner_net + trade.trim_pnl_usd
                     trade.fee_drag_usd = trade.gross_pnl_usd - trade.net_pnl_usd
-                    trade.return_pct = ((trade.exit_price_usd_net / trade.entry_price_usd_net) - 1.0) * 100.0
-                    trade.r_multiple = (trade.exit_price_net - trade.entry_price_net) / max(0.01, trade.initial_risk_per_share)
+                    trade.return_pct = (trade.net_pnl_usd / (trade.entry_price_usd_net * total_orig_shares)) * 100.0
+                    trade.r_multiple = trade.net_pnl_usd / max(0.01, (trade.initial_risk_per_share * trade.entry_fx_rate * total_orig_shares))
 
                     # Return capital + PnL back to cash balance
                     cash_usd += (trade.exit_price_usd_net * trade.shares)
+                    trade.shares = total_orig_shares
                     closed_trades.append(trade)
                 else:
                     still_open.append(trade)
@@ -411,14 +477,32 @@ class BacktestEngine:
                         if not atr or math.isnan(atr) or atr <= 0:
                             atr = raw_entry * 0.02
 
-                        stop_loss = round(raw_entry - (1.5 * atr), 2)
-                        risk_per_share = raw_entry - stop_loss
-                        if risk_per_share <= 0:
-                            continue
-
-                        target_1 = round(raw_entry + (1.6 * risk_per_share), 2)
-                        target_2 = round(raw_entry + (2.6 * risk_per_share), 2)
-                        target_3 = round(raw_entry + (4.0 * risk_per_share), 2)
+                        if strategy_id == "PO3_LIQUIDITY_SWEEP":
+                            # Conformal buffer stop anchored to sweep low
+                            sweep_low = prior_bar["low"]
+                            stop_loss = round(min(sweep_low - (0.3 * atr), raw_entry - (1.2 * atr)), 2)
+                            risk_per_share = raw_entry - stop_loss
+                            if risk_per_share <= 0:
+                                continue
+                            target_1 = round(raw_entry + (1.6 * risk_per_share), 2)
+                            target_2 = round(raw_entry + (2.8 * risk_per_share), 2)
+                            target_3 = round(raw_entry + (4.0 * risk_per_share), 2)
+                        elif strategy_id == "ADAPTIVE_DUAL_REGIME":
+                            stop_loss = round(raw_entry - (1.4 * atr), 2)
+                            risk_per_share = raw_entry - stop_loss
+                            if risk_per_share <= 0:
+                                continue
+                            target_1 = round(raw_entry + (1.6 * risk_per_share), 2)
+                            target_2 = round(raw_entry + (2.6 * risk_per_share), 2)
+                            target_3 = round(raw_entry + (4.0 * risk_per_share), 2)
+                        else:
+                            stop_loss = round(raw_entry - (1.5 * atr), 2)
+                            risk_per_share = raw_entry - stop_loss
+                            if risk_per_share <= 0:
+                                continue
+                            target_1 = round(raw_entry + (1.6 * risk_per_share), 2)
+                            target_2 = round(raw_entry + (2.6 * risk_per_share), 2)
+                            target_3 = round(raw_entry + (4.0 * risk_per_share), 2)
 
                         # Currency conversion for sizing
                         curr_fx = get_fx_to_usd(curr_date, s["currency"])
@@ -429,9 +513,17 @@ class BacktestEngine:
                         max_risk_amount = capital_usd * (self.config.risk_per_trade_pct / 100.0)
                         raw_shares = int(max_risk_amount / risk_per_share_usd) if risk_per_share_usd > 0 else 1
 
+                        # Phase 18 Idiosyncratic Risk Multiplier Modulation
+                        sym_risk_mult = idiosyncratic_multipliers.get(sym, 1.0)
+                        if sym_risk_mult <= 0.0 and is_po3_type:
+                            continue
+                        if is_po3_type and sym_risk_mult < 1.0:
+                            raw_shares = int(raw_shares * sym_risk_mult)
+
                         # Portfolio Exposure Cap (Max 15% per position)
                         max_shares_cap = int((capital_usd * (self.config.max_single_position_pct / 100.0)) / entry_price_usd) if entry_price_usd > 0 else 1
-                        shares = max(1, min(raw_shares, max_shares_cap))
+                        min_shares = 2 if is_po3_type else 1
+                        shares = max(min_shares, min(raw_shares, max_shares_cap))
 
                         # Cash availability buffer
                         required_cash_usd = shares * entry_price_usd
@@ -461,6 +553,7 @@ class BacktestEngine:
                                 shares=shares,
                                 regime_at_entry="BULLISH" if prior_bar["close"] > (prior_bar.get("sma_200") or 0) else "NEUTRAL",
                                 partition=curr_partition,
+                                strategy_id=strategy_id,
                             )
 
                             # SAME-DAY INTRADAY RISK GATE
@@ -615,6 +708,37 @@ class BacktestEngine:
         elif strategy_id == "TAC04_MOMENTUM":
             # Momentum Leader: Close > 20DMA > 50DMA, within 6% of 52w high, RSI > 55
             return bool(c > sma20 > sma50 and prox52 >= -0.06 and rsi >= 55.0)
+
+        elif strategy_id == "PO3_LIQUIDITY_SWEEP":
+            # TAC-15: Power of Three (PO3) Liquidity Sweep & Manipulation Reversal
+            # 1. Macro Trend: Not broken long-term (Close >= SMA200 or SMA50 >= SMA200)
+            trend_ok = c >= (sma200 or 0) * 0.95
+            # 2. Manipulation Liquidity Sweep: Intraday low tests or undercuts 20DMA, 50DMA, or lower BB
+            bb_lower_val = bb_lower if bb_lower and not math.isnan(bb_lower) else (sma20 * 0.95)
+            low_p = bar["low"]
+            swept = (low_p <= sma20 * 1.005) or (low_p <= bb_lower_val * 1.01) or (low_p <= sma50 * 1.005)
+            # 3. Absorption Rejection: Lower wick >= 25% of bar range, close finishes in upper 48%
+            high_p = bar["high"]
+            open_p = bar["open"]
+            rng = max(0.01, high_p - low_p)
+            lower_wick = min(open_p, c) - low_p
+            wick_ratio = lower_wick / rng
+            close_loc = (c - low_p) / rng
+            rejection = (wick_ratio >= 0.25 and close_loc >= 0.48 and c >= open_p * 0.995)
+            # 4. Momentum & Participation
+            rvol = bar.get("rvol_20", 1.0) or 1.0
+            cmf = bar.get("cmf_20", 0.0) or 0.0
+            participation = (40.0 <= rsi <= 66.0) and (rvol >= 0.95 or cmf >= -0.05) and (prox52 >= -0.15)
+            return bool(trend_ok and swept and rejection and participation)
+
+        elif strategy_id == "ADAPTIVE_DUAL_REGIME":
+            # Dual-Regime Adaptive Ensemble:
+            # Trending expansion -> Pullback/Momentum; Chop/Consolidation -> PO3 Liquidity Sweep
+            bb_band = bar.get("bb_bandwidth", 0.15)
+            if c > sma200 and bb_band and bb_band >= 0.08:
+                return bool(c > sma50 and abs(c - sma20)/sma20 <= 0.025 and 45.0 <= rsi <= 62.0)
+            else:
+                return self._evaluate_signal_predicate("PO3_LIQUIDITY_SWEEP", bar)
 
         elif strategy_id == "TAC03_BREAKOUT_CHASE":
             # Unconstrained Breakout Chase (Retired Strategy):

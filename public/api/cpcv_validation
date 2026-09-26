@@ -1,17 +1,30 @@
 {
   "summary": {
-    "total_strategies_evaluated": 5,
+    "total_strategies_evaluated": 7,
     "total_cpcv_paths": 15,
     "num_timeline_blocks": 6,
     "embargo_days": 5,
-    "empirical_pbo": 0.4,
+    "empirical_pbo": 0.333,
     "pbo_evaluation": "MODERATE_OVERFITTING_RISK",
     "target_fdr_q": 0.05,
-    "fdr_passed_count": 0,
+    "fdr_passed_count": 2,
     "fdr_rejected_count": 5,
-    "calibrated_at": "2026-09-26T07:02:28.737277+00:00"
+    "calibrated_at": "2026-09-26T17:14:24.710410+00:00"
   },
   "fdr_gating_table": [
+    {
+      "strategy_id": "PO3_LIQUIDITY_SWEEP",
+      "strategy_name": "TAC-15: Power of Three (PO3) Liquidity Sweep & Manipulation Reversal",
+      "status": "ACTIVE",
+      "total_trades": 385,
+      "mean_trade_return_pct": -0.514,
+      "sharpe_ratio": -1.49,
+      "t_statistic": -2.598,
+      "raw_p_value": 0.00937,
+      "fdr_rank": 1,
+      "fdr_critical_threshold": 0.00714,
+      "fdr_verdict": "FDR_PASSED"
+    },
     {
       "strategy_id": "ENSEMBLE_8F",
       "strategy_name": "8-Factor Composite Trend & Value Ensemble",
@@ -21,8 +34,21 @@
       "sharpe_ratio": -1.3,
       "t_statistic": -2.527,
       "raw_p_value": 0.01149,
-      "fdr_rank": 1,
-      "fdr_critical_threshold": 0.01,
+      "fdr_rank": 2,
+      "fdr_critical_threshold": 0.01429,
+      "fdr_verdict": "FDR_PASSED"
+    },
+    {
+      "strategy_id": "ADAPTIVE_DUAL_REGIME",
+      "strategy_name": "Dual-Regime Adaptive Ensemble (PO3 + Momentum/Pullback)",
+      "status": "ACTIVE",
+      "total_trades": 409,
+      "mean_trade_return_pct": -0.416,
+      "sharpe_ratio": -1.28,
+      "t_statistic": -2.12,
+      "raw_p_value": 0.034,
+      "fdr_rank": 3,
+      "fdr_critical_threshold": 0.02143,
       "fdr_verdict": "REJECTED_SELECTION_BIAS"
     },
     {
@@ -34,8 +60,8 @@
       "sharpe_ratio": -0.92,
       "t_statistic": -2.029,
       "raw_p_value": 0.04244,
-      "fdr_rank": 2,
-      "fdr_critical_threshold": 0.02,
+      "fdr_rank": 4,
+      "fdr_critical_threshold": 0.02857,
       "fdr_verdict": "REJECTED_SELECTION_BIAS"
     },
     {
@@ -47,8 +73,8 @@
       "sharpe_ratio": -0.97,
       "t_statistic": -0.998,
       "raw_p_value": 0.31812,
-      "fdr_rank": 3,
-      "fdr_critical_threshold": 0.03,
+      "fdr_rank": 5,
+      "fdr_critical_threshold": 0.03571,
       "fdr_verdict": "REJECTED_SELECTION_BIAS"
     },
     {
@@ -60,8 +86,8 @@
       "sharpe_ratio": -0.42,
       "t_statistic": -0.285,
       "raw_p_value": 0.77594,
-      "fdr_rank": 4,
-      "fdr_critical_threshold": 0.04,
+      "fdr_rank": 6,
+      "fdr_critical_threshold": 0.04286,
       "fdr_verdict": "REJECTED_SELECTION_BIAS"
     },
     {
@@ -73,7 +99,7 @@
       "sharpe_ratio": -0.98,
       "t_statistic": -0.272,
       "raw_p_value": 0.7854,
-      "fdr_rank": 5,
+      "fdr_rank": 7,
       "fdr_critical_threshold": 0.05,
       "fdr_verdict": "REJECTED_SELECTION_BIAS"
     }
@@ -87,7 +113,7 @@
       ],
       "best_is_strategy": "TAC02_SQUEEZE",
       "oos_rank": 1,
-      "oos_rank_percentile": 0.2,
+      "oos_rank_percentile": 0.14,
       "is_rank_inverted": false
     },
     {
@@ -98,8 +124,8 @@
       ],
       "best_is_strategy": "TAC03_BREAKOUT_CHASE",
       "oos_rank": 3,
-      "oos_rank_percentile": 0.6,
-      "is_rank_inverted": true
+      "oos_rank_percentile": 0.43,
+      "is_rank_inverted": false
     },
     {
       "path_id": 3,
@@ -109,8 +135,8 @@
       ],
       "best_is_strategy": "TAC02_SQUEEZE",
       "oos_rank": 3,
-      "oos_rank_percentile": 0.6,
-      "is_rank_inverted": true
+      "oos_rank_percentile": 0.43,
+      "is_rank_inverted": false
     },
     {
       "path_id": 4,
@@ -118,9 +144,9 @@
         0,
         4
       ],
-      "best_is_strategy": "TAC01_PULLBACK",
-      "oos_rank": 4,
-      "oos_rank_percentile": 0.8,
+      "best_is_strategy": "ADAPTIVE_DUAL_REGIME",
+      "oos_rank": 7,
+      "oos_rank_percentile": 1.0,
       "is_rank_inverted": true
     },
     {
@@ -131,7 +157,7 @@
       ],
       "best_is_strategy": "TAC02_SQUEEZE",
       "oos_rank": 2,
-      "oos_rank_percentile": 0.4,
+      "oos_rank_percentile": 0.29,
       "is_rank_inverted": false
     },
     {
@@ -141,8 +167,8 @@
         2
       ],
       "best_is_strategy": "TAC03_BREAKOUT_CHASE",
-      "oos_rank": 4,
-      "oos_rank_percentile": 0.8,
+      "oos_rank": 6,
+      "oos_rank_percentile": 0.86,
       "is_rank_inverted": true
     },
     {
@@ -153,7 +179,7 @@
       ],
       "best_is_strategy": "TAC02_SQUEEZE",
       "oos_rank": 2,
-      "oos_rank_percentile": 0.4,
+      "oos_rank_percentile": 0.29,
       "is_rank_inverted": false
     },
     {
@@ -163,7 +189,7 @@
         4
       ],
       "best_is_strategy": "TAC01_PULLBACK",
-      "oos_rank": 5,
+      "oos_rank": 7,
       "oos_rank_percentile": 1.0,
       "is_rank_inverted": true
     },
@@ -175,7 +201,7 @@
       ],
       "best_is_strategy": "TAC02_SQUEEZE",
       "oos_rank": 2,
-      "oos_rank_percentile": 0.4,
+      "oos_rank_percentile": 0.29,
       "is_rank_inverted": false
     },
     {
@@ -185,8 +211,8 @@
         3
       ],
       "best_is_strategy": "TAC02_SQUEEZE",
-      "oos_rank": 4,
-      "oos_rank_percentile": 0.8,
+      "oos_rank": 6,
+      "oos_rank_percentile": 0.86,
       "is_rank_inverted": true
     },
     {
@@ -197,7 +223,7 @@
       ],
       "best_is_strategy": "TAC02_SQUEEZE",
       "oos_rank": 2,
-      "oos_rank_percentile": 0.4,
+      "oos_rank_percentile": 0.29,
       "is_rank_inverted": false
     },
     {
@@ -207,9 +233,9 @@
         5
       ],
       "best_is_strategy": "TAC02_SQUEEZE",
-      "oos_rank": 2,
-      "oos_rank_percentile": 0.4,
-      "is_rank_inverted": false
+      "oos_rank": 4,
+      "oos_rank_percentile": 0.57,
+      "is_rank_inverted": true
     },
     {
       "path_id": 13,
@@ -219,7 +245,7 @@
       ],
       "best_is_strategy": "TAC02_SQUEEZE",
       "oos_rank": 2,
-      "oos_rank_percentile": 0.4,
+      "oos_rank_percentile": 0.29,
       "is_rank_inverted": false
     },
     {
@@ -229,8 +255,8 @@
         5
       ],
       "best_is_strategy": "TAC02_SQUEEZE",
-      "oos_rank": 1,
-      "oos_rank_percentile": 0.2,
+      "oos_rank": 2,
+      "oos_rank_percentile": 0.29,
       "is_rank_inverted": false
     },
     {
@@ -241,7 +267,7 @@
       ],
       "best_is_strategy": "TAC02_SQUEEZE",
       "oos_rank": 2,
-      "oos_rank_percentile": 0.4,
+      "oos_rank_percentile": 0.29,
       "is_rank_inverted": false
     }
   ],
