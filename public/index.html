@@ -754,6 +754,46 @@
         .card-unc { border-left: 3px solid var(--accent-amber); }
         .card-unc .ai-card-title { color: var(--accent-amber); }
 
+        /* Modal Dialogs */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.75);
+            z-index: 150;
+            display: none;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-dialog {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            z-index: 151;
+            width: 720px;
+            max-width: 95vw;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 24px;
+            display: none;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+            margin-bottom: 16px;
+        }
+
         .disclaimer-footer {
             margin-top: 40px;
             padding-top: 20px;
@@ -784,9 +824,12 @@
                 <span class="dot-green"></span>
                 <span>TSX: REGULAR</span>
             </div>
-            <div class="pill" style="color: var(--accent-cyan);">
-                <span>CSA 31-369 STATUTORY IMPERSONAL RESEARCH</span>
-            </div>
+            <button class="filter-btn" onclick="openFeedHealthModal()" style="font-size: 11px; padding: 4px 10px; display: flex; align-items: center; gap: 6px; cursor: pointer;">
+                <span class="dot-green"></span> Feed Health: 4/4 Synced
+            </button>
+            <button class="filter-btn" onclick="openConsentModal()" style="font-size: 11px; padding: 4px 10px; cursor: pointer; color: var(--accent-cyan); border-color: rgba(6, 182, 212, 0.4);">
+                ⚖️ Impersonal Attestation
+            </button>
         </div>
     </header>
 
@@ -803,6 +846,7 @@
             <button class="tab-btn" data-tab="signals" onclick="switchTab('signals', event)">Research Signal Plans</button>
             <button class="tab-btn" data-tab="backtest" onclick="switchTab('backtest', event)">Backtest Lab & Strategy Performance</button>
             <button class="tab-btn" data-tab="catalysts" onclick="switchTab('catalysts', event)">News & SEC Filings</button>
+            <button class="tab-btn" data-tab="journal" onclick="switchTab('journal', event)">Research Journal & Watchlists</button>
         </div>
 
         <!-- Tab 1: Leaderboard -->
@@ -1378,6 +1422,147 @@
             </div>
         </div>
 
+        <!-- Tab 6: Research Journal & Watchlists (Phase 1 MVP) -->
+        <div id="tab-journal" style="display: none;">
+            <div class="journal-header" style="margin-bottom: 20px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+                    <div>
+                        <h2 style="font-size: 18px; font-weight: 800; color: var(--text-primary); margin-bottom: 4px;">Research Journal & Custom Watchlists Workstation</h2>
+                        <p style="font-size: 12px; color: var(--text-muted);">Self-directed paper position tracking · Cross-border FX normalization · Custom watchlists · Point-in-time thesis documentation · Zero personalized advice (CSA Staff Notice 31-369)</p>
+                    </div>
+                    <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+                        <button class="filter-btn" onclick="openJournalEntryModal()" style="background: var(--accent-blue); color: #fff; font-weight: 700; border: none; cursor: pointer;">+ Log Research Position</button>
+                        <button class="filter-btn" onclick="exportJournalData('csv')">Export CSV</button>
+                        <button class="filter-btn" onclick="exportJournalData('json')">Export JSON</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sub-tab Navigation (Journal vs Watchlists) -->
+            <div style="display: flex; gap: 8px; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 12px; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                    <button class="filter-btn active" id="subtabBtnJournalPositions" onclick="switchJournalSubTab('positions')">📝 Position Research Journal (S-08)</button>
+                    <button class="filter-btn" id="subtabBtnWatchlists" onclick="switchJournalSubTab('watchlists')">★ Custom Watchlists Manager (S-06)</button>
+                </div>
+                <div style="font-size: 11px; color: var(--text-muted); display: flex; align-items: center; gap: 6px;">
+                    <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--accent-cyan);"></span>
+                    <span>Bitemporal Cost Basis & Cross-Border Normalization Active</span>
+                </div>
+            </div>
+
+            <!-- Top Metric Scorecards -->
+            <div class="scorecard-grid" id="journalMetricsGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 20px;">
+                <!-- Populated dynamically -->
+            </div>
+
+            <!-- Subview 1: Position Research Journal -->
+            <div id="subview-journal-positions">
+                <!-- Filter & Search Toolbar -->
+                <div class="toolbar" style="margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
+                    <div class="filter-group">
+                        <button class="filter-btn active" id="journalFilterAll" onclick="setJournalStatusFilter('ALL')">All Positions</button>
+                        <button class="filter-btn" id="journalFilterOpen" onclick="setJournalStatusFilter('OPEN')">Open (Active)</button>
+                        <button class="filter-btn" id="journalFilterClosed" onclick="setJournalStatusFilter('CLOSED')">Closed (Realized)</button>
+                    </div>
+
+                    <!-- Market Filter -->
+                    <div style="display: flex; align-items: center; gap: 6px;">
+                        <span style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Market:</span>
+                        <select id="journalMarketFilter" onchange="filterJournal()" style="background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color); padding: 6px 10px; border-radius: 4px; font-size: 12px;">
+                            <option value="ALL">All Markets</option>
+                            <option value="US">US Equities (USD)</option>
+                            <option value="CA">Canadian TSX (CAD)</option>
+                        </select>
+                    </div>
+
+                    <!-- Strategy Tag Filter -->
+                    <div style="display: flex; align-items: center; gap: 6px;">
+                        <span style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Strategy:</span>
+                        <select id="journalStrategyFilter" onchange="filterJournal()" style="background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color); padding: 6px 10px; border-radius: 4px; font-size: 12px;">
+                            <option value="ALL">All Strategies</option>
+                            <option value="PULLBACK_UPTREND">Pullback in Uptrend</option>
+                            <option value="MOMENTUM_BREAKOUT">Momentum Breakout</option>
+                            <option value="VALUE_DIVIDEND">Value & Dividend</option>
+                            <option value="EARNINGS_PEAD">Earnings PEAD</option>
+                            <option value="MANUAL_RESEARCH">Manual Research</option>
+                        </select>
+                    </div>
+
+                    <!-- Search Input -->
+                    <div class="search-box" style="margin-left: auto;">
+                        <input type="text" id="journalSearchInput" placeholder="Search symbol or thesis notes..." oninput="filterJournal()" style="background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color); padding: 6px 12px; border-radius: 4px; font-size: 12px; width: 220px;">
+                    </div>
+                </div>
+
+                <!-- Positions Table -->
+                <div class="table-container" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; overflow-x: auto; margin-bottom: 24px;">
+                    <table style="width: 100%; border-collapse: collapse; font-size: 12px;">
+                        <thead>
+                            <tr style="background: var(--bg-secondary); border-bottom: 1px solid var(--border-color); text-align: left; color: var(--text-muted); font-size: 11px; text-transform: uppercase;">
+                                <th style="padding: 12px 14px;">Security</th>
+                                <th style="padding: 12px 14px;">Direction</th>
+                                <th style="padding: 12px 14px; text-align: right;">Shares</th>
+                                <th style="padding: 12px 14px; text-align: right;">Entry Price</th>
+                                <th style="padding: 12px 14px; text-align: right;">Current / Exit</th>
+                                <th style="padding: 12px 14px; text-align: right;">Market Value</th>
+                                <th style="padding: 12px 14px; text-align: right;">Unrealized P&L</th>
+                                <th style="padding: 12px 14px;">Risk Governance (Stop / Target)</th>
+                                <th style="padding: 12px 14px; text-align: center;">Conviction</th>
+                                <th style="padding: 12px 14px;">Strategy & Thesis</th>
+                                <th style="padding: 12px 14px; text-align: center;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="journalTableBody">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Subview 2: Custom Watchlists Manager -->
+            <div id="subview-journal-watchlists" style="display: none;">
+                <!-- Watchlist Select & Actions Toolbar -->
+                <div class="toolbar" style="margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Active Watchlist:</span>
+                        <select id="activeWatchlistSelect" onchange="changeActiveWatchlist()" style="background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color); padding: 6px 12px; border-radius: 4px; font-size: 13px; font-weight: 700;">
+                            <!-- Populated dynamically -->
+                        </select>
+                    </div>
+
+                    <!-- Quick Add Symbol -->
+                    <div style="display: flex; align-items: center; gap: 6px;">
+                        <input type="text" id="quickAddWatchlistSymbol" placeholder="Add symbol (e.g. NVDA)..." style="background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color); padding: 6px 10px; border-radius: 4px; font-size: 12px; width: 150px; text-transform: uppercase;">
+                        <button class="filter-btn" onclick="addSymbolToCurrentWatchlist()" style="cursor: pointer;">+ Add</button>
+                    </div>
+
+                    <div style="margin-left: auto; display: flex; gap: 8px;">
+                        <button class="filter-btn" onclick="exportWatchlistData('csv')">Export Watchlist (CSV)</button>
+                    </div>
+                </div>
+
+                <!-- Watchlist Items Table -->
+                <div class="table-container" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; overflow-x: auto; margin-bottom: 24px;">
+                    <table style="width: 100%; border-collapse: collapse; font-size: 12px;">
+                        <thead>
+                            <tr style="background: var(--bg-secondary); border-bottom: 1px solid var(--border-color); text-align: left; color: var(--text-muted); font-size: 11px; text-transform: uppercase;">
+                                <th style="padding: 12px 14px;">Security</th>
+                                <th style="padding: 12px 14px;">Market & Currency</th>
+                                <th style="padding: 12px 14px; text-align: right;">Last Price</th>
+                                <th style="padding: 12px 14px; text-align: right;">24h RVOL</th>
+                                <th style="padding: 12px 14px; text-align: center;">8-Factor Score</th>
+                                <th style="padding: 12px 14px;">Notes & Rationale</th>
+                                <th style="padding: 12px 14px; text-align: center;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="watchlistTableBody">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
         <!-- Statutory Footer -->
         <div class="disclaimer-footer">
             <p><strong>STATUTORY CANADIAN DISCLOSURE (CSA Staff Notice 31-369):</strong> This platform provides impersonal quantitative decision-support research intended exclusively for self-directed investors. It does not provide personalized investment advice or account management. All scores (0–100) are generated by mathematical models and rule-based algorithms without consideration of your individual risk tolerance, tax profile, or financial situation.</p>
@@ -1392,6 +1577,141 @@
         <div id="drawerContent">
             <!-- Populated dynamically -->
         </div>
+    </div>
+
+    <!-- Global Modal Overlay -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeAllModals()"></div>
+
+    <!-- Feed Health & Data Quality Console Modal (S-11) -->
+    <div class="modal-dialog" id="feedHealthModal">
+        <div class="modal-header">
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <span class="dot-green"></span>
+                <h3 style="font-size: 16px; font-weight: 800; color: var(--text-primary); margin: 0;">Data Quality & System Feed Health Console (S-11)</h3>
+            </div>
+            <button class="drawer-close" style="position: static;" onclick="closeAllModals()">&times;</button>
+        </div>
+        <div id="feedHealthContent">
+            <!-- Populated dynamically via JS -->
+        </div>
+    </div>
+
+    <!-- Non-Professional Impersonal Research Attestation Modal (S-14) -->
+    <div class="modal-dialog" id="consentModal">
+        <div class="modal-header">
+            <h3 style="font-size: 16px; font-weight: 800; color: var(--accent-cyan); margin: 0;">⚖️ Impersonal Research Attestation & Statutory Framework</h3>
+            <button class="drawer-close" style="position: static;" onclick="closeAllModals()">&times;</button>
+        </div>
+        <div style="font-size: 12px; color: var(--text-secondary); line-height: 1.6;">
+            <p><strong>CANADIAN STATUTORY GENERAL ADVICE DISCLOSURE (CSA Staff Notice 31-369):</strong></p>
+            <p>This software operates strictly under the impersonal research exclusion. The analytics, scoring models (0–100), and pattern recognition scanners displayed within this workstation constitute impersonal factual and mathematical calculations. They do not constitute personalized investment advice, managed portfolio direction, or tailored recommendations.</p>
+            
+            <p style="margin-top: 10px;"><strong>UNITED STATES REGULATORY NOTICE (SEC Rule 206(4)-1 & IAA 1940 § 202(a)(11)(D)):</strong></p>
+            <p>Published under the bona fide publisher exclusion. All strategy outcome indicators represent simulated historical parameters without representation of guaranteed actual trading performance.</p>
+
+            <div style="margin-top: 16px; background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 6px; padding: 12px;">
+                <label style="display: flex; align-items: flex-start; gap: 10px; cursor: pointer; color: var(--text-primary); font-weight: 600;">
+                    <input type="checkbox" id="userAttestationCheckbox" onchange="toggleAttestation()" style="margin-top: 3px;" checked>
+                    <span>I attest that I am an independent, self-directed market participant utilizing this terminal exclusively for impersonal quantitative research and decision support.</span>
+                </label>
+                <div id="attestationTimestamp" style="font-size: 10px; color: var(--text-muted); margin-top: 6px; font-family: monospace;">
+                    Attestation Status: Recorded (Active)
+                </div>
+            </div>
+
+            <div style="margin-top: 16px; text-align: right;">
+                <button class="filter-btn active" onclick="closeAllModals()" style="padding: 6px 16px;">I Acknowledge &amp; Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Log/Edit Research Journal Position Modal (S-08) -->
+    <div class="modal-dialog" id="journalEntryModal">
+        <div class="modal-header">
+            <h3 style="font-size: 16px; font-weight: 800; color: var(--text-primary); margin: 0;">Log Self-Directed Research Position</h3>
+            <button class="drawer-close" style="position: static;" onclick="closeAllModals()">&times;</button>
+        </div>
+        <form id="journalEntryForm" onsubmit="saveJournalEntry(event)">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+                <div>
+                    <label style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; display: block; margin-bottom: 4px;">Security Symbol *</label>
+                    <input type="text" id="jPosSymbol" required placeholder="e.g. AAPL or SHOP" style="width: 100%; background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color); padding: 8px 10px; border-radius: 4px; font-size: 12px; text-transform: uppercase;">
+                </div>
+                <div>
+                    <label style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; display: block; margin-bottom: 4px;">Currency</label>
+                    <select id="jPosCurrency" style="width: 100%; background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color); padding: 8px 10px; border-radius: 4px; font-size: 12px;">
+                        <option value="USD">USD ($)</option>
+                        <option value="CAD">CAD (C$)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+                <div>
+                    <label style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; display: block; margin-bottom: 4px;">Direction</label>
+                    <select id="jPosDirection" style="width: 100%; background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color); padding: 8px 10px; border-radius: 4px; font-size: 12px;">
+                        <option value="LONG">LONG (Buy)</option>
+                        <option value="SHORT">SHORT (Sell)</option>
+                    </select>
+                </div>
+                <div>
+                    <label style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; display: block; margin-bottom: 4px;">Shares / Quantity *</label>
+                    <input type="number" step="any" id="jPosShares" required placeholder="e.g. 50" style="width: 100%; background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color); padding: 8px 10px; border-radius: 4px; font-size: 12px;">
+                </div>
+                <div>
+                    <label style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; display: block; margin-bottom: 4px;">Entry Price *</label>
+                    <input type="number" step="any" id="jPosEntryPrice" required placeholder="e.g. 150.25" style="width: 100%; background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color); padding: 8px 10px; border-radius: 4px; font-size: 12px;">
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+                <div>
+                    <label style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; display: block; margin-bottom: 4px;">Entry Date</label>
+                    <input type="date" id="jPosEntryDate" style="width: 100%; background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color); padding: 8px 10px; border-radius: 4px; font-size: 12px;">
+                </div>
+                <div>
+                    <label style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; display: block; margin-bottom: 4px;">Stop Loss Price</label>
+                    <input type="number" step="any" id="jPosStopLoss" placeholder="e.g. 142.00" style="width: 100%; background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color); padding: 8px 10px; border-radius: 4px; font-size: 12px;">
+                </div>
+                <div>
+                    <label style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; display: block; margin-bottom: 4px;">Profit Target</label>
+                    <input type="number" step="any" id="jPosProfitTarget" placeholder="e.g. 175.00" style="width: 100%; background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color); padding: 8px 10px; border-radius: 4px; font-size: 12px;">
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+                <div>
+                    <label style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; display: block; margin-bottom: 4px;">Conviction Level</label>
+                    <select id="jPosConviction" style="width: 100%; background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color); padding: 8px 10px; border-radius: 4px; font-size: 12px;">
+                        <option value="5">★★★★★ High Conviction</option>
+                        <option value="4" selected>★★★★☆ Solid Setup</option>
+                        <option value="3">★★★☆☆ Moderate</option>
+                        <option value="2">★★☆☆☆ Speculative</option>
+                        <option value="1">★☆☆☆☆ Watch / Low</option>
+                    </select>
+                </div>
+                <div>
+                    <label style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; display: block; margin-bottom: 4px;">Strategy Setup Tag</label>
+                    <select id="jPosStrategy" style="width: 100%; background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color); padding: 8px 10px; border-radius: 4px; font-size: 12px;">
+                        <option value="PULLBACK_UPTREND">Pullback in Uptrend</option>
+                        <option value="MOMENTUM_BREAKOUT">Momentum Breakout</option>
+                        <option value="VALUE_DIVIDEND">Value &amp; Dividend Aristocrat</option>
+                        <option value="EARNINGS_PEAD">Earnings PEAD Surprise</option>
+                        <option value="MANUAL_RESEARCH">Discretionary Quantitative Setup</option>
+                    </select>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 16px;">
+                <label style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; display: block; margin-bottom: 4px;">Research Thesis &amp; Invalidation Notes</label>
+                <textarea id="jPosThesis" rows="3" placeholder="Document quantitative factors, support levels, and technical catalyst rationale..." style="width: 100%; background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color); padding: 8px 10px; border-radius: 4px; font-size: 12px; font-family: inherit; line-height: 1.4;"></textarea>
+            </div>
+
+            <div style="display: flex; justify-content: flex-end; gap: 8px;">
+                <button type="button" class="filter-btn" onclick="closeAllModals()">Cancel</button>
+                <button type="submit" class="filter-btn active" style="padding: 6px 16px; background: var(--accent-blue); border: none; font-weight: 700;">Save Research Position</button>
+            </div>
+        </form>
     </div>
 
     <script>
@@ -2025,8 +2345,18 @@
                             </span>
                         </div>
                         <div style="font-size: 13px; color: var(--text-muted);">${data.name}</div>
-                        <div style="font-size: 20px; font-weight: 700; margin-top: 6px;">
-                            $${m.close.toFixed(2)} <span style="font-size: 12px; color: var(--text-muted);">${data.currency}</span>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 6px; flex-wrap: wrap; gap: 8px;">
+                            <div style="font-size: 20px; font-weight: 700;">
+                                $${m.close.toFixed(2)} <span style="font-size: 12px; color: var(--text-muted);">${data.currency}</span>
+                            </div>
+                            <div style="display: flex; gap: 6px;">
+                                <button class="filter-btn" onclick="quickAddCurrentSymbolToWatchlist('${data.symbol}')" style="font-size: 11px; padding: 4px 10px; cursor: pointer;">
+                                    ★ Watchlist
+                                </button>
+                                <button class="filter-btn" onclick="quickLogCurrentSymbolInJournal('${data.symbol}', ${m.close}, '${data.currency}')" style="font-size: 11px; padding: 4px 10px; cursor: pointer; color: var(--accent-blue); border-color: rgba(59, 130, 246, 0.4);">
+                                    📝 Journal
+                                </button>
+                            </div>
                         </div>
                     </div>
 
@@ -2379,6 +2709,7 @@
             document.getElementById('tab-signals').style.display = tabId === 'signals' ? 'block' : 'none';
             document.getElementById('tab-backtest').style.display = tabId === 'backtest' ? 'block' : 'none';
             document.getElementById('tab-catalysts').style.display = tabId === 'catalysts' ? 'block' : 'none';
+            document.getElementById('tab-journal').style.display = tabId === 'journal' ? 'block' : 'none';
 
             if (tabId === 'backtest') {
                 if (!backtestBundle) {
@@ -2391,6 +2722,12 @@
                     loadCatalystsAndRender();
                 } else {
                     renderCatalystsView();
+                }
+            } else if (tabId === 'journal') {
+                if (!journalBundle) {
+                    loadJournalAndRender();
+                } else {
+                    renderJournalView();
                 }
             }
         }
@@ -3462,6 +3799,661 @@
             });
 
             container.innerHTML = html;
+        }
+
+        // ==========================================
+        // PHASE 1 MVP: RESEARCH JOURNAL & WATCHLISTS
+        // ==========================================
+        let journalBundle = null;
+        let watchlistsBundle = null;
+        let feedHealthBundle = null;
+        let activeJournalSubTab = 'positions';
+        let journalStatusFilter = 'ALL';
+
+        async function loadJournalAndRender() {
+            try {
+                const [jData, wData, hData] = await Promise.all([
+                    fetchJson('/api/journal.json', '/api/journal'),
+                    fetchJson('/api/watchlists.json', '/api/watchlists'),
+                    fetchJson('/api/feed_health.json', '/api/feed_health')
+                ]);
+                journalBundle = jData;
+                watchlistsBundle = wData;
+                feedHealthBundle = hData;
+
+                // Merge local positions from localStorage if present
+                const localPos = JSON.parse(localStorage.getItem('local_journal_positions') || '[]');
+                if (localPos && localPos.length > 0) {
+                    localPos.forEach(lp => {
+                        if (!journalBundle.positions.some(p => p.id === lp.id)) {
+                            journalBundle.positions.unshift(lp);
+                        }
+                    });
+                }
+
+                renderJournalView();
+                renderWatchlistsView();
+            } catch (err) {
+                console.error("Failed to load journal/watchlists feed:", err);
+            }
+        }
+
+        function switchJournalSubTab(subTabId) {
+            activeJournalSubTab = subTabId;
+            document.getElementById('subtabBtnJournalPositions')?.classList.toggle('active', subTabId === 'positions');
+            document.getElementById('subtabBtnWatchlists')?.classList.toggle('active', subTabId === 'watchlists');
+
+            const viewPos = document.getElementById('subview-journal-positions');
+            const viewWl = document.getElementById('subview-journal-watchlists');
+
+            if (viewPos) viewPos.style.display = subTabId === 'positions' ? 'block' : 'none';
+            if (viewWl) viewWl.style.display = subTabId === 'watchlists' ? 'block' : 'none';
+
+            if (subTabId === 'positions') renderJournalView();
+            if (subTabId === 'watchlists') renderWatchlistsView();
+        }
+
+        function setJournalStatusFilter(stat) {
+            journalStatusFilter = stat;
+            document.getElementById('journalFilterAll')?.classList.toggle('active', stat === 'ALL');
+            document.getElementById('journalFilterOpen')?.classList.toggle('active', stat === 'OPEN');
+            document.getElementById('journalFilterClosed')?.classList.toggle('active', stat === 'CLOSED');
+            filterJournal();
+        }
+
+        function renderJournalView() {
+            if (!journalBundle) return;
+            renderJournalMetrics();
+            filterJournal();
+        }
+
+        function renderJournalMetrics() {
+            if (!journalBundle || !journalBundle.summary) return;
+            const s = journalBundle.summary;
+            const grid = document.getElementById('journalMetricsGrid');
+            if (!grid) return;
+
+            let totalOpenVal = 0;
+            let totalUnrealPnl = 0;
+            let totalOpenCost = 0;
+            let openCnt = 0;
+            let closedCnt = 0;
+            let winClosedCnt = 0;
+            let totalRealPnl = 0;
+
+            const fxFactor = s.cad_usd_exchange_rate ? (1 / s.cad_usd_exchange_rate) : 0.74;
+
+            journalBundle.positions.forEach(p => {
+                if (p.status === 'OPEN') {
+                    openCnt++;
+                    const curPrice = p.current_price || p.entry_price;
+                    const val = p.shares * curPrice;
+                    const cost = p.shares * p.entry_price;
+                    const unPnl = val - cost;
+                    const valUsd = p.currency === 'USD' ? val : val * fxFactor;
+                    const costUsd = p.currency === 'USD' ? cost : cost * fxFactor;
+                    const unPnlUsd = p.currency === 'USD' ? unPnl : unPnl * fxFactor;
+                    totalOpenVal += valUsd;
+                    totalOpenCost += costUsd;
+                    totalUnrealPnl += unPnlUsd;
+                } else if (p.status === 'CLOSED') {
+                    closedCnt++;
+                    const exitP = p.exit_price || p.entry_price;
+                    const realPnl = (p.shares * exitP) - (p.shares * p.entry_price);
+                    const realPnlUsd = p.currency === 'USD' ? realPnl : realPnl * fxFactor;
+                    totalRealPnl += realPnlUsd;
+                    if (realPnl > 0) winClosedCnt++;
+                }
+            });
+
+            const unPnlPct = totalOpenCost > 0 ? (totalUnrealPnl / totalOpenCost) * 100 : 0;
+            const winRate = closedCnt > 0 ? ((winClosedCnt / closedCnt) * 100).toFixed(1) : 'N/A';
+
+            grid.innerHTML = `
+                <div class="scorecard-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px;">
+                    <div style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Open Portfolio Value</div>
+                    <div style="font-size: 22px; font-weight: 800; color: var(--text-primary); margin: 4px 0;">
+                        $${totalOpenVal.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})} <span style="font-size: 12px; color: var(--text-muted);">USD</span>
+                    </div>
+                    <div style="font-size: 11px; color: var(--accent-cyan);">
+                        ≈ C$${(totalOpenVal * (s.cad_usd_exchange_rate || 1.35)).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})} CAD Eq.
+                    </div>
+                </div>
+
+                <div class="scorecard-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px;">
+                    <div style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Tracked Positions</div>
+                    <div style="font-size: 22px; font-weight: 800; color: var(--text-primary); margin: 4px 0;">
+                        ${openCnt} Active <span style="font-size: 14px; color: var(--text-muted); font-weight: 600;">/ ${closedCnt} Closed</span>
+                    </div>
+                    <div style="font-size: 11px; color: var(--text-muted);">
+                        ${openCnt + closedCnt} total self-directed research entries
+                    </div>
+                </div>
+
+                <div class="scorecard-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px;">
+                    <div style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Unrealized P&L</div>
+                    <div style="font-size: 22px; font-weight: 800; color: ${totalUnrealPnl >= 0 ? 'var(--accent-green)' : 'var(--accent-red)'}; margin: 4px 0;">
+                        ${totalUnrealPnl >= 0 ? '+' : ''}$${totalUnrealPnl.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}
+                    </div>
+                    <div style="font-size: 11px; color: ${unPnlPct >= 0 ? 'var(--accent-green)' : 'var(--accent-red)'}; font-weight: 700;">
+                        ${unPnlPct >= 0 ? '+' : ''}${unPnlPct.toFixed(2)}% on open cost basis
+                    </div>
+                </div>
+
+                <div class="scorecard-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px;">
+                    <div style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Closed Performance</div>
+                    <div style="font-size: 22px; font-weight: 800; color: ${totalRealPnl >= 0 ? 'var(--accent-green)' : 'var(--accent-red)'}; margin: 4px 0;">
+                        ${totalRealPnl >= 0 ? '+' : ''}$${totalRealPnl.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}
+                    </div>
+                    <div style="font-size: 11px; color: var(--text-muted);">
+                        Win Rate: <strong style="color: ${parseFloat(winRate) >= 50 ? 'var(--accent-green)' : 'var(--accent-amber)'};">${winRate}%</strong> · BoC FX: ${s.cad_usd_exchange_rate}
+                    </div>
+                </div>
+            `;
+        }
+
+        function filterJournal() {
+            const tbody = document.getElementById('journalTableBody');
+            if (!tbody || !journalBundle || !journalBundle.positions) return;
+
+            const mktFilter = document.getElementById('journalMarketFilter')?.value || 'ALL';
+            const stratFilter = document.getElementById('journalStrategyFilter')?.value || 'ALL';
+            const searchQ = (document.getElementById('journalSearchInput')?.value || '').trim().toLowerCase();
+
+            const filtered = journalBundle.positions.filter(p => {
+                if (journalStatusFilter !== 'ALL' && p.status !== journalStatusFilter) return false;
+                if (mktFilter !== 'ALL' && p.market !== mktFilter) return false;
+                if (stratFilter !== 'ALL' && p.strategy_tag !== stratFilter) return false;
+                if (searchQ) {
+                    const matchSym = (p.symbol || '').toLowerCase().includes(searchQ);
+                    const matchThesis = (p.thesis_notes || '').toLowerCase().includes(searchQ);
+                    if (!matchSym && !matchThesis) return false;
+                }
+                return true;
+            });
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="11" style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 13px;">
+                            No research positions match the selected filters. Click <strong>+ Log Research Position</strong> to add an entry.
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            let html = '';
+            filtered.forEach(p => {
+                const isOpen = p.status === 'OPEN';
+                const curP = p.current_price || p.entry_price;
+                const costBasis = p.shares * p.entry_price;
+                const mktVal = p.shares * curP;
+                const pnl = isOpen ? (mktVal - costBasis) : ((p.exit_price || curP) * p.shares - costBasis);
+                const pnlPct = costBasis > 0 ? (pnl / costBasis) * 100 : 0;
+                const pnlColor = pnl >= 0 ? 'var(--accent-green)' : 'var(--accent-red)';
+                const currSign = p.currency === 'CAD' ? 'C$' : '$';
+
+                let rrHtml = '—';
+                if (p.stop_loss && p.profit_target && Math.abs(p.entry_price - p.stop_loss) > 0.001) {
+                    const rr = Math.abs(p.profit_target - p.entry_price) / Math.abs(p.entry_price - p.stop_loss);
+                    rrHtml = `
+                        <div style="font-size: 11px;">Stop: <strong style="color: var(--accent-red);">${currSign}${p.stop_loss.toFixed(2)}</strong></div>
+                        <div style="font-size: 11px;">Target: <strong style="color: var(--accent-green);">${currSign}${p.profit_target.toFixed(2)}</strong></div>
+                        <div style="font-size: 10px; color: var(--accent-cyan); font-weight: 700;">R:R ${rr.toFixed(2)}x</div>
+                    `;
+                }
+
+                const stars = '★'.repeat(p.conviction || 3) + '☆'.repeat(5 - (p.conviction || 3));
+
+                html += `
+                    <tr style="border-bottom: 1px solid var(--border-color); transition: background 0.15s ease;">
+                        <td style="padding: 12px 14px;">
+                            <div style="display: flex; align-items: center; gap: 6px;">
+                                <button class="filter-btn" onclick="openSymbol('${p.symbol}')" style="font-weight: 800; font-size: 12px; padding: 2px 8px; cursor: pointer;">
+                                    ${p.market === 'US' ? '🇺🇸' : '🇨🇦'} ${p.symbol}
+                                </button>
+                                <span style="font-size: 11px; color: var(--text-muted);">${p.company_name || ''}</span>
+                            </div>
+                        </td>
+                        <td style="padding: 12px 14px;">
+                            <span class="exchange-tag" style="font-weight: 700; ${p.direction === 'LONG' ? 'color: var(--accent-green); border-color: rgba(16, 185, 129, 0.4);' : 'color: var(--accent-red); border-color: rgba(239, 68, 68, 0.4);'}">
+                                ${p.direction}
+                            </span>
+                            <span class="exchange-tag" style="font-size: 10px; color: var(--text-muted);">${p.currency}</span>
+                        </td>
+                        <td style="padding: 12px 14px; text-align: right; font-family: monospace; font-weight: 700;">
+                            ${p.shares}
+                        </td>
+                        <td style="padding: 12px 14px; text-align: right; font-family: monospace; font-weight: 700; color: var(--text-primary);">
+                            ${currSign}${p.entry_price.toFixed(2)}
+                            <div style="font-size: 10px; color: var(--text-muted);">${p.entry_date || ''}</div>
+                        </td>
+                        <td style="padding: 12px 14px; text-align: right; font-family: monospace; font-weight: 700;">
+                            ${isOpen ? `${currSign}${curP.toFixed(2)}` : `<span style="color: var(--accent-blue);">${currSign}${(p.exit_price || curP).toFixed(2)}</span>`}
+                            ${!isOpen ? `<div style="font-size: 10px; color: var(--text-muted);">Exit: ${p.exit_date || ''}</div>` : ''}
+                        </td>
+                        <td style="padding: 12px 14px; text-align: right; font-family: monospace; font-weight: 700; color: var(--text-primary);">
+                            ${currSign}${mktVal.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}
+                        </td>
+                        <td style="padding: 12px 14px; text-align: right; font-family: monospace; font-weight: 800; color: ${pnlColor};">
+                            ${pnl >= 0 ? '+' : ''}${currSign}${pnl.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}
+                            <div style="font-size: 11px; font-weight: 700;">${pnlPct >= 0 ? '+' : ''}${pnlPct.toFixed(2)}%</div>
+                        </td>
+                        <td style="padding: 12px 14px;">
+                            ${rrHtml}
+                        </td>
+                        <td style="padding: 12px 14px; text-align: center; color: var(--accent-amber); font-size: 12px; letter-spacing: 1px;">
+                            ${stars}
+                        </td>
+                        <td style="padding: 12px 14px; max-width: 260px;">
+                            <span class="exchange-tag" style="font-size: 10px; color: var(--accent-cyan);">${p.strategy_tag || 'MANUAL'}</span>
+                            <div style="font-size: 11px; color: var(--text-secondary); line-height: 1.4; margin-top: 4px;">${p.thesis_notes || 'No thesis logged.'}</div>
+                        </td>
+                        <td style="padding: 12px 14px; text-align: center;">
+                            <div style="display: flex; gap: 4px; justify-content: center;">
+                                ${isOpen ? `<button class="filter-btn" onclick="closeJournalPosition(${p.id})" style="font-size: 10px; padding: 3px 6px; color: var(--accent-amber); cursor: pointer;" title="Mark as Closed">Close</button>` : ''}
+                                <button class="filter-btn" onclick="deleteJournalPosition(${p.id})" style="font-size: 10px; padding: 3px 6px; color: var(--accent-red); cursor: pointer;" title="Delete Position">&times;</button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            tbody.innerHTML = html;
+        }
+
+        function renderWatchlistsView() {
+            if (!watchlistsBundle || !watchlistsBundle.watchlists) return;
+            const select = document.getElementById('activeWatchlistSelect');
+            if (!select) return;
+
+            const prevVal = select.value;
+            select.innerHTML = watchlistsBundle.watchlists.map(w => `
+                <option value="${w.watchlist_id}">${w.name} (${w.items.length} symbols)</option>
+            `).join('');
+
+            if (prevVal) select.value = prevVal;
+            renderWatchlistItems();
+        }
+
+        function changeActiveWatchlist() {
+            renderWatchlistItems();
+        }
+
+        function renderWatchlistItems() {
+            const tbody = document.getElementById('watchlistTableBody');
+            const select = document.getElementById('activeWatchlistSelect');
+            if (!tbody || !select || !watchlistsBundle) return;
+
+            const selectedId = parseInt(select.value, 10);
+            const activeWl = watchlistsBundle.watchlists.find(w => w.watchlist_id === selectedId) || watchlistsBundle.watchlists[0];
+            if (!activeWl) return;
+
+            if (!activeWl.items || activeWl.items.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="7" style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 13px;">
+                            This watchlist is currently empty. Use the input above or click <strong>★ Watchlist</strong> in any symbol dossier to add securities.
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            let html = '';
+            activeWl.items.forEach(item => {
+                const currSign = item.currency === 'CAD' ? 'C$' : '$';
+                const scoreCls = (item.composite_score || 50) >= 60 ? 'score-high' : 'score-mid';
+
+                html += `
+                    <tr style="border-bottom: 1px solid var(--border-color); transition: background 0.15s ease;">
+                        <td style="padding: 12px 14px;">
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <button class="filter-btn" onclick="openSymbol('${item.symbol}')" style="font-weight: 800; font-size: 12px; padding: 3px 8px; cursor: pointer;">
+                                    ${item.market === 'US' ? '🇺🇸' : '🇨🇦'} ${item.symbol}
+                                </button>
+                                <span style="font-weight: 700; color: var(--text-primary); font-size: 13px;">${item.company_name || ''}</span>
+                            </div>
+                        </td>
+                        <td style="padding: 12px 14px;">
+                            <span class="exchange-tag">${item.market}</span>
+                            <span class="exchange-tag" style="color: var(--text-muted);">${item.currency}</span>
+                        </td>
+                        <td style="padding: 12px 14px; text-align: right; font-family: monospace; font-weight: 700; color: var(--text-primary);">
+                            ${currSign}${(item.last_price || 0).toFixed(2)}
+                        </td>
+                        <td style="padding: 12px 14px; text-align: right; font-family: monospace; font-weight: 700; color: var(--accent-cyan);">
+                            ${(item.rvol || 1.0).toFixed(1)}x
+                        </td>
+                        <td style="padding: 12px 14px; text-align: center;">
+                            <span class="score-pill ${scoreCls}" style="font-size: 12px; padding: 2px 8px;">
+                                ${item.composite_score || 50}/100
+                            </span>
+                        </td>
+                        <td style="padding: 12px 14px; color: var(--text-secondary); font-size: 11px;">
+                            ${item.notes || 'Added to watchlist.'}
+                        </td>
+                        <td style="padding: 12px 14px; text-align: center;">
+                            <button class="filter-btn" onclick="removeSymbolFromWatchlist('${item.symbol}')" style="font-size: 11px; padding: 3px 8px; color: var(--accent-red); cursor: pointer;">
+                                Remove
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            tbody.innerHTML = html;
+        }
+
+        function addSymbolToCurrentWatchlist() {
+            const input = document.getElementById('quickAddWatchlistSymbol');
+            if (!input || !input.value.trim()) return;
+            const sym = input.value.trim().toUpperCase();
+            input.value = '';
+
+            quickAddCurrentSymbolToWatchlist(sym);
+        }
+
+        function quickAddCurrentSymbolToWatchlist(sym) {
+            if (!watchlistsBundle || !watchlistsBundle.watchlists || watchlistsBundle.watchlists.length === 0) return;
+            const select = document.getElementById('activeWatchlistSelect');
+            const targetId = select ? parseInt(select.value, 10) : watchlistsBundle.watchlists[0].watchlist_id;
+            const wl = watchlistsBundle.watchlists.find(w => w.watchlist_id === targetId) || watchlistsBundle.watchlists[0];
+
+            if (wl.items.some(i => i.symbol === sym)) {
+                alert(`${sym} is already in watchlist "${wl.name}".`);
+                return;
+            }
+
+            wl.items.push({
+                item_id: Date.now(),
+                symbol: sym,
+                company_name: sym,
+                market: sym.endsWith('.TO') || ['RY', 'TD', 'CNQ', 'ENB', 'BAM', 'SHOP', 'CNR', 'CP', 'BN'].includes(sym) ? 'CA' : 'US',
+                currency: sym.endsWith('.TO') || ['RY', 'TD', 'CNQ', 'ENB', 'BAM', 'SHOP', 'CNR', 'CP', 'BN'].includes(sym) ? 'CAD' : 'USD',
+                last_price: 100.0,
+                rvol: 1.2,
+                composite_score: 65,
+                notes: 'User custom watchlist candidate',
+                added_at: new Date().toISOString().split('T')[0]
+            });
+
+            renderWatchlistItems();
+            alert(`✓ Added ${sym} to watchlist "${wl.name}"`);
+        }
+
+        function removeSymbolFromWatchlist(sym) {
+            if (!watchlistsBundle) return;
+            const select = document.getElementById('activeWatchlistSelect');
+            const targetId = select ? parseInt(select.value, 10) : watchlistsBundle.watchlists[0].watchlist_id;
+            const wl = watchlistsBundle.watchlists.find(w => w.watchlist_id === targetId);
+            if (!wl) return;
+
+            wl.items = wl.items.filter(i => i.symbol !== sym);
+            renderWatchlistItems();
+        }
+
+        // Modals & User Actions
+        function openFeedHealthModal() {
+            const modal = document.getElementById('feedHealthModal');
+            const overlay = document.getElementById('modalOverlay');
+            const content = document.getElementById('feedHealthContent');
+            if (!modal || !overlay || !content) return;
+
+            if (!feedHealthBundle) {
+                fetchJson('/api/feed_health.json', '/api/feed_health')
+                    .then(data => {
+                        feedHealthBundle = data;
+                        renderFeedHealthContent();
+                    });
+            } else {
+                renderFeedHealthContent();
+            }
+
+            overlay.style.display = 'block';
+            modal.style.display = 'block';
+        }
+
+        function renderFeedHealthContent() {
+            const content = document.getElementById('feedHealthContent');
+            if (!content || !feedHealthBundle) return;
+
+            const feeds = feedHealthBundle.feeds || [];
+            const events = feedHealthBundle.data_quality_events || [];
+
+            content.innerHTML = `
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; margin-bottom: 20px;">
+                    ${feeds.map(f => `
+                        <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 6px; padding: 12px;">
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 4px;">
+                                <span style="font-weight: 700; color: var(--text-primary); font-size: 13px;">${f.name}</span>
+                                <span class="exchange-tag" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-green); border: 1px solid rgba(16, 185, 129, 0.4); font-size: 10px; font-weight: 800;">
+                                    ${f.status}
+                                </span>
+                            </div>
+                            <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 6px;">
+                                Source: <strong>${f.primary_source}</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; font-size: 11px; border-top: 1px solid var(--border-color); padding-top: 6px; color: var(--text-secondary);">
+                                <span>Freshness: <strong style="color: var(--accent-cyan);">${f.freshness_hours}h ago</strong></span>
+                                <span>Records: <strong>${f.records_count}</strong></span>
+                                <span>Coverage: <strong>${f.coverage_pct}%</strong></span>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <h4 style="font-size: 12px; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 8px;">
+                    Recent Data Quality & Reconciliation Audit Log (Bitemporal Knowledge Verification)
+                </h4>
+                <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 6px; max-height: 180px; overflow-y: auto; padding: 8px; font-size: 11px;">
+                    ${events.map(ev => `
+                        <div style="display: flex; gap: 8px; padding: 6px 4px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); align-items: baseline;">
+                            <span class="exchange-tag" style="font-size: 9px; font-weight: 700;">${ev.dimension}</span>
+                            <span style="color: var(--accent-green); font-weight: 700;">[${ev.status}]</span>
+                            <span style="color: var(--text-secondary); flex-grow: 1;">${ev.description}</span>
+                            <span style="color: var(--text-muted); font-family: monospace; font-size: 10px;">${ev.detected_at || ''}</span>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <div style="margin-top: 16px; text-align: right;">
+                    <button class="filter-btn" onclick="closeAllModals()">Close Console</button>
+                </div>
+            `;
+        }
+
+        function openConsentModal() {
+            document.getElementById('modalOverlay').style.display = 'block';
+            document.getElementById('consentModal').style.display = 'block';
+        }
+
+        function openJournalEntryModal() {
+            document.getElementById('modalOverlay').style.display = 'block';
+            document.getElementById('journalEntryModal').style.display = 'block';
+            document.getElementById('jPosEntryDate').value = new Date().toISOString().split('T')[0];
+        }
+
+        function closeAllModals() {
+            document.getElementById('modalOverlay').style.display = 'none';
+            document.getElementById('feedHealthModal').style.display = 'none';
+            document.getElementById('consentModal').style.display = 'none';
+            document.getElementById('journalEntryModal').style.display = 'none';
+        }
+
+        function toggleAttestation() {
+            const checked = document.getElementById('userAttestationCheckbox')?.checked;
+            localStorage.setItem('user_attestation_confirmed', checked ? 'true' : 'false');
+            localStorage.setItem('user_attestation_date', new Date().toISOString());
+        }
+
+        function quickLogCurrentSymbolInJournal(sym, price, currency) {
+            closeDrawer();
+            openJournalEntryModal();
+            document.getElementById('jPosSymbol').value = sym;
+            document.getElementById('jPosCurrency').value = currency || 'USD';
+            document.getElementById('jPosEntryPrice').value = price || '';
+            document.getElementById('jPosShares').value = '50';
+            document.getElementById('jPosStopLoss').value = (price * 0.95).toFixed(2);
+            document.getElementById('jPosProfitTarget').value = (price * 1.10).toFixed(2);
+        }
+
+        function saveJournalEntry(e) {
+            e.preventDefault();
+            if (!journalBundle) return;
+
+            const sym = document.getElementById('jPosSymbol').value.trim().toUpperCase();
+            const curr = document.getElementById('jPosCurrency').value;
+            const dir = document.getElementById('jPosDirection').value;
+            const shares = parseFloat(document.getElementById('jPosShares').value);
+            const entryP = parseFloat(document.getElementById('jPosEntryPrice').value);
+            const entryD = document.getElementById('jPosEntryDate').value;
+            const stopL = parseFloat(document.getElementById('jPosStopLoss').value) || null;
+            const targetP = parseFloat(document.getElementById('jPosProfitTarget').value) || null;
+            const conv = parseInt(document.getElementById('jPosConviction').value, 10);
+            const strat = document.getElementById('jPosStrategy').value;
+            const thesis = document.getElementById('jPosThesis').value.trim();
+
+            const isCA = sym.endsWith('.TO') || ['RY', 'TD', 'CNQ', 'ENB', 'BAM', 'SHOP', 'CNR', 'CP', 'BN'].includes(sym);
+
+            const newPos = {
+                id: Date.now(),
+                symbol: sym,
+                company_name: sym,
+                market: isCA ? 'CA' : 'US',
+                currency: curr,
+                direction: dir,
+                shares: shares,
+                entry_price: entryP,
+                entry_date: entryD,
+                current_price: entryP,
+                stop_loss: stopL,
+                profit_target: targetP,
+                exit_price: null,
+                exit_date: null,
+                status: 'OPEN',
+                conviction: conv,
+                strategy_tag: strat,
+                thesis_notes: thesis || 'Self-directed research position logged.'
+            };
+
+            journalBundle.positions.unshift(newPos);
+
+            // Persist to localStorage
+            const localPos = JSON.parse(localStorage.getItem('local_journal_positions') || '[]');
+            localPos.unshift(newPos);
+            localStorage.setItem('local_journal_positions', JSON.stringify(localPos));
+
+            closeAllModals();
+            renderJournalView();
+            alert(`✓ Research position for ${sym} successfully logged in journal.`);
+        }
+
+        function closeJournalPosition(id) {
+            if (!journalBundle) return;
+            const pos = journalBundle.positions.find(p => p.id === id);
+            if (!pos) return;
+
+            const exitPriceStr = prompt(`Closing position for ${pos.symbol}. Enter exit price:`, (pos.current_price || pos.entry_price).toFixed(2));
+            if (!exitPriceStr) return;
+            const exitP = parseFloat(exitPriceStr);
+            if (isNaN(exitP) || exitP <= 0) return;
+
+            pos.status = 'CLOSED';
+            pos.exit_price = exitP;
+            pos.exit_date = new Date().toISOString().split('T')[0];
+
+            // Update localStorage
+            const localPos = JSON.parse(localStorage.getItem('local_journal_positions') || '[]');
+            const idx = localPos.findIndex(p => p.id === id);
+            if (idx >= 0) {
+                localPos[idx] = pos;
+                localStorage.setItem('local_journal_positions', JSON.stringify(localPos));
+            }
+
+            renderJournalView();
+        }
+
+        function deleteJournalPosition(id) {
+            if (!confirm("Are you sure you want to remove this research position from your journal?")) return;
+            if (!journalBundle) return;
+
+            journalBundle.positions = journalBundle.positions.filter(p => p.id !== id);
+
+            // Remove from localStorage
+            let localPos = JSON.parse(localStorage.getItem('local_journal_positions') || '[]');
+            localPos = localPos.filter(p => p.id !== id);
+            localStorage.setItem('local_journal_positions', JSON.stringify(localPos));
+
+            renderJournalView();
+        }
+
+        function exportJournalData(format) {
+            if (!journalBundle || !journalBundle.positions) return;
+
+            if (format === 'json') {
+                const blob = new Blob([JSON.stringify(journalBundle, null, 2)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `research_journal_${new Date().toISOString().split('T')[0]}.json`;
+                a.click();
+            } else if (format === 'csv') {
+                const headers = ['ID', 'Symbol', 'Market', 'Currency', 'Direction', 'Shares', 'Entry Price', 'Entry Date', 'Current/Exit Price', 'Status', 'Stop Loss', 'Profit Target', 'Conviction', 'Strategy Tag', 'Thesis'];
+                const rows = journalBundle.positions.map(p => [
+                    p.id,
+                    p.symbol,
+                    p.market,
+                    p.currency,
+                    p.direction,
+                    p.shares,
+                    p.entry_price,
+                    `"${p.entry_date || ''}"`,
+                    p.status === 'OPEN' ? (p.current_price || p.entry_price) : (p.exit_price || p.entry_price),
+                    p.status,
+                    p.stop_loss || '',
+                    p.profit_target || '',
+                    p.conviction || 3,
+                    `"${p.strategy_tag || ''}"`,
+                    `"${(p.thesis_notes || '').replace(/"/g, '""')}"`
+                ]);
+                const csvContent = [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
+                const blob = new Blob([csvContent], { type: 'text/csv' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `research_journal_${new Date().toISOString().split('T')[0]}.csv`;
+                a.click();
+            }
+        }
+
+        function exportWatchlistData(format) {
+            if (!watchlistsBundle) return;
+            const select = document.getElementById('activeWatchlistSelect');
+            const targetId = select ? parseInt(select.value, 10) : watchlistsBundle.watchlists[0].watchlist_id;
+            const wl = watchlistsBundle.watchlists.find(w => w.watchlist_id === targetId);
+            if (!wl) return;
+
+            const headers = ['Symbol', 'Company Name', 'Market', 'Currency', 'Last Price', '24h RVOL', 'Score', 'Notes', 'Added At'];
+            const rows = wl.items.map(i => [
+                i.symbol,
+                `"${(i.company_name || '').replace(/"/g, '""')}"`,
+                i.market,
+                i.currency,
+                i.last_price || 0,
+                i.rvol || 1.0,
+                i.composite_score || 50,
+                `"${(i.notes || '').replace(/"/g, '""')}"`,
+                `"${i.added_at || ''}"`
+            ]);
+            const csvContent = [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
+            const blob = new Blob([csvContent], { type: 'text/csv' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${wl.name.toLowerCase().replace(/\s+/g, '_')}_${new Date().toISOString().split('T')[0]}.csv`;
+            a.click();
         }
 
         window.onload = init;

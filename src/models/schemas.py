@@ -141,3 +141,67 @@ class ScoreRecord(BaseModel):
     data_quality_floor: Literal["HIGH", "MEDIUM", "LOW"]
     factor_attribution_json: Dict[str, Any]
     model_version: str
+
+
+class JournalPosition(BaseModel):
+    id: Optional[int] = None
+    user_id: str = "default_user"
+    symbol: str
+    direction: Literal["LONG", "SHORT"] = "LONG"
+    shares: float = Field(..., gt=0)
+    entry_price: float = Field(..., gt=0)
+    entry_date: str
+    stop_loss: Optional[float] = None
+    profit_target: Optional[float] = None
+    exit_price: Optional[float] = None
+    exit_date: Optional[str] = None
+    status: Literal["OPEN", "CLOSED", "WATCHLIST"] = "OPEN"
+    currency: Literal["USD", "CAD"] = "USD"
+    conviction: int = Field(default=3, ge=1, le=5)
+    thesis_notes: Optional[str] = None
+    strategy_tag: Optional[str] = None
+    market: Literal["US", "CA"] = "US"
+    current_price: Optional[float] = None
+    market_value: Optional[float] = None
+    unrealized_pnl: Optional[float] = None
+    unrealized_pnl_pct: Optional[float] = None
+    risk_reward_ratio: Optional[float] = None
+
+
+class WatchlistItem(BaseModel):
+    item_id: Optional[int] = None
+    watchlist_id: int
+    symbol: str
+    company_name: Optional[str] = None
+    market: Literal["US", "CA"] = "US"
+    currency: Literal["USD", "CAD"] = "USD"
+    last_price: Optional[float] = None
+    day_change_pct: Optional[float] = None
+    rvol: Optional[float] = None
+    composite_score: Optional[int] = None
+    notes: Optional[str] = None
+    added_at: str
+
+
+class Watchlist(BaseModel):
+    watchlist_id: int
+    name: str
+    description: Optional[str] = None
+    created_at: str
+    items: List[WatchlistItem] = Field(default_factory=list)
+
+
+class FeedHealth(BaseModel):
+    feed_id: str
+    name: str
+    market: Literal["US", "CA", "MACRO"]
+    primary_source: str
+    status: Literal["HEALTHY", "DEGRADED", "STALE", "DOWN"]
+    freshness_hours: float
+    staleness_badge: Literal["FRESH", "WARNING", "STALE"]
+    last_synced_at: str
+    records_count: int
+    missing_days_count: int = 0
+    coverage_pct: float = 100.0
+    notes: str
+

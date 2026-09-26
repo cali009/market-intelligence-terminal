@@ -206,3 +206,46 @@ CREATE TABLE IF NOT EXISTS event_calendar (
     is_confirmed INTEGER NOT NULL DEFAULT 1,
     proximity_flag TEXT                     -- IMMEDIATE | UPCOMING | PAST
 );
+
+-- 12. User Watchlists & Items (Phase 1 MVP)
+CREATE TABLE IF NOT EXISTS watchlist (
+    watchlist_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id TEXT NOT NULL DEFAULT 'default_user',
+    name TEXT NOT NULL,
+    description TEXT,
+    created_at TEXT NOT NULL DEFAULT (datetime('now')),
+    updated_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+CREATE TABLE IF NOT EXISTS watchlist_item (
+    item_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    watchlist_id INTEGER NOT NULL REFERENCES watchlist(watchlist_id) ON DELETE CASCADE,
+    security_id INTEGER REFERENCES security(security_id),
+    symbol TEXT NOT NULL,
+    notes TEXT,
+    added_at TEXT NOT NULL DEFAULT (datetime('now')),
+    UNIQUE(watchlist_id, symbol)
+);
+
+-- 13. Position & Research Journal (Phase 1 MVP)
+CREATE TABLE IF NOT EXISTS journal_position (
+    position_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id TEXT NOT NULL DEFAULT 'default_user',
+    symbol TEXT NOT NULL,
+    security_id INTEGER REFERENCES security(security_id),
+    direction TEXT NOT NULL DEFAULT 'LONG',  -- LONG | SHORT
+    shares REAL NOT NULL,
+    entry_price REAL NOT NULL,
+    entry_date TEXT NOT NULL,
+    stop_loss REAL,
+    profit_target REAL,
+    exit_price REAL,
+    exit_date TEXT,
+    status TEXT NOT NULL DEFAULT 'OPEN',     -- OPEN | CLOSED | WATCHLIST
+    currency TEXT NOT NULL DEFAULT 'USD',    -- USD | CAD
+    conviction INTEGER NOT NULL DEFAULT 3,   -- 1 to 5
+    thesis_notes TEXT,
+    strategy_tag TEXT,
+    created_at TEXT NOT NULL DEFAULT (datetime('now')),
+    updated_at TEXT NOT NULL DEFAULT (datetime('now'))
+);

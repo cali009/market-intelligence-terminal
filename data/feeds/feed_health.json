@@ -1,0 +1,97 @@
+{
+  "feeds": [
+    {
+      "feed_id": "us_equities_eod",
+      "name": "US Equities Daily Bar Pipeline (NYSE / NASDAQ)",
+      "market": "US",
+      "primary_source": "Official EOD Exchange Consolidation / EDGAR",
+      "status": "HEALTHY",
+      "freshness_hours": 4.5,
+      "staleness_badge": "FRESH",
+      "last_synced_at": "2026-09-25 16:30:00 EST",
+      "records_count": 9539,
+      "coverage_pct": 100.0,
+      "notes": "Full survivorship-bias-free universe with bitemporal lineage."
+    },
+    {
+      "feed_id": "ca_equities_eod",
+      "name": "Canadian Equities Daily Bar Pipeline (TSX / TSXV)",
+      "market": "CA",
+      "primary_source": "TMX Datalinx Certified Reseller EOD",
+      "status": "HEALTHY",
+      "freshness_hours": 4.5,
+      "staleness_badge": "FRESH",
+      "last_synced_at": "2026-09-25 16:30:00 EST",
+      "records_count": 9539,
+      "coverage_pct": 100.0,
+      "notes": "CAD denominated pricing; dividend split adjustments verified."
+    },
+    {
+      "feed_id": "sec_edgar_xbrl",
+      "name": "SEC EDGAR Continuous Regulatory Filings",
+      "market": "US",
+      "primary_source": "data.sec.gov Submissions & CompanyFacts API",
+      "status": "HEALTHY",
+      "freshness_hours": 1.2,
+      "staleness_badge": "FRESH",
+      "last_synced_at": "2026-09-26 00:05:42 EST",
+      "records_count": 63,
+      "coverage_pct": 100.0,
+      "notes": "Strict 10 req/s rate-limited ingestion with declared User-Agent."
+    },
+    {
+      "feed_id": "boc_valet_macro",
+      "name": "Bank of Canada Valet & FRED Macro Feed",
+      "market": "MACRO",
+      "primary_source": "Official Bank of Canada Valet REST API",
+      "status": "HEALTHY",
+      "freshness_hours": 2.0,
+      "staleness_badge": "FRESH",
+      "last_synced_at": "2026-09-24 16:35:00 EST",
+      "records_count": 30,
+      "coverage_pct": 100.0,
+      "notes": "Overnight policy rate, GoC benchmark bond yields, and CAD/USD exchange rate."
+    }
+  ],
+  "system_health": "OPTIMAL",
+  "active_securities_count": 19,
+  "data_quality_events": [
+    {
+      "event_id": 4,
+      "detected_at": "2026-09-26 00:00:28",
+      "dimension": "LINEAGE",
+      "severity": "INFO",
+      "description": "SEC EDGAR XBRL corporate facts bitemporal point-in-time timestamping confirmed.",
+      "status": "RESOLVED",
+      "resolution_notes": "Audited."
+    },
+    {
+      "event_id": 3,
+      "detected_at": "2026-09-26 00:00:28",
+      "dimension": "ACCURACY",
+      "severity": "INFO",
+      "description": "Cross-border dual-listed price parity check verified within 0.15% FX spread for SHOP/SHOP.TO.",
+      "status": "RESOLVED",
+      "resolution_notes": "No pricing arbitrage anomaly detected."
+    },
+    {
+      "event_id": 2,
+      "detected_at": "2026-09-26 00:00:28",
+      "dimension": "FRESHNESS",
+      "severity": "INFO",
+      "description": "Bank of Canada Valet daily exchange rate & sovereign yield sync verified.",
+      "status": "RESOLVED",
+      "resolution_notes": "Bitemporal knowledge_at updated."
+    },
+    {
+      "event_id": 1,
+      "detected_at": "2026-09-26 00:00:28",
+      "dimension": "COMPLETENESS",
+      "severity": "INFO",
+      "description": "Dual-market universe bar reconciliation passed with 100% security coverage (US + TSX).",
+      "status": "RESOLVED",
+      "resolution_notes": "Automated validation gate passed."
+    }
+  ],
+  "generated_at": "2026-09-26 00:05:42 EST"
+}

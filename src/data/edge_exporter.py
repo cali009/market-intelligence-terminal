@@ -25,6 +25,7 @@ from src.engine.scanners import market_scanners
 from src.engine.signals import signal_engine
 from src.engine.explanations import explanation_engine
 from src.engine.news_engine import news_engine
+from src.engine.journal import journal_engine
 
 FEEDS_DIR = DATA_DIR / "feeds"
 DIST_DIR = DATA_DIR / "dist"
@@ -341,12 +342,35 @@ class EdgeExporter:
                     indent=2,
                 )
 
+            # Phase 1 MVP: Research Journal, Watchlists & Data Quality Health
+            journal_payload = journal_engine.get_journal_summary()
+            with open(d_dir / "journal.json", "w") as f:
+                json.dump(journal_payload, f, indent=2)
+
+            watchlists_payload = journal_engine.get_watchlists_with_metrics()
+            with open(d_dir / "watchlists.json", "w") as f:
+                json.dump(
+                    {
+                        "as_of_date": as_of_date,
+                        "total_watchlists": len(watchlists_payload),
+                        "watchlists": watchlists_payload,
+                    },
+                    f,
+                    indent=2,
+                )
+
+            feed_health_payload = journal_engine.compile_feed_health_status()
+            with open(d_dir / "feed_health.json", "w") as f:
+                json.dump(feed_health_payload, f, indent=2)
+
         return {
-            "dist_files": 5,
+            "dist_files": 8,
             "symbol_files": symbol_files_count,
             "total_matches": len(scanner_results),
             "total_signals": len(signals_list),
             "total_catalysts": len(master_catalysts),
+            "total_journal_positions": len(journal_payload.get("positions", [])),
+            "total_watchlists": len(watchlists_payload),
         }
 
 

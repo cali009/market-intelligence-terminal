@@ -47,6 +47,12 @@ def build_firebase_bundle():
         ("news_filings.json", "news_filings"),
         ("news_filings.json", "catalysts.json"),
         ("news_filings.json", "catalysts"),
+        ("journal.json", "journal.json"),
+        ("journal.json", "journal"),
+        ("watchlists.json", "watchlists.json"),
+        ("watchlists.json", "watchlists"),
+        ("feed_health.json", "feed_health.json"),
+        ("feed_health.json", "feed_health"),
     ]
 
     for src_name, dest_name in core_feeds:
