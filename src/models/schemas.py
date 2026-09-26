@@ -381,3 +381,65 @@ class StrategyPaperScorecard(BaseModel):
         return self.model_dump()
 
 
+class PortfolioHoldingRecord(BaseModel):
+    symbol: str
+    company_name: str
+    exchange: str
+    country: Literal["US", "CA"]
+    currency: Literal["USD", "CAD"]
+    shares: float
+    cost_basis_per_share: float
+    cost_basis_total: float
+    current_price: float
+    market_value_local: float
+    market_value_base: float
+    unrealized_pnl_base: float
+    unrealized_pnl_pct: float
+    weight_pct: float
+    sector: str
+    industry: str
+    beta_local: float
+    beta_cross: float
+    risk_contribution_pct: float
+    daily_volatility_pct: float
+    days_to_liquidate: float
+    exit_verdict: Literal["HOLD", "WATCH", "REDUCE", "EXIT"] = "HOLD"
+    exit_trigger: Optional[str] = None
+    exit_score: int = 0
+    suggested_trailing_stop: Optional[float] = None
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class PortfolioAnalyticsReport(BaseModel):
+    portfolio_id: str
+    portfolio_name: str
+    as_of_date: str
+    base_currency: Literal["USD", "CAD"]
+    risk_profile: Literal["CONSERVATIVE", "MODERATE", "AGGRESSIVE"]
+    total_cost_basis_base: float
+    total_market_value_base: float
+    total_unrealized_pnl_base: float
+    total_unrealized_pnl_pct: float
+    cash_base: float
+    effective_bets: float
+    portfolio_beta_local: float
+    portfolio_beta_cross: float
+    portfolio_daily_vol_pct: float
+    portfolio_annualized_vol_pct: float
+    var_95_daily_pct: float
+    cvar_95_daily_pct: float
+    fx_exposure: Dict[str, Any]
+    sector_concentrations: Dict[str, float]
+    correlation_clusters: List[Dict[str, Any]]
+    stress_replays: List[Dict[str, Any]]
+    circuit_breakers: List[Dict[str, Any]]
+    holdings: List[PortfolioHoldingRecord]
+    disclaimers: List[str]
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+

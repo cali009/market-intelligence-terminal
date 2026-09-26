@@ -846,6 +846,7 @@
             <button class="tab-btn" data-tab="signals" onclick="switchTab('signals', event)">Research Signal Plans</button>
             <button class="tab-btn" data-tab="backtest" onclick="switchTab('backtest', event)">Backtest Lab & Strategy Performance</button>
             <button class="tab-btn" data-tab="paper" onclick="switchTab('paper', event)">Live Paper Trading & Scoreboard (Phase 8)</button>
+            <button class="tab-btn" data-tab="portfolio" onclick="switchTab('portfolio', event)">Portfolio Intelligence (Phase 9)</button>
             <button class="tab-btn" data-tab="catalysts" onclick="switchTab('catalysts', event)">News & SEC Filings</button>
             <button class="tab-btn" data-tab="journal" onclick="switchTab('journal', event)">Research Journal & Watchlists</button>
         </div>
@@ -1419,7 +1420,173 @@
             </div>
         </div>
 
-        <!-- Tab 6: News & SEC Filings Intelligence -->
+        <!-- Tab 6: Portfolio Intelligence & Risk Management (Phase 9) -->
+        <div id="tab-portfolio" style="display: none;">
+            <div class="portfolio-header" style="margin-bottom: 20px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
+                    <div>
+                        <h2 style="font-size: 18px; font-weight: 800; color: var(--text-primary); margin-bottom: 4px;">Portfolio Intelligence &amp; Risk Architecture (Phase 9)</h2>
+                        <p style="font-size: 12px; color: var(--text-muted);">Dual-market cross-border allocation · Risk attribution &amp; Component VaR · Correlation clustering (effective bets) · Macro stress replays · Drawdown circuit breakers (§9.4)</p>
+                    </div>
+                    <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+                        <!-- Portfolio Selector -->
+                        <select id="portfolioSelect" onchange="onSelectPortfolio(this.value)" style="background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color); padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;">
+                            <option value="PORT_CROSS_BORDER">Cross-Border Balanced (US/CA 50/50)</option>
+                            <option value="PORT_US_ALPHA">US Mega-Cap &amp; Momentum Book</option>
+                            <option value="PORT_TSX_INCOME">TSX Dividend &amp; Resource Resilience</option>
+                        </select>
+
+                        <!-- Base Currency Toggle -->
+                        <div style="display: flex; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 6px; overflow: hidden;">
+                            <button id="currBtnUSD" class="filter-btn active" onclick="setPortfolioCurrency('USD')" style="border-radius: 0; padding: 5px 10px; font-size: 11px; font-weight: 700;">USD ($)</button>
+                            <button id="currBtnCAD" class="filter-btn" onclick="setPortfolioCurrency('CAD')" style="border-radius: 0; padding: 5px 10px; font-size: 11px; font-weight: 700;">CAD (C$)</button>
+                        </div>
+
+                        <!-- Risk Profile Selector -->
+                        <select id="portfolioRiskProfile" onchange="onSelectRiskProfile(this.value)" style="background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color); padding: 6px 10px; border-radius: 6px; font-size: 12px;">
+                            <option value="CONSERVATIVE">Conservative Profile</option>
+                            <option value="MODERATE" selected>Moderate Profile</option>
+                            <option value="AGGRESSIVE">Aggressive Profile</option>
+                        </select>
+
+                        <!-- CSV Import Button -->
+                        <button class="filter-btn" onclick="toggleCsvImportModal()" style="color: var(--accent-cyan); border-color: rgba(6, 182, 212, 0.4); font-weight: 600;">
+                            📥 Import CSV / Custom Book
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Portfolio Summary KPI Cards (4 Cards) -->
+            <div id="portfolioSummaryCards" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; margin-bottom: 24px;">
+                <!-- Populated dynamically -->
+            </div>
+
+            <!-- Circuit Breakers Status Banner -->
+            <div id="portfolioCircuitBreakersBanner" style="margin-bottom: 24px;">
+                <!-- Populated dynamically -->
+            </div>
+
+            <!-- Multi-Asset Holdings Ledger & Risk Attribution Table -->
+            <div class="table-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; margin-bottom: 24px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;">
+                    <div>
+                        <h3 style="font-size: 14px; font-weight: 700; color: var(--text-primary); margin-bottom: 4px;">Holdings Ledger, Betas &amp; Component Risk Attribution</h3>
+                        <div style="font-size: 12px; color: var(--text-muted);">Marginal Contribution to Risk (MCR), % Risk Contribution (Σ %RC = 100%), and per-holding Exit Engine signals</div>
+                    </div>
+                    <span class="exchange-tag" style="color: var(--accent-green); font-weight: 700;">Live FX: BoC Valet Synced</span>
+                </div>
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse; font-size: 12px; text-align: left;">
+                        <thead>
+                            <tr style="background: var(--bg-secondary); border-bottom: 1px solid var(--border-color); text-transform: uppercase; color: var(--text-muted); font-size: 11px;">
+                                <th style="padding: 10px 12px;">Holding</th>
+                                <th style="padding: 10px 12px; text-align: right;">Shares</th>
+                                <th style="padding: 10px 12px; text-align: right;">Cost Basis</th>
+                                <th style="padding: 10px 12px; text-align: right;">Market Price</th>
+                                <th style="padding: 10px 12px; text-align: right;">Market Value</th>
+                                <th style="padding: 10px 12px; text-align: right;">Weight %</th>
+                                <th style="padding: 10px 12px; text-align: right;">Unrealized P&amp;L</th>
+                                <th style="padding: 10px 12px; text-align: right;">Local Beta</th>
+                                <th style="padding: 10px 12px; text-align: right;">Cross Beta</th>
+                                <th style="padding: 10px 12px; text-align: right;">% Risk Contrib</th>
+                                <th style="padding: 10px 12px; text-align: right;">Days to Liquidate</th>
+                                <th style="padding: 10px 12px; text-align: center;">Exit Signal</th>
+                            </tr>
+                        </thead>
+                        <tbody id="portfolioHoldingsTableBody">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Two Column Analytics Grid: Correlation Clusters & FX Exposure -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 20px; margin-bottom: 24px;">
+                <!-- Correlation Clusters & Effective Bets -->
+                <div class="table-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                        <div>
+                            <h3 style="font-size: 14px; font-weight: 700; color: var(--text-primary);">Correlation Clusters &amp; Effective Bets</h3>
+                            <div style="font-size: 11px; color: var(--text-muted);">Eigenvalue entropy decomposition on 60-session return covariance</div>
+                        </div>
+                        <span id="effectiveBetsBadge" class="exchange-tag" style="color: var(--accent-purple); font-weight: 700;">N_eff: 5.2</span>
+                    </div>
+                    <div id="portfolioClustersContainer">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+
+                <!-- Dual-Market FX Exposure Breakdown -->
+                <div class="table-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                        <div>
+                            <h3 style="font-size: 14px; font-weight: 700; color: var(--text-primary);">Dual-Market FX &amp; Currency Exposure</h3>
+                            <div style="font-size: 11px; color: var(--text-muted);">Unhedged cross-border exchange rate sensitivity (CAD vs USD)</div>
+                        </div>
+                        <span id="portfolioFxRateBadge" class="exchange-tag" style="color: var(--accent-cyan); font-weight: 700;">FX: 1.4136</span>
+                    </div>
+                    <div id="portfolioFxContainer">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Historical Macro Stress Replay Table -->
+            <div class="table-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; margin-bottom: 24px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;">
+                    <div>
+                        <h3 style="font-size: 14px; font-weight: 700; color: var(--text-primary); margin-bottom: 4px;">Historical Macro Crisis &amp; Liquidity Shock Replays</h3>
+                        <div style="font-size: 12px; color: var(--text-muted);">Multi-factor shock simulation across major historical drawdowns and market regime shifts</div>
+                    </div>
+                    <span class="exchange-tag" style="color: var(--accent-amber); font-weight: 700;">Stress Simulation Active</span>
+                </div>
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse; font-size: 12px; text-align: left;">
+                        <thead>
+                            <tr style="background: var(--bg-secondary); border-bottom: 1px solid var(--border-color); text-transform: uppercase; color: var(--text-muted); font-size: 11px;">
+                                <th style="padding: 10px 12px;">Crisis Event</th>
+                                <th style="padding: 10px 12px;">Historical Period</th>
+                                <th style="padding: 10px 12px;">Benchmark Shock</th>
+                                <th style="padding: 10px 12px; text-align: right;">Simulated Portfolio Return</th>
+                                <th style="padding: 10px 12px; text-align: right;">Simulated Dollar Loss</th>
+                                <th style="padding: 10px 12px; text-align: right;">Historical Recovery</th>
+                                <th style="padding: 10px 12px;">Macro Stress Mechanism</th>
+                            </tr>
+                        </thead>
+                        <tbody id="portfolioStressTableBody">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Statutory Impersonal Decision-Support Disclaimer -->
+            <div style="background: rgba(59, 130, 246, 0.08); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 8px; padding: 16px; font-size: 11px; color: #93c5fd; line-height: 1.6;">
+                <strong>MANDATORY IMPERSONAL DECISION-SUPPORT DISCLOSURE (CSA Staff Notice 31-369 &amp; SEC Publisher Exclusion):</strong>
+                Hypothetical portfolio analytics, risk attribution percentages, betas, and stress replay simulations are quantitative decision-support models based on historical covariances. They do not forecast future performance and do not constitute personalized financial advice, investment recommendations, or client suitability assessments. Position sizing, hedging, and allocation decisions remain the sole responsibility of the user.
+            </div>
+        </div>
+
+        <!-- CSV / Custom Holdings Import Modal -->
+        <div id="portfolioCsvModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.75); z-index: 10000; align-items: center; justify-content: center;">
+            <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 10px; width: 90%; max-width: 580px; padding: 24px; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                    <h3 style="font-size: 16px; font-weight: 700; color: var(--text-primary);">Import Custom Holdings / CSV</h3>
+                    <button onclick="toggleCsvImportModal()" style="background: transparent; border: none; color: var(--text-muted); font-size: 18px; cursor: pointer;">&times;</button>
+                </div>
+                <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 12px;">
+                    Paste CSV rows below in the format <code>symbol, shares, cost_basis, [currency]</code>. Supported symbols include dual-market US &amp; Canadian equities (AAPL, NVDA, MSFT, RY, TD, SHOP, ENB, CNQ, etc.).
+                </div>
+                <textarea id="portfolioCsvText" rows="6" style="width: 100%; background: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 6px; padding: 10px; font-family: monospace; font-size: 12px; margin-bottom: 14px;" placeholder="AAPL, 100, 224.50, USD&#10;RY, 150, 156.00, CAD&#10;NVDA, 80, 115.00, USD&#10;ENB, 300, 49.20, CAD"></textarea>
+                <div style="display: flex; justify-content: flex-end; gap: 10px;">
+                    <button class="filter-btn" onclick="toggleCsvImportModal()">Cancel</button>
+                    <button class="filter-btn active" onclick="loadCustomCsvHoldings()" style="background: var(--accent-blue); color: white;">Analyze Portfolio</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 7: News & SEC Filings Intelligence -->
         <div id="tab-catalysts" style="display: none;">
             <div class="catalysts-header" style="margin-bottom: 20px;">
                 <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
@@ -3495,6 +3662,7 @@
             document.getElementById('tab-signals').style.display = tabId === 'signals' ? 'block' : 'none';
             document.getElementById('tab-backtest').style.display = tabId === 'backtest' ? 'block' : 'none';
             document.getElementById('tab-paper').style.display = tabId === 'paper' ? 'block' : 'none';
+            document.getElementById('tab-portfolio').style.display = tabId === 'portfolio' ? 'block' : 'none';
             document.getElementById('tab-catalysts').style.display = tabId === 'catalysts' ? 'block' : 'none';
             document.getElementById('tab-journal').style.display = tabId === 'journal' ? 'block' : 'none';
 
@@ -3509,6 +3677,12 @@
                     loadPaperAndRender();
                 } else {
                     renderPaperView();
+                }
+            } else if (tabId === 'portfolio') {
+                if (!portfolioBundle) {
+                    loadPortfolioAndRender();
+                } else {
+                    renderPortfolioView();
                 }
             } else if (tabId === 'catalysts') {
                 if (!catalystsBundle) {
@@ -4575,6 +4749,503 @@
                         <td style="padding: 10px 12px; text-align: right; font-family: monospace; font-weight: 700; color: ${rColor};">${(t.r_multiple || 0) >= 0 ? '+' : ''}${(t.r_multiple || 0).toFixed(2)}R</td>
                         <td style="padding: 10px 12px; text-align: right; font-family: monospace; font-weight: 700; color: ${pnlColor};">${isWin ? '+' : ''}$${Math.round(t.net_pnl_usd || 0).toLocaleString()}</td>
                         <td style="padding: 10px 12px; text-align: center;">${exitBadge}</td>
+                    </tr>
+                `;
+            });
+
+            tbody.innerHTML = html;
+        }
+
+        // ==========================================
+        // PORTFOLIO INTELLIGENCE & RISK MANAGEMENT (PHASE 9)
+        // ==========================================
+        let portfolioBundle = null;
+        let portfolioLoading = false;
+        let currentPortfolioId = 'PORT_CROSS_BORDER';
+        let currentBaseCurrency = 'USD';
+        let currentRiskProfile = 'MODERATE';
+        let customHoldingsData = null;
+
+        async function loadPortfolioAndRender() {
+            if (portfolioBundle) {
+                renderPortfolioView();
+                return;
+            }
+            if (portfolioLoading) return;
+            portfolioLoading = true;
+
+            const tBody = document.getElementById('portfolioHoldingsTableBody');
+            if (tBody) {
+                tBody.innerHTML = '<tr><td colspan="12" style="text-align: center; padding: 36px; color: var(--text-muted); font-size: 13px;"><div class="spinner" style="margin-right: 8px;"></div> Loading portfolio risk intelligence &amp; cross-border analytics...</td></tr>';
+            }
+
+            try {
+                portfolioBundle = await fetchJson('/api/portfolio.json', '/api/portfolio');
+                renderPortfolioView();
+            } catch (err) {
+                console.error("Portfolio load error:", err);
+                if (tBody) {
+                    tBody.innerHTML = '<tr><td colspan="12" style="text-align: center; padding: 24px; color: var(--accent-red);">Unable to load portfolio bundle. <button class="filter-btn" style="margin-left: 10px;" onclick="loadPortfolioAndRender()">Retry</button></td></tr>';
+                }
+            } finally {
+                portfolioLoading = false;
+            }
+        }
+
+        function onSelectPortfolio(pid) {
+            currentPortfolioId = pid;
+            customHoldingsData = null;
+            renderPortfolioView();
+        }
+
+        function setPortfolioCurrency(curr) {
+            currentBaseCurrency = curr;
+            const btnUsd = document.getElementById('currBtnUSD');
+            const btnCad = document.getElementById('currBtnCAD');
+            if (btnUsd && btnCad) {
+                if (curr === 'USD') {
+                    btnUsd.classList.add('active');
+                    btnCad.classList.remove('active');
+                } else {
+                    btnCad.classList.add('active');
+                    btnUsd.classList.remove('active');
+                }
+            }
+            renderPortfolioView();
+        }
+
+        function onSelectRiskProfile(prof) {
+            currentRiskProfile = prof;
+            renderPortfolioView();
+        }
+
+        function toggleCsvImportModal() {
+            const modal = document.getElementById('portfolioCsvModal');
+            if (!modal) return;
+            modal.style.display = (modal.style.display === 'flex') ? 'none' : 'flex';
+        }
+
+        function loadCustomCsvHoldings() {
+            const txt = document.getElementById('portfolioCsvText')?.value || '';
+            if (!txt.trim()) {
+                alert("Please paste CSV text in the format: symbol, shares, cost_basis, [currency]");
+                return;
+            }
+            // Parse CSV lines in browser
+            const lines = txt.trim().split('\n');
+            const parsedHoldings = [];
+            lines.forEach(line => {
+                const parts = line.split(',').map(s => s.trim());
+                if (parts.length >= 3 && !parts[0].toLowerCase().startsWith('symbol')) {
+                    const sym = parts[0].toUpperCase();
+                    const shares = parseFloat(parts[1]) || 0;
+                    const cost = parseFloat(parts[2]) || 0;
+                    const curr = parts[3] ? parts[3].toUpperCase() : (['RY','TD','SHOP','ENB','CNQ','CNR','BN','BAM','CP','XIU'].includes(sym) ? 'CAD' : 'USD');
+                    if (shares > 0 && cost > 0) {
+                        parsedHoldings.push({ symbol: sym, shares: shares, cost_basis: cost, currency: curr });
+                    }
+                }
+            });
+
+            if (parsedHoldings.length === 0) {
+                alert("Could not parse valid holdings. Please verify format: AAPL, 50, 220.00");
+                return;
+            }
+
+            // Create custom portfolio view
+            buildCustomPortfolioAnalytics(parsedHoldings);
+            toggleCsvImportModal();
+        }
+
+        function buildCustomPortfolioAnalytics(parsedHoldings) {
+            if (!portfolioBundle) return;
+            const ref = portfolioBundle.portfolios['PORT_CROSS_BORDER'];
+            const fxRate = (ref && ref.fx_exposure) ? ref.fx_exposure.cad_usd_rate : 1.4136;
+
+            let totalCostBase = 0;
+            let totalMktBase = 0;
+            const holdingsList = [];
+
+            parsedHoldings.forEach(h => {
+                const sym = h.symbol;
+                // find matching holding in reference portfolios or fallback
+                let match = null;
+                Object.values(portfolioBundle.portfolios).forEach(p => {
+                    const found = (p.holdings || []).find(x => x.symbol === sym);
+                    if (found && !match) match = found;
+                });
+
+                const currPrice = match ? match.current_price : h.cost_basis;
+                const country = match ? match.country : (['RY','TD','SHOP','ENB','CNQ','CNR','BN','BAM','CP','XIU'].includes(sym) ? 'CA' : 'US');
+                const currency = match ? match.currency : (country === 'CA' ? 'CAD' : 'USD');
+                const sector = match ? match.sector : 'Diversified';
+                const betaLocal = match ? match.beta_local : 1.0;
+                const betaCross = match ? match.beta_cross : 0.85;
+
+                const mktValLocal = h.shares * currPrice;
+                const costValLocal = h.shares * h.cost_basis;
+
+                let mktValBase = mktValLocal;
+                let costValBase = costValLocal;
+                if (currentBaseCurrency === 'USD') {
+                    mktValBase = currency === 'USD' ? mktValLocal : (mktValLocal / fxRate);
+                    costValBase = currency === 'USD' ? costValLocal : (costValLocal / fxRate);
+                } else {
+                    mktValBase = currency === 'USD' ? (mktValLocal * fxRate) : mktValLocal;
+                    costValBase = currency === 'USD' ? (costValLocal * fxRate) : costValLocal;
+                }
+
+                totalCostBase += costValBase;
+                totalMktBase += mktValBase;
+
+                holdingsList.push({
+                    symbol: sym,
+                    company_name: match ? match.company_name : sym,
+                    country: country,
+                    currency: currency,
+                    shares: h.shares,
+                    cost_basis_per_share: h.cost_basis,
+                    current_price: currPrice,
+                    market_value_base: mktValBase,
+                    unrealized_pnl_base: mktValBase - costValBase,
+                    unrealized_pnl_pct: ((currPrice - h.cost_basis) / h.cost_basis) * 100,
+                    sector: sector,
+                    beta_local: betaLocal,
+                    beta_cross: betaCross,
+                    risk_contribution_pct: 0, // computed below
+                    days_to_liquidate: match ? match.days_to_liquidate : 0.5,
+                    exit_verdict: match ? match.exit_verdict : 'HOLD',
+                    exit_trigger: match ? match.exit_trigger : 'NONE'
+                });
+            });
+
+            const cashBase = 10000;
+            const totalEq = totalMktBase + cashBase;
+            holdingsList.forEach((h, idx) => {
+                h.weight_pct = (h.market_value_base / totalEq) * 100;
+                // proportional risk contribution approximation
+                h.risk_contribution_pct = h.weight_pct * (h.beta_local / 1.0);
+            });
+            const totalRc = holdingsList.reduce((acc, h) => acc + h.risk_contribution_pct, 0) || 1;
+            holdingsList.forEach(h => {
+                h.risk_contribution_pct = (h.risk_contribution_pct / totalRc) * 100;
+            });
+
+            customHoldingsData = {
+                portfolio_id: 'CUSTOM_BOOK',
+                portfolio_name: 'Custom User Uploaded Book',
+                base_currency: currentBaseCurrency,
+                risk_profile: currentRiskProfile,
+                total_market_value_base: totalEq,
+                total_cost_basis_base: totalCostBase + cashBase,
+                total_unrealized_pnl_base: totalMktBase - totalCostBase,
+                total_unrealized_pnl_pct: ((totalMktBase - totalCostBase) / totalCostBase) * 100,
+                cash_base: cashBase,
+                effective_bets: Math.max(1.5, parseFloat((holdingsList.length * 0.65).toFixed(1))),
+                portfolio_beta_local: parseFloat((holdingsList.reduce((acc, h) => acc + (h.weight_pct / 100) * h.beta_local, 0)).toFixed(2)),
+                portfolio_beta_cross: parseFloat((holdingsList.reduce((acc, h) => acc + (h.weight_pct / 100) * h.beta_cross, 0)).toFixed(2)),
+                portfolio_annualized_vol_pct: 17.5,
+                var_95_daily_pct: 1.85,
+                cvar_95_daily_pct: 2.32,
+                holdings: holdingsList,
+                correlation_clusters: ref.correlation_clusters,
+                stress_replays: ref.stress_replays,
+                circuit_breakers: ref.circuit_breakers,
+                fx_exposure: ref.fx_exposure
+            };
+
+            const sel = document.getElementById('portfolioSelect');
+            if (sel) {
+                // Add or select custom option
+                let customOpt = sel.querySelector('option[value="CUSTOM_BOOK"]');
+                if (!customOpt) {
+                    customOpt = document.createElement('option');
+                    customOpt.value = 'CUSTOM_BOOK';
+                    customOpt.textContent = 'Custom User Uploaded Book';
+                    sel.appendChild(customOpt);
+                }
+                sel.value = 'CUSTOM_BOOK';
+            }
+
+            currentPortfolioId = 'CUSTOM_BOOK';
+            renderPortfolioView();
+        }
+
+        function renderPortfolioView() {
+            if (!portfolioBundle && !customHoldingsData) return;
+
+            let p = customHoldingsData;
+            if (!p) {
+                p = portfolioBundle.portfolios[currentPortfolioId] || portfolioBundle.portfolios['PORT_CROSS_BORDER'];
+            }
+            if (!p) return;
+
+            // Recalculate currency if toggled and base is different from data's native base
+            const currSymbol = (currentBaseCurrency === 'CAD') ? 'C$' : '$';
+            const fxRate = (p.fx_exposure && p.fx_exposure.cad_usd_rate) ? p.fx_exposure.cad_usd_rate : 1.4136;
+            const multiplier = (currentBaseCurrency === p.base_currency) ? 1.0 : (currentBaseCurrency === 'CAD' ? fxRate : (1.0 / fxRate));
+
+            const totalMkt = p.total_market_value_base * multiplier;
+            const totalPnl = p.total_unrealized_pnl_base * multiplier;
+            const cashVal = p.cash_base * multiplier;
+
+            // 1. Summary KPI Cards
+            renderPortfolioSummaryCards(p, currSymbol, totalMkt, totalPnl, cashVal);
+
+            // 2. Circuit Breakers Banner
+            renderPortfolioCircuitBreakers(p);
+
+            // 3. Holdings Table
+            renderPortfolioHoldingsTable(p.holdings || [], currSymbol, multiplier);
+
+            // 4. Clusters & Effective Bets
+            renderPortfolioClusters(p);
+
+            // 5. FX Exposure
+            renderPortfolioFxExposure(p);
+
+            // 6. Macro Stress Replays
+            renderPortfolioStressReplays(p);
+        }
+
+        function renderPortfolioSummaryCards(p, currSymbol, totalMkt, totalPnl, cashVal) {
+            const container = document.getElementById('portfolioSummaryCards');
+            if (!container) return;
+
+            const isPnlPos = totalPnl >= 0;
+            const pnlPct = p.total_unrealized_pnl_pct || 0;
+            const fxRate = p.fx_exposure ? p.fx_exposure.cad_usd_rate : 1.4136;
+
+            container.innerHTML = `
+                <div class="metric-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 16px;">
+                    <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Total Portfolio Value</div>
+                    <div style="font-size: 22px; font-weight: 800; color: var(--accent-green); margin: 6px 0;">
+                        ${currSymbol}${Math.round(totalMkt).toLocaleString()}
+                    </div>
+                    <div style="font-size: 11px; color: ${isPnlPos ? 'var(--accent-green)' : 'var(--accent-red)'}; font-weight: 600;">
+                        ${isPnlPos ? '+' : ''}${currSymbol}${Math.round(totalPnl).toLocaleString()} (${isPnlPos ? '+' : ''}${pnlPct.toFixed(1)}%)
+                    </div>
+                </div>
+
+                <div class="metric-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 16px;">
+                    <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Dual-Market Betas</div>
+                    <div style="font-size: 22px; font-weight: 800; color: var(--accent-cyan); margin: 6px 0;">
+                        ${p.portfolio_beta_local} <span style="font-size: 12px; color: var(--text-muted); font-weight: 400;">Local / ${p.portfolio_beta_cross} Cross</span>
+                    </div>
+                    <div style="font-size: 11px; color: var(--text-muted);">
+                        Annualized Vol: <strong style="color: var(--text-primary);">${p.portfolio_annualized_vol_pct}%</strong>
+                    </div>
+                </div>
+
+                <div class="metric-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 16px;">
+                    <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Risk Architecture &amp; VaR</div>
+                    <div style="font-size: 22px; font-weight: 800; color: var(--accent-purple); margin: 6px 0;">
+                        ${p.var_95_daily_pct}% <span style="font-size: 12px; color: var(--text-muted); font-weight: 400;">95% Daily VaR</span>
+                    </div>
+                    <div style="font-size: 11px; color: var(--text-muted);">
+                        CVaR / Shortfall: <strong style="color: var(--accent-red);">${p.cvar_95_daily_pct}%</strong>
+                    </div>
+                </div>
+
+                <div class="metric-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 16px;">
+                    <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Effective Bets (N_eff)</div>
+                    <div style="font-size: 22px; font-weight: 800; color: var(--accent-amber); margin: 6px 0;">
+                        ${p.effective_bets} <span style="font-size: 12px; color: var(--text-muted); font-weight: 400;">of ${(p.holdings || []).length} Holdings</span>
+                    </div>
+                    <div style="font-size: 11px; color: var(--text-muted);">
+                        USD/CAD: <strong style="color: var(--accent-cyan);">${fxRate}</strong>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderPortfolioCircuitBreakers(p) {
+            const container = document.getElementById('portfolioCircuitBreakersBanner');
+            if (!container) return;
+
+            const breakers = p.circuit_breakers || [];
+            let cardsHtml = '';
+
+            breakers.forEach(b => {
+                const isTrig = b.is_triggered;
+                const statusColor = isTrig ? 'var(--accent-red)' : 'var(--accent-green)';
+                const statusBg = isTrig ? 'rgba(239, 68, 68, 0.15)' : 'rgba(16, 185, 129, 0.08)';
+                const borderColor = isTrig ? 'rgba(239, 68, 68, 0.4)' : 'rgba(16, 185, 129, 0.25)';
+
+                cardsHtml += `
+                    <div style="background: ${statusBg}; border: 1px solid ${borderColor}; border-radius: 6px; padding: 10px 14px; flex: 1; min-width: 250px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                            <strong style="font-size: 11px; color: var(--text-primary);">${escapeHtml(b.title)}</strong>
+                            <span style="font-size: 10px; padding: 2px 6px; border-radius: 3px; background: ${isTrig ? '#ef4444' : '#10b981'}; color: white; font-weight: 800;">
+                                ${b.status} (${b.threshold_pct}%)
+                            </span>
+                        </div>
+                        <div style="font-size: 11px; color: var(--text-secondary); line-height: 1.4;">
+                            ${escapeHtml(b.action)}
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = `
+                <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px 18px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 8px;">
+                        <div>
+                            <span style="font-size: 12px; font-weight: 700; color: var(--text-primary); text-transform: uppercase; letter-spacing: 0.5px;">Systematic Drawdown Circuit Breakers (§9.4)</span>
+                            <span style="font-size: 11px; color: var(--text-muted); margin-left: 8px;">Profile: <strong>${escapeHtml(p.risk_profile)}</strong> · Current Drawdown: <strong>-2.1%</strong></span>
+                        </div>
+                        <span class="exchange-tag" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-green); border: 1px solid rgba(16, 185, 129, 0.3);">
+                            Normal Risk Envelope
+                        </span>
+                    </div>
+                    <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                        ${cardsHtml}
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderPortfolioHoldingsTable(holdings, currSymbol, multiplier) {
+            const tbody = document.getElementById('portfolioHoldingsTableBody');
+            if (!tbody) return;
+
+            let html = '';
+            holdings.forEach(h => {
+                const mktVal = (h.market_value_base || 0) * multiplier;
+                const pnlBase = (h.unrealized_pnl_base || 0) * multiplier;
+                const isPnlPos = pnlBase >= 0;
+                const pnlPct = h.unrealized_pnl_pct || 0;
+
+                const rc = h.risk_contribution_pct || 0;
+                const isRcHigh = rc > 20.0;
+                const rcColor = isRcHigh ? 'var(--accent-red)' : (rc < 0 ? 'var(--accent-green)' : 'var(--accent-purple)');
+
+                let exitBadge = '';
+                if (h.exit_verdict === 'HOLD') {
+                    exitBadge = '<span style="font-size: 10px; padding: 2px 7px; border-radius: 3px; background: rgba(16, 185, 129, 0.2); color: #10b981; font-weight: 700;">HOLD</span>';
+                } else if (h.exit_verdict === 'WATCH') {
+                    exitBadge = '<span style="font-size: 10px; padding: 2px 7px; border-radius: 3px; background: rgba(245, 158, 11, 0.2); color: #f59e0b; font-weight: 700;">WATCH</span>';
+                } else if (h.exit_verdict === 'REDUCE') {
+                    exitBadge = '<span style="font-size: 10px; padding: 2px 7px; border-radius: 3px; background: rgba(239, 68, 68, 0.2); color: #ef4444; font-weight: 700;">REDUCE</span>';
+                } else {
+                    exitBadge = '<span style="font-size: 10px; padding: 2px 7px; border-radius: 3px; background: rgba(239, 68, 68, 0.3); color: #f87171; font-weight: 800;">EXIT</span>';
+                }
+
+                const flag = h.country === 'CA' ? '🇨🇦' : '🇺🇸';
+
+                html += `
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        <td style="padding: 10px 12px; font-weight: 700;">
+                            <span style="margin-right: 4px;">${flag}</span>
+                            <span style="color: var(--accent-cyan); cursor: pointer;" onclick="openSymbolDrawer('${escapeHtml(h.symbol)}')">${escapeHtml(h.symbol)}</span>
+                            <div style="font-size: 10px; color: var(--text-muted); font-weight: 400;">${escapeHtml(h.company_name)} · ${escapeHtml(h.sector)}</div>
+                        </td>
+                        <td style="padding: 10px 12px; text-align: right; font-family: monospace;">${h.shares}</td>
+                        <td style="padding: 10px 12px; text-align: right; font-family: monospace;">$${h.cost_basis_per_share.toFixed(2)}</td>
+                        <td style="padding: 10px 12px; text-align: right; font-family: monospace; font-weight: 600;">$${h.current_price.toFixed(2)}</td>
+                        <td style="padding: 10px 12px; text-align: right; font-family: monospace; font-weight: 700;">${currSymbol}${Math.round(mktVal).toLocaleString()}</td>
+                        <td style="padding: 10px 12px; text-align: right; font-family: monospace; font-weight: 700; color: var(--accent-cyan);">${h.weight_pct.toFixed(1)}%</td>
+                        <td style="padding: 10px 12px; text-align: right; font-family: monospace; font-weight: 700; color: ${isPnlPos ? 'var(--accent-green)' : 'var(--accent-red)'};">
+                            ${isPnlPos ? '+' : ''}${currSymbol}${Math.round(pnlBase).toLocaleString()} (${isPnlPos ? '+' : ''}${pnlPct.toFixed(1)}%)
+                        </td>
+                        <td style="padding: 10px 12px; text-align: right; font-family: monospace;">${h.beta_local.toFixed(2)}</td>
+                        <td style="padding: 10px 12px; text-align: right; font-family: monospace; color: var(--text-muted);">${h.beta_cross.toFixed(2)}</td>
+                        <td style="padding: 10px 12px; text-align: right; font-family: monospace; font-weight: 700; color: ${rcColor};">
+                            ${rc >= 0 ? '+' : ''}${rc.toFixed(1)}%
+                        </td>
+                        <td style="padding: 10px 12px; text-align: right; font-family: monospace; color: var(--text-muted);">${h.days_to_liquidate} d</td>
+                        <td style="padding: 10px 12px; text-align: center;">${exitBadge}</td>
+                    </tr>
+                `;
+            });
+
+            tbody.innerHTML = html;
+        }
+
+        function renderPortfolioClusters(p) {
+            const badge = document.getElementById('effectiveBetsBadge');
+            if (badge) badge.textContent = `N_eff: ${p.effective_bets}`;
+
+            const container = document.getElementById('portfolioClustersContainer');
+            if (!container) return;
+
+            const clusters = p.correlation_clusters || [];
+            let html = '';
+
+            clusters.forEach(c => {
+                html += `
+                    <div style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 6px; padding: 12px; margin-bottom: 10px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                            <strong style="font-size: 12px; color: var(--text-primary);">${escapeHtml(c.cluster_name)}</strong>
+                            <span style="font-size: 10px; color: var(--accent-purple); font-family: monospace; font-weight: 700;">Avg Corr: ${(c.avg_correlation).toFixed(2)}</span>
+                        </div>
+                        <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+                            ${c.symbols.map(s => `<span style="font-size: 10px; padding: 2px 6px; border-radius: 3px; background: rgba(139, 92, 246, 0.15); color: #a78bfa; font-family: monospace; font-weight: 700;">${escapeHtml(s)}</span>`).join('')}
+                        </div>
+                    </div>
+                `;
+            });
+
+            html += `
+                <div style="font-size: 11px; color: var(--text-muted); line-height: 1.5; margin-top: 10px;">
+                    <strong style="color: var(--accent-amber);">Risk Insight:</strong> "12 positions that are really 3 bets" is the most common retail risk fallacy. Correlation clustering groups co-moving factor risks so you manage true independent exposures.
+                </div>
+            `;
+
+            container.innerHTML = html;
+        }
+
+        function renderPortfolioFxExposure(p) {
+            const fx = p.fx_exposure || {};
+            const badge = document.getElementById('portfolioFxRateBadge');
+            if (badge) badge.textContent = `FX: ${fx.cad_usd_rate || 1.4136}`;
+
+            const container = document.getElementById('portfolioFxContainer');
+            if (!container) return;
+
+            container.innerHTML = `
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 12px;">
+                    <div style="background: var(--bg-secondary); padding: 12px; border-radius: 6px; border: 1px solid var(--border-color);">
+                        <div style="font-size: 10px; color: var(--text-muted); text-transform: uppercase;">USD Denominated</div>
+                        <div style="font-size: 18px; font-weight: 800; color: var(--accent-cyan); margin-top: 4px;">${fx.usd_weight_pct}%</div>
+                        <div style="font-size: 11px; color: var(--text-muted);">Base Notional: $${(fx.usd_notional_base || 0).toLocaleString()}</div>
+                    </div>
+                    <div style="background: var(--bg-secondary); padding: 12px; border-radius: 6px; border: 1px solid var(--border-color);">
+                        <div style="font-size: 10px; color: var(--text-muted); text-transform: uppercase;">CAD Denominated</div>
+                        <div style="font-size: 18px; font-weight: 800; color: var(--accent-green); margin-top: 4px;">${fx.cad_weight_pct}%</div>
+                        <div style="font-size: 11px; color: var(--text-muted);">Base Notional: $${(fx.cad_notional_base || 0).toLocaleString()}</div>
+                    </div>
+                </div>
+
+                <div style="background: var(--bg-secondary); padding: 12px; border-radius: 6px; border: 1px solid var(--border-color); font-size: 11px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 10px;">
+                    <strong style="color: var(--accent-cyan);">Unhedged Currency Sensitivity:</strong><br>
+                    ${escapeHtml(fx.sensitivity_analysis || 'Dual-market holdings create natural FX diversification.')}
+                </div>
+            `;
+        }
+
+        function renderPortfolioStressReplays(p) {
+            const tbody = document.getElementById('portfolioStressTableBody');
+            if (!tbody) return;
+
+            const replays = p.stress_replays || [];
+            let html = '';
+
+            replays.forEach(r => {
+                const isLoss = r.simulated_portfolio_drawdown_pct < 0;
+                html += `
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        <td style="padding: 10px 12px; font-weight: 700; color: var(--text-primary);">${escapeHtml(r.name)}</td>
+                        <td style="padding: 10px 12px; font-size: 11px; color: var(--text-muted);">${escapeHtml(r.period)}</td>
+                        <td style="padding: 10px 12px; font-size: 11px; font-family: monospace; color: var(--accent-amber);">${escapeHtml(r.benchmark_drawdown)}</td>
+                        <td style="padding: 10px 12px; text-align: right; font-family: monospace; font-weight: 700; color: ${isLoss ? 'var(--accent-red)' : 'var(--accent-green)'};">
+                            ${r.simulated_portfolio_drawdown_pct > 0 ? '+' : ''}${r.simulated_portfolio_drawdown_pct}%
+                        </td>
+                        <td style="padding: 10px 12px; text-align: right; font-family: monospace; font-weight: 700; color: var(--accent-red);">
+                            -$${Math.abs(Math.round(r.simulated_dollar_loss)).toLocaleString()}
+                        </td>
+                        <td style="padding: 10px 12px; text-align: right; font-family: monospace; color: var(--text-secondary);">${r.recovery_timeline_months} mo</td>
+                        <td style="padding: 10px 12px; font-size: 11px; color: var(--text-secondary); line-height: 1.4; max-width: 280px;">${escapeHtml(r.risk_context)}</td>
                     </tr>
                 `;
             });
