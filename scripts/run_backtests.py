@@ -19,6 +19,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from config.settings import DATA_DIR
 from src.engine.backtester import backtest_engine
+from src.engine.cpcv_engine import cpcv_engine
 from src.compliance.disclaimers import HYPOTHETICAL_BACKTEST_DISCLAIMER, DISCLAIMER_VERSION
 
 FEEDS_DIR = DATA_DIR / "feeds"
@@ -56,6 +57,7 @@ def run_all_backtests():
         "strategies": results,
         "default_strategy": "ENSEMBLE_8F",
         "benchmark_symbol": "SPY",
+        "cpcv_validation": cpcv_engine.generate_feed().to_dict(),
         "statutory_disclaimer": HYPOTHETICAL_BACKTEST_DISCLAIMER,
         "disclaimer_version": DISCLAIMER_VERSION,
     }

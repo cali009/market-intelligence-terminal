@@ -769,6 +769,67 @@ class DualListedFeed(BaseModel):
         return self.model_dump()
 
 
+# ==========================================
+# PHASE 16: CPCV & BENJAMINI-HOCHBERG SCHEMAS
+# ==========================================
+
+
+class FDRGatingRecord(BaseModel):
+    strategy_id: str
+    strategy_name: str
+    status: str
+    total_trades: int
+    mean_trade_return_pct: float
+    sharpe_ratio: float
+    t_statistic: float
+    raw_p_value: float
+    fdr_rank: int
+    fdr_critical_threshold: float
+    fdr_verdict: Literal["FDR_PASSED", "REJECTED_SELECTION_BIAS"]
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class CPCVPathRecord(BaseModel):
+    path_id: int
+    test_blocks: List[int]
+    best_is_strategy: str
+    oos_rank: int
+    oos_rank_percentile: float
+    is_rank_inverted: bool
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class CPCVValidationSummary(BaseModel):
+    total_strategies_evaluated: int
+    total_cpcv_paths: int
+    num_timeline_blocks: int
+    embargo_days: int
+    empirical_pbo: float
+    pbo_evaluation: Literal["LOW_OVERFITTING_RISK", "MODERATE_OVERFITTING_RISK", "HIGH_OVERFITTING_RISK"]
+    target_fdr_q: float
+    fdr_passed_count: int
+    fdr_rejected_count: int
+    calibrated_at: str
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class CPCVFeed(BaseModel):
+    summary: CPCVValidationSummary
+    fdr_gating_table: List[FDRGatingRecord]
+    cpcv_paths: List[CPCVPathRecord]
+    disclaimers: List[str]
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+
 
 
 

@@ -1,0 +1,253 @@
+{
+  "summary": {
+    "total_strategies_evaluated": 5,
+    "total_cpcv_paths": 15,
+    "num_timeline_blocks": 6,
+    "embargo_days": 5,
+    "empirical_pbo": 0.4,
+    "pbo_evaluation": "MODERATE_OVERFITTING_RISK",
+    "target_fdr_q": 0.05,
+    "fdr_passed_count": 0,
+    "fdr_rejected_count": 5,
+    "calibrated_at": "2026-09-26T05:58:19.642413+00:00"
+  },
+  "fdr_gating_table": [
+    {
+      "strategy_id": "ENSEMBLE_8F",
+      "strategy_name": "8-Factor Composite Trend & Value Ensemble",
+      "status": "ACTIVE",
+      "total_trades": 428,
+      "mean_trade_return_pct": -0.509,
+      "sharpe_ratio": -1.3,
+      "t_statistic": -2.527,
+      "raw_p_value": 0.01149,
+      "fdr_rank": 1,
+      "fdr_critical_threshold": 0.01,
+      "fdr_verdict": "REJECTED_SELECTION_BIAS"
+    },
+    {
+      "strategy_id": "TAC04_MOMENTUM",
+      "strategy_name": "TAC-04: Momentum Leader Breakout",
+      "status": "ACTIVE",
+      "total_trades": 397,
+      "mean_trade_return_pct": -0.39,
+      "sharpe_ratio": -0.92,
+      "t_statistic": -2.029,
+      "raw_p_value": 0.04244,
+      "fdr_rank": 2,
+      "fdr_critical_threshold": 0.02,
+      "fdr_verdict": "REJECTED_SELECTION_BIAS"
+    },
+    {
+      "strategy_id": "TAC01_PULLBACK",
+      "strategy_name": "TAC-01: Pullback to Key Support Swing",
+      "status": "ACTIVE",
+      "total_trades": 311,
+      "mean_trade_return_pct": -0.243,
+      "sharpe_ratio": -0.97,
+      "t_statistic": -0.998,
+      "raw_p_value": 0.31812,
+      "fdr_rank": 3,
+      "fdr_critical_threshold": 0.03,
+      "fdr_verdict": "REJECTED_SELECTION_BIAS"
+    },
+    {
+      "strategy_id": "TAC02_SQUEEZE",
+      "strategy_name": "TAC-02: Volatility Squeeze Expansion",
+      "status": "ACTIVE",
+      "total_trades": 293,
+      "mean_trade_return_pct": -0.052,
+      "sharpe_ratio": -0.42,
+      "t_statistic": -0.285,
+      "raw_p_value": 0.77594,
+      "fdr_rank": 4,
+      "fdr_critical_threshold": 0.04,
+      "fdr_verdict": "REJECTED_SELECTION_BIAS"
+    },
+    {
+      "strategy_id": "TAC03_BREAKOUT_CHASE",
+      "strategy_name": "TAC-03: Unconstrained Breakout Chase (RETIRED)",
+      "status": "RETIRED",
+      "total_trades": 72,
+      "mean_trade_return_pct": -0.122,
+      "sharpe_ratio": -0.98,
+      "t_statistic": -0.272,
+      "raw_p_value": 0.7854,
+      "fdr_rank": 5,
+      "fdr_critical_threshold": 0.05,
+      "fdr_verdict": "REJECTED_SELECTION_BIAS"
+    }
+  ],
+  "cpcv_paths": [
+    {
+      "path_id": 1,
+      "test_blocks": [
+        0,
+        1
+      ],
+      "best_is_strategy": "TAC02_SQUEEZE",
+      "oos_rank": 1,
+      "oos_rank_percentile": 0.2,
+      "is_rank_inverted": false
+    },
+    {
+      "path_id": 2,
+      "test_blocks": [
+        0,
+        2
+      ],
+      "best_is_strategy": "TAC03_BREAKOUT_CHASE",
+      "oos_rank": 3,
+      "oos_rank_percentile": 0.6,
+      "is_rank_inverted": true
+    },
+    {
+      "path_id": 3,
+      "test_blocks": [
+        0,
+        3
+      ],
+      "best_is_strategy": "TAC02_SQUEEZE",
+      "oos_rank": 3,
+      "oos_rank_percentile": 0.6,
+      "is_rank_inverted": true
+    },
+    {
+      "path_id": 4,
+      "test_blocks": [
+        0,
+        4
+      ],
+      "best_is_strategy": "TAC01_PULLBACK",
+      "oos_rank": 4,
+      "oos_rank_percentile": 0.8,
+      "is_rank_inverted": true
+    },
+    {
+      "path_id": 5,
+      "test_blocks": [
+        0,
+        5
+      ],
+      "best_is_strategy": "TAC02_SQUEEZE",
+      "oos_rank": 2,
+      "oos_rank_percentile": 0.4,
+      "is_rank_inverted": false
+    },
+    {
+      "path_id": 6,
+      "test_blocks": [
+        1,
+        2
+      ],
+      "best_is_strategy": "TAC03_BREAKOUT_CHASE",
+      "oos_rank": 4,
+      "oos_rank_percentile": 0.8,
+      "is_rank_inverted": true
+    },
+    {
+      "path_id": 7,
+      "test_blocks": [
+        1,
+        3
+      ],
+      "best_is_strategy": "TAC02_SQUEEZE",
+      "oos_rank": 2,
+      "oos_rank_percentile": 0.4,
+      "is_rank_inverted": false
+    },
+    {
+      "path_id": 8,
+      "test_blocks": [
+        1,
+        4
+      ],
+      "best_is_strategy": "TAC01_PULLBACK",
+      "oos_rank": 5,
+      "oos_rank_percentile": 1.0,
+      "is_rank_inverted": true
+    },
+    {
+      "path_id": 9,
+      "test_blocks": [
+        1,
+        5
+      ],
+      "best_is_strategy": "TAC02_SQUEEZE",
+      "oos_rank": 2,
+      "oos_rank_percentile": 0.4,
+      "is_rank_inverted": false
+    },
+    {
+      "path_id": 10,
+      "test_blocks": [
+        2,
+        3
+      ],
+      "best_is_strategy": "TAC02_SQUEEZE",
+      "oos_rank": 4,
+      "oos_rank_percentile": 0.8,
+      "is_rank_inverted": true
+    },
+    {
+      "path_id": 11,
+      "test_blocks": [
+        2,
+        4
+      ],
+      "best_is_strategy": "TAC02_SQUEEZE",
+      "oos_rank": 2,
+      "oos_rank_percentile": 0.4,
+      "is_rank_inverted": false
+    },
+    {
+      "path_id": 12,
+      "test_blocks": [
+        2,
+        5
+      ],
+      "best_is_strategy": "TAC02_SQUEEZE",
+      "oos_rank": 2,
+      "oos_rank_percentile": 0.4,
+      "is_rank_inverted": false
+    },
+    {
+      "path_id": 13,
+      "test_blocks": [
+        3,
+        4
+      ],
+      "best_is_strategy": "TAC02_SQUEEZE",
+      "oos_rank": 2,
+      "oos_rank_percentile": 0.4,
+      "is_rank_inverted": false
+    },
+    {
+      "path_id": 14,
+      "test_blocks": [
+        3,
+        5
+      ],
+      "best_is_strategy": "TAC02_SQUEEZE",
+      "oos_rank": 1,
+      "oos_rank_percentile": 0.2,
+      "is_rank_inverted": false
+    },
+    {
+      "path_id": 15,
+      "test_blocks": [
+        4,
+        5
+      ],
+      "best_is_strategy": "TAC02_SQUEEZE",
+      "oos_rank": 2,
+      "oos_rank_percentile": 0.4,
+      "is_rank_inverted": false
+    }
+  ],
+  "disclaimers": [
+    "Combinatorial Purged Cross-Validation (CPCV) and Benjamini-Hochberg False Discovery Rate (FDR) metrics evaluate historical statistical properties across combinatorial data partitions.",
+    "Cross-validation metrics are generated exclusively for impersonal quantitative research and risk management, and do not constitute investment advice or trading recommendations.",
+    "Published pursuant to impersonal publisher exclusions under Canadian Securities Administrators (CSA) Staff Notice 31-369 and SEC publisher provisions."
+  ]
+}

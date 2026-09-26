@@ -36,6 +36,7 @@ from src.engine.production_scale import production_scale_engine
 from src.engine.asset_fingerprint import asset_fingerprint_engine
 from src.engine.conformal_bounds import adaptive_conformal_engine
 from src.engine.cross_border_parity import cross_border_parity_engine, DUAL_LISTED_PAIRS
+from src.engine.cpcv_engine import cpcv_engine
 
 FEEDS_DIR = DATA_DIR / "feeds"
 DIST_DIR = DATA_DIR / "dist"
@@ -576,8 +577,13 @@ class EdgeExporter:
             with open(d_dir / "cross_border_parity.json", "w") as f:
                 json.dump(parity_payload, f, indent=2)
 
+            # Phase 16: Combinatorial Purged Cross-Validation (CPCV) & FDR Gating Feed
+            cpcv_payload = cpcv_engine.generate_feed().to_dict()
+            with open(d_dir / "cpcv_validation.json", "w") as f:
+                json.dump(cpcv_payload, f, indent=2)
+
         return {
-            "dist_files": 18,
+            "dist_files": 19,
             "symbol_files": symbol_files_count,
             "total_matches": len(scanner_results),
             "total_signals": len(signals_list),

@@ -1205,6 +1205,37 @@
                 </div>
             </div>
 
+            <!-- Phase 16: Combinatorial Purged Cross-Validation (CPCV) & Benjamini-Hochberg FDR Gating -->
+            <div class="table-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; margin-bottom: 24px;" id="cpcvValidationCard">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 8px;">
+                    <div>
+                        <h3 style="font-size: 14px; font-weight: 800; color: var(--text-primary); margin-bottom: 4px; display: flex; align-items: center; gap: 8px;">
+                            <span>Combinatorial Purged Cross-Validation (CPCV) &amp; Benjamini-Hochberg FDR Gating</span>
+                            <span class="exchange-tag" style="font-size: 10px; background: rgba(139, 92, 246, 0.15); color: var(--accent-purple); border: 1px solid rgba(139, 92, 246, 0.3);">Phase 16 · López de Prado (2018)</span>
+                        </h3>
+                        <div style="font-size: 12px; color: var(--text-muted);">
+                            Combinatorial split paths with trade holding purging and post-test embargo periods to eliminate look-ahead leakage &amp; selection bias.
+                        </div>
+                    </div>
+                    <div id="cpcvPboBadge" style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: 700; color: var(--accent-green);">
+                        PBO: 40.0% · 15 Paths
+                    </div>
+                </div>
+
+                <!-- Benjamini-Hochberg FDR Gating Table -->
+                <div style="margin-bottom: 16px;">
+                    <div style="font-size: 12px; font-weight: 700; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 8px;">
+                        Benjamini-Hochberg Multi-Hypothesis FDR Gating (Target Q = 0.05)
+                    </div>
+                    <div id="cpcvFdrTable"></div>
+                </div>
+
+                <!-- CPCV Combinatorial Path Metrics -->
+                <div id="cpcvPathsOverview" style="font-size: 11px; color: var(--text-muted); background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 6px; padding: 12px;">
+                    <!-- Rendered dynamically -->
+                </div>
+            </div>
+
             <!-- Complete Simulated Trade Ledger & Explorer -->
             <div class="table-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; margin-bottom: 24px;">
                 <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 16px;">
@@ -5149,6 +5180,9 @@
             const allTrades = getActiveStrategyTrades();
             populateSymbolFilter(allTrades);
             filterBacktestTrades();
+
+            // Phase 16: Render CPCV & FDR Gating
+            renderCPCVValidation(backtestBundle.cpcv_validation);
         }
 
         function drawEquityCurve(equityData, trainCutoff, valCutoff) {
@@ -5322,6 +5356,115 @@
             ctx.textAlign = 'right';
             ctx.fillText('DD 0%', paddingLeft - 8, ddTop + 3);
             ctx.fillText('-30%', paddingLeft - 8, ddTop + ddH);
+        }
+
+        function renderCPCVValidation(cpcv) {
+            const card = document.getElementById('cpcvValidationCard');
+            const pboBadge = document.getElementById('cpcvPboBadge');
+            const fdrContainer = document.getElementById('cpcvFdrTable');
+            const pathsContainer = document.getElementById('cpcvPathsOverview');
+            if (!card || !fdrContainer || !pathsContainer) return;
+
+            if (!cpcv || !cpcv.summary) {
+                // If not in bundle, try fetching directly
+                fetchJson('/api/cpcv_validation.json', '/api/cpcv_validation')
+                    .then(data => {
+                        if (backtestBundle) backtestBundle.cpcv_validation = data;
+                        renderCPCVValidation(data);
+                    })
+                    .catch(err => {
+                        console.warn("CPCV feed fetch error:", err);
+                    });
+                return;
+            }
+
+            const s = cpcv.summary;
+            const pboPct = (s.empirical_pbo * 100).toFixed(1);
+            const pboColor = s.empirical_pbo < 0.25 ? 'var(--accent-green)' : (s.empirical_pbo <= 0.50 ? 'var(--accent-amber)' : 'var(--accent-red)');
+            const pboBg = s.empirical_pbo < 0.25 ? 'rgba(16, 185, 129, 0.15)' : (s.empirical_pbo <= 0.50 ? 'rgba(245, 158, 11, 0.15)' : 'rgba(239, 68, 68, 0.15)');
+
+            if (pboBadge) {
+                pboBadge.style.color = pboColor;
+                pboBadge.style.background = pboBg;
+                pboBadge.style.borderColor = pboColor;
+                pboBadge.innerHTML = `PBO: ${pboPct}% · ${s.total_cpcv_paths} Paths · ${s.pbo_evaluation.replace(/_/g, ' ')}`;
+            }
+
+            // FDR Table
+            let fdrRows = '';
+            (cpcv.fdr_gating_table || []).forEach(row => {
+                const isPassed = row.fdr_verdict === 'FDR_PASSED';
+                const vColor = isPassed ? 'var(--accent-green)' : (row.status === 'RETIRED' ? 'var(--accent-red)' : 'var(--accent-amber)');
+                const vBg = isPassed ? 'rgba(16, 185, 129, 0.15)' : (row.status === 'RETIRED' ? 'rgba(239, 68, 68, 0.15)' : 'rgba(245, 158, 11, 0.15)');
+                const isSelected = row.strategy_id === selectedStrategyId;
+
+                fdrRows += `
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.06); ${isSelected ? 'background: rgba(6, 182, 212, 0.08);' : ''}">
+                        <td style="padding: 8px; font-weight: 700; color: var(--text-muted);">${row.fdr_rank}</td>
+                        <td style="padding: 8px;">
+                            <strong style="color: ${isSelected ? 'var(--accent-cyan)' : 'var(--text-primary)'};">${row.strategy_name}</strong>
+                            ${row.status === 'RETIRED' ? '<span class="exchange-tag" style="font-size: 9px; background: rgba(239, 68, 68, 0.2); color: #ef4444; margin-left: 6px;">RETIRED</span>' : ''}
+                        </td>
+                        <td style="padding: 8px; text-align: center;">${row.total_trades}</td>
+                        <td style="padding: 8px; font-family: monospace; text-align: right; color: ${row.mean_trade_return_pct >= 0 ? 'var(--accent-green)' : 'var(--accent-red)'};">
+                            ${row.mean_trade_return_pct >= 0 ? '+' : ''}${row.mean_trade_return_pct}%
+                        </td>
+                        <td style="padding: 8px; font-family: monospace; text-align: right; color: ${row.sharpe_ratio >= 0 ? 'var(--accent-green)' : 'var(--accent-red)'}; font-weight: 700;">
+                            ${row.sharpe_ratio}
+                        </td>
+                        <td style="padding: 8px; font-family: monospace; text-align: right;">${row.t_statistic}</td>
+                        <td style="padding: 8px; font-family: monospace; text-align: right; font-weight: 700; color: ${row.raw_p_value <= row.fdr_critical_threshold ? 'var(--accent-green)' : 'var(--text-muted)'};">
+                            ${row.raw_p_value.toFixed(4)}
+                        </td>
+                        <td style="padding: 8px; font-family: monospace; text-align: right; color: var(--accent-cyan);">
+                            ≤ ${row.fdr_critical_threshold.toFixed(4)}
+                        </td>
+                        <td style="padding: 8px; text-align: center;">
+                            <span class="score-pill" style="font-size: 10px; font-weight: 800; background: ${vBg}; color: ${vColor}; border: 1px solid ${vColor}; padding: 3px 8px;">
+                                ${row.fdr_verdict.replace(/_/g, ' ')}
+                            </span>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            fdrContainer.innerHTML = `
+                <table style="width: 100%; border-collapse: collapse; font-size: 12px; text-align: left;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid var(--border-color); color: var(--text-muted); font-size: 11px;">
+                            <th style="padding: 8px;">#</th>
+                            <th style="padding: 8px;">Strategy Candidate</th>
+                            <th style="padding: 8px; text-align: center;">Trades</th>
+                            <th style="padding: 8px; text-align: right;">Mean Return</th>
+                            <th style="padding: 8px; text-align: right;">Sharpe</th>
+                            <th style="padding: 8px; text-align: right;">t-Stat</th>
+                            <th style="padding: 8px; text-align: right;">Raw p-Value</th>
+                            <th style="padding: 8px; text-align: right;">FDR Critical (k/M*Q)</th>
+                            <th style="padding: 8px; text-align: center;">Verdict</th>
+                        </tr>
+                    </thead>
+                    <tbody>${fdrRows}</tbody>
+                </table>
+            `;
+
+            // Paths Overview
+            const samplePaths = (cpcv.cpcv_paths || []).slice(0, 5);
+            let pathPills = samplePaths.map(p => `
+                <span class="exchange-tag" style="background: ${p.is_rank_inverted ? 'rgba(239, 68, 68, 0.15)' : 'rgba(16, 185, 129, 0.15)'}; color: ${p.is_rank_inverted ? 'var(--accent-red)' : 'var(--accent-green)'}; border: 1px solid ${p.is_rank_inverted ? 'rgba(239, 68, 68, 0.3)' : 'rgba(16, 185, 129, 0.3)'}; margin-right: 6px;">
+                    Path #${p.path_id}: Test [${p.test_blocks.join(', ')}] → Best IS: ${p.best_is_strategy} (OOS Rank: ${p.oos_rank})
+                </span>
+            `).join('');
+
+            pathsContainer.innerHTML = `
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;">
+                    <span><strong>CPCV Partition Specifications:</strong> ${s.num_timeline_blocks} Contiguous Blocks · C(${s.num_timeline_blocks}, 2) = ${s.total_cpcv_paths} Combinations · ${s.embargo_days}-Day Post-Test Embargo · Zero Look-Ahead Overlap</span>
+                    <span style="color: var(--text-primary); font-weight: 700;">FDR Status: <span style="color: var(--accent-green);">${s.fdr_passed_count} Passed</span> / <span style="color: var(--accent-amber);">${s.fdr_rejected_count} Screened Out</span></span>
+                </div>
+                <div style="display: flex; flex-wrap: wrap; gap: 6px; align-items: center; padding-top: 6px; border-top: 1px solid rgba(255,255,255,0.06);">
+                    <span style="color: var(--text-muted); font-size: 10px; text-transform: uppercase;">Sample Paths:</span>
+                    ${pathPills}
+                </div>
+            `;
         }
 
         function filterMarket(mkt, ev) {
