@@ -5,7 +5,7 @@
   "currency": "USD",
   "name": "Alphabet Inc.",
   "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T05:55:39.016785+00:00",
+  "generated_at": "2026-09-26T06:23:21.080292+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 342.4100036621094,
@@ -356,7 +356,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 14,
     "gjr_garch_gamma": 0.08,
-    "last_updated": "2026-09-26T05:55:40.163437+00:00"
+    "last_updated": "2026-09-26T06:23:22.510965+00:00"
   },
   "conformal_bounds": {
     "symbol": "GOOGL",
@@ -373,9 +373,73 @@
     "adapted_alpha": 0.075,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-09-26T05:55:40.180755+00:00"
+    "calibrated_at": "2026-09-26T06:23:22.538644+00:00"
   },
   "cross_border_parity": null,
+  "shap_attribution": {
+    "symbol": "GOOGL",
+    "base_value": 50.89,
+    "model_score": 50.0,
+    "top_drivers": [
+      {
+        "feature_name": "fractional_d",
+        "feature_label": "Fractional Memory Order d*",
+        "feature_value": 0.39,
+        "shap_contribution": 3.22,
+        "direction": "POSITIVE"
+      },
+      {
+        "feature_name": "trend_sma200_ratio",
+        "feature_label": "Trend vs 200DMA",
+        "feature_value": 1.017,
+        "shap_contribution": 2.54,
+        "direction": "POSITIVE"
+      },
+      {
+        "feature_name": "dual_basis_bps",
+        "feature_label": "Cross-Border Basis Spread",
+        "feature_value": 0.0,
+        "shap_contribution": 1.14,
+        "direction": "POSITIVE"
+      }
+    ],
+    "top_detractors": [
+      {
+        "feature_name": "proximity_52w",
+        "feature_label": "Proximity to 52W High",
+        "feature_value": -0.158,
+        "shap_contribution": -5.3,
+        "direction": "NEGATIVE"
+      },
+      {
+        "feature_name": "momentum_rsi",
+        "feature_label": "14-Day RSI Momentum",
+        "feature_value": 49.7,
+        "shap_contribution": -1.98,
+        "direction": "NEGATIVE"
+      },
+      {
+        "feature_name": "conformal_rr",
+        "feature_label": "Certified Conformal R:R",
+        "feature_value": 1.45,
+        "shap_contribution": -0.29,
+        "direction": "NEGATIVE"
+      }
+    ],
+    "all_attributions": {
+      "trend_sma200_ratio": 2.54,
+      "momentum_rsi": -1.98,
+      "proximity_52w": -5.3,
+      "mtf_confluence": -0.17,
+      "roic_pct": 0.0,
+      "pe_multiple": 0.0,
+      "hurst_persistence": -0.04,
+      "fractional_d": 3.22,
+      "amihud_illiquidity": 0.0,
+      "conformal_rr": -0.29,
+      "dual_basis_bps": 1.14
+    }
+  },
   "score_record": {
     "composite_score": 50,
     "confidence_tier": "B",

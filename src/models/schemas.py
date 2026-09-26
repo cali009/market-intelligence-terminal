@@ -829,6 +829,59 @@ class CPCVFeed(BaseModel):
         return self.model_dump()
 
 
+# ==========================================
+# PHASE 17: LIGHTGBM & EXACT TREESHAP SCHEMAS
+# ==========================================
+
+
+class FeatureAttributionDetail(BaseModel):
+    feature_name: str
+    feature_label: str
+    feature_value: float
+    shap_contribution: float
+    direction: Literal["POSITIVE", "NEGATIVE", "NEUTRAL"]
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class SymbolSHAPAttribution(BaseModel):
+    symbol: str
+    base_value: float
+    model_score: float
+    top_drivers: List[FeatureAttributionDetail]
+    top_detractors: List[FeatureAttributionDetail]
+    all_attributions: Dict[str, float]
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class GlobalFeatureImportance(BaseModel):
+    feature_name: str
+    feature_label: str
+    mean_abs_shap: float
+    relative_importance_pct: float
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class SHAPValidationFeed(BaseModel):
+    as_of_date: str
+    model_type: str
+    base_value: float
+    total_securities_scored: int
+    additivity_error_max: float
+    global_feature_importance: List[GlobalFeatureImportance]
+    symbol_attributions: List[SymbolSHAPAttribution]
+    disclaimers: List[str]
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+
 
 
 

@@ -5,7 +5,7 @@
   "currency": "CAD",
   "name": "Toronto-Dominion Bank",
   "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T05:55:39.016785+00:00",
+  "generated_at": "2026-09-26T06:23:21.080292+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 169.69000244140625,
@@ -358,7 +358,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 14,
     "gjr_garch_gamma": 0.24,
-    "last_updated": "2026-09-26T05:55:40.958408+00:00"
+    "last_updated": "2026-09-26T06:23:23.443336+00:00"
   },
   "conformal_bounds": {
     "symbol": "TD",
@@ -375,7 +375,7 @@
     "adapted_alpha": 0.105,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-09-26T05:55:40.976293+00:00"
+    "calibrated_at": "2026-09-26T06:23:23.461328+00:00"
   },
   "cross_border_parity": {
     "tsx_symbol": "TD",
@@ -399,6 +399,70 @@
     "primary_liquidity_center": "TSX",
     "actionable_arbitrage_friction": false,
     "as_of_date": "2026-09-25"
+  },
+  "shap_attribution": {
+    "symbol": "TD",
+    "base_value": 50.89,
+    "model_score": 56.2,
+    "top_drivers": [
+      {
+        "feature_name": "proximity_52w",
+        "feature_label": "Proximity to 52W High",
+        "feature_value": -0.026,
+        "shap_contribution": 5.64,
+        "direction": "POSITIVE"
+      },
+      {
+        "feature_name": "dual_basis_bps",
+        "feature_label": "Cross-Border Basis Spread",
+        "feature_value": 1.8,
+        "shap_contribution": 1.07,
+        "direction": "POSITIVE"
+      },
+      {
+        "feature_name": "trend_sma200_ratio",
+        "feature_label": "Trend vs 200DMA",
+        "feature_value": 1.149,
+        "shap_contribution": 0.99,
+        "direction": "POSITIVE"
+      }
+    ],
+    "top_detractors": [
+      {
+        "feature_name": "fractional_d",
+        "feature_label": "Fractional Memory Order d*",
+        "feature_value": 0.56,
+        "shap_contribution": -1.4,
+        "direction": "NEGATIVE"
+      },
+      {
+        "feature_name": "conformal_rr",
+        "feature_label": "Certified Conformal R:R",
+        "feature_value": 1.45,
+        "shap_contribution": -1.17,
+        "direction": "NEGATIVE"
+      },
+      {
+        "feature_name": "hurst_persistence",
+        "feature_label": "Lo HAC Hurst Exponent",
+        "feature_value": 0.5,
+        "shap_contribution": -0.74,
+        "direction": "NEGATIVE"
+      }
+    ],
+    "all_attributions": {
+      "trend_sma200_ratio": 0.99,
+      "momentum_rsi": 0.82,
+      "proximity_52w": 5.64,
+      "mtf_confluence": 0.07,
+      "roic_pct": 0.0,
+      "pe_multiple": 0.0,
+      "hurst_persistence": -0.74,
+      "fractional_d": -1.4,
+      "amihud_illiquidity": 0.0,
+      "conformal_rr": -1.17,
+      "dual_basis_bps": 1.07
+    }
   },
   "score_record": {
     "composite_score": 56,

@@ -75,6 +75,8 @@ def build_firebase_bundle():
         ("cross_border_parity.json", "cross_border_parity"),
         ("cpcv_validation.json", "cpcv_validation.json"),
         ("cpcv_validation.json", "cpcv_validation"),
+        ("shap_attributions.json", "shap_attributions.json"),
+        ("shap_attributions.json", "shap_attributions"),
     ]
 
     for src_name, dest_name in core_feeds:

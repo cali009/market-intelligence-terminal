@@ -5,7 +5,7 @@
   "currency": "USD",
   "name": "Invesco QQQ Trust",
   "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T05:55:39.016785+00:00",
+  "generated_at": "2026-09-26T06:23:21.080292+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 742.8400268554688,
@@ -353,7 +353,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 14,
     "gjr_garch_gamma": 0.08,
-    "last_updated": "2026-09-26T05:55:40.620035+00:00"
+    "last_updated": "2026-09-26T06:23:23.062461+00:00"
   },
   "conformal_bounds": {
     "symbol": "QQQ",
@@ -370,9 +370,51 @@
     "adapted_alpha": 0.17,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-09-26T05:55:40.637237+00:00"
+    "calibrated_at": "2026-09-26T06:23:23.080397+00:00"
   },
   "cross_border_parity": null,
+  "shap_attribution": {
+    "symbol": "QQQ",
+    "base_value": 50.89,
+    "model_score": 76.8,
+    "top_drivers": [
+      {
+        "feature_name": "momentum_rsi",
+        "feature_label": "14-Day RSI Momentum",
+        "feature_value": 64.7,
+        "shap_contribution": 9.91,
+        "direction": "POSITIVE"
+      },
+      {
+        "feature_name": "proximity_52w",
+        "feature_label": "Proximity to 52W High",
+        "feature_value": -0.006,
+        "shap_contribution": 6.26,
+        "direction": "POSITIVE"
+      },
+      {
+        "feature_name": "trend_sma200_ratio",
+        "feature_label": "Trend vs 200DMA",
+        "feature_value": 1.119,
+        "shap_contribution": 5.59,
+        "direction": "POSITIVE"
+      }
+    ],
+    "top_detractors": [],
+    "all_attributions": {
+      "trend_sma200_ratio": 5.59,
+      "momentum_rsi": 9.91,
+      "proximity_52w": 6.26,
+      "mtf_confluence": 0.12,
+      "roic_pct": 0.0,
+      "pe_multiple": 0.0,
+      "hurst_persistence": 0.92,
+      "fractional_d": 1.19,
+      "amihud_illiquidity": 0.0,
+      "conformal_rr": 1.38,
+      "dual_basis_bps": 0.57
+    }
+  },
   "score_record": {
     "composite_score": 84,
     "confidence_tier": "A",

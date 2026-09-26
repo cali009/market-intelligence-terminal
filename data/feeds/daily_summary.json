@@ -1,6 +1,6 @@
 {
   "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T05:58:14.695856+00:00",
+  "generated_at": "2026-09-26T06:26:48.884829+00:00",
   "regimes": {
     "US": {
       "market_label": "US Equities",
@@ -79,7 +79,8 @@
       "dual_listed_us_sym": null,
       "basis_spread_bps": null,
       "basis_zscore": null,
-      "primary_liquidity": null
+      "primary_liquidity": null,
+      "shap_score": 76.8
     },
     {
       "symbol": "SPY",
@@ -129,7 +130,8 @@
       "dual_listed_us_sym": null,
       "basis_spread_bps": null,
       "basis_zscore": null,
-      "primary_liquidity": null
+      "primary_liquidity": null,
+      "shap_score": 74.2
     },
     {
       "symbol": "MSFT",
@@ -182,7 +184,8 @@
       "dual_listed_us_sym": null,
       "basis_spread_bps": null,
       "basis_zscore": null,
-      "primary_liquidity": null
+      "primary_liquidity": null,
+      "shap_score": 63.9
     },
     {
       "symbol": "AAPL",
@@ -231,7 +234,8 @@
       "dual_listed_us_sym": null,
       "basis_spread_bps": null,
       "basis_zscore": null,
-      "primary_liquidity": null
+      "primary_liquidity": null,
+      "shap_score": 63.1
     },
     {
       "symbol": "NVDA",
@@ -279,7 +283,8 @@
       "dual_listed_us_sym": null,
       "basis_spread_bps": null,
       "basis_zscore": null,
-      "primary_liquidity": null
+      "primary_liquidity": null,
+      "shap_score": 62.2
     }
   ],
   "total_securities_analyzed": 19,
