@@ -4,75 +4,75 @@
     "total_cpcv_paths": 15,
     "num_timeline_blocks": 6,
     "embargo_days": 5,
-    "empirical_pbo": 0.333,
-    "pbo_evaluation": "MODERATE_OVERFITTING_RISK",
+    "empirical_pbo": 0.0,
+    "pbo_evaluation": "LOW_OVERFITTING_RISK",
     "target_fdr_q": 0.05,
-    "fdr_passed_count": 2,
-    "fdr_rejected_count": 5,
-    "calibrated_at": "2026-09-26T17:14:24.710410+00:00"
+    "fdr_passed_count": 0,
+    "fdr_rejected_count": 7,
+    "calibrated_at": "2026-09-27T06:20:37.150183+00:00"
   },
   "fdr_gating_table": [
-    {
-      "strategy_id": "PO3_LIQUIDITY_SWEEP",
-      "strategy_name": "TAC-15: Power of Three (PO3) Liquidity Sweep & Manipulation Reversal",
-      "status": "ACTIVE",
-      "total_trades": 385,
-      "mean_trade_return_pct": -0.514,
-      "sharpe_ratio": -1.49,
-      "t_statistic": -2.598,
-      "raw_p_value": 0.00937,
-      "fdr_rank": 1,
-      "fdr_critical_threshold": 0.00714,
-      "fdr_verdict": "FDR_PASSED"
-    },
     {
       "strategy_id": "ENSEMBLE_8F",
       "strategy_name": "8-Factor Composite Trend & Value Ensemble",
       "status": "ACTIVE",
-      "total_trades": 428,
-      "mean_trade_return_pct": -0.509,
-      "sharpe_ratio": -1.3,
-      "t_statistic": -2.527,
-      "raw_p_value": 0.01149,
-      "fdr_rank": 2,
-      "fdr_critical_threshold": 0.01429,
-      "fdr_verdict": "FDR_PASSED"
-    },
-    {
-      "strategy_id": "ADAPTIVE_DUAL_REGIME",
-      "strategy_name": "Dual-Regime Adaptive Ensemble (PO3 + Momentum/Pullback)",
-      "status": "ACTIVE",
-      "total_trades": 409,
-      "mean_trade_return_pct": -0.416,
-      "sharpe_ratio": -1.28,
-      "t_statistic": -2.12,
-      "raw_p_value": 0.034,
-      "fdr_rank": 3,
-      "fdr_critical_threshold": 0.02143,
+      "total_trades": 411,
+      "mean_trade_return_pct": -0.506,
+      "sharpe_ratio": -1.18,
+      "t_statistic": -2.49,
+      "raw_p_value": 0.01278,
+      "fdr_rank": 1,
+      "fdr_critical_threshold": 0.00714,
       "fdr_verdict": "REJECTED_SELECTION_BIAS"
     },
     {
       "strategy_id": "TAC04_MOMENTUM",
       "strategy_name": "TAC-04: Momentum Leader Breakout",
       "status": "ACTIVE",
-      "total_trades": 397,
-      "mean_trade_return_pct": -0.39,
-      "sharpe_ratio": -0.92,
-      "t_statistic": -2.029,
-      "raw_p_value": 0.04244,
-      "fdr_rank": 4,
-      "fdr_critical_threshold": 0.02857,
+      "total_trades": 372,
+      "mean_trade_return_pct": -0.337,
+      "sharpe_ratio": -1.4,
+      "t_statistic": -1.656,
+      "raw_p_value": 0.09765,
+      "fdr_rank": 2,
+      "fdr_critical_threshold": 0.01429,
+      "fdr_verdict": "REJECTED_SELECTION_BIAS"
+    },
+    {
+      "strategy_id": "PO3_LIQUIDITY_SWEEP",
+      "strategy_name": "TAC-15: Power of Three (PO3) Liquidity Sweep & Manipulation Reversal",
+      "status": "ACTIVE",
+      "total_trades": 32,
+      "mean_trade_return_pct": 0.745,
+      "sharpe_ratio": 0.64,
+      "t_statistic": 1.215,
+      "raw_p_value": 0.22436,
+      "fdr_rank": 3,
+      "fdr_critical_threshold": 0.02143,
       "fdr_verdict": "REJECTED_SELECTION_BIAS"
     },
     {
       "strategy_id": "TAC01_PULLBACK",
       "strategy_name": "TAC-01: Pullback to Key Support Swing",
       "status": "ACTIVE",
-      "total_trades": 311,
-      "mean_trade_return_pct": -0.243,
-      "sharpe_ratio": -0.97,
-      "t_statistic": -0.998,
-      "raw_p_value": 0.31812,
+      "total_trades": 297,
+      "mean_trade_return_pct": -0.259,
+      "sharpe_ratio": -1.13,
+      "t_statistic": -1.039,
+      "raw_p_value": 0.29866,
+      "fdr_rank": 4,
+      "fdr_critical_threshold": 0.02857,
+      "fdr_verdict": "REJECTED_SELECTION_BIAS"
+    },
+    {
+      "strategy_id": "ADAPTIVE_DUAL_REGIME",
+      "strategy_name": "Dual-Regime Adaptive Ensemble (PO3 + Momentum/Pullback)",
+      "status": "ACTIVE",
+      "total_trades": 90,
+      "mean_trade_return_pct": 0.303,
+      "sharpe_ratio": 0.37,
+      "t_statistic": 0.754,
+      "raw_p_value": 0.45093,
       "fdr_rank": 5,
       "fdr_critical_threshold": 0.03571,
       "fdr_verdict": "REJECTED_SELECTION_BIAS"
@@ -81,11 +81,11 @@
       "strategy_id": "TAC02_SQUEEZE",
       "strategy_name": "TAC-02: Volatility Squeeze Expansion",
       "status": "ACTIVE",
-      "total_trades": 293,
-      "mean_trade_return_pct": -0.052,
-      "sharpe_ratio": -0.42,
-      "t_statistic": -0.285,
-      "raw_p_value": 0.77594,
+      "total_trades": 278,
+      "mean_trade_return_pct": -0.096,
+      "sharpe_ratio": -0.27,
+      "t_statistic": -0.514,
+      "raw_p_value": 0.60713,
       "fdr_rank": 6,
       "fdr_critical_threshold": 0.04286,
       "fdr_verdict": "REJECTED_SELECTION_BIAS"
@@ -95,10 +95,10 @@
       "strategy_name": "TAC-03: Unconstrained Breakout Chase (RETIRED)",
       "status": "RETIRED",
       "total_trades": 72,
-      "mean_trade_return_pct": -0.122,
-      "sharpe_ratio": -0.98,
-      "t_statistic": -0.272,
-      "raw_p_value": 0.7854,
+      "mean_trade_return_pct": -0.092,
+      "sharpe_ratio": -0.19,
+      "t_statistic": -0.203,
+      "raw_p_value": 0.83905,
       "fdr_rank": 7,
       "fdr_critical_threshold": 0.05,
       "fdr_verdict": "REJECTED_SELECTION_BIAS"
@@ -111,7 +111,7 @@
         0,
         1
       ],
-      "best_is_strategy": "TAC02_SQUEEZE",
+      "best_is_strategy": "PO3_LIQUIDITY_SWEEP",
       "oos_rank": 1,
       "oos_rank_percentile": 0.14,
       "is_rank_inverted": false
@@ -122,9 +122,9 @@
         0,
         2
       ],
-      "best_is_strategy": "TAC03_BREAKOUT_CHASE",
-      "oos_rank": 3,
-      "oos_rank_percentile": 0.43,
+      "best_is_strategy": "PO3_LIQUIDITY_SWEEP",
+      "oos_rank": 1,
+      "oos_rank_percentile": 0.14,
       "is_rank_inverted": false
     },
     {
@@ -133,9 +133,9 @@
         0,
         3
       ],
-      "best_is_strategy": "TAC02_SQUEEZE",
-      "oos_rank": 3,
-      "oos_rank_percentile": 0.43,
+      "best_is_strategy": "PO3_LIQUIDITY_SWEEP",
+      "oos_rank": 1,
+      "oos_rank_percentile": 0.14,
       "is_rank_inverted": false
     },
     {
@@ -144,10 +144,10 @@
         0,
         4
       ],
-      "best_is_strategy": "ADAPTIVE_DUAL_REGIME",
-      "oos_rank": 7,
-      "oos_rank_percentile": 1.0,
-      "is_rank_inverted": true
+      "best_is_strategy": "PO3_LIQUIDITY_SWEEP",
+      "oos_rank": 1,
+      "oos_rank_percentile": 0.14,
+      "is_rank_inverted": false
     },
     {
       "path_id": 5,
@@ -155,9 +155,9 @@
         0,
         5
       ],
-      "best_is_strategy": "TAC02_SQUEEZE",
-      "oos_rank": 2,
-      "oos_rank_percentile": 0.29,
+      "best_is_strategy": "PO3_LIQUIDITY_SWEEP",
+      "oos_rank": 1,
+      "oos_rank_percentile": 0.14,
       "is_rank_inverted": false
     },
     {
@@ -166,10 +166,10 @@
         1,
         2
       ],
-      "best_is_strategy": "TAC03_BREAKOUT_CHASE",
-      "oos_rank": 6,
-      "oos_rank_percentile": 0.86,
-      "is_rank_inverted": true
+      "best_is_strategy": "PO3_LIQUIDITY_SWEEP",
+      "oos_rank": 1,
+      "oos_rank_percentile": 0.14,
+      "is_rank_inverted": false
     },
     {
       "path_id": 7,
@@ -177,9 +177,9 @@
         1,
         3
       ],
-      "best_is_strategy": "TAC02_SQUEEZE",
-      "oos_rank": 2,
-      "oos_rank_percentile": 0.29,
+      "best_is_strategy": "PO3_LIQUIDITY_SWEEP",
+      "oos_rank": 3,
+      "oos_rank_percentile": 0.43,
       "is_rank_inverted": false
     },
     {
@@ -188,10 +188,10 @@
         1,
         4
       ],
-      "best_is_strategy": "TAC01_PULLBACK",
-      "oos_rank": 7,
-      "oos_rank_percentile": 1.0,
-      "is_rank_inverted": true
+      "best_is_strategy": "PO3_LIQUIDITY_SWEEP",
+      "oos_rank": 1,
+      "oos_rank_percentile": 0.14,
+      "is_rank_inverted": false
     },
     {
       "path_id": 9,
@@ -199,9 +199,9 @@
         1,
         5
       ],
-      "best_is_strategy": "TAC02_SQUEEZE",
-      "oos_rank": 2,
-      "oos_rank_percentile": 0.29,
+      "best_is_strategy": "PO3_LIQUIDITY_SWEEP",
+      "oos_rank": 1,
+      "oos_rank_percentile": 0.14,
       "is_rank_inverted": false
     },
     {
@@ -210,10 +210,10 @@
         2,
         3
       ],
-      "best_is_strategy": "TAC02_SQUEEZE",
-      "oos_rank": 6,
-      "oos_rank_percentile": 0.86,
-      "is_rank_inverted": true
+      "best_is_strategy": "PO3_LIQUIDITY_SWEEP",
+      "oos_rank": 1,
+      "oos_rank_percentile": 0.14,
+      "is_rank_inverted": false
     },
     {
       "path_id": 11,
@@ -221,9 +221,9 @@
         2,
         4
       ],
-      "best_is_strategy": "TAC02_SQUEEZE",
-      "oos_rank": 2,
-      "oos_rank_percentile": 0.29,
+      "best_is_strategy": "PO3_LIQUIDITY_SWEEP",
+      "oos_rank": 1,
+      "oos_rank_percentile": 0.14,
       "is_rank_inverted": false
     },
     {
@@ -232,10 +232,10 @@
         2,
         5
       ],
-      "best_is_strategy": "TAC02_SQUEEZE",
-      "oos_rank": 4,
-      "oos_rank_percentile": 0.57,
-      "is_rank_inverted": true
+      "best_is_strategy": "PO3_LIQUIDITY_SWEEP",
+      "oos_rank": 1,
+      "oos_rank_percentile": 0.14,
+      "is_rank_inverted": false
     },
     {
       "path_id": 13,
@@ -243,7 +243,7 @@
         3,
         4
       ],
-      "best_is_strategy": "TAC02_SQUEEZE",
+      "best_is_strategy": "PO3_LIQUIDITY_SWEEP",
       "oos_rank": 2,
       "oos_rank_percentile": 0.29,
       "is_rank_inverted": false
@@ -254,9 +254,9 @@
         3,
         5
       ],
-      "best_is_strategy": "TAC02_SQUEEZE",
-      "oos_rank": 2,
-      "oos_rank_percentile": 0.29,
+      "best_is_strategy": "PO3_LIQUIDITY_SWEEP",
+      "oos_rank": 1,
+      "oos_rank_percentile": 0.14,
       "is_rank_inverted": false
     },
     {
@@ -265,9 +265,9 @@
         4,
         5
       ],
-      "best_is_strategy": "TAC02_SQUEEZE",
-      "oos_rank": 2,
-      "oos_rank_percentile": 0.29,
+      "best_is_strategy": "PO3_LIQUIDITY_SWEEP",
+      "oos_rank": 1,
+      "oos_rank_percentile": 0.14,
       "is_rank_inverted": false
     }
   ],

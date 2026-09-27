@@ -197,7 +197,7 @@ SCANNER_DEFINITIONS: Dict[str, Dict[str, Any]] = {
         "name": "TAC-15: PO3 Liquidity Sweep & Manipulation Reversal",
         "category": "LIQUIDITY_SWEEP",
         "description": "Detects institutional accumulation sweeps where intraday manipulation undercuts prior swing low or key moving average support to trap sellers before closing strongly back inside the range.",
-        "rule_summary": "Intraday Low <= SMA20/50/LowerBB AND Lower Wick >= 25% AND Close in Upper 50% AND Close >= Open * 0.995 AND RSI 40-66",
+        "rule_summary": "Golden Cross Alignment (SMA20 > SMA50 > SMA200) AND Low <= SMA20/50/LowerBB AND Lower Wick >= 25% AND Close in Upper 50% AND RSI 40-66",
         "regime_compatibility": ["STRONG_BULL", "WEAK_BULL", "CONSOLIDATION", "HIGH_VOLATILITY"],
         "historical_win_rate_pct": 58.5,
         "forward_5d_return_pct": 2.25,
@@ -509,7 +509,9 @@ class MarketScanners:
 
             is_sweep = (low <= sma_20 * 1.005) or (low <= bb_l_val * 1.01) or (low <= sma_50 * 1.005)
             is_rejection = (wick_ratio >= 0.25) and (close_loc >= 0.48) and (close >= open_p * 0.995)
-            is_confluence = (40.0 <= rsi <= 66.0) and (rvol >= 0.90 or cmf_val >= -0.05) and (prox_52w >= -0.18)
+            # Phase 21.2: Enforce Golden Cross structural hierarchy (SMA20 > SMA50 > SMA200 and Close > SMA50)
+            golden_cross = (sma_20 > sma_50 > sma_200) and (close > sma_50) if (sma_200 and sma_200 > 0) else (sma_20 > sma_50)
+            is_confluence = golden_cross and (40.0 <= rsi <= 66.0) and (rvol >= 0.90 or cmf_val >= -0.05) and (prox_52w >= -0.18)
 
             if is_sweep and is_rejection and is_confluence:
                 matches.append(

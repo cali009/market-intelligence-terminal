@@ -788,9 +788,9 @@ class BacktestEngine:
             return bool(c > sma20 > sma50 and prox52 >= -0.06 and rsi >= 55.0)
 
         elif strategy_id == "PO3_LIQUIDITY_SWEEP":
-            # Phase 19.1: Power of Three (PO3) Liquidity Sweep & Manipulation Reversal
-            # 1. Macro Trend: Strict primary uptrend alignment (Close > SMA50 > SMA200)
-            trend_ok = (c > sma50) and (sma50 > sma200)
+            # Phase 19.1 & 21.2: Power of Three (PO3) Liquidity Sweep & Manipulation Reversal
+            # 1. Macro Trend: Strict Golden-Cross structural hierarchy (Close > SMA50 and SMA20 > SMA50 > SMA200)
+            trend_ok = (c > sma50) and (sma20 > sma50) and (sma50 > sma200)
             # 2. Manipulation Liquidity Sweep: Intraday low strictly sweeps 20DMA or Lower BB, Close firmly reclaims
             bb_lower_val = bb_lower if bb_lower and not math.isnan(bb_lower) else (sma20 * 0.96)
             low_p = bar["low"]

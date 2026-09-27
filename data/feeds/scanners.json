@@ -1,8 +1,8 @@
 {
-  "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T17:13:28.130330+00:00",
+  "as_of_date": "2026-09-27",
+  "generated_at": "2026-09-27T06:19:45.713083+00:00",
   "active_regime": "STRONG_BULL",
-  "total_matches": 63,
+  "total_matches": 58,
   "scanner_definitions": [
     {
       "scanner_id": "MOMENTUM_LEADERS",
@@ -276,7 +276,7 @@
       "name": "TAC-15: PO3 Liquidity Sweep & Manipulation Reversal",
       "category": "LIQUIDITY_SWEEP",
       "description": "Detects institutional accumulation sweeps where intraday manipulation undercuts prior swing low or key moving average support to trap sellers before closing strongly back inside the range.",
-      "rule_summary": "Intraday Low <= SMA20/50/LowerBB AND Lower Wick >= 25% AND Close in Upper 50% AND Close >= Open * 0.995 AND RSI 40-66",
+      "rule_summary": "Golden Cross Alignment (SMA20 > SMA50 > SMA200) AND Low <= SMA20/50/LowerBB AND Lower Wick >= 25% AND Close in Upper 50% AND RSI 40-66",
       "regime_compatibility": [
         "STRONG_BULL",
         "WEAK_BULL",
@@ -561,23 +561,6 @@
       "regime_state": "STRONG_BULL"
     },
     {
-      "scanner_id": "PO3_LIQUIDITY_SWEEP",
-      "scanner_name": "TAC-15: PO3 Liquidity Sweep & Manipulation Reversal",
-      "symbol": "AMZN",
-      "exchange": "NASDAQ",
-      "price": 249.6699981689453,
-      "why_matched": "Institutional liquidity sweep: Low ($247.18) swept support with 37.3% lower rejection wick and close in upper 67.3% of daily range.",
-      "key_metrics": {
-        "low": 247.17999267578125,
-        "close": 249.6699981689453,
-        "wick_ratio": 0.37,
-        "rsi": 44.5,
-        "rvol": 0.93
-      },
-      "regime_gated": false,
-      "regime_state": "STRONG_BULL"
-    },
-    {
       "scanner_id": "PULLBACK_UPTREND",
       "scanner_name": "Pullback to Key Support",
       "symbol": "GOOGL",
@@ -646,23 +629,6 @@
       "key_metrics": {
         "bandwidth": 0.07742902798148463,
         "prox_52w": -0.06395635045404158
-      },
-      "regime_gated": false,
-      "regime_state": "STRONG_BULL"
-    },
-    {
-      "scanner_id": "PO3_LIQUIDITY_SWEEP",
-      "scanner_name": "TAC-15: PO3 Liquidity Sweep & Manipulation Reversal",
-      "symbol": "JPM",
-      "exchange": "NYSE",
-      "price": 343.05999755859375,
-      "why_matched": "Institutional liquidity sweep: Low ($338.64) swept support with 45.9% lower rejection wick and close in upper 95.6% of daily range.",
-      "key_metrics": {
-        "low": 338.6400146484375,
-        "close": 343.05999755859375,
-        "wick_ratio": 0.46,
-        "rsi": 41.7,
-        "rvol": 1.29
       },
       "regime_gated": false,
       "regime_state": "STRONG_BULL"
@@ -780,23 +746,6 @@
       "key_metrics": {
         "bandwidth": 0.02915569766049144,
         "prox_52w": -0.010290387853645888
-      },
-      "regime_gated": false,
-      "regime_state": "STRONG_BULL"
-    },
-    {
-      "scanner_id": "PO3_LIQUIDITY_SWEEP",
-      "scanner_name": "TAC-15: PO3 Liquidity Sweep & Manipulation Reversal",
-      "symbol": "SPY",
-      "exchange": "AMEX",
-      "price": 771.3499755859375,
-      "why_matched": "Institutional liquidity sweep: Low ($766.29) swept support with 41.6% lower rejection wick and close in upper 84.5% of daily range.",
-      "key_metrics": {
-        "low": 766.2899780273438,
-        "close": 771.3499755859375,
-        "wick_ratio": 0.42,
-        "rsi": 55.9,
-        "rvol": 0.78
       },
       "regime_gated": false,
       "regime_state": "STRONG_BULL"
@@ -1067,23 +1016,6 @@
       "regime_state": "WEAK_BULL"
     },
     {
-      "scanner_id": "PO3_LIQUIDITY_SWEEP",
-      "scanner_name": "TAC-15: PO3 Liquidity Sweep & Manipulation Reversal",
-      "symbol": "CNR",
-      "exchange": "TSX",
-      "price": 170.89999389648438,
-      "why_matched": "Institutional liquidity sweep: Low ($168.51) swept support with 43.4% lower rejection wick and close in upper 80.5% of daily range.",
-      "key_metrics": {
-        "low": 168.50999450683594,
-        "close": 170.89999389648438,
-        "wick_ratio": 0.43,
-        "rsi": 51.0,
-        "rvol": 0.56
-      },
-      "regime_gated": false,
-      "regime_state": "WEAK_BULL"
-    },
-    {
       "scanner_id": "PULLBACK_UPTREND",
       "scanner_name": "Pullback to Key Support",
       "symbol": "CNQ",
@@ -1209,23 +1141,6 @@
       "key_metrics": {
         "bandwidth": 0.03570608090903672,
         "prox_52w": -0.03420664637436477
-      },
-      "regime_gated": false,
-      "regime_state": "WEAK_BULL"
-    },
-    {
-      "scanner_id": "PO3_LIQUIDITY_SWEEP",
-      "scanner_name": "TAC-15: PO3 Liquidity Sweep & Manipulation Reversal",
-      "symbol": "XIU",
-      "exchange": "TSX",
-      "price": 53.08000183105469,
-      "why_matched": "Institutional liquidity sweep: Low ($52.81) swept support with 79.4% lower rejection wick and close in upper 79.4% of daily range.",
-      "key_metrics": {
-        "low": 52.810001373291016,
-        "close": 53.08000183105469,
-        "wick_ratio": 0.79,
-        "rsi": 46.5,
-        "rvol": 1.44
       },
       "regime_gated": false,
       "regime_state": "WEAK_BULL"

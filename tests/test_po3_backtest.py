@@ -249,10 +249,10 @@ def test_tac15_scanner_match_and_expectancy():
     metrics = {
         "open": 124.0,
         "high": 128.0,
-        "low": 118.0,               # Intraday low swept below 20DMA (120.0)
+        "low": 118.0,               # Intraday low swept below 20DMA (122.0)
         "close": 127.0,              # Strong reclamation in upper half
-        "sma_20": 120.0,
-        "sma_50": 121.0,             # dist_50 = 4.96% <= 8.0%
+        "sma_20": 122.0,             # Phase 21.2: Golden cross alignment (sma20 > sma50 > sma200)
+        "sma_50": 120.0,             # dist_50 = 5.83% <= 8.0%
         "sma_200": 110.0,            # dist_200 = 15.45% <= 20.0%
         "rsi_14": 56.0,
         "rvol_20": 1.30,
@@ -355,4 +355,18 @@ def test_po3_phase20_3_cash_sweep_yield_and_double_digit_alpha():
     assert m_adapt["cash_sweep_yield_total_usd"] > 0.0
     assert m_adapt["total_net_return_pct"] >= 11.5, f"Expected Adaptive return >= 11.5%, got {m_adapt['total_net_return_pct']}%"
     assert m_adapt["sharpe_ratio"] >= 0.25, f"Expected Adaptive Sharpe >= 0.25, got {m_adapt['sharpe_ratio']}"
+
+
+def test_po3_phase21_golden_cross_alignment_and_sub_3_5pct_drawdown():
+    """Phase 21.2: Verify Golden Cross alignment (SMA20 > SMA50 > SMA200) yields >52% win rate and <3.5% MaxDD."""
+    defn = market_scanners.definitions["PO3_LIQUIDITY_SWEEP"]
+    assert "Golden Cross" in defn["rule_summary"]
+
+    res = backtest_engine.run_strategy_backtest("PO3_LIQUIDITY_SWEEP")
+    m = res["metrics"]
+    assert m["win_rate_pct"] >= 52.0, f"Expected PO3 win rate >= 52%, got {m['win_rate_pct']}%"
+    assert m["sharpe_ratio"] >= 0.50, f"Expected PO3 Sharpe >= 0.50, got {m['sharpe_ratio']}"
+    assert m["max_drawdown_pct"] <= 3.50, f"Expected PO3 MaxDD <= 3.50%, got {m['max_drawdown_pct']}%"
+    assert m["total_net_return_pct"] >= 11.5, f"Expected PO3 return >= 11.5%, got {m['total_net_return_pct']}%"
+
 

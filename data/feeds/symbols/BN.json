@@ -4,8 +4,8 @@
   "country": "CA",
   "currency": "CAD",
   "name": "Brookfield Corporation",
-  "as_of_date": "2026-09-26",
-  "generated_at": "2026-09-26T17:13:28.130330+00:00",
+  "as_of_date": "2026-09-27",
+  "generated_at": "2026-09-27T06:19:45.713083+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 51.970001220703125,
@@ -306,7 +306,7 @@
   },
   "fundamental_dossier": {
     "symbol": "BN",
-    "as_of_date": "2026-09-26",
+    "as_of_date": "2026-09-27",
     "filing_date": "2026-03-18",
     "currency": "CAD",
     "fiscal_period": "FY",
@@ -358,7 +358,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 14,
     "gjr_garch_gamma": 0.16,
-    "last_updated": "2026-09-26T17:13:32.189858+00:00"
+    "last_updated": "2026-09-27T06:19:49.685317+00:00"
   },
   "conformal_bounds": {
     "symbol": "BN",
@@ -375,7 +375,7 @@
     "adapted_alpha": 0.055,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-09-26T17:13:32.221749+00:00"
+    "calibrated_at": "2026-09-27T06:19:49.703456+00:00"
   },
   "cross_border_parity": {
     "tsx_symbol": "BN",
@@ -477,7 +477,7 @@
       "technical_score": 15,
       "fundamental_score": 53,
       "regime_multiplier": 1.0,
-      "news_contribution": 1.7,
+      "news_contribution": 1.5,
       "sector_contribution": 0.0,
       "risk_penalty": 8.0,
       "key_metrics": {
@@ -533,7 +533,7 @@
         "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
       ],
       "hard_gate_triggered": false,
-      "score_impact_pts": 0.6
+      "score_impact_pts": 0.5
     },
     {
       "id": "d637910769e7",
@@ -570,7 +570,7 @@
         "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
       ],
       "hard_gate_triggered": false,
-      "score_impact_pts": 0.6
+      "score_impact_pts": 0.5
     },
     {
       "id": "919f1ab8d8d7",
@@ -593,7 +593,7 @@
         "Standard factual disclosure under regulatory reporting schedule"
       ],
       "horizon": "SHORT_TERM",
-      "priced_in_status": "PARTIAL",
+      "priced_in_status": "PRICED_IN",
       "reaction_1d_pct": -0.22,
       "reaction_3d_pct": -2.96,
       "rvol_at_event": 1.0,

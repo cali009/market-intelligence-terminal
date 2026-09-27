@@ -805,6 +805,157 @@
             color: var(--text-muted);
             line-height: 1.6;
         }
+
+        /* Phase 21.1: Header Quick-Search Omnibar & Universal Command Palette */
+        .header-search-bar {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 6px 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            width: 380px;
+            max-width: 36vw;
+            transition: all 0.2s ease;
+        }
+
+        .header-search-bar:hover {
+            border-color: var(--accent-blue);
+            background: rgba(59, 130, 246, 0.06);
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.2);
+        }
+
+        .search-placeholder-text {
+            color: var(--text-muted);
+            font-size: 12px;
+            flex: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            user-select: none;
+        }
+
+        .kbd-badge {
+            font-size: 10px;
+            padding: 2px 6px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            color: var(--text-secondary);
+            font-family: monospace;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .command-palette-dialog {
+            position: fixed;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 740px;
+            max-width: 95vw;
+            max-height: 82vh;
+            background: var(--bg-secondary);
+            border: 1px solid rgba(59, 130, 246, 0.4);
+            border-radius: 12px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 30px rgba(59, 130, 246, 0.15);
+            z-index: 200;
+            overflow: hidden;
+            padding: 0;
+            display: none;
+            flex-direction: column;
+        }
+
+        .palette-input-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-color);
+            background: var(--bg-card);
+        }
+
+        .palette-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            outline: none;
+            font-size: 15px;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-weight: 500;
+        }
+
+        .palette-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .palette-category-bar {
+            display: flex;
+            gap: 6px;
+            padding: 10px 16px;
+            border-bottom: 1px solid var(--border-color);
+            background: rgba(17, 24, 39, 0.95);
+            overflow-x: auto;
+        }
+
+        .palette-chip {
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            border: 1px solid var(--border-color);
+            background: transparent;
+            color: var(--text-secondary);
+            transition: all 0.15s;
+            white-space: nowrap;
+        }
+
+        .palette-chip:hover {
+            border-color: var(--accent-blue);
+            color: var(--text-primary);
+        }
+
+        .palette-chip.active {
+            background: rgba(59, 130, 246, 0.18);
+            border-color: var(--accent-blue);
+            color: var(--accent-blue);
+        }
+
+        .palette-results-list {
+            max-height: 400px;
+            overflow-y: auto;
+            padding: 6px 0;
+        }
+
+        .palette-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 18px;
+            cursor: pointer;
+            transition: all 0.12s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .palette-item:hover, .palette-item.selected {
+            background: rgba(59, 130, 246, 0.12);
+            border-left-color: var(--accent-blue);
+        }
+
+        .palette-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 18px;
+            border-top: 1px solid var(--border-color);
+            font-size: 11px;
+            color: var(--text-muted);
+            background: var(--bg-card);
+        }
     </style>
 </head>
 <body>
@@ -818,6 +969,14 @@
                 <div class="brand-subtitle">US + Canada Multi-Market Decision Support</div>
             </div>
         </div>
+
+        <!-- Phase 21.1: Header Quick-Search Omnibar -->
+        <div class="header-search-bar" onclick="openCommandPalette()" title="Universal Search & Command Palette (Ctrl+K or /)">
+            <span style="font-size: 13px; opacity: 0.8;">🔍</span>
+            <span class="search-placeholder-text">Search symbol, scanner, signal, or strategy...</span>
+            <span class="kbd-badge">Ctrl+K</span>
+        </div>
+
         <div class="market-pills">
             <div class="pill">
                 <span class="dot-green"></span>
@@ -1072,6 +1231,19 @@
 
             <!-- View 2: TAC-15 Institutional Strategy Cards Grid -->
             <div id="screenerCardsView" style="display: none;">
+                <!-- Phase 21.3: Dedicated Scanner Workstation Filter Bar -->
+                <div style="display: flex; gap: 12px; margin-bottom: 16px; align-items: center; flex-wrap: wrap; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 10px 16px;">
+                    <div style="display: flex; align-items: center; gap: 8px; flex: 1; min-width: 220px;">
+                        <span style="font-size: 13px; opacity: 0.7;">🔍</span>
+                        <input type="text" id="scannerCardSearchInput" placeholder="Filter strategy cards by symbol, pattern, or keyword..." oninput="filterScannerCardsView()" style="flex: 1; background: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; padding: 6px 10px; font-size: 12px;">
+                    </div>
+                    <div style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
+                        <span style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Filter:</span>
+                        <button class="filter-btn active" id="btnScFilterAll" onclick="setScannerCardFilter('ALL')">All Strategies</button>
+                        <button class="filter-btn" id="btnScFilterPass" onclick="setScannerCardFilter('PASS')">✓ Active Regime Only</button>
+                        <button class="filter-btn" id="btnScFilterHasMatches" onclick="setScannerCardFilter('MATCHES')">⚡ Active Matches Only</button>
+                    </div>
+                </div>
                 <div class="scanners-grid" id="scannersGrid">
                     <!-- Populated dynamically -->
                 </div>
@@ -1113,6 +1285,19 @@
 
         <!-- Tab 3: Signals -->
         <div id="tab-signals" style="display: none;">
+            <!-- Phase 21.3: Signals Search & Filter Bar -->
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 12px; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 12px 16px;">
+                <div style="display: flex; align-items: center; gap: 8px; flex: 1; min-width: 220px;">
+                    <span style="font-size: 13px; opacity: 0.7;">🔍</span>
+                    <input type="text" id="signalSearchInput" placeholder="Filter research signal plans by symbol, direction, or strategy..." oninput="filterSignalsView()" style="flex: 1; background: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; padding: 6px 10px; font-size: 12px;">
+                </div>
+                <div style="display: flex; gap: 6px; align-items: center;">
+                    <span style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Market:</span>
+                    <button class="filter-btn active" id="btnSigAll" onclick="setSignalFilter('ALL')">All Signals</button>
+                    <button class="filter-btn" id="btnSigUS" onclick="setSignalFilter('US')">US Equities</button>
+                    <button class="filter-btn" id="btnSigCA" onclick="setSignalFilter('CA')">TSX Equities</button>
+                </div>
+            </div>
             <div class="signals-grid" id="signalsGrid">
                 <!-- Populated dynamically -->
             </div>
@@ -1288,6 +1473,8 @@
                             <option value="ALL">All Exit Reasons</option>
                             <option value="PROFIT_TARGET_1">Profit Target 1</option>
                             <option value="PROFIT_TARGET_2">Profit Target 2</option>
+                            <option value="BREAKEVEN_STOP">Breakeven Protective Stop</option>
+                            <option value="SAME_DAY_STOP">Same-Day Stop Quarantine</option>
                             <option value="STOP_LOSS">Structural Stop Loss</option>
                             <option value="TRAILING_STOP">Trailing Stop</option>
                             <option value="MAX_HOLDING_DAYS">Time Expiry</option>
@@ -2472,6 +2659,34 @@
     <!-- Global Modal Overlay -->
     <div class="modal-overlay" id="modalOverlay" onclick="closeAllModals()"></div>
 
+    <!-- Phase 21.1: Universal Command Palette (Ctrl+K / Cmd+K Omnibar) -->
+    <div class="modal-dialog command-palette-dialog" id="commandPaletteModal">
+        <div class="palette-input-box">
+            <span style="font-size: 18px; color: var(--accent-blue);">🔍</span>
+            <input type="text" id="commandPaletteInput" class="palette-input" placeholder="Type a symbol (e.g. SHOP, NVDA), scanner, signal, or command..." autocomplete="off" oninput="filterCommandPalette()" onkeydown="handlePaletteKeydown(event)">
+            <span class="kbd-badge" style="cursor: pointer;" onclick="closeCommandPalette()">ESC</span>
+        </div>
+        <div class="palette-category-bar">
+            <button class="palette-chip active" id="chip-ALL" onclick="setPaletteCategory('ALL')">All Results</button>
+            <button class="palette-chip" id="chip-EQUITIES" onclick="setPaletteCategory('EQUITIES')">Equities (19)</button>
+            <button class="palette-chip" id="chip-SCANNERS" onclick="setPaletteCategory('SCANNERS')">Scanners (15)</button>
+            <button class="palette-chip" id="chip-SIGNALS" onclick="setPaletteCategory('SIGNALS')">Trade Plans</button>
+            <button class="palette-chip" id="chip-STRATEGIES" onclick="setPaletteCategory('STRATEGIES')">Backtest Strategies</button>
+            <button class="palette-chip" id="chip-TABS" onclick="setPaletteCategory('TABS')">Navigation</button>
+        </div>
+        <div class="palette-results-list" id="commandPaletteResults">
+            <!-- Populated dynamically via JS -->
+        </div>
+        <div class="palette-footer">
+            <div style="display: flex; gap: 12px; align-items: center;">
+                <span>Navigate: <kbd class="kbd-badge" style="font-size: 9px;">↑</kbd> <kbd class="kbd-badge" style="font-size: 9px;">↓</kbd></span>
+                <span>Select: <kbd class="kbd-badge" style="font-size: 9px;">↵ Enter</kbd></span>
+                <span>Dismiss: <kbd class="kbd-badge" style="font-size: 9px;">ESC</kbd></span>
+            </div>
+            <span id="paletteResultCount" style="font-size: 11px; color: var(--text-muted);">Showing matches</span>
+        </div>
+    </div>
+
     <!-- Feed Health & Data Quality Console Modal (S-11) -->
     <div class="modal-dialog" id="feedHealthModal">
         <div class="modal-header">
@@ -2687,6 +2902,392 @@
             throw new Error(`Failed to fetch from ${pUrl} or ${fUrl}`);
         }
 
+        // =========================================================================
+        // Phase 21.1: Universal Command Palette (Ctrl+K / Cmd+K Omnibar) & Shortcuts
+        // =========================================================================
+        let paletteActiveCategory = 'ALL';
+        let paletteSelectedIndex = 0;
+        let paletteFilteredItems = [];
+        let rawSignalsData = [];
+
+        function isCommandPaletteOpen() {
+            const m = document.getElementById('commandPaletteModal');
+            return m && m.style.display === 'flex';
+        }
+
+        function openCommandPalette() {
+            const modal = document.getElementById('commandPaletteModal');
+            const overlay = document.getElementById('modalOverlay');
+            const input = document.getElementById('commandPaletteInput');
+            if (!modal || !overlay || !input) return;
+
+            modal.style.display = 'flex';
+            overlay.style.display = 'block';
+            overlay.style.zIndex = '190';
+            input.value = '';
+            paletteSelectedIndex = 0;
+            filterCommandPalette();
+            setTimeout(() => input.focus(), 50);
+        }
+
+        function closeCommandPalette() {
+            const modal = document.getElementById('commandPaletteModal');
+            const overlay = document.getElementById('modalOverlay');
+            if (modal) modal.style.display = 'none';
+            if (overlay) {
+                overlay.style.display = 'none';
+                overlay.style.zIndex = '150';
+            }
+        }
+
+        function setPaletteCategory(cat) {
+            paletteActiveCategory = cat;
+            document.querySelectorAll('.palette-chip').forEach(c => {
+                c.classList.toggle('active', c.id === `chip-${cat}`);
+            });
+            paletteSelectedIndex = 0;
+            filterCommandPalette();
+        }
+
+        function handlePaletteKeydown(e) {
+            if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                if (paletteFilteredItems.length > 0) {
+                    paletteSelectedIndex = (paletteSelectedIndex + 1) % paletteFilteredItems.length;
+                    renderPaletteResults();
+                    scrollToSelectedPaletteItem();
+                }
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                if (paletteFilteredItems.length > 0) {
+                    paletteSelectedIndex = (paletteSelectedIndex - 1 + paletteFilteredItems.length) % paletteFilteredItems.length;
+                    renderPaletteResults();
+                    scrollToSelectedPaletteItem();
+                }
+            } else if (e.key === 'Enter') {
+                e.preventDefault();
+                if (paletteFilteredItems.length > 0 && paletteFilteredItems[paletteSelectedIndex]) {
+                    executePaletteAction(paletteFilteredItems[paletteSelectedIndex]);
+                }
+            } else if (e.key === 'Escape') {
+                e.preventDefault();
+                closeCommandPalette();
+            }
+        }
+
+        function scrollToSelectedPaletteItem() {
+            const selEl = document.querySelector('.palette-item.selected');
+            if (selEl) {
+                selEl.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+            }
+        }
+
+        function executePaletteAction(item) {
+            closeCommandPalette();
+            if (item.type === 'EQUITY') {
+                openSymbol(item.symbol);
+            } else if (item.type === 'SCANNER') {
+                switchTab('scanners');
+                switchScannerView('cards');
+                setTimeout(() => {
+                    const cards = document.querySelectorAll('#scannersGrid .scanner-card');
+                    for (const c of cards) {
+                        if (c.innerText.toLowerCase().includes(item.name.toLowerCase()) || (item.id && c.innerText.toLowerCase().includes(item.id.toLowerCase()))) {
+                            c.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            c.style.boxShadow = '0 0 20px var(--accent-blue)';
+                            setTimeout(() => c.style.boxShadow = '', 2000);
+                            break;
+                        }
+                    }
+                }, 150);
+            } else if (item.type === 'SIGNAL') {
+                switchTab('signals');
+                const sigInput = document.getElementById('signalSearchInput');
+                if (sigInput) {
+                    sigInput.value = item.symbol;
+                    filterSignalsView();
+                }
+            } else if (item.type === 'STRATEGY') {
+                switchTab('backtest');
+                if (typeof selectStrategy === 'function') {
+                    selectStrategy(item.id);
+                }
+            } else if (item.type === 'TAB') {
+                switchTab(item.tabId);
+            }
+        }
+
+        function filterCommandPalette() {
+            const query = (document.getElementById('commandPaletteInput')?.value || '').trim().toLowerCase();
+            const items = [];
+
+            // 1. Navigation Tabs
+            if (paletteActiveCategory === 'ALL' || paletteActiveCategory === 'TABS') {
+                const tabs = [
+                    { tabId: 'leaderboard', label: 'Opportunity Leaderboard', icon: '🏆', desc: 'Composite 0-100 ranked stock universe across US & Canada' },
+                    { tabId: 'scanners', label: 'TAC-15 Market Scanners', icon: '📡', desc: 'Institutional pattern recognition, squeeze, sweep, & liquidity scanners' },
+                    { tabId: 'signals', label: 'Research Signal Plans', icon: '🎯', desc: 'Pre-computed trade setups with entry zones, stops, & 3 profit targets' },
+                    { tabId: 'backtest', label: 'Backtest Lab & Validation', icon: '🧪', desc: 'Walk-forward event-driven backtesting, partial trim ladder, & cash sweep' },
+                    { tabId: 'paper', label: 'Live Paper Trading', icon: '📝', desc: 'Virtual portfolio book execution with MFE/MAE resolution tracking' },
+                    { tabId: 'portfolio', label: 'Portfolio Intelligence', icon: '💼', desc: 'Multi-asset allocation, cross-border exposure, & risk profiles' },
+                    { tabId: 'alerts', label: 'Alert Center & Dispatch', icon: '🔔', desc: 'Material filing alerts, threshold notifications, & delivery consent' },
+                    { tabId: 'deepread', label: 'AI Deep-Read & Model Cards', icon: '🤖', desc: 'Explainable AI layer, SHAP attribution, & model risk disclosure' },
+                    { tabId: 'catalysts', label: 'News & SEC Filings', icon: '📰', desc: 'Real-time NLP sentiment, materiality scoring, & regulatory catalysts' },
+                    { tabId: 'journal', label: 'Research Journal & Watchlists', icon: '📔', desc: 'Position tracking, quantitative notes, & custom security watchlists' },
+                ];
+                tabs.forEach(t => {
+                    if (!query || t.label.toLowerCase().includes(query) || t.desc.toLowerCase().includes(query)) {
+                        items.push({ type: 'TAB', ...t, title: t.label, subtitle: t.desc });
+                    }
+                });
+            }
+
+            // 2. Equities (19 Securities)
+            if (paletteActiveCategory === 'ALL' || paletteActiveCategory === 'EQUITIES') {
+                if (fullLeaderboard && fullLeaderboard.length) {
+                    fullLeaderboard.forEach(s => {
+                        const mSymbol = s.symbol.toLowerCase().includes(query);
+                        const mName = s.name.toLowerCase().includes(query);
+                        const mSector = (s.sector || '').toLowerCase().includes(query);
+                        if (!query || mSymbol || mName || mSector) {
+                            items.push({
+                                type: 'EQUITY',
+                                symbol: s.symbol,
+                                name: s.name,
+                                exchange: s.exchange,
+                                country: s.country,
+                                price: s.close || s.price,
+                                score: s.composite_score,
+                                title: `${s.symbol} · ${s.name}`,
+                                subtitle: `${s.country === 'US' ? '🇺🇸' : '🇨🇦'} ${s.exchange} · Score: ${s.composite_score}/100 · $${(s.close || s.price || 0).toFixed(2)}`
+                            });
+                        }
+                    });
+                }
+            }
+
+            // 3. Scanners (15 Definitions)
+            if (paletteActiveCategory === 'ALL' || paletteActiveCategory === 'SCANNERS') {
+                const scannerDefs = [
+                    { id: 'PO3_LIQUIDITY_SWEEP', name: 'TAC-15: PO3 Liquidity Sweep Reversal', tag: 'ACCUMULATION SWEEP', win: '58.5%' },
+                    { id: 'VOLATILITY_SQUEEZE', name: 'TAC-02: Volatility Squeeze Expansion', tag: 'EXPANSION', win: '55.2%' },
+                    { id: 'BASE_TIGHTENING', name: 'TAC-06: Base Tightening Consolidation', tag: 'VOL CONTRACTION', win: '54.0%' },
+                    { id: 'PULLBACK_UPTREND', name: 'TAC-01: Pullback to Key Support Swing', tag: 'TREND CONTINUATION', win: '52.8%' },
+                    { id: 'MOMENTUM_LEADERS', name: 'TAC-04: Momentum 52W High Breakout', tag: 'RELATIVE STRENGTH', win: '53.6%' },
+                    { id: 'STACKED_MOVING_AVERAGES', name: 'TAC-08: Stacked Moving Averages (Golden)', tag: 'STRUCTURAL TREND', win: '56.0%' },
+                    { id: 'LOW_BETA_QUALITY', name: 'TAC-11: Low-Beta Quality Defensive', tag: 'DEFENSIVE VALUE', win: '54.5%' },
+                    { id: 'MTF_ALIGNMENT', name: 'TAC-09: Multi-Timeframe Trend Alignment', tag: 'MULTI-TIMEFRAME', win: '57.0%' },
+                    { id: 'HIGH_RVOL_SURGE', name: 'TAC-07: High Relative Volume Surge', tag: 'VOLUME SURGE', win: '53.2%' },
+                    { id: 'ATR_EXPANSION', name: 'TAC-10: ATR Volatility Expansion', tag: 'VOLATILITY SHOCK', win: '51.8%' },
+                    { id: 'INSTITUTIONAL_ACCUMULATION', name: 'TAC-13: Institutional Block Accumulation', tag: 'ORDER FLOW', win: '56.8%' },
+                    { id: 'MEAN_REVERSION_OVERSOLD', name: 'TAC-05: Mean Reversion Deep Oversold', tag: 'OVERSOLD REVERSAL', win: '52.1%' },
+                ];
+                scannerDefs.forEach(s => {
+                    if (!query || s.name.toLowerCase().includes(query) || s.tag.toLowerCase().includes(query) || s.id.toLowerCase().includes(query)) {
+                        items.push({
+                            type: 'SCANNER',
+                            id: s.id,
+                            name: s.name,
+                            tag: s.tag,
+                            win: s.win,
+                            title: s.name,
+                            subtitle: `Pattern: ${s.tag} · Historical Win Rate: ${s.win}`
+                        });
+                    }
+                });
+            }
+
+            // 4. Research Signals
+            if (paletteActiveCategory === 'ALL' || paletteActiveCategory === 'SIGNALS') {
+                if (rawSignalsData && rawSignalsData.length) {
+                    rawSignalsData.forEach(sig => {
+                        const mSym = sig.symbol.toLowerCase().includes(query);
+                        const mDir = (sig.direction || '').toLowerCase().includes(query);
+                        if (!query || mSym || mDir) {
+                            items.push({
+                                type: 'SIGNAL',
+                                symbol: sig.symbol,
+                                direction: sig.direction,
+                                entry: sig.entry_price || sig.preferred_entry,
+                                rr: sig.reward_risk_ratio || sig.rr_ratio || '2.2:1',
+                                title: `Signal Plan: ${sig.symbol} [${sig.direction || 'LONG'}]`,
+                                subtitle: `Entry: $${(sig.entry_price || sig.preferred_entry || 0).toFixed(2)} · R:R ${sig.reward_risk_ratio || '2.2:1'}`
+                            });
+                        }
+                    });
+                }
+            }
+
+            // 5. Backtest Strategies
+            if (paletteActiveCategory === 'ALL' || paletteActiveCategory === 'STRATEGIES') {
+                const strats = [
+                    { id: 'PO3_LIQUIDITY_SWEEP', name: 'TAC-15: PO3 Liquidity Sweep Reversal', returnPct: '+10.03%', sharpe: '0.27', win: '48.6%' },
+                    { id: 'ADAPTIVE_DUAL_REGIME', name: 'Dual-Regime Adaptive Ensemble', returnPct: '+12.59%', sharpe: '0.32', win: '47.3%' },
+                    { id: 'ENSEMBLE_8F', name: '8-Factor Trend & Value Ensemble', returnPct: '-23.90%', sharpe: '-1.18', win: '36.5%' },
+                    { id: 'TAC02_SQUEEZE', name: 'TAC-02: Volatility Squeeze Expansion', returnPct: '+2.04%', sharpe: '-0.27', win: '38.5%' },
+                    { id: 'TAC01_PULLBACK', name: 'TAC-01: Pullback Support Swing', returnPct: '-20.20%', sharpe: '-1.13', win: '38.0%' },
+                ];
+                strats.forEach(st => {
+                    if (!query || st.name.toLowerCase().includes(query) || st.id.toLowerCase().includes(query)) {
+                        items.push({
+                            type: 'STRATEGY',
+                            id: st.id,
+                            name: st.name,
+                            title: `Strategy: ${st.name}`,
+                            subtitle: `Return: ${st.returnPct} · Sharpe: ${st.sharpe} · Win Rate: ${st.win}`
+                        });
+                    }
+                });
+            }
+
+            paletteFilteredItems = items;
+            if (paletteSelectedIndex >= paletteFilteredItems.length) {
+                paletteSelectedIndex = 0;
+            }
+            renderPaletteResults();
+        }
+
+        function renderPaletteResults() {
+            const container = document.getElementById('commandPaletteResults');
+            const countEl = document.getElementById('paletteResultCount');
+            if (!container) return;
+
+            if (paletteFilteredItems.length === 0) {
+                container.innerHTML = `
+                    <div style="padding: 36px 20px; text-align: center; color: var(--text-muted); font-size: 13px;">
+                        <div>🔍 No matching symbols, scanners, or commands found</div>
+                        <div style="font-size: 11px; margin-top: 6px;">Try typing a ticker symbol like <strong>SHOP</strong>, <strong>NVDA</strong>, or a pattern like <strong>PO3</strong>.</div>
+                    </div>
+                `;
+                if (countEl) countEl.innerText = '0 matches';
+                return;
+            }
+
+            if (countEl) countEl.innerText = `Showing ${paletteFilteredItems.length} match${paletteFilteredItems.length === 1 ? '' : 'es'}`;
+
+            let html = '';
+            paletteFilteredItems.forEach((item, idx) => {
+                const isSel = idx === paletteSelectedIndex;
+                let badge = '';
+                if (item.type === 'EQUITY') {
+                    const isUS = item.country === 'US';
+                    badge = `<span class="exchange-tag" style="background: rgba(59, 130, 246, 0.15); color: var(--accent-blue);">${isUS ? 'US' : 'TSX'}</span>`;
+                } else if (item.type === 'SCANNER') {
+                    badge = `<span class="exchange-tag" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-green);">SCANNER</span>`;
+                } else if (item.type === 'SIGNAL') {
+                    badge = `<span class="exchange-tag" style="background: rgba(245, 158, 11, 0.15); color: var(--accent-amber);">SIGNAL</span>`;
+                } else if (item.type === 'STRATEGY') {
+                    badge = `<span class="exchange-tag" style="background: rgba(139, 92, 246, 0.15); color: var(--accent-purple);">BACKTEST</span>`;
+                } else if (item.type === 'TAB') {
+                    badge = `<span class="exchange-tag" style="background: rgba(6, 182, 212, 0.15); color: var(--accent-cyan);">${item.icon || 'TAB'}</span>`;
+                }
+
+                html += `
+                    <div class="palette-item ${isSel ? 'selected' : ''}" onclick="executePaletteAction(paletteFilteredItems[${idx}])" onmouseenter="paletteSelectedIndex = ${idx}; renderPaletteResultsHighlight();">
+                        <div style="display: flex; align-items: center; gap: 10px; min-width: 0; flex: 1;">
+                            ${badge}
+                            <div style="min-width: 0; flex: 1;">
+                                <div style="font-size: 13px; font-weight: 700; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                    ${item.title}
+                                </div>
+                                <div style="font-size: 11px; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                    ${item.subtitle}
+                                </div>
+                            </div>
+                        </div>
+                        <div style="font-size: 11px; color: var(--text-muted); display: flex; align-items: center; gap: 6px;">
+                            <span style="font-size: 10px; opacity: 0.7;">↵ Jump</span>
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        function renderPaletteResultsHighlight() {
+            const items = document.querySelectorAll('.palette-item');
+            items.forEach((el, i) => {
+                el.classList.toggle('selected', i === paletteSelectedIndex);
+            });
+        }
+
+        // Global Keyboard Shortcut Interceptor (Ctrl+K / Cmd+K / Slash / Escape)
+        document.addEventListener('keydown', (e) => {
+            const isInput = ['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName);
+            if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+                e.preventDefault();
+                if (isCommandPaletteOpen()) {
+                    closeCommandPalette();
+                } else {
+                    openCommandPalette();
+                }
+            } else if (e.key === '/' && !isInput) {
+                e.preventDefault();
+                openCommandPalette();
+            } else if (e.key === 'Escape') {
+                if (isCommandPaletteOpen()) {
+                    e.preventDefault();
+                    closeCommandPalette();
+                }
+            }
+        });
+
+        // Phase 21.3: Scanner & Signal Workstation Filters
+        let activeScannerCardFilter = 'ALL';
+        function setScannerCardFilter(filter) {
+            activeScannerCardFilter = filter;
+            ['btnScFilterAll', 'btnScFilterPass', 'btnScFilterHasMatches'].forEach(id => {
+                const btn = document.getElementById(id);
+                if (btn) btn.classList.remove('active');
+            });
+            if (filter === 'ALL') document.getElementById('btnScFilterAll')?.classList.add('active');
+            if (filter === 'PASS') document.getElementById('btnScFilterPass')?.classList.add('active');
+            if (filter === 'MATCHES') document.getElementById('btnScFilterHasMatches')?.classList.add('active');
+            filterScannerCardsView();
+        }
+
+        function filterScannerCardsView() {
+            const q = (document.getElementById('scannerCardSearchInput')?.value || '').trim().toLowerCase();
+            const cards = document.querySelectorAll('#scannersGrid .scanner-card');
+            cards.forEach(card => {
+                const text = card.innerText.toLowerCase();
+                const matchesQ = !q || text.includes(q);
+                let matchesF = true;
+                if (activeScannerCardFilter === 'PASS') {
+                    matchesF = !text.includes('regime gated');
+                } else if (activeScannerCardFilter === 'MATCHES') {
+                    matchesF = !text.includes('no qualifying securities');
+                }
+                card.style.display = (matchesQ && matchesF) ? 'block' : 'none';
+            });
+        }
+
+        let activeSignalMarketFilter = 'ALL';
+        function setSignalFilter(f) {
+            activeSignalMarketFilter = f;
+            document.getElementById('btnSigAll')?.classList.toggle('active', f === 'ALL');
+            document.getElementById('btnSigUS')?.classList.toggle('active', f === 'US');
+            document.getElementById('btnSigCA')?.classList.toggle('active', f === 'CA');
+            filterSignalsView();
+        }
+
+        function filterSignalsView() {
+            const q = (document.getElementById('signalSearchInput')?.value || '').trim().toLowerCase();
+            const cards = document.querySelectorAll('#signalsGrid .signal-card');
+            cards.forEach(card => {
+                const text = card.innerText.toLowerCase();
+                const matchesQ = !q || text.includes(q);
+                let matchesM = true;
+                if (activeSignalMarketFilter === 'US') {
+                    matchesM = text.includes('nasdaq') || text.includes('nyse') || text.includes('us');
+                } else if (activeSignalMarketFilter === 'CA') {
+                    matchesM = text.includes('tsx') || text.includes('ca');
+                }
+                card.style.display = (matchesQ && matchesM) ? 'block' : 'none';
+            });
+        }
+
         async function init() {
             // Concurrent parallel fetches for all core feeds
             fetchJson('/api/summary.json', '/api/daily_summary.json')
@@ -2713,7 +3314,10 @@
                 .catch(err => console.error("Scanners load error:", err));
 
             fetchJson('/api/signals.json', '/api/signals')
-                .then(data => renderSignals(data.signals))
+                .then(data => {
+                    rawSignalsData = data.signals || [];
+                    renderSignals(rawSignalsData);
+                })
                 .catch(err => console.error("Signals load error:", err));
 
             loadBacktestsAndRender();
@@ -4916,7 +5520,15 @@
                 const netPnl = t.net_pnl_usd != null ? t.net_pnl_usd : (t.net_pnl || 0);
                 if (outcomeFilter === 'WIN' && netPnl <= 0) return false;
                 if (outcomeFilter === 'LOSS' && netPnl >= 0) return false;
-                if (exitFilter !== 'ALL' && t.exit_reason !== exitFilter) return false;
+                if (exitFilter !== 'ALL') {
+                    if (exitFilter === 'PROFIT_TARGET_1') {
+                        if (!t.exit_reason.includes('TARGET_1') && !t.exit_reason.includes('PROFIT_TARGET_1')) return false;
+                    } else if (exitFilter === 'PROFIT_TARGET_2') {
+                        if (!t.exit_reason.includes('TARGET_2') && !t.exit_reason.includes('PROFIT_TARGET_2')) return false;
+                    } else if (t.exit_reason !== exitFilter) {
+                        return false;
+                    }
+                }
                 return true;
             });
 
@@ -4979,8 +5591,12 @@
                 const pColor = t.partition === 'TRAIN' ? 'var(--accent-green)' : (t.partition === 'VALIDATION' ? 'var(--accent-purple)' : 'var(--accent-cyan)');
                 
                 let exitBadgeStyle = 'border-color: rgba(148, 163, 184, 0.4); color: var(--text-secondary);';
-                if (t.exit_reason.includes('PROFIT_TARGET')) {
+                if (t.exit_reason.includes('PROFIT_TARGET') || t.exit_reason === 'TARGET_1' || t.exit_reason === 'TARGET_2') {
                     exitBadgeStyle = 'border-color: rgba(16, 185, 129, 0.4); color: var(--accent-green); background: rgba(16, 185, 129, 0.08);';
+                } else if (t.exit_reason === 'BREAKEVEN_STOP') {
+                    exitBadgeStyle = 'border-color: rgba(59, 130, 246, 0.5); color: var(--accent-blue); background: rgba(59, 130, 246, 0.12); font-weight: 700;';
+                } else if (t.exit_reason === 'SAME_DAY_STOP') {
+                    exitBadgeStyle = 'border-color: rgba(244, 63, 94, 0.5); color: #f43f5e; background: rgba(244, 63, 94, 0.1); font-weight: 700;';
                 } else if (t.exit_reason === 'STOP_LOSS') {
                     exitBadgeStyle = 'border-color: rgba(239, 68, 68, 0.4); color: var(--accent-red); background: rgba(239, 68, 68, 0.08);';
                 } else if (t.exit_reason === 'TRAILING_STOP') {
@@ -4988,6 +5604,10 @@
                 } else if (t.exit_reason.includes('EXPIRY') || t.exit_reason.includes('TIME')) {
                     exitBadgeStyle = 'border-color: rgba(245, 158, 11, 0.4); color: var(--accent-amber); background: rgba(245, 158, 11, 0.08);';
                 }
+
+                const trimTag = t.is_partially_trimmed
+                    ? `<span class="exchange-tag" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-green); border: 1px solid rgba(16, 185, 129, 0.35); font-size: 9px; padding: 1px 4px; margin-left: 4px;" title="Banked +1.8R partial profit on 50% shares at Target 1">Trimmed T1</span>`
+                    : '';
 
                 const tr = document.createElement('tr');
                 tr.style.borderBottom = '1px solid var(--border-color)';
@@ -5015,6 +5635,7 @@
                         <span class="exchange-tag" style="${exitBadgeStyle} font-size: 10px;">
                             ${t.exit_reason}
                         </span>
+                        ${trimTag}
                     </td>
                     <td style="padding: 10px 8px; font-weight: 700; font-family: monospace; color: ${isWin ? 'var(--accent-green)' : 'var(--accent-red)'};">
                         ${isWin ? '+' : ''}${(t.return_pct || 0).toFixed(2)}%
@@ -8532,9 +9153,12 @@
 
         function closeAllModals() {
             document.getElementById('modalOverlay').style.display = 'none';
+            document.getElementById('modalOverlay').style.zIndex = '150';
             document.getElementById('feedHealthModal').style.display = 'none';
             document.getElementById('consentModal').style.display = 'none';
             document.getElementById('journalEntryModal').style.display = 'none';
+            const cpModal = document.getElementById('commandPaletteModal');
+            if (cpModal) cpModal.style.display = 'none';
             const fModal = document.getElementById('fundamentalsAuditModal');
             if (fModal) fModal.style.display = 'none';
             const sModal = document.getElementById('strategyModal');
