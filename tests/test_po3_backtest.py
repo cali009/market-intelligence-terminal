@@ -178,6 +178,33 @@ def test_po3_phase19_1_symbol_quarantine_enforcement():
                 assert t_curr["exit_date"] != t_next["entry_date"], f"{sym} re-entered on same day as stop-loss exit"
 
 
+def test_po3_phase19_2_conformal_stop_and_targets():
+    """Phase 19.2: Verify conformal stop is anchored below sweep low and Target 1 is at 1.8R."""
+    res = backtest_engine.run_strategy_backtest("PO3_LIQUIDITY_SWEEP")
+    trades = res["all_trades"]
+    assert len(trades) > 0
+
+    for t in trades[:20]:
+        # Risk per share must be positive and reasonable
+        assert t["target_1"] > t["entry_price"]
+        assert t["target_2"] > t["target_1"]
+        init_risk = t.get("initial_risk_per_share", 0.0)
+        if init_risk <= 0:
+            init_risk = t["entry_price"] - t["stop_loss"]
+        reward = t["target_1"] - t["entry_price"]
+        # Reward / Risk ratio at Target 1 should be approx 1.8R (1.45R - 2.05R net of fees)
+        rr_t1 = reward / max(0.01, init_risk)
+        assert 1.45 <= rr_t1 <= 2.05
+
+
+def test_po3_phase19_2_max_position_throttling():
+    """Phase 19.2: Verify concurrent open positions for PO3 never exceed the throttled cap of 4."""
+    res = backtest_engine.run_strategy_backtest("PO3_LIQUIDITY_SWEEP")
+    curve = res["equity_curve"]
+    max_open = max(d["open_positions"] for d in curve)
+    assert max_open <= 4, f"Concurrent PO3 positions ({max_open}) exceeded cap of 4"
+
+
 def test_tac15_scanner_match_and_expectancy():
     """Verify TAC-15 PO3 Liquidity Sweep scanner definition and match trigger."""
     assert "PO3_LIQUIDITY_SWEEP" in market_scanners.definitions

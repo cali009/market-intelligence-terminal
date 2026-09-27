@@ -116,6 +116,7 @@ class SimulatedTrade:
             "target_1": round(float(self.target_1), 2),
             "target_2": round(float(self.target_2), 2),
             "target_3": round(float(self.target_3), 2),
+            "initial_risk_per_share": round(float(self.initial_risk_per_share), 2),
             "shares": int(self.shares),
             "trimmed_shares": int(self.trimmed_shares),
             "trim_price_net": round(float(self.trim_price_net), 2) if self.trim_price_net else None,
@@ -452,9 +453,13 @@ class BacktestEngine:
 
             # B. Scan for New Signals from Previous Day's Close (No Look-Ahead)
             # Orders execute on TODAY'S OPEN
-            if len(open_trades) < self.config.max_open_positions:
+            max_pos = 4 if is_po3_type else self.config.max_open_positions
+            daily_entries_count = 0
+            if len(open_trades) < max_pos:
                 for s in securities:
-                    if len(open_trades) >= self.config.max_open_positions:
+                    if len(open_trades) >= max_pos:
+                        break
+                    if is_po3_type and daily_entries_count >= 1:
                         break
 
                     sym = s["symbol"]
@@ -464,6 +469,20 @@ class BacktestEngine:
                     # Phase 19.1: Skip symbols under post-loss quarantine
                     if is_po3_type and sym in symbol_quarantine_until and curr_date <= symbol_quarantine_until[sym]:
                         continue
+
+                    # Phase 19.2: Macro Benchmark Gate - Gated if benchmark is below 50DMA
+                    if is_po3_type:
+                        mkt_bench_sym = "SPY" if s["country"] == "US" else "XIU"
+                        bench_sec = next((b for b in securities if b["symbol"] == mkt_bench_sym), None)
+                        if bench_sec and bench_sec["security_id"] in sec_dfs:
+                            b_df = sec_dfs[bench_sec["security_id"]]
+                            b_rows = b_df[b_df["trading_date"] == curr_date]
+                            if not b_rows.empty:
+                                b_prior = b_df.iloc[b_rows.index[0] - 1]
+                                b_c = b_prior.get("close", 0)
+                                b_sma50 = b_prior.get("sma_50", 0)
+                                if b_sma50 and b_c < b_sma50:
+                                    continue
 
                     s_id = s["security_id"]
                     if s_id not in sec_dfs:
@@ -488,15 +507,16 @@ class BacktestEngine:
                             atr = raw_entry * 0.02
 
                         if strategy_id == "PO3_LIQUIDITY_SWEEP":
-                            # Conformal buffer stop anchored to sweep low
+                            # Phase 19.2: Volatility-adjusted conformal stop anchored to sweep low
                             sweep_low = prior_bar["low"]
-                            stop_loss = round(min(sweep_low - (0.3 * atr), raw_entry - (1.2 * atr)), 2)
+                            stop_buffer = max(0.60 * atr, (raw_entry - sweep_low) + (0.40 * atr))
+                            stop_loss = round(raw_entry - stop_buffer, 2)
                             risk_per_share = raw_entry - stop_loss
-                            if risk_per_share <= 0:
+                            if risk_per_share <= (0.3 * atr):
                                 continue
-                            target_1 = round(raw_entry + (1.6 * risk_per_share), 2)
-                            target_2 = round(raw_entry + (2.8 * risk_per_share), 2)
-                            target_3 = round(raw_entry + (4.0 * risk_per_share), 2)
+                            target_1 = round(raw_entry + (1.8 * risk_per_share), 2)
+                            target_2 = round(raw_entry + (3.0 * risk_per_share), 2)
+                            target_3 = round(raw_entry + (4.5 * risk_per_share), 2)
                         elif strategy_id == "ADAPTIVE_DUAL_REGIME":
                             stop_loss = round(raw_entry - (1.4 * atr), 2)
                             risk_per_share = raw_entry - stop_loss
@@ -543,6 +563,7 @@ class BacktestEngine:
 
                         if cash_usd >= required_cash_usd and shares > 0:
                             cash_usd -= required_cash_usd
+                            daily_entries_count += 1
                             new_trade = SimulatedTrade(
                                 symbol=sym,
                                 exchange=s["exchange"],
