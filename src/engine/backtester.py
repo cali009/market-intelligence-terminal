@@ -55,7 +55,7 @@ class BacktestConfig:
     split_train_pct: float = 0.60
     split_val_pct: float = 0.20
     split_test_pct: float = 0.20
-    annual_sovereign_benchmark_yield: float = 0.035 # 3.5% baseline sovereign yield
+    annual_sovereign_benchmark_yield: float = 0.045 # Phase 20.3: 4.5% baseline sovereign yield (SOFR/CORRA)
     num_trials_tested: int = 12     # Number of trial hypotheses for Deflated Sharpe Ratio
 
 
@@ -306,6 +306,7 @@ class BacktestEngine:
         open_trades: List[SimulatedTrade] = []
         closed_trades: List[SimulatedTrade] = []
         equity_curve: List[Dict[str, Any]] = []
+        total_cash_sweep_yield_usd = 0.0
 
         is_po3_type = strategy_id in ("PO3_LIQUIDITY_SWEEP", "ADAPTIVE_DUAL_REGIME")
         symbol_quarantine_until: Dict[str, str] = {}
@@ -660,6 +661,13 @@ class BacktestEngine:
                 else:
                     unrealized_equity_usd += (t.entry_price_usd_net * t.shares)
 
+            # Phase 20.3: Institutional Cash Sweep Yield Attribution
+            # Daily risk-free sovereign yield (SOFR/CORRA) credited on uninvested cash balance
+            daily_rf_yield = (1.0 + self.config.annual_sovereign_benchmark_yield) ** (1.0 / 252.0) - 1.0
+            daily_cash_interest = max(0.0, cash_usd) * daily_rf_yield
+            cash_usd += daily_cash_interest
+            total_cash_sweep_yield_usd += daily_cash_interest
+
             total_portfolio_equity = cash_usd + unrealized_equity_usd
             capital_usd = total_portfolio_equity
 
@@ -687,6 +695,7 @@ class BacktestEngine:
             benchmark_close_xiu=benchmark_close_xiu,
             train_cutoff=train_cutoff,
             val_cutoff=val_cutoff,
+            total_cash_sweep_yield_usd=total_cash_sweep_yield_usd,
         )
 
         reg_info = self.STRATEGY_REGISTRY.get(strategy_id, {
@@ -825,6 +834,7 @@ class BacktestEngine:
         benchmark_close_xiu: Dict[str, float],
         train_cutoff: str,
         val_cutoff: str,
+        total_cash_sweep_yield_usd: float = 0.0,
     ) -> Dict[str, Any]:
         if not equity_curve:
             return {}
@@ -928,8 +938,8 @@ class BacktestEngine:
             partitions[p_name] = {
                 "total_trades": len(p_trades),
                 "win_rate_pct": round(p_win_rate, 1),
-                "net_pnl": round(p_pnl, 2),
-                "net_pnl_usd": round(p_pnl, 2),
+                "net_pnl": float(round(p_pnl, 2)),
+                "net_pnl_usd": float(round(p_pnl, 2)),
                 "expectancy_r": round(float(np.mean([t.r_multiple for t in p_trades])), 2) if p_trades else 0.0,
             }
 
@@ -1033,6 +1043,8 @@ class BacktestEngine:
             "total_net_return_pct": round(total_net_return_pct, 2),
             "total_gross_return_pct": round(total_gross_return_pct, 2),
             "fee_drag_total_usd": round(total_fee_drag_usd, 2),
+            "cash_sweep_yield_total_usd": round(total_cash_sweep_yield_usd, 2),
+            "annual_cash_sweep_rate_pct": round(self.config.annual_sovereign_benchmark_yield * 100.0, 2),
             "cagr_pct": round(cagr_pct, 2),
             "benchmark_return_pct": round(benchmark_spy_return_pct, 2),
             "alpha_pct": round(total_net_return_pct - benchmark_spy_return_pct, 2),

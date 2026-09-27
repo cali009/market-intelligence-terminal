@@ -335,3 +335,24 @@ def test_simulated_trade_schema_fields():
     assert d["trim_pnl_usd"] == 37.75
     assert d["is_partially_trimmed"] is True
     assert d["strategy_id"] == "PO3_LIQUIDITY_SWEEP"
+
+
+def test_po3_phase20_3_cash_sweep_yield_and_double_digit_alpha():
+    """Phase 20.3: Verify institutional cash sweep yield attribution and double-digit net returns."""
+    res = backtest_engine.run_strategy_backtest("PO3_LIQUIDITY_SWEEP")
+    m = res["metrics"]
+    
+    assert "cash_sweep_yield_total_usd" in m
+    assert m["cash_sweep_yield_total_usd"] > 0.0
+    assert m["annual_cash_sweep_rate_pct"] == 4.5
+    assert m["total_net_return_pct"] >= 9.5, f"Expected PO3 net return >= 9.5%, got {m['total_net_return_pct']}%"
+    assert m["sharpe_ratio"] >= 0.20, f"Expected positive Sharpe >= 0.20, got {m['sharpe_ratio']}"
+
+    # Verify Adaptive Dual-Regime double-digit return
+    res_adapt = backtest_engine.run_strategy_backtest("ADAPTIVE_DUAL_REGIME")
+    m_adapt = res_adapt["metrics"]
+    assert "cash_sweep_yield_total_usd" in m_adapt
+    assert m_adapt["cash_sweep_yield_total_usd"] > 0.0
+    assert m_adapt["total_net_return_pct"] >= 11.5, f"Expected Adaptive return >= 11.5%, got {m_adapt['total_net_return_pct']}%"
+    assert m_adapt["sharpe_ratio"] >= 0.25, f"Expected Adaptive Sharpe >= 0.25, got {m_adapt['sharpe_ratio']}"
+

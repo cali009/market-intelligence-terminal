@@ -5237,6 +5237,14 @@
                     </div>
                     <div style="font-size: 11px; color: var(--text-muted);">Avg Win: +${m.avg_win_r}R | Loss: ${m.avg_loss_r}R</div>
                 </div>
+
+                <div class="scorecard-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px;">
+                    <div style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Cash Sweep Yield Attribution</div>
+                    <div style="font-size: 22px; font-weight: 800; color: var(--accent-green); margin: 4px 0;">
+                        +$${(m.cash_sweep_yield_total_usd || 0).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}
+                    </div>
+                    <div style="font-size: 11px; color: var(--text-muted);">${m.annual_cash_sweep_rate_pct || 4.5}% Ann. SOFR/BoC Risk-Free</div>
+                </div>
             `;
 
             if (rigorGrid) {
