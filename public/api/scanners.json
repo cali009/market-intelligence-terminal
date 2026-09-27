@@ -1,6 +1,6 @@
 {
   "as_of_date": "2026-09-27",
-  "generated_at": "2026-09-27T06:19:45.713083+00:00",
+  "generated_at": "2026-09-27T06:40:00.642832+00:00",
   "active_regime": "STRONG_BULL",
   "total_matches": 58,
   "scanner_definitions": [
@@ -306,7 +306,10 @@
         "rsi": 65.6733218949337
       },
       "regime_gated": false,
-      "regime_state": "STRONG_BULL"
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-3.89 pts)"
     },
     {
       "scanner_id": "STACKED_MOVING_AVERAGES",
@@ -322,7 +325,10 @@
         "sma_200": 287.7663493347168
       },
       "regime_gated": false,
-      "regime_state": "STRONG_BULL"
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-3.89 pts)"
     },
     {
       "scanner_id": "LOW_BETA_QUALITY",
@@ -337,7 +343,10 @@
         "ret_3m": 0.20188177035506238
       },
       "regime_gated": false,
-      "regime_state": "STRONG_BULL"
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-3.89 pts)"
     },
     {
       "scanner_id": "MTF_ALIGNMENT",
@@ -352,7 +361,10 @@
         "adx": 25.96285866559964
       },
       "regime_gated": false,
-      "regime_state": "STRONG_BULL"
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-3.89 pts)"
     },
     {
       "scanner_id": "MOMENTUM_LEADERS",
@@ -367,7 +379,10 @@
         "rsi": 63.216659990439744
       },
       "regime_gated": false,
-      "regime_state": "STRONG_BULL"
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "Minor Detractor Drag"
     },
     {
       "scanner_id": "VOLATILITY_SQUEEZE",
@@ -381,7 +396,10 @@
         "atr_pct": 2.11987286232559
       },
       "regime_gated": false,
-      "regime_state": "STRONG_BULL"
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "Minor Detractor Drag"
     },
     {
       "scanner_id": "STACKED_MOVING_AVERAGES",
@@ -397,7 +415,10 @@
         "sma_200": 432.06089920043945
       },
       "regime_gated": false,
-      "regime_state": "STRONG_BULL"
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "Minor Detractor Drag"
     },
     {
       "scanner_id": "LOW_BETA_QUALITY",
@@ -412,7 +433,10 @@
         "ret_3m": 0.3839450390668693
       },
       "regime_gated": false,
-      "regime_state": "STRONG_BULL"
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "Minor Detractor Drag"
     },
     {
       "scanner_id": "MTF_ALIGNMENT",
@@ -427,7 +451,10 @@
         "adx": 23.38603658822541
       },
       "regime_gated": false,
-      "regime_state": "STRONG_BULL"
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "Minor Detractor Drag"
     },
     {
       "scanner_id": "HIGH_RVOL_SURGE",
@@ -440,7 +467,10 @@
         "rvol": 1.7384867307414598
       },
       "regime_gated": false,
-      "regime_state": "STRONG_BULL"
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "Minor Detractor Drag"
     },
     {
       "scanner_id": "BASE_TIGHTENING",
@@ -454,7 +484,10 @@
         "prox_52w": -0.06781403918895501
       },
       "regime_gated": false,
-      "regime_state": "STRONG_BULL"
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "Minor Detractor Drag"
     },
     {
       "scanner_id": "ATR_EXPANSION",
@@ -468,7 +501,10 @@
         "atr": 10.942147391183036
       },
       "regime_gated": false,
-      "regime_state": "STRONG_BULL"
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "Minor Detractor Drag"
     },
     {
       "scanner_id": "MOMENTUM_LEADERS",
@@ -483,7 +519,10 @@
         "rsi": 55.17408895732846
       },
       "regime_gated": false,
-      "regime_state": "STRONG_BULL"
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-3.81 pts)"
     },
     {
       "scanner_id": "PULLBACK_UPTREND",
@@ -498,7 +537,10 @@
         "rsi": 55.17408895732846
       },
       "regime_gated": false,
-      "regime_state": "STRONG_BULL"
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-3.81 pts)"
     },
     {
       "scanner_id": "STACKED_MOVING_AVERAGES",
@@ -514,7 +556,10 @@
         "sma_200": 199.47324996948242
       },
       "regime_gated": false,
-      "regime_state": "STRONG_BULL"
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-3.81 pts)"
     },
     {
       "scanner_id": "PULLBACK_UPTREND",
@@ -529,7 +574,10 @@
         "rsi": 44.53594307206563
       },
       "regime_gated": false,
-      "regime_state": "STRONG_BULL"
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-9.44 pts)"
     },
     {
       "scanner_id": "VOLATILITY_SQUEEZE",
@@ -543,7 +591,10 @@
         "atr_pct": 2.1324561453979114
       },
       "regime_gated": false,
-      "regime_state": "STRONG_BULL"
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-9.44 pts)"
     },
     {
       "scanner_id": "LOW_BETA_QUALITY",
@@ -558,7 +609,10 @@
         "ret_3m": 0.07297260539508921
       },
       "regime_gated": false,
-      "regime_state": "STRONG_BULL"
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-9.44 pts)"
     },
     {
       "scanner_id": "PULLBACK_UPTREND",
@@ -573,7 +627,10 @@
         "rsi": 49.716266492557246
       },
       "regime_gated": false,
-      "regime_state": "STRONG_BULL"
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-6.39 pts)"
     },
     {
       "scanner_id": "VOLATILITY_SQUEEZE",
@@ -587,7 +644,10 @@
         "atr_pct": 2.0844962868725054
       },
       "regime_gated": false,
-      "regime_state": "STRONG_BULL"
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-5.39 pts)"
     },
     {
       "scanner_id": "INSTITUTIONAL_ACCUMULATION",
@@ -602,7 +662,10 @@
         "rvol": 1.2893931677027224
       },
       "regime_gated": false,
-      "regime_state": "STRONG_BULL"
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-5.39 pts)"
     },
     {
       "scanner_id": "LOW_BETA_QUALITY",
@@ -617,7 +680,10 @@
         "ret_3m": 0.04257714719758576
       },
       "regime_gated": false,
-      "regime_state": "STRONG_BULL"
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-5.39 pts)"
     },
     {
       "scanner_id": "BASE_TIGHTENING",
@@ -631,7 +697,10 @@
         "prox_52w": -0.06395635045404158
       },
       "regime_gated": false,
-      "regime_state": "STRONG_BULL"
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-5.39 pts)"
     },
     {
       "scanner_id": "PULLBACK_UPTREND",
@@ -646,7 +715,10 @@
         "rsi": 48.71923125672882
       },
       "regime_gated": false,
-      "regime_state": "STRONG_BULL"
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 0.5,
+      "risk_posture": "DEFENSIVE_DE_RISK",
+      "primary_risk_driver": "Hurst Memory Flip (H=0.444)"
     },
     {
       "scanner_id": "VOLATILITY_SQUEEZE",
@@ -660,7 +732,10 @@
         "atr_pct": 2.498820363219809
       },
       "regime_gated": false,
-      "regime_state": "STRONG_BULL"
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 0.5,
+      "risk_posture": "DEFENSIVE_DE_RISK",
+      "primary_risk_driver": "Hurst Memory Flip (H=0.444)"
     },
     {
       "scanner_id": "BASE_TIGHTENING",
@@ -674,7 +749,10 @@
         "prox_52w": -0.08967749558307325
       },
       "regime_gated": false,
-      "regime_state": "STRONG_BULL"
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 0.5,
+      "risk_posture": "DEFENSIVE_DE_RISK",
+      "primary_risk_driver": "Hurst Memory Flip (H=0.444)"
     },
     {
       "scanner_id": "PULLBACK_UPTREND",
@@ -689,7 +767,10 @@
         "rsi": 55.89003490300169
       },
       "regime_gated": false,
-      "regime_state": "STRONG_BULL"
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 1.0,
+      "risk_posture": "NORMAL_EQUILIBRIUM",
+      "primary_risk_driver": "Stable Quantitative Fingerprint"
     },
     {
       "scanner_id": "VOLATILITY_SQUEEZE",
@@ -703,7 +784,10 @@
         "atr_pct": 0.8892581038021248
       },
       "regime_gated": false,
-      "regime_state": "STRONG_BULL"
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 1.0,
+      "risk_posture": "NORMAL_EQUILIBRIUM",
+      "primary_risk_driver": "Stable Quantitative Fingerprint"
     },
     {
       "scanner_id": "STACKED_MOVING_AVERAGES",
@@ -719,7 +803,10 @@
         "sma_200": 718.4519995117188
       },
       "regime_gated": false,
-      "regime_state": "STRONG_BULL"
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 1.0,
+      "risk_posture": "NORMAL_EQUILIBRIUM",
+      "primary_risk_driver": "Stable Quantitative Fingerprint"
     },
     {
       "scanner_id": "LOW_BETA_QUALITY",
@@ -734,7 +821,10 @@
         "ret_3m": 0.058107773658103934
       },
       "regime_gated": false,
-      "regime_state": "STRONG_BULL"
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 1.0,
+      "risk_posture": "NORMAL_EQUILIBRIUM",
+      "primary_risk_driver": "Stable Quantitative Fingerprint"
     },
     {
       "scanner_id": "BASE_TIGHTENING",
@@ -748,7 +838,10 @@
         "prox_52w": -0.010290387853645888
       },
       "regime_gated": false,
-      "regime_state": "STRONG_BULL"
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 1.0,
+      "risk_posture": "NORMAL_EQUILIBRIUM",
+      "primary_risk_driver": "Stable Quantitative Fingerprint"
     },
     {
       "scanner_id": "VOLATILITY_SQUEEZE",
@@ -762,7 +855,10 @@
         "atr_pct": 1.2764551652595222
       },
       "regime_gated": false,
-      "regime_state": "STRONG_BULL"
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 1.0,
+      "risk_posture": "NORMAL_EQUILIBRIUM",
+      "primary_risk_driver": "Stable Quantitative Fingerprint"
     },
     {
       "scanner_id": "STACKED_MOVING_AVERAGES",
@@ -778,7 +874,10 @@
         "sma_200": 665.5868490600586
       },
       "regime_gated": false,
-      "regime_state": "STRONG_BULL"
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 1.0,
+      "risk_posture": "NORMAL_EQUILIBRIUM",
+      "primary_risk_driver": "Stable Quantitative Fingerprint"
     },
     {
       "scanner_id": "LOW_BETA_QUALITY",
@@ -793,7 +892,10 @@
         "ret_3m": 0.05375641088549532
       },
       "regime_gated": false,
-      "regime_state": "STRONG_BULL"
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 1.0,
+      "risk_posture": "NORMAL_EQUILIBRIUM",
+      "primary_risk_driver": "Stable Quantitative Fingerprint"
     },
     {
       "scanner_id": "BASE_TIGHTENING",
@@ -807,7 +909,10 @@
         "prox_52w": -0.005543343723671934
       },
       "regime_gated": false,
-      "regime_state": "STRONG_BULL"
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 1.0,
+      "risk_posture": "NORMAL_EQUILIBRIUM",
+      "primary_risk_driver": "Stable Quantitative Fingerprint"
     },
     {
       "scanner_id": "PULLBACK_UPTREND",
@@ -822,7 +927,10 @@
         "rsi": 48.36992571488196
       },
       "regime_gated": false,
-      "regime_state": "WEAK_BULL"
+      "regime_state": "WEAK_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-9.48 pts)"
     },
     {
       "scanner_id": "VOLATILITY_SQUEEZE",
@@ -836,7 +944,10 @@
         "atr_pct": 1.4966924142112965
       },
       "regime_gated": false,
-      "regime_state": "WEAK_BULL"
+      "regime_state": "WEAK_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-9.48 pts)"
     },
     {
       "scanner_id": "BASE_TIGHTENING",
@@ -850,7 +961,10 @@
         "prox_52w": -0.06772635181573516
       },
       "regime_gated": false,
-      "regime_state": "WEAK_BULL"
+      "regime_state": "WEAK_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-9.48 pts)"
     },
     {
       "scanner_id": "PULLBACK_UPTREND",
@@ -865,7 +979,10 @@
         "rsi": 54.42423907309402
       },
       "regime_gated": false,
-      "regime_state": "WEAK_BULL"
+      "regime_state": "WEAK_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-6.97 pts)"
     },
     {
       "scanner_id": "VOLATILITY_SQUEEZE",
@@ -879,7 +996,10 @@
         "atr_pct": 1.5788835822466125
       },
       "regime_gated": false,
-      "regime_state": "WEAK_BULL"
+      "regime_state": "WEAK_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-6.97 pts)"
     },
     {
       "scanner_id": "STACKED_MOVING_AVERAGES",
@@ -895,7 +1015,10 @@
         "sma_200": 148.54979972839357
       },
       "regime_gated": false,
-      "regime_state": "WEAK_BULL"
+      "regime_state": "WEAK_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-6.97 pts)"
     },
     {
       "scanner_id": "BASE_TIGHTENING",
@@ -909,7 +1032,10 @@
         "prox_52w": -0.026464377694579988
       },
       "regime_gated": false,
-      "regime_state": "WEAK_BULL"
+      "regime_state": "WEAK_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-6.97 pts)"
     },
     {
       "scanner_id": "PO3_LIQUIDITY_SWEEP",
@@ -926,7 +1052,10 @@
         "rvol": 0.66
       },
       "regime_gated": false,
-      "regime_state": "WEAK_BULL"
+      "regime_state": "WEAK_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-6.97 pts)"
     },
     {
       "scanner_id": "MTF_ALIGNMENT",
@@ -941,7 +1070,10 @@
         "adx": 24.645635066923255
       },
       "regime_gated": false,
-      "regime_state": "WEAK_BULL"
+      "regime_state": "WEAK_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-19.31 pts)"
     },
     {
       "scanner_id": "VOLATILITY_SQUEEZE",
@@ -955,7 +1087,10 @@
         "atr_pct": 1.6893132616735091
       },
       "regime_gated": false,
-      "regime_state": "WEAK_BULL"
+      "regime_state": "WEAK_BULL",
+      "idiosyncratic_risk_multiplier": 0.5,
+      "risk_posture": "DEFENSIVE_DE_RISK",
+      "primary_risk_driver": "Hurst Memory Flip (H=0.408)"
     },
     {
       "scanner_id": "MEAN_REVERSION_OVERSOLD",
@@ -970,7 +1105,10 @@
         "bb_lower": 65.50130696328829
       },
       "regime_gated": true,
-      "regime_state": "WEAK_BULL"
+      "regime_state": "WEAK_BULL",
+      "idiosyncratic_risk_multiplier": 0.5,
+      "risk_posture": "DEFENSIVE_DE_RISK",
+      "primary_risk_driver": "Hurst Memory Flip (H=0.408)"
     },
     {
       "scanner_id": "PULLBACK_UPTREND",
@@ -985,7 +1123,10 @@
         "rsi": 51.015002827502
       },
       "regime_gated": false,
-      "regime_state": "WEAK_BULL"
+      "regime_state": "WEAK_BULL",
+      "idiosyncratic_risk_multiplier": 0.5,
+      "risk_posture": "DEFENSIVE_DE_RISK",
+      "primary_risk_driver": "Hurst Memory Flip (H=0.386)"
     },
     {
       "scanner_id": "VOLATILITY_SQUEEZE",
@@ -999,7 +1140,10 @@
         "atr_pct": 1.5727662888376248
       },
       "regime_gated": false,
-      "regime_state": "WEAK_BULL"
+      "regime_state": "WEAK_BULL",
+      "idiosyncratic_risk_multiplier": 0.5,
+      "risk_posture": "DEFENSIVE_DE_RISK",
+      "primary_risk_driver": "Hurst Memory Flip (H=0.386)"
     },
     {
       "scanner_id": "BASE_TIGHTENING",
@@ -1013,7 +1157,10 @@
         "prox_52w": -0.07746292093665652
       },
       "regime_gated": false,
-      "regime_state": "WEAK_BULL"
+      "regime_state": "WEAK_BULL",
+      "idiosyncratic_risk_multiplier": 0.5,
+      "risk_posture": "DEFENSIVE_DE_RISK",
+      "primary_risk_driver": "Hurst Memory Flip (H=0.386)"
     },
     {
       "scanner_id": "PULLBACK_UPTREND",
@@ -1028,7 +1175,10 @@
         "rsi": 44.22451855904601
       },
       "regime_gated": false,
-      "regime_state": "WEAK_BULL"
+      "regime_state": "WEAK_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-5.27 pts)"
     },
     {
       "scanner_id": "BASE_TIGHTENING",
@@ -1042,7 +1192,10 @@
         "prox_52w": -0.07159641208601575
       },
       "regime_gated": false,
-      "regime_state": "WEAK_BULL"
+      "regime_state": "WEAK_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-5.27 pts)"
     },
     {
       "scanner_id": "PULLBACK_UPTREND",
@@ -1057,7 +1210,10 @@
         "rsi": 42.51490838049434
       },
       "regime_gated": false,
-      "regime_state": "WEAK_BULL"
+      "regime_state": "WEAK_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-12.11 pts)"
     },
     {
       "scanner_id": "VOLATILITY_SQUEEZE",
@@ -1071,7 +1227,10 @@
         "atr_pct": 1.6319880404298135
       },
       "regime_gated": false,
-      "regime_state": "WEAK_BULL"
+      "regime_state": "WEAK_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-12.11 pts)"
     },
     {
       "scanner_id": "BASE_TIGHTENING",
@@ -1085,7 +1244,10 @@
         "prox_52w": -0.07857252191691932
       },
       "regime_gated": false,
-      "regime_state": "WEAK_BULL"
+      "regime_state": "WEAK_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-12.11 pts)"
     },
     {
       "scanner_id": "PULLBACK_UPTREND",
@@ -1100,7 +1262,10 @@
         "rsi": 46.507272674012455
       },
       "regime_gated": false,
-      "regime_state": "WEAK_BULL"
+      "regime_state": "WEAK_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-5.07 pts)"
     },
     {
       "scanner_id": "VOLATILITY_SQUEEZE",
@@ -1114,7 +1279,10 @@
         "atr_pct": 0.9836895106752589
       },
       "regime_gated": false,
-      "regime_state": "WEAK_BULL"
+      "regime_state": "WEAK_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-5.07 pts)"
     },
     {
       "scanner_id": "LOW_BETA_QUALITY",
@@ -1129,7 +1297,10 @@
         "ret_3m": 0.022539048104060155
       },
       "regime_gated": false,
-      "regime_state": "WEAK_BULL"
+      "regime_state": "WEAK_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-5.07 pts)"
     },
     {
       "scanner_id": "BASE_TIGHTENING",
@@ -1143,7 +1314,10 @@
         "prox_52w": -0.03420664637436477
       },
       "regime_gated": false,
-      "regime_state": "WEAK_BULL"
+      "regime_state": "WEAK_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-5.07 pts)"
     }
   ]
 }

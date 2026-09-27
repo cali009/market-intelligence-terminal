@@ -3479,11 +3479,20 @@
                         ${list[0].why_matched.split(';')[0]}
                     </div>
                     <div class="scanner-matches">
-                        ${list.map(m => `
-                            <span class="match-badge" onclick="event.stopPropagation(); openSymbol('${m.symbol}')" title="Inspect ${m.symbol} Dossier">
+                        ${list.map(m => {
+                            const isDeRisk = m.idiosyncratic_risk_multiplier && m.idiosyncratic_risk_multiplier < 0.70;
+                            const isCaution = m.idiosyncratic_risk_multiplier && m.idiosyncratic_risk_multiplier < 1.0 && !isDeRisk;
+                            const multBadge = isDeRisk
+                                ? `<span style="font-size: 9px; padding: 1px 4px; border-radius: 3px; background: rgba(239, 68, 68, 0.2); color: var(--accent-red); margin-left: 4px;" title="Pre-Flight De-Risk: ${m.primary_risk_driver || 'Hurst flip'}">⚠️ ${(m.idiosyncratic_risk_multiplier*100).toFixed(0)}%</span>`
+                                : (isCaution
+                                    ? `<span style="font-size: 9px; padding: 1px 4px; border-radius: 3px; background: rgba(245, 158, 11, 0.2); color: var(--accent-amber); margin-left: 4px;" title="Pre-Flight Caution: ${m.primary_risk_driver || 'Detractor drag'}">${(m.idiosyncratic_risk_multiplier*100).toFixed(0)}%</span>`
+                                    : '');
+                            return `
+                            <span class="match-badge" onclick="event.stopPropagation(); openSymbol('${m.symbol}')" title="Inspect ${m.symbol} Dossier · Pre-flight: ${m.primary_risk_driver || 'Normal equilibrium'}">
                                 ${m.symbol} <span style="color: var(--text-muted); font-size: 10px;">$${m.price.toFixed(1)}</span>
+                                ${multBadge}
                             </span>
-                        `).join('')}
+                        `}).join('')}
                     </div>
                 `;
                 grid.appendChild(card);

@@ -21,6 +21,9 @@ class ScannerMatch:
     key_metrics: Dict[str, Any]
     regime_gated: bool = False
     regime_state: str = "WEAK_BULL"
+    idiosyncratic_risk_multiplier: float = 1.0  # Phase 21.2: Idiosyncratic Risk Pre-Flight Check
+    risk_posture: str = "NORMAL_EQUILIBRIUM"
+    primary_risk_driver: str = "Stable Quantitative Fingerprint"
 
 
 SCANNER_DEFINITIONS: Dict[str, Dict[str, Any]] = {
@@ -215,6 +218,12 @@ class MarketScanners:
 
     def __init__(self):
         self.definitions = SCANNER_DEFINITIONS
+        try:
+            from src.engine.idiosyncratic_risk import idiosyncratic_risk_engine
+            risk_feed = idiosyncratic_risk_engine.generate_feed()
+            self.idiosyncratic_profiles = {p.symbol: p for p in risk_feed.profiles}
+        except Exception:
+            self.idiosyncratic_profiles = {}
 
     def is_regime_compatible(self, scanner_id: str, regime_state: str) -> bool:
         defn = self.definitions.get(scanner_id)
@@ -527,6 +536,15 @@ class MarketScanners:
                         regime_state=active_regime
                     )
                 )
+
+        # Phase 21.2: Attach Idiosyncratic Risk Pre-Flight Multipliers & Posture
+        profiles = getattr(self, "idiosyncratic_profiles", {})
+        for m in matches:
+            profile = profiles.get(m.symbol)
+            if profile:
+                m.idiosyncratic_risk_multiplier = float(profile.position_size_multiplier)
+                m.risk_posture = profile.risk_posture
+                m.primary_risk_driver = profile.primary_risk_driver
 
         return matches
 

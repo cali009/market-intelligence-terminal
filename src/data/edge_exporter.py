@@ -197,6 +197,9 @@ class EdgeExporter:
                     "key_metrics": m.key_metrics,
                     "regime_gated": m.regime_gated,
                     "regime_state": m.regime_state,
+                    "idiosyncratic_risk_multiplier": getattr(m, "idiosyncratic_risk_multiplier", 1.0),
+                    "risk_posture": getattr(m, "risk_posture", "NORMAL_EQUILIBRIUM"),
+                    "primary_risk_driver": getattr(m, "primary_risk_driver", "Stable Quantitative Fingerprint"),
                 })
 
             # Cache metrics for portfolio exit evaluation
