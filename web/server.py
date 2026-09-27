@@ -43,6 +43,30 @@ class MarketIntelHandler(SimpleHTTPRequestHandler):
         path = parsed.path
         data_dir = get_data_dir()
 
+        # Handle robots.txt and sitemap.xml with strict plain/xml MIME types
+        if path == "/robots.txt":
+            robots_file = WEB_DIR / "robots.txt"
+            if robots_file.exists():
+                with open(robots_file, "rb") as f:
+                    content = f.read()
+                self.send_response(200)
+                self.send_header("Content-Type", "text/plain; charset=utf-8")
+                self.send_header("Content-Length", str(len(content)))
+                self.end_headers()
+                self.wfile.write(content)
+                return
+        elif path == "/sitemap.xml":
+            sitemap_file = WEB_DIR / "sitemap.xml"
+            if sitemap_file.exists():
+                with open(sitemap_file, "rb") as f:
+                    content = f.read()
+                self.send_response(200)
+                self.send_header("Content-Type", "application/xml; charset=utf-8")
+                self.send_header("Content-Length", str(len(content)))
+                self.end_headers()
+                self.wfile.write(content)
+                return
+
         # Route API requests to data/feeds or data/dist
         if path.startswith("/api/"):
             clean_sub = path[len("/api/"):].lstrip("/")

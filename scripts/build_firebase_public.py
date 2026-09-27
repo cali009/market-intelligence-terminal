@@ -25,9 +25,17 @@ def build_firebase_bundle():
     API_DIR.mkdir(parents=True, exist_ok=True)
     SYMBOLS_DIR.mkdir(parents=True, exist_ok=True)
 
-    # 2. Copy index.html
+    # 2. Copy index.html, robots.txt, sitemap.xml
     shutil.copy2(WEB_DIR / "index.html", PUBLIC_DIR / "index.html")
     print(f"    ✓ Copied terminal app: public/index.html ({((WEB_DIR / 'index.html').stat().st_size / 1024):.1f} KB)")
+
+    if (WEB_DIR / "robots.txt").exists():
+        shutil.copy2(WEB_DIR / "robots.txt", PUBLIC_DIR / "robots.txt")
+        print("    ✓ Staged crawler policy: public/robots.txt")
+
+    if (WEB_DIR / "sitemap.xml").exists():
+        shutil.copy2(WEB_DIR / "sitemap.xml", PUBLIC_DIR / "sitemap.xml")
+        print("    ✓ Staged XML sitemap: public/sitemap.xml")
 
     # 3. Copy core JSON feeds and create extensionless copies
     core_feeds = [
