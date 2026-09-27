@@ -738,6 +738,17 @@ class AlertEngine:
             )
             alerts.append(record)
 
+        # Phase 22.5: QUANT INTEL Invalidation Sentinels & Execution Ratchets
+        try:
+            from src.engine.quant_intel import quant_intel_engine
+            from src.engine.quant_intel_sentinel import quant_intel_sentinel
+            dossiers = quant_intel_engine.evaluate_all()
+            invals = quant_intel_sentinel.evaluate_universe_sentinels(dossiers)
+            qi_records = quant_intel_sentinel.convert_to_system_alerts(invals)
+            alerts.extend(qi_records)
+        except Exception as e:
+            print(f"Warning: Failed to incorporate Quant Intel sentinel alerts: {e}")
+
         return alerts
 
     def generate_alerts_feed(self) -> Dict[str, Any]:

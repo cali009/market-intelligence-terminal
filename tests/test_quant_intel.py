@@ -284,3 +284,78 @@ def test_quant_intel_edge_feeds_serialization_and_symbols_dossiers():
     assert qi["conviction_grade"] in ("A", "B", "C", "SKIP")
 
 
+def test_quant_intel_sentinel_stop_breach_detection():
+    """Phase 22.5: Verify sentinel fires CRITICAL alert when price breaches structural stop."""
+    from src.engine.quant_intel_sentinel import quant_intel_sentinel
+    dossier = quant_intel_engine.evaluate_ticker("NVDA")
+    p = dossier.trade_plan
+
+    # Simulate price breach below stop
+    sim_bars = [
+        {"trading_date": "2026-09-27", "open": p.stop_loss - 1.0, "high": p.stop_loss, "low": p.stop_loss - 3.0, "close": p.stop_loss - 2.5, "volume": 1000000}
+    ]
+    alerts = quant_intel_sentinel.evaluate_ticker_sentinel("NVDA", dossier, recent_bars=sim_bars)
+    stop_alerts = [a for a in alerts if a.predicate_type == "STOP_LOSS_BREACH"]
+    assert len(stop_alerts) == 1
+    assert stop_alerts[0].severity == "CRITICAL"
+    assert stop_alerts[0].action_required == "IMMEDIATE_EXIT"
+    assert "penetrated the structural stop" in stop_alerts[0].body
+
+
+def test_quant_intel_sentinel_breakout_failure_detection():
+    """Phase 22.5: Verify sentinel fires WARNING alert when price has consecutive closes below entry pivot."""
+    from src.engine.quant_intel_sentinel import quant_intel_sentinel
+    dossier = quant_intel_engine.evaluate_ticker("NVDA")
+    p = dossier.trade_plan
+
+    # Simulate two consecutive closes below entry support but above stop loss
+    mid_price = (p.entry_zone_ideal + p.stop_loss) / 2.0
+    sim_bars = [
+        {"trading_date": "2026-09-27", "open": mid_price + 0.5, "high": mid_price + 1.0, "low": mid_price - 0.5, "close": mid_price, "volume": 1000000},
+        {"trading_date": "2026-09-26", "open": mid_price + 1.0, "high": mid_price + 1.5, "low": mid_price - 0.5, "close": mid_price + 0.2, "volume": 1000000},
+    ]
+    alerts = quant_intel_sentinel.evaluate_ticker_sentinel("NVDA", dossier, recent_bars=sim_bars)
+    bf_alerts = [a for a in alerts if a.predicate_type == "BREAKOUT_FAILURE"]
+    assert len(bf_alerts) == 1
+    assert bf_alerts[0].severity == "WARNING"
+    assert bf_alerts[0].action_required == "DE_RISK_50_PCT"
+
+
+def test_quant_intel_sentinel_target1_ratchet_detection():
+    """Phase 22.5: Verify sentinel fires NOTICE alert and ratchets stop to breakeven when Target 1 is achieved."""
+    from src.engine.quant_intel_sentinel import quant_intel_sentinel
+    dossier = quant_intel_engine.evaluate_ticker("NVDA")
+    p = dossier.trade_plan
+
+    # Simulate price reaching Target 1
+    sim_bars = [
+        {"trading_date": "2026-09-27", "open": p.entry_zone_ideal, "high": p.target_1 + 1.0, "low": p.entry_zone_ideal, "close": p.target_1, "volume": 2000000}
+    ]
+    alerts = quant_intel_sentinel.evaluate_ticker_sentinel("NVDA", dossier, recent_bars=sim_bars)
+    t1_alerts = [a for a in alerts if a.predicate_type == "TARGET_1_HIT_RATCHET"]
+    assert len(t1_alerts) == 1
+    assert t1_alerts[0].severity == "NOTICE"
+    assert t1_alerts[0].action_required == "TIGHTEN_STOP_TO_BREAKEVEN"
+    assert "ratcheting stop loss up to Breakeven" in t1_alerts[0].body
+
+
+def test_quant_intel_sentinel_alert_record_conversion():
+    """Phase 22.5: Verify InvalidationAlert objects convert cleanly to Pydantic AlertRecords."""
+    from src.engine.quant_intel_sentinel import quant_intel_sentinel
+    dossier = quant_intel_engine.evaluate_ticker("NVDA")
+    p = dossier.trade_plan
+
+    sim_bars = [
+        {"trading_date": "2026-09-27", "open": p.stop_loss - 1.0, "high": p.stop_loss, "low": p.stop_loss - 3.0, "close": p.stop_loss - 2.5, "volume": 1000000}
+    ]
+    alerts = quant_intel_sentinel.evaluate_ticker_sentinel("NVDA", dossier, recent_bars=sim_bars)
+    records = quant_intel_sentinel.convert_to_system_alerts(alerts)
+    assert len(records) >= 1
+    rec = records[0]
+    assert rec.symbol == "NVDA"
+    assert rec.severity in ("CRITICAL", "WARNING", "NOTICE")
+    assert rec.taxonomy in ('TECHNICAL_BREAKOUT', 'EXIT_TRIGGER_ESCALATION', 'REGIME_SHIFT', 'CATALYST_MATERIALITY')
+    assert rec.disclaimer is not None
+
+
+

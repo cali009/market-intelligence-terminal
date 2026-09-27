@@ -1,11 +1,11 @@
 {
   "as_of_date": "2026-09-27",
-  "generated_at": "2026-09-27T20:36:49.118049+00:00",
-  "active_alerts_count": 6,
+  "generated_at": "2026-09-27T21:24:17.371675+00:00",
+  "active_alerts_count": 12,
   "alerts": [
     {
       "alert_id": "ALT_2026-09-27_NVDA_01",
-      "timestamp": "2026-09-27T20:36:49Z",
+      "timestamp": "2026-09-27T21:24:14Z",
       "symbol": "NVDA",
       "taxonomy": "TECHNICAL_BREAKOUT",
       "severity": "WARNING",
@@ -27,7 +27,7 @@
     },
     {
       "alert_id": "ALT_2026-09-27_TD_02",
-      "timestamp": "2026-09-27T20:36:49Z",
+      "timestamp": "2026-09-27T21:24:14Z",
       "symbol": "TD",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "CRITICAL",
@@ -49,7 +49,7 @@
     },
     {
       "alert_id": "ALT_2026-09-27_BOC_03",
-      "timestamp": "2026-09-27T20:36:49Z",
+      "timestamp": "2026-09-27T21:24:14Z",
       "symbol": null,
       "taxonomy": "CATALYST_MATERIALITY",
       "severity": "WARNING",
@@ -71,7 +71,7 @@
     },
     {
       "alert_id": "ALT_2026-09-27_REG_04",
-      "timestamp": "2026-09-27T20:36:49Z",
+      "timestamp": "2026-09-27T21:24:14Z",
       "symbol": null,
       "taxonomy": "REGIME_SHIFT",
       "severity": "NOTICE",
@@ -91,7 +91,7 @@
     },
     {
       "alert_id": "ALT_2026-09-27_PORT_05",
-      "timestamp": "2026-09-27T20:36:49Z",
+      "timestamp": "2026-09-27T21:24:14Z",
       "symbol": null,
       "taxonomy": "PORTFOLIO_CIRCUIT_BREAKER",
       "severity": "CRITICAL",
@@ -112,7 +112,7 @@
     },
     {
       "alert_id": "ALT_2026-09-27_SHOP_06",
-      "timestamp": "2026-09-27T20:36:49Z",
+      "timestamp": "2026-09-27T21:24:14Z",
       "symbol": "SHOP",
       "taxonomy": "PRICE_VOLUME_SPIKE",
       "severity": "NOTICE",
@@ -126,6 +126,144 @@
       "data_payload": {
         "rvol": 2.8,
         "score": 79
+      },
+      "is_quiet_hours_eligible": true,
+      "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
+    },
+    {
+      "alert_id": "ALT_2026-09-27_JPM_BREAKOUT_F",
+      "timestamp": "2026-09-27T21:24:17Z",
+      "symbol": "JPM",
+      "taxonomy": "EXIT_TRIGGER_ESCALATION",
+      "severity": "WARNING",
+      "headline": "JPM: Support Pivot Slipped \u2014 Breakout Failure Warning",
+      "body": "Two consecutive closes ($338.56, $343.06) below ideal entry pivot of $345.98. Setup momentum has stalled; consider reducing position size by 50% or moving stop to defense.",
+      "channels": [
+        "IN_APP",
+        "EMAIL",
+        "WEB_PUSH"
+      ],
+      "dedupe_key": "JPM:BREAKOUT_FAILURE:2026-09-27",
+      "data_payload": {
+        "predicate": "BREAKOUT_FAILURE",
+        "action": "DE_RISK_50_PCT",
+        "trigger_level": 345.98,
+        "current_price": 343.05999755859375
+      },
+      "is_quiet_hours_eligible": true,
+      "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
+    },
+    {
+      "alert_id": "ALT_2026-09-27_RY_BREAKOUT_F",
+      "timestamp": "2026-09-27T21:24:17Z",
+      "symbol": "RY",
+      "taxonomy": "EXIT_TRIGGER_ESCALATION",
+      "severity": "WARNING",
+      "headline": "RY: Support Pivot Slipped \u2014 Breakout Failure Warning",
+      "body": "Two consecutive closes ($282.11, $285.63) below ideal entry pivot of $286.01. Setup momentum has stalled; consider reducing position size by 50% or moving stop to defense.",
+      "channels": [
+        "IN_APP",
+        "EMAIL",
+        "WEB_PUSH"
+      ],
+      "dedupe_key": "RY:BREAKOUT_FAILURE:2026-09-27",
+      "data_payload": {
+        "predicate": "BREAKOUT_FAILURE",
+        "action": "DE_RISK_50_PCT",
+        "trigger_level": 286.01,
+        "current_price": 285.6300048828125
+      },
+      "is_quiet_hours_eligible": true,
+      "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
+    },
+    {
+      "alert_id": "ALT_2026-09-27_CNR_BREAKOUT_F",
+      "timestamp": "2026-09-27T21:24:17Z",
+      "symbol": "CNR",
+      "taxonomy": "EXIT_TRIGGER_ESCALATION",
+      "severity": "WARNING",
+      "headline": "CNR: Support Pivot Slipped \u2014 Breakout Failure Warning",
+      "body": "Two consecutive closes ($169.57, $170.90) below ideal entry pivot of $172.85. Setup momentum has stalled; consider reducing position size by 50% or moving stop to defense.",
+      "channels": [
+        "IN_APP",
+        "EMAIL",
+        "WEB_PUSH"
+      ],
+      "dedupe_key": "CNR:BREAKOUT_FAILURE:2026-09-27",
+      "data_payload": {
+        "predicate": "BREAKOUT_FAILURE",
+        "action": "DE_RISK_50_PCT",
+        "trigger_level": 172.85,
+        "current_price": 170.89999389648438
+      },
+      "is_quiet_hours_eligible": true,
+      "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
+    },
+    {
+      "alert_id": "ALT_2026-09-27_BN_BREAKOUT_F",
+      "timestamp": "2026-09-27T21:24:17Z",
+      "symbol": "BN",
+      "taxonomy": "EXIT_TRIGGER_ESCALATION",
+      "severity": "WARNING",
+      "headline": "BN: Support Pivot Slipped \u2014 Breakout Failure Warning",
+      "body": "Two consecutive closes ($51.79, $52.15) below ideal entry pivot of $52.96. Setup momentum has stalled; consider reducing position size by 50% or moving stop to defense.",
+      "channels": [
+        "IN_APP",
+        "EMAIL",
+        "WEB_PUSH"
+      ],
+      "dedupe_key": "BN:BREAKOUT_FAILURE:2026-09-27",
+      "data_payload": {
+        "predicate": "BREAKOUT_FAILURE",
+        "action": "DE_RISK_50_PCT",
+        "trigger_level": 52.96,
+        "current_price": 52.150001525878906
+      },
+      "is_quiet_hours_eligible": true,
+      "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
+    },
+    {
+      "alert_id": "ALT_2026-09-27_BAM_BREAKOUT_F",
+      "timestamp": "2026-09-27T21:24:17Z",
+      "symbol": "BAM",
+      "taxonomy": "EXIT_TRIGGER_ESCALATION",
+      "severity": "WARNING",
+      "headline": "BAM: Support Pivot Slipped \u2014 Breakout Failure Warning",
+      "body": "Two consecutive closes ($63.01, $63.08) below ideal entry pivot of $63.72. Setup momentum has stalled; consider reducing position size by 50% or moving stop to defense.",
+      "channels": [
+        "IN_APP",
+        "EMAIL",
+        "WEB_PUSH"
+      ],
+      "dedupe_key": "BAM:BREAKOUT_FAILURE:2026-09-27",
+      "data_payload": {
+        "predicate": "BREAKOUT_FAILURE",
+        "action": "DE_RISK_50_PCT",
+        "trigger_level": 63.72,
+        "current_price": 63.08000183105469
+      },
+      "is_quiet_hours_eligible": true,
+      "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
+    },
+    {
+      "alert_id": "ALT_2026-09-27_CP_BREAKOUT_F",
+      "timestamp": "2026-09-27T21:24:17Z",
+      "symbol": "CP",
+      "taxonomy": "EXIT_TRIGGER_ESCALATION",
+      "severity": "WARNING",
+      "headline": "CP: Support Pivot Slipped \u2014 Breakout Failure Warning",
+      "body": "Two consecutive closes ($123.53, $122.90) below ideal entry pivot of $123.82. Setup momentum has stalled; consider reducing position size by 50% or moving stop to defense.",
+      "channels": [
+        "IN_APP",
+        "EMAIL",
+        "WEB_PUSH"
+      ],
+      "dedupe_key": "CP:BREAKOUT_FAILURE:2026-09-27",
+      "data_payload": {
+        "predicate": "BREAKOUT_FAILURE",
+        "action": "DE_RISK_50_PCT",
+        "trigger_level": 123.82,
+        "current_price": 122.9000015258789
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
