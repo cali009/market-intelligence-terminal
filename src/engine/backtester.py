@@ -509,6 +509,24 @@ class BacktestEngine:
                         if is_po3_type and prior_bar.get("atr_pct", 0.0) > 3.5:
                             continue
 
+                        # Phase 20.1: Overextension Gate (exclude cyclical blow-off tops)
+                        if is_po3_type:
+                            c_val = prior_bar["close"]
+                            sma_200 = prior_bar.get("sma_200")
+                            if sma_200 and not math.isnan(sma_200) and sma_200 > 0:
+                                if ((c_val / sma_200) - 1.0) * 100.0 > 20.0:
+                                    continue
+                            sma_50 = prior_bar.get("sma_50")
+                            if sma_50 and not math.isnan(sma_50) and sma_50 > 0:
+                                if ((c_val / sma_50) - 1.0) * 100.0 > 8.0:
+                                    continue
+
+                        # Phase 20.1: Institutional Accumulation Gate (reject institutional distribution flushes)
+                        if is_po3_type:
+                            cmf_val = prior_bar.get("cmf_20")
+                            if cmf_val is not None and not math.isnan(cmf_val) and cmf_val < -0.05:
+                                continue
+
                         raw_entry = today_bar["open"]
                         entry_net = raw_entry * (1.0 + fee_rate)
                         atr = prior_bar.get("atr_14", raw_entry * 0.02)

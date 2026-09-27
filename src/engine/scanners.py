@@ -493,9 +493,13 @@ class MarketScanners:
             )
 
         # 15. TAC-15: PO3 Liquidity Sweep & Manipulation Reversal
-        # Phase 19.3: Single-stock idiosyncratic focus (exclude macro index ETFs) and volatility blowout gate (atr_pct <= 3.5%)
+        # Phase 19.3 & 20.1: Single-stock focus, volatility gate, overextension gate, and CMF accumulation
         atr_pct_val = float(metrics.get("atr_pct") or 0.0)
-        if sym not in ("SPY", "QQQ", "XIU") and atr_pct_val <= 3.5:
+        dist_200 = ((close / sma_200) - 1.0) * 100.0 if (sma_200 and sma_200 > 0) else 0.0
+        dist_50 = ((close / sma_50) - 1.0) * 100.0 if (sma_50 and sma_50 > 0) else 0.0
+        cmf_val = float(metrics.get("cmf_20") if metrics.get("cmf_20") is not None else 0.0)
+
+        if sym not in ("SPY", "QQQ", "XIU") and atr_pct_val <= 3.5 and dist_200 <= 20.0 and dist_50 <= 8.0 and cmf_val >= -0.05:
             bar_range = max(0.01, high - low)
             open_p = float(metrics.get("open") or close)
             lower_wick = min(open_p, close) - low
@@ -505,7 +509,7 @@ class MarketScanners:
 
             is_sweep = (low <= sma_20 * 1.005) or (low <= bb_l_val * 1.01) or (low <= sma_50 * 1.005)
             is_rejection = (wick_ratio >= 0.25) and (close_loc >= 0.48) and (close >= open_p * 0.995)
-            is_confluence = (40.0 <= rsi <= 66.0) and (rvol >= 0.90 or cmf >= -0.05) and (prox_52w >= -0.18)
+            is_confluence = (40.0 <= rsi <= 66.0) and (rvol >= 0.90 or cmf_val >= -0.05) and (prox_52w >= -0.18)
 
             if is_sweep and is_rejection and is_confluence:
                 matches.append(

@@ -252,12 +252,14 @@ def test_tac15_scanner_match_and_expectancy():
         "low": 118.0,               # Intraday low swept below 20DMA (120.0)
         "close": 127.0,              # Strong reclamation in upper half
         "sma_20": 120.0,
-        "sma_50": 112.0,
-        "sma_200": 95.0,
+        "sma_50": 121.0,             # dist_50 = 4.96% <= 8.0%
+        "sma_200": 110.0,            # dist_200 = 15.45% <= 20.0%
         "rsi_14": 56.0,
         "rvol_20": 1.30,
         "proximity_52w_high": -0.03,
         "atr_14": 3.8,
+        "atr_pct": 2.99,             # <= 3.5%
+        "cmf_20": 0.08,              # >= -0.05
     }
     matches = market_scanners.scan_all(sec_info, metrics, regime_state="STRONG_BULL")
     po3_matches = [m for m in matches if m.scanner_id == "PO3_LIQUIDITY_SWEEP"]
@@ -267,6 +269,18 @@ def test_tac15_scanner_match_and_expectancy():
     assert m.price == 127.0
     assert "Institutional liquidity sweep" in m.why_matched
     assert m.regime_gated is False
+
+
+def test_po3_phase20_1_overextension_and_cmf_gating():
+    """Phase 20.1: Verify overextension ceiling and CMF institutional accumulation gating."""
+    res = backtest_engine.run_strategy_backtest("PO3_LIQUIDITY_SWEEP")
+    m = res["metrics"]
+    trades = res["all_trades"]
+    assert len(trades) > 0
+    assert m["win_rate_pct"] >= 48.0
+    assert m["max_drawdown_pct"] <= 4.5
+    assert m["walk_forward_partitions"]["TRAIN"]["win_rate_pct"] >= 55.0
+    assert m["walk_forward_partitions"]["TEST"]["win_rate_pct"] >= 50.0
 
 
 def test_simulated_trade_schema_fields():
