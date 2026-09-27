@@ -51,7 +51,7 @@ class BacktestConfig:
     slippage_bps: float = 5.0       # 0.05%
     risk_per_trade_pct: float = 1.0 # 1.0% equity risk per trade (1R)
     max_open_positions: int = 8
-    max_single_position_pct: float = 15.0 # Max 15% capital per position
+    max_single_position_pct: float = 22.5 # Phase 20.2: Calibrated from 15% to 22.5% to achieve authorized risk budget
     split_train_pct: float = 0.60
     split_val_pct: float = 0.20
     split_test_pct: float = 0.20
@@ -366,7 +366,7 @@ class BacktestEngine:
                     raw_exit = min(b_open, trade.stop_loss)
                     raw_exit_price = raw_exit
                     exit_price_net = raw_exit * (1.0 - fee_rate)
-                    exit_reason = "STOP_LOSS" if trade.stop_loss < trade.raw_entry_price else "BREAKEVEN_STOP"
+                    exit_reason = "BREAKEVEN_STOP" if (trade.is_partially_trimmed or trade.stop_loss >= (trade.raw_entry_price * 0.98)) else "STOP_LOSS"
 
                 # Check Two-Stage Trim Ladder: 50% Trim at Target 1 + Breakeven Stop Ratchet
                 elif is_po3_type and not trade.is_partially_trimmed and b_high >= trade.target_1 and trade.shares >= 2:
@@ -374,7 +374,10 @@ class BacktestEngine:
                     trade.trimmed_shares = trim_shares
                     trade.shares -= trim_shares
                     trade.is_partially_trimmed = True
-                    trade.stop_loss = trade.raw_entry_price  # Ratchet stop to Breakeven
+
+                    # Phase 20.2: Conformal Runner Ratchet Anchor (Entry - 0.25 * ATR buffer)
+                    bar_atr = bar.get("atr_14", (trade.target_1 - trade.raw_entry_price) / 1.8)
+                    trade.stop_loss = round(max(trade.stop_loss, trade.raw_entry_price - (0.25 * bar_atr)), 2)
 
                     trim_fx = get_fx_to_usd(curr_date, trade.currency)
                     trim_price_net = trade.target_1 * (1.0 - fee_rate)
@@ -411,8 +414,11 @@ class BacktestEngine:
                     exit_reason = "TIME_EXPIRY"
 
                 # Breakeven Stop Trailing Rule (if Target 1 touched and not exited)
-                elif b_high >= trade.target_1 and trade.stop_loss < trade.raw_entry_price:
-                    trade.stop_loss = trade.raw_entry_price
+                elif b_high >= trade.target_1:
+                    bar_atr = bar.get("atr_14", (trade.target_1 - trade.raw_entry_price) / 1.8)
+                    conformal_anchor = round(trade.raw_entry_price - (0.25 * bar_atr), 2)
+                    if trade.stop_loss < conformal_anchor:
+                        trade.stop_loss = conformal_anchor
 
                 # Execute Exit if triggered
                 if exit_price_net and exit_reason and raw_exit_price:
