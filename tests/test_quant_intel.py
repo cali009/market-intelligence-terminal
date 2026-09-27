@@ -252,3 +252,35 @@ def test_quant_intel_memory_bayesian_prior_shrinkage():
     assert rec.win_rate_pct == quant_intel_memory_ledger.SETUP_PRIORS["MEAN_REVERSION"]["win_rate_pct"]
     assert rec.expectancy_r == quant_intel_memory_ledger.SETUP_PRIORS["MEAN_REVERSION"]["expectancy_r"]
 
+
+def test_quant_intel_edge_feeds_serialization_and_symbols_dossiers():
+    """Phase 22.3: Verify quant_intel.json master feed and embedded symbol dossiers exist and parse cleanly."""
+    import json
+    from pathlib import Path
+    feeds_dir = Path("data/feeds")
+    qi_feed = feeds_dir / "quant_intel.json"
+    assert qi_feed.exists(), "data/feeds/quant_intel.json must exist"
+
+    with open(qi_feed) as f:
+        data = json.load(f)
+
+    assert data["total_tickers"] >= 15
+    assert "dossiers" in data
+    assert "NVDA" in data["dossiers"]
+    assert "SHOP" in data["dossiers"]
+    assert data["b_grade_count"] >= 3
+
+    # Check individual symbol dossier
+    nvda_sym = feeds_dir / "symbols" / "NVDA.json"
+    assert nvda_sym.exists()
+    with open(nvda_sym) as f:
+        sym_data = json.load(f)
+
+    assert "quant_intel" in sym_data
+    qi = sym_data["quant_intel"]
+    assert qi is not None
+    assert qi["symbol"] == "NVDA"
+    assert "formatted_card" in qi
+    assert qi["conviction_grade"] in ("A", "B", "C", "SKIP")
+
+

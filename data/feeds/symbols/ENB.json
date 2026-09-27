@@ -5,7 +5,7 @@
   "currency": "CAD",
   "name": "Enbridge Inc.",
   "as_of_date": "2026-09-27",
-  "generated_at": "2026-09-27T07:18:33.367098+00:00",
+  "generated_at": "2026-09-27T20:36:40.436027+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 66.8499984741211,
@@ -353,7 +353,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 16,
     "gjr_garch_gamma": 0.22,
-    "last_updated": "2026-09-27T07:18:37.102229+00:00"
+    "last_updated": "2026-09-27T20:36:45.827434+00:00"
   },
   "conformal_bounds": {
     "symbol": "ENB",
@@ -370,7 +370,7 @@
     "adapted_alpha": 0.235,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-09-27T07:18:37.138471+00:00"
+    "calibrated_at": "2026-09-27T20:36:45.845822+00:00"
   },
   "cross_border_parity": {
     "tsx_symbol": "ENB",
@@ -1664,6 +1664,127 @@
       "volume": 6564958.0
     }
   ],
+  "quant_intel": {
+    "symbol": "ENB",
+    "exchange": "TSX",
+    "country": "CA",
+    "currency": "CAD",
+    "as_of_date": "2026-09-27",
+    "generated_at": "2026-09-27T20:36:46.001572+00:00",
+    "conviction_grade": "C",
+    "aligned_layers_count": 3,
+    "formatted_card": "TICKER: ENB\nREGIME: WEAK_BULL (VIX: Medium | Risk-ON | Rates: Paused)\nPATTERN TYPE: Archetype B: Natural Resources & Energy (Cycle Mean-Reversion) \u2014 Mean-Reversion\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BEARISH \u2014 Breakdown below moving average cluster; negative CMF (-0.17) and deteriorating price structure.\n  Fundamental:  7.0/10 \u2014 ROIC 2.3%, Debt/Equity 0.01, operating margin 44.1%; robust institutional quality balance sheet.\n  Sentiment:    +1.00 (BULLISH) \u2014 ENB SEC Form 8-K Filing \u2014 Other Events of Substantial Importance\n  Historical:   50.8% Win Rate (10 sample size, E[R]: +0.28R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $66.25 \u2013 $67.24\n  Entry trigger:  Bullish rejection hammer wick at lower support ($62.82) with RSI recovering above 35.\n  Stop loss:      $62.54 (5.6% below entry)\n  Target 1 (T1):  $70.70 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $75.53 | Est. 24 days | Take 40%\n  Target 3 (T3):  $81.83 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.32\n  Position size:  134 shares on $100,000 portfolio risking 1% ($497.14)\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: C-Grade\nTRADE THESIS: ENB exhibits high structural confluence with Mean-Reversion aligning above ascending moving averages. In the current WEAK_BULL macro context, measured support at $62.82 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $62.54 or two consecutive closes back below $62.82 immediately invalidates the trade.",
+    "layer_1_regime": {
+      "trend_type": "Bull",
+      "volatility_regime": "Medium (15\u201325)",
+      "liquidity_env": "Risk-ON",
+      "rate_context": "Paused",
+      "regime_state": "WEAK_BULL",
+      "regime_fit": "YES",
+      "status": "BULLISH",
+      "conviction_weight": 1.0,
+      "top_drivers": [
+        "Index trading above rising 200-day moving average (bullish trend structure)",
+        "VIX at 16.0 indicates low implied volatility / calm conditions",
+        "Yield curve positively sloped (+55 bps 10Y-2Y spread)"
+      ]
+    },
+    "layer_2_fingerprint": {
+      "symbol": "ENB",
+      "dominant_pattern": "Mean-Reversion",
+      "hurst_exponent": 0.408,
+      "hurst_class": "MEAN_REVERTING",
+      "archetype_label": "Archetype B: Natural Resources & Energy (Cycle Mean-Reversion)",
+      "amihud_illiquidity": 0.001,
+      "pattern_logic": "Bollinger Band boundary reversion with anti-persistent mean-reverting memory (H < 0.46)."
+    },
+    "layer_3_technical": {
+      "status": "BEARISH",
+      "key_reason": "Breakdown below moving average cluster; negative CMF (-0.17) and deteriorating price structure.",
+      "price_structure": "Consolidation Range / Neutral Coil",
+      "ma_stack": "Bearish Alignment (Trading below declining 200 SMA)",
+      "rsi_14": 30.5,
+      "macd_hist": 0.074,
+      "roc_10": -0.03,
+      "obv_trend": "Distribution / Flat OBV",
+      "rvol_20": 0.7,
+      "cmf_20": -0.172,
+      "atr_14": 1.12,
+      "atr_pct": 1.69,
+      "bb_squeeze": false,
+      "bb_bandwidth": 0.0811,
+      "support_1": 62.82,
+      "resistance_1": 68.53,
+      "resistance_2": 68.87,
+      "volume_poc": 69.76
+    },
+    "layer_4_fundamental": {
+      "score": 7.0,
+      "status": "BULLISH",
+      "key_reason": "ROIC 2.3%, Debt/Equity 0.01, operating margin 44.1%; robust institutional quality balance sheet.",
+      "quality_score": 46.0,
+      "valuation_score": 59.0,
+      "roic": 2.28,
+      "operating_margin": 44.14,
+      "margin_trend_bps": 817.9,
+      "debt_to_equity": 0.01,
+      "pe_ratio": 96.49,
+      "fcf_yield_pct": 4.46,
+      "technical_gate_required": false
+    },
+    "layer_5_sentiment": {
+      "net_sentiment_score": 1.0,
+      "status": "BULLISH",
+      "key_headline": "ENB SEC Form 8-K Filing \u2014 Other Events of Substantial Importance",
+      "catalyst_count": 4,
+      "risk_count": 0,
+      "weighted_catalysts": 1.0,
+      "weighted_risks": 0.0,
+      "recency_breakdown": {
+        "24h": 0,
+        "7d": 0,
+        "30d": 4,
+        "older": 1
+      },
+      "skip_triggered": false
+    },
+    "layer_6_memory": {
+      "win_rate_pct": 50.8,
+      "sample_size": 10,
+      "avg_move_pct": 4.8,
+      "false_breakout_rate_pct": 28.0,
+      "median_bars_to_target": 12,
+      "expectancy_r": 0.28,
+      "status": "NEUTRAL",
+      "signal_weight_multiplier": 1.0
+    },
+    "trade_plan": {
+      "entry_zone_ideal": 66.25,
+      "entry_zone_max": 67.24,
+      "entry_trigger": "Bullish rejection hammer wick at lower support ($62.82) with RSI recovering above 35.",
+      "stop_loss": 62.54,
+      "stop_distance_pct": 5.6,
+      "stop_distance_dollars": 3.71,
+      "atr_stop_multiplier": 1.5,
+      "target_1": 70.7,
+      "target_1_days": 6,
+      "target_1_rr": 1.2,
+      "target_2": 75.53,
+      "target_2_days": 24,
+      "target_2_rr": 2.5,
+      "target_3": 81.83,
+      "target_3_days": 45,
+      "target_3_rr": 4.2,
+      "risk_reward_ratio": 2.32,
+      "portfolio_size": 100000.0,
+      "recommended_shares": 134,
+      "capital_at_risk": 497.14,
+      "position_value": 8877.5,
+      "portfolio_risk_pct": 0.5,
+      "invalidation_rule": "A daily closing price below $62.54 or two consecutive closes back below $62.82 immediately invalidates the trade.",
+      "trade_thesis": "ENB exhibits high structural confluence with Mean-Reversion aligning above ascending moving averages. In the current WEAK_BULL macro context, measured support at $62.82 offers asymmetric risk/reward into upper channel resistance."
+    }
+  },
   "disclaimers": {
     "canada": "STATUTORY NOTICE (CANADA): This platform provides impersonal quantitative research and decision-support data intended exclusively for self-directed investors. It does not provide personalized investment advice, financial planning, or account management services. The scores, regime classifications, indicators, and model outputs presented herein are calculated by deterministic mathematical models and rule-based algorithms without consideration of your personal financial situation, risk tolerance, or investment objectives. Past hypothetical performance or paper-trading metrics are not indicative of future returns. The platform, its operators, and its algorithms do not hold any financial interest or proprietary position in the securities analyzed unless explicitly disclosed. You are solely responsible for evaluating the merits and risks of any trade or strategy.",
     "united_states": "REGULATORY NOTICE (UNITED STATES): Content published by this system constitutes impersonal, bona fide investment research and general circulation financial commentary under the publisher exclusion of Section 202(a)(11)(D) of the Investment Advisers Act of 1940. This software is not a registered broker-dealer, investment adviser, or commodity trading advisor. No content or calculation constitutes an offer to buy or sell, or a solicitation of an offer to buy or sell, any security or derivative instrument.",

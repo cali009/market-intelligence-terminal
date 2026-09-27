@@ -1,6 +1,6 @@
 {
   "as_of_date": "2026-09-27",
-  "generated_at": "2026-09-27T07:18:33.367098+00:00",
+  "generated_at": "2026-09-27T20:36:40.436027+00:00",
   "regimes": {
     "US": {
       "market_label": "US Equities",
@@ -82,7 +82,9 @@
       "primary_liquidity": null,
       "shap_score": 78.8,
       "risk_posture": "NORMAL_EQUILIBRIUM",
-      "size_multiplier": 1.0
+      "size_multiplier": 1.0,
+      "quant_intel_grade": "B",
+      "quant_intel_rr": 4.99
     },
     {
       "symbol": "SPY",
@@ -135,7 +137,9 @@
       "primary_liquidity": null,
       "shap_score": 72.8,
       "risk_posture": "NORMAL_EQUILIBRIUM",
-      "size_multiplier": 1.0
+      "size_multiplier": 1.0,
+      "quant_intel_grade": "B",
+      "quant_intel_rr": 6.39
     },
     {
       "symbol": "MSFT",
@@ -191,7 +195,9 @@
       "primary_liquidity": null,
       "shap_score": 63.2,
       "risk_posture": "ELEVATED_CAUTION",
-      "size_multiplier": 0.75
+      "size_multiplier": 0.75,
+      "quant_intel_grade": "B",
+      "quant_intel_rr": 2.82
     },
     {
       "symbol": "AAPL",
@@ -243,7 +249,9 @@
       "primary_liquidity": null,
       "shap_score": 63.6,
       "risk_posture": "ELEVATED_CAUTION",
-      "size_multiplier": 0.75
+      "size_multiplier": 0.75,
+      "quant_intel_grade": "B",
+      "quant_intel_rr": 2.88
     },
     {
       "symbol": "NVDA",
@@ -294,7 +302,9 @@
       "primary_liquidity": null,
       "shap_score": 63.5,
       "risk_posture": "ELEVATED_CAUTION",
-      "size_multiplier": 0.75
+      "size_multiplier": 0.75,
+      "quant_intel_grade": "B",
+      "quant_intel_rr": 2.76
     }
   ],
   "total_securities_analyzed": 19,

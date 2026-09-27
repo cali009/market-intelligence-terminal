@@ -79,6 +79,8 @@ def build_firebase_bundle():
         ("shap_attributions.json", "shap_attributions"),
         ("idiosyncratic_risk_matrix.json", "idiosyncratic_risk_matrix.json"),
         ("idiosyncratic_risk_matrix.json", "idiosyncratic_risk_matrix"),
+        ("quant_intel.json", "quant_intel.json"),
+        ("quant_intel.json", "quant_intel"),
     ]
 
     for src_name, dest_name in core_feeds:

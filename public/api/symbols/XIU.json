@@ -5,7 +5,7 @@
   "currency": "CAD",
   "name": "iShares S&P/TSX 60 Index ETF",
   "as_of_date": "2026-09-27",
-  "generated_at": "2026-09-27T07:18:33.367098+00:00",
+  "generated_at": "2026-09-27T20:36:40.436027+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 53.09000015258789,
@@ -355,7 +355,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 14,
     "gjr_garch_gamma": 0.16,
-    "last_updated": "2026-09-27T07:18:39.626886+00:00"
+    "last_updated": "2026-09-27T20:36:48.630565+00:00"
   },
   "conformal_bounds": {
     "symbol": "XIU",
@@ -372,7 +372,7 @@
     "adapted_alpha": 0.08,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-09-27T07:18:39.645373+00:00"
+    "calibrated_at": "2026-09-27T20:36:48.649162+00:00"
   },
   "cross_border_parity": null,
   "shap_attribution": {
@@ -1562,6 +1562,127 @@
       "volume": 5447704.0
     }
   ],
+  "quant_intel": {
+    "symbol": "XIU",
+    "exchange": "TSX",
+    "country": "CA",
+    "currency": "CAD",
+    "as_of_date": "2026-09-27",
+    "generated_at": "2026-09-27T20:36:48.675111+00:00",
+    "conviction_grade": "C",
+    "aligned_layers_count": 3,
+    "formatted_card": "TICKER: XIU\nREGIME: WEAK_BULL (VIX: Medium | Risk-ON | Rates: Paused)\nPATTERN TYPE: Archetype E: Defensive Yield & Sovereign Benchmark \u2014 Earnings-Driven\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BEARISH \u2014 Breakdown below moving average cluster; negative CMF (-0.07) and deteriorating price structure.\n  Fundamental:  8.5/10 \u2014 Broad-market benchmark index ETF; diversified institutional liquidity and systemic solvency.\n  Sentiment:    0.00 (NEUTRAL) \u2014 Routine regulatory reporting schedule; no material catalyst in last 30 days.\n  Historical:   58.2% Win Rate (10 sample size, E[R]: +0.48R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $53.01 \u2013 $53.81\n  Entry trigger:  Price holds structural pivot ($52.68) followed by volume-backed expansion above $53.01.\n  Stop loss:      $52.23 (1.5% below entry)\n  Target 1 (T1):  $53.83 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $58.39 | Est. 24 days | Take 40%\n  Target 3 (T3):  $56.29 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 4.02\n  Position size:  641 shares on $100,000 portfolio risking 1% ($499.98)\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: C-Grade\nTRADE THESIS: XIU exhibits high structural confluence with Earnings-Driven aligning above ascending moving averages. In the current WEAK_BULL macro context, measured support at $52.68 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $52.23 or two consecutive closes back below $52.68 immediately invalidates the trade.",
+    "layer_1_regime": {
+      "trend_type": "Bull",
+      "volatility_regime": "Medium (15\u201325)",
+      "liquidity_env": "Risk-ON",
+      "rate_context": "Paused",
+      "regime_state": "WEAK_BULL",
+      "regime_fit": "YES",
+      "status": "BULLISH",
+      "conviction_weight": 1.0,
+      "top_drivers": [
+        "Index trading above rising 200-day moving average (bullish trend structure)",
+        "VIX at 16.0 indicates low implied volatility / calm conditions",
+        "Yield curve positively sloped (+55 bps 10Y-2Y spread)"
+      ]
+    },
+    "layer_2_fingerprint": {
+      "symbol": "XIU",
+      "dominant_pattern": "Earnings-Driven",
+      "hurst_exponent": 0.498,
+      "hurst_class": "RANDOM_WALK",
+      "archetype_label": "Archetype E: Defensive Yield & Sovereign Benchmark",
+      "amihud_illiquidity": 0.001,
+      "pattern_logic": "Post-earnings drift stability with institutional re-accumulation baseline."
+    },
+    "layer_3_technical": {
+      "status": "BEARISH",
+      "key_reason": "Breakdown below moving average cluster; negative CMF (-0.07) and deteriorating price structure.",
+      "price_structure": "Consolidation Range / Neutral Coil",
+      "ma_stack": "Mixed Alignment (Moving average compression)",
+      "rsi_14": 46.5,
+      "macd_hist": -0.019,
+      "roc_10": -0.01,
+      "obv_trend": "Distribution / Flat OBV",
+      "rvol_20": 1.44,
+      "cmf_20": -0.065,
+      "atr_14": 0.52,
+      "atr_pct": 0.98,
+      "bb_squeeze": true,
+      "bb_bandwidth": 0.0357,
+      "support_1": 52.68,
+      "resistance_1": 53.83,
+      "resistance_2": 58.39,
+      "volume_poc": 53.01
+    },
+    "layer_4_fundamental": {
+      "score": 8.5,
+      "status": "BULLISH",
+      "key_reason": "Broad-market benchmark index ETF; diversified institutional liquidity and systemic solvency.",
+      "quality_score": 85.0,
+      "valuation_score": 60.0,
+      "roic": null,
+      "operating_margin": null,
+      "margin_trend_bps": null,
+      "debt_to_equity": null,
+      "pe_ratio": null,
+      "fcf_yield_pct": null,
+      "technical_gate_required": false
+    },
+    "layer_5_sentiment": {
+      "net_sentiment_score": 0.0,
+      "status": "NEUTRAL",
+      "key_headline": "Routine regulatory reporting schedule; no material catalyst in last 30 days.",
+      "catalyst_count": 0,
+      "risk_count": 0,
+      "weighted_catalysts": 0.0,
+      "weighted_risks": 0.0,
+      "recency_breakdown": {
+        "24h": 0,
+        "7d": 0,
+        "30d": 0,
+        "older": 0
+      },
+      "skip_triggered": false
+    },
+    "layer_6_memory": {
+      "win_rate_pct": 58.2,
+      "sample_size": 10,
+      "avg_move_pct": 7.4,
+      "false_breakout_rate_pct": 18.5,
+      "median_bars_to_target": 22,
+      "expectancy_r": 0.48,
+      "status": "BULLISH",
+      "signal_weight_multiplier": 1.0
+    },
+    "trade_plan": {
+      "entry_zone_ideal": 53.01,
+      "entry_zone_max": 53.81,
+      "entry_trigger": "Price holds structural pivot ($52.68) followed by volume-backed expansion above $53.01.",
+      "stop_loss": 52.23,
+      "stop_distance_pct": 1.47,
+      "stop_distance_dollars": 0.78,
+      "atr_stop_multiplier": 1.5,
+      "target_1": 53.83,
+      "target_1_days": 6,
+      "target_1_rr": 1.05,
+      "target_2": 58.39,
+      "target_2_days": 24,
+      "target_2_rr": 6.9,
+      "target_3": 56.29,
+      "target_3_days": 45,
+      "target_3_rr": 4.21,
+      "risk_reward_ratio": 4.02,
+      "portfolio_size": 100000.0,
+      "recommended_shares": 641,
+      "capital_at_risk": 499.98,
+      "position_value": 33979.41,
+      "portfolio_risk_pct": 0.5,
+      "invalidation_rule": "A daily closing price below $52.23 or two consecutive closes back below $52.68 immediately invalidates the trade.",
+      "trade_thesis": "XIU exhibits high structural confluence with Earnings-Driven aligning above ascending moving averages. In the current WEAK_BULL macro context, measured support at $52.68 offers asymmetric risk/reward into upper channel resistance."
+    }
+  },
   "disclaimers": {
     "canada": "STATUTORY NOTICE (CANADA): This platform provides impersonal quantitative research and decision-support data intended exclusively for self-directed investors. It does not provide personalized investment advice, financial planning, or account management services. The scores, regime classifications, indicators, and model outputs presented herein are calculated by deterministic mathematical models and rule-based algorithms without consideration of your personal financial situation, risk tolerance, or investment objectives. Past hypothetical performance or paper-trading metrics are not indicative of future returns. The platform, its operators, and its algorithms do not hold any financial interest or proprietary position in the securities analyzed unless explicitly disclosed. You are solely responsible for evaluating the merits and risks of any trade or strategy.",
     "united_states": "REGULATORY NOTICE (UNITED STATES): Content published by this system constitutes impersonal, bona fide investment research and general circulation financial commentary under the publisher exclusion of Section 202(a)(11)(D) of the Investment Advisers Act of 1940. This software is not a registered broker-dealer, investment adviser, or commodity trading advisor. No content or calculation constitutes an offer to buy or sell, or a solicitation of an offer to buy or sell, any security or derivative instrument.",

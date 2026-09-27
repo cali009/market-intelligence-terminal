@@ -5,7 +5,7 @@
   "currency": "USD",
   "name": "Apple Inc.",
   "as_of_date": "2026-09-27",
-  "generated_at": "2026-09-27T07:18:33.367098+00:00",
+  "generated_at": "2026-09-27T20:36:40.436027+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 336.0400085449219,
@@ -355,7 +355,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 26,
     "gjr_garch_gamma": 0.08,
-    "last_updated": "2026-09-27T07:18:34.231527+00:00"
+    "last_updated": "2026-09-27T20:36:41.090062+00:00"
   },
   "conformal_bounds": {
     "symbol": "AAPL",
@@ -372,7 +372,7 @@
     "adapted_alpha": 0.085,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-09-27T07:18:34.267717+00:00"
+    "calibrated_at": "2026-09-27T20:36:41.112351+00:00"
   },
   "cross_border_parity": null,
   "shap_attribution": {
@@ -1758,6 +1758,127 @@
       "volume": 29403008.0
     }
   ],
+  "quant_intel": {
+    "symbol": "AAPL",
+    "exchange": "NASDAQ",
+    "country": "US",
+    "currency": "USD",
+    "as_of_date": "2026-09-27",
+    "generated_at": "2026-09-27T20:36:41.145084+00:00",
+    "conviction_grade": "B",
+    "aligned_layers_count": 5,
+    "formatted_card": "TICKER: AAPL\nREGIME: STRONG_BULL (VIX: Medium | Risk-ON | Rates: Paused)\nPATTERN TYPE: Archetype A: Mega-Cap Tech (Gamma-Momentum) \u2014 Momentum (Trend Breakout)\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BULLISH \u2014 Stacked MAs (Bullish Stack), RSI 65.7 equilibrium, price structure holding above key support.\n  Fundamental:  7.2/10 \u2014 ROIC 16.6%, Debt/Equity 0.66, operating margin 32.6%; robust institutional quality balance sheet.\n  Sentiment:    +0.40 (BULLISH) \u2014 AAPL Form 10-Q Quarterly Report \u2014 Q/E 2026-06-27\n  Historical:   56.9% Win Rate (25 sample size, E[R]: +0.46R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $334.01 \u2013 $339.02\n  Entry trigger:  Confirmed daily close above swing resistance ($344.96) on RVOL > 1.5x with CMF > 0.05.\n  Stop loss:      $323.80 (3.1% below entry)\n  Target 1 (T1):  $344.96 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $375.18 | Est. 24 days | Take 40%\n  Target 3 (T3):  $376.91 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.88\n  Position size:  97 shares on $100,000 portfolio risking 1% ($990.37)\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: B-Grade\nTRADE THESIS: AAPL exhibits high structural confluence with Momentum (Trend Breakout) aligning above ascending moving averages. In the current STRONG_BULL macro context, measured support at $334.01 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $323.80 or two consecutive closes back below $334.01 immediately invalidates the trade.",
+    "layer_1_regime": {
+      "trend_type": "Bull",
+      "volatility_regime": "Medium (15\u201325)",
+      "liquidity_env": "Risk-ON",
+      "rate_context": "Paused",
+      "regime_state": "STRONG_BULL",
+      "regime_fit": "YES",
+      "status": "BULLISH",
+      "conviction_weight": 1.05,
+      "top_drivers": [
+        "Index trading above rising 200-day moving average (bullish trend structure)",
+        "VIX at 16.0 indicates low implied volatility / calm conditions",
+        "Yield curve positively sloped (+45 bps 10Y-2Y spread)"
+      ]
+    },
+    "layer_2_fingerprint": {
+      "symbol": "AAPL",
+      "dominant_pattern": "Momentum (Trend Breakout)",
+      "hurst_exponent": 0.474,
+      "hurst_class": "RANDOM_WALK",
+      "archetype_label": "Archetype A: Mega-Cap Tech (Gamma-Momentum)",
+      "amihud_illiquidity": 0.001,
+      "pattern_logic": "Trend-following breakout structure with persistent Hurst exponent (H > 0.50)."
+    },
+    "layer_3_technical": {
+      "status": "BULLISH",
+      "key_reason": "Stacked MAs (Bullish Stack), RSI 65.7 equilibrium, price structure holding above key support.",
+      "price_structure": "Higher Highs / Higher Lows (Uptrend)",
+      "ma_stack": "Bullish Stack (9 EMA > 21 EMA > 50 SMA > 200 SMA)",
+      "rsi_14": 65.7,
+      "macd_hist": 0.803,
+      "roc_10": 0.04,
+      "obv_trend": "Accumulation Trend (Rising OBV)",
+      "rvol_20": 0.69,
+      "cmf_20": 0.154,
+      "atr_14": 6.81,
+      "atr_pct": 2.0,
+      "bb_squeeze": false,
+      "bb_bandwidth": 0.1017,
+      "support_1": 334.01,
+      "resistance_1": 344.96,
+      "resistance_2": 375.18,
+      "volume_poc": 310.47
+    },
+    "layer_4_fundamental": {
+      "score": 7.2,
+      "status": "BULLISH",
+      "key_reason": "ROIC 16.6%, Debt/Equity 0.66, operating margin 32.6%; robust institutional quality balance sheet.",
+      "quality_score": 77.0,
+      "valuation_score": 26.0,
+      "roic": 16.65,
+      "operating_margin": 32.62,
+      "margin_trend_bps": 34.5,
+      "debt_to_equity": 0.66,
+      "pe_ratio": 168.48,
+      "fcf_yield_pct": 2.33,
+      "technical_gate_required": false
+    },
+    "layer_5_sentiment": {
+      "net_sentiment_score": 0.4,
+      "status": "BULLISH",
+      "key_headline": "AAPL Form 10-Q Quarterly Report \u2014 Q/E 2026-06-27",
+      "catalyst_count": 4,
+      "risk_count": 0,
+      "weighted_catalysts": 0.4,
+      "weighted_risks": 0.0,
+      "recency_breakdown": {
+        "24h": 0,
+        "7d": 0,
+        "30d": 0,
+        "older": 5
+      },
+      "skip_triggered": false
+    },
+    "layer_6_memory": {
+      "win_rate_pct": 56.9,
+      "sample_size": 25,
+      "avg_move_pct": 8.6,
+      "false_breakout_rate_pct": 19.4,
+      "median_bars_to_target": 18,
+      "expectancy_r": 0.46,
+      "status": "BULLISH",
+      "signal_weight_multiplier": 1.0
+    },
+    "trade_plan": {
+      "entry_zone_ideal": 334.01,
+      "entry_zone_max": 339.02,
+      "entry_trigger": "Confirmed daily close above swing resistance ($344.96) on RVOL > 1.5x with CMF > 0.05.",
+      "stop_loss": 323.8,
+      "stop_distance_pct": 3.06,
+      "stop_distance_dollars": 10.21,
+      "atr_stop_multiplier": 1.5,
+      "target_1": 344.96,
+      "target_1_days": 6,
+      "target_1_rr": 1.07,
+      "target_2": 375.18,
+      "target_2_days": 24,
+      "target_2_rr": 4.03,
+      "target_3": 376.91,
+      "target_3_days": 45,
+      "target_3_rr": 4.2,
+      "risk_reward_ratio": 2.88,
+      "portfolio_size": 100000.0,
+      "recommended_shares": 97,
+      "capital_at_risk": 990.37,
+      "position_value": 32398.97,
+      "portfolio_risk_pct": 0.99,
+      "invalidation_rule": "A daily closing price below $323.80 or two consecutive closes back below $334.01 immediately invalidates the trade.",
+      "trade_thesis": "AAPL exhibits high structural confluence with Momentum (Trend Breakout) aligning above ascending moving averages. In the current STRONG_BULL macro context, measured support at $334.01 offers asymmetric risk/reward into upper channel resistance."
+    }
+  },
   "disclaimers": {
     "canada": "STATUTORY NOTICE (CANADA): This platform provides impersonal quantitative research and decision-support data intended exclusively for self-directed investors. It does not provide personalized investment advice, financial planning, or account management services. The scores, regime classifications, indicators, and model outputs presented herein are calculated by deterministic mathematical models and rule-based algorithms without consideration of your personal financial situation, risk tolerance, or investment objectives. Past hypothetical performance or paper-trading metrics are not indicative of future returns. The platform, its operators, and its algorithms do not hold any financial interest or proprietary position in the securities analyzed unless explicitly disclosed. You are solely responsible for evaluating the merits and risks of any trade or strategy.",
     "united_states": "REGULATORY NOTICE (UNITED STATES): Content published by this system constitutes impersonal, bona fide investment research and general circulation financial commentary under the publisher exclusion of Section 202(a)(11)(D) of the Investment Advisers Act of 1940. This software is not a registered broker-dealer, investment adviser, or commodity trading advisor. No content or calculation constitutes an offer to buy or sell, or a solicitation of an offer to buy or sell, any security or derivative instrument.",

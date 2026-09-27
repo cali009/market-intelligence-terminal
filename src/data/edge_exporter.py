@@ -39,6 +39,8 @@ from src.engine.cross_border_parity import cross_border_parity_engine, DUAL_LIST
 from src.engine.cpcv_engine import cpcv_engine
 from src.engine.shap_engine import shap_engine
 from src.engine.idiosyncratic_risk import idiosyncratic_risk_engine
+from src.engine.quant_intel import quant_intel_engine
+from src.engine.quant_intel_memory import quant_intel_memory_ledger
 
 FEEDS_DIR = DATA_DIR / "feeds"
 DIST_DIR = DATA_DIR / "dist"
@@ -106,6 +108,7 @@ class EdgeExporter:
         signals_list = []
         symbol_files_count = 0
         metrics_map: Dict[str, Any] = {}
+        quant_intel_map: Dict[str, Any] = {}
 
         # Compile master news & SEC filings intelligence feed
         master_catalysts = news_engine.compile_master_catalyst_feed()
@@ -287,6 +290,15 @@ class EdgeExporter:
             risk_prof = idiosyncratic_risk_engine.evaluate_symbol_risk(sym)
             risk_dict = risk_prof.to_dict() if risk_prof else None
 
+            # Phase 22.1-22.3: QUANT INTEL High-Conviction Trade Dossier & Formatted Card
+            try:
+                qi_dossier = quant_intel_engine.evaluate_ticker(sym, as_of_dt=datetime.now(timezone.utc))
+                qi_dict = qi_dossier.to_dict()
+                quant_intel_map[sym] = qi_dict
+            except Exception as e:
+                print(f"Warning: Failed to generate Quant Intel for {sym}: {e}")
+                qi_dict = None
+
             # Add to leaderboard
             leaderboard_items.append({
                 "symbol": sym,
@@ -334,6 +346,8 @@ class EdgeExporter:
                 "shap_score": shap_rec.model_score if shap_rec else None,
                 "risk_posture": risk_prof.risk_posture if risk_prof else "NORMAL_EQUILIBRIUM",
                 "size_multiplier": risk_prof.position_size_multiplier if risk_prof else 1.0,
+                "quant_intel_grade": qi_dict["conviction_grade"] if qi_dict else "SKIP",
+                "quant_intel_rr": qi_dict["trade_plan"]["risk_reward_ratio"] if qi_dict else 0.0,
             })
 
             # Write Symbol Detail JSON (includes last 120 bars for lightweight charting)
@@ -408,6 +422,7 @@ class EdgeExporter:
                 ],
                 "catalysts_and_filings": sym_catalysts,
                 "chart_bars": chart_bars,
+                "quant_intel": qi_dict,
                 "disclaimers": {
                     "canada": CSA_31_369_GENERAL_ADVICE_DISCLAIMER,
                     "united_states": SEC_PUBLISHER_EXCLUSION_DISCLAIMER,
@@ -613,8 +628,25 @@ class EdgeExporter:
             with open(d_dir / "idiosyncratic_risk_matrix.json", "w") as f:
                 json.dump(risk_payload, f, indent=2)
 
+            # Phase 22.3: QUANT INTEL Master Intelligence Feed
+            with open(d_dir / "quant_intel.json", "w") as f:
+                json.dump(
+                    {
+                        "as_of_date": as_of_date,
+                        "generated_at": generated_at,
+                        "total_tickers": len(quant_intel_map),
+                        "a_grade_count": len([d for d in quant_intel_map.values() if d and d.get("conviction_grade") == "A"]),
+                        "b_grade_count": len([d for d in quant_intel_map.values() if d and d.get("conviction_grade") == "B"]),
+                        "c_grade_count": len([d for d in quant_intel_map.values() if d and d.get("conviction_grade") == "C"]),
+                        "skip_count": len([d for d in quant_intel_map.values() if d and d.get("conviction_grade") == "SKIP"]),
+                        "dossiers": quant_intel_map,
+                    },
+                    f,
+                    indent=2,
+                )
+
         return {
-            "dist_files": 21,
+            "dist_files": 22,
             "symbol_files": symbol_files_count,
             "total_matches": len(scanner_results),
             "total_signals": len(signals_list),
