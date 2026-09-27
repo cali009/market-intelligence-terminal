@@ -37,6 +37,11 @@ class CPCVEngine:
 
     def __init__(self):
         self._strategy_cache: Dict[str, Dict[str, Any]] = {}
+        self._feed_cache: Optional[CPCVFeed] = None
+
+    def clear_cache(self):
+        self._strategy_cache.clear()
+        self._feed_cache = None
 
     def _get_or_run_backtest(self, strategy_id: str) -> Dict[str, Any]:
         """Cache strategy backtest results in memory for rapid repeated evaluations."""
@@ -139,10 +144,14 @@ class CPCVEngine:
         k_test: int = 2,
         embargo_days: int = 5,
         fdr_q: float = 0.05,
+        force_refresh: bool = False,
     ) -> CPCVFeed:
         """
         Execute full Combinatorial Purged Cross-Validation across candidate strategies.
         """
+        if not force_refresh and self._feed_cache is not None:
+            return self._feed_cache
+
         for disc in DISCLAIMERS:
             linter.assert_clean(disc)
 
@@ -259,16 +268,18 @@ class CPCVEngine:
             calibrated_at=datetime.now(timezone.utc).isoformat(),
         )
 
-        return CPCVFeed(
+        feed = CPCVFeed(
             summary=summary,
             fdr_gating_table=fdr_table,
             cpcv_paths=cpcv_paths,
             disclaimers=DISCLAIMERS,
         )
+        self._feed_cache = feed
+        return feed
 
-    def generate_feed(self) -> CPCVFeed:
+    def generate_feed(self, force_refresh: bool = False) -> CPCVFeed:
         """Alias for static edge export pipeline."""
-        return self.run_cpcv()
+        return self.run_cpcv(force_refresh=force_refresh)
 
 
 # Global singleton instance

@@ -15,6 +15,7 @@
 | [`docs/03_quant_signals_risk.md`](docs/03_quant_signals_risk.md) | Signal philosophy + evidence base, indicator/feature spec, 8-factor scoring engine, regime detection, news intelligence engine, entry engine, exit engine, 14 scanners, risk framework, **backtesting framework**, paper trading, research governance | #6, #7, #8, #9 |
 | [`docs/04_roadmap_mvp.md`](docs/04_roadmap_mvp.md) | 12-phase roadmap (objective → DoD), team plan, dev cost, and the **prioritized Phase-1 MVP specification** with sprint plan and acceptance criteria | #15, #20 |
 | [`docs/05_zero_cost_bootstrap.md`](docs/05_zero_cost_bootstrap.md) | **The Zero-Cost Blueprint ($0/mo)**: How to run compute, data, LLMs, and storage for $0; legal boundaries (personal vs derived vs commercial); 3 bootstrap paths | Special Addendum |
+| [`docs/06_quant_intel_architecture.md`](docs/06_quant_intel_architecture.md) | **QUANT INTEL™ Architecture**: 6-Layer Confluence Synthesis, Closed-Loop Bayesian Memory, Automated Invalidation Sentinel, 1% Risk Sizer & Institutional Trade Plans | Phase 22 Deliverable |
 | [`docs/architecture.svg`](docs/architecture.svg) | High-level system architecture diagram | #3 |
 
 ## 2. The three decisions that shape everything else
@@ -61,7 +62,8 @@ Everything in this design flows from three facts established during research:
 2. **Sprint 1: COMPLETE** — Dual-market OHLCV bar ingestion engine (4,768 historical bars ingested for 19 benchmark securities), vectorized technical feature library (Moving Averages, RSI, MACD, ATR%, Bollinger Bands, RVOL, CMF, ADX), 8-factor scoring engine with factor attribution JSON, and terminal leaderboard runner.
 3. **Sprint 2: COMPLETE** — 14 Market Scanners (53 active pattern setups detected), 6-State Macro Regime Classifier (US Strong Bull 90%, CA Weak Bull 78%), and Entry/Exit Signal Zone calculation with structural stops, 1.6R/2.6R/4.0R targets, and machine-checkable invalidation predicates.
 4. **Sprint 3: COMPLETE** — AI Explanation Layer (FACT/CALCULATION/INFERENCE/UNCERTAINTY contracts with deterministic failover and numeral verification), Cloudflare Pages/R2 edge static JSON compiler (`daily_summary.json`, `leaderboard.json`, `scanners.json`, `signals.json`, plus 19 individual symbol bundles with TradingView chart bars and disclaimers), and automated master daily pipeline runner (`scripts/run_daily_pipeline.py`) executing full dual-market cycle in 2.65 seconds. All 34 tests passing.
-5. **Next Up: Sprint 4** — Next.js & Tailwind CSS Frontend Dashboard with TradingView Lightweight Charts, interactive scanners, symbol detail pages, and live paper-trading scoreboard.
+5. **Sprint 4–21: COMPLETE** — Advanced backtesting engine (`backtester.py`), Combinatorial Purged Cross-Validation (`cpcv_engine.py` with FDR control), Asset Microstructure Fingerprinting, Conformal Prediction Bounds, Cross-Border CAD/USD Parity, Idiosyncratic Pre-Flight Risk Matrix, and TAC-15 Scanners.
+6. **Phase 22: COMPLETE** — QUANT INTEL™ Institutional Confluence Engine, Closed-Loop Bayesian Memory Ledger, Automated Invalidation Sentinel, Interactive Terminal Workstation, and Comprehensive 215-Test Suite. All 215 automated tests passing cleanly.
 
 
 ## 6. Research basis (verified September 2026)
@@ -113,3 +115,40 @@ Sprint 4 is fully implemented, verified, and running live in the sandboxed previ
    - Server process running on `0.0.0.0:8000` via background daemon.
    - All 34 automated unit/integration tests passing in 2.09s (`pytest tests/ -v`).
    - Automated compliance linter passing with 0 violations across all 17 files (`scripts/run_linter.py`).
+
+---
+
+## 8. Phase 22 Completed: QUANT INTEL™ Institutional Confluence & Automated Sentinel System
+
+Phase 22 delivers the flagship **QUANT INTEL™ Decision-Support System**, unifying the entire quantitative pipeline into an institutional-grade, multi-layer confluence engine and automated invalidation sentinel:
+
+1. **6-Layer Confluence Synthesis Engine (`src/engine/quant_intel.py`)**:
+   - **Layer 1: Macro Regime**: Cross-asset macro trend, rate context, liquidity environment, and SPY/XIU benchmark fit.
+   - **Layer 2: Asset Fingerprint**: Microstructure archetype classification, Hurst exponent ($H$) via HAC variance, and Amihud liquidity.
+   - **Layer 3: Technical Signal Stack**: Multi-timeframe moving average stacks (9/21 EMA, 50/200 SMA), RSI bull zone, MACD, Chaikin Money Flow, ATR-14, and DBSCAN S/R clustering.
+   - **Layer 4: Point-In-Time Fundamentals**: 1–10 quality score (ROIC, debt-to-equity, FCF margin, valuation multiples) with mandatory volume/CMF technical confirmation gating for low-quality names.
+   - **Layer 5: Recency-Weighted NLP Sentiment**: Regulatory filings (SEC 8-K, SEDAR+) and press disclosures with exponential decay weights ($1.00 \to 0.60 \to 0.30 \to 0.10$) and material adverse cancellation triggers.
+   - **Layer 6: Historical Pattern Memory**: Persistent setup ledger tracking empirical win rates and R-multiples with $K=5$ Bayesian prior shrinkage and dynamic false breakout stop widening ($1.15\times$ if false breakout rate $> 22\%$).
+
+2. **Automated Invalidation Sentinel (`src/engine/quant_intel_sentinel.py`)**:
+   - Continuous auditing of all 19 securities against 5 non-discretionary mathematical predicates:
+     1. `STOP_LOSS_BREACH`: Fires `CRITICAL` alert with `IMMEDIATE_EXIT` when daily close penetrates structural stop loss.
+     2. `BREAKOUT_FAILURE`: Fires `WARNING` alert with `DE_RISK_50_PCT` upon 2 consecutive closes below entry support pivot.
+     3. `REGIME_DOWNGRADE`: Flags macro trend mismatch when regime shifts to Bearish or Volatile.
+     4. `ADVERSE_CATALYST`: Detects sentiment deterioration ($< -0.15$) canceling the trade thesis.
+     5. `TARGET_1_HIT_RATCHET`: Enforces systematic rule taking 40% off and ratcheting stop loss to Breakeven when Target 1 is hit.
+   - Integrated into the daily alert engine (`src/engine/alerts.py`) and live alert feed (`data/feeds/alerts.json`).
+
+3. **Closed-Loop Bayesian Memory Ledger (`src/engine/quant_intel_memory.py`)**:
+   - Persistent SQLite ledger (`quant_intel_pattern_memory`) initialized with 95 baseline setup records.
+   - Live closed-loop trade recording: dynamically reweights signal multipliers based on real-world outcomes and shrinks low-sample statistics toward archetype priors.
+
+4. **Interactive Terminal Workstation & Dossiers (`web/index.html`)**:
+   - Tab **🎯 Quant Intel Workstation** featuring interactive multi-portfolio capital sizers ($25K, $50K, $100K, $250K, $1M) recalculating shares and dollar risk in real time.
+   - Monospaced ASCII institutional card generator matching hedge fund portfolio manager one-pagers.
+   - One-click clipboard card export and slide-out institutional trade dossier drawer.
+
+5. **Comprehensive Verification & Quality Assurance**:
+   - **215 passing tests** across 33 test modules in 121 seconds (`pytest`).
+   - 100% compliance with Canadian Securities Administrators (CSA) Staff Notice 31-369 and SEC Publisher Exclusion (*Lowe v. SEC*).
+   - Zero-egress Cloudflare / Firebase distribution bundle staging 120 static edge endpoints in `public/api/`.

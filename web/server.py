@@ -38,6 +38,18 @@ class MarketIntelHandler(SimpleHTTPRequestHandler):
         self.send_response(200)
         self.end_headers()
 
+    def do_HEAD(self):
+        parsed = urllib.parse.urlparse(self.path)
+        path = parsed.path
+        if path.startswith("/api/"):
+            self._is_head = True
+            try:
+                self.do_GET()
+            finally:
+                self._is_head = False
+        else:
+            super().do_HEAD()
+
     def do_GET(self):
         parsed = urllib.parse.urlparse(self.path)
         path = parsed.path
@@ -88,7 +100,8 @@ class MarketIntelHandler(SimpleHTTPRequestHandler):
             self.send_header("Content-Type", "application/json; charset=utf-8")
             self.send_header("Content-Length", str(len(content)))
             self.end_headers()
-            self.wfile.write(content)
+            if not getattr(self, "_is_head", False):
+                self.wfile.write(content)
         except Exception as e:
             self.send_response(500)
             self.send_header("Content-Type", "application/json")

@@ -206,6 +206,10 @@ class BacktestEngine:
 
     def __init__(self, config: Optional[BacktestConfig] = None):
         self.config = config or BacktestConfig()
+        self._cache: Dict[Tuple[str, Optional[str], Optional[str]], Dict[str, Any]] = {}
+
+    def clear_cache(self):
+        self._cache.clear()
 
     def get_strategy_registry(self) -> Dict[str, Dict[str, Any]]:
         return self.STRATEGY_REGISTRY
@@ -215,10 +219,16 @@ class BacktestEngine:
         strategy_id: str,
         start_date: Optional[str] = None,
         end_date: Optional[str] = None,
+        force_refresh: bool = False,
     ) -> Dict[str, Any]:
         """
         Executes event-driven walk-forward backtest for a registered strategy.
         """
+        cache_key = (strategy_id, start_date, end_date)
+        if not force_refresh and cache_key in self._cache:
+            import copy
+            return copy.deepcopy(self._cache[cache_key])
+
         # 1. Load securities and historical daily price bars
         securities = db.execute_query(
             "SELECT security_id, symbol, exchange, country, currency FROM security WHERE is_active = 1;"
@@ -662,7 +672,7 @@ class BacktestEngine:
                     unrealized_equity_usd += (t.entry_price_usd_net * t.shares)
 
             # Phase 20.3: Institutional Cash Sweep Yield Attribution
-            # Daily risk-free sovereign yield (SOFR/CORRA) credited on uninvested cash balance
+            # Daily sovereign benchmark yield (SOFR/CORRA) credited on uninvested cash balance
             daily_rf_yield = (1.0 + self.config.annual_sovereign_benchmark_yield) ** (1.0 / 252.0) - 1.0
             daily_cash_interest = max(0.0, cash_usd) * daily_rf_yield
             cash_usd += daily_cash_interest
@@ -707,7 +717,7 @@ class BacktestEngine:
             "universe": "US + Canada Core Liquid",
         })
 
-        return {
+        result = {
             "strategy_id": strategy_id,
             "strategy_name": reg_info["strategy_name"],
             "status": reg_info["status"],
@@ -747,6 +757,9 @@ class BacktestEngine:
             "statutory_disclaimer": HYPOTHETICAL_BACKTEST_DISCLAIMER,
             "disclaimer_version": DISCLAIMER_VERSION,
         }
+        self._cache[cache_key] = result
+        import copy
+        return copy.deepcopy(result)
 
     def _evaluate_signal_predicate(self, strategy_id: str, bar: pd.Series) -> bool:
         """

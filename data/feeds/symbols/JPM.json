@@ -5,7 +5,7 @@
   "currency": "USD",
   "name": "JPMorgan Chase & Co.",
   "as_of_date": "2026-09-27",
-  "generated_at": "2026-09-27T21:24:06.506511+00:00",
+  "generated_at": "2026-09-27T22:21:25.761502+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 340.7650146484375,
@@ -359,7 +359,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 14,
     "gjr_garch_gamma": 0.24,
-    "last_updated": "2026-09-27T21:24:08.559729+00:00"
+    "last_updated": "2026-09-27T22:21:27.805705+00:00"
   },
   "conformal_bounds": {
     "symbol": "JPM",
@@ -376,7 +376,7 @@
     "adapted_alpha": 0.235,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-09-27T21:24:08.576320+00:00"
+    "calibrated_at": "2026-09-27T22:21:27.823029+00:00"
   },
   "cross_border_parity": null,
   "shap_attribution": {
@@ -1580,7 +1580,7 @@
     "country": "US",
     "currency": "USD",
     "as_of_date": "2026-09-27",
-    "generated_at": "2026-09-27T21:24:08.597680+00:00",
+    "generated_at": "2026-09-27T22:21:27.846511+00:00",
     "conviction_grade": "SKIP",
     "aligned_layers_count": 2,
     "formatted_card": "TICKER: JPM\nREGIME: STRONG_BULL (VIX: Medium | Risk-ON | Rates: Paused)\nPATTERN TYPE: Archetype C: Chartered Banks (Regulated Yield-Drift) \u2014 Institutional Accumulation\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    NEUTRAL \u2014 Consolidation near moving averages; RSI 41.7 with RVOL at 1.29x awaiting directional catalyst.\n  Fundamental:  6.0/10 \u2014 Stable financial quality (Score 6.0/10); P/E 43.69x balanced by operational cash flow.\n  Sentiment:    0.00 (NEUTRAL) \u2014 Routine regulatory reporting schedule; no material catalyst in last 30 days.\n  Historical:   61.5% Win Rate (25 sample size, E[R]: +0.58R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $345.98 \u2013 $351.17\n  Entry trigger:  Volume POC reclaim ($355.29) with Chaikin Money Flow sustaining above +0.08.\n  Stop loss:      $335.25 (3.1% below entry)\n  Target 1 (T1):  $358.86 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $372.81 | Est. 24 days | Take 40%\n  Target 3 (T3):  $391.05 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.32\n  Position size:  0 shares on $100,000 portfolio risking 1% ($0.00)\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: SKIP-Grade\nTRADE THESIS: JPM exhibits high structural confluence with Institutional Accumulation aligning above ascending moving averages. In the current STRONG_BULL macro context, measured support at $340.98 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $335.25 or two consecutive closes back below $340.98 immediately invalidates the trade.",
