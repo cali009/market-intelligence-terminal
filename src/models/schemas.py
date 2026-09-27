@@ -1028,6 +1028,63 @@ class MetaLabelModelFeed(BaseModel):
         return self.model_dump()
 
 
+# ==========================================
+# PHASE 23.3: META-LABEL GATING BACKTEST COMPARISON SCHEMAS
+# ==========================================
+
+
+class GatedTradeAuditRecord(BaseModel):
+    symbol: str
+    signal_date: str
+    entry_date: str
+    meta_probability: float
+    gating_action: str
+    size_multiplier: float
+    primary_driver: str
+    baseline_exit_reason: str
+    baseline_net_pnl_usd: float
+    baseline_return_pct: float
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class MetaBacktestComparison(BaseModel):
+    baseline_strategy_id: str
+    gated_strategy_id: str
+    baseline_trades: int
+    gated_trades: int
+    gated_suppressed_trades: int
+    baseline_return_pct: float
+    gated_return_pct: float
+    return_differential_pct: float
+    baseline_sharpe: float
+    gated_sharpe: float
+    sharpe_differential: float
+    baseline_max_drawdown_pct: float
+    gated_max_drawdown_pct: float
+    max_drawdown_reduction_pct: float
+    baseline_win_rate_pct: float
+    gated_win_rate_pct: float
+    baseline_profit_factor: float
+    gated_profit_factor: float
+    gated_false_breakouts_avoided: int
+    gated_trades_audit: List[GatedTradeAuditRecord]
+    generated_at: str
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class MetaLabelBacktestFeed(BaseModel):
+    comparison: MetaBacktestComparison
+    disclaimers: List[str]
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+
 
 
 

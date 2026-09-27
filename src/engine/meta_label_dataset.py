@@ -114,6 +114,128 @@ class MetaLabelDatasetEngine:
         except Exception:
             return 1.50
 
+    @classmethod
+    def compute_feature_vector_for_bar(
+        cls,
+        symbol: str,
+        df_s: pd.DataFrame,
+        row_idx: int,
+        spy_df: Optional[pd.DataFrame] = None,
+        fund_q_map: Optional[Dict[str, float]] = None,
+        fund_v_map: Optional[Dict[str, float]] = None,
+        yield_spread: float = 0.45,
+    ) -> Dict[str, float]:
+        """
+        Computes point-in-time 20-factor feature vector for a security at bar row_idx
+        (strictly as of bar row_idx close, zero look-ahead).
+        """
+        if row_idx < 0 or row_idx >= len(df_s):
+            return {}
+
+        row = df_s.iloc[row_idx]
+        c_val = float(row["close"])
+
+        # Momentum calculations
+        p_126 = float(df_s["close"].iloc[max(0, row_idx - 126)])
+        mom_6m = (c_val / p_126) - 1.0 if row_idx >= 126 and p_126 > 0 else 0.0
+
+        p_63 = float(df_s["close"].iloc[max(0, row_idx - 63)])
+        mom_3m = (c_val / p_63) - 1.0 if row_idx >= 63 and p_63 > 0 else 0.0
+
+        p_21 = float(df_s["close"].iloc[max(0, row_idx - 21)])
+        mom_1m = (c_val / p_21) - 1.0 if row_idx >= 21 and p_21 > 0 else 0.0
+
+        p_252 = float(df_s["close"].iloc[max(0, row_idx - 252)])
+        mom_12_1m = ((p_21 / p_252) - 1.0) if row_idx >= 252 and p_252 > 0 else 0.0
+
+        # Technical indicators
+        rsi_14 = float(row.get("rsi_14", 50.0))
+        if math.isnan(rsi_14):
+            rsi_14 = 50.0
+
+        cmf_20 = float(row.get("cmf_20", 0.0))
+        if math.isnan(cmf_20):
+            cmf_20 = 0.0
+
+        rvol_20 = float(row.get("rvol_20", 1.0))
+        if math.isnan(rvol_20):
+            rvol_20 = 1.0
+
+        atr_pct = float(row.get("atr_pct", 2.0))
+        if math.isnan(atr_pct):
+            atr_pct = 2.0
+
+        bb_bandwidth = float(row.get("bb_bandwidth", 5.0))
+        if math.isnan(bb_bandwidth):
+            bb_bandwidth = 5.0
+
+        # Moving average distances
+        sma50 = float(row.get("sma_50", c_val))
+        dist_sma50 = ((c_val / sma50) - 1.0) if sma50 and not math.isnan(sma50) and sma50 > 0 else 0.0
+
+        sma200 = float(row.get("sma_200", c_val))
+        dist_sma200 = ((c_val / sma200) - 1.0) if sma200 and not math.isnan(sma200) and sma200 > 0 else 0.0
+
+        prev_sma200 = float(df_s["sma_200"].iloc[max(0, row_idx - 20)]) if "sma_200" in df_s else sma200
+        sma200_slope = (((sma200 / prev_sma200) - 1.0) * 100.0) if prev_sma200 and not math.isnan(prev_sma200) and prev_sma200 > 0 else 0.0
+
+        # 52w high proximity
+        high_252 = float(df_s["high"].iloc[max(0, row_idx - 252):row_idx + 1].max())
+        prox_52w = ((c_val / high_252) - 1.0) if high_252 and not math.isnan(high_252) and high_252 > 0 else 0.0
+
+        # Non-linear microstructural features
+        s_window = df_s["close"].iloc[max(0, row_idx - 120):row_idx + 1].values
+        h_val = cls._compute_hurst(s_window)
+
+        h_sub = df_s["high"].iloc[max(0, row_idx - 30):row_idx + 1].values
+        l_sub = df_s["low"].iloc[max(0, row_idx - 30):row_idx + 1].values
+        c_sub = df_s["close"].iloc[max(0, row_idx - 30):row_idx + 1].values
+        fdi_val = cls._compute_fractal_dimension(h_sub, l_sub, c_sub)
+
+        # Amihud illiquidity
+        p_20 = df_s["close"].iloc[max(0, row_idx - 20):row_idx + 1].values
+        v_20 = df_s["volume"].iloc[max(0, row_idx - 20):row_idx + 1].values if "volume" in df_s else np.ones_like(p_20)
+        r_20 = np.abs(np.diff(p_20) / p_20[:-1]) if len(p_20) > 1 else np.array([0.0])
+        dollar_vol = (p_20[1:] * v_20[1:]) if len(p_20) > 1 else np.array([1.0])
+        amihud = float(np.mean(r_20 / np.maximum(1e-4, dollar_vol)) * 1e6) if len(dollar_vol) > 0 else 0.00003
+
+        # Macro benchmark
+        regime_score = 1.0
+        if spy_df is not None and not spy_df.empty:
+            t_sig = row["trading_date"]
+            s_rows = spy_df[spy_df["trading_date"] <= t_sig]
+            if not s_rows.empty:
+                s_last = s_rows.iloc[-1]
+                s_c = float(s_last["close"])
+                s_ma = float(s_last.get("sma_200", s_c))
+                regime_score = 1.0 if s_c > s_ma else 0.0
+
+        q_score = (fund_q_map.get(symbol, 50.0)) if fund_q_map else 50.0
+        v_score = (fund_v_map.get(symbol, 50.0)) if fund_v_map else 50.0
+
+        return {
+            "mom_6m": round(float(mom_6m), 4),
+            "mom_3m": round(float(mom_3m), 4),
+            "mom_1m": round(float(mom_1m), 4),
+            "mom_12_1m": round(float(mom_12_1m), 4),
+            "rsi_14": round(float(rsi_14), 2),
+            "cmf_20": round(float(cmf_20), 4),
+            "rvol_20": round(float(rvol_20), 2),
+            "atr_pct": round(float(atr_pct), 2),
+            "bb_bandwidth": round(float(bb_bandwidth), 2),
+            "dist_sma50": round(float(dist_sma50), 4),
+            "dist_sma200": round(float(dist_sma200), 4),
+            "sma200_slope": round(float(sma200_slope), 4),
+            "prox_52w": round(float(prox_52w), 4),
+            "hurst_exponent": round(float(h_val), 4),
+            "fractal_dimension": round(float(fdi_val), 4),
+            "amihud_illiquidity": round(float(amihud), 6),
+            "quality_score": round(float(q_score), 1),
+            "valuation_score": round(float(v_score), 1),
+            "macro_regime_score": round(float(regime_score), 2),
+            "yield_spread_10y_2y": round(float(yield_spread), 2),
+        }
+
     def generate_dataset(self, force_refresh: bool = False) -> List[TripleBarrierRecord]:
         """
         Builds complete triple-barrier labeled event records across the historical dataset.
@@ -381,36 +503,39 @@ class MetaLabelDatasetEngine:
         conn = db.get_connection()
         try:
             cur = conn.cursor()
-            for r in records:
-                cur.execute(
-                    """
-                    INSERT OR REPLACE INTO meta_label_dataset (
-                        event_id, symbol, signal_date, entry_date, entry_price,
-                        upper_barrier, lower_barrier, exit_date, exit_price,
-                        exit_reason, holding_days, return_pct, r_multiple,
-                        label, partition, features_json, created_at
-                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
-                    """,
-                    (
-                        r.event_id,
-                        r.symbol,
-                        r.signal_date,
-                        r.entry_date,
-                        r.entry_price,
-                        r.upper_barrier,
-                        r.lower_barrier,
-                        r.exit_date,
-                        r.exit_price,
-                        r.exit_reason,
-                        r.holding_days,
-                        r.return_pct,
-                        r.r_multiple,
-                        r.label,
-                        r.partition,
-                        json.dumps(r.features),
-                        now_str,
-                    ),
+            rows = [
+                (
+                    r.event_id,
+                    r.symbol,
+                    r.signal_date,
+                    r.entry_date,
+                    r.entry_price,
+                    r.upper_barrier,
+                    r.lower_barrier,
+                    r.exit_date,
+                    r.exit_price,
+                    r.exit_reason,
+                    r.holding_days,
+                    r.return_pct,
+                    r.r_multiple,
+                    r.label,
+                    r.partition,
+                    json.dumps(r.features),
+                    now_str,
                 )
+                for r in records
+            ]
+            cur.executemany(
+                """
+                INSERT OR REPLACE INTO meta_label_dataset (
+                    event_id, symbol, signal_date, entry_date, entry_price,
+                    upper_barrier, lower_barrier, exit_date, exit_price,
+                    exit_reason, holding_days, return_pct, r_multiple,
+                    label, partition, features_json, created_at
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+                """,
+                rows,
+            )
             conn.commit()
         finally:
             conn.close()
@@ -463,6 +588,16 @@ class MetaLabelDatasetEngine:
 
     def export_feed(self, target_dir: Optional[Path] = None) -> Path:
         """Exports the complete feed file to data/feeds/meta_label_matrix.json (or specified dir)."""
+        base_dir = target_dir or FEEDS_DIR
+        out_path = base_dir / "meta_label_matrix.json"
+        master_path = FEEDS_DIR / "meta_label_matrix.json"
+
+        if target_dir is not None and target_dir != FEEDS_DIR and master_path.exists():
+            import shutil
+            out_path.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(master_path, out_path)
+            return out_path
+
         records = self.generate_dataset()
         summary = self.get_summary(records)
 
@@ -472,8 +607,6 @@ class MetaLabelDatasetEngine:
             disclaimers=DISCLAIMERS,
         )
 
-        base_dir = target_dir or FEEDS_DIR
-        out_path = base_dir / "meta_label_matrix.json"
         out_path.parent.mkdir(parents=True, exist_ok=True)
         with open(out_path, "w", encoding="utf-8") as f:
             json.dump(feed.to_dict(), f, indent=2)

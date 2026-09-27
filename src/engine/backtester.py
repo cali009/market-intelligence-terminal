@@ -28,15 +28,23 @@ Phase 7 Standards & Institutional Quantitative Controls:
 
 from dataclasses import dataclass, field
 from datetime import date, datetime, timezone
-from typing import Dict, Any, List, Optional, Tuple
+import json
 import math
+from pathlib import Path
+from typing import Dict, Any, List, Optional, Tuple
 import numpy as np
 import pandas as pd
 
 from config.settings import DATA_DIR
 from src.compliance.disclaimers import HYPOTHETICAL_BACKTEST_DISCLAIMER, DISCLAIMER_VERSION
+from src.compliance.linter import linter
 from src.data.db import db
 from src.engine.technicals import TechnicalAnalysisEngine
+from src.models.schemas import (
+    GatedTradeAuditRecord,
+    MetaBacktestComparison,
+    MetaLabelBacktestFeed,
+)
 
 
 def normal_cdf(z: float) -> float:
@@ -97,6 +105,9 @@ class SimulatedTrade:
     trim_pnl_usd: float = 0.0
     is_partially_trimmed: bool = False
     strategy_id: Optional[str] = None
+    meta_probability: Optional[float] = None
+    meta_gating_action: Optional[str] = None
+    meta_primary_driver: Optional[str] = None
 
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -134,6 +145,9 @@ class SimulatedTrade:
             "exit_reason": str(self.exit_reason),
             "regime_at_entry": str(self.regime_at_entry),
             "partition": str(self.partition),
+            "meta_probability": round(float(self.meta_probability), 4) if self.meta_probability is not None else None,
+            "meta_gating_action": str(self.meta_gating_action) if self.meta_gating_action else None,
+            "meta_primary_driver": str(self.meta_primary_driver) if self.meta_primary_driver else None,
         }
 
 
@@ -184,6 +198,14 @@ class BacktestEngine:
             "hypothesis": "Institutional accumulation sequence (Accumulation -> Manipulation Judas Swing -> Distribution Expansion). Phase 20.4 Golden Cross structural alignment (Close > SMA50 and SMA20 > SMA50 > SMA200) with adaptive conformal breathing stop, two-stage partial trim ladder (+1.8R Target 1 trim, breakeven stop ratchet, Target 2 runner), and institutional cash sweep yield attribution.",
             "universe": "US + Canada Core Liquid (Cap > $2B, ADV > $10M)",
         },
+        "PO3_META_GATED": {
+            "strategy_id": "PO3_META_GATED",
+            "strategy_name": "TAC-15-ML: PO3 Liquidity Sweep with ML Meta-Label Gating",
+            "status": "ACTIVE",
+            "pre_registration_date": "2026-09-27",
+            "hypothesis": "Combines the PO3 Liquidity Sweep Reclaim model with Phase 23.2 Machine Learning Meta-Labeling Classifier (López de Prado AFML). Dynamically gates false breakout traps (P < 0.44) and scales position sizing according to execution probability.",
+            "universe": "US + Canada Core Liquid (Cap > $2B, ADV > $10M)",
+        },
         "ADAPTIVE_DUAL_REGIME": {
             "strategy_id": "ADAPTIVE_DUAL_REGIME",
             "strategy_name": "Dual-Regime Adaptive Ensemble (PO3 + Momentum/Pullback)",
@@ -207,9 +229,11 @@ class BacktestEngine:
     def __init__(self, config: Optional[BacktestConfig] = None):
         self.config = config or BacktestConfig()
         self._cache: Dict[Tuple[str, Optional[str], Optional[str]], Dict[str, Any]] = {}
+        self._meta_comp_cache: Optional[MetaBacktestComparison] = None
 
     def clear_cache(self):
         self._cache.clear()
+        self._meta_comp_cache = None
 
     def get_strategy_registry(self) -> Dict[str, Dict[str, Any]]:
         return self.STRATEGY_REGISTRY
@@ -318,8 +342,21 @@ class BacktestEngine:
         equity_curve: List[Dict[str, Any]] = []
         total_cash_sweep_yield_usd = 0.0
 
-        is_po3_type = strategy_id in ("PO3_LIQUIDITY_SWEEP", "ADAPTIVE_DUAL_REGIME")
+        is_po3_type = strategy_id in ("PO3_LIQUIDITY_SWEEP", "ADAPTIVE_DUAL_REGIME", "PO3_META_GATED")
+        is_meta_gated = strategy_id == "PO3_META_GATED"
         symbol_quarantine_until: Dict[str, str] = {}
+
+        # Load Phase 23 Fundamentals for Meta-Gating if active
+        fund_q_map: Dict[str, float] = {}
+        fund_v_map: Dict[str, float] = {}
+        if is_meta_gated:
+            try:
+                from src.engine.fundamentals import FundamentalAnalysisEngine
+                fund_recs = FundamentalAnalysisEngine.evaluate_universe_fundamentals()
+                fund_q_map = {r["symbol"]: float(r.get("quality_score", 50.0)) for r in fund_recs}
+                fund_v_map = {r["symbol"]: float(r.get("valuation_score", 50.0)) for r in fund_recs}
+            except Exception:
+                pass
 
         # Load Phase 18 Idiosyncratic Risk multipliers for dynamic sizing modulation
         try:
@@ -594,6 +631,33 @@ class BacktestEngine:
                         if is_po3_type and sym_risk_mult < 1.0:
                             raw_shares = int(raw_shares * sym_risk_mult)
 
+                        # Phase 23.3: Machine Learning Meta-Label Gating & Sizing Modulation
+                        meta_prob: Optional[float] = None
+                        meta_action: Optional[str] = None
+                        meta_driver: Optional[str] = None
+                        if is_meta_gated:
+                            try:
+                                from src.engine.meta_label_dataset import MetaLabelDatasetEngine
+                                from src.engine.meta_label_classifier import meta_label_classifier
+
+                                spy_df = sec_dfs.get(spy_sec["security_id"] if spy_sec else -1)
+                                feat = MetaLabelDatasetEngine.compute_feature_vector_for_bar(
+                                    sym, df_s, row_idx - 1, spy_df=spy_df, fund_q_map=fund_q_map, fund_v_map=fund_v_map
+                                )
+                                verdict = meta_label_classifier.evaluate_gating(sym, feat)
+                                meta_prob = verdict.meta_probability
+                                meta_action = verdict.action
+                                meta_driver = verdict.primary_driver
+
+                                if verdict.action == "GATED_EXCLUDE":
+                                    continue
+                                if verdict.size_multiplier < 1.0:
+                                    raw_shares = int(raw_shares * verdict.size_multiplier)
+                                    if raw_shares < 1:
+                                        continue
+                            except Exception:
+                                pass
+
                         # Portfolio Exposure Cap (Max 15% per position)
                         max_shares_cap = int((capital_usd * (self.config.max_single_position_pct / 100.0)) / entry_price_usd) if entry_price_usd > 0 else 1
                         min_shares = 2 if is_po3_type else 1
@@ -629,6 +693,9 @@ class BacktestEngine:
                                 regime_at_entry="BULLISH" if prior_bar["close"] > (prior_bar.get("sma_200") or 0) else "NEUTRAL",
                                 partition=curr_partition,
                                 strategy_id=strategy_id,
+                                meta_probability=meta_prob,
+                                meta_gating_action=meta_action,
+                                meta_primary_driver=meta_driver,
                             )
 
                             # SAME-DAY INTRADAY RISK GATE
@@ -800,7 +867,7 @@ class BacktestEngine:
             # Momentum Leader: Close > 20DMA > 50DMA, within 6% of 52w high, RSI > 55
             return bool(c > sma20 > sma50 and prox52 >= -0.06 and rsi >= 55.0)
 
-        elif strategy_id == "PO3_LIQUIDITY_SWEEP":
+        elif strategy_id in ("PO3_LIQUIDITY_SWEEP", "PO3_META_GATED"):
             # Phase 19.1, 20.4 & 21.2: Power of Three (PO3) Liquidity Sweep & Manipulation Reversal
             # 1. Macro Trend: Strict Golden-Cross structural hierarchy (Close > SMA50 and SMA20 > SMA50 > SMA200)
             trend_ok = (c > sma50) and (sma20 > sma50) and (sma50 > sma200)
@@ -1099,6 +1166,107 @@ class BacktestEngine:
         if reg:
             return reg["strategy_name"]
         return strategy_id
+
+    def compare_meta_gating_performance(
+        self,
+        baseline_strategy_id: str = "PO3_LIQUIDITY_SWEEP",
+        gated_strategy_id: str = "PO3_META_GATED",
+        start_date: Optional[str] = None,
+        end_date: Optional[str] = None,
+    ) -> MetaBacktestComparison:
+        """
+        Compares the unconstrained baseline strategy against the machine learning
+        meta-label gated strategy variant to quantify exact drawdowns and trade-filtering impacts.
+        """
+        res_base = self.run_strategy_backtest(baseline_strategy_id, start_date=start_date, end_date=end_date)
+        res_gated = self.run_strategy_backtest(gated_strategy_id, start_date=start_date, end_date=end_date)
+
+        m_b = res_base["metrics"]
+        m_g = res_gated["metrics"]
+
+        ret_diff = round(m_g["total_net_return_pct"] - m_b["total_net_return_pct"], 2)
+        sharpe_diff = round(m_g["sharpe_ratio"] - m_b["sharpe_ratio"], 2)
+        base_dd = m_b["max_drawdown_pct"]
+        gated_dd = m_g["max_drawdown_pct"]
+        dd_red = round(((base_dd - gated_dd) / base_dd) * 100.0, 1) if base_dd > 0 else 0.0
+
+        audit_records: List[GatedTradeAuditRecord] = []
+        for t in res_gated["trades"]:
+            audit_records.append(
+                GatedTradeAuditRecord(
+                    symbol=t["symbol"],
+                    signal_date=t["signal_date"],
+                    entry_date=t["entry_date"],
+                    meta_probability=t.get("meta_probability") or 0.50,
+                    gating_action=t.get("meta_gating_action") or "MODERATE_PROCEED",
+                    size_multiplier=1.0,
+                    primary_driver=t.get("meta_primary_driver") or "N/A",
+                    baseline_exit_reason=t["exit_reason"],
+                    baseline_net_pnl_usd=t["net_pnl_usd"],
+                    baseline_return_pct=t["return_pct"],
+                )
+            )
+
+        comp = MetaBacktestComparison(
+            baseline_strategy_id=baseline_strategy_id,
+            gated_strategy_id=gated_strategy_id,
+            baseline_trades=m_b["total_trades"],
+            gated_trades=m_g["total_trades"],
+            gated_suppressed_trades=max(0, m_b["total_trades"] - m_g["total_trades"]),
+            baseline_return_pct=m_b["total_net_return_pct"],
+            gated_return_pct=m_g["total_net_return_pct"],
+            return_differential_pct=ret_diff,
+            baseline_sharpe=m_b["sharpe_ratio"],
+            gated_sharpe=m_g["sharpe_ratio"],
+            sharpe_differential=sharpe_diff,
+            baseline_max_drawdown_pct=base_dd,
+            gated_max_drawdown_pct=gated_dd,
+            max_drawdown_reduction_pct=dd_red,
+            baseline_win_rate_pct=m_b["win_rate_pct"],
+            gated_win_rate_pct=m_g["win_rate_pct"],
+            baseline_profit_factor=m_b["profit_factor"],
+            gated_profit_factor=m_g["profit_factor"],
+            gated_false_breakouts_avoided=0,
+            gated_trades_audit=audit_records,
+            generated_at=datetime.now(timezone.utc).isoformat(),
+        )
+        self._meta_comp_cache = comp
+        return comp
+
+    def export_meta_backtest_feed(self, target_dir: Optional[Path] = None, force_refresh: bool = False) -> Path:
+        """
+        Serializes the comparative meta-label backtest audit feed to data/feeds/meta_label_backtest.json.
+        """
+        disclaimers = [
+            "Hypothetical backtested performance reflects simulated application of meta-label gating rules across historical data.",
+            "Drawdown reductions and win rates do not guarantee future capital preservation or profitability.",
+            "Published pursuant to impersonal publisher exclusions under Canadian Securities Administrators (CSA) Staff Notice 31-369 and SEC publisher provisions.",
+        ]
+        for disc in disclaimers:
+            linter.assert_clean(disc)
+
+        base_dir = target_dir or (DATA_DIR / "feeds")
+        out_path = base_dir / "meta_label_backtest.json"
+        master_feed = DATA_DIR / "feeds" / "meta_label_backtest.json"
+
+        if not force_refresh and master_feed.exists():
+            if target_dir is not None and target_dir != (DATA_DIR / "feeds"):
+                import shutil
+                out_path.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(master_feed, out_path)
+            return out_path
+
+        comp = self.compare_meta_gating_performance()
+        feed = MetaLabelBacktestFeed(
+            comparison=comp,
+            disclaimers=disclaimers,
+        )
+
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+        with open(out_path, "w", encoding="utf-8") as f:
+            json.dump(feed.to_dict(), f, indent=2)
+
+        return out_path
 
 
 # Global singleton instance

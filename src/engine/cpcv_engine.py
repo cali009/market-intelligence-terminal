@@ -13,12 +13,14 @@ Compliance: Impersonal quantitative research only (CSA Staff Notice 31-369 / SEC
 """
 
 import itertools
+import json
 import math
 from datetime import datetime, timezone
 from typing import Dict, List, Optional, Tuple, Any
 import numpy as np
 import pandas as pd
 
+from config.settings import DATA_DIR
 from src.compliance.linter import linter
 from src.engine.backtester import backtest_engine
 from src.models.schemas import FDRGatingRecord, CPCVPathRecord, CPCVValidationSummary, CPCVFeed
@@ -46,6 +48,17 @@ class CPCVEngine:
     def _get_or_run_backtest(self, strategy_id: str) -> Dict[str, Any]:
         """Cache strategy backtest results in memory for rapid repeated evaluations."""
         if strategy_id not in self._strategy_cache:
+            bt_file = DATA_DIR / "feeds" / "backtests.json"
+            if bt_file.exists():
+                try:
+                    with open(bt_file, "r", encoding="utf-8") as f:
+                        data = json.load(f)
+                        strats = data.get("strategies", {})
+                        if strategy_id in strats:
+                            self._strategy_cache[strategy_id] = strats[strategy_id]
+                            return self._strategy_cache[strategy_id]
+                except Exception:
+                    pass
             self._strategy_cache[strategy_id] = backtest_engine.run_strategy_backtest(strategy_id)
         return self._strategy_cache[strategy_id]
 

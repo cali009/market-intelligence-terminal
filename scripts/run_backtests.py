@@ -69,10 +69,11 @@ def run_all_backtests():
     for d in [FEEDS_DIR, DIST_DIR]:
         with open(d / "backtests.json", "w") as f:
             json.dump(bundle, f, indent=2)
+        backtest_engine.export_meta_backtest_feed(d)
 
     total_time = time.monotonic() - start_time
     print(f"\n{'='*95}")
-    print(f" BACKTESTING COMPLETE: 4 strategies evaluated in {total_time:.2f} seconds.")
+    print(f" BACKTESTING COMPLETE: {len(strategies)} strategies evaluated in {total_time:.2f} seconds.")
     print(f" Performance bundle saved to data/feeds/backtests.json and data/dist/backtests.json.")
     print(f"{'='*95}\n")
 

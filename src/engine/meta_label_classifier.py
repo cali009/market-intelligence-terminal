@@ -214,14 +214,22 @@ class MetaLabelClassifierEngine:
         """
         Serializes model metrics and feature importance feed to data/feeds/meta_label_model.json.
         """
+        base_dir = target_dir or FEEDS_DIR
+        out_path = base_dir / "meta_label_model.json"
+        master_path = FEEDS_DIR / "meta_label_model.json"
+
+        if target_dir is not None and target_dir != FEEDS_DIR and master_path.exists():
+            import shutil
+            out_path.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(master_path, out_path)
+            return out_path
+
         metrics = self.train_model()
         feed = MetaLabelModelFeed(
             metrics=metrics,
             disclaimers=DISCLAIMERS,
         )
 
-        base_dir = target_dir or FEEDS_DIR
-        out_path = base_dir / "meta_label_model.json"
         out_path.parent.mkdir(parents=True, exist_ok=True)
         with open(out_path, "w", encoding="utf-8") as f:
             json.dump(feed.to_dict(), f, indent=2)

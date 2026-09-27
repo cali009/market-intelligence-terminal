@@ -85,6 +85,8 @@ def build_firebase_bundle():
         ("meta_label_matrix.json", "meta_label_matrix"),
         ("meta_label_model.json", "meta_label_model.json"),
         ("meta_label_model.json", "meta_label_model"),
+        ("meta_label_backtest.json", "meta_label_backtest.json"),
+        ("meta_label_backtest.json", "meta_label_backtest"),
     ]
 
     for src_name, dest_name in core_feeds:
