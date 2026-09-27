@@ -493,31 +493,34 @@ class MarketScanners:
             )
 
         # 15. TAC-15: PO3 Liquidity Sweep & Manipulation Reversal
-        bar_range = max(0.01, high - low)
-        open_p = float(metrics.get("open") or close)
-        lower_wick = min(open_p, close) - low
-        wick_ratio = lower_wick / bar_range
-        close_loc = (close - low) / bar_range
-        bb_l_val = bb_lower if bb_lower else (close * 0.95)
+        # Phase 19.3: Single-stock idiosyncratic focus (exclude macro index ETFs) and volatility blowout gate (atr_pct <= 3.5%)
+        atr_pct_val = float(metrics.get("atr_pct") or 0.0)
+        if sym not in ("SPY", "QQQ", "XIU") and atr_pct_val <= 3.5:
+            bar_range = max(0.01, high - low)
+            open_p = float(metrics.get("open") or close)
+            lower_wick = min(open_p, close) - low
+            wick_ratio = lower_wick / bar_range
+            close_loc = (close - low) / bar_range
+            bb_l_val = bb_lower if bb_lower else (close * 0.95)
 
-        is_sweep = (low <= sma_20 * 1.005) or (low <= bb_l_val * 1.01) or (low <= sma_50 * 1.005)
-        is_rejection = (wick_ratio >= 0.25) and (close_loc >= 0.48) and (close >= open_p * 0.995)
-        is_confluence = (40.0 <= rsi <= 66.0) and (rvol >= 0.90 or cmf >= -0.05) and (prox_52w >= -0.18)
+            is_sweep = (low <= sma_20 * 1.005) or (low <= bb_l_val * 1.01) or (low <= sma_50 * 1.005)
+            is_rejection = (wick_ratio >= 0.25) and (close_loc >= 0.48) and (close >= open_p * 0.995)
+            is_confluence = (40.0 <= rsi <= 66.0) and (rvol >= 0.90 or cmf >= -0.05) and (prox_52w >= -0.18)
 
-        if is_sweep and is_rejection and is_confluence:
-            matches.append(
-                ScannerMatch(
-                    scanner_id="PO3_LIQUIDITY_SWEEP",
-                    scanner_name="TAC-15: PO3 Liquidity Sweep & Manipulation Reversal",
-                    symbol=sym,
-                    exchange=exch,
-                    price=close,
-                    why_matched=f"Institutional liquidity sweep: Low (${low:.2f}) swept support with {wick_ratio*100:.1f}% lower rejection wick and close in upper {close_loc*100:.1f}% of daily range.",
-                    key_metrics={"low": low, "close": close, "wick_ratio": round(wick_ratio, 2), "rsi": round(rsi, 1), "rvol": round(rvol, 2)},
-                    regime_gated=check_gated("PO3_LIQUIDITY_SWEEP"),
-                    regime_state=active_regime
+            if is_sweep and is_rejection and is_confluence:
+                matches.append(
+                    ScannerMatch(
+                        scanner_id="PO3_LIQUIDITY_SWEEP",
+                        scanner_name="TAC-15: PO3 Liquidity Sweep & Manipulation Reversal",
+                        symbol=sym,
+                        exchange=exch,
+                        price=close,
+                        why_matched=f"Institutional liquidity sweep: Low (${low:.2f}) swept support with {wick_ratio*100:.1f}% lower rejection wick and close in upper {close_loc*100:.1f}% of daily range.",
+                        key_metrics={"low": low, "close": close, "wick_ratio": round(wick_ratio, 2), "rsi": round(rsi, 1), "rvol": round(rvol, 2)},
+                        regime_gated=check_gated("PO3_LIQUIDITY_SWEEP"),
+                        regime_state=active_regime
+                    )
                 )
-            )
 
         return matches
 

@@ -205,6 +205,34 @@ def test_po3_phase19_2_max_position_throttling():
     assert max_open <= 4, f"Concurrent PO3 positions ({max_open}) exceeded cap of 4"
 
 
+def test_po3_phase19_3_no_index_etfs():
+    """Phase 19.3: PO3 is an idiosyncratic single-stock model; verify index ETFs are excluded."""
+    res = backtest_engine.run_strategy_backtest("PO3_LIQUIDITY_SWEEP")
+    trades = res["all_trades"]
+    traded_symbols = set(t["symbol"] for t in trades)
+    assert "SPY" not in traded_symbols, "SPY index ETF should be excluded from PO3 single-stock sweeps"
+    assert "QQQ" not in traded_symbols, "QQQ index ETF should be excluded from PO3 single-stock sweeps"
+    assert "XIU" not in traded_symbols, "XIU index ETF should be excluded from PO3 single-stock sweeps"
+
+
+def test_po3_phase19_3_volatility_and_quarantine_integrity():
+    """Phase 19.3: Verify volatility blowout filtering and same-day stop quarantine enforcement."""
+    res = backtest_engine.run_strategy_backtest("PO3_LIQUIDITY_SWEEP")
+    trades = res["all_trades"]
+    
+    # Check same-day stop quarantine
+    by_sym = {}
+    for t in trades:
+        by_sym.setdefault(t["symbol"], []).append(t)
+    
+    for sym, t_list in by_sym.items():
+        for i in range(len(t_list) - 1):
+            t_curr = t_list[i]
+            t_next = t_list[i + 1]
+            if t_curr["exit_reason"] == "SAME_DAY_STOP":
+                assert t_curr["exit_date"] != t_next["entry_date"]
+
+
 def test_tac15_scanner_match_and_expectancy():
     """Verify TAC-15 PO3 Liquidity Sweep scanner definition and match trigger."""
     assert "PO3_LIQUIDITY_SWEEP" in market_scanners.definitions

@@ -470,7 +470,11 @@ class BacktestEngine:
                     if is_po3_type and sym in symbol_quarantine_until and curr_date <= symbol_quarantine_until[sym]:
                         continue
 
-                    # Phase 19.2: Macro Benchmark Gate - Gated if benchmark is below 50DMA
+                    # Phase 19.3: PO3 is an idiosyncratic single-stock accumulation model; exclude broad market index ETFs
+                    if is_po3_type and sym in ("SPY", "QQQ", "XIU"):
+                        continue
+
+                    # Phase 19.2 & 19.3: Macro Benchmark Dual Trend Gate - Gated if benchmark is below 20DMA or 50DMA
                     if is_po3_type:
                         mkt_bench_sym = "SPY" if s["country"] == "US" else "XIU"
                         bench_sec = next((b for b in securities if b["symbol"] == mkt_bench_sym), None)
@@ -480,8 +484,9 @@ class BacktestEngine:
                             if not b_rows.empty:
                                 b_prior = b_df.iloc[b_rows.index[0] - 1]
                                 b_c = b_prior.get("close", 0)
+                                b_sma20 = b_prior.get("sma_20", 0)
                                 b_sma50 = b_prior.get("sma_50", 0)
-                                if b_sma50 and b_c < b_sma50:
+                                if (b_sma50 and b_c < b_sma50) or (b_sma20 and b_c < b_sma20):
                                     continue
 
                     s_id = s["security_id"]
@@ -500,6 +505,10 @@ class BacktestEngine:
                     # Verify signal condition on prior_bar
                     signal_fired = self._evaluate_signal_predicate(strategy_id, prior_bar)
                     if signal_fired:
+                        # Phase 19.3: Volatility regime gate (exclude extreme volatility blowouts where atr_pct > 3.5%)
+                        if is_po3_type and prior_bar.get("atr_pct", 0.0) > 3.5:
+                            continue
+
                         raw_entry = today_bar["open"]
                         entry_net = raw_entry * (1.0 + fee_rate)
                         atr = prior_bar.get("atr_14", raw_entry * 0.02)
@@ -606,6 +615,11 @@ class BacktestEngine:
 
                                 cash_usd += (new_trade.exit_price_usd_net * shares)
                                 closed_trades.append(new_trade)
+
+                                # Phase 19.3: Fix quarantine leak - ensure same-day stopped symbols are quarantined
+                                if is_po3_type:
+                                    quar_idx = min(len(timeline) - 1, t_idx + 7)
+                                    symbol_quarantine_until[sym] = timeline[quar_idx]
                             else:
                                 open_trades.append(new_trade)
 
