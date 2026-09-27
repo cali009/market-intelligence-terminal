@@ -1004,6 +1004,7 @@
         <!-- Navigation Tabs -->
         <div class="tabs">
             <button class="tab-btn active" data-tab="leaderboard" onclick="switchTab('leaderboard', event)">Opportunity Leaderboard</button>
+            <button class="tab-btn" data-tab="quantintel" onclick="switchTab('quantintel', event)">🎯 Quant Intel Workstation</button>
             <button class="tab-btn" data-tab="scanners" onclick="switchTab('scanners', event)">TAC-15 Market Scanners</button>
             <button class="tab-btn" data-tab="signals" onclick="switchTab('signals', event)">Research Signal Plans</button>
             <button class="tab-btn" data-tab="backtest" onclick="switchTab('backtest', event)">Backtest Lab & Strategy Performance</button>
@@ -1051,6 +1052,55 @@
                         <!-- Populated dynamically -->
                     </tbody>
                 </table>
+            </div>
+        </div>
+
+        <!-- Tab: QUANT INTEL High-Conviction Institutional Workstation (Phase 22) -->
+        <div id="tab-quantintel" style="display: none;">
+            <div class="scanners-header" style="margin-bottom: 20px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+                    <div>
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+                            <h2 style="font-size: 18px; font-weight: 800; color: var(--text-primary);">QUANT INTEL™ Institutional Stock Intelligence Engine</h2>
+                            <span class="exchange-tag" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-green); border-color: rgba(16, 185, 129, 0.3); font-weight: 700;">6-LAYER SYNTHESIS</span>
+                        </div>
+                        <p style="font-size: 12px; color: var(--text-muted);">
+                            Single best entry price, ATR-sized stop, layered profit targets (T1/T2/T3), and calibrated 1% risk position sizing across dual markets.
+                        </p>
+                    </div>
+                    <!-- Interactive 1% Risk Portfolio Capital Sizer -->
+                    <div style="display: flex; align-items: center; gap: 10px; background: var(--bg-card); padding: 6px 12px; border-radius: 8px; border: 1px solid var(--border-color); flex-wrap: wrap;">
+                        <span style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Portfolio Size:</span>
+                        <div style="display: flex; gap: 4px;">
+                            <button class="filter-btn" id="btnQiPort25k" onclick="setQuantIntelPortfolio(25000)">$25K</button>
+                            <button class="filter-btn" id="btnQiPort50k" onclick="setQuantIntelPortfolio(50000)">$50K</button>
+                            <button class="filter-btn active" id="btnQiPort100k" onclick="setQuantIntelPortfolio(100000)">$100K</button>
+                            <button class="filter-btn" id="btnQiPort250k" onclick="setQuantIntelPortfolio(250000)">$250K</button>
+                            <button class="filter-btn" id="btnQiPort1M" onclick="setQuantIntelPortfolio(1000000)">$1M</button>
+                        </div>
+                        <span style="font-size: 11px; color: var(--accent-cyan); font-weight: 700;" id="qiRiskBudgetBadge">Risk Budget: $1,000 (1%)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grade Scoreboard & Filters Toolbar -->
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 12px;">
+                <div style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
+                    <span style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Filter:</span>
+                    <button class="filter-btn active" id="btnQiFilterAll" onclick="setQuantIntelFilter('ALL')">All Tickers (<span id="qiCountAll">19</span>)</button>
+                    <button class="filter-btn" id="btnQiFilterB" onclick="setQuantIntelFilter('B')">🔥 B-Grade & Above (<span id="qiCountB">5</span>)</button>
+                    <button class="filter-btn" id="btnQiFilterC" onclick="setQuantIntelFilter('C')">C-Grade (<span id="qiCountC">12</span>)</button>
+                    <button class="filter-btn" id="btnQiFilterTradeable" onclick="setQuantIntelFilter('TRADEABLE')">✓ Tradeable (A+B+C) (<span id="qiCountTradeable">17</span>)</button>
+                    <button class="filter-btn" id="btnQiFilterSkip" onclick="setQuantIntelFilter('SKIP')">⛔ Gated / Skip (<span id="qiCountSkip">2</span>)</button>
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <input type="text" id="qiSearchInput" placeholder="Filter by symbol, name, archetype..." oninput="filterQuantIntelGrid()" style="background: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-primary); border-radius: 6px; padding: 6px 12px; font-size: 12px; width: 240px;">
+                </div>
+            </div>
+
+            <!-- Quant Intel Cards Grid -->
+            <div id="quantIntelGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 16px;">
+                <!-- Populated dynamically via JS -->
             </div>
         </div>
 
@@ -3324,6 +3374,13 @@
                 })
                 .catch(err => console.error("Signals load error:", err));
 
+            fetchJson('/api/quant_intel.json', '/api/quant_intel')
+                .then(data => {
+                    quantIntelBundle = data;
+                    renderQuantIntelView();
+                })
+                .catch(err => console.error("Quant Intel load error:", err));
+
             loadBacktestsAndRender();
         }
 
@@ -4114,6 +4171,17 @@
                         <canvas id="candleChart"></canvas>
                     </div>
 
+                    <!-- Phase 22: QUANT INTEL Institutional Trade Dossier & 1% Sizer -->
+                    <div style="margin-top: 24px;" id="drawerQuantIntelWrapper">
+                        <h3 style="font-size: 13px; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
+                            <span>QUANT INTEL™ Institutional Trade Dossier (Phase 22)</span>
+                            <span class="exchange-tag" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-green); border-color: rgba(16, 185, 129, 0.3); font-size: 10px; font-weight: 700;">6-Layer Synthesis · 1% Sizer</span>
+                        </h3>
+                        <div id="drawerQuantIntelSection">
+                            <!-- Populated dynamically via renderQuantIntelInDrawer() -->
+                        </div>
+                    </div>
+
                     <!-- AI Reasoning Contract -->
                     <h3 style="font-size: 13px; text-transform: uppercase; color: var(--text-secondary); margin-top: 24px;">
                         AI Explanation & Evidence Layer (Contract 2026.1)
@@ -4292,6 +4360,9 @@
 
                 // Render Phase 5 Fundamental Engine & Valuation Lab
                 renderFundamentalsInDrawer(data.fundamental_dossier);
+
+                // Render Phase 22 QUANT INTEL Institutional Trade Dossier
+                renderQuantIntelInDrawer(data.quant_intel, data.symbol);
 
                 // Render Phase 6 AI Signal Execution Plan
                 renderSignalPlanInDrawer(data.signal_plan);
@@ -5378,6 +5449,469 @@
             document.getElementById('drawerOverlay').style.display = 'none';
         }
 
+        // =========================================================================
+        // Phase 22: QUANT INTEL™ Institutional Stock Intelligence Engine & Workstation
+        // =========================================================================
+        let quantIntelBundle = null;
+        let currentQiPortfolio = 100000;
+        let activeQiFilter = 'ALL';
+        let quantIntelLoading = false;
+
+        async function loadQuantIntelAndRender() {
+            if (quantIntelBundle) {
+                renderQuantIntelView();
+                return;
+            }
+            if (quantIntelLoading) return;
+            quantIntelLoading = true;
+
+            const grid = document.getElementById('quantIntelGrid');
+            if (grid) {
+                grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted);"><div class="spinner" style="margin-right: 8px;"></div> Loading 6-layer QUANT INTEL dossiers across US & Canada...</div>';
+            }
+
+            try {
+                quantIntelBundle = await fetchJson('/api/quant_intel.json', '/api/quant_intel');
+                renderQuantIntelView();
+            } catch (e) {
+                console.error("Quant Intel load error:", e);
+                if (grid) {
+                    grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 24px; color: var(--accent-red);">Unable to load Quant Intel feed. <button class="filter-btn" style="margin-left: 10px;" onclick="loadQuantIntelAndRender()">Retry</button></div>`;
+                }
+            } finally {
+                quantIntelLoading = false;
+            }
+        }
+
+        function setQuantIntelPortfolio(amt) {
+            currentQiPortfolio = amt;
+            ['btnQiPort25k', 'btnQiPort50k', 'btnQiPort100k', 'btnQiPort250k', 'btnQiPort1M'].forEach(id => {
+                const btn = document.getElementById(id);
+                if (btn) btn.classList.remove('active');
+            });
+            if (amt === 25000) document.getElementById('btnQiPort25k')?.classList.add('active');
+            else if (amt === 50000) document.getElementById('btnQiPort50k')?.classList.add('active');
+            else if (amt === 100000) document.getElementById('btnQiPort100k')?.classList.add('active');
+            else if (amt === 250000) document.getElementById('btnQiPort250k')?.classList.add('active');
+            else if (amt === 1000000) document.getElementById('btnQiPort1M')?.classList.add('active');
+
+            const budgetEl = document.getElementById('qiRiskBudgetBadge');
+            if (budgetEl) {
+                budgetEl.innerText = `Risk Budget: $${(amt * 0.01).toLocaleString()} (1%)`;
+            }
+            filterQuantIntelGrid();
+        }
+
+        function setQuantIntelFilter(filter) {
+            activeQiFilter = filter;
+            ['btnQiFilterAll', 'btnQiFilterB', 'btnQiFilterC', 'btnQiFilterTradeable', 'btnQiFilterSkip'].forEach(id => {
+                const btn = document.getElementById(id);
+                if (btn) btn.classList.remove('active');
+            });
+            if (filter === 'ALL') document.getElementById('btnQiFilterAll')?.classList.add('active');
+            else if (filter === 'B') document.getElementById('btnQiFilterB')?.classList.add('active');
+            else if (filter === 'C') document.getElementById('btnQiFilterC')?.classList.add('active');
+            else if (filter === 'TRADEABLE') document.getElementById('btnQiFilterTradeable')?.classList.add('active');
+            else if (filter === 'SKIP') document.getElementById('btnQiFilterSkip')?.classList.add('active');
+
+            filterQuantIntelGrid();
+        }
+
+        function renderQuantIntelView() {
+            if (!quantIntelBundle || !quantIntelBundle.dossiers) return;
+            const dossiers = Object.values(quantIntelBundle.dossiers);
+
+            const countAll = dossiers.length;
+            const countB = dossiers.filter(d => d.conviction_grade === 'B' || d.conviction_grade === 'A').length;
+            const countC = dossiers.filter(d => d.conviction_grade === 'C').length;
+            const countTradeable = dossiers.filter(d => ['A', 'B', 'C'].includes(d.conviction_grade)).length;
+            const countSkip = dossiers.filter(d => d.conviction_grade === 'SKIP').length;
+
+            const elAll = document.getElementById('qiCountAll');
+            const elB = document.getElementById('qiCountB');
+            const elC = document.getElementById('qiCountC');
+            const elT = document.getElementById('qiCountTradeable');
+            const elS = document.getElementById('qiCountSkip');
+
+            if (elAll) elAll.innerText = countAll;
+            if (elB) elB.innerText = countB;
+            if (elC) elC.innerText = countC;
+            if (elT) elT.innerText = countTradeable;
+            if (elS) elS.innerText = countSkip;
+
+            filterQuantIntelGrid();
+        }
+
+        function filterQuantIntelGrid() {
+            const grid = document.getElementById('quantIntelGrid');
+            if (!grid || !quantIntelBundle || !quantIntelBundle.dossiers) return;
+
+            const q = (document.getElementById('qiSearchInput')?.value || '').toLowerCase().trim();
+            const dossiers = Object.values(quantIntelBundle.dossiers);
+
+            const filtered = dossiers.filter(d => {
+                const matchesFilter = (
+                    activeQiFilter === 'ALL' ||
+                    (activeQiFilter === 'B' && (d.conviction_grade === 'B' || d.conviction_grade === 'A')) ||
+                    (activeQiFilter === 'C' && d.conviction_grade === 'C') ||
+                    (activeQiFilter === 'TRADEABLE' && ['A', 'B', 'C'].includes(d.conviction_grade)) ||
+                    (activeQiFilter === 'SKIP' && d.conviction_grade === 'SKIP')
+                );
+                if (!matchesFilter) return false;
+
+                if (!q) return true;
+                const sym = (d.symbol || '').toLowerCase();
+                const pat = (d.layer_2_fingerprint?.dominant_pattern || '').toLowerCase();
+                const arch = (d.layer_2_fingerprint?.archetype_label || '').toLowerCase();
+                const thesis = (d.trade_plan?.trade_thesis || '').toLowerCase();
+                return sym.includes(q) || pat.includes(q) || arch.includes(q) || thesis.includes(q);
+            });
+
+            // Sort: B-Grade first, then C-Grade, then SKIP; within grade by R:R descending
+            const gradeOrder = { 'A': 1, 'B': 2, 'C': 3, 'SKIP': 4 };
+            filtered.sort((a, b) => {
+                const gA = gradeOrder[a.conviction_grade] || 5;
+                const gB = gradeOrder[b.conviction_grade] || 5;
+                if (gA !== gB) return gA - gB;
+                return (b.trade_plan?.risk_reward_ratio || 0) - (a.trade_plan?.risk_reward_ratio || 0);
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted);">No setups match the current filter criteria.</div>';
+                return;
+            }
+
+            const riskBudget = currentQiPortfolio * 0.01;
+
+            grid.innerHTML = filtered.map(d => {
+                const p = d.trade_plan;
+                const l1 = d.layer_1_regime;
+                const l2 = d.layer_2_fingerprint;
+                const l3 = d.layer_3_technical;
+                const l4 = d.layer_4_fundamental;
+                const l5 = d.layer_5_sentiment;
+                const l6 = d.layer_6_memory;
+                const grade = d.conviction_grade;
+
+                const gradeColor = grade === 'A' ? 'var(--accent-green)' : (grade === 'B' ? 'var(--accent-cyan)' : (grade === 'C' ? 'var(--accent-amber)' : 'var(--accent-red)'));
+                const gradeBg = grade === 'A' ? 'rgba(16, 185, 129, 0.15)' : (grade === 'B' ? 'rgba(6, 182, 212, 0.15)' : (grade === 'C' ? 'rgba(245, 158, 11, 0.15)' : 'rgba(239, 68, 68, 0.15)'));
+
+                // Calibrated shares for active portfolio capital
+                const stopDist = p.stop_distance_dollars;
+                let dynamicShares = 0;
+                if (grade === 'A' || grade === 'B') {
+                    dynamicShares = stopDist > 0 ? Math.floor(riskBudget / stopDist) : 0;
+                } else if (grade === 'C') {
+                    dynamicShares = stopDist > 0 ? Math.floor((riskBudget / stopDist) * 0.50) : 0;
+                }
+                const dynamicRiskDollars = (dynamicShares * stopDist).toFixed(2);
+                const dynamicPosVal = (dynamicShares * p.entry_zone_ideal).toFixed(2);
+
+                return `
+                    <div class="scanner-card" style="border-top: 3px solid ${gradeColor}; cursor: default; transition: transform 0.15s ease;" onmouseenter="this.style.transform='translateY(-2px)'" onmouseleave="this.style.transform='translateY(0)'">
+                        <!-- Card Header -->
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+                            <div>
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <span style="font-size: 18px; font-weight: 800; cursor: pointer;" onclick="openSymbol('${d.symbol}')" title="Inspect Full Dossier">
+                                        ${d.symbol}
+                                    </span>
+                                    <span class="exchange-tag">${d.exchange}</span>
+                                    <span class="exchange-tag" style="font-size: 10px;">${d.country}</span>
+                                </div>
+                                <div style="font-size: 11px; color: var(--text-secondary); margin-top: 2px;">
+                                    ${l2.dominant_pattern}
+                                </div>
+                            </div>
+                            <div style="text-align: right;">
+                                <span style="font-size: 12px; font-weight: 800; padding: 3px 8px; border-radius: 4px; background: ${gradeBg}; color: ${gradeColor}; border: 1px solid ${gradeColor}40;">
+                                    ${grade}-GRADE
+                                </span>
+                                <div style="font-size: 10px; color: var(--text-muted); margin-top: 4px;">
+                                    ${d.aligned_layers_count}/5 Layers Aligned
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 6-Layer Mini Strip -->
+                        <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 4px; background: rgba(15, 23, 42, 0.6); padding: 6px; border-radius: 6px; margin-bottom: 12px; text-align: center; font-size: 9px;">
+                            <div title="L1 Macro Regime: ${l1.regime_fit}">
+                                <div style="color: var(--text-muted);">REG</div>
+                                <div style="font-weight: 700; color: ${l1.regime_fit === 'YES' ? 'var(--accent-green)' : 'var(--accent-amber)'};">${l1.regime_fit}</div>
+                            </div>
+                            <div title="L2 Microstructure: Hurst ${l2.hurst_exponent}">
+                                <div style="color: var(--text-muted);">HURST</div>
+                                <div style="font-weight: 700; color: var(--accent-cyan);">${l2.hurst_exponent.toFixed(2)}</div>
+                            </div>
+                            <div title="L3 Technical Stack: ${l3.status}">
+                                <div style="color: var(--text-muted);">TECH</div>
+                                <div style="font-weight: 700; color: ${l3.status === 'BULLISH' ? 'var(--accent-green)' : (l3.status === 'NEUTRAL' ? 'var(--accent-amber)' : 'var(--accent-red)')};">${l3.status.slice(0,4)}</div>
+                            </div>
+                            <div title="L4 Fundamental Score: ${l4.score}/10">
+                                <div style="color: var(--text-muted);">FUND</div>
+                                <div style="font-weight: 700; color: ${l4.score >= 7 ? 'var(--accent-green)' : (l4.score >= 5 ? 'var(--accent-cyan)' : 'var(--accent-amber)')};">${l4.score.toFixed(1)}</div>
+                            </div>
+                            <div title="L5 Sentiment Net: ${l5.net_sentiment_score}">
+                                <div style="color: var(--text-muted);">SENT</div>
+                                <div style="font-weight: 700; color: ${l5.net_sentiment_score > 0 ? 'var(--accent-green)' : 'var(--text-muted)'};">${l5.net_sentiment_score > 0 ? '+' : ''}${l5.net_sentiment_score.toFixed(1)}</div>
+                            </div>
+                            <div title="L6 Historical Win Rate: ${l6.win_rate_pct}%">
+                                <div style="color: var(--text-muted);">HIST</div>
+                                <div style="font-weight: 700; color: var(--accent-green);">${l6.win_rate_pct.toFixed(0)}%</div>
+                            </div>
+                        </div>
+
+                        <!-- Trade Execution Plan -->
+                        <div style="background: rgba(0, 0, 0, 0.25); border: 1px solid var(--border-color); border-radius: 6px; padding: 10px; margin-bottom: 12px; font-size: 11px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                                <span style="color: var(--text-muted);">Entry Zone:</span>
+                                <strong style="color: var(--accent-cyan);">$${p.entry_zone_ideal.toFixed(2)} – $${p.entry_zone_max.toFixed(2)}</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                                <span style="color: var(--text-muted);">Stop Loss:</span>
+                                <strong style="color: var(--accent-red);">$${p.stop_loss.toFixed(2)} (-${p.stop_distance_pct.toFixed(1)}%)</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                                <span style="color: var(--text-muted);">Blended R:R:</span>
+                                <strong style="color: var(--accent-green);">1 : ${p.risk_reward_ratio.toFixed(2)}</strong>
+                            </div>
+                            <div style="border-top: 1px dashed rgba(255,255,255,0.08); padding-top: 6px; margin-top: 6px; display: flex; justify-content: space-between; font-size: 10px; color: var(--text-secondary);">
+                                <span>T1: <strong>$${p.target_1.toFixed(2)}</strong> (40%)</span>
+                                <span>T2: <strong>$${p.target_2.toFixed(2)}</strong> (40%)</span>
+                                <span>T3: <strong>$${p.target_3.toFixed(2)}</strong> (20%)</span>
+                            </div>
+                        </div>
+
+                        <!-- 1% Risk Sizer Scorecard for Active Capital -->
+                        <div style="background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 6px; padding: 8px 10px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; font-size: 11px;">
+                            <div>
+                                <span style="font-size: 10px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">1% Risk Sizing:</span>
+                                <div style="font-size: 13px; font-weight: 800; color: #fff;">${dynamicShares} shares</div>
+                            </div>
+                            <div style="text-align: right; font-size: 10px;">
+                                <div>Risk: <strong style="color: var(--accent-amber);">$${dynamicRiskDollars}</strong></div>
+                                <div>Value: <strong style="color: var(--accent-cyan);">$${Number(dynamicPosVal).toLocaleString()}</strong></div>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div style="display: flex; gap: 8px; justify-content: space-between;">
+                            <button class="filter-btn" style="flex: 1; font-size: 11px; padding: 5px; cursor: pointer;" onclick="openSymbol('${d.symbol}')">
+                                🔍 Dossier
+                            </button>
+                            <button class="filter-btn" style="flex: 1; font-size: 11px; padding: 5px; cursor: pointer; color: var(--accent-cyan); border-color: rgba(6, 182, 212, 0.3);" onclick="copyQuantIntelCard('${d.symbol}')">
+                                📋 Copy Card
+                            </button>
+                            <button class="filter-btn" style="padding: 5px 10px; font-size: 11px; cursor: pointer;" onclick="quickAddCurrentSymbolToWatchlist('${d.symbol}')" title="Add to Watchlist">
+                                ★
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function copyQuantIntelCard(sym) {
+            let cardText = '';
+            if (quantIntelBundle && quantIntelBundle.dossiers && quantIntelBundle.dossiers[sym]) {
+                cardText = quantIntelBundle.dossiers[sym].formatted_card;
+            }
+            if (!cardText) {
+                alert(`No card found for ${sym}.`);
+                return;
+            }
+            navigator.clipboard.writeText(cardText).then(() => {
+                alert(`✓ Copied QUANT INTEL Card for ${sym} to clipboard!`);
+            }).catch(e => {
+                console.error("Clipboard copy error:", e);
+                const ta = document.createElement('textarea');
+                ta.value = cardText;
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+                alert(`✓ Copied QUANT INTEL Card for ${sym} to clipboard!`);
+            });
+        }
+
+        function renderQuantIntelInDrawer(qi, symbol) {
+            const container = document.getElementById('drawerQuantIntelSection');
+            if (!container) return;
+            if (!qi) {
+                container.innerHTML = `
+                    <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border-color); border-radius: 8px; padding: 16px; text-align: center; color: var(--text-muted); font-size: 12px;">
+                        No QUANT INTEL dossier available for this symbol.
+                    </div>
+                `;
+                return;
+            }
+
+            const p = qi.trade_plan;
+            const l1 = qi.layer_1_regime;
+            const l2 = qi.layer_2_fingerprint;
+            const l3 = qi.layer_3_technical;
+            const l4 = qi.layer_4_fundamental;
+            const l5 = qi.layer_5_sentiment;
+            const l6 = qi.layer_6_memory;
+            const grade = qi.conviction_grade;
+
+            const gradeColor = grade === 'A' ? 'var(--accent-green)' : (grade === 'B' ? 'var(--accent-cyan)' : (grade === 'C' ? 'var(--accent-amber)' : 'var(--accent-red)'));
+            const gradeBg = grade === 'A' ? 'rgba(16, 185, 129, 0.15)' : (grade === 'B' ? 'rgba(6, 182, 212, 0.15)' : (grade === 'C' ? 'rgba(245, 158, 11, 0.15)' : 'rgba(239, 68, 68, 0.15)'));
+
+            container.innerHTML = `
+                <div style="background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.95) 100%); border: 1px solid var(--border-color); border-radius: 10px; padding: 18px; margin-bottom: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
+                    <!-- Header -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 12px; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;">
+                        <div>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <span style="font-size: 14px; font-weight: 800; color: #fff; letter-spacing: 0.5px;">QUANT INTEL™ EXECUTION PLAN</span>
+                                <span style="font-size: 11px; padding: 2px 8px; border-radius: 4px; background: ${gradeBg}; color: ${gradeColor}; font-weight: 800; border: 1px solid ${gradeColor}40;">
+                                    ${grade}-GRADE CONVICTION
+                                </span>
+                                <span style="font-size: 11px; color: var(--text-muted); font-weight: 600;">
+                                    ${qi.aligned_layers_count}/5 Layers Aligned
+                                </span>
+                            </div>
+                            <div style="font-size: 11px; color: var(--text-secondary); margin-top: 3px;">
+                                ${l2.archetype_label} · ${l2.dominant_pattern}
+                            </div>
+                        </div>
+                        <button class="filter-btn" onclick="copyQuantIntelCard('${symbol}')" style="font-size: 11px; padding: 5px 12px; display: flex; align-items: center; gap: 5px; background: rgba(59, 130, 246, 0.15); color: var(--accent-blue); border-color: rgba(59, 130, 246, 0.4); cursor: pointer;" title="Copy Institutional Text Card to Clipboard">
+                            📋 Copy Text Card
+                        </button>
+                    </div>
+
+                    <!-- 6-Layer Signal Status Strip -->
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; margin-bottom: 16px;">
+                        <div style="background: rgba(15, 23, 42, 0.5); padding: 8px 10px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.05);">
+                            <div style="font-size: 10px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">L1 Macro Regime</div>
+                            <div style="font-size: 12px; font-weight: 700; color: ${l1.regime_fit === 'YES' ? 'var(--accent-green)' : (l1.regime_fit === 'PARTIAL' ? 'var(--accent-amber)' : 'var(--accent-red)')}; margin-top: 2px;">
+                                Fit: ${l1.regime_fit}
+                            </div>
+                            <div style="font-size: 10px; color: var(--text-muted);">${l1.regime_state}</div>
+                        </div>
+                        <div style="background: rgba(15, 23, 42, 0.5); padding: 8px 10px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.05);">
+                            <div style="font-size: 10px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">L2 Microstructure</div>
+                            <div style="font-size: 12px; font-weight: 700; color: var(--accent-cyan); margin-top: 2px;">
+                                H = ${l2.hurst_exponent.toFixed(2)}
+                            </div>
+                            <div style="font-size: 10px; color: var(--text-muted);">${l2.hurst_class}</div>
+                        </div>
+                        <div style="background: rgba(15, 23, 42, 0.5); padding: 8px 10px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.05);">
+                            <div style="font-size: 10px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">L3 Technical Stack</div>
+                            <div style="font-size: 12px; font-weight: 700; color: ${l3.status === 'BULLISH' ? 'var(--accent-green)' : (l3.status === 'NEUTRAL' ? 'var(--accent-amber)' : 'var(--accent-red)')}; margin-top: 2px;">
+                                ${l3.status}
+                            </div>
+                            <div style="font-size: 10px; color: var(--text-muted);">RSI ${l3.rsi_14.toFixed(1)} · RVOL ${l3.rvol_20.toFixed(1)}x</div>
+                        </div>
+                        <div style="background: rgba(15, 23, 42, 0.5); padding: 8px 10px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.05);">
+                            <div style="font-size: 10px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">L4 Fundamental</div>
+                            <div style="font-size: 12px; font-weight: 700; color: ${l4.score >= 7.0 ? 'var(--accent-green)' : (l4.score >= 5.0 ? 'var(--accent-cyan)' : 'var(--accent-red)')}; margin-top: 2px;">
+                                ${l4.score.toFixed(1)} / 10
+                            </div>
+                            <div style="font-size: 10px; color: var(--text-muted);">${l4.status}</div>
+                        </div>
+                        <div style="background: rgba(15, 23, 42, 0.5); padding: 8px 10px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.05);">
+                            <div style="font-size: 10px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">L5 News Recency NLP</div>
+                            <div style="font-size: 12px; font-weight: 700; color: ${l5.net_sentiment_score > 0 ? 'var(--accent-green)' : (l5.net_sentiment_score === 0 ? 'var(--text-muted)' : 'var(--accent-red)')}; margin-top: 2px;">
+                                ${l5.net_sentiment_score > 0 ? '+' : ''}${l5.net_sentiment_score.toFixed(2)}
+                            </div>
+                            <div style="font-size: 10px; color: var(--text-muted);">${l5.status}</div>
+                        </div>
+                        <div style="background: rgba(15, 23, 42, 0.5); padding: 8px 10px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.05);">
+                            <div style="font-size: 10px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">L6 Historical Memory</div>
+                            <div style="font-size: 12px; font-weight: 700; color: var(--accent-green); margin-top: 2px;">
+                                ${l6.win_rate_pct.toFixed(1)}% WR
+                            </div>
+                            <div style="font-size: 10px; color: var(--text-muted);">${l6.sample_size} trials · E[R] +${l6.expectancy_r.toFixed(2)}R</div>
+                        </div>
+                    </div>
+
+                    <!-- Trade Plan Grid -->
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-bottom: 14px; background: rgba(15, 23, 42, 0.6); padding: 14px; border-radius: 8px; border: 1px solid var(--border-color);">
+                        <div>
+                            <div style="font-size: 10px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Entry Zone (Limit)</div>
+                            <div style="font-size: 15px; font-weight: 800; color: var(--accent-cyan); margin: 2px 0;">
+                                $${p.entry_zone_ideal.toFixed(2)} – $${p.entry_zone_max.toFixed(2)}
+                            </div>
+                            <div style="font-size: 10px; color: var(--text-secondary); line-height: 1.3;">
+                                Trigger: ${p.entry_trigger}
+                            </div>
+                        </div>
+                        <div>
+                            <div style="font-size: 10px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Structural Stop Loss</div>
+                            <div style="font-size: 15px; font-weight: 800; color: var(--accent-red); margin: 2px 0;">
+                                $${p.stop_loss.toFixed(2)} <span style="font-size: 11px; font-weight: 600;">(-${p.stop_distance_pct.toFixed(1)}%)</span>
+                            </div>
+                            <div style="font-size: 10px; color: var(--text-secondary);">
+                                $${p.stop_distance_dollars.toFixed(2)}/sh risk (1.5x ATR${l6.false_breakout_rate_pct > 22 ? ' · FB adjusted' : ''})
+                            </div>
+                        </div>
+                        <div>
+                            <div style="font-size: 10px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Full Position R:R</div>
+                            <div style="font-size: 15px; font-weight: 800; color: var(--accent-green); margin: 2px 0;">
+                                1 : ${p.risk_reward_ratio.toFixed(2)}
+                            </div>
+                            <div style="font-size: 10px; color: var(--text-secondary);">
+                                Blended: 40% T1 + 40% T2 + 20% T3
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Target Ladder -->
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 14px;">
+                        <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 6px; padding: 10px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <span style="font-size: 11px; font-weight: 800; color: var(--accent-green);">Target 1 (T1)</span>
+                                <span style="font-size: 10px; color: var(--text-muted);">Est. ${p.target_1_days}d</span>
+                            </div>
+                            <div style="font-size: 16px; font-weight: 800; color: #fff; margin: 4px 0;">$${p.target_1.toFixed(2)}</div>
+                            <div style="font-size: 10px; color: var(--text-secondary);">Take 40% off · Ratchet stop to BE ($${p.entry_zone_ideal.toFixed(2)})</div>
+                        </div>
+                        <div style="background: rgba(6, 182, 212, 0.08); border: 1px solid rgba(6, 182, 212, 0.25); border-radius: 6px; padding: 10px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <span style="font-size: 11px; font-weight: 800; color: var(--accent-cyan);">Target 2 (T2)</span>
+                                <span style="font-size: 10px; color: var(--text-muted);">Est. ${p.target_2_days}d</span>
+                            </div>
+                            <div style="font-size: 16px; font-weight: 800; color: #fff; margin: 4px 0;">$${p.target_2.toFixed(2)}</div>
+                            <div style="font-size: 10px; color: var(--text-secondary);">Take 40% off · Measured move of base</div>
+                        </div>
+                        <div style="background: rgba(139, 92, 246, 0.08); border: 1px solid rgba(139, 92, 246, 0.25); border-radius: 6px; padding: 10px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <span style="font-size: 11px; font-weight: 800; color: var(--accent-purple);">Target 3 (T3)</span>
+                                <span style="font-size: 10px; color: var(--text-muted);">Est. ${p.target_3_days}d</span>
+                            </div>
+                            <div style="font-size: 16px; font-weight: 800; color: #fff; margin: 4px 0;">$${p.target_3.toFixed(2)}</div>
+                            <div style="font-size: 10px; color: var(--text-secondary);">Runner 20% · Extended upper channel</div>
+                        </div>
+                    </div>
+
+                    <!-- 1% Risk Sizer for this Ticker -->
+                    <div style="background: rgba(15, 23, 42, 0.4); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 10px 14px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <span style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">1% Portfolio Sizing:</span>
+                            <span style="font-size: 13px; font-weight: 800; color: #fff;">
+                                ${p.recommended_shares} shares
+                            </span>
+                            <span style="font-size: 11px; color: var(--text-secondary);">
+                                on $${p.portfolio_size.toLocaleString()} capital
+                            </span>
+                        </div>
+                        <div style="display: flex; gap: 14px; font-size: 11px;">
+                            <div><span style="color: var(--text-muted);">Risk at Stop:</span> <strong style="color: var(--accent-amber);">$${p.capital_at_risk.toFixed(2)} (1.0%)</strong></div>
+                            <div><span style="color: var(--text-muted);">Position Value:</span> <strong style="color: var(--accent-cyan);">$${p.position_value.toFixed(2)}</strong></div>
+                        </div>
+                    </div>
+
+                    <!-- Thesis & Invalidation -->
+                    <div style="margin-top: 12px; font-size: 11px; line-height: 1.4; color: var(--text-secondary); background: rgba(0,0,0,0.2); padding: 10px; border-radius: 6px;">
+                        <div style="margin-bottom: 4px;"><strong style="color: #fff;">Thesis:</strong> ${p.trade_thesis}</div>
+                        <div><strong style="color: var(--accent-red);">Invalidation:</strong> ${p.invalidation_rule}</div>
+                    </div>
+                </div>
+            `;
+        }
+
         // ==========================================
         // BACKTEST LAB ENGINE & INTERACTIVE LEDGER
         // ==========================================
@@ -5425,7 +5959,7 @@
             }
 
             const tabIds = [
-                'leaderboard', 'scanners', 'signals', 'backtest', 'paper',
+                'leaderboard', 'quantintel', 'scanners', 'signals', 'backtest', 'paper',
                 'portfolio', 'alerts', 'deepread', 'production', 'catalysts', 'journal'
             ];
             tabIds.forEach(id => {
@@ -5433,7 +5967,13 @@
                 if (el) el.style.display = (id === tabId) ? 'block' : 'none';
             });
 
-            if (tabId === 'backtest') {
+            if (tabId === 'quantintel') {
+                if (!quantIntelBundle) {
+                    loadQuantIntelAndRender();
+                } else {
+                    renderQuantIntelView();
+                }
+            } else if (tabId === 'backtest') {
                 if (!backtestBundle) {
                     loadBacktestsAndRender();
                 } else {
