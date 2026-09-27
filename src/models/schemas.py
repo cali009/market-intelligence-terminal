@@ -979,6 +979,56 @@ class MetaLabelFeed(BaseModel):
         return self.model_dump()
 
 
+# ==========================================
+# PHASE 23.2: META-LABEL CLASSIFIER & GATING SCHEMAS
+# ==========================================
+
+
+class FeatureImportanceItem(BaseModel):
+    feature_name: str
+    importance_weight: float
+    directional_impact: Literal["POSITIVE", "NEGATIVE"]
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class MetaGatingVerdict(BaseModel):
+    symbol: str
+    meta_probability: float
+    action: Literal["HIGH_CONVICTION_PROCEED", "MODERATE_PROCEED", "CAUTION_THROTTLE", "GATED_EXCLUDE"]
+    size_multiplier: float
+    primary_driver: str
+    calibrated_at: str
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class MetaLabelModelMetrics(BaseModel):
+    model_id: str
+    model_architecture: str
+    train_auc: float
+    validation_auc: float
+    test_auc: float
+    brier_score: float
+    total_training_samples: int
+    top_features: List[FeatureImportanceItem]
+    calibrated_at: str
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class MetaLabelModelFeed(BaseModel):
+    metrics: MetaLabelModelMetrics
+    disclaimers: List[str]
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+
 
 
 

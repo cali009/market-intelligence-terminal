@@ -42,6 +42,7 @@ from src.engine.idiosyncratic_risk import idiosyncratic_risk_engine
 from src.engine.quant_intel import quant_intel_engine
 from src.engine.quant_intel_memory import quant_intel_memory_ledger
 from src.engine.meta_label_dataset import meta_label_dataset_engine
+from src.engine.meta_label_classifier import meta_label_classifier
 
 FEEDS_DIR = DATA_DIR / "feeds"
 DIST_DIR = DATA_DIR / "dist"
@@ -649,8 +650,11 @@ class EdgeExporter:
             # Phase 23.1: Triple-Barrier Meta-Labeling Dataset Matrix Feed
             meta_label_dataset_engine.export_feed(d_dir)
 
+            # Phase 23.2: Machine Learning Meta-Labeling Model & Feature Feed
+            meta_label_classifier.export_feed(d_dir)
+
         return {
-            "dist_files": 23,
+            "dist_files": 24,
             "symbol_files": symbol_files_count,
             "total_matches": len(scanner_results),
             "total_signals": len(signals_list),
