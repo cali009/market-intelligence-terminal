@@ -5,7 +5,7 @@
   "currency": "USD",
   "name": "Apple Inc.",
   "as_of_date": "2026-09-27",
-  "generated_at": "2026-09-27T06:40:00.642832+00:00",
+  "generated_at": "2026-09-27T07:18:33.367098+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 336.0400085449219,
@@ -355,7 +355,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 26,
     "gjr_garch_gamma": 0.08,
-    "last_updated": "2026-09-27T06:40:01.734284+00:00"
+    "last_updated": "2026-09-27T07:18:34.231527+00:00"
   },
   "conformal_bounds": {
     "symbol": "AAPL",
@@ -372,7 +372,7 @@
     "adapted_alpha": 0.085,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-09-27T06:40:01.780897+00:00"
+    "calibrated_at": "2026-09-27T07:18:34.267717+00:00"
   },
   "cross_border_parity": null,
   "shap_attribution": {
@@ -586,24 +586,24 @@
   },
   "active_scanner_matches": [
     {
-      "id": "MOMENTUM_LEADERS",
-      "name": "Momentum Leaders",
-      "why": "Strong trend: close > 50DMA > 200DMA with +20.2% 3m return and -1.2% from 52w high."
-    },
-    {
       "id": "STACKED_MOVING_AVERAGES",
       "name": "Stacked Moving Average Alignment",
       "why": "Perfect bullish alignment: Price > 20DMA > 50DMA > 200DMA with positive 200DMA slope."
     },
     {
-      "id": "LOW_BETA_QUALITY",
-      "name": "Low-Volatility Trend Quality",
-      "why": "Low ATR volatility (2.0%) paired with rising 200DMA and positive quarterly return."
-    },
-    {
       "id": "MTF_ALIGNMENT",
       "name": "Fast & Medium MTF Alignment",
       "why": "Fast 8EMA > 21EMA above 50DMA with established trend strength (ADX 26.0)."
+    },
+    {
+      "id": "MOMENTUM_LEADERS",
+      "name": "Momentum Leaders",
+      "why": "Strong trend: close > 50DMA > 200DMA with +20.2% 3m return and -1.2% from 52w high."
+    },
+    {
+      "id": "LOW_BETA_QUALITY",
+      "name": "Low-Volatility Trend Quality",
+      "why": "Low ATR volatility (2.0%) paired with rising 200DMA and positive quarterly return."
     }
   ],
   "catalysts_and_filings": [

@@ -5,7 +5,7 @@
   "currency": "CAD",
   "name": "Toronto-Dominion Bank",
   "as_of_date": "2026-09-27",
-  "generated_at": "2026-09-27T06:40:00.642832+00:00",
+  "generated_at": "2026-09-27T07:18:33.367098+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 169.69000244140625,
@@ -358,7 +358,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 14,
     "gjr_garch_gamma": 0.24,
-    "last_updated": "2026-09-27T06:40:04.344907+00:00"
+    "last_updated": "2026-09-27T07:18:36.369344+00:00"
   },
   "conformal_bounds": {
     "symbol": "TD",
@@ -375,7 +375,7 @@
     "adapted_alpha": 0.105,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-09-27T06:40:04.364972+00:00"
+    "calibrated_at": "2026-09-27T07:18:36.391209+00:00"
   },
   "cross_border_parity": {
     "tsx_symbol": "TD",
@@ -624,14 +624,14 @@
       "why": "Pullback into key moving average in a rising uptrend; RSI at 54.4 shows controlled digestion."
     },
     {
-      "id": "VOLATILITY_SQUEEZE",
-      "name": "Volatility Squeeze (Bandwidth)",
-      "why": "Bollinger Bandwidth compressed to 5.4% with low ATR% of 1.6%, indicating impending expansion."
-    },
-    {
       "id": "STACKED_MOVING_AVERAGES",
       "name": "Stacked Moving Average Alignment",
       "why": "Perfect bullish alignment: Price > 20DMA > 50DMA > 200DMA with positive 200DMA slope."
+    },
+    {
+      "id": "PO3_LIQUIDITY_SWEEP",
+      "name": "TAC-15: PO3 Liquidity Sweep & Manipulation Reversal",
+      "why": "Institutional liquidity sweep: Low ($169.10) swept support with 32.2% lower rejection wick and close in upper 86.9% of daily range."
     },
     {
       "id": "BASE_TIGHTENING",
@@ -639,9 +639,9 @@
       "why": "Price consolidating in a tight band (5.4%) within 2.6% of yearly high."
     },
     {
-      "id": "PO3_LIQUIDITY_SWEEP",
-      "name": "TAC-15: PO3 Liquidity Sweep & Manipulation Reversal",
-      "why": "Institutional liquidity sweep: Low ($169.10) swept support with 32.2% lower rejection wick and close in upper 86.9% of daily range."
+      "id": "VOLATILITY_SQUEEZE",
+      "name": "Volatility Squeeze (Bandwidth)",
+      "why": "Bollinger Bandwidth compressed to 5.4% with low ATR% of 1.6%, indicating impending expansion."
     }
   ],
   "catalysts_and_filings": [],

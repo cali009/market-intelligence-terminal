@@ -5,7 +5,7 @@
   "currency": "USD",
   "name": "SPDR S&P 500 ETF Trust",
   "as_of_date": "2026-09-27",
-  "generated_at": "2026-09-27T06:40:00.642832+00:00",
+  "generated_at": "2026-09-27T07:18:33.367098+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 768.780029296875,
@@ -352,7 +352,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 14,
     "gjr_garch_gamma": 0.16,
-    "last_updated": "2026-09-27T06:40:03.563928+00:00"
+    "last_updated": "2026-09-27T07:18:35.580549+00:00"
   },
   "conformal_bounds": {
     "symbol": "SPY",
@@ -369,7 +369,7 @@
     "adapted_alpha": 0.235,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-09-27T06:40:03.589519+00:00"
+    "calibrated_at": "2026-09-27T07:18:35.598889+00:00"
   },
   "cross_border_parity": null,
   "shap_attribution": {
@@ -573,24 +573,24 @@
       "why": "Pullback into key moving average in a rising uptrend; RSI at 55.9 shows controlled digestion."
     },
     {
-      "id": "VOLATILITY_SQUEEZE",
-      "name": "Volatility Squeeze (Bandwidth)",
-      "why": "Bollinger Bandwidth compressed to 2.9% with low ATR% of 0.9%, indicating impending expansion."
-    },
-    {
       "id": "STACKED_MOVING_AVERAGES",
       "name": "Stacked Moving Average Alignment",
       "why": "Perfect bullish alignment: Price > 20DMA > 50DMA > 200DMA with positive 200DMA slope."
     },
     {
-      "id": "LOW_BETA_QUALITY",
-      "name": "Low-Volatility Trend Quality",
-      "why": "Low ATR volatility (0.9%) paired with rising 200DMA and positive quarterly return."
-    },
-    {
       "id": "BASE_TIGHTENING",
       "name": "Consolidation Base Tightening",
       "why": "Price consolidating in a tight band (2.9%) within 1.0% of yearly high."
+    },
+    {
+      "id": "VOLATILITY_SQUEEZE",
+      "name": "Volatility Squeeze (Bandwidth)",
+      "why": "Bollinger Bandwidth compressed to 2.9% with low ATR% of 0.9%, indicating impending expansion."
+    },
+    {
+      "id": "LOW_BETA_QUALITY",
+      "name": "Low-Volatility Trend Quality",
+      "why": "Low ATR volatility (0.9%) paired with rising 200DMA and positive quarterly return."
     }
   ],
   "catalysts_and_filings": [],

@@ -5,7 +5,7 @@
   "currency": "USD",
   "name": "Microsoft Corporation",
   "as_of_date": "2026-09-27",
-  "generated_at": "2026-09-27T06:40:00.642832+00:00",
+  "generated_at": "2026-09-27T07:18:33.367098+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 499.1400146484375,
@@ -353,7 +353,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 14,
     "gjr_garch_gamma": 0.08,
-    "last_updated": "2026-09-27T06:40:02.007128+00:00"
+    "last_updated": "2026-09-27T07:18:34.435868+00:00"
   },
   "conformal_bounds": {
     "symbol": "MSFT",
@@ -370,7 +370,7 @@
     "adapted_alpha": 0.21,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-09-27T06:40:02.037413+00:00"
+    "calibrated_at": "2026-09-27T07:18:34.454610+00:00"
   },
   "cross_border_parity": null,
   "shap_attribution": {
@@ -584,24 +584,9 @@
   },
   "active_scanner_matches": [
     {
-      "id": "MOMENTUM_LEADERS",
-      "name": "Momentum Leaders",
-      "why": "Strong trend: close > 50DMA > 200DMA with +38.4% 3m return and -6.8% from 52w high."
-    },
-    {
-      "id": "VOLATILITY_SQUEEZE",
-      "name": "Volatility Squeeze (Bandwidth)",
-      "why": "Bollinger Bandwidth compressed to 5.7% with low ATR% of 2.1%, indicating impending expansion."
-    },
-    {
       "id": "STACKED_MOVING_AVERAGES",
       "name": "Stacked Moving Average Alignment",
       "why": "Perfect bullish alignment: Price > 20DMA > 50DMA > 200DMA with positive 200DMA slope."
-    },
-    {
-      "id": "LOW_BETA_QUALITY",
-      "name": "Low-Volatility Trend Quality",
-      "why": "Low ATR volatility (2.1%) paired with rising 200DMA and positive quarterly return."
     },
     {
       "id": "MTF_ALIGNMENT",
@@ -609,14 +594,29 @@
       "why": "Fast 8EMA > 21EMA above 50DMA with established trend strength (ADX 23.4)."
     },
     {
-      "id": "HIGH_RVOL_SURGE",
-      "name": "High Relative Volume Surge",
-      "why": "Elevated trading activity: Relative Volume is 1.74x above the 20-day average."
+      "id": "MOMENTUM_LEADERS",
+      "name": "Momentum Leaders",
+      "why": "Strong trend: close > 50DMA > 200DMA with +38.4% 3m return and -6.8% from 52w high."
     },
     {
       "id": "BASE_TIGHTENING",
       "name": "Consolidation Base Tightening",
       "why": "Price consolidating in a tight band (5.7%) within 6.8% of yearly high."
+    },
+    {
+      "id": "VOLATILITY_SQUEEZE",
+      "name": "Volatility Squeeze (Bandwidth)",
+      "why": "Bollinger Bandwidth compressed to 5.7% with low ATR% of 2.1%, indicating impending expansion."
+    },
+    {
+      "id": "LOW_BETA_QUALITY",
+      "name": "Low-Volatility Trend Quality",
+      "why": "Low ATR volatility (2.1%) paired with rising 200DMA and positive quarterly return."
+    },
+    {
+      "id": "HIGH_RVOL_SURGE",
+      "name": "High Relative Volume Surge",
+      "why": "Elevated trading activity: Relative Volume is 1.74x above the 20-day average."
     },
     {
       "id": "ATR_EXPANSION",

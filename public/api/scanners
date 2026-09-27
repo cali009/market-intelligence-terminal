@@ -1,6 +1,6 @@
 {
   "as_of_date": "2026-09-27",
-  "generated_at": "2026-09-27T06:40:00.642832+00:00",
+  "generated_at": "2026-09-27T07:18:33.367098+00:00",
   "active_regime": "STRONG_BULL",
   "total_matches": 58,
   "scanner_definitions": [
@@ -294,24 +294,6 @@
   ],
   "matches": [
     {
-      "scanner_id": "MOMENTUM_LEADERS",
-      "scanner_name": "Momentum Leaders",
-      "symbol": "AAPL",
-      "exchange": "NASDAQ",
-      "price": 341.07000732421875,
-      "why_matched": "Strong trend: close > 50DMA > 200DMA with +20.2% 3m return and -1.2% from 52w high.",
-      "key_metrics": {
-        "ret_3m": 0.20188177035506238,
-        "prox_52w": -0.01236459448355931,
-        "rsi": 65.6733218949337
-      },
-      "regime_gated": false,
-      "regime_state": "STRONG_BULL",
-      "idiosyncratic_risk_multiplier": 0.75,
-      "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-3.89 pts)"
-    },
-    {
       "scanner_id": "STACKED_MOVING_AVERAGES",
       "scanner_name": "Stacked Moving Average Alignment",
       "symbol": "AAPL",
@@ -328,25 +310,14 @@
       "regime_state": "STRONG_BULL",
       "idiosyncratic_risk_multiplier": 0.75,
       "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-3.89 pts)"
-    },
-    {
-      "scanner_id": "LOW_BETA_QUALITY",
-      "scanner_name": "Low-Volatility Trend Quality",
-      "symbol": "AAPL",
-      "exchange": "NASDAQ",
-      "price": 341.07000732421875,
-      "why_matched": "Low ATR volatility (2.0%) paired with rising 200DMA and positive quarterly return.",
-      "key_metrics": {
-        "atr_pct": 1.997705605417971,
-        "slope_200": 24.167074865815078,
-        "ret_3m": 0.20188177035506238
-      },
-      "regime_gated": false,
-      "regime_state": "STRONG_BULL",
-      "idiosyncratic_risk_multiplier": 0.75,
-      "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-3.89 pts)"
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-3.89 pts)",
+      "conviction_score": 86.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": 30.0
+      }
     },
     {
       "scanner_id": "MTF_ALIGNMENT",
@@ -364,42 +335,64 @@
       "regime_state": "STRONG_BULL",
       "idiosyncratic_risk_multiplier": 0.75,
       "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-3.89 pts)"
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-3.89 pts)",
+      "conviction_score": 82.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": 26.0
+      }
     },
     {
       "scanner_id": "MOMENTUM_LEADERS",
       "scanner_name": "Momentum Leaders",
-      "symbol": "MSFT",
+      "symbol": "AAPL",
       "exchange": "NASDAQ",
-      "price": 516.1699829101562,
-      "why_matched": "Strong trend: close > 50DMA > 200DMA with +38.4% 3m return and -6.8% from 52w high.",
+      "price": 341.07000732421875,
+      "why_matched": "Strong trend: close > 50DMA > 200DMA with +20.2% 3m return and -1.2% from 52w high.",
       "key_metrics": {
-        "ret_3m": 0.3839450390668693,
-        "prox_52w": -0.06781403918895501,
-        "rsi": 63.216659990439744
+        "ret_3m": 0.20188177035506238,
+        "prox_52w": -0.01236459448355931,
+        "rsi": 65.6733218949337
       },
       "regime_gated": false,
       "regime_state": "STRONG_BULL",
       "idiosyncratic_risk_multiplier": 0.75,
       "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "Minor Detractor Drag"
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-3.89 pts)",
+      "conviction_score": 78.0,
+      "conviction_tier": "MODERATE",
+      "conviction_breakdown": {
+        "technical_quality": 28.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": 26.0
+      }
     },
     {
-      "scanner_id": "VOLATILITY_SQUEEZE",
-      "scanner_name": "Volatility Squeeze (Bandwidth)",
-      "symbol": "MSFT",
+      "scanner_id": "LOW_BETA_QUALITY",
+      "scanner_name": "Low-Volatility Trend Quality",
+      "symbol": "AAPL",
       "exchange": "NASDAQ",
-      "price": 516.1699829101562,
-      "why_matched": "Bollinger Bandwidth compressed to 5.7% with low ATR% of 2.1%, indicating impending expansion.",
+      "price": 341.07000732421875,
+      "why_matched": "Low ATR volatility (2.0%) paired with rising 200DMA and positive quarterly return.",
       "key_metrics": {
-        "bandwidth": 0.05746486593535457,
-        "atr_pct": 2.11987286232559
+        "atr_pct": 1.997705605417971,
+        "slope_200": 24.167074865815078,
+        "ret_3m": 0.20188177035506238
       },
       "regime_gated": false,
       "regime_state": "STRONG_BULL",
       "idiosyncratic_risk_multiplier": 0.75,
       "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "Minor Detractor Drag"
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-3.89 pts)",
+      "conviction_score": 78.0,
+      "conviction_tier": "MODERATE",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": 22.0
+      }
     },
     {
       "scanner_id": "STACKED_MOVING_AVERAGES",
@@ -418,25 +411,14 @@
       "regime_state": "STRONG_BULL",
       "idiosyncratic_risk_multiplier": 0.75,
       "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "Minor Detractor Drag"
-    },
-    {
-      "scanner_id": "LOW_BETA_QUALITY",
-      "scanner_name": "Low-Volatility Trend Quality",
-      "symbol": "MSFT",
-      "exchange": "NASDAQ",
-      "price": 516.1699829101562,
-      "why_matched": "Low ATR volatility (2.1%) paired with rising 200DMA and positive quarterly return.",
-      "key_metrics": {
-        "atr_pct": 2.11987286232559,
-        "slope_200": 2.697173782067539,
-        "ret_3m": 0.3839450390668693
-      },
-      "regime_gated": false,
-      "regime_state": "STRONG_BULL",
-      "idiosyncratic_risk_multiplier": 0.75,
-      "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "Minor Detractor Drag"
+      "primary_risk_driver": "Minor Detractor Drag",
+      "conviction_score": 86.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": 30.0
+      }
     },
     {
       "scanner_id": "MTF_ALIGNMENT",
@@ -454,23 +436,39 @@
       "regime_state": "STRONG_BULL",
       "idiosyncratic_risk_multiplier": 0.75,
       "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "Minor Detractor Drag"
+      "primary_risk_driver": "Minor Detractor Drag",
+      "conviction_score": 82.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": 26.0
+      }
     },
     {
-      "scanner_id": "HIGH_RVOL_SURGE",
-      "scanner_name": "High Relative Volume Surge",
+      "scanner_id": "MOMENTUM_LEADERS",
+      "scanner_name": "Momentum Leaders",
       "symbol": "MSFT",
       "exchange": "NASDAQ",
       "price": 516.1699829101562,
-      "why_matched": "Elevated trading activity: Relative Volume is 1.74x above the 20-day average.",
+      "why_matched": "Strong trend: close > 50DMA > 200DMA with +38.4% 3m return and -6.8% from 52w high.",
       "key_metrics": {
-        "rvol": 1.7384867307414598
+        "ret_3m": 0.3839450390668693,
+        "prox_52w": -0.06781403918895501,
+        "rsi": 63.216659990439744
       },
       "regime_gated": false,
       "regime_state": "STRONG_BULL",
       "idiosyncratic_risk_multiplier": 0.75,
       "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "Minor Detractor Drag"
+      "primary_risk_driver": "Minor Detractor Drag",
+      "conviction_score": 79.0,
+      "conviction_tier": "MODERATE",
+      "conviction_breakdown": {
+        "technical_quality": 29.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": 26.0
+      }
     },
     {
       "scanner_id": "BASE_TIGHTENING",
@@ -487,7 +485,86 @@
       "regime_state": "STRONG_BULL",
       "idiosyncratic_risk_multiplier": 0.75,
       "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "Minor Detractor Drag"
+      "primary_risk_driver": "Minor Detractor Drag",
+      "conviction_score": 78.0,
+      "conviction_tier": "MODERATE",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": 22.0
+      }
+    },
+    {
+      "scanner_id": "VOLATILITY_SQUEEZE",
+      "scanner_name": "Volatility Squeeze (Bandwidth)",
+      "symbol": "MSFT",
+      "exchange": "NASDAQ",
+      "price": 516.1699829101562,
+      "why_matched": "Bollinger Bandwidth compressed to 5.7% with low ATR% of 2.1%, indicating impending expansion.",
+      "key_metrics": {
+        "bandwidth": 0.05746486593535457,
+        "atr_pct": 2.11987286232559
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "Minor Detractor Drag",
+      "conviction_score": 75.0,
+      "conviction_tier": "MODERATE",
+      "conviction_breakdown": {
+        "technical_quality": 29.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": 22.0
+      }
+    },
+    {
+      "scanner_id": "LOW_BETA_QUALITY",
+      "scanner_name": "Low-Volatility Trend Quality",
+      "symbol": "MSFT",
+      "exchange": "NASDAQ",
+      "price": 516.1699829101562,
+      "why_matched": "Low ATR volatility (2.1%) paired with rising 200DMA and positive quarterly return.",
+      "key_metrics": {
+        "atr_pct": 2.11987286232559,
+        "slope_200": 2.697173782067539,
+        "ret_3m": 0.3839450390668693
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "Minor Detractor Drag",
+      "conviction_score": 75.0,
+      "conviction_tier": "MODERATE",
+      "conviction_breakdown": {
+        "technical_quality": 29.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": 22.0
+      }
+    },
+    {
+      "scanner_id": "HIGH_RVOL_SURGE",
+      "scanner_name": "High Relative Volume Surge",
+      "symbol": "MSFT",
+      "exchange": "NASDAQ",
+      "price": 516.1699829101562,
+      "why_matched": "Elevated trading activity: Relative Volume is 1.74x above the 20-day average.",
+      "key_metrics": {
+        "rvol": 1.7384867307414598
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "Minor Detractor Drag",
+      "conviction_score": 75.0,
+      "conviction_tier": "MODERATE",
+      "conviction_breakdown": {
+        "technical_quality": 37.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": 14.0
+      }
     },
     {
       "scanner_id": "ATR_EXPANSION",
@@ -504,25 +581,14 @@
       "regime_state": "STRONG_BULL",
       "idiosyncratic_risk_multiplier": 0.75,
       "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "Minor Detractor Drag"
-    },
-    {
-      "scanner_id": "MOMENTUM_LEADERS",
-      "scanner_name": "Momentum Leaders",
-      "symbol": "NVDA",
-      "exchange": "NASDAQ",
-      "price": 225.07000732421875,
-      "why_matched": "Strong trend: close > 50DMA > 200DMA with +16.9% 3m return and -4.8% from 52w high.",
-      "key_metrics": {
-        "ret_3m": 0.1690126668635339,
-        "prox_52w": -0.048490683552355085,
-        "rsi": 55.17408895732846
-      },
-      "regime_gated": false,
-      "regime_state": "STRONG_BULL",
-      "idiosyncratic_risk_multiplier": 0.75,
-      "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-3.81 pts)"
+      "primary_risk_driver": "Minor Detractor Drag",
+      "conviction_score": 70.0,
+      "conviction_tier": "MODERATE",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": 14.0
+      }
     },
     {
       "scanner_id": "PULLBACK_UPTREND",
@@ -540,7 +606,14 @@
       "regime_state": "STRONG_BULL",
       "idiosyncratic_risk_multiplier": 0.75,
       "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-3.81 pts)"
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-3.81 pts)",
+      "conviction_score": 86.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": 30.0
+      }
     },
     {
       "scanner_id": "STACKED_MOVING_AVERAGES",
@@ -559,7 +632,39 @@
       "regime_state": "STRONG_BULL",
       "idiosyncratic_risk_multiplier": 0.75,
       "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-3.81 pts)"
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-3.81 pts)",
+      "conviction_score": 86.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": 30.0
+      }
+    },
+    {
+      "scanner_id": "MOMENTUM_LEADERS",
+      "scanner_name": "Momentum Leaders",
+      "symbol": "NVDA",
+      "exchange": "NASDAQ",
+      "price": 225.07000732421875,
+      "why_matched": "Strong trend: close > 50DMA > 200DMA with +16.9% 3m return and -4.8% from 52w high.",
+      "key_metrics": {
+        "ret_3m": 0.1690126668635339,
+        "prox_52w": -0.048490683552355085,
+        "rsi": 55.17408895732846
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-3.81 pts)",
+      "conviction_score": 82.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": 26.0
+      }
     },
     {
       "scanner_id": "PULLBACK_UPTREND",
@@ -577,7 +682,14 @@
       "regime_state": "STRONG_BULL",
       "idiosyncratic_risk_multiplier": 0.75,
       "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-9.44 pts)"
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-9.44 pts)",
+      "conviction_score": 83.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 29.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": 30.0
+      }
     },
     {
       "scanner_id": "VOLATILITY_SQUEEZE",
@@ -594,7 +706,14 @@
       "regime_state": "STRONG_BULL",
       "idiosyncratic_risk_multiplier": 0.75,
       "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-9.44 pts)"
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-9.44 pts)",
+      "conviction_score": 75.0,
+      "conviction_tier": "MODERATE",
+      "conviction_breakdown": {
+        "technical_quality": 29.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": 22.0
+      }
     },
     {
       "scanner_id": "LOW_BETA_QUALITY",
@@ -612,7 +731,14 @@
       "regime_state": "STRONG_BULL",
       "idiosyncratic_risk_multiplier": 0.75,
       "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-9.44 pts)"
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-9.44 pts)",
+      "conviction_score": 75.0,
+      "conviction_tier": "MODERATE",
+      "conviction_breakdown": {
+        "technical_quality": 29.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": 22.0
+      }
     },
     {
       "scanner_id": "PULLBACK_UPTREND",
@@ -630,24 +756,14 @@
       "regime_state": "STRONG_BULL",
       "idiosyncratic_risk_multiplier": 0.75,
       "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-6.39 pts)"
-    },
-    {
-      "scanner_id": "VOLATILITY_SQUEEZE",
-      "scanner_name": "Volatility Squeeze (Bandwidth)",
-      "symbol": "JPM",
-      "exchange": "NYSE",
-      "price": 343.05999755859375,
-      "why_matched": "Bollinger Bandwidth compressed to 7.7% with low ATR% of 2.1%, indicating impending expansion.",
-      "key_metrics": {
-        "bandwidth": 0.07742902798148463,
-        "atr_pct": 2.0844962868725054
-      },
-      "regime_gated": false,
-      "regime_state": "STRONG_BULL",
-      "idiosyncratic_risk_multiplier": 0.75,
-      "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-5.39 pts)"
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-6.39 pts)",
+      "conviction_score": 86.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": 30.0
+      }
     },
     {
       "scanner_id": "INSTITUTIONAL_ACCUMULATION",
@@ -665,7 +781,62 @@
       "regime_state": "STRONG_BULL",
       "idiosyncratic_risk_multiplier": 0.75,
       "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-5.39 pts)"
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-5.39 pts)",
+      "conviction_score": 89.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 35.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": 30.0
+      }
+    },
+    {
+      "scanner_id": "BASE_TIGHTENING",
+      "scanner_name": "Consolidation Base Tightening",
+      "symbol": "JPM",
+      "exchange": "NYSE",
+      "price": 343.05999755859375,
+      "why_matched": "Price consolidating in a tight band (7.7%) within 6.4% of yearly high.",
+      "key_metrics": {
+        "bandwidth": 0.07742902798148463,
+        "prox_52w": -0.06395635045404158
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-5.39 pts)",
+      "conviction_score": 78.0,
+      "conviction_tier": "MODERATE",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": 22.0
+      }
+    },
+    {
+      "scanner_id": "VOLATILITY_SQUEEZE",
+      "scanner_name": "Volatility Squeeze (Bandwidth)",
+      "symbol": "JPM",
+      "exchange": "NYSE",
+      "price": 343.05999755859375,
+      "why_matched": "Bollinger Bandwidth compressed to 7.7% with low ATR% of 2.1%, indicating impending expansion.",
+      "key_metrics": {
+        "bandwidth": 0.07742902798148463,
+        "atr_pct": 2.0844962868725054
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-5.39 pts)",
+      "conviction_score": 75.0,
+      "conviction_tier": "MODERATE",
+      "conviction_breakdown": {
+        "technical_quality": 29.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": 22.0
+      }
     },
     {
       "scanner_id": "LOW_BETA_QUALITY",
@@ -683,24 +854,14 @@
       "regime_state": "STRONG_BULL",
       "idiosyncratic_risk_multiplier": 0.75,
       "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-5.39 pts)"
-    },
-    {
-      "scanner_id": "BASE_TIGHTENING",
-      "scanner_name": "Consolidation Base Tightening",
-      "symbol": "JPM",
-      "exchange": "NYSE",
-      "price": 343.05999755859375,
-      "why_matched": "Price consolidating in a tight band (7.7%) within 6.4% of yearly high.",
-      "key_metrics": {
-        "bandwidth": 0.07742902798148463,
-        "prox_52w": -0.06395635045404158
-      },
-      "regime_gated": false,
-      "regime_state": "STRONG_BULL",
-      "idiosyncratic_risk_multiplier": 0.75,
-      "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-5.39 pts)"
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-5.39 pts)",
+      "conviction_score": 75.0,
+      "conviction_tier": "MODERATE",
+      "conviction_breakdown": {
+        "technical_quality": 29.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": 22.0
+      }
     },
     {
       "scanner_id": "PULLBACK_UPTREND",
@@ -718,7 +879,14 @@
       "regime_state": "STRONG_BULL",
       "idiosyncratic_risk_multiplier": 0.5,
       "risk_posture": "DEFENSIVE_DE_RISK",
-      "primary_risk_driver": "Hurst Memory Flip (H=0.444)"
+      "primary_risk_driver": "Hurst Memory Flip (H=0.444)",
+      "conviction_score": 80.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 18.0,
+        "empirical_expectancy": 30.0
+      }
     },
     {
       "scanner_id": "VOLATILITY_SQUEEZE",
@@ -735,7 +903,14 @@
       "regime_state": "STRONG_BULL",
       "idiosyncratic_risk_multiplier": 0.5,
       "risk_posture": "DEFENSIVE_DE_RISK",
-      "primary_risk_driver": "Hurst Memory Flip (H=0.444)"
+      "primary_risk_driver": "Hurst Memory Flip (H=0.444)",
+      "conviction_score": 69.0,
+      "conviction_tier": "MODERATE",
+      "conviction_breakdown": {
+        "technical_quality": 29.0,
+        "macro_risk_alignment": 18.0,
+        "empirical_expectancy": 22.0
+      }
     },
     {
       "scanner_id": "BASE_TIGHTENING",
@@ -752,7 +927,14 @@
       "regime_state": "STRONG_BULL",
       "idiosyncratic_risk_multiplier": 0.5,
       "risk_posture": "DEFENSIVE_DE_RISK",
-      "primary_risk_driver": "Hurst Memory Flip (H=0.444)"
+      "primary_risk_driver": "Hurst Memory Flip (H=0.444)",
+      "conviction_score": 69.0,
+      "conviction_tier": "MODERATE",
+      "conviction_breakdown": {
+        "technical_quality": 29.0,
+        "macro_risk_alignment": 18.0,
+        "empirical_expectancy": 22.0
+      }
     },
     {
       "scanner_id": "PULLBACK_UPTREND",
@@ -770,24 +952,14 @@
       "regime_state": "STRONG_BULL",
       "idiosyncratic_risk_multiplier": 1.0,
       "risk_posture": "NORMAL_EQUILIBRIUM",
-      "primary_risk_driver": "Stable Quantitative Fingerprint"
-    },
-    {
-      "scanner_id": "VOLATILITY_SQUEEZE",
-      "scanner_name": "Volatility Squeeze (Bandwidth)",
-      "symbol": "SPY",
-      "exchange": "AMEX",
-      "price": 771.3499755859375,
-      "why_matched": "Bollinger Bandwidth compressed to 2.9% with low ATR% of 0.9%, indicating impending expansion.",
-      "key_metrics": {
-        "bandwidth": 0.02915569766049144,
-        "atr_pct": 0.8892581038021248
-      },
-      "regime_gated": false,
-      "regime_state": "STRONG_BULL",
-      "idiosyncratic_risk_multiplier": 1.0,
-      "risk_posture": "NORMAL_EQUILIBRIUM",
-      "primary_risk_driver": "Stable Quantitative Fingerprint"
+      "primary_risk_driver": "Stable Quantitative Fingerprint",
+      "conviction_score": 92.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 30.0,
+        "empirical_expectancy": 30.0
+      }
     },
     {
       "scanner_id": "STACKED_MOVING_AVERAGES",
@@ -806,7 +978,62 @@
       "regime_state": "STRONG_BULL",
       "idiosyncratic_risk_multiplier": 1.0,
       "risk_posture": "NORMAL_EQUILIBRIUM",
-      "primary_risk_driver": "Stable Quantitative Fingerprint"
+      "primary_risk_driver": "Stable Quantitative Fingerprint",
+      "conviction_score": 92.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 30.0,
+        "empirical_expectancy": 30.0
+      }
+    },
+    {
+      "scanner_id": "BASE_TIGHTENING",
+      "scanner_name": "Consolidation Base Tightening",
+      "symbol": "SPY",
+      "exchange": "AMEX",
+      "price": 771.3499755859375,
+      "why_matched": "Price consolidating in a tight band (2.9%) within 1.0% of yearly high.",
+      "key_metrics": {
+        "bandwidth": 0.02915569766049144,
+        "prox_52w": -0.010290387853645888
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 1.0,
+      "risk_posture": "NORMAL_EQUILIBRIUM",
+      "primary_risk_driver": "Stable Quantitative Fingerprint",
+      "conviction_score": 87.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 35.0,
+        "macro_risk_alignment": 30.0,
+        "empirical_expectancy": 22.0
+      }
+    },
+    {
+      "scanner_id": "VOLATILITY_SQUEEZE",
+      "scanner_name": "Volatility Squeeze (Bandwidth)",
+      "symbol": "SPY",
+      "exchange": "AMEX",
+      "price": 771.3499755859375,
+      "why_matched": "Bollinger Bandwidth compressed to 2.9% with low ATR% of 0.9%, indicating impending expansion.",
+      "key_metrics": {
+        "bandwidth": 0.02915569766049144,
+        "atr_pct": 0.8892581038021248
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 1.0,
+      "risk_posture": "NORMAL_EQUILIBRIUM",
+      "primary_risk_driver": "Stable Quantitative Fingerprint",
+      "conviction_score": 84.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 30.0,
+        "empirical_expectancy": 22.0
+      }
     },
     {
       "scanner_id": "LOW_BETA_QUALITY",
@@ -824,41 +1051,14 @@
       "regime_state": "STRONG_BULL",
       "idiosyncratic_risk_multiplier": 1.0,
       "risk_posture": "NORMAL_EQUILIBRIUM",
-      "primary_risk_driver": "Stable Quantitative Fingerprint"
-    },
-    {
-      "scanner_id": "BASE_TIGHTENING",
-      "scanner_name": "Consolidation Base Tightening",
-      "symbol": "SPY",
-      "exchange": "AMEX",
-      "price": 771.3499755859375,
-      "why_matched": "Price consolidating in a tight band (2.9%) within 1.0% of yearly high.",
-      "key_metrics": {
-        "bandwidth": 0.02915569766049144,
-        "prox_52w": -0.010290387853645888
-      },
-      "regime_gated": false,
-      "regime_state": "STRONG_BULL",
-      "idiosyncratic_risk_multiplier": 1.0,
-      "risk_posture": "NORMAL_EQUILIBRIUM",
-      "primary_risk_driver": "Stable Quantitative Fingerprint"
-    },
-    {
-      "scanner_id": "VOLATILITY_SQUEEZE",
-      "scanner_name": "Volatility Squeeze (Bandwidth)",
-      "symbol": "QQQ",
-      "exchange": "NASDAQ",
-      "price": 744.5,
-      "why_matched": "Bollinger Bandwidth compressed to 7.8% with low ATR% of 1.3%, indicating impending expansion.",
-      "key_metrics": {
-        "bandwidth": 0.07810917288592686,
-        "atr_pct": 1.2764551652595222
-      },
-      "regime_gated": false,
-      "regime_state": "STRONG_BULL",
-      "idiosyncratic_risk_multiplier": 1.0,
-      "risk_posture": "NORMAL_EQUILIBRIUM",
-      "primary_risk_driver": "Stable Quantitative Fingerprint"
+      "primary_risk_driver": "Stable Quantitative Fingerprint",
+      "conviction_score": 84.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 30.0,
+        "empirical_expectancy": 22.0
+      }
     },
     {
       "scanner_id": "STACKED_MOVING_AVERAGES",
@@ -877,7 +1077,62 @@
       "regime_state": "STRONG_BULL",
       "idiosyncratic_risk_multiplier": 1.0,
       "risk_posture": "NORMAL_EQUILIBRIUM",
-      "primary_risk_driver": "Stable Quantitative Fingerprint"
+      "primary_risk_driver": "Stable Quantitative Fingerprint",
+      "conviction_score": 92.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 30.0,
+        "empirical_expectancy": 30.0
+      }
+    },
+    {
+      "scanner_id": "BASE_TIGHTENING",
+      "scanner_name": "Consolidation Base Tightening",
+      "symbol": "QQQ",
+      "exchange": "NASDAQ",
+      "price": 744.5,
+      "why_matched": "Price consolidating in a tight band (7.8%) within 0.6% of yearly high.",
+      "key_metrics": {
+        "bandwidth": 0.07810917288592686,
+        "prox_52w": -0.005543343723671934
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 1.0,
+      "risk_posture": "NORMAL_EQUILIBRIUM",
+      "primary_risk_driver": "Stable Quantitative Fingerprint",
+      "conviction_score": 87.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 35.0,
+        "macro_risk_alignment": 30.0,
+        "empirical_expectancy": 22.0
+      }
+    },
+    {
+      "scanner_id": "VOLATILITY_SQUEEZE",
+      "scanner_name": "Volatility Squeeze (Bandwidth)",
+      "symbol": "QQQ",
+      "exchange": "NASDAQ",
+      "price": 744.5,
+      "why_matched": "Bollinger Bandwidth compressed to 7.8% with low ATR% of 1.3%, indicating impending expansion.",
+      "key_metrics": {
+        "bandwidth": 0.07810917288592686,
+        "atr_pct": 1.2764551652595222
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 1.0,
+      "risk_posture": "NORMAL_EQUILIBRIUM",
+      "primary_risk_driver": "Stable Quantitative Fingerprint",
+      "conviction_score": 84.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 30.0,
+        "empirical_expectancy": 22.0
+      }
     },
     {
       "scanner_id": "LOW_BETA_QUALITY",
@@ -895,24 +1150,14 @@
       "regime_state": "STRONG_BULL",
       "idiosyncratic_risk_multiplier": 1.0,
       "risk_posture": "NORMAL_EQUILIBRIUM",
-      "primary_risk_driver": "Stable Quantitative Fingerprint"
-    },
-    {
-      "scanner_id": "BASE_TIGHTENING",
-      "scanner_name": "Consolidation Base Tightening",
-      "symbol": "QQQ",
-      "exchange": "NASDAQ",
-      "price": 744.5,
-      "why_matched": "Price consolidating in a tight band (7.8%) within 0.6% of yearly high.",
-      "key_metrics": {
-        "bandwidth": 0.07810917288592686,
-        "prox_52w": -0.005543343723671934
-      },
-      "regime_gated": false,
-      "regime_state": "STRONG_BULL",
-      "idiosyncratic_risk_multiplier": 1.0,
-      "risk_posture": "NORMAL_EQUILIBRIUM",
-      "primary_risk_driver": "Stable Quantitative Fingerprint"
+      "primary_risk_driver": "Stable Quantitative Fingerprint",
+      "conviction_score": 84.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 30.0,
+        "empirical_expectancy": 22.0
+      }
     },
     {
       "scanner_id": "PULLBACK_UPTREND",
@@ -930,7 +1175,14 @@
       "regime_state": "WEAK_BULL",
       "idiosyncratic_risk_multiplier": 0.75,
       "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-9.48 pts)"
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-9.48 pts)",
+      "conviction_score": 86.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": 30.0
+      }
     },
     {
       "scanner_id": "VOLATILITY_SQUEEZE",
@@ -947,7 +1199,14 @@
       "regime_state": "WEAK_BULL",
       "idiosyncratic_risk_multiplier": 0.75,
       "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-9.48 pts)"
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-9.48 pts)",
+      "conviction_score": 78.0,
+      "conviction_tier": "MODERATE",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": 22.0
+      }
     },
     {
       "scanner_id": "BASE_TIGHTENING",
@@ -964,7 +1223,14 @@
       "regime_state": "WEAK_BULL",
       "idiosyncratic_risk_multiplier": 0.75,
       "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-9.48 pts)"
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-9.48 pts)",
+      "conviction_score": 78.0,
+      "conviction_tier": "MODERATE",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": 22.0
+      }
     },
     {
       "scanner_id": "PULLBACK_UPTREND",
@@ -982,24 +1248,14 @@
       "regime_state": "WEAK_BULL",
       "idiosyncratic_risk_multiplier": 0.75,
       "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-6.97 pts)"
-    },
-    {
-      "scanner_id": "VOLATILITY_SQUEEZE",
-      "scanner_name": "Volatility Squeeze (Bandwidth)",
-      "symbol": "TD",
-      "exchange": "TSX",
-      "price": 170.69000244140625,
-      "why_matched": "Bollinger Bandwidth compressed to 5.4% with low ATR% of 1.6%, indicating impending expansion.",
-      "key_metrics": {
-        "bandwidth": 0.05377905153554772,
-        "atr_pct": 1.5788835822466125
-      },
-      "regime_gated": false,
-      "regime_state": "WEAK_BULL",
-      "idiosyncratic_risk_multiplier": 0.75,
-      "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-6.97 pts)"
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-6.97 pts)",
+      "conviction_score": 86.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": 30.0
+      }
     },
     {
       "scanner_id": "STACKED_MOVING_AVERAGES",
@@ -1018,24 +1274,14 @@
       "regime_state": "WEAK_BULL",
       "idiosyncratic_risk_multiplier": 0.75,
       "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-6.97 pts)"
-    },
-    {
-      "scanner_id": "BASE_TIGHTENING",
-      "scanner_name": "Consolidation Base Tightening",
-      "symbol": "TD",
-      "exchange": "TSX",
-      "price": 170.69000244140625,
-      "why_matched": "Price consolidating in a tight band (5.4%) within 2.6% of yearly high.",
-      "key_metrics": {
-        "bandwidth": 0.05377905153554772,
-        "prox_52w": -0.026464377694579988
-      },
-      "regime_gated": false,
-      "regime_state": "WEAK_BULL",
-      "idiosyncratic_risk_multiplier": 0.75,
-      "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-6.97 pts)"
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-6.97 pts)",
+      "conviction_score": 86.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": 30.0
+      }
     },
     {
       "scanner_id": "PO3_LIQUIDITY_SWEEP",
@@ -1055,7 +1301,62 @@
       "regime_state": "WEAK_BULL",
       "idiosyncratic_risk_multiplier": 0.75,
       "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-6.97 pts)"
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-6.97 pts)",
+      "conviction_score": 83.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 29.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": 30.0
+      }
+    },
+    {
+      "scanner_id": "BASE_TIGHTENING",
+      "scanner_name": "Consolidation Base Tightening",
+      "symbol": "TD",
+      "exchange": "TSX",
+      "price": 170.69000244140625,
+      "why_matched": "Price consolidating in a tight band (5.4%) within 2.6% of yearly high.",
+      "key_metrics": {
+        "bandwidth": 0.05377905153554772,
+        "prox_52w": -0.026464377694579988
+      },
+      "regime_gated": false,
+      "regime_state": "WEAK_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-6.97 pts)",
+      "conviction_score": 81.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 35.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": 22.0
+      }
+    },
+    {
+      "scanner_id": "VOLATILITY_SQUEEZE",
+      "scanner_name": "Volatility Squeeze (Bandwidth)",
+      "symbol": "TD",
+      "exchange": "TSX",
+      "price": 170.69000244140625,
+      "why_matched": "Bollinger Bandwidth compressed to 5.4% with low ATR% of 1.6%, indicating impending expansion.",
+      "key_metrics": {
+        "bandwidth": 0.05377905153554772,
+        "atr_pct": 1.5788835822466125
+      },
+      "regime_gated": false,
+      "regime_state": "WEAK_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-6.97 pts)",
+      "conviction_score": 78.0,
+      "conviction_tier": "MODERATE",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": 22.0
+      }
     },
     {
       "scanner_id": "MTF_ALIGNMENT",
@@ -1073,7 +1374,14 @@
       "regime_state": "WEAK_BULL",
       "idiosyncratic_risk_multiplier": 0.75,
       "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-19.31 pts)"
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-19.31 pts)",
+      "conviction_score": 82.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": 26.0
+      }
     },
     {
       "scanner_id": "VOLATILITY_SQUEEZE",
@@ -1090,7 +1398,14 @@
       "regime_state": "WEAK_BULL",
       "idiosyncratic_risk_multiplier": 0.5,
       "risk_posture": "DEFENSIVE_DE_RISK",
-      "primary_risk_driver": "Hurst Memory Flip (H=0.408)"
+      "primary_risk_driver": "Hurst Memory Flip (H=0.408)",
+      "conviction_score": 72.0,
+      "conviction_tier": "MODERATE",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 18.0,
+        "empirical_expectancy": 22.0
+      }
     },
     {
       "scanner_id": "MEAN_REVERSION_OVERSOLD",
@@ -1108,7 +1423,14 @@
       "regime_state": "WEAK_BULL",
       "idiosyncratic_risk_multiplier": 0.5,
       "risk_posture": "DEFENSIVE_DE_RISK",
-      "primary_risk_driver": "Hurst Memory Flip (H=0.408)"
+      "primary_risk_driver": "Hurst Memory Flip (H=0.408)",
+      "conviction_score": 50.0,
+      "conviction_tier": "WATCHLIST",
+      "conviction_breakdown": {
+        "technical_quality": 25.0,
+        "macro_risk_alignment": 3.0,
+        "empirical_expectancy": 22.0
+      }
     },
     {
       "scanner_id": "PULLBACK_UPTREND",
@@ -1126,7 +1448,14 @@
       "regime_state": "WEAK_BULL",
       "idiosyncratic_risk_multiplier": 0.5,
       "risk_posture": "DEFENSIVE_DE_RISK",
-      "primary_risk_driver": "Hurst Memory Flip (H=0.386)"
+      "primary_risk_driver": "Hurst Memory Flip (H=0.386)",
+      "conviction_score": 80.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 18.0,
+        "empirical_expectancy": 30.0
+      }
     },
     {
       "scanner_id": "VOLATILITY_SQUEEZE",
@@ -1143,7 +1472,14 @@
       "regime_state": "WEAK_BULL",
       "idiosyncratic_risk_multiplier": 0.5,
       "risk_posture": "DEFENSIVE_DE_RISK",
-      "primary_risk_driver": "Hurst Memory Flip (H=0.386)"
+      "primary_risk_driver": "Hurst Memory Flip (H=0.386)",
+      "conviction_score": 72.0,
+      "conviction_tier": "MODERATE",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 18.0,
+        "empirical_expectancy": 22.0
+      }
     },
     {
       "scanner_id": "BASE_TIGHTENING",
@@ -1160,7 +1496,14 @@
       "regime_state": "WEAK_BULL",
       "idiosyncratic_risk_multiplier": 0.5,
       "risk_posture": "DEFENSIVE_DE_RISK",
-      "primary_risk_driver": "Hurst Memory Flip (H=0.386)"
+      "primary_risk_driver": "Hurst Memory Flip (H=0.386)",
+      "conviction_score": 72.0,
+      "conviction_tier": "MODERATE",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 18.0,
+        "empirical_expectancy": 22.0
+      }
     },
     {
       "scanner_id": "PULLBACK_UPTREND",
@@ -1178,7 +1521,14 @@
       "regime_state": "WEAK_BULL",
       "idiosyncratic_risk_multiplier": 0.75,
       "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-5.27 pts)"
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-5.27 pts)",
+      "conviction_score": 83.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 29.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": 30.0
+      }
     },
     {
       "scanner_id": "BASE_TIGHTENING",
@@ -1195,7 +1545,14 @@
       "regime_state": "WEAK_BULL",
       "idiosyncratic_risk_multiplier": 0.75,
       "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-5.27 pts)"
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-5.27 pts)",
+      "conviction_score": 78.0,
+      "conviction_tier": "MODERATE",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": 22.0
+      }
     },
     {
       "scanner_id": "PULLBACK_UPTREND",
@@ -1213,7 +1570,14 @@
       "regime_state": "WEAK_BULL",
       "idiosyncratic_risk_multiplier": 0.75,
       "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-12.11 pts)"
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-12.11 pts)",
+      "conviction_score": 83.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 29.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": 30.0
+      }
     },
     {
       "scanner_id": "VOLATILITY_SQUEEZE",
@@ -1230,7 +1594,14 @@
       "regime_state": "WEAK_BULL",
       "idiosyncratic_risk_multiplier": 0.75,
       "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-12.11 pts)"
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-12.11 pts)",
+      "conviction_score": 78.0,
+      "conviction_tier": "MODERATE",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": 22.0
+      }
     },
     {
       "scanner_id": "BASE_TIGHTENING",
@@ -1247,7 +1618,14 @@
       "regime_state": "WEAK_BULL",
       "idiosyncratic_risk_multiplier": 0.75,
       "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-12.11 pts)"
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-12.11 pts)",
+      "conviction_score": 78.0,
+      "conviction_tier": "MODERATE",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": 22.0
+      }
     },
     {
       "scanner_id": "PULLBACK_UPTREND",
@@ -1265,7 +1643,38 @@
       "regime_state": "WEAK_BULL",
       "idiosyncratic_risk_multiplier": 0.75,
       "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-5.07 pts)"
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-5.07 pts)",
+      "conviction_score": 83.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 29.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": 30.0
+      }
+    },
+    {
+      "scanner_id": "BASE_TIGHTENING",
+      "scanner_name": "Consolidation Base Tightening",
+      "symbol": "XIU",
+      "exchange": "TSX",
+      "price": 53.08000183105469,
+      "why_matched": "Price consolidating in a tight band (3.6%) within 3.4% of yearly high.",
+      "key_metrics": {
+        "bandwidth": 0.03570608090903672,
+        "prox_52w": -0.03420664637436477
+      },
+      "regime_gated": false,
+      "regime_state": "WEAK_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-5.07 pts)",
+      "conviction_score": 81.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 35.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": 22.0
+      }
     },
     {
       "scanner_id": "VOLATILITY_SQUEEZE",
@@ -1282,7 +1691,14 @@
       "regime_state": "WEAK_BULL",
       "idiosyncratic_risk_multiplier": 0.75,
       "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-5.07 pts)"
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-5.07 pts)",
+      "conviction_score": 78.0,
+      "conviction_tier": "MODERATE",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": 22.0
+      }
     },
     {
       "scanner_id": "LOW_BETA_QUALITY",
@@ -1300,24 +1716,14 @@
       "regime_state": "WEAK_BULL",
       "idiosyncratic_risk_multiplier": 0.75,
       "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-5.07 pts)"
-    },
-    {
-      "scanner_id": "BASE_TIGHTENING",
-      "scanner_name": "Consolidation Base Tightening",
-      "symbol": "XIU",
-      "exchange": "TSX",
-      "price": 53.08000183105469,
-      "why_matched": "Price consolidating in a tight band (3.6%) within 3.4% of yearly high.",
-      "key_metrics": {
-        "bandwidth": 0.03570608090903672,
-        "prox_52w": -0.03420664637436477
-      },
-      "regime_gated": false,
-      "regime_state": "WEAK_BULL",
-      "idiosyncratic_risk_multiplier": 0.75,
-      "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-5.07 pts)"
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-5.07 pts)",
+      "conviction_score": 78.0,
+      "conviction_tier": "MODERATE",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": 22.0
+      }
     }
   ]
 }

@@ -4,7 +4,7 @@ US + Canada Market Intelligence Platform
 Filters and ranks dual-market universes by deterministic technical setups.
 """
 
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any, List, Optional, Tuple
 from dataclasses import dataclass, field, asdict
 import json
 from src.data.db import db
@@ -24,6 +24,9 @@ class ScannerMatch:
     idiosyncratic_risk_multiplier: float = 1.0  # Phase 21.2: Idiosyncratic Risk Pre-Flight Check
     risk_posture: str = "NORMAL_EQUILIBRIUM"
     primary_risk_driver: str = "Stable Quantitative Fingerprint"
+    conviction_score: float = 75.0  # Phase 21.3: Composite Setup Conviction Score (0-100)
+    conviction_tier: str = "MODERATE"  # HIGH (>=80), MODERATE (65-79), WATCHLIST (<65)
+    conviction_breakdown: Dict[str, float] = field(default_factory=dict)
 
 
 SCANNER_DEFINITIONS: Dict[str, Dict[str, Any]] = {
@@ -537,7 +540,7 @@ class MarketScanners:
                     )
                 )
 
-        # Phase 21.2: Attach Idiosyncratic Risk Pre-Flight Multipliers & Posture
+        # Phase 21.2 & 21.3: Attach Idiosyncratic Risk Pre-Flight Multipliers & Conviction Scoring
         profiles = getattr(self, "idiosyncratic_profiles", {})
         for m in matches:
             profile = profiles.get(m.symbol)
@@ -546,7 +549,83 @@ class MarketScanners:
                 m.risk_posture = profile.risk_posture
                 m.primary_risk_driver = profile.primary_risk_driver
 
+            # Phase 21.3: Compute Composite Setup Conviction Score (0-100)
+            c_score, c_tier, c_breakdown = self.compute_setup_conviction(m)
+            m.conviction_score = c_score
+            m.conviction_tier = c_tier
+            m.conviction_breakdown = c_breakdown
+
+        # Sort matches in descending order of conviction score
+        matches.sort(key=lambda x: -x.conviction_score)
+
         return matches
+
+    def compute_setup_conviction(self, m: ScannerMatch) -> Tuple[float, str, Dict[str, float]]:
+        """
+        Phase 21.3: Computes composite setup conviction score (0-100) combining:
+        - Technical Setup Quality (40 pts)
+        - Macro Regime & Idiosyncratic Risk Alignment (30 pts)
+        - Empirical Historical Expectancy (30 pts)
+        """
+        defn = self.definitions.get(m.scanner_id, {})
+        km = m.key_metrics or {}
+
+        # 1. Technical Quality (40 pts max)
+        rvol = float(km.get("rvol") or km.get("rvol_20") or 1.0)
+        if rvol >= 1.5: s_vol = 10.0
+        elif rvol >= 1.2: s_vol = 8.0
+        elif rvol >= 1.0: s_vol = 5.0
+        else: s_vol = 2.0
+
+        rsi = float(km.get("rsi") or km.get("rsi_14") or 50.0)
+        if 48.0 <= rsi <= 58.0: s_rsi = 10.0
+        elif (42.0 <= rsi < 48.0) or (58.0 < rsi <= 64.0): s_rsi = 7.0
+        else: s_rsi = 3.0
+
+        prox = float(km.get("prox_52w") or km.get("proximity_52w_high") or -0.05)
+        if prox >= -0.04: s_prox = 10.0
+        elif prox >= -0.08: s_prox = 7.0
+        elif prox >= -0.15: s_prox = 4.0
+        else: s_prox = 1.0
+
+        atr_pct = float(km.get("atr_pct") or 2.0)
+        if atr_pct <= 2.0: s_atr = 10.0
+        elif atr_pct <= 3.0: s_atr = 7.0
+        elif atr_pct <= 4.0: s_atr = 4.0
+        else: s_atr = 1.0
+
+        tech_score = s_vol + s_rsi + s_prox + s_atr
+
+        # 2. Macro & Idiosyncratic Risk (30 pts max)
+        s_regime = 0.0 if m.regime_gated else 15.0
+        mult = float(m.idiosyncratic_risk_multiplier)
+        if mult >= 1.0: s_risk = 15.0
+        elif mult >= 0.75: s_risk = 9.0
+        else: s_risk = 3.0
+        macro_score = s_regime + s_risk
+
+        # 3. Empirical Expectancy (30 pts max)
+        wr = float(defn.get("historical_win_rate_pct", 52.0))
+        if wr >= 58.0: s_wr = 15.0
+        elif wr >= 55.0: s_wr = 11.0
+        elif wr >= 52.0: s_wr = 7.0
+        else: s_wr = 3.0
+
+        exp_r = float(defn.get("expectancy_r", 0.35))
+        if exp_r >= 0.55: s_exp = 15.0
+        elif exp_r >= 0.45: s_exp = 11.0
+        elif exp_r >= 0.30: s_exp = 7.0
+        else: s_exp = 3.0
+        exp_score = s_wr + s_exp
+
+        total = round(tech_score + macro_score + exp_score, 1)
+        tier = "HIGH" if total >= 80.0 else ("MODERATE" if total >= 65.0 else "WATCHLIST")
+        breakdown = {
+            "technical_quality": tech_score,
+            "macro_risk_alignment": macro_score,
+            "empirical_expectancy": exp_score,
+        }
+        return total, tier, breakdown
 
     def init_scanner_definitions_in_db(self) -> int:
         """

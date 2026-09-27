@@ -200,6 +200,9 @@ class EdgeExporter:
                     "idiosyncratic_risk_multiplier": getattr(m, "idiosyncratic_risk_multiplier", 1.0),
                     "risk_posture": getattr(m, "risk_posture", "NORMAL_EQUILIBRIUM"),
                     "primary_risk_driver": getattr(m, "primary_risk_driver", "Stable Quantitative Fingerprint"),
+                    "conviction_score": getattr(m, "conviction_score", 75.0),
+                    "conviction_tier": getattr(m, "conviction_tier", "MODERATE"),
+                    "conviction_breakdown": getattr(m, "conviction_breakdown", {}),
                 })
 
             # Cache metrics for portfolio exit evaluation

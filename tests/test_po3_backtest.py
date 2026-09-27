@@ -397,4 +397,32 @@ def test_phase21_2_idiosyncratic_preflight_scanner_integration():
         assert "Hurst" in m.primary_risk_driver
 
 
+def test_phase21_3_composite_setup_conviction_scoring():
+    """Phase 21.3: Verify composite setup conviction score (0-100), tier labeling, and rank ordering."""
+    sec_info = {"symbol": "NVDA", "exchange": "NASDAQ", "country": "US"}
+    metrics = {
+        "open": 124.0, "high": 128.0, "low": 118.0, "close": 127.0,
+        "sma_20": 122.0, "sma_50": 120.0, "sma_200": 110.0,
+        "rsi_14": 56.0, "rvol_20": 1.40, "proximity_52w_high": -0.03,
+        "bb_bandwidth": 0.05, "bb_lower": 119.0, "bb_upper": 129.0,
+        "atr_14": 3.2, "atr_pct": 2.5, "cmf_20": 0.08
+    }
+    matches = market_scanners.scan_all(sec_info, metrics, regime_state="STRONG_BULL")
+    assert len(matches) > 0, "Expected scanner matches for NVDA"
+    for m in matches:
+        assert hasattr(m, "conviction_score")
+        assert hasattr(m, "conviction_tier")
+        assert hasattr(m, "conviction_breakdown")
+        assert 0.0 <= m.conviction_score <= 100.0
+        assert m.conviction_tier in ("HIGH", "MODERATE", "WATCHLIST")
+        assert "technical_quality" in m.conviction_breakdown
+        assert "macro_risk_alignment" in m.conviction_breakdown
+        assert "empirical_expectancy" in m.conviction_breakdown
+
+    # Verify descending sort order
+    scores = [m.conviction_score for m in matches]
+    assert scores == sorted(scores, reverse=True), "Matches must be sorted in descending order of conviction score"
+
+
+
 

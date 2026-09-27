@@ -1240,6 +1240,7 @@
                     <div style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
                         <span style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Filter:</span>
                         <button class="filter-btn active" id="btnScFilterAll" onclick="setScannerCardFilter('ALL')">All Strategies</button>
+                        <button class="filter-btn" id="btnScFilterHigh" onclick="setScannerCardFilter('HIGH')">🔥 High Conviction (≥80)</button>
                         <button class="filter-btn" id="btnScFilterPass" onclick="setScannerCardFilter('PASS')">✓ Active Regime Only</button>
                         <button class="filter-btn" id="btnScFilterHasMatches" onclick="setScannerCardFilter('MATCHES')">⚡ Active Matches Only</button>
                     </div>
@@ -3237,11 +3238,12 @@
         let activeScannerCardFilter = 'ALL';
         function setScannerCardFilter(filter) {
             activeScannerCardFilter = filter;
-            ['btnScFilterAll', 'btnScFilterPass', 'btnScFilterHasMatches'].forEach(id => {
+            ['btnScFilterAll', 'btnScFilterHigh', 'btnScFilterPass', 'btnScFilterHasMatches'].forEach(id => {
                 const btn = document.getElementById(id);
                 if (btn) btn.classList.remove('active');
             });
             if (filter === 'ALL') document.getElementById('btnScFilterAll')?.classList.add('active');
+            if (filter === 'HIGH') document.getElementById('btnScFilterHigh')?.classList.add('active');
             if (filter === 'PASS') document.getElementById('btnScFilterPass')?.classList.add('active');
             if (filter === 'MATCHES') document.getElementById('btnScFilterHasMatches')?.classList.add('active');
             filterScannerCardsView();
@@ -3254,7 +3256,9 @@
                 const text = card.innerText.toLowerCase();
                 const matchesQ = !q || text.includes(q);
                 let matchesF = true;
-                if (activeScannerCardFilter === 'PASS') {
+                if (activeScannerCardFilter === 'HIGH') {
+                    matchesF = card.querySelector('.conviction-high') !== null || text.includes('high') || text.includes('8') || text.includes('9');
+                } else if (activeScannerCardFilter === 'PASS') {
                     matchesF = !text.includes('regime gated');
                 } else if (activeScannerCardFilter === 'MATCHES') {
                     matchesF = !text.includes('no qualifying securities');
@@ -3487,9 +3491,15 @@
                                 : (isCaution
                                     ? `<span style="font-size: 9px; padding: 1px 4px; border-radius: 3px; background: rgba(245, 158, 11, 0.2); color: var(--accent-amber); margin-left: 4px;" title="Pre-Flight Caution: ${m.primary_risk_driver || 'Detractor drag'}">${(m.idiosyncratic_risk_multiplier*100).toFixed(0)}%</span>`
                                     : '');
+                            const cScore = m.conviction_score != null ? m.conviction_score : 75;
+                            const cTier = m.conviction_tier || (cScore >= 80 ? 'HIGH' : (cScore >= 65 ? 'MODERATE' : 'WATCHLIST'));
+                            const scoreColor = cTier === 'HIGH' ? 'var(--accent-green)' : (cTier === 'MODERATE' ? 'var(--accent-cyan)' : 'var(--accent-amber)');
+                            const scorePill = `<span class="conviction-${cTier.toLowerCase()}" style="font-size: 9px; font-weight: 700; padding: 1px 4px; border-radius: 3px; background: rgba(59, 130, 246, 0.15); color: ${scoreColor}; margin-left: 4px;" title="Setup Conviction: ${cScore}/100 (${cTier})">${cScore.toFixed(0)} pts</span>`;
+
                             return `
-                            <span class="match-badge" onclick="event.stopPropagation(); openSymbol('${m.symbol}')" title="Inspect ${m.symbol} Dossier · Pre-flight: ${m.primary_risk_driver || 'Normal equilibrium'}">
+                            <span class="match-badge" onclick="event.stopPropagation(); openSymbol('${m.symbol}')" title="Inspect ${m.symbol} Dossier · Conviction: ${cScore}/100 (${cTier}) · Pre-flight: ${m.primary_risk_driver || 'Normal equilibrium'}">
                                 ${m.symbol} <span style="color: var(--text-muted); font-size: 10px;">$${m.price.toFixed(1)}</span>
+                                ${scorePill}
                                 ${multBadge}
                             </span>
                         `}).join('')}
