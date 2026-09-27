@@ -923,6 +923,63 @@ class IdiosyncraticRiskMatrixFeed(BaseModel):
         return self.model_dump()
 
 
+# ==========================================
+# PHASE 23: TRIPLE-BARRIER META-LABELING SCHEMAS
+# ==========================================
+
+
+class TripleBarrierRecord(BaseModel):
+    event_id: str
+    symbol: str
+    signal_date: str
+    entry_date: str
+    entry_price: float
+    upper_barrier: float
+    lower_barrier: float
+    exit_date: str
+    exit_price: float
+    exit_reason: Literal["UPPER_BARRIER", "LOWER_BARRIER", "TIME_BARRIER"]
+    holding_days: int
+    return_pct: float
+    r_multiple: float
+    label: int  # 1 for success, 0 for failure
+    partition: Literal["TRAIN", "VALIDATION", "TEST"]
+    features: Dict[str, float]
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class MetaLabelDatasetSummary(BaseModel):
+    as_of_date: str
+    total_samples: int
+    train_samples: int
+    val_samples: int
+    test_samples: int
+    positive_samples: int
+    negative_samples: int
+    positive_rate_pct: float
+    mean_holding_days: float
+    mean_return_pct_positive: float
+    mean_return_pct_negative: float
+    feature_count: int
+    feature_names: List[str]
+    generated_at: str
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class MetaLabelFeed(BaseModel):
+    summary: MetaLabelDatasetSummary
+    sample_records: List[TripleBarrierRecord]
+    disclaimers: List[str]
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+
 
 
 

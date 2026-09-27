@@ -81,6 +81,8 @@ def build_firebase_bundle():
         ("idiosyncratic_risk_matrix.json", "idiosyncratic_risk_matrix"),
         ("quant_intel.json", "quant_intel.json"),
         ("quant_intel.json", "quant_intel"),
+        ("meta_label_matrix.json", "meta_label_matrix.json"),
+        ("meta_label_matrix.json", "meta_label_matrix"),
     ]
 
     for src_name, dest_name in core_feeds:
