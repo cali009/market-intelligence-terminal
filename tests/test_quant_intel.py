@@ -183,3 +183,72 @@ def test_quant_intel_evaluate_all_active_symbols():
         assert isinstance(d, QuantIntelDossier)
         assert d.symbol == sym
         assert d.trade_plan.risk_reward_ratio > 0.0
+
+
+def test_quant_intel_memory_ledger_schema_and_persistence():
+    """Phase 22.2: Verify SQLite-backed pattern memory records, retrieval, and table seeding."""
+    from src.engine.quant_intel_memory import quant_intel_memory_ledger
+    records = quant_intel_memory_ledger.get_all_memory_records()
+    assert len(records) >= 50, f"Expected at least 50 seeded memory records, got {len(records)}"
+
+    rec = quant_intel_memory_ledger.get_pattern_memory("AAPL", "PULLBACK_CONTINUATION", "STRONG_BULL")
+    assert rec.symbol == "AAPL"
+    assert rec.setup_type == "PULLBACK_CONTINUATION"
+    assert rec.total_trials >= 10
+    assert rec.win_rate_pct > 0.0
+    assert rec.expectancy_r > 0.0
+    assert rec.false_breakout_rate_pct >= 0.0
+    assert rec.signal_weight_multiplier >= 0.70
+
+
+def test_quant_intel_memory_self_updating_learning_loop():
+    """Phase 22.2: Verify closed-loop learning: trade resolution updates stats and adjusts signal weights."""
+    from src.engine.quant_intel_memory import quant_intel_memory_ledger
+    symbol = "MSFT"
+    setup = "MOMENTUM_BREAKOUT"
+    regime = "STRONG_BULL"
+
+    initial = quant_intel_memory_ledger.get_pattern_memory(symbol, setup, regime)
+    init_trials = initial.total_trials
+    init_mult = initial.signal_weight_multiplier
+
+    # Record winning trade
+    updated_win = quant_intel_memory_ledger.record_trade_outcome(
+        symbol=symbol,
+        setup_type=setup,
+        regime_state=regime,
+        is_win=True,
+        return_pct=6.5,
+        r_multiple=2.1,
+        bars_held=12,
+        is_false_breakout=False
+    )
+    assert updated_win.total_trials == init_trials + 1
+    assert updated_win.signal_weight_multiplier > init_mult or updated_win.signal_weight_multiplier == 1.25
+
+    # Record losing trade with false breakout
+    updated_loss = quant_intel_memory_ledger.record_trade_outcome(
+        symbol=symbol,
+        setup_type=setup,
+        regime_state=regime,
+        is_win=False,
+        return_pct=-3.2,
+        r_multiple=-1.0,
+        bars_held=4,
+        is_false_breakout=True
+    )
+    assert updated_loss.total_trials == init_trials + 2
+    assert updated_loss.false_breakout_count > initial.false_breakout_count
+    assert updated_loss.signal_weight_multiplier < updated_win.signal_weight_multiplier
+
+
+def test_quant_intel_memory_bayesian_prior_shrinkage():
+    """Phase 22.2: Verify Bayesian shrinkage is applied when sample size is small (< 10)."""
+    from src.engine.quant_intel_memory import quant_intel_memory_ledger
+    # Query an unseen ticker
+    rec = quant_intel_memory_ledger.get_pattern_memory("NEWTICKER", "MEAN_REVERSION", "WEAK_BULL")
+    assert rec.symbol == "NEWTICKER"
+    # Should fall back cleanly to mean reversion prior
+    assert rec.win_rate_pct == quant_intel_memory_ledger.SETUP_PRIORS["MEAN_REVERSION"]["win_rate_pct"]
+    assert rec.expectancy_r == quant_intel_memory_ledger.SETUP_PRIORS["MEAN_REVERSION"]["expectancy_r"]
+

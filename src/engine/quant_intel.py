@@ -26,6 +26,7 @@ from src.engine.asset_fingerprint import asset_fingerprint_engine
 from src.engine.technicals import TechnicalAnalysisEngine
 from src.engine.fundamentals import FundamentalAnalysisEngine
 from src.engine.news_engine import news_engine
+from src.engine.quant_intel_memory import quant_intel_memory_ledger
 
 
 @dataclass
@@ -112,6 +113,7 @@ class Layer6Memory:
     median_bars_to_target: int
     expectancy_r: float
     status: str               # "BULLISH", "NEUTRAL", "CAUTION"
+    signal_weight_multiplier: float = 1.0
 
 
 @dataclass
@@ -686,38 +688,32 @@ class QuantIntelEngine:
     def evaluate_layer6_memory(
         self,
         symbol: str,
-        dominant_pattern: str
+        dominant_pattern: str,
+        regime_state: str = "STRONG_BULL",
     ) -> Layer6Memory:
         """
         Layer 6: Historical Pattern Back-Test Memory.
-        Retrieves empirical win rate, average move size, time-to-target, and false breakout rate.
+        Retrieves empirical win rate, average move size, time-to-target, and false breakout rate
+        from persistent SQLite learning ledger with Bayesian prior regularization.
         """
-        # Map dominant pattern to empirical table key
-        if "Momentum" in dominant_pattern and "Breakout" in dominant_pattern:
-            key = "MOMENTUM_BREAKOUT"
-        elif "Pullback" in dominant_pattern:
-            key = "PULLBACK_CONTINUATION"
-        elif "Mean-Reversion" in dominant_pattern:
-            key = "MEAN_REVERSION"
-        elif "Accumulation" in dominant_pattern:
-            key = "INSTITUTIONAL_ACCUMULATION"
-        else:
-            key = "PO3_LIQUIDITY_SWEEP"
-
-        stats = self.empirical_memory_table.get(key, self.empirical_memory_table["PULLBACK_CONTINUATION"])
-        wr = stats["win_rate_pct"]
-        exp = stats["expectancy_r"]
-
+        rec = quant_intel_memory_ledger.get_pattern_memory(
+            symbol=symbol,
+            setup_type=dominant_pattern,
+            regime_state=regime_state,
+        )
+        wr = rec.win_rate_pct
+        exp = rec.expectancy_r
         status = "BULLISH" if (wr >= 53.0 and exp >= 0.35) else ("NEUTRAL" if wr >= 49.0 else "CAUTION")
 
         return Layer6Memory(
             win_rate_pct=wr,
-            sample_size=stats["sample_size"],
-            avg_move_pct=stats["avg_move_pct"],
-            false_breakout_rate_pct=stats["false_breakout_rate_pct"],
-            median_bars_to_target=stats["median_bars_to_target"],
+            sample_size=rec.total_trials,
+            avg_move_pct=rec.avg_move_pct,
+            false_breakout_rate_pct=rec.false_breakout_rate_pct,
+            median_bars_to_target=rec.avg_bars_to_target,
             expectancy_r=exp,
             status=status,
+            signal_weight_multiplier=rec.signal_weight_multiplier,
         )
 
     def compute_trade_plan(
@@ -777,6 +773,10 @@ class QuantIntelEngine:
         # Widen stop if Regime is Volatile or Bear
         if regime.trend_type in ("Bear", "Volatile") or "High" in regime.volatility_regime:
             clamped_stop_dist *= 1.25
+
+        # Adjust stop accordingly if false breakout rate for this ticker is elevated
+        if memory.false_breakout_rate_pct > 22.0:
+            clamped_stop_dist *= 1.15
 
         stop_loss = round(ideal_entry - clamped_stop_dist, 2)
         # Ensure stop is at least slightly below support 1
@@ -993,7 +993,11 @@ INVALIDATION: {plan.invalidation_rule}"""
         l5 = self.evaluate_layer5_sentiment(symbol=symbol, as_of_dt=as_of_dt)
 
         # Layer 6: Historical Pattern Back-Test Memory
-        l6 = self.evaluate_layer6_memory(symbol=symbol, dominant_pattern=l2.dominant_pattern)
+        l6 = self.evaluate_layer6_memory(
+            symbol=symbol,
+            dominant_pattern=l2.dominant_pattern,
+            regime_state=l1.regime_state
+        )
 
         # Trade Plan & Sizing Core
         plan, grade, aligned_count = self.compute_trade_plan(
