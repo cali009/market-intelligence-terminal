@@ -518,7 +518,7 @@ class MarketScanners:
 
             is_sweep = (low <= sma_20 * 1.005) or (low <= bb_l_val * 1.01) or (low <= sma_50 * 1.005)
             is_rejection = (wick_ratio >= 0.25) and (close_loc >= 0.48) and (close >= open_p * 0.995)
-            # Phase 21.2: Enforce Golden Cross structural hierarchy (SMA20 > SMA50 > SMA200 and Close > SMA50)
+            # Phase 20.4 & 21.2: Enforce Golden Cross structural hierarchy (SMA20 > SMA50 > SMA200 and Close > SMA50)
             golden_cross = (sma_20 > sma_50 > sma_200) and (close > sma_50) if (sma_200 and sma_200 > 0) else (sma_20 > sma_50)
             is_confluence = golden_cross and (40.0 <= rsi <= 66.0) and (rvol >= 0.90 or cmf_val >= -0.05) and (prox_52w >= -0.18)
 

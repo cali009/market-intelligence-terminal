@@ -357,8 +357,8 @@ def test_po3_phase20_3_cash_sweep_yield_and_double_digit_alpha():
     assert m_adapt["sharpe_ratio"] >= 0.25, f"Expected Adaptive Sharpe >= 0.25, got {m_adapt['sharpe_ratio']}"
 
 
-def test_po3_phase21_golden_cross_alignment_and_sub_3_5pct_drawdown():
-    """Phase 21.2: Verify Golden Cross alignment (SMA20 > SMA50 > SMA200) yields >52% win rate and <3.5% MaxDD."""
+def test_po3_phase20_4_golden_cross_alignment_and_sub_3_5pct_drawdown():
+    """Phase 20.4: Verify Golden Cross alignment (SMA20 > SMA50 > SMA200) yields >52% win rate and <3.5% MaxDD."""
     defn = market_scanners.definitions["PO3_LIQUIDITY_SWEEP"]
     assert "Golden Cross" in defn["rule_summary"]
 
@@ -368,6 +368,12 @@ def test_po3_phase21_golden_cross_alignment_and_sub_3_5pct_drawdown():
     assert m["sharpe_ratio"] >= 0.50, f"Expected PO3 Sharpe >= 0.50, got {m['sharpe_ratio']}"
     assert m["max_drawdown_pct"] <= 3.50, f"Expected PO3 MaxDD <= 3.50%, got {m['max_drawdown_pct']}%"
     assert m["total_net_return_pct"] >= 11.5, f"Expected PO3 return >= 11.5%, got {m['total_net_return_pct']}%"
+
+    # Verify Adaptive Dual-Regime double-digit return with Phase 20.4 calibration
+    res_adapt = backtest_engine.run_strategy_backtest("ADAPTIVE_DUAL_REGIME")
+    m_adapt = res_adapt["metrics"]
+    assert m_adapt["total_net_return_pct"] >= 12.5, f"Expected Adaptive return >= 12.5%, got {m_adapt['total_net_return_pct']}%"
+    assert m_adapt["sharpe_ratio"] >= 0.35, f"Expected Adaptive Sharpe >= 0.35, got {m_adapt['sharpe_ratio']}"
 
 
 def test_phase21_2_idiosyncratic_preflight_scanner_integration():

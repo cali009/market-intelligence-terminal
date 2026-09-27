@@ -181,7 +181,7 @@ class BacktestEngine:
             "strategy_name": "TAC-15: Power of Three (PO3) Liquidity Sweep & Manipulation Reversal",
             "status": "ACTIVE",
             "pre_registration_date": "2026-09-26",
-            "hypothesis": "Institutional accumulation sequence (Accumulation -> Manipulation Judas Swing -> Distribution Expansion). Captures false breakdown liquidity sweeps below key moving averages/prior swing lows with an adaptive conformal buffer stop and two-stage partial trim ladder (50% trim at Target 1, breakeven stop ratchet, Target 2 runner).",
+            "hypothesis": "Institutional accumulation sequence (Accumulation -> Manipulation Judas Swing -> Distribution Expansion). Phase 20.4 Golden Cross structural alignment (Close > SMA50 and SMA20 > SMA50 > SMA200) with adaptive conformal breathing stop, two-stage partial trim ladder (+1.8R Target 1 trim, breakeven stop ratchet, Target 2 runner), and institutional cash sweep yield attribution.",
             "universe": "US + Canada Core Liquid (Cap > $2B, ADV > $10M)",
         },
         "ADAPTIVE_DUAL_REGIME": {
@@ -788,7 +788,7 @@ class BacktestEngine:
             return bool(c > sma20 > sma50 and prox52 >= -0.06 and rsi >= 55.0)
 
         elif strategy_id == "PO3_LIQUIDITY_SWEEP":
-            # Phase 19.1 & 21.2: Power of Three (PO3) Liquidity Sweep & Manipulation Reversal
+            # Phase 19.1, 20.4 & 21.2: Power of Three (PO3) Liquidity Sweep & Manipulation Reversal
             # 1. Macro Trend: Strict Golden-Cross structural hierarchy (Close > SMA50 and SMA20 > SMA50 > SMA200)
             trend_ok = (c > sma50) and (sma20 > sma50) and (sma50 > sma200)
             # 2. Manipulation Liquidity Sweep: Intraday low strictly sweeps 20DMA or Lower BB, Close firmly reclaims
