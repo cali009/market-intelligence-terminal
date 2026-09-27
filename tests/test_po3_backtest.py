@@ -370,3 +370,25 @@ def test_po3_phase21_golden_cross_alignment_and_sub_3_5pct_drawdown():
     assert m["total_net_return_pct"] >= 11.5, f"Expected PO3 return >= 11.5%, got {m['total_net_return_pct']}%"
 
 
+def test_phase21_2_idiosyncratic_preflight_scanner_integration():
+    """Phase 21.2: Verify ScannerMatch integrates idiosyncratic pre-flight risk multipliers and posture."""
+    sec_info = {"symbol": "XOM", "exchange": "NYSE", "country": "US"}
+    metrics = {
+        "open": 115.0, "high": 116.0, "low": 114.0, "close": 115.5,
+        "sma_20": 114.0, "sma_50": 112.0, "sma_200": 105.0,
+        "rsi_14": 52.0, "rvol_20": 1.1, "proximity_52w_high": -0.04,
+        "bb_bandwidth": 0.04, "bb_lower": 113.0, "bb_upper": 117.0,
+        "atr_14": 2.1, "atr_pct": 1.8, "cmf_20": 0.05
+    }
+    matches = market_scanners.scan_all(sec_info, metrics, regime_state="STRONG_BULL")
+    assert len(matches) > 0, "Expected at least one scanner match for XOM"
+    for m in matches:
+        assert hasattr(m, "idiosyncratic_risk_multiplier")
+        assert hasattr(m, "risk_posture")
+        assert hasattr(m, "primary_risk_driver")
+        assert m.idiosyncratic_risk_multiplier == 0.50
+        assert m.risk_posture == "DEFENSIVE_DE_RISK"
+        assert "Hurst" in m.primary_risk_driver
+
+
+
