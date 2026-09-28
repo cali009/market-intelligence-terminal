@@ -6602,6 +6602,7 @@
         let microstructureBundle = null;
         let microstructureLoading = false;
         let activeMicroSymbol = 'SPY';
+        let microWebSocket = null;
         let microEventSource = null;
         let microStreamActive = true;
         let microPollInterval = null;
@@ -6637,7 +6638,9 @@
             document.querySelectorAll('[id^="chip-"]').forEach(el => el.classList.remove('active'));
             document.getElementById(`chip-${sym}`)?.classList.add('active');
             renderMicrostructureView();
-            if (microStreamActive) {
+            if (microWebSocket && microWebSocket.readyState === WebSocket.OPEN) {
+                microWebSocket.send(JSON.stringify({ action: "subscribe", symbols: [sym], channels: ["ticks", "book", "metrics"] }));
+            } else if (microStreamActive) {
                 startMicroStreaming();
             }
         }
@@ -6664,8 +6667,12 @@
         }
 
         function stopMicroStreaming() {
+            if (microWebSocket) {
+                try { microWebSocket.close(); } catch(e) {}
+                microWebSocket = null;
+            }
             if (microEventSource) {
-                microEventSource.close();
+                try { microEventSource.close(); } catch(e) {}
                 microEventSource = null;
             }
             if (microPollInterval) {
@@ -6678,10 +6685,76 @@
             stopMicroStreaming();
             if (!microStreamActive) return;
 
-            // Try SSE first
+            const badge = document.getElementById('microConnBadge');
+
+            // 1. Try Native WebSocket first (Port 8001 / ws protocol)
+            if (typeof WebSocket !== 'undefined' && location.protocol !== 'https:') {
+                try {
+                    const wsHost = location.hostname || 'localhost';
+                    microWebSocket = new WebSocket(`ws://${wsHost}:8001/ws/microstructure`);
+                    microWebSocket.onopen = () => {
+                        if (badge) {
+                            badge.innerHTML = '<span style="display: inline-block; width: 8px; height: 8px; background: var(--accent-green); border-radius: 50%; box-shadow: 0 0 8px var(--accent-green);"></span> LIVE WS (8001)';
+                            badge.style.color = 'var(--accent-green)';
+                        }
+                        microWebSocket.send(JSON.stringify({
+                            action: 'subscribe',
+                            symbols: [activeMicroSymbol],
+                            channels: ['ticks', 'book', 'metrics']
+                        }));
+                    };
+
+                    microWebSocket.onmessage = (ev) => {
+                        try {
+                            const data = JSON.parse(ev.data);
+                            if (data.type === 'MICROSTRUCTURE_BURST' && data.events) {
+                                for (const evt of data.events) {
+                                    if (evt.symbol === activeMicroSymbol && microstructureBundle?.symbols?.[activeMicroSymbol]) {
+                                        const dossier = microstructureBundle.symbols[activeMicroSymbol];
+                                        if (evt.order_book) dossier.order_book = evt.order_book;
+                                        if (evt.metrics) dossier.metrics = evt.metrics;
+                                        if (evt.tick) {
+                                            dossier.last_price = evt.tick.price;
+                                            dossier.recent_ticks.unshift(evt.tick);
+                                            if (dossier.recent_ticks.length > 40) dossier.recent_ticks.pop();
+                                        }
+                                    }
+                                }
+                                updateLiveMicroUI();
+                            }
+                        } catch (e) {}
+                    };
+
+                    microWebSocket.onerror = () => {
+                        // Fallback to SSE
+                        if (microWebSocket) {
+                            try { microWebSocket.close(); } catch(e) {}
+                            microWebSocket = null;
+                        }
+                        startSseStreaming();
+                    };
+                    return;
+                } catch (e) {
+                    // Fall back to SSE
+                }
+            }
+
+            // 2. Fallback to Server-Sent Events (SSE)
+            startSseStreaming();
+        }
+
+        function startSseStreaming() {
+            const badge = document.getElementById('microConnBadge');
             if (typeof EventSource !== 'undefined') {
                 try {
                     microEventSource = new EventSource(`/api/stream/ticks?symbol=${activeMicroSymbol}`);
+                    microEventSource.onopen = () => {
+                        if (badge) {
+                            badge.innerHTML = '<span style="display: inline-block; width: 8px; height: 8px; background: var(--accent-green); border-radius: 50%; box-shadow: 0 0 8px var(--accent-green);"></span> LIVE SSE (2Hz)';
+                            badge.style.color = 'var(--accent-green)';
+                        }
+                    };
+
                     microEventSource.addEventListener('snapshot', (ev) => {
                         try {
                             const data = JSON.parse(ev.data);
@@ -6721,6 +6794,11 @@
         }
 
         function startMicroPolling() {
+            const badge = document.getElementById('microConnBadge');
+            if (badge) {
+                badge.innerHTML = '<span style="display: inline-block; width: 8px; height: 8px; background: var(--accent-amber); border-radius: 50%;"></span> BUFFERED POLLING';
+                badge.style.color = 'var(--accent-amber)';
+            }
             if (microPollInterval) clearInterval(microPollInterval);
             microPollInterval = setInterval(async () => {
                 if (!microStreamActive) return;
