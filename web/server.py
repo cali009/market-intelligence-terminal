@@ -55,6 +55,24 @@ class MarketIntelHandler(SimpleHTTPRequestHandler):
         path = parsed.path
         data_dir = get_data_dir()
 
+        # Route root terminal dashboard requests
+        if path == "/" or path == "/index.html":
+            index_candidates = [
+                Path(__file__).parent / "index.html",
+                Path(__file__).parent.parent / "public" / "index.html",
+            ]
+            for cand in index_candidates:
+                if cand.exists():
+                    self.send_response(200)
+                    self.send_header("Content-Type", "text/html; charset=utf-8")
+                    with open(cand, "rb") as f:
+                        content = f.read()
+                    self.send_header("Content-Length", str(len(content)))
+                    self.end_headers()
+                    if not getattr(self, "_is_head", False):
+                        self.wfile.write(content)
+                    return
+
         # Route API requests to data/feeds or data/dist
         if path.startswith("/api/"):
             clean_sub = path[len("/api/"):].lstrip("/")

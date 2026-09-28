@@ -4,8 +4,8 @@
   "country": "CA",
   "currency": "CAD",
   "name": "iShares S&P/TSX 60 Index ETF",
-  "as_of_date": "2026-09-27",
-  "generated_at": "2026-09-27T23:15:27.557232+00:00",
+  "as_of_date": "2026-09-28",
+  "generated_at": "2026-09-28T06:18:38.225007+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 53.09000015258789,
@@ -306,8 +306,8 @@
   },
   "fundamental_dossier": {
     "symbol": "XIU",
-    "as_of_date": "2026-09-27",
-    "filing_date": "2026-09-27",
+    "as_of_date": "2026-09-28",
+    "filing_date": "2026-09-28",
     "currency": "CAD",
     "fiscal_period": "N/A",
     "fiscal_year": 2026,
@@ -355,7 +355,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 14,
     "gjr_garch_gamma": 0.16,
-    "last_updated": "2026-09-27T23:15:34.899247+00:00"
+    "last_updated": "2026-09-28T06:18:47.000053+00:00"
   },
   "conformal_bounds": {
     "symbol": "XIU",
@@ -372,7 +372,7 @@
     "adapted_alpha": 0.08,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-09-27T23:15:34.915903+00:00"
+    "calibrated_at": "2026-09-28T06:18:47.012377+00:00"
   },
   "cross_border_parity": null,
   "shap_attribution": {
@@ -1567,8 +1567,8 @@
     "exchange": "TSX",
     "country": "CA",
     "currency": "CAD",
-    "as_of_date": "2026-09-27",
-    "generated_at": "2026-09-27T23:15:34.939001+00:00",
+    "as_of_date": "2026-09-28",
+    "generated_at": "2026-09-28T06:18:47.030498+00:00",
     "conviction_grade": "C",
     "aligned_layers_count": 3,
     "formatted_card": "TICKER: XIU\nREGIME: WEAK_BULL (VIX: Medium | Risk-ON | Rates: Paused)\nPATTERN TYPE: Archetype E: Defensive Yield & Sovereign Benchmark \u2014 Earnings-Driven\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BEARISH \u2014 Breakdown below moving average cluster; negative CMF (-0.07) and deteriorating price structure.\n  Fundamental:  8.5/10 \u2014 Broad-market benchmark index ETF; diversified institutional liquidity and systemic solvency.\n  Sentiment:    0.00 (NEUTRAL) \u2014 Routine regulatory reporting schedule; no material catalyst in last 30 days.\n  Historical:   58.2% Win Rate (10 sample size, E[R]: +0.48R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $53.01 \u2013 $53.81\n  Entry trigger:  Price holds structural pivot ($52.68) followed by volume-backed expansion above $53.01.\n  Stop loss:      $52.23 (1.5% below entry)\n  Target 1 (T1):  $53.83 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $58.39 | Est. 24 days | Take 40%\n  Target 3 (T3):  $56.29 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 4.02\n  Position size:  641 shares on $100,000 portfolio risking 1% ($499.98)\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: C-Grade\nTRADE THESIS: XIU exhibits high structural confluence with Earnings-Driven aligning above ascending moving averages. In the current WEAK_BULL macro context, measured support at $52.68 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $52.23 or two consecutive closes back below $52.68 immediately invalidates the trade.",
@@ -1681,6 +1681,14 @@
       "portfolio_risk_pct": 0.5,
       "invalidation_rule": "A daily closing price below $52.23 or two consecutive closes back below $52.68 immediately invalidates the trade.",
       "trade_thesis": "XIU exhibits high structural confluence with Earnings-Driven aligning above ascending moving averages. In the current WEAK_BULL macro context, measured support at $52.68 offers asymmetric risk/reward into upper channel resistance."
+    },
+    "meta_label_verdict": {
+      "symbol": "XIU",
+      "meta_probability": 0.4737,
+      "action": "CAUTION_THROTTLE",
+      "size_multiplier": 0.5,
+      "primary_driver": "bb_bandwidth (+5.00, impact +)",
+      "calibrated_at": "2026-09-28T06:18:47.198863+00:00"
     }
   },
   "disclaimers": {

@@ -4,8 +4,8 @@
   "country": "CA",
   "currency": "CAD",
   "name": "Brookfield Corporation",
-  "as_of_date": "2026-09-27",
-  "generated_at": "2026-09-27T23:48:45.033015+00:00",
+  "as_of_date": "2026-09-28",
+  "generated_at": "2026-09-28T06:18:38.225007+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 51.970001220703125,
@@ -306,7 +306,7 @@
   },
   "fundamental_dossier": {
     "symbol": "BN",
-    "as_of_date": "2026-09-27",
+    "as_of_date": "2026-09-28",
     "filing_date": "2026-03-18",
     "currency": "CAD",
     "fiscal_period": "FY",
@@ -358,7 +358,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 14,
     "gjr_garch_gamma": 0.16,
-    "last_updated": "2026-09-27T23:48:51.378565+00:00"
+    "last_updated": "2026-09-28T06:18:45.772138+00:00"
   },
   "conformal_bounds": {
     "symbol": "BN",
@@ -375,7 +375,7 @@
     "adapted_alpha": 0.055,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-09-27T23:48:51.397866+00:00"
+    "calibrated_at": "2026-09-28T06:18:45.789584+00:00"
   },
   "cross_border_parity": {
     "tsx_symbol": "BN",
@@ -519,7 +519,7 @@
         "Standard factual disclosure under regulatory reporting schedule"
       ],
       "horizon": "SHORT_TERM",
-      "priced_in_status": "PARTIAL",
+      "priced_in_status": "PRICED_IN",
       "reaction_1d_pct": -1.86,
       "reaction_3d_pct": -2.07,
       "rvol_at_event": 1.0,
@@ -556,7 +556,7 @@
         "Standard factual disclosure under regulatory reporting schedule"
       ],
       "horizon": "SHORT_TERM",
-      "priced_in_status": "PARTIAL",
+      "priced_in_status": "PRICED_IN",
       "reaction_1d_pct": -1.86,
       "reaction_3d_pct": -2.07,
       "rvol_at_event": 1.0,
@@ -644,7 +644,7 @@
         "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
       ],
       "hard_gate_triggered": false,
-      "score_impact_pts": 0.5
+      "score_impact_pts": 0.4
     },
     {
       "id": "ba986c49aa05",
@@ -681,7 +681,7 @@
         "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
       ],
       "hard_gate_triggered": false,
-      "score_impact_pts": 0.5
+      "score_impact_pts": 0.4
     }
   ],
   "chart_bars": [
@@ -1651,8 +1651,8 @@
     "exchange": "TSX",
     "country": "CA",
     "currency": "CAD",
-    "as_of_date": "2026-09-27",
-    "generated_at": "2026-09-27T23:48:51.565575+00:00",
+    "as_of_date": "2026-09-28",
+    "generated_at": "2026-09-28T06:18:45.933771+00:00",
     "conviction_grade": "C",
     "aligned_layers_count": 3,
     "formatted_card": "TICKER: BN\nREGIME: WEAK_BULL (VIX: Medium | Risk-ON | Rates: Paused)\nPATTERN TYPE: Archetype E: Defensive Yield & Sovereign Benchmark \u2014 Earnings-Driven\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BEARISH \u2014 Breakdown below moving average cluster; negative CMF (-0.19) and deteriorating price structure.\n  Fundamental:  6.0/10 \u2014 Stable financial quality (Score 6.0/10); P/E 36.23x balanced by operational cash flow.\n  Sentiment:    +3.00 (BULLISH) \u2014 BN Form 6-K Cross-Border Continuous Disclosure\n  Historical:   58.2% Win Rate (10 sample size, E[R]: +0.48R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $52.96 \u2013 $53.75\n  Entry trigger:  Price holds structural pivot ($51.31) followed by volume-backed expansion above $52.96.\n  Stop loss:      $51.05 (3.6% below entry)\n  Target 1 (T1):  $55.25 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $57.73 | Est. 24 days | Take 40%\n  Target 3 (T3):  $60.98 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.32\n  Position size:  261 shares on $100,000 portfolio risking 1% ($498.51)\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: C-Grade\nTRADE THESIS: BN exhibits high structural confluence with Earnings-Driven aligning above ascending moving averages. In the current WEAK_BULL macro context, measured support at $51.31 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $51.05 or two consecutive closes back below $51.31 immediately invalidates the trade.",
@@ -1765,6 +1765,14 @@
       "portfolio_risk_pct": 0.5,
       "invalidation_rule": "A daily closing price below $51.05 or two consecutive closes back below $51.31 immediately invalidates the trade.",
       "trade_thesis": "BN exhibits high structural confluence with Earnings-Driven aligning above ascending moving averages. In the current WEAK_BULL macro context, measured support at $51.31 offers asymmetric risk/reward into upper channel resistance."
+    },
+    "meta_label_verdict": {
+      "symbol": "BN",
+      "meta_probability": 0.5309,
+      "action": "HIGH_CONVICTION_PROCEED",
+      "size_multiplier": 1.0,
+      "primary_driver": "mom_1m (-0.10, impact +)",
+      "calibrated_at": "2026-09-28T06:18:46.123245+00:00"
     }
   },
   "disclaimers": {

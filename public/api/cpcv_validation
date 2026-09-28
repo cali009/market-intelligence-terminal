@@ -1,6 +1,6 @@
 {
   "summary": {
-    "total_strategies_evaluated": 7,
+    "total_strategies_evaluated": 8,
     "total_cpcv_paths": 15,
     "num_timeline_blocks": 6,
     "embargo_days": 5,
@@ -8,8 +8,8 @@
     "pbo_evaluation": "LOW_OVERFITTING_RISK",
     "target_fdr_q": 0.05,
     "fdr_passed_count": 0,
-    "fdr_rejected_count": 7,
-    "calibrated_at": "2026-09-27T23:15:19.897424+00:00"
+    "fdr_rejected_count": 8,
+    "calibrated_at": "2026-09-28T06:18:52.639826+00:00"
   },
   "fdr_gating_table": [
     {
@@ -22,7 +22,7 @@
       "t_statistic": -2.49,
       "raw_p_value": 0.01278,
       "fdr_rank": 1,
-      "fdr_critical_threshold": 0.00714,
+      "fdr_critical_threshold": 0.00625,
       "fdr_verdict": "REJECTED_SELECTION_BIAS"
     },
     {
@@ -35,7 +35,7 @@
       "t_statistic": -1.656,
       "raw_p_value": 0.09765,
       "fdr_rank": 2,
-      "fdr_critical_threshold": 0.01429,
+      "fdr_critical_threshold": 0.0125,
       "fdr_verdict": "REJECTED_SELECTION_BIAS"
     },
     {
@@ -48,7 +48,7 @@
       "t_statistic": 1.215,
       "raw_p_value": 0.22436,
       "fdr_rank": 3,
-      "fdr_critical_threshold": 0.02143,
+      "fdr_critical_threshold": 0.01875,
       "fdr_verdict": "REJECTED_SELECTION_BIAS"
     },
     {
@@ -61,7 +61,7 @@
       "t_statistic": -1.039,
       "raw_p_value": 0.29866,
       "fdr_rank": 4,
-      "fdr_critical_threshold": 0.02857,
+      "fdr_critical_threshold": 0.025,
       "fdr_verdict": "REJECTED_SELECTION_BIAS"
     },
     {
@@ -74,7 +74,7 @@
       "t_statistic": 0.754,
       "raw_p_value": 0.45093,
       "fdr_rank": 5,
-      "fdr_critical_threshold": 0.03571,
+      "fdr_critical_threshold": 0.03125,
       "fdr_verdict": "REJECTED_SELECTION_BIAS"
     },
     {
@@ -87,7 +87,20 @@
       "t_statistic": -0.514,
       "raw_p_value": 0.60713,
       "fdr_rank": 6,
-      "fdr_critical_threshold": 0.04286,
+      "fdr_critical_threshold": 0.0375,
+      "fdr_verdict": "REJECTED_SELECTION_BIAS"
+    },
+    {
+      "strategy_id": "PO3_META_GATED",
+      "strategy_name": "TAC-15-ML: PO3 Liquidity Sweep with ML Meta-Label Gating",
+      "status": "ACTIVE",
+      "total_trades": 32,
+      "mean_trade_return_pct": 0.3,
+      "sharpe_ratio": 0.0,
+      "t_statistic": 0.429,
+      "raw_p_value": 0.6682,
+      "fdr_rank": 7,
+      "fdr_critical_threshold": 0.04375,
       "fdr_verdict": "REJECTED_SELECTION_BIAS"
     },
     {
@@ -99,7 +112,7 @@
       "sharpe_ratio": -0.19,
       "t_statistic": -0.203,
       "raw_p_value": 0.83905,
-      "fdr_rank": 7,
+      "fdr_rank": 8,
       "fdr_critical_threshold": 0.05,
       "fdr_verdict": "REJECTED_SELECTION_BIAS"
     }
@@ -113,7 +126,7 @@
       ],
       "best_is_strategy": "PO3_LIQUIDITY_SWEEP",
       "oos_rank": 1,
-      "oos_rank_percentile": 0.14,
+      "oos_rank_percentile": 0.12,
       "is_rank_inverted": false
     },
     {
@@ -124,7 +137,7 @@
       ],
       "best_is_strategy": "PO3_LIQUIDITY_SWEEP",
       "oos_rank": 1,
-      "oos_rank_percentile": 0.14,
+      "oos_rank_percentile": 0.12,
       "is_rank_inverted": false
     },
     {
@@ -134,8 +147,8 @@
         3
       ],
       "best_is_strategy": "PO3_LIQUIDITY_SWEEP",
-      "oos_rank": 1,
-      "oos_rank_percentile": 0.14,
+      "oos_rank": 2,
+      "oos_rank_percentile": 0.25,
       "is_rank_inverted": false
     },
     {
@@ -146,7 +159,7 @@
       ],
       "best_is_strategy": "PO3_LIQUIDITY_SWEEP",
       "oos_rank": 1,
-      "oos_rank_percentile": 0.14,
+      "oos_rank_percentile": 0.12,
       "is_rank_inverted": false
     },
     {
@@ -157,7 +170,7 @@
       ],
       "best_is_strategy": "PO3_LIQUIDITY_SWEEP",
       "oos_rank": 1,
-      "oos_rank_percentile": 0.14,
+      "oos_rank_percentile": 0.12,
       "is_rank_inverted": false
     },
     {
@@ -168,7 +181,7 @@
       ],
       "best_is_strategy": "PO3_LIQUIDITY_SWEEP",
       "oos_rank": 1,
-      "oos_rank_percentile": 0.14,
+      "oos_rank_percentile": 0.12,
       "is_rank_inverted": false
     },
     {
@@ -178,8 +191,8 @@
         3
       ],
       "best_is_strategy": "PO3_LIQUIDITY_SWEEP",
-      "oos_rank": 3,
-      "oos_rank_percentile": 0.43,
+      "oos_rank": 4,
+      "oos_rank_percentile": 0.5,
       "is_rank_inverted": false
     },
     {
@@ -190,7 +203,7 @@
       ],
       "best_is_strategy": "PO3_LIQUIDITY_SWEEP",
       "oos_rank": 1,
-      "oos_rank_percentile": 0.14,
+      "oos_rank_percentile": 0.12,
       "is_rank_inverted": false
     },
     {
@@ -201,7 +214,7 @@
       ],
       "best_is_strategy": "PO3_LIQUIDITY_SWEEP",
       "oos_rank": 1,
-      "oos_rank_percentile": 0.14,
+      "oos_rank_percentile": 0.12,
       "is_rank_inverted": false
     },
     {
@@ -211,8 +224,8 @@
         3
       ],
       "best_is_strategy": "PO3_LIQUIDITY_SWEEP",
-      "oos_rank": 1,
-      "oos_rank_percentile": 0.14,
+      "oos_rank": 2,
+      "oos_rank_percentile": 0.25,
       "is_rank_inverted": false
     },
     {
@@ -223,7 +236,7 @@
       ],
       "best_is_strategy": "PO3_LIQUIDITY_SWEEP",
       "oos_rank": 1,
-      "oos_rank_percentile": 0.14,
+      "oos_rank_percentile": 0.12,
       "is_rank_inverted": false
     },
     {
@@ -234,7 +247,7 @@
       ],
       "best_is_strategy": "PO3_LIQUIDITY_SWEEP",
       "oos_rank": 1,
-      "oos_rank_percentile": 0.14,
+      "oos_rank_percentile": 0.12,
       "is_rank_inverted": false
     },
     {
@@ -244,8 +257,8 @@
         4
       ],
       "best_is_strategy": "PO3_LIQUIDITY_SWEEP",
-      "oos_rank": 2,
-      "oos_rank_percentile": 0.29,
+      "oos_rank": 3,
+      "oos_rank_percentile": 0.38,
       "is_rank_inverted": false
     },
     {
@@ -256,7 +269,7 @@
       ],
       "best_is_strategy": "PO3_LIQUIDITY_SWEEP",
       "oos_rank": 1,
-      "oos_rank_percentile": 0.14,
+      "oos_rank_percentile": 0.12,
       "is_rank_inverted": false
     },
     {
@@ -267,7 +280,7 @@
       ],
       "best_is_strategy": "PO3_LIQUIDITY_SWEEP",
       "oos_rank": 1,
-      "oos_rank_percentile": 0.14,
+      "oos_rank_percentile": 0.12,
       "is_rank_inverted": false
     }
   ],

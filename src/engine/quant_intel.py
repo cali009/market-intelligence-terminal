@@ -162,6 +162,7 @@ class QuantIntelDossier:
     layer_5_sentiment: Layer5Sentiment
     layer_6_memory: Layer6Memory
     trade_plan: QuantIntelTradePlan
+    meta_label_verdict: Optional[Dict[str, Any]] = None
 
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)
@@ -1024,6 +1025,18 @@ INVALIDATION: {plan.invalidation_rule}"""
             conviction_grade=grade,
         )
 
+        # Phase 23: Machine Learning Meta-Label Gating Verdict
+        meta_verdict = None
+        try:
+            from src.engine.meta_label_dataset import MetaLabelDatasetEngine
+            from src.engine.meta_label_classifier import meta_label_classifier
+
+            feat = MetaLabelDatasetEngine.compute_feature_vector_for_bar(symbol, df, len(df) - 1)
+            verdict_obj = meta_label_classifier.evaluate_gating(symbol, feat)
+            meta_verdict = verdict_obj.to_dict()
+        except Exception:
+            pass
+
         return QuantIntelDossier(
             symbol=symbol,
             exchange=exch,
@@ -1041,6 +1054,7 @@ INVALIDATION: {plan.invalidation_rule}"""
             layer_5_sentiment=l5,
             layer_6_memory=l6,
             trade_plan=plan,
+            meta_label_verdict=meta_verdict,
         )
 
     def evaluate_all(self, portfolio_size: float = 100000.0) -> Dict[str, QuantIntelDossier]:
