@@ -442,6 +442,17 @@ class MicrostructureEngine:
         ticks = self.simulate_recent_ticks(symbol, book, count=30)
         metrics = self.compute_symbol_metrics(symbol, book, ticks, support, resistance)
 
+        # Phase 25.3: Compute default Algorithmic Execution Profiles (100 shares & 500 shares)
+        execution_profiles = None
+        try:
+            from src.engine.execution_algo import execution_algo_engine
+            execution_profiles = {
+                "size_100": execution_algo_engine.evaluate_all_strategies(symbol, "BUY", 100, book, metrics, country),
+                "size_500": execution_algo_engine.evaluate_all_strategies(symbol, "BUY", 500, book, metrics, country),
+            }
+        except Exception:
+            pass
+
         dossier = SymbolMicrostructureDossier(
             symbol=symbol,
             exchange=exch,
@@ -450,6 +461,7 @@ class MicrostructureEngine:
             order_book=book,
             metrics=metrics,
             recent_ticks=ticks,
+            execution_profiles=execution_profiles,
         )
         self._cache[symbol] = dossier
         return dossier

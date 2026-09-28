@@ -1230,6 +1230,7 @@ class SymbolMicrostructureDossier(BaseModel):
     order_book: OrderBookSnapshot
     metrics: MicrostructureMetrics
     recent_ticks: List[TickMessage]
+    execution_profiles: Optional[Dict[str, Any]] = None
 
     def to_dict(self) -> Dict[str, Any]:
         return self.model_dump()
@@ -1244,6 +1245,48 @@ class MicrostructureSnapshotFeed(BaseModel):
 
     def to_dict(self) -> Dict[str, Any]:
         return self.model_dump()
+
+
+# Phase 25.3: Algorithmic Execution Simulator & Transaction Cost Analysis (TCA) Schemas
+
+ExecutionStrategy = Literal["DIRECT_MARKET", "LIMIT_PASSIVE", "TWAP", "VWAP", "POV_10"]
+
+
+class ChildOrderSlice(BaseModel):
+    slice_idx: int
+    offset_sec: int
+    shares: int
+    projected_price: float
+    projected_impact_bps: float
+    fee_or_rebate: float
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class ExecutionPlanResult(BaseModel):
+    symbol: str
+    strategy: str
+    side: Literal["BUY", "SELL"]
+    total_shares: int
+    arrival_price: float
+    expected_effective_price: float
+    expected_slippage_per_share: float
+    expected_slippage_bps: float
+    market_impact_cost: float
+    spread_cost: float
+    exchange_fees: float
+    total_execution_cost: float
+    implementation_shortfall_bps: float
+    fill_probability_pct: float
+    recommended_strategy: str
+    maker_taker_status: Literal["TAKER", "MAKER", "MIXED"]
+    child_slices: List[ChildOrderSlice]
+    disclaimers: List[str]
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
 
 
 

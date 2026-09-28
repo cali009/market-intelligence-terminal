@@ -6143,6 +6143,22 @@
                         </div>
                     </div>
 
+                    <!-- Execution TCA Telemetry (Phase 25.3) -->
+                    <div style="margin-top: 8px; font-size: 11px; color: var(--text-secondary); background: rgba(6, 182, 212, 0.08); border: 1px solid rgba(6, 182, 212, 0.25); border-radius: 6px; padding: 8px 12px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+                        <div>
+                            <span style="color: var(--accent-cyan); font-weight: 700;">⚡ Execution TCA:</span>
+                            <strong style="color: #fff; margin-left: 6px;">${p.tca_execution_strategy || 'VWAP'}</strong>
+                            <span style="color: var(--text-muted); font-size: 10px;"> (${p.tca_optimal_slices || 1} child slice${(p.tca_optimal_slices || 1) > 1 ? 's' : ''})</span>
+                        </div>
+                        <div style="font-family: monospace;">
+                            <span style="color: var(--text-muted);">Est. Fill:</span>
+                            <strong style="color: #fff; margin-left: 4px;">$${(p.tca_effective_fill_price || p.entry_zone_ideal).toFixed(2)}</strong>
+                            <span style="color: ${(p.tca_expected_slippage_bps || 0) > 10 ? 'var(--accent-amber)' : 'var(--accent-green)'}; margin-left: 8px;">
+                                ${(p.tca_expected_slippage_bps || 0) > 0 ? '+' : ''}${(p.tca_expected_slippage_bps || 0).toFixed(1)} bps
+                            </span>
+                        </div>
+                    </div>
+
                     <!-- Thesis & Invalidation -->
                     <div style="margin-top: 12px; font-size: 11px; line-height: 1.4; color: var(--text-secondary); background: rgba(0,0,0,0.2); padding: 10px; border-radius: 6px;">
                         <div style="margin-bottom: 4px;"><strong style="color: #fff;">Thesis:</strong> ${p.trade_thesis}</div>
@@ -6606,6 +6622,234 @@
         let microEventSource = null;
         let microStreamActive = true;
         let microPollInterval = null;
+
+        // Phase 25.3: Algorithmic Execution Simulator & TCA State
+        let tcaSimShares = 500;
+        let tcaSimSide = 'BUY';
+        let tcaSelectedStrategy = 'ALL';
+
+        function setTcaShares(n) {
+            tcaSimShares = parseInt(n) || 100;
+            renderMicrostructureView();
+        }
+
+        function setTcaSide(side) {
+            tcaSimSide = side;
+            renderMicrostructureView();
+        }
+
+        function setTcaStrategy(strat) {
+            tcaSelectedStrategy = strat;
+            renderMicrostructureView();
+        }
+
+        function calculateTcaInBrowser(dossier, shares, side) {
+            const isUS = (dossier.country === 'US');
+            const currencySym = isUS ? '$' : 'C$';
+            const book = dossier.order_book;
+            const metrics = dossier.metrics;
+            const arrivalPrice = book.mid_price;
+            const spreadDollars = book.spread_dollars;
+            const kLambda = metrics.kyle_lambda || 0.015;
+            const obi = metrics.order_book_imbalance || 0.0;
+
+            const takerFeePerSh = isUS ? 0.0030 + 0.000166 : 0.0016 + 0.000150;
+            const makerRebatePerSh = isUS ? -0.0020 + 0.000166 : -0.0009 + 0.000150;
+
+            // 1. Direct Market Order
+            const levels = (side === 'BUY') ? book.asks : book.bids;
+            let remaining = shares;
+            let filledCost = 0;
+            let directSlices = [];
+            let sliceIdx = 1;
+
+            for (let i = 0; i < levels.length; i++) {
+                if (remaining <= 0) break;
+                const lvl = levels[i];
+                const fillQty = Math.min(remaining, lvl.size);
+                const impactBps = Math.abs(lvl.price - arrivalPrice) / arrivalPrice * 10000;
+                directSlices.push({
+                    slice_idx: sliceIdx++,
+                    offset_sec: 0,
+                    shares: fillQty,
+                    price: lvl.price,
+                    impact_bps: impactBps,
+                    fee: fillQty * takerFeePerSh
+                });
+                filledCost += fillQty * lvl.price;
+                remaining -= fillQty;
+            }
+            if (remaining > 0) {
+                const lastPrice = levels[levels.length - 1].price;
+                const residualImpact = (remaining / 10000) * kLambda;
+                const penaltyPrice = (side === 'BUY') ? (lastPrice + residualImpact) : Math.max(0.01, lastPrice - residualImpact);
+                const impactBps = Math.abs(penaltyPrice - arrivalPrice) / arrivalPrice * 10000;
+                directSlices.push({
+                    slice_idx: sliceIdx++,
+                    offset_sec: 1,
+                    shares: remaining,
+                    price: penaltyPrice,
+                    impact_bps: impactBps,
+                    fee: remaining * takerFeePerSh
+                });
+                filledCost += remaining * penaltyPrice;
+                remaining = 0;
+            }
+            const directEffPrice = filledCost / Math.max(1, shares);
+            const directSlipPerSh = (side === 'BUY') ? (directEffPrice - arrivalPrice) : (arrivalPrice - directEffPrice);
+            const directSlipBps = (directSlipPerSh / arrivalPrice) * 10000;
+            const directFee = shares * takerFeePerSh;
+            const directTotalCost = (Math.abs(directSlipPerSh) * shares) + directFee;
+
+            // 2. Limit Passive Order
+            const postedPrice = (side === 'BUY') ? book.bids[0].price : book.asks[0].price;
+            const topDepth = (side === 'BUY') ? book.bids[0].size : book.asks[0].size;
+            const logit = 1.2 + (obi * 1.5) - (0.8 * (shares / Math.max(100, topDepth)));
+            const limitFillProb = Math.min(92, Math.max(25, Math.round((1.0 / (1.0 + Math.exp(-logit))) * 1000) / 10));
+            const advFactor = ((side === 'BUY' && obi < -0.2) || (side === 'SELL' && obi > 0.2)) ? 0.35 : 0.15;
+            const adverseImpact = (kLambda * 0.25) * advFactor;
+            const limitEffPrice = postedPrice + ((side === 'BUY') ? adverseImpact : -adverseImpact);
+            const limitSlipPerSh = (side === 'BUY') ? (limitEffPrice - arrivalPrice) : (arrivalPrice - limitEffPrice);
+            const limitSlipBps = (limitSlipPerSh / arrivalPrice) * 10000;
+            const limitFee = shares * makerRebatePerSh;
+            const limitTotalCost = (limitSlipPerSh * shares) + limitFee;
+
+            // 3. TWAP (5 Slices)
+            const twapNumSlices = 5;
+            const twapSliceQty = Math.floor(shares / twapNumSlices);
+            const twapRem = shares % twapNumSlices;
+            const twapReduction = 1.0 / Math.pow(twapNumSlices, 0.55);
+            let twapCost = 0;
+            let twapFee = 0;
+            let twapSlices = [];
+            for (let i = 0; i < twapNumSlices; i++) {
+                const sQty = twapSliceQty + (i < twapRem ? 1 : 0);
+                const sImpact = (sQty / 10000) * kLambda * twapReduction;
+                const sSpread = (spreadDollars / 2) * 0.7;
+                const sPrice = (side === 'BUY') ? (arrivalPrice + sSpread + sImpact) : Math.max(0.01, arrivalPrice - sSpread - sImpact);
+                const isMaker = (i % 2 === 1);
+                const sFee = sQty * (isMaker ? makerRebatePerSh : takerFeePerSh);
+                twapCost += sQty * sPrice;
+                twapFee += sFee;
+                twapSlices.push({
+                    slice_idx: i + 1,
+                    offset_sec: i * 180,
+                    shares: sQty,
+                    price: sPrice,
+                    impact_bps: Math.abs(sPrice - arrivalPrice) / arrivalPrice * 10000,
+                    fee: sFee
+                });
+            }
+            const twapEffPrice = twapCost / shares;
+            const twapSlipPerSh = (side === 'BUY') ? (twapEffPrice - arrivalPrice) : (arrivalPrice - twapEffPrice);
+            const twapSlipBps = (twapSlipPerSh / arrivalPrice) * 10000;
+            const twapTotalCost = (twapSlipPerSh * shares) + twapFee;
+
+            // 4. VWAP (5 U-curve Slices)
+            const vwapWeights = [0.28, 0.16, 0.12, 0.16, 0.28];
+            let vwapSliceShares = vwapWeights.map(w => Math.round(shares * w));
+            const vwapDiff = shares - vwapSliceShares.reduce((a, b) => a + b, 0);
+            vwapSliceShares[0] += vwapDiff;
+            const vwapReduction = (1.0 / Math.pow(5, 0.62)) * 0.85;
+            let vwapCost = 0;
+            let vwapFee = 0;
+            let vwapSlices = [];
+            for (let i = 0; i < 5; i++) {
+                const sQty = vwapSliceShares[i];
+                const sImpact = (sQty / 10000) * kLambda * vwapReduction * (1.0 / Math.sqrt(Math.max(0.01, vwapWeights[i] * 3.5)));
+                const sSpread = (spreadDollars / 2) * 0.6;
+                const sPrice = (side === 'BUY') ? (arrivalPrice + sSpread + sImpact) : Math.max(0.01, arrivalPrice - sSpread - sImpact);
+                const isMaker = (i === 1 || i === 2 || i === 3);
+                const sFee = sQty * (isMaker ? makerRebatePerSh : takerFeePerSh);
+                vwapCost += sQty * sPrice;
+                vwapFee += sFee;
+                vwapSlices.push({
+                    slice_idx: i + 1,
+                    offset_sec: i * 360,
+                    shares: sQty,
+                    price: sPrice,
+                    impact_bps: Math.abs(sPrice - arrivalPrice) / arrivalPrice * 10000,
+                    fee: sFee
+                });
+            }
+            const vwapEffPrice = vwapCost / shares;
+            const vwapSlipPerSh = (side === 'BUY') ? (vwapEffPrice - arrivalPrice) : (arrivalPrice - vwapEffPrice);
+            const vwapSlipBps = (vwapSlipPerSh / arrivalPrice) * 10000;
+            const vwapTotalCost = (vwapSlipPerSh * shares) + vwapFee;
+
+            // 5. POV 10% (Iceberg)
+            const totalAskDepth = book.asks.reduce((a, b) => a + b.size, 0);
+            const estMinVol = Math.max(500, totalAskDepth * 2);
+            const povSliceSize = Math.max(25, Math.floor(estMinVol * 0.10));
+            let povSliceShares = [];
+            if (povSliceSize >= shares) {
+                const nSl = (shares >= 50) ? Math.max(2, Math.min(4, Math.floor(shares / 25))) : 1;
+                povSliceShares = Array(nSl).fill(Math.floor(shares / nSl));
+                for (let i = 0; i < (shares % nSl); i++) povSliceShares[i]++;
+            } else {
+                const nFull = Math.floor(shares / povSliceSize);
+                const rem = shares % povSliceSize;
+                povSliceShares = Array(nFull).fill(povSliceSize);
+                if (rem > 0) povSliceShares.push(rem);
+            }
+            let povCost = 0;
+            let povFee = 0;
+            let povSlices = [];
+            for (let i = 0; i < povSliceShares.length; i++) {
+                const sQty = povSliceShares[i];
+                const sImpact = (sQty / 10000) * kLambda * 0.45;
+                const sSpread = (spreadDollars / 2) * 0.5;
+                const sPrice = (side === 'BUY') ? (arrivalPrice + sSpread + sImpact) : Math.max(0.01, arrivalPrice - sSpread - sImpact);
+                const sFee = sQty * makerRebatePerSh; // Icebergs rest as makers
+                povCost += sQty * sPrice;
+                povFee += sFee;
+                povSlices.push({
+                    slice_idx: i + 1,
+                    offset_sec: i * 60,
+                    shares: sQty,
+                    price: sPrice,
+                    impact_bps: Math.abs(sPrice - arrivalPrice) / arrivalPrice * 10000,
+                    fee: sFee
+                });
+            }
+            const povEffPrice = povCost / shares;
+            const povSlipPerSh = (side === 'BUY') ? (povEffPrice - arrivalPrice) : (arrivalPrice - povEffPrice);
+            const povSlipBps = (povSlipPerSh / arrivalPrice) * 10000;
+            const povTotalCost = (povSlipPerSh * shares) + povFee;
+
+            // Recommendation Logic
+            let recStrat = 'TWAP';
+            let rationale = 'Moderate order size; uniform TWAP time-slicing stabilizes execution price across time intervals.';
+            if (metrics.liquidity_state === 'LIQUIDITY_VOID' || metrics.liquidity_state === 'SPREAD_EXPANSION') {
+                recStrat = (shares > 300) ? 'POV_10' : 'LIMIT_PASSIVE';
+                rationale = 'Liquidity void or spread expansion detected; passive execution mandatory to avoid sweeping empty books.';
+            } else if (shares <= (side === 'BUY' ? book.asks[0].size : book.bids[0].size) * 0.4) {
+                recStrat = 'DIRECT_MARKET';
+                rationale = 'Order size is less than 40% of top-of-book depth; immediate direct execution incurs minimal impact.';
+            } else if (shares > 1000 || shares > totalAskDepth * 0.5) {
+                recStrat = 'VWAP';
+                rationale = 'Large order relative to visible book depth; VWAP volume curve slicing optimizes Kyle\'s lambda impact.';
+            } else if (Math.abs(obi) > 0.4 && ((side === 'BUY' && obi > 0) || (side === 'SELL' && obi < 0))) {
+                recStrat = 'LIMIT_PASSIVE';
+                rationale = 'Favorable order book imbalance allows passive queue posting to earn maker rebates.';
+            }
+
+            const strats = {
+                DIRECT_MARKET: { key: 'DIRECT_MARKET', name: 'DIRECT MARKET', desc: 'Aggressive DOM Sweep', type: 'TAKER', effPrice: directEffPrice, slipBps: directSlipBps, slipPerSh: directSlipPerSh, fee: directFee, totalCost: directTotalCost, fillProb: 99.9, slices: directSlices },
+                LIMIT_PASSIVE: { key: 'LIMIT_PASSIVE', name: 'LIMIT PASSIVE', desc: 'Resting BBO Limit', type: 'MAKER', effPrice: limitEffPrice, slipBps: limitSlipBps, slipPerSh: limitSlipPerSh, fee: limitFee, totalCost: limitTotalCost, fillProb: limitFillProb, slices: [{ slice_idx: 1, offset_sec: 0, shares: shares, price: limitEffPrice, impact_bps: limitSlipBps, fee: limitFee }] },
+                TWAP: { key: 'TWAP', name: 'TWAP', desc: 'Uniform Time-Slicing', type: 'MIXED', effPrice: twapEffPrice, slipBps: twapSlipBps, slipPerSh: twapSlipPerSh, fee: twapFee, totalCost: twapTotalCost, fillProb: 95.0, slices: twapSlices },
+                VWAP: { key: 'VWAP', name: 'VWAP', desc: 'Intraday Volume Curve', type: 'MIXED', effPrice: vwapEffPrice, slipBps: vwapSlipBps, slipPerSh: vwapSlipPerSh, fee: vwapFee, totalCost: vwapTotalCost, fillProb: 96.5, slices: vwapSlices },
+                POV_10: { key: 'POV_10', name: 'POV 10%', desc: 'Dynamic Iceberg', type: 'MAKER', effPrice: povEffPrice, slipBps: povSlipBps, slipPerSh: povSlipPerSh, fee: povFee, totalCost: povTotalCost, fillProb: 91.0, slices: povSlices }
+            };
+
+            return {
+                arrivalPrice,
+                currencySym,
+                recommendedStrategy: recStrat,
+                rationale,
+                strategies: strats
+            };
+        }
 
         async function loadMicrostructureAndRender() {
             if (microstructureBundle) {
@@ -7142,6 +7386,203 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- 3. Algorithmic Order Execution Simulator & Transaction Cost Analysis (Phase 25.3) -->
+                ${(() => {
+                    const tcaData = calculateTcaInBrowser(dossier, tcaSimShares, tcaSimSide);
+                    const activeStrategyObj = (tcaSelectedStrategy !== 'ALL' && tcaData.strategies[tcaSelectedStrategy]) ? tcaData.strategies[tcaSelectedStrategy] : tcaData.strategies[tcaData.recommendedStrategy];
+
+                    const stratRows = Object.values(tcaData.strategies).map(s => {
+                        const isRec = (s.key === tcaData.recommendedStrategy);
+                        const roleColor = s.type === 'TAKER' ? '#f87171' : (s.type === 'MAKER' ? '#34d399' : '#38bdf8');
+                        const roleBg = s.type === 'TAKER' ? 'rgba(239,68,68,0.15)' : (s.type === 'MAKER' ? 'rgba(16,185,129,0.15)' : 'rgba(56,189,248,0.15)');
+                        return `
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); ${isRec ? 'background: rgba(6, 182, 212, 0.06);' : ''} font-family: monospace;">
+                                <td style="padding: 8px 10px;">
+                                    <div style="font-weight: 800; color: #fff;">${s.name}</div>
+                                    <div style="font-size: 10px; color: var(--text-muted);">${s.desc}</div>
+                                </td>
+                                <td style="padding: 8px 10px; text-align: center;">
+                                    <span style="background: ${roleBg}; color: ${roleColor}; font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 4px;">
+                                        ${s.type}
+                                    </span>
+                                </td>
+                                <td style="padding: 8px 10px; text-align: right; color: #fff; font-weight: 700;">
+                                    ${currencySym}${s.effPrice.toFixed(2)}
+                                </td>
+                                <td style="padding: 8px 10px; text-align: right; color: ${s.slipPerSh >= 0 ? '#f87171' : '#34d399'};">
+                                    ${s.slipPerSh > 0 ? '+' : ''}${currencySym}${s.slipPerSh.toFixed(3)}
+                                </td>
+                                <td style="padding: 8px 10px; text-align: right; color: ${s.slipBps >= 0 ? '#f87171' : '#34d399'}; font-weight: 700;">
+                                    ${s.slipBps > 0 ? '+' : ''}${s.slipBps.toFixed(2)} bps
+                                </td>
+                                <td style="padding: 8px 10px; text-align: right; color: ${s.fee >= 0 ? '#f87171' : '#34d399'};">
+                                    ${s.fee >= 0 ? '+' : ''}${currencySym}${s.fee.toFixed(2)}
+                                </td>
+                                <td style="padding: 8px 10px; text-align: right; color: #fff; font-weight: 800;">
+                                    ${currencySym}${s.totalCost.toFixed(2)}
+                                </td>
+                                <td style="padding: 8px 10px; text-align: center; color: ${s.fillProb >= 90 ? '#34d399' : '#fbbf24'}; font-weight: 700;">
+                                    ${s.fillProb}%
+                                </td>
+                                <td style="padding: 8px 10px; text-align: center; color: var(--text-secondary);">
+                                    ${s.slices.length} slice${s.slices.length > 1 ? 's' : ''}
+                                </td>
+                                <td style="padding: 8px 10px; text-align: center;">
+                                    ${isRec ? '<span style="background: rgba(6,182,212,0.25); color: var(--accent-cyan); font-size: 9px; font-weight: 800; padding: 3px 6px; border-radius: 4px;">★ OPTIMAL</span>' : '<button class="filter-btn" style="padding: 2px 6px; font-size: 9px;" onclick="setTcaStrategy(\'' + s.key + '\')">Select</button>'}
+                                </td>
+                            </tr>
+                        `;
+                    }).join('');
+
+                    const slicesHtml = activeStrategyObj.slices.map(sl => `
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 10px; font-family: monospace;">
+                            <td style="padding: 4px 8px; color: var(--text-muted);">#${sl.slice_idx}</td>
+                            <td style="padding: 4px 8px; color: var(--text-secondary);">+${sl.offset_sec}s</td>
+                            <td style="padding: 4px 8px; text-align: right; color: #fff; font-weight: 700;">${sl.shares.toLocaleString()} sh</td>
+                            <td style="padding: 4px 8px; text-align: right; color: var(--accent-cyan); font-weight: 700;">${currencySym}${sl.price.toFixed(2)}</td>
+                            <td style="padding: 4px 8px; text-align: right; color: ${sl.impact_bps > 5 ? '#f87171' : '#34d399'};">${sl.impact_bps.toFixed(2)} bps</td>
+                            <td style="padding: 4px 8px; text-align: right; color: ${sl.fee >= 0 ? '#f87171' : '#34d399'};">${sl.fee >= 0 ? '+' : ''}${currencySym}${sl.fee.toFixed(3)}</td>
+                        </tr>
+                    `).join('');
+
+                    return `
+                        <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 18px; margin-bottom: 20px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 12px; flex-wrap: wrap; gap: 12px;">
+                                <div>
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                        <h3 style="font-size: 14px; font-weight: 800; color: #fff; margin: 0;">
+                                            ⚡ Institutional Algorithmic Execution Simulator &amp; TCA
+                                        </h3>
+                                        <span class="exchange-tag" style="background: rgba(6, 182, 212, 0.15); color: var(--accent-cyan); font-size: 10px;">PHASE 25.3</span>
+                                    </div>
+                                    <p style="font-size: 11px; color: var(--text-muted); margin: 3px 0 0 0;">
+                                        Almgren-Chriss (2000) &amp; Kyle's lambda market impact modeling, optimal child slicing, and dual-market maker-taker fee schedules
+                                    </p>
+                                </div>
+
+                                <!-- Interactive Controls Bar -->
+                                <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                                    <!-- Side Toggle -->
+                                    <div style="display: flex; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; padding: 2px;">
+                                        <button onclick="setTcaSide('BUY')" class="filter-btn ${tcaSimSide === 'BUY' ? 'active' : ''}" style="padding: 4px 10px; font-size: 11px; border-radius: 4px; ${tcaSimSide === 'BUY' ? 'background: #10b981; color: #fff;' : ''}">BUY</button>
+                                        <button onclick="setTcaSide('SELL')" class="filter-btn ${tcaSimSide === 'SELL' ? 'active' : ''}" style="padding: 4px 10px; font-size: 11px; border-radius: 4px; ${tcaSimSide === 'SELL' ? 'background: #ef4444; color: #fff;' : ''}">SELL</button>
+                                    </div>
+
+                                    <!-- Share Size Presets -->
+                                    <div style="display: flex; gap: 4px; align-items: center;">
+                                        <span style="font-size: 11px; color: var(--text-muted);">Size:</span>
+                                        ${[100, 300, 500, 1000, 2500].map(sz => `
+                                            <button onclick="setTcaShares(${sz})" class="filter-btn ${tcaSimShares === sz ? 'active' : ''}" style="padding: 3px 8px; font-size: 11px;">
+                                                ${sz.toLocaleString()}
+                                            </button>
+                                        `).join('')}
+                                        <input type="number" value="${tcaSimShares}" min="10" max="50000" step="50" onchange="setTcaShares(this.value)" style="width: 70px; background: rgba(15,23,42,0.8); border: 1px solid rgba(255,255,255,0.15); color: #fff; font-size: 11px; border-radius: 4px; padding: 3px 6px; font-family: monospace; text-align: right;" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Recommendation Banner -->
+                            <div style="background: rgba(6, 182, 212, 0.08); border-left: 4px solid var(--accent-cyan); border-radius: 0 6px 6px 0; padding: 12px 14px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                                <div>
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                        <span style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--accent-cyan); font-weight: 800;">★ QUANT ROUTING RECOMMENDATION</span>
+                                        <span style="font-size: 12px; font-weight: 800; color: #fff; background: rgba(6, 182, 212, 0.2); padding: 2px 8px; border-radius: 4px;">${tcaData.recommendedStrategy}</span>
+                                    </div>
+                                    <div style="font-size: 11px; color: var(--text-secondary); margin-top: 4px;">
+                                        ${tcaData.rationale}
+                                    </div>
+                                </div>
+                                <div style="display: flex; gap: 16px; font-family: monospace; font-size: 12px;">
+                                    <div>
+                                        <div style="font-size: 10px; color: var(--text-muted); text-transform: uppercase;">Arrival Mid</div>
+                                        <div style="color: #fff; font-weight: 700;">${currencySym}${tcaData.arrivalPrice.toFixed(2)}</div>
+                                    </div>
+                                    <div>
+                                        <div style="font-size: 10px; color: var(--text-muted); text-transform: uppercase;">Rec. Effective Fill</div>
+                                        <div style="color: var(--accent-cyan); font-weight: 800;">${currencySym}${tcaData.strategies[tcaData.recommendedStrategy].effPrice.toFixed(2)}</div>
+                                    </div>
+                                    <div>
+                                        <div style="font-size: 10px; color: var(--text-muted); text-transform: uppercase;">Est. Slippage</div>
+                                        <div style="color: ${tcaData.strategies[tcaData.recommendedStrategy].slipBps > 5 ? 'var(--accent-amber)' : 'var(--accent-green)'}; font-weight: 800;">
+                                            ${tcaData.strategies[tcaData.recommendedStrategy].slipBps > 0 ? '+' : ''}${tcaData.strategies[tcaData.recommendedStrategy].slipBps.toFixed(2)} bps
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div style="font-size: 10px; color: var(--text-muted); text-transform: uppercase;">Total TCA Cost</div>
+                                        <div style="color: #fff; font-weight: 700;">${currencySym}${tcaData.strategies[tcaData.recommendedStrategy].totalCost.toFixed(2)}</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Strategy Filter Chips -->
+                            <div style="display: flex; gap: 6px; margin-bottom: 12px; align-items: center; flex-wrap: wrap;">
+                                <span style="font-size: 11px; color: var(--text-muted); font-weight: 700;">Active Strategy Slices:</span>
+                                ${['ALL', 'DIRECT_MARKET', 'LIMIT_PASSIVE', 'TWAP', 'VWAP', 'POV_10'].map(stKey => `
+                                    <button onclick="setTcaStrategy('${stKey}')" class="filter-btn ${tcaSelectedStrategy === stKey ? 'active' : ''}" style="padding: 3px 10px; font-size: 10px;">
+                                        ${stKey === 'ALL' ? 'Overview' : (tcaData.strategies[stKey]?.name || stKey)}
+                                    </button>
+                                `).join('')}
+                            </div>
+
+                            <!-- Multi-Strategy Comparison Table -->
+                            <div style="overflow-x: auto; margin-bottom: 16px;">
+                                <table style="width: 100%; border-collapse: collapse; font-size: 11px;">
+                                    <thead>
+                                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1); color: var(--text-muted); text-transform: uppercase; font-size: 10px;">
+                                            <th style="padding: 6px 10px; text-align: left;">Strategy</th>
+                                            <th style="padding: 6px 10px; text-align: center;">Liquidity Role</th>
+                                            <th style="padding: 6px 10px; text-align: right;">Effective Price</th>
+                                            <th style="padding: 6px 10px; text-align: right;">Slippage ($/sh)</th>
+                                            <th style="padding: 6px 10px; text-align: right;">Slippage (bps)</th>
+                                            <th style="padding: 6px 10px; text-align: right;">Exchange Fees</th>
+                                            <th style="padding: 6px 10px; text-align: right;">Total TCA Cost</th>
+                                            <th style="padding: 6px 10px; text-align: center;">Fill Prob</th>
+                                            <th style="padding: 6px 10px; text-align: center;">Child Slices</th>
+                                            <th style="padding: 6px 10px; text-align: center;">Routing</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        ${stratRows}
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- Child Order Slices Breakdown Timeline -->
+                            <div style="background: rgba(15, 23, 42, 0.4); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 12px; margin-bottom: 12px;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                                    <div style="font-size: 11px; font-weight: 700; color: #fff;">
+                                        Order Slicing Schedule: <span style="color: var(--accent-cyan);">${activeStrategyObj.name}</span>
+                                    </div>
+                                    <span style="font-size: 10px; color: var(--text-muted); font-family: monospace;">
+                                        ${activeStrategyObj.slices.length} Slice${activeStrategyObj.slices.length > 1 ? 's' : ''} · Sum: ${tcaSimShares.toLocaleString()} sh
+                                    </span>
+                                </div>
+                                <table style="width: 100%; border-collapse: collapse;">
+                                    <thead>
+                                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 10px; text-transform: uppercase; color: var(--text-muted); font-family: monospace;">
+                                            <th style="padding: 4px 8px; text-align: left;">Slice</th>
+                                            <th style="padding: 4px 8px; text-align: left;">Offset</th>
+                                            <th style="padding: 4px 8px; text-align: right;">Quantity</th>
+                                            <th style="padding: 4px 8px; text-align: right;">Proj. Fill</th>
+                                            <th style="padding: 4px 8px; text-align: right;">Impact (bps)</th>
+                                            <th style="padding: 4px 8px; text-align: right;">Fee/Rebate</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        ${slicesHtml}
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- Statutory Impersonal Research Disclaimer -->
+                            <div style="font-size: 10px; color: var(--text-muted); line-height: 1.5; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 10px;">
+                                <strong>Execution Decision-Support Research Disclaimer (CSA 31-369 / SEC):</strong>
+                                Simulated execution benchmarks, Almgren-Chriss price impact coefficients, and transaction cost estimates are calculated from order book depth snapshots for impersonal educational and decision-support purposes. Execution prices in live trading venues will diverge due to hidden liquidity, market latency, order queue priority, and fluctuating cancellation rates.
+                            </div>
+                        </div>
+                    `;
+                })()}
             `;
         }
 

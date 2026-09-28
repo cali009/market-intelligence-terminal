@@ -258,6 +258,29 @@ class QuantIntelSentinel:
                 )
             )
 
+        # 9. PREDICATE: EXECUTION_SLIPPAGE_WARNING (Projected market impact > 15 bps on recommended sizing)
+        plan = getattr(dossier, "trade_plan", None)
+        slip_bps = getattr(plan, "tca_expected_slippage_bps", 0.0) if plan else 0.0
+        if slip_bps >= 15.0:
+            headline = f"{symbol}: High Execution Slippage Warning ({slip_bps:.1f} bps)"
+            body = (
+                f"Projected market impact exceeds 15.0 bps under current visible liquidity. "
+                f"Direct market execution discouraged; route via {getattr(plan, 'tca_execution_strategy', 'VWAP')} algorithmic slicing."
+            )
+            alerts.append(
+                InvalidationAlert(
+                    symbol=symbol,
+                    predicate_type="EXECUTION_SLIPPAGE_WARNING",
+                    severity="NOTICE",
+                    trigger_level=slip_bps,
+                    current_price=close,
+                    headline=headline,
+                    body=body,
+                    action_required="ROUTE_VIA_ALGO_SLICING",
+                    timestamp=now_str,
+                )
+            )
+
         return alerts
 
     def evaluate_universe_sentinels(self, quant_intel_dossiers: Dict[str, Any]) -> List[InvalidationAlert]:

@@ -148,6 +148,10 @@ class QuantIntelTradePlan:
     portfolio_risk_pct: float
     invalidation_rule: str
     trade_thesis: str
+    tca_execution_strategy: str = "VWAP"
+    tca_expected_slippage_bps: float = 0.0
+    tca_effective_fill_price: float = 0.0
+    tca_optimal_slices: int = 1
 
 
 @dataclass
@@ -928,6 +932,33 @@ class QuantIntelEngine:
             f"measured support at ${s1:.2f} offers asymmetric risk/reward into upper channel resistance."
         )
 
+        # Phase 25.3: Algorithmic Execution Simulator & TCA Parameter Integration
+        tca_strat = "VWAP"
+        tca_slip_bps = 0.0
+        tca_eff_price = ideal_entry
+        tca_slices = 1
+        try:
+            from src.engine.microstructure import microstructure_engine
+            from src.engine.execution_algo import execution_algo_engine
+            micro_dossier = microstructure_engine.build_symbol_dossier(symbol)
+            shares_for_tca = max(100, recommended_shares)
+            tca_res = execution_algo_engine.evaluate_all_strategies(
+                symbol=symbol,
+                side="BUY",
+                shares=shares_for_tca,
+                book=micro_dossier.order_book,
+                metrics=micro_dossier.metrics,
+                country=getattr(fingerprint, "country", "US"),
+            )
+            tca_strat = tca_res["recommended_strategy"]
+            best_plan = tca_res["strategies"].get(tca_strat)
+            if best_plan:
+                tca_slip_bps = round(float(best_plan["expected_slippage_bps"]), 2)
+                tca_eff_price = round(float(best_plan["expected_effective_price"]), 2)
+                tca_slices = len(best_plan["child_slices"])
+        except Exception:
+            pass
+
         plan = QuantIntelTradePlan(
             entry_zone_ideal=ideal_entry,
             entry_zone_max=max_entry,
@@ -953,6 +984,10 @@ class QuantIntelEngine:
             portfolio_risk_pct=port_risk_pct,
             invalidation_rule=invalidation_rule,
             trade_thesis=trade_thesis,
+            tca_execution_strategy=tca_strat,
+            tca_expected_slippage_bps=tca_slip_bps,
+            tca_effective_fill_price=tca_eff_price,
+            tca_optimal_slices=tca_slices,
         )
 
         return plan, conviction_grade, aligned_count
@@ -995,6 +1030,7 @@ TRADE PLAN:
   Target 3 (T3):  {curr_sym}{plan.target_3:.2f} | Est. {plan.target_3_days} days | Runner 20%
   Risk/Reward:    1 : {plan.risk_reward_ratio:.2f}
   Position size:  {plan.recommended_shares} shares on {curr_sym}{plan.portfolio_size:,.0f} portfolio risking 1% ({curr_sym}{plan.capital_at_risk:,.2f})
+  Execution TCA:  {plan.tca_execution_strategy} ({plan.tca_optimal_slices} slice{'s' if plan.tca_optimal_slices > 1 else ''}) | Est. Fill: {curr_sym}{plan.tca_effective_fill_price:.2f} | Slippage: {plan.tca_expected_slippage_bps:+.1f} bps
 ─────────────────────────────────
 CONVICTION GRADE: {conviction_grade}-Grade
 TRADE THESIS: {plan.trade_thesis}

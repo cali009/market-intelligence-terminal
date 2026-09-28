@@ -79,6 +79,10 @@ class MarketIntelHandler(SimpleHTTPRequestHandler):
             if path.startswith("/api/stream/ticks"):
                 return self._handle_sse_stream(parsed)
 
+            # Route Algorithmic Execution Simulation & TCA Endpoint (Phase 25.3)
+            if path.startswith("/api/execution/simulate") or path.startswith("/api/tca"):
+                return self._handle_execution_simulation(parsed)
+
             clean_sub = path[len("/api/"):].lstrip("/")
             if clean_sub.startswith("symbols/") or clean_sub.startswith("symbol/"):
                 clean = clean_sub.replace("symbols/", "").replace("symbol/", "").replace(".json", "")
@@ -178,6 +182,43 @@ class MarketIntelHandler(SimpleHTTPRequestHandler):
                 self.wfile.write(f"event: error\ndata: {json.dumps({'error': str(e)})}\n\n".encode("utf-8"))
             except Exception:
                 pass
+
+    def _handle_execution_simulation(self, parsed):
+        from src.engine.microstructure import microstructure_engine
+        from src.engine.execution_algo import execution_algo_engine
+
+        params = urllib.parse.parse_qs(parsed.query)
+        symbol = params.get("symbol", ["SPY"])[0].strip().upper()
+        side = params.get("side", ["BUY"])[0].strip().upper()
+        try:
+            shares = int(params.get("shares", [500])[0])
+        except (ValueError, TypeError):
+            shares = 500
+
+        try:
+            dossier = microstructure_engine.build_symbol_dossier(symbol)
+            res = execution_algo_engine.evaluate_all_strategies(
+                symbol=symbol,
+                side=side,  # type: ignore
+                shares=shares,
+                book=dossier.order_book,
+                metrics=dossier.metrics,
+                country=dossier.country,
+            )
+            payload = json.dumps(res, indent=2).encode("utf-8")
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.send_header("Access-Control-Allow-Origin", "*")
+            self.send_header("Content-Length", str(len(payload)))
+            self.end_headers()
+            self.wfile.write(payload)
+        except Exception as e:
+            err = json.dumps({"error": str(e)}).encode("utf-8")
+            self.send_response(500)
+            self.send_header("Content-Type", "application/json")
+            self.send_header("Content-Length", str(len(err)))
+            self.end_headers()
+            self.wfile.write(err)
 
 
 def run_server(port: int = 8000):
