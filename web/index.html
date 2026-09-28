@@ -4432,6 +4432,17 @@
                             <!-- Populated dynamically via JS -->
                         </div>
                     </div>
+
+                    <!-- Phase 25 Real-Time Microstructure & Algorithmic TCA Execution (Phase 25.4) -->
+                    <div style="margin-top: 24px;" id="drawerMicrostructureWrapper">
+                        <h3 style="font-size: 13px; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
+                            <span>Microstructure &amp; Algorithmic TCA Execution (Phase 25)</span>
+                            <span class="exchange-tag" style="font-size: 10px; background: rgba(6, 182, 212, 0.15); color: var(--accent-cyan); border: 1px solid rgba(6, 182, 212, 0.3);">Lee-Ready · Kyle's λ · DOM</span>
+                        </h3>
+                        <div id="drawerMicrostructureSection">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+                    </div>
                 `;
 
                 // Render Phase 13 Asset Microstructure Fingerprint
@@ -4457,6 +4468,9 @@
 
                 // Render Phase 22 QUANT INTEL Institutional Trade Dossier
                 renderQuantIntelInDrawer(data.quant_intel, data.symbol);
+
+                // Render Phase 25 Real-Time Microstructure & Algorithmic TCA
+                renderMicrostructureInDrawer(data.symbol, data.quant_intel?.microstructure_metrics, data.quant_intel?.trade_plan, data.country);
 
                 // Render Phase 6 AI Signal Execution Plan
                 renderSignalPlanInDrawer(data.signal_plan);
@@ -6163,6 +6177,77 @@
                     <div style="margin-top: 12px; font-size: 11px; line-height: 1.4; color: var(--text-secondary); background: rgba(0,0,0,0.2); padding: 10px; border-radius: 6px;">
                         <div style="margin-bottom: 4px;"><strong style="color: #fff;">Thesis:</strong> ${p.trade_thesis}</div>
                         <div><strong style="color: var(--accent-red);">Invalidation:</strong> ${p.invalidation_rule}</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderMicrostructureInDrawer(symbol, metrics, plan, country) {
+            const container = document.getElementById('drawerMicrostructureSection');
+            if (!container) return;
+
+            const isUS = (country === 'US');
+            const currencySym = isUS ? '$' : 'C$';
+
+            if (!metrics) {
+                container.innerHTML = `
+                    <div style="background: rgba(15, 23, 42, 0.4); border: 1px solid var(--border-color); border-radius: 6px; padding: 12px; font-size: 11px; color: var(--text-muted); display: flex; justify-content: space-between; align-items: center;">
+                        <span>Microstructure metrics not currently cached for <strong>${symbol}</strong>.</span>
+                        <button class="filter-btn" style="font-size: 10px; padding: 3px 8px;" onclick="document.getElementById('symbolDrawer').classList.remove('open'); document.getElementById('drawerOverlay').style.display='none'; switchTab('microstructure'); selectMicroSymbol('${symbol}');">Open Workstation</button>
+                    </div>
+                `;
+                return;
+            }
+
+            const obi = metrics.order_book_imbalance || 0;
+            const obiPct = (obi * 100).toFixed(1);
+            const obiColor = obi > 0.2 ? 'var(--accent-green)' : (obi < -0.2 ? 'var(--accent-red)' : 'var(--text-secondary)');
+            const cvdColor = (metrics.cvd_total >= 0) ? 'var(--accent-green)' : 'var(--accent-red)';
+            const liqColor = (metrics.liquidity_state === 'NORMAL') ? 'var(--accent-green)' : 'var(--accent-amber)';
+
+            container.innerHTML = `
+                <div style="background: rgba(15, 23, 42, 0.5); border: 1px solid var(--border-color); border-radius: 6px; padding: 14px;">
+                    <!-- Microstructure KPIs -->
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 12px; font-family: monospace; text-align: center;">
+                        <div style="background: rgba(255,255,255,0.03); padding: 8px; border-radius: 4px;">
+                            <div style="font-size: 10px; color: var(--text-muted);">OBI (Book Imbalance)</div>
+                            <div style="font-size: 13px; font-weight: 800; color: ${obiColor}; margin-top: 2px;">
+                                ${obi > 0 ? '+' : ''}${obiPct}%
+                            </div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.03); padding: 8px; border-radius: 4px;">
+                            <div style="font-size: 10px; color: var(--text-muted);">Session CVD</div>
+                            <div style="font-size: 13px; font-weight: 800; color: ${cvdColor}; margin-top: 2px;">
+                                ${metrics.cvd_total > 0 ? '+' : ''}${metrics.cvd_total.toLocaleString()} sh
+                            </div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.03); padding: 8px; border-radius: 4px;">
+                            <div style="font-size: 10px; color: var(--text-muted);">Kyle's λ (Impact)</div>
+                            <div style="font-size: 13px; font-weight: 800; color: var(--accent-cyan); margin-top: 2px;">
+                                $${(metrics.kyle_lambda || 0).toFixed(3)}
+                            </div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.03); padding: 8px; border-radius: 4px;">
+                            <div style="font-size: 10px; color: var(--text-muted);">Liquidity State</div>
+                            <div style="font-size: 12px; font-weight: 800; color: ${liqColor}; margin-top: 2px;">
+                                ${metrics.liquidity_state || 'NORMAL'}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TCA Execution Routing Summary -->
+                    <div style="background: rgba(6, 182, 212, 0.08); border-left: 3px solid var(--accent-cyan); border-radius: 0 4px 4px 0; padding: 10px 12px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; font-size: 11px;">
+                        <div>
+                            <span style="color: var(--accent-cyan); font-weight: 700;">⚡ Algorithmic Routing:</span>
+                            <strong style="color: #fff; margin-left: 4px;">${plan?.tca_execution_strategy || 'VWAP'}</strong>
+                            <span style="color: var(--text-muted); font-size: 10px;"> (${plan?.tca_optimal_slices || 1} slice${(plan?.tca_optimal_slices || 1) > 1 ? 's' : ''})</span>
+                            <div style="font-size: 10px; color: var(--text-secondary); margin-top: 2px;">
+                                Est. Fill: <strong style="color: #fff;">${currencySym}${(plan?.tca_effective_fill_price || plan?.entry_zone_ideal || 0).toFixed(2)}</strong> · Slippage: <span style="color: ${(plan?.tca_expected_slippage_bps || 0) > 10 ? 'var(--accent-amber)' : 'var(--accent-green)'};">${(plan?.tca_expected_slippage_bps || 0) > 0 ? '+' : ''}${(plan?.tca_expected_slippage_bps || 0).toFixed(1)} bps</span>
+                            </div>
+                        </div>
+                        <button class="filter-btn" style="font-size: 10px; padding: 4px 10px; color: var(--accent-cyan); border-color: rgba(6, 182, 212, 0.4);" onclick="document.getElementById('symbolDrawer').classList.remove('open'); document.getElementById('drawerOverlay').style.display='none'; switchTab('microstructure'); selectMicroSymbol('${symbol}');">
+                            Launch DOM Workstation ➔
+                        </button>
                     </div>
                 </div>
             `;

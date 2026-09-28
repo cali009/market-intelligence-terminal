@@ -5,7 +5,7 @@
   "currency": "CAD",
   "name": "Canadian Pacific Kansas City",
   "as_of_date": "2026-09-28",
-  "generated_at": "2026-09-28T23:09:13.524209+00:00",
+  "generated_at": "2026-09-28T23:36:57.789545+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 123.1500015258789,
@@ -357,7 +357,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 14,
     "gjr_garch_gamma": 0.16,
-    "last_updated": "2026-09-28T23:09:24.231305+00:00"
+    "last_updated": "2026-09-28T23:37:09.864763+00:00"
   },
   "conformal_bounds": {
     "symbol": "CP",
@@ -374,7 +374,7 @@
     "adapted_alpha": 0.25,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-09-28T23:09:24.244809+00:00"
+    "calibrated_at": "2026-09-28T23:37:09.882480+00:00"
   },
   "cross_border_parity": {
     "tsx_symbol": "CP",
@@ -1686,10 +1686,10 @@
     "country": "CA",
     "currency": "CAD",
     "as_of_date": "2026-09-28",
-    "generated_at": "2026-09-28T23:09:24.565381+00:00",
+    "generated_at": "2026-09-28T23:37:10.048558+00:00",
     "conviction_grade": "SKIP",
     "aligned_layers_count": 3,
-    "formatted_card": "TICKER: CP\nREGIME: WEAK_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 9.4%)\nPATTERN TYPE: Archetype E: Defensive Yield & Sovereign Benchmark \u2014 Earnings-Driven\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BEARISH \u2014 Breakdown below moving average cluster; negative CMF (-0.15) and deteriorating price structure.\n  Fundamental:  4.5/10 \u2014 Fundamental score 4.5/10 requires strict technical confirmation gate before entry.\n  Sentiment:    +0.40 (BULLISH) \u2014 CP Form 10-Q Quarterly Report \u2014 Q/E 2026-06-30\n  Historical:   58.2% Win Rate (10 sample size, E[R]: +0.48R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $123.82 \u2013 $125.68\n  Entry trigger:  Price holds structural pivot ($121.71) followed by volume-backed expansion above $123.82.\n  Stop loss:      $120.80 (2.4% below entry)\n  Target 1 (T1):  $126.75 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $131.37 | Est. 24 days | Take 40%\n  Target 3 (T3):  $136.50 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.23\n  Position size:  0 shares on $100,000 portfolio risking 1% ($0.00)\n  Execution TCA:  DIRECT_MARKET (1 slice) | Est. Fill: $122.93 | Slippage: +2.4 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: SKIP-Grade\nTRADE THESIS: CP exhibits high structural confluence with Earnings-Driven aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 9.4%), measured support at $121.71 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $120.80 or two consecutive closes back below $121.71 immediately invalidates the trade.",
+    "formatted_card": "TICKER: CP\nREGIME: WEAK_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 9.4%)\nPATTERN TYPE: Archetype E: Defensive Yield & Sovereign Benchmark \u2014 Earnings-Driven\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BEARISH \u2014 Breakdown below moving average cluster; negative CMF (-0.15) and deteriorating price structure.\n  Fundamental:  4.5/10 \u2014 Fundamental score 4.5/10 requires strict technical confirmation gate before entry.\n  Sentiment:    +0.40 (BULLISH) \u2014 CP Form 10-Q Quarterly Report \u2014 Q/E 2026-06-30\n  Historical:   58.2% Win Rate (10 sample size, E[R]: +0.48R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $123.82 \u2013 $125.68\n  Entry trigger:  Price holds structural pivot ($121.71) followed by volume-backed expansion above $123.82.\n  Stop loss:      $120.80 (2.4% below entry)\n  Target 1 (T1):  $126.75 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $131.37 | Est. 24 days | Take 40%\n  Target 3 (T3):  $136.50 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.23\n  Position size:  0 shares on $100,000 portfolio risking 1% ($0.00)\n  Execution TCA:  DIRECT_MARKET (1 slice) | Est. Fill: $122.92 | Slippage: +1.6 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: SKIP-Grade\nTRADE THESIS: CP exhibits high structural confluence with Earnings-Driven aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 9.4%), measured support at $121.71 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $120.80 or two consecutive closes back below $121.71 immediately invalidates the trade.",
     "layer_1_regime": {
       "trend_type": "Bull",
       "volatility_regime": "Medium (15\u201325)",
@@ -1805,8 +1805,8 @@
       "invalidation_rule": "A daily closing price below $120.80 or two consecutive closes back below $121.71 immediately invalidates the trade.",
       "trade_thesis": "CP exhibits high structural confluence with Earnings-Driven aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 9.4%), measured support at $121.71 offers asymmetric risk/reward into upper channel resistance.",
       "tca_execution_strategy": "DIRECT_MARKET",
-      "tca_expected_slippage_bps": 2.44,
-      "tca_effective_fill_price": 122.93,
+      "tca_expected_slippage_bps": 1.63,
+      "tca_effective_fill_price": 122.92,
       "tca_optimal_slices": 1
     },
     "meta_label_verdict": {
@@ -1815,21 +1815,21 @@
       "action": "GATED_EXCLUDE",
       "size_multiplier": 0.0,
       "primary_driver": "mom_1m (-0.06, impact +)",
-      "calibrated_at": "2026-09-28T23:09:24.827842+00:00"
+      "calibrated_at": "2026-09-28T23:37:10.425872+00:00"
     },
     "microstructure_metrics": {
       "symbol": "CP",
-      "timestamp": "2026-09-28T23:09:24.829565+00:00",
-      "cvd_total": -552,
-      "cvd_1m_delta": -762,
-      "cvd_5m_delta": -552,
-      "order_book_imbalance": 0.001,
-      "kyle_lambda": 0.0606,
-      "rvol_1m": 1.15,
+      "timestamp": "2026-09-28T23:37:10.427707+00:00",
+      "cvd_total": 507,
+      "cvd_1m_delta": 392,
+      "cvd_5m_delta": 507,
+      "order_book_imbalance": -0.0512,
+      "kyle_lambda": 0.0199,
+      "rvol_1m": 1.08,
       "absorption_signal": "NONE",
-      "liquidity_state": "SPREAD_EXPANSION",
-      "buyer_volume_pct": 45.9,
-      "seller_volume_pct": 54.1
+      "liquidity_state": "NORMAL",
+      "buyer_volume_pct": 52.6,
+      "seller_volume_pct": 47.4
     }
   },
   "disclaimers": {

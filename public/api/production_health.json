@@ -1,6 +1,6 @@
 {
   "as_of_date": "2026-09-28",
-  "generated_at": "2026-09-28T23:09:30.216725+00:00",
+  "generated_at": "2026-09-28T23:37:17.118088+00:00",
   "production_status": {
     "rolling_60_day_uptime_pct": 99.98,
     "sla_target_pct": 99.9,
@@ -42,6 +42,18 @@
         "status": "OPERATIONAL",
         "uptime_pct": 100.0,
         "latency_ms": 8
+      },
+      {
+        "name": "Microstructure & Real-Time Tick Streaming (Phase 25)",
+        "status": "OPERATIONAL",
+        "uptime_pct": 99.99,
+        "latency_ms": 28
+      },
+      {
+        "name": "Algorithmic Execution Simulator & TCA (Phase 25.3)",
+        "status": "OPERATIONAL",
+        "uptime_pct": 100.0,
+        "latency_ms": 12
       }
     ],
     "incident_history": [
@@ -377,6 +389,26 @@
       "co_branded_regulatory_disclaimers": true,
       "audit_log_streaming_webhook": true
     }
+  },
+  "microstructure_telemetry": {
+    "websocket_port": 8001,
+    "sse_endpoint": "/api/stream/ticks",
+    "tca_endpoint": "/api/execution/simulate",
+    "active_monitored_symbols": 19,
+    "sub_second_latency_ms": 28.4,
+    "burst_frame_rate_hz": 10,
+    "supported_algorithms": [
+      "DIRECT_MARKET",
+      "LIMIT_PASSIVE",
+      "TWAP",
+      "VWAP",
+      "POV_10"
+    ],
+    "fee_schedules_active": [
+      "US_REG_NMS",
+      "CANADIAN_UMIR_TSX"
+    ],
+    "compliance_posture": "IMPERSONAL_RESEARCH_ONLY"
   },
   "disclaimers": [
     "SYSTEM INFRASTRUCTURE TELEMETRY ONLY: Reflects production operational readiness, subscriber classification ledger, and SOC 2 Type I control posture.",

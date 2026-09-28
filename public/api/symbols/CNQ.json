@@ -5,7 +5,7 @@
   "currency": "CAD",
   "name": "Canadian Natural Resources",
   "as_of_date": "2026-09-28",
-  "generated_at": "2026-09-28T23:09:13.524209+00:00",
+  "generated_at": "2026-09-28T23:36:57.789545+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 66.9800033569336,
@@ -358,7 +358,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 14,
     "gjr_garch_gamma": 0.22,
-    "last_updated": "2026-09-28T23:09:22.468049+00:00"
+    "last_updated": "2026-09-28T23:37:07.943600+00:00"
   },
   "conformal_bounds": {
     "symbol": "CNQ",
@@ -375,7 +375,7 @@
     "adapted_alpha": 0.105,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-09-28T23:09:22.480230+00:00"
+    "calibrated_at": "2026-09-28T23:37:07.962037+00:00"
   },
   "cross_border_parity": {
     "tsx_symbol": "CNQ",
@@ -1769,7 +1769,7 @@
     "country": "CA",
     "currency": "CAD",
     "as_of_date": "2026-09-28",
-    "generated_at": "2026-09-28T23:09:22.735373+00:00",
+    "generated_at": "2026-09-28T23:37:08.190321+00:00",
     "conviction_grade": "C",
     "aligned_layers_count": 4,
     "formatted_card": "TICKER: CNQ\nREGIME: WEAK_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 9.4%)\nPATTERN TYPE: Archetype B: Natural Resources & Energy (Cycle Mean-Reversion) \u2014 Earnings-Driven\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BEARISH \u2014 Breakdown below moving average cluster; negative CMF (-0.28) and deteriorating price structure.\n  Fundamental:  9.5/10 \u2014 ROIC 17.7%, Debt/Equity 0.37, operating margin 34.2%; robust institutional quality balance sheet.\n  Sentiment:    +0.50 (BULLISH) \u2014 CNQ Form 6-K Cross-Border Continuous Disclosure\n  Historical:   58.2% Win Rate (10 sample size, E[R]: +0.48R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $67.51 \u2013 $68.52\n  Entry trigger:  Price holds structural pivot ($66.24) followed by volume-backed expansion above $67.51.\n  Stop loss:      $64.81 (4.0% below entry)\n  Target 1 (T1):  $70.75 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $74.26 | Est. 24 days | Take 40%\n  Target 3 (T3):  $78.85 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.32\n  Position size:  185 shares on $100,000 portfolio risking 1% ($499.50)\n  Execution TCA:  TWAP (5 slices) | Est. Fill: $67.18 | Slippage: +2.1 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: C-Grade\nTRADE THESIS: CNQ exhibits high structural confluence with Earnings-Driven aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 9.4%), measured support at $66.24 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $64.81 or two consecutive closes back below $66.24 immediately invalidates the trade.",
@@ -1898,21 +1898,21 @@
       "action": "CAUTION_THROTTLE",
       "size_multiplier": 0.5,
       "primary_driver": "mom_12_1m (+0.51, impact -)",
-      "calibrated_at": "2026-09-28T23:09:22.965159+00:00"
+      "calibrated_at": "2026-09-28T23:37:08.486281+00:00"
     },
     "microstructure_metrics": {
       "symbol": "CNQ",
-      "timestamp": "2026-09-28T23:09:22.966767+00:00",
-      "cvd_total": -3477,
-      "cvd_1m_delta": -3296,
-      "cvd_5m_delta": -3477,
-      "order_book_imbalance": 0.0407,
-      "kyle_lambda": 0.0317,
-      "rvol_1m": 1.66,
+      "timestamp": "2026-09-28T23:37:08.488033+00:00",
+      "cvd_total": -906,
+      "cvd_1m_delta": -1276,
+      "cvd_5m_delta": -906,
+      "order_book_imbalance": 0.1431,
+      "kyle_lambda": 0.0197,
+      "rvol_1m": 1.26,
       "absorption_signal": "NONE",
       "liquidity_state": "SPREAD_EXPANSION",
-      "buyer_volume_pct": 32.5,
-      "seller_volume_pct": 67.5
+      "buyer_volume_pct": 46.4,
+      "seller_volume_pct": 53.6
     }
   },
   "disclaimers": {

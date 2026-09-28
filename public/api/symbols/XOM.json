@@ -5,7 +5,7 @@
   "currency": "USD",
   "name": "Exxon Mobil Corporation",
   "as_of_date": "2026-09-28",
-  "generated_at": "2026-09-28T23:09:13.524209+00:00",
+  "generated_at": "2026-09-28T23:36:57.789545+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-25",
     "open": 160.22999572753906,
@@ -358,7 +358,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 22,
     "gjr_garch_gamma": 0.22,
-    "last_updated": "2026-09-28T23:09:18.087181+00:00"
+    "last_updated": "2026-09-28T23:37:03.707269+00:00"
   },
   "conformal_bounds": {
     "symbol": "XOM",
@@ -375,7 +375,7 @@
     "adapted_alpha": 0.195,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-09-28T23:09:18.097657+00:00"
+    "calibrated_at": "2026-09-28T23:37:03.725576+00:00"
   },
   "cross_border_parity": null,
   "shap_attribution": {
@@ -1757,7 +1757,7 @@
     "country": "US",
     "currency": "USD",
     "as_of_date": "2026-09-28",
-    "generated_at": "2026-09-28T23:09:18.112769+00:00",
+    "generated_at": "2026-09-28T23:37:03.751028+00:00",
     "conviction_grade": "C",
     "aligned_layers_count": 3,
     "formatted_card": "TICKER: XOM\nREGIME: STRONG_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 7.8%)\nPATTERN TYPE: Archetype B: Natural Resources & Energy (Cycle Mean-Reversion) \u2014 Mean-Reversion\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BULLISH \u2014 Stacked MAs (Mixed Alignment), RSI 48.7 equilibrium, price structure holding above key support.\n  Fundamental:  5.0/10 \u2014 Stable financial quality (Score 5.0/10); P/E 159.13x balanced by operational cash flow.\n  Sentiment:    +1.00 (BULLISH) \u2014 XOM SEC Form 8-K Filing \u2014 Other Events of Substantial Importance\n  Historical:   50.8% Win Rate (25 sample size, E[R]: +0.28R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $160.39 \u2013 $162.80\n  Entry trigger:  Bullish rejection hammer wick at lower support ($158.89) with RSI recovering above 35.\n  Stop loss:      $153.47 (4.3% below entry)\n  Target 1 (T1):  $168.69 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $177.69 | Est. 24 days | Take 40%\n  Target 3 (T3):  $189.45 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.32\n  Position size:  72 shares on $100,000 portfolio risking 1% ($498.24)\n  Execution TCA:  DIRECT_MARKET (1 slice) | Est. Fill: $160.60 | Slippage: +0.6 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: C-Grade\nTRADE THESIS: XOM exhibits high structural confluence with Mean-Reversion aligning above ascending moving averages. In the current STRONG_BULL macro context (20d adverse hazard: 7.8%), measured support at $158.89 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $153.47 or two consecutive closes back below $158.89 immediately invalidates the trade.",
@@ -1886,21 +1886,21 @@
       "action": "CAUTION_THROTTLE",
       "size_multiplier": 0.5,
       "primary_driver": "mom_12_1m (+0.38, impact -)",
-      "calibrated_at": "2026-09-28T23:09:18.350317+00:00"
+      "calibrated_at": "2026-09-28T23:37:04.068499+00:00"
     },
     "microstructure_metrics": {
       "symbol": "XOM",
-      "timestamp": "2026-09-28T23:09:18.351821+00:00",
-      "cvd_total": -7488,
-      "cvd_1m_delta": -7859,
-      "cvd_5m_delta": -7488,
-      "order_book_imbalance": 0.0041,
-      "kyle_lambda": 0.0072,
-      "rvol_1m": 2.57,
+      "timestamp": "2026-09-28T23:37:04.070228+00:00",
+      "cvd_total": 4615,
+      "cvd_1m_delta": 4353,
+      "cvd_5m_delta": 4615,
+      "order_book_imbalance": -0.077,
+      "kyle_lambda": 0.0118,
+      "rvol_1m": 1.87,
       "absorption_signal": "NONE",
       "liquidity_state": "NORMAL",
-      "buyer_volume_pct": 24.7,
-      "seller_volume_pct": 75.3
+      "buyer_volume_pct": 69.6,
+      "seller_volume_pct": 30.4
     }
   },
   "disclaimers": {
