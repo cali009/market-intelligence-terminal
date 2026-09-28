@@ -129,7 +129,7 @@ class QuantIntelSentinel:
                 )
 
         # 3. PREDICATE: REGIME_DOWNGRADE (Macro shift to BEARISH / CRISIS / HIGH_VOLATILITY)
-        if regime.regime_fit == "NO" or regime.trend_type in ("Bear", "Volatile"):
+        if regime and (getattr(regime, "regime_fit", "YES") == "NO" or getattr(regime, "trend_type", "Bull") in ("Bear", "Volatile")):
             headline = f"{symbol}: Macro Regime Mismatch Triggered ({regime.regime_state})"
             body = (
                 f"Macro environment shifted to {regime.regime_state} with liquidity environment at {regime.liquidity_env}. "
@@ -150,7 +150,7 @@ class QuantIntelSentinel:
             )
 
         # 4. PREDICATE: MATERIAL_ADVERSE_CATALYST (Sentiment turned negative)
-        if sentiment.skip_triggered or sentiment.net_sentiment_score < -0.15:
+        if sentiment and (getattr(sentiment, "skip_triggered", False) or getattr(sentiment, "net_sentiment_score", 0.0) < -0.15):
             headline = f"{symbol}: Material Adverse Catalyst Detected (Sentiment: {sentiment.net_sentiment_score:+.2f})"
             body = (
                 f"Recent regulatory filings or news disclosures turned negative. Headline: '{sentiment.key_headline}'. "
@@ -215,6 +215,49 @@ class QuantIntelSentinel:
                 )
             )
 
+        # 7. PREDICATE: LIQUIDITY_VOID_SPIKE (Flash spread blowout > 3.0x nominal)
+        micro = getattr(dossier, "microstructure_metrics", None)
+        if micro and getattr(micro, "liquidity_state", "NORMAL") == "LIQUIDITY_VOID":
+            headline = f"{symbol}: Flash Liquidity Void Detected (Spread Blowout)"
+            body = (
+                f"Top-of-book depth shows extreme spread expansion with thin quotes. "
+                f"Execution risk elevated; limit orders mandatory to avoid market impact."
+            )
+            alerts.append(
+                InvalidationAlert(
+                    symbol=symbol,
+                    predicate_type="LIQUIDITY_VOID_SPIKE",
+                    severity="WARNING",
+                    trigger_level=getattr(micro, "order_book_imbalance", 0.0),
+                    current_price=close,
+                    headline=headline,
+                    body=body,
+                    action_required="USE_LIMIT_ORDERS_MANDATORY",
+                    timestamp=now_str,
+                )
+            )
+
+        # 8. PREDICATE: MICROSTRUCTURE_SELL_SWEEP (Aggressive selling with ask replenishment)
+        if micro and getattr(micro, "cvd_1m_delta", 0) < -1500 and getattr(micro, "order_book_imbalance", 0.0) < -0.25:
+            headline = f"{symbol}: Aggressive Seller Sweep Detected"
+            body = (
+                f"Sub-second trade tape indicates aggressive selling absorption (OBI {micro.order_book_imbalance:.2f}). "
+                f"Watch support pivot carefully for structural failure."
+            )
+            alerts.append(
+                InvalidationAlert(
+                    symbol=symbol,
+                    predicate_type="MICROSTRUCTURE_SELL_SWEEP",
+                    severity="WARNING",
+                    trigger_level=float(micro.cvd_1m_delta),
+                    current_price=close,
+                    headline=headline,
+                    body=body,
+                    action_required="DE_RISK_OR_TIGHTEN_STOP",
+                    timestamp=now_str,
+                )
+            )
+
         return alerts
 
     def evaluate_universe_sentinels(self, quant_intel_dossiers: Dict[str, Any]) -> List[InvalidationAlert]:
@@ -245,12 +288,14 @@ class QuantIntelSentinel:
             elif inv.severity == "WARNING":
                 channels = ["IN_APP", "EMAIL", "WEB_PUSH"]
 
-            if "STOP" in inv.predicate_type or "BREAKOUT_FAILURE" in inv.predicate_type:
+            if "STOP" in inv.predicate_type or "BREAKOUT_FAILURE" in inv.predicate_type or "SWEEP" in inv.predicate_type:
                 taxonomy = "EXIT_TRIGGER_ESCALATION"
             elif "REGIME" in inv.predicate_type:
                 taxonomy = "REGIME_SHIFT"
             elif "CATALYST" in inv.predicate_type:
                 taxonomy = "CATALYST_MATERIALITY"
+            elif "LIQUIDITY" in inv.predicate_type:
+                taxonomy = "TECHNICAL_BREAKOUT"
             else:
                 taxonomy = "TECHNICAL_BREAKOUT"
 

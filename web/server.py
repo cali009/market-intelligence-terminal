@@ -75,6 +75,10 @@ class MarketIntelHandler(SimpleHTTPRequestHandler):
 
         # Route API requests to data/feeds or data/dist
         if path.startswith("/api/"):
+            # Route Server-Sent Events (SSE) Real-Time Tick Stream (Phase 25)
+            if path.startswith("/api/stream/ticks"):
+                return self._handle_sse_stream(parsed)
+
             clean_sub = path[len("/api/"):].lstrip("/")
             if clean_sub.startswith("symbols/") or clean_sub.startswith("symbol/"):
                 clean = clean_sub.replace("symbols/", "").replace("symbol/", "").replace(".json", "")
@@ -125,6 +129,55 @@ class MarketIntelHandler(SimpleHTTPRequestHandler):
             self.send_header("Content-Type", "application/json")
             self.end_headers()
             self.wfile.write(json.dumps({"error": str(e)}).encode("utf-8"))
+
+    def _handle_sse_stream(self, parsed):
+        from src.engine.microstructure import microstructure_engine
+        import time
+
+        params = urllib.parse.parse_qs(parsed.query)
+        symbol = params.get("symbol", ["SPY"])[0].strip().upper()
+
+        self.send_response(200)
+        self.send_header("Content-Type", "text/event-stream")
+        self.send_header("Cache-Control", "no-cache")
+        self.send_header("Connection", "keep-alive")
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.end_headers()
+
+        # Send initial snapshot event
+        try:
+            dossier = microstructure_engine.build_symbol_dossier(symbol)
+            init_payload = json.dumps({
+                "type": "SNAPSHOT",
+                "symbol": symbol,
+                "order_book": dossier.order_book.to_dict(),
+                "metrics": dossier.metrics.to_dict(),
+                "recent_ticks": [t.to_dict() for t in dossier.recent_ticks[:10]],
+            })
+            self.wfile.write(f"event: snapshot\ndata: {init_payload}\n\n".encode("utf-8"))
+            self.wfile.flush()
+
+            # Stream live ticks (up to 40 ticks per connection session)
+            for _ in range(40):
+                time.sleep(0.5)
+                tick = microstructure_engine.generate_live_tick(symbol)
+                updated_dossier = microstructure_engine._cache.get(symbol)
+                tick_payload = json.dumps({
+                    "type": "TICK",
+                    "symbol": symbol,
+                    "tick": tick.to_dict(),
+                    "order_book": updated_dossier.order_book.to_dict() if updated_dossier else None,
+                    "metrics": updated_dossier.metrics.to_dict() if updated_dossier else None,
+                })
+                self.wfile.write(f"event: tick\ndata: {tick_payload}\n\n".encode("utf-8"))
+                self.wfile.flush()
+        except (BrokenPipeError, ConnectionResetError):
+            pass
+        except Exception as e:
+            try:
+                self.wfile.write(f"event: error\ndata: {json.dumps({'error': str(e)})}\n\n".encode("utf-8"))
+            except Exception:
+                pass
 
 
 def run_server(port: int = 8000):

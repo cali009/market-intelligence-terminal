@@ -169,6 +169,7 @@ class QuantIntelDossier:
     layer_6_memory: Layer6Memory
     trade_plan: QuantIntelTradePlan
     meta_label_verdict: Optional[Dict[str, Any]] = None
+    microstructure_metrics: Optional[Dict[str, Any]] = None
 
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)
@@ -1098,6 +1099,15 @@ INVALIDATION: {plan.invalidation_rule}"""
         except Exception:
             pass
 
+        # Phase 25: Real-Time Microstructure Metrics
+        micro_dict = None
+        try:
+            from src.engine.microstructure import microstructure_engine
+            micro_dossier = microstructure_engine.build_symbol_dossier(symbol)
+            micro_dict = micro_dossier.metrics.to_dict()
+        except Exception:
+            pass
+
         return QuantIntelDossier(
             symbol=symbol,
             exchange=exch,
@@ -1116,6 +1126,7 @@ INVALIDATION: {plan.invalidation_rule}"""
             layer_6_memory=l6,
             trade_plan=plan,
             meta_label_verdict=meta_verdict,
+            microstructure_metrics=micro_dict,
         )
 
     def evaluate_all(self, portfolio_size: float = 100000.0) -> Dict[str, QuantIntelDossier]:

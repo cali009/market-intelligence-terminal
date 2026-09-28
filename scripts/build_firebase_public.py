@@ -89,6 +89,8 @@ def build_firebase_bundle():
         ("meta_label_backtest.json", "meta_label_backtest"),
         ("macro_regime_matrix.json", "macro_regime_matrix.json"),
         ("macro_regime_matrix.json", "macro_regime_matrix"),
+        ("microstructure_snapshot.json", "microstructure_snapshot.json"),
+        ("microstructure_snapshot.json", "microstructure_snapshot"),
     ]
 
     for src_name, dest_name in core_feeds:

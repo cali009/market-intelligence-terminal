@@ -1157,6 +1157,96 @@ class MacroRegimeFeed(BaseModel):
         return self.model_dump()
 
 
+# =========================================================================
+# PHASE 25: REAL-TIME WEBSOCKET STREAMING & TICK-LEVEL MICROSTRUCTURE SCHEMAS
+# Lee-Ready (1991), Order Book Imbalance, CVD, Kyle's Lambda, & Liquidity Voids
+# =========================================================================
+
+class TickMessage(BaseModel):
+    tick_id: str
+    symbol: str
+    timestamp: str
+    price: float
+    volume: int
+    aggressor_side: Literal["BUY_AGGRESSOR", "SELL_AGGRESSOR", "UNKNOWN"]
+    bid: float
+    ask: float
+    bid_size: int
+    ask_size: int
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class OrderBookLevel(BaseModel):
+    price: float
+    size: int
+    order_count: int
+    side: Literal["BID", "ASK"]
+    depth_tier: int
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class OrderBookSnapshot(BaseModel):
+    symbol: str
+    timestamp: str
+    bids: List[OrderBookLevel]
+    asks: List[OrderBookLevel]
+    spread_dollars: float
+    spread_bps: float
+    order_book_imbalance: float
+    mid_price: float
+    microprice: float
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class MicrostructureMetrics(BaseModel):
+    symbol: str
+    timestamp: str
+    cvd_total: int
+    cvd_1m_delta: int
+    cvd_5m_delta: int
+    order_book_imbalance: float
+    kyle_lambda: float
+    rvol_1m: float
+    absorption_signal: Literal["NONE", "BULLISH_ABSORPTION", "BEARISH_EXHAUSTION"]
+    liquidity_state: Literal["NORMAL", "SPREAD_EXPANSION", "LIQUIDITY_VOID"]
+    buyer_volume_pct: float
+    seller_volume_pct: float
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class SymbolMicrostructureDossier(BaseModel):
+    symbol: str
+    exchange: str
+    country: Literal["US", "CA"]
+    last_price: float
+    order_book: OrderBookSnapshot
+    metrics: MicrostructureMetrics
+    recent_ticks: List[TickMessage]
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class MicrostructureSnapshotFeed(BaseModel):
+    as_of_date: str
+    generated_at: str
+    symbols: Dict[str, SymbolMicrostructureDossier]
+    market_summary: Dict[str, Any]
+    disclaimers: List[str]
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+
 
 
 

@@ -1006,6 +1006,7 @@
             <button class="tab-btn active" data-tab="leaderboard" onclick="switchTab('leaderboard', event)">Opportunity Leaderboard</button>
             <button class="tab-btn" data-tab="quantintel" onclick="switchTab('quantintel', event)">🎯 Quant Intel Workstation</button>
             <button class="tab-btn" data-tab="macroregime" onclick="switchTab('macroregime', event)">🌐 Macro Regime &amp; Markov Heatmap</button>
+            <button class="tab-btn" data-tab="microstructure" onclick="switchTab('microstructure', event)">⚡ Real-Time DOM &amp; Microstructure</button>
             <button class="tab-btn" data-tab="scanners" onclick="switchTab('scanners', event)">TAC-15 Market Scanners</button>
             <button class="tab-btn" data-tab="signals" onclick="switchTab('signals', event)">Research Signal Plans</button>
             <button class="tab-btn" data-tab="backtest" onclick="switchTab('backtest', event)">Backtest Lab & Strategy Performance</button>
@@ -1132,6 +1133,65 @@
             <!-- Dynamic Macro Regime View Container -->
             <div id="macroRegimeContainer">
                 <div style="text-align: center; padding: 40px; color: var(--text-muted);"><div class="spinner" style="margin-right: 8px;"></div> Loading Bayesian Markov transition matrices and cross-border macro radar...</div>
+            </div>
+        </div>
+
+        <!-- Tab: Real-Time DOM & Microstructure Pipeline (Phase 25) -->
+        <div id="tab-microstructure" style="display: none;">
+            <div class="scanners-header" style="margin-bottom: 20px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+                    <div>
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+                            <h2 style="font-size: 18px; font-weight: 800; color: var(--text-primary);">⚡ Real-Time Tick Microstructure &amp; Depth of Market (DOM) Pipeline</h2>
+                            <span class="exchange-tag" style="background: rgba(234, 179, 8, 0.15); color: var(--accent-amber); border-color: rgba(234, 179, 8, 0.3); font-weight: 700;">SUB-SECOND STREAMING (SSE / WS)</span>
+                        </div>
+                        <p style="font-size: 12px; color: var(--text-muted);">
+                            Lee-Ready (1991) trade signing · 5-level DOM order book imbalance · Cumulative Volume Delta (CVD) · Institutional absorption &amp; liquidity void sentinels
+                        </p>
+                    </div>
+                    <!-- Connection & Telemetry Badge -->
+                    <div style="display: flex; align-items: center; gap: 10px; background: var(--bg-card); padding: 6px 12px; border-radius: 8px; border: 1px solid var(--border-color); flex-wrap: wrap;">
+                        <span id="microConnBadge" style="font-size: 11px; font-weight: 700; color: var(--accent-green); display: flex; align-items: center; gap: 6px;">
+                            <span style="display: inline-block; width: 8px; height: 8px; background: var(--accent-green); border-radius: 50%; box-shadow: 0 0 8px var(--accent-green);"></span>
+                            LIVE STREAMING
+                        </span>
+                        <span style="font-size: 11px; color: var(--text-muted); font-family: monospace;" id="microLatencyBadge">~42ms</span>
+                        <button class="filter-btn" id="btnToggleStream" onclick="toggleMicroStreaming()" style="padding: 2px 8px; font-size: 11px;">Pause</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Symbol Quick Chips Selector Bar -->
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px; background: rgba(15, 23, 42, 0.5); padding: 8px 12px; border-radius: 8px; border: 1px solid var(--border-color);">
+                <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+                    <span style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; margin-right: 4px;">🇺🇸 US Equities:</span>
+                    <button class="filter-btn active" id="chip-SPY" onclick="selectMicroSymbol('SPY')">SPY</button>
+                    <button class="filter-btn" id="chip-QQQ" onclick="selectMicroSymbol('QQQ')">QQQ</button>
+                    <button class="filter-btn" id="chip-NVDA" onclick="selectMicroSymbol('NVDA')">NVDA</button>
+                    <button class="filter-btn" id="chip-AAPL" onclick="selectMicroSymbol('AAPL')">AAPL</button>
+                    <button class="filter-btn" id="chip-MSFT" onclick="selectMicroSymbol('MSFT')">MSFT</button>
+                    <button class="filter-btn" id="chip-AMZN" onclick="selectMicroSymbol('AMZN')">AMZN</button>
+                    <button class="filter-btn" id="chip-GOOGL" onclick="selectMicroSymbol('GOOGL')">GOOGL</button>
+                    <button class="filter-btn" id="chip-JPM" onclick="selectMicroSymbol('JPM')">JPM</button>
+                    <button class="filter-btn" id="chip-XOM" onclick="selectMicroSymbol('XOM')">XOM</button>
+                </div>
+                <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+                    <span style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; margin-right: 4px;">🇨🇦 Canada (TSX):</span>
+                    <button class="filter-btn" id="chip-XIU" onclick="selectMicroSymbol('XIU')">XIU</button>
+                    <button class="filter-btn" id="chip-SHOP" onclick="selectMicroSymbol('SHOP')">SHOP</button>
+                    <button class="filter-btn" id="chip-RY" onclick="selectMicroSymbol('RY')">RY</button>
+                    <button class="filter-btn" id="chip-TD" onclick="selectMicroSymbol('TD')">TD</button>
+                    <button class="filter-btn" id="chip-ENB" onclick="selectMicroSymbol('ENB')">ENB</button>
+                    <button class="filter-btn" id="chip-CNR" onclick="selectMicroSymbol('CNR')">CNR</button>
+                    <button class="filter-btn" id="chip-BAM" onclick="selectMicroSymbol('BAM')">BAM</button>
+                    <button class="filter-btn" id="chip-CNQ" onclick="selectMicroSymbol('CNQ')">CNQ</button>
+                    <button class="filter-btn" id="chip-CP" onclick="selectMicroSymbol('CP')">CP</button>
+                </div>
+            </div>
+
+            <!-- Dynamic Microstructure View Container -->
+            <div id="microstructureContainer">
+                <div style="text-align: center; padding: 40px; color: var(--text-muted);"><div class="spinner" style="margin-right: 8px;"></div> Connecting to real-time tick stream and order book depth...</div>
             </div>
         </div>
 
@@ -5711,6 +5771,37 @@
                     `;
                 }
 
+                // Phase 25: Real-Time Microstructure & DOM Badge
+                const micro = d.microstructure_metrics || null;
+                let microBadgeHtml = '';
+                if (micro) {
+                    const obiPctVal = (micro.order_book_imbalance * 100).toFixed(0);
+                    let obiCol = 'var(--accent-green)';
+                    let obiBg = 'rgba(16, 185, 129, 0.15)';
+                    if (micro.order_book_imbalance < -0.20) {
+                        obiCol = 'var(--accent-red)';
+                        obiBg = 'rgba(239, 68, 68, 0.15)';
+                    } else if (Math.abs(micro.order_book_imbalance) <= 0.20) {
+                        obiCol = 'var(--accent-cyan)';
+                        obiBg = 'rgba(6, 182, 212, 0.15)';
+                    }
+                    microBadgeHtml = `
+                        <!-- Phase 25: Real-Time Microstructure Badge -->
+                        <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(234, 179, 8, 0.25); border-radius: 6px; padding: 6px 10px; margin-bottom: 10px; font-size: 11px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                                <span style="font-size: 10px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px;">Order Flow &amp; DOM:</span>
+                                <span style="font-size: 10px; font-weight: 800; padding: 2px 6px; border-radius: 4px; background: ${obiBg}; color: ${obiCol}; border: 1px solid ${obiCol}40;">
+                                    OBI: ${micro.order_book_imbalance > 0 ? '+' : ''}${obiPctVal}%
+                                </span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 10px; color: var(--text-secondary);">
+                                <span>CVD (1m): <strong style="color: ${micro.cvd_1m_delta >= 0 ? '#34d399' : '#f87171'};">${micro.cvd_1m_delta > 0 ? '+' : ''}${micro.cvd_1m_delta.toLocaleString()} sh</strong></span>
+                                <span>Liquidity: <strong style="color: ${micro.liquidity_state === 'NORMAL' ? 'var(--accent-green)' : 'var(--accent-red)'};">${micro.liquidity_state}</strong></span>
+                            </div>
+                        </div>
+                    `;
+                }
+
                 return `
                     <div class="scanner-card" style="border-top: 3px solid ${gradeColor}; cursor: default; transition: transform 0.15s ease;" onmouseenter="this.style.transform='translateY(-2px)'" onmouseleave="this.style.transform='translateY(0)'">
                         <!-- Card Header -->
@@ -5767,6 +5858,7 @@
 
                         ${metaBadgeHtml}
                         ${macroBadgeHtml}
+                        ${microBadgeHtml}
 
                         <!-- Trade Execution Plan -->
                         <div style="background: rgba(0, 0, 0, 0.25); border: 1px solid var(--border-color); border-radius: 6px; padding: 10px; margin-bottom: 12px; font-size: 11px;">
@@ -6503,6 +6595,478 @@
             `;
         }
 
+        /* =====================================================================
+           PHASE 25: REAL-TIME TICK MICROSTRUCTURE & DEPTH OF MARKET (DOM) PIPELINE
+           Lee-Ready (1991), Order Book Imbalance, CVD, Kyle's Lambda
+           ===================================================================== */
+        let microstructureBundle = null;
+        let microstructureLoading = false;
+        let activeMicroSymbol = 'SPY';
+        let microEventSource = null;
+        let microStreamActive = true;
+        let microPollInterval = null;
+
+        async function loadMicrostructureAndRender() {
+            if (microstructureBundle) {
+                renderMicrostructureView();
+                startMicroStreaming();
+                return;
+            }
+            if (microstructureLoading) return;
+            microstructureLoading = true;
+            const container = document.getElementById('microstructureContainer');
+            if (container) {
+                container.innerHTML = '<div style="text-align: center; padding: 40px; color: var(--text-muted);"><div class="spinner" style="margin-right: 8px;"></div> Loading dual-market order book snapshots and tick streams...</div>';
+            }
+            try {
+                microstructureBundle = await fetchJson('/api/microstructure_snapshot.json', '/api/microstructure_snapshot');
+                renderMicrostructureView();
+                startMicroStreaming();
+            } catch (e) {
+                console.error("Microstructure feed load error:", e);
+                if (container) {
+                    container.innerHTML = `<div style="text-align: center; padding: 24px; color: var(--accent-red);">Unable to load microstructure feed. <button class="filter-btn" style="margin-left: 10px;" onclick="loadMicrostructureAndRender()">Retry</button></div>`;
+                }
+            } finally {
+                microstructureLoading = false;
+            }
+        }
+
+        function selectMicroSymbol(sym) {
+            activeMicroSymbol = sym;
+            document.querySelectorAll('[id^="chip-"]').forEach(el => el.classList.remove('active'));
+            document.getElementById(`chip-${sym}`)?.classList.add('active');
+            renderMicrostructureView();
+            if (microStreamActive) {
+                startMicroStreaming();
+            }
+        }
+
+        function toggleMicroStreaming() {
+            microStreamActive = !microStreamActive;
+            const btn = document.getElementById('btnToggleStream');
+            const badge = document.getElementById('microConnBadge');
+            if (microStreamActive) {
+                if (btn) btn.innerText = 'Pause';
+                if (badge) {
+                    badge.innerHTML = '<span style="display: inline-block; width: 8px; height: 8px; background: var(--accent-green); border-radius: 50%; box-shadow: 0 0 8px var(--accent-green);"></span> LIVE STREAMING';
+                    badge.style.color = 'var(--accent-green)';
+                }
+                startMicroStreaming();
+            } else {
+                if (btn) btn.innerText = 'Resume';
+                if (badge) {
+                    badge.innerHTML = '<span style="display: inline-block; width: 8px; height: 8px; background: var(--accent-amber); border-radius: 50%;"></span> PAUSED';
+                    badge.style.color = 'var(--accent-amber)';
+                }
+                stopMicroStreaming();
+            }
+        }
+
+        function stopMicroStreaming() {
+            if (microEventSource) {
+                microEventSource.close();
+                microEventSource = null;
+            }
+            if (microPollInterval) {
+                clearInterval(microPollInterval);
+                microPollInterval = null;
+            }
+        }
+
+        function startMicroStreaming() {
+            stopMicroStreaming();
+            if (!microStreamActive) return;
+
+            // Try SSE first
+            if (typeof EventSource !== 'undefined') {
+                try {
+                    microEventSource = new EventSource(`/api/stream/ticks?symbol=${activeMicroSymbol}`);
+                    microEventSource.addEventListener('snapshot', (ev) => {
+                        try {
+                            const data = JSON.parse(ev.data);
+                            if (microstructureBundle && microstructureBundle.symbols && data.symbol === activeMicroSymbol) {
+                                microstructureBundle.symbols[activeMicroSymbol].order_book = data.order_book;
+                                microstructureBundle.symbols[activeMicroSymbol].metrics = data.metrics;
+                                updateLiveMicroUI();
+                            }
+                        } catch (e) {}
+                    });
+
+                    microEventSource.addEventListener('tick', (ev) => {
+                        try {
+                            const data = JSON.parse(ev.data);
+                            if (microstructureBundle && microstructureBundle.symbols && data.symbol === activeMicroSymbol) {
+                                const dossier = microstructureBundle.symbols[activeMicroSymbol];
+                                if (data.order_book) dossier.order_book = data.order_book;
+                                if (data.metrics) dossier.metrics = data.metrics;
+                                if (data.tick) {
+                                    dossier.last_price = data.tick.price;
+                                    dossier.recent_ticks.unshift(data.tick);
+                                    if (dossier.recent_ticks.length > 40) dossier.recent_ticks.pop();
+                                }
+                                updateLiveMicroUI();
+                            }
+                        } catch (e) {}
+                    });
+
+                    microEventSource.onerror = () => {
+                        stopMicroStreaming();
+                        startMicroPolling();
+                    };
+                    return;
+                } catch (e) {}
+            }
+            startMicroPolling();
+        }
+
+        function startMicroPolling() {
+            if (microPollInterval) clearInterval(microPollInterval);
+            microPollInterval = setInterval(async () => {
+                if (!microStreamActive) return;
+                try {
+                    const fresh = await fetchJson('/api/microstructure_snapshot.json', '/api/microstructure_snapshot');
+                    if (fresh && fresh.symbols) {
+                        microstructureBundle = fresh;
+                        updateLiveMicroUI();
+                    }
+                } catch (e) {}
+            }, 2500);
+        }
+
+        function updateLiveMicroUI() {
+            const container = document.getElementById('microstructureContainer');
+            if (!container || !microstructureBundle || !microstructureBundle.symbols) return;
+            renderMicrostructureView();
+        }
+
+        function renderMicrostructureView() {
+            const container = document.getElementById('microstructureContainer');
+            if (!container || !microstructureBundle || !microstructureBundle.symbols) return;
+
+            const dossier = microstructureBundle.symbols[activeMicroSymbol] || Object.values(microstructureBundle.symbols)[0];
+            const book = dossier.order_book;
+            const metrics = dossier.metrics;
+            const ticks = dossier.recent_ticks || [];
+            const disclaimers = microstructureBundle.disclaimers || [];
+
+            const isUS = (dossier.country === 'US');
+            const currencySym = isUS ? '$' : 'C$';
+
+            // Top KPIs
+            const bestBid = book.bids[0]?.price || 0;
+            const bestAsk = book.asks[0]?.price || 0;
+            const spread = book.spread_dollars.toFixed(2);
+            const spreadBps = book.spread_bps.toFixed(1);
+            const midPrice = book.mid_price.toFixed(2);
+            const microPrice = book.microprice.toFixed(3);
+            const obi = metrics.order_book_imbalance;
+            const obiPct = (obi * 100).toFixed(1);
+
+            let obiColor = 'var(--text-secondary)';
+            let obiLabel = 'NEUTRAL EQUILIBRIUM';
+            if (obi > 0.20) {
+                obiColor = 'var(--accent-green)';
+                obiLabel = 'BUYER REPLENISHMENT';
+            } else if (obi < -0.20) {
+                obiColor = 'var(--accent-red)';
+                obiLabel = 'ASK-SIDE WALL';
+            }
+
+            let liqColor = 'var(--accent-green)';
+            let liqBg = 'rgba(16, 185, 129, 0.15)';
+            if (metrics.liquidity_state === 'LIQUIDITY_VOID') {
+                liqColor = 'var(--accent-red)';
+                liqBg = 'rgba(239, 68, 68, 0.15)';
+            } else if (metrics.liquidity_state === 'SPREAD_EXPANSION') {
+                liqColor = 'var(--accent-amber)';
+                liqBg = 'rgba(245, 158, 11, 0.15)';
+            }
+
+            let absColor = 'var(--text-secondary)';
+            let absBg = 'rgba(148, 163, 184, 0.1)';
+            if (metrics.absorption_signal === 'BULLISH_ABSORPTION') {
+                absColor = 'var(--accent-green)';
+                absBg = 'rgba(16, 185, 129, 0.15)';
+            } else if (metrics.absorption_signal === 'BEARISH_EXHAUSTION') {
+                absColor = 'var(--accent-red)';
+                absBg = 'rgba(239, 68, 68, 0.15)';
+            }
+
+            // Max size for relative DOM bars
+            const maxSize = Math.max(
+                ...book.bids.map(b => b.size),
+                ...book.asks.map(a => a.size),
+                1000
+            );
+
+            // DOM Asks (Reverse so highest ask is at top)
+            const asksReversed = [...book.asks].reverse();
+            const asksHtml = asksReversed.map(a => {
+                const widthPct = Math.min(100, Math.round((a.size / maxSize) * 100));
+                return `
+                    <tr style="position: relative; font-size: 11px; font-family: monospace;">
+                        <td style="padding: 4px 8px; color: var(--text-muted); width: 35px;">L${a.depth_tier}</td>
+                        <td style="padding: 4px 8px; color: #f87171; font-weight: 700; width: 75px;">${currencySym}${a.price.toFixed(2)}</td>
+                        <td style="padding: 4px 8px; text-align: right; color: #e2e8f0; width: 80px;">${a.size.toLocaleString()}</td>
+                        <td style="padding: 4px 8px; width: 140px;">
+                            <div style="height: 6px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden;">
+                                <div style="height: 100%; width: ${widthPct}%; background: rgba(239, 68, 68, 0.7); border-radius: 3px;"></div>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+
+            // DOM Bids
+            const bidsHtml = book.bids.map(b => {
+                const widthPct = Math.min(100, Math.round((b.size / maxSize) * 100));
+                return `
+                    <tr style="position: relative; font-size: 11px; font-family: monospace;">
+                        <td style="padding: 4px 8px; color: var(--text-muted); width: 35px;">L${b.depth_tier}</td>
+                        <td style="padding: 4px 8px; color: #34d399; font-weight: 700; width: 75px;">${currencySym}${b.price.toFixed(2)}</td>
+                        <td style="padding: 4px 8px; text-align: right; color: #e2e8f0; width: 80px;">${b.size.toLocaleString()}</td>
+                        <td style="padding: 4px 8px; width: 140px;">
+                            <div style="height: 6px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden;">
+                                <div style="height: 100%; width: ${widthPct}%; background: rgba(16, 185, 129, 0.7); border-radius: 3px;"></div>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+
+            // Ticks Tape HTML
+            const ticksHtml = ticks.slice(0, 25).map(t => {
+                const isBuy = (t.aggressor_side === 'BUY_AGGRESSOR');
+                const sideCol = isBuy ? '#34d399' : '#f87171';
+                const timeStr = t.timestamp.split('T')[1]?.replace('Z', '') || t.timestamp;
+                const isBlock = t.volume >= 1000;
+                return `
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 4px 8px; font-size: 11px; font-family: monospace; border-bottom: 1px solid rgba(255,255,255,0.04); background: ${isBlock ? 'rgba(234, 179, 8, 0.08)' : 'transparent'};">
+                        <span style="color: var(--text-muted); font-size: 10px;">${timeStr}</span>
+                        <span style="color: ${sideCol}; font-weight: 700;">${currencySym}${t.price.toFixed(2)}</span>
+                        <span style="color: #f1f5f9; text-align: right;">${t.volume.toLocaleString()} sh</span>
+                        <span style="font-size: 9px; padding: 1px 4px; border-radius: 3px; background: ${sideCol}20; color: ${sideCol};">
+                            ${isBuy ? 'LIFT ASK' : 'HIT BID'}
+                        </span>
+                    </div>
+                `;
+            }).join('');
+
+            container.innerHTML = `
+                <!-- 1. Top KPI Summary Grid -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-bottom: 20px;">
+                    <!-- Card 1: Active Symbol & Spread -->
+                    <div class="kpi-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                            <span style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Active Symbol (${dossier.exchange})</span>
+                            <span class="exchange-tag" style="font-size: 10px;">${dossier.country}</span>
+                        </div>
+                        <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+                            <span style="font-size: 20px; font-weight: 800; color: var(--text-primary);">${dossier.symbol}</span>
+                            <span style="font-size: 15px; font-weight: 700; color: var(--accent-cyan);">${currencySym}${dossier.last_price.toFixed(2)}</span>
+                        </div>
+                        <div style="font-size: 11px; color: var(--text-secondary);">
+                            Bid: <strong style="color: #34d399;">${currencySym}${bestBid.toFixed(2)}</strong> · Ask: <strong style="color: #f87171;">${currencySym}${bestAsk.toFixed(2)}</strong>
+                            <div style="font-size: 10px; color: var(--text-muted); margin-top: 2px;">Spread: ${currencySym}${spread} (${spreadBps} bps)</div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Microprice vs Midpoint -->
+                    <div class="kpi-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px;">
+                        <div style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; margin-bottom: 4px;">
+                            Volume-Weighted Microprice
+                        </div>
+                        <div style="font-size: 20px; font-weight: 800; color: var(--accent-cyan); margin-bottom: 6px;">
+                            ${currencySym}${microPrice}
+                        </div>
+                        <div style="font-size: 11px; color: var(--text-secondary);">
+                            Mid-Quote: <strong style="color: #f1f5f9;">${currencySym}${midPrice}</strong>
+                            <div style="font-size: 10px; color: var(--text-muted); margin-top: 2px;">Skew: ${microPrice > midPrice ? '▲ Towards Ask' : (microPrice < midPrice ? '▼ Towards Bid' : 'Balanced')}</div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Order Book Imbalance (OBI) -->
+                    <div class="kpi-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                            <span style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Order Book Imbalance</span>
+                            <span style="font-size: 10px; font-weight: 800; color: ${obiColor};">${obiLabel}</span>
+                        </div>
+                        <div style="font-size: 20px; font-weight: 800; color: ${obiColor}; margin-bottom: 6px;">
+                            ${obi > 0 ? '+' : ''}${obiPct}%
+                        </div>
+                        <div style="font-size: 11px; color: var(--text-secondary);">
+                            Top 5 Tiers: <strong style="color: #f1f5f9;">${book.bids.reduce((a,b)=>a+b.size,0).toLocaleString()} bids / ${book.asks.reduce((a,b)=>a+b.size,0).toLocaleString()} asks</strong>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Flow Absorption Sentinel -->
+                    <div class="kpi-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                            <span style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Flow Absorption</span>
+                            <span style="font-size: 10px; font-weight: 800; padding: 2px 6px; border-radius: 4px; background: ${absBg}; color: ${absColor}; border: 1px solid ${absColor}40;">
+                                ${metrics.absorption_signal.replace('_', ' ')}
+                            </span>
+                        </div>
+                        <div style="font-size: 20px; font-weight: 800; color: ${metrics.cvd_total >= 0 ? '#34d399' : '#f87171'}; margin-bottom: 6px;">
+                            ${metrics.cvd_total > 0 ? '+' : ''}${metrics.cvd_total.toLocaleString()} sh <span style="font-size: 11px; color: var(--text-muted); font-weight: 600;">(CVD)</span>
+                        </div>
+                        <div style="font-size: 11px; color: var(--text-secondary);">
+                            Liquidity: <strong style="color: ${liqColor};">${metrics.liquidity_state}</strong> · Impact: <strong style="color: #f1f5f9;">$${metrics.kyle_lambda.toFixed(3)}</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Core 3-Column Workstation Layout -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; margin-bottom: 20px;">
+                    <!-- Column 1: Level 2 Depth of Market (DOM) -->
+                    <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 16px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 8px;">
+                            <div>
+                                <h3 style="font-size: 13px; font-weight: 800; color: var(--text-primary); margin-bottom: 2px;">
+                                    📊 Level 2 Depth of Market (DOM)
+                                </h3>
+                                <p style="font-size: 10px; color: var(--text-muted);">5-level multi-tier order book depth</p>
+                            </div>
+                            <span style="font-size: 10px; font-family: monospace; color: var(--text-muted);">Depth L1-L5</span>
+                        </div>
+
+                        <!-- Ask Ladder (Red) -->
+                        <table style="width: 100%; border-collapse: collapse; margin-bottom: 8px;">
+                            <tbody>
+                                ${asksHtml}
+                            </tbody>
+                        </table>
+
+                        <!-- Midpoint Divider -->
+                        <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(15, 23, 42, 0.9); border-top: 1px dashed var(--accent-cyan); border-bottom: 1px dashed var(--accent-cyan); padding: 6px 10px; margin: 8px 0; font-size: 11px; font-family: monospace;">
+                            <span style="color: var(--text-muted);">MID-QUOTE: <strong style="color: var(--accent-cyan);">${currencySym}${midPrice}</strong></span>
+                            <span style="color: var(--accent-amber);">SPREAD: ${currencySym}${spread} (${spreadBps} bps)</span>
+                        </div>
+
+                        <!-- Bid Ladder (Green) -->
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tbody>
+                                ${bidsHtml}
+                            </tbody>
+                        </table>
+
+                        <!-- Horizontal OBI Meter -->
+                        <div style="margin-top: 14px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.06);">
+                            <div style="display: flex; justify-content: space-between; font-size: 10px; color: var(--text-muted); margin-bottom: 4px;">
+                                <span>-1.0 (Asks)</span>
+                                <span style="font-weight: 700; color: ${obiColor};">OBI: ${obi > 0 ? '+' : ''}${obiPct}%</span>
+                                <span>+1.0 (Bids)</span>
+                            </div>
+                            <div style="height: 6px; background: rgba(255,255,255,0.08); border-radius: 3px; position: relative; overflow: hidden;">
+                                <div style="position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; background: rgba(255,255,255,0.3); z-index: 2;"></div>
+                                <div style="height: 100%; position: absolute; ${obi >= 0 ? 'left: 50%; width: ' + (obi * 50) + '%; background: var(--accent-green);' : 'right: 50%; width: ' + (Math.abs(obi) * 50) + '%; background: var(--accent-red);'}; border-radius: 3px;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Live Tick Tape (Time & Sales) -->
+                    <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 16px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 8px;">
+                            <div>
+                                <h3 style="font-size: 13px; font-weight: 800; color: var(--text-primary); margin-bottom: 2px;">
+                                    ⏱️ Live Tick Tape (Time &amp; Sales)
+                                </h3>
+                                <p style="font-size: 10px; color: var(--text-muted);">Lee-Ready (1991) classified trade executions</p>
+                            </div>
+                            <span class="exchange-tag" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-green); font-size: 9px;">SUB-SECOND</span>
+                        </div>
+
+                        <div style="display: flex; justify-content: space-between; font-size: 10px; text-transform: uppercase; color: var(--text-muted); padding: 4px 8px; border-bottom: 1px solid rgba(255,255,255,0.08); font-family: monospace;">
+                            <span>Time (UTC)</span>
+                            <span>Price</span>
+                            <span>Volume</span>
+                            <span>Aggressor</span>
+                        </div>
+
+                        <div style="max-height: 380px; overflow-y: auto;">
+                            ${ticksHtml}
+                        </div>
+                    </div>
+
+                    <!-- Column 3: Microstructure Analytics & Flow Governors -->
+                    <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 16px; display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 8px;">
+                                <div>
+                                    <h3 style="font-size: 13px; font-weight: 800; color: var(--text-primary); margin-bottom: 2px;">
+                                        🔬 Order Flow Analytics &amp; Governors
+                                    </h3>
+                                    <p style="font-size: 10px; color: var(--text-muted);">CVD, Kyle's lambda, and liquidity sentinels</p>
+                                </div>
+                            </div>
+
+                            <!-- CVD Stats Box -->
+                            <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 12px; margin-bottom: 12px;">
+                                <div style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; margin-bottom: 8px;">
+                                    Cumulative Volume Delta (CVD)
+                                </div>
+                                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; text-align: center;">
+                                    <div>
+                                        <div style="font-size: 10px; color: var(--text-muted);">Session CVD</div>
+                                        <div style="font-size: 13px; font-weight: 800; color: ${metrics.cvd_total >= 0 ? '#34d399' : '#f87171'}; font-family: monospace;">
+                                            ${metrics.cvd_total > 0 ? '+' : ''}${metrics.cvd_total.toLocaleString()}
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div style="font-size: 10px; color: var(--text-muted);">1m Delta</div>
+                                        <div style="font-size: 13px; font-weight: 800; color: ${metrics.cvd_1m_delta >= 0 ? '#34d399' : '#f87171'}; font-family: monospace;">
+                                            ${metrics.cvd_1m_delta > 0 ? '+' : ''}${metrics.cvd_1m_delta.toLocaleString()}
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div style="font-size: 10px; color: var(--text-muted);">5m Delta</div>
+                                        <div style="font-size: 13px; font-weight: 800; color: ${metrics.cvd_5m_delta >= 0 ? '#34d399' : '#f87171'}; font-family: monospace;">
+                                            ${metrics.cvd_5m_delta > 0 ? '+' : ''}${metrics.cvd_5m_delta.toLocaleString()}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Buyer vs Seller Volume Ratio -->
+                            <div style="margin-bottom: 14px;">
+                                <div style="display: flex; justify-content: space-between; font-size: 11px; margin-bottom: 4px;">
+                                    <span style="color: #34d399; font-weight: 700;">Buyers: ${metrics.buyer_volume_pct}%</span>
+                                    <span style="color: #f87171; font-weight: 700;">Sellers: ${metrics.seller_volume_pct}%</span>
+                                </div>
+                                <div style="height: 6px; background: rgba(255,255,255,0.08); border-radius: 3px; display: flex; overflow: hidden;">
+                                    <div style="height: 100%; width: ${metrics.buyer_volume_pct}%; background: #10b981;"></div>
+                                    <div style="height: 100%; width: ${metrics.seller_volume_pct}%; background: #ef4444;"></div>
+                                </div>
+                            </div>
+
+                            <!-- Kyle's Lambda Price Impact -->
+                            <div style="background: rgba(15, 23, 42, 0.4); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 10px; margin-bottom: 12px; font-size: 11px;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                                    <span style="color: var(--text-muted);">Kyle's Lambda (λ_Kyle):</span>
+                                    <strong style="color: var(--accent-cyan); font-family: monospace;">$${metrics.kyle_lambda.toFixed(4)} / 10k sh</strong>
+                                </div>
+                                <div style="font-size: 10px; color: var(--text-secondary); line-height: 1.3;">
+                                    ${metrics.kyle_lambda < 0.03 ? 'Resilient book with low market impact per unit of volume.' : 'Thin order book; execute via limit slices to prevent adverse selection.'}
+                                </div>
+                            </div>
+
+                            <!-- Execution Sentinel Note -->
+                            <div style="padding: 10px; border-left: 3px solid ${liqColor}; background: ${liqBg}; border-radius: 0 6px 6px 0; font-size: 11px; line-height: 1.4; margin-bottom: 12px;">
+                                <strong style="color: #fff;">Microstructure Sentinel:</strong>
+                                ${metrics.liquidity_state === 'LIQUIDITY_VOID' ? 'Spread blowout detected (>3x nominal). Limit orders mandatory; market orders restricted.' : (metrics.absorption_signal === 'BULLISH_ABSORPTION' ? 'Bullish passive absorption: buyers absorbing sell prints near key support.' : 'Normal order book depth and stable liquidity spreads.')}
+                            </div>
+                        </div>
+
+                        <!-- Statutory Impersonal Disclaimers -->
+                        <div style="font-size: 10px; color: var(--text-muted); line-height: 1.4; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 8px;">
+                            ${disclaimers[0] || 'Order book depth and tick analytics represent quantitative simulation for decision-support research.'}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
         function switchTab(tabId, ev) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             if (ev && ev.currentTarget) {
@@ -6513,13 +7077,18 @@
             }
 
             const tabIds = [
-                'leaderboard', 'quantintel', 'macroregime', 'scanners', 'signals', 'backtest', 'paper',
+                'leaderboard', 'quantintel', 'macroregime', 'microstructure', 'scanners', 'signals', 'backtest', 'paper',
                 'portfolio', 'alerts', 'deepread', 'production', 'catalysts', 'journal'
             ];
             tabIds.forEach(id => {
                 const el = document.getElementById(`tab-${id}`);
                 if (el) el.style.display = (id === tabId) ? 'block' : 'none';
             });
+
+            // Pause SSE stream when switching away from microstructure tab
+            if (tabId !== 'microstructure') {
+                stopMicroStreaming();
+            }
 
             if (tabId === 'quantintel') {
                 if (!quantIntelBundle) {
@@ -6532,6 +7101,13 @@
                     loadMacroRegimeAndRender();
                 } else {
                     renderMacroRegimeView();
+                }
+            } else if (tabId === 'microstructure') {
+                if (!microstructureBundle) {
+                    loadMicrostructureAndRender();
+                } else {
+                    renderMicrostructureView();
+                    startMicroStreaming();
                 }
             } else if (tabId === 'backtest') {
                 if (!backtestBundle) {
