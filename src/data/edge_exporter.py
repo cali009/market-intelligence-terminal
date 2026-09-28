@@ -44,6 +44,7 @@ from src.engine.quant_intel_memory import quant_intel_memory_ledger
 from src.engine.meta_label_dataset import meta_label_dataset_engine
 from src.engine.meta_label_classifier import meta_label_classifier
 from src.engine.backtester import backtest_engine
+from src.engine.macro_regime import macro_regime_engine
 
 FEEDS_DIR = DATA_DIR / "feeds"
 DIST_DIR = DATA_DIR / "dist"
@@ -657,8 +658,11 @@ class EdgeExporter:
             # Phase 23.3: Meta-Label Gated Walk-Forward Backtest Comparison Feed
             backtest_engine.export_meta_backtest_feed(d_dir)
 
+            # Phase 24: Cross-Asset Macro Regime Transition Matrix Feed
+            macro_regime_engine.export_feed(d_dir)
+
         return {
-            "dist_files": 25,
+            "dist_files": 26,
             "symbol_files": symbol_files_count,
             "total_matches": len(scanner_results),
             "total_signals": len(signals_list),

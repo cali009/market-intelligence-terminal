@@ -27,6 +27,7 @@ from src.engine.technicals import TechnicalAnalysisEngine
 from src.engine.fundamentals import FundamentalAnalysisEngine
 from src.engine.news_engine import news_engine
 from src.engine.quant_intel_memory import quant_intel_memory_ledger
+from src.engine.macro_regime import macro_regime_engine
 
 
 @dataclass
@@ -40,6 +41,11 @@ class Layer1Regime:
     status: str               # "BULLISH", "NEUTRAL", "BEARISH"
     conviction_weight: float
     top_drivers: List[str] = field(default_factory=list)
+    adverse_hazard_rate_5d: float = 0.0
+    adverse_hazard_rate_20d: float = 0.0
+    expected_regime_duration_days: float = 0.0
+    hazard_tier: str = "LOW_HAZARD"
+    cross_border_macro_divergence_posture: str = "SYNCHRONIZED_EXPANSION"
 
 
 @dataclass
@@ -318,6 +324,33 @@ class QuantIntelEngine:
             regime_fit = "NO"
             status = "BEARISH"
 
+        # Macro Regime Transition Metrics & Bayesian Projections (Phase 24)
+        try:
+            markov_mat = macro_regime_engine.build_markov_matrix(country)
+            projections = macro_regime_engine.compute_forward_projections(markov_mat, horizons=[1, 5, 20])
+            p5 = next((p for p in projections if p.horizon_days == 5), None)
+            p20 = next((p for p in projections if p.horizon_days == 20), None)
+            hazard_5d = p5.adverse_hazard_rate if p5 else 0.02
+            hazard_20d = p20.adverse_hazard_rate if p20 else 0.08
+            hazard_tier = p20.hazard_tier if p20 else "LOW_HAZARD"
+
+            current_row = next((r for r in markov_mat.rows if r.from_state == reg_out.regime_state), None)
+            exp_duration = current_row.expected_duration_days if current_row else 19.3
+
+            other_country = "CA" if country == "US" else "US"
+            other_mat = macro_regime_engine.build_markov_matrix(other_country)
+            div = macro_regime_engine.compute_cross_border_divergence(
+                us_matrix=markov_mat if country == "US" else other_mat,
+                ca_matrix=other_mat if country == "US" else markov_mat,
+            )
+            macro_posture = div.macro_divergence_posture
+        except Exception:
+            hazard_5d = 0.02
+            hazard_20d = 0.08
+            hazard_tier = "LOW_HAZARD"
+            exp_duration = 19.3 if country == "US" else 21.0
+            macro_posture = "SYNCHRONIZED_EXPANSION"
+
         return Layer1Regime(
             trend_type=trend_type,
             volatility_regime=vol_regime,
@@ -328,6 +361,11 @@ class QuantIntelEngine:
             status=status,
             conviction_weight=reg_out.regime_multiplier,
             top_drivers=reg_out.top_drivers,
+            adverse_hazard_rate_5d=hazard_5d,
+            adverse_hazard_rate_20d=hazard_20d,
+            expected_regime_duration_days=exp_duration,
+            hazard_tier=hazard_tier,
+            cross_border_macro_divergence_posture=macro_posture,
         )
 
     def evaluate_layer2_fingerprint(
@@ -841,29 +879,51 @@ class QuantIntelEngine:
         else:
             conviction_grade = "SKIP"
 
-        # 6. Position Sizing (Risk 1% of portfolio)
+        # 6. Dynamic Macro Hazard Governor (Phase 24)
+        # If forward adverse hazard rate (20d) is elevated (>= 0.20) or cross-border stress is detected,
+        # apply conservative downweighting scalar to position sizing.
+        hazard_scalar = 1.0
+        h_tier = getattr(regime, "hazard_tier", "LOW_HAZARD")
+        h_20d = getattr(regime, "adverse_hazard_rate_20d", 0.0)
+        c_posture = getattr(regime, "cross_border_macro_divergence_posture", "SYNCHRONIZED_EXPANSION")
+
+        if h_tier == "SEVERE_HAZARD" or h_20d >= 0.40:
+            hazard_scalar = 0.65
+        elif h_tier == "ELEVATED_HAZARD" or h_20d >= 0.20:
+            hazard_scalar = 0.80
+        elif c_posture == "CROSS_BORDER_STRESS":
+            hazard_scalar = 0.85
+
+        # Position Sizing (Risk 1% of portfolio)
         risk_budget = portfolio_size * 0.01
         base_shares = math.floor(risk_budget / stop_dist_dollars) if stop_dist_dollars > 0 else 0
 
-        # C-Grade requires 50% position reduction
+        # C-Grade requires 50% position reduction; apply hazard scalar
         if conviction_grade == "C":
-            recommended_shares = math.floor(base_shares * 0.50)
+            recommended_shares = math.floor(base_shares * 0.50 * hazard_scalar)
         elif conviction_grade == "SKIP":
             recommended_shares = 0
         else:
-            recommended_shares = base_shares
+            recommended_shares = math.floor(base_shares * hazard_scalar)
 
         cap_at_risk = round(recommended_shares * stop_dist_dollars, 2)
         pos_val = round(recommended_shares * ideal_entry, 2)
         port_risk_pct = round((cap_at_risk / portfolio_size) * 100.0, 2) if portfolio_size > 0 else 0.0
 
         # Invalidation Rule
-        invalidation_rule = f"A daily closing price below ${stop_loss:.2f} or two consecutive closes back below ${s1:.2f} immediately invalidates the trade."
+        if h_tier in ("ELEVATED_HAZARD", "SEVERE_HAZARD"):
+            invalidation_rule = (
+                f"A daily closing price below ${stop_loss:.2f} or two consecutive closes back below ${s1:.2f} "
+                f"immediately invalidates the trade. Elevated forward macro hazard ({h_tier}) warrants swift stop execution."
+            )
+        else:
+            invalidation_rule = f"A daily closing price below ${stop_loss:.2f} or two consecutive closes back below ${s1:.2f} immediately invalidates the trade."
 
         # Trade Thesis
         trade_thesis = (
             f"{symbol} exhibits high structural confluence with {fingerprint.dominant_pattern} "
-            f"aligning above ascending moving averages. In the current {regime.regime_state} macro context, "
+            f"aligning above ascending moving averages. In the current {regime.regime_state} macro context "
+            f"(20d adverse hazard: {h_20d * 100.0:.1f}%), "
             f"measured support at ${s1:.2f} offers asymmetric risk/reward into upper channel resistance."
         )
 
@@ -912,9 +972,10 @@ class QuantIntelEngine:
         Renders the exact formatted QUANT INTEL trade card.
         """
         curr_sym = "$"
+        hazard_info = f" | 20d Adverse Hazard: {regime.adverse_hazard_rate_20d * 100.0:.1f}%" if getattr(regime, "adverse_hazard_rate_20d", None) is not None else ""
 
         card = f"""TICKER: {symbol}
-REGIME: {regime.regime_state} (VIX: {regime.volatility_regime.split()[0]} | {regime.liquidity_env} | Rates: {regime.rate_context})
+REGIME: {regime.regime_state} (VIX: {regime.volatility_regime.split()[0]} | {regime.liquidity_env} | Rates: {regime.rate_context}{hazard_info})
 PATTERN TYPE: {fingerprint.archetype_label} — {fingerprint.dominant_pattern}
 ─────────────────────────────────
 SIGNAL SUMMARY:

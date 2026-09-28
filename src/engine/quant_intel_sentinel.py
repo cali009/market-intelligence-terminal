@@ -191,6 +191,30 @@ class QuantIntelSentinel:
                 )
             )
 
+        # 6. PREDICATE: ADVERSE_REGIME_HAZARD_SPIKE (Elevated Markov transition hazard)
+        hazard_tier = getattr(regime, "hazard_tier", "LOW_HAZARD")
+        hazard_20d = getattr(regime, "adverse_hazard_rate_20d", 0.0)
+        cross_posture = getattr(regime, "cross_border_macro_divergence_posture", "SYNCHRONIZED_EXPANSION")
+        if hazard_tier in ("ELEVATED_HAZARD", "SEVERE_HAZARD") or hazard_20d >= 0.25 or cross_posture == "CROSS_BORDER_STRESS":
+            headline = f"{symbol}: Elevated Forward Macro Regime Hazard ({hazard_tier})"
+            body = (
+                f"Bayesian Markov projection indicates a {hazard_20d * 100.0:.1f}% adverse transition hazard over 20 sessions "
+                f"under {cross_posture} posture. Defensive risk calibration is warranted."
+            )
+            alerts.append(
+                InvalidationAlert(
+                    symbol=symbol,
+                    predicate_type="ADVERSE_REGIME_HAZARD_SPIKE",
+                    severity="WARNING",
+                    trigger_level=hazard_20d,
+                    current_price=close,
+                    headline=headline,
+                    body=body,
+                    action_required="DE_RISK_OR_TIGHTEN_STOP",
+                    timestamp=now_str,
+                )
+            )
+
         return alerts
 
     def evaluate_universe_sentinels(self, quant_intel_dossiers: Dict[str, Any]) -> List[InvalidationAlert]:

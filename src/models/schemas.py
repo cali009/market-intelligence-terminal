@@ -1084,6 +1084,80 @@ class MetaLabelBacktestFeed(BaseModel):
         return self.model_dump()
 
 
+# ==========================================
+# PHASE 24: CROSS-ASSET MACRO REGIME & MARKOV TRANSITION SCHEMAS
+# ==========================================
+
+
+class RegimeTransitionRow(BaseModel):
+    from_state: str
+    probabilities: Dict[str, float]
+    expected_duration_days: float
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class MarkovTransitionMatrix(BaseModel):
+    market: Literal["US", "CA"]
+    benchmark_symbol: str
+    states: List[str]
+    sample_sessions_count: int
+    rows: List[RegimeTransitionRow]
+    stationary_distribution: Dict[str, float]
+    current_state: str
+    current_filtered_probability: float
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class ForwardRegimeProjection(BaseModel):
+    horizon_days: int
+    projected_distribution: Dict[str, float]
+    adverse_hazard_rate: float
+    hazard_tier: Literal["LOW_HAZARD", "MODERATE_HAZARD", "ELEVATED_HAZARD", "SEVERE_HAZARD"]
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class CrossBorderMacroDivergence(BaseModel):
+    us_regime: str
+    ca_regime: str
+    us_yield_spread_10y_2y: float
+    ca_yield_spread_10y_2y: float
+    yield_spread_divergence_bps: float
+    cad_usd_rate: float
+    cad_usd_20d_velocity_pct: float
+    regime_synchronization_score: float
+    macro_divergence_posture: Literal[
+        "SYNCHRONIZED_EXPANSION",
+        "ASYMMETRIC_POLICY_CYCLE",
+        "CANADIAN_MACRO_LAG",
+        "US_OVERHEATING_DIVERGENCE",
+        "CROSS_BORDER_STRESS",
+    ]
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class MacroRegimeFeed(BaseModel):
+    as_of_date: str
+    generated_at: str
+    us_matrix: MarkovTransitionMatrix
+    ca_matrix: MarkovTransitionMatrix
+    us_forward_projections: List[ForwardRegimeProjection]
+    ca_forward_projections: List[ForwardRegimeProjection]
+    cross_border_divergence: CrossBorderMacroDivergence
+    disclaimers: List[str]
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+
 
 
 

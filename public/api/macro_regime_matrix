@@ -1,0 +1,296 @@
+{
+  "as_of_date": "2026-09-28",
+  "generated_at": "2026-09-28T17:24:23.721872+00:00",
+  "us_matrix": {
+    "market": "US",
+    "benchmark_symbol": "SPY",
+    "states": [
+      "STRONG_BULL",
+      "WEAK_BULL",
+      "CONSOLIDATION",
+      "HIGH_VOLATILITY",
+      "BEARISH",
+      "CRISIS"
+    ],
+    "sample_sessions_count": 501,
+    "rows": [
+      {
+        "from_state": "STRONG_BULL",
+        "probabilities": {
+          "STRONG_BULL": 0.9482,
+          "WEAK_BULL": 0.0433,
+          "CONSOLIDATION": 0.0067,
+          "HIGH_VOLATILITY": 0.0006,
+          "BEARISH": 0.0006,
+          "CRISIS": 0.0006
+        },
+        "expected_duration_days": 19.3
+      },
+      {
+        "from_state": "WEAK_BULL",
+        "probabilities": {
+          "STRONG_BULL": 0.1929,
+          "WEAK_BULL": 0.7262,
+          "CONSOLIDATION": 0.05,
+          "HIGH_VOLATILITY": 0.0024,
+          "BEARISH": 0.0262,
+          "CRISIS": 0.0024
+        },
+        "expected_duration_days": 3.7
+      },
+      {
+        "from_state": "CONSOLIDATION",
+        "probabilities": {
+          "STRONG_BULL": 0.0375,
+          "WEAK_BULL": 0.1313,
+          "CONSOLIDATION": 0.7813,
+          "HIGH_VOLATILITY": 0.0063,
+          "BEARISH": 0.0375,
+          "CRISIS": 0.0063
+        },
+        "expected_duration_days": 4.6
+      },
+      {
+        "from_state": "HIGH_VOLATILITY",
+        "probabilities": {
+          "STRONG_BULL": 0.0667,
+          "WEAK_BULL": 0.0667,
+          "CONSOLIDATION": 0.0667,
+          "HIGH_VOLATILITY": 0.6667,
+          "BEARISH": 0.0667,
+          "CRISIS": 0.0667
+        },
+        "expected_duration_days": 3.0
+      },
+      {
+        "from_state": "BEARISH",
+        "probabilities": {
+          "STRONG_BULL": 0.0029,
+          "WEAK_BULL": 0.0618,
+          "CONSOLIDATION": 0.0029,
+          "HIGH_VOLATILITY": 0.0029,
+          "BEARISH": 0.9265,
+          "CRISIS": 0.0029
+        },
+        "expected_duration_days": 13.6
+      },
+      {
+        "from_state": "CRISIS",
+        "probabilities": {
+          "STRONG_BULL": 0.0667,
+          "WEAK_BULL": 0.0667,
+          "CONSOLIDATION": 0.0667,
+          "HIGH_VOLATILITY": 0.0667,
+          "BEARISH": 0.0667,
+          "CRISIS": 0.6667
+        },
+        "expected_duration_days": 3.0
+      }
+    ],
+    "stationary_distribution": {
+      "STRONG_BULL": 0.6623,
+      "WEAK_BULL": 0.1606,
+      "CONSOLIDATION": 0.0618,
+      "HIGH_VOLATILITY": 0.0055,
+      "BEARISH": 0.1042,
+      "CRISIS": 0.0055
+    },
+    "current_state": "STRONG_BULL",
+    "current_filtered_probability": 0.9
+  },
+  "ca_matrix": {
+    "market": "CA",
+    "benchmark_symbol": "XIU",
+    "states": [
+      "STRONG_BULL",
+      "WEAK_BULL",
+      "CONSOLIDATION",
+      "HIGH_VOLATILITY",
+      "BEARISH",
+      "CRISIS"
+    ],
+    "sample_sessions_count": 503,
+    "rows": [
+      {
+        "from_state": "STRONG_BULL",
+        "probabilities": {
+          "STRONG_BULL": 0.9589,
+          "WEAK_BULL": 0.0334,
+          "CONSOLIDATION": 0.006,
+          "HIGH_VOLATILITY": 0.0005,
+          "BEARISH": 0.0005,
+          "CRISIS": 0.0005
+        },
+        "expected_duration_days": 24.3
+      },
+      {
+        "from_state": "WEAK_BULL",
+        "probabilities": {
+          "STRONG_BULL": 0.1711,
+          "WEAK_BULL": 0.759,
+          "CONSOLIDATION": 0.0265,
+          "HIGH_VOLATILITY": 0.0024,
+          "BEARISH": 0.0386,
+          "CRISIS": 0.0024
+        },
+        "expected_duration_days": 4.1
+      },
+      {
+        "from_state": "CONSOLIDATION",
+        "probabilities": {
+          "STRONG_BULL": 0.0087,
+          "WEAK_BULL": 0.1391,
+          "CONSOLIDATION": 0.7826,
+          "HIGH_VOLATILITY": 0.0087,
+          "BEARISH": 0.0522,
+          "CRISIS": 0.0087
+        },
+        "expected_duration_days": 4.6
+      },
+      {
+        "from_state": "HIGH_VOLATILITY",
+        "probabilities": {
+          "STRONG_BULL": 0.0667,
+          "WEAK_BULL": 0.0667,
+          "CONSOLIDATION": 0.0667,
+          "HIGH_VOLATILITY": 0.6667,
+          "BEARISH": 0.0667,
+          "CRISIS": 0.0667
+        },
+        "expected_duration_days": 3.0
+      },
+      {
+        "from_state": "BEARISH",
+        "probabilities": {
+          "STRONG_BULL": 0.0047,
+          "WEAK_BULL": 0.1209,
+          "CONSOLIDATION": 0.0047,
+          "HIGH_VOLATILITY": 0.0047,
+          "BEARISH": 0.8605,
+          "CRISIS": 0.0047
+        },
+        "expected_duration_days": 7.2
+      },
+      {
+        "from_state": "CRISIS",
+        "probabilities": {
+          "STRONG_BULL": 0.0667,
+          "WEAK_BULL": 0.0667,
+          "CONSOLIDATION": 0.0667,
+          "HIGH_VOLATILITY": 0.0667,
+          "BEARISH": 0.0667,
+          "CRISIS": 0.6667
+        },
+        "expected_duration_days": 3.0
+      }
+    ],
+    "stationary_distribution": {
+      "STRONG_BULL": 0.7121,
+      "WEAK_BULL": 0.1625,
+      "CONSOLIDATION": 0.0445,
+      "HIGH_VOLATILITY": 0.0056,
+      "BEARISH": 0.0697,
+      "CRISIS": 0.0056
+    },
+    "current_state": "WEAK_BULL",
+    "current_filtered_probability": 0.78
+  },
+  "us_forward_projections": [
+    {
+      "horizon_days": 1,
+      "projected_distribution": {
+        "STRONG_BULL": 0.9482,
+        "WEAK_BULL": 0.0433,
+        "CONSOLIDATION": 0.0067,
+        "HIGH_VOLATILITY": 0.0006,
+        "BEARISH": 0.0006,
+        "CRISIS": 0.0006
+      },
+      "adverse_hazard_rate": 0.0018,
+      "hazard_tier": "LOW_HAZARD"
+    },
+    {
+      "horizon_days": 5,
+      "projected_distribution": {
+        "STRONG_BULL": 0.8281,
+        "WEAK_BULL": 0.1211,
+        "CONSOLIDATION": 0.0326,
+        "HIGH_VOLATILITY": 0.0025,
+        "BEARISH": 0.0132,
+        "CRISIS": 0.0025
+      },
+      "adverse_hazard_rate": 0.0182,
+      "hazard_tier": "LOW_HAZARD"
+    },
+    {
+      "horizon_days": 20,
+      "projected_distribution": {
+        "STRONG_BULL": 0.7047,
+        "WEAK_BULL": 0.1568,
+        "CONSOLIDATION": 0.0601,
+        "HIGH_VOLATILITY": 0.005,
+        "BEARISH": 0.0685,
+        "CRISIS": 0.005
+      },
+      "adverse_hazard_rate": 0.0784,
+      "hazard_tier": "LOW_HAZARD"
+    }
+  ],
+  "ca_forward_projections": [
+    {
+      "horizon_days": 1,
+      "projected_distribution": {
+        "STRONG_BULL": 0.1711,
+        "WEAK_BULL": 0.759,
+        "CONSOLIDATION": 0.0265,
+        "HIGH_VOLATILITY": 0.0024,
+        "BEARISH": 0.0386,
+        "CRISIS": 0.0024
+      },
+      "adverse_hazard_rate": 0.0434,
+      "hazard_tier": "LOW_HAZARD"
+    },
+    {
+      "horizon_days": 5,
+      "projected_distribution": {
+        "STRONG_BULL": 0.5011,
+        "WEAK_BULL": 0.33,
+        "CONSOLIDATION": 0.0582,
+        "HIGH_VOLATILITY": 0.0065,
+        "BEARISH": 0.0977,
+        "CRISIS": 0.0065
+      },
+      "adverse_hazard_rate": 0.1107,
+      "hazard_tier": "LOW_HAZARD"
+    },
+    {
+      "horizon_days": 20,
+      "projected_distribution": {
+        "STRONG_BULL": 0.6874,
+        "WEAK_BULL": 0.1714,
+        "CONSOLIDATION": 0.0469,
+        "HIGH_VOLATILITY": 0.006,
+        "BEARISH": 0.0822,
+        "CRISIS": 0.006
+      },
+      "adverse_hazard_rate": 0.0943,
+      "hazard_tier": "LOW_HAZARD"
+    }
+  ],
+  "cross_border_divergence": {
+    "us_regime": "STRONG_BULL",
+    "ca_regime": "WEAK_BULL",
+    "us_yield_spread_10y_2y": 0.45,
+    "ca_yield_spread_10y_2y": 0.56,
+    "yield_spread_divergence_bps": -11.0,
+    "cad_usd_rate": 1.4136,
+    "cad_usd_20d_velocity_pct": 1.95,
+    "regime_synchronization_score": 0.85,
+    "macro_divergence_posture": "SYNCHRONIZED_EXPANSION"
+  },
+  "disclaimers": [
+    "Macro regime transition probabilities represent statistical Markov chain models and Bayesian estimates of historical regime persistence.",
+    "Regime forecasts and hazard rates reflect mathematical path dependencies and do not guarantee future market behavior or economic outcomes.",
+    "Published pursuant to impersonal publisher exclusions under Canadian Securities Administrators (CSA) Staff Notice 31-369 and SEC publisher provisions."
+  ]
+}
