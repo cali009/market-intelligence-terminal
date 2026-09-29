@@ -288,9 +288,17 @@ class QuantIntelSentinel:
         positions: Dict[str, Any],
         stress_metrics: Dict[str, Any],
         avg_pairwise_corr: float = 0.45,
+        factor_risk_metrics: Optional[Dict[str, Any]] = None,
+        factor_attribution_metrics: Optional[Dict[str, Any]] = None,
     ) -> List[InvalidationAlert]:
         """
-        Evaluates portfolio-level risk invariants (Concentration caps, Correlation spikes, and CVaR tail limits).
+        Evaluates portfolio-level risk invariants:
+        - Concentration caps & country balance (Predicate 10)
+        - Correlation spikes (Predicate 11)
+        - CVaR tail limits (Predicate 12)
+        - Factor crowding limits (Predicate 13)
+        - FX / Commodity overexposure (Predicate 14)
+        - Specific alpha erosion (Predicate 15)
         """
         alerts = []
         now_str = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -390,6 +398,92 @@ class QuantIntelSentinel:
                 )
             )
 
+        # 13. PREDICATE: FACTOR_CROWDING_BREACH (Any non-market factor > 45% of systematic risk)
+        if factor_risk_metrics:
+            f_summaries = factor_risk_metrics.get("factor_risk_summaries", {})
+            for f_key, f_sum in f_summaries.items():
+                if f_key == "market_beta":
+                    continue
+                pct_sys = f_sum.get("percent_of_systematic_risk", 0.0) if isinstance(f_sum, dict) else getattr(f_sum, "percent_of_systematic_risk", 0.0)
+                f_name = f_sum.get("factor_name", f_key) if isinstance(f_sum, dict) else getattr(f_sum, "factor_name", f_key)
+                if abs(pct_sys) > 45.0:
+                    headline = f"Factor Risk Crowding Detected: {f_name} ({pct_sys:.1f}% of Systematic Risk)"
+                    body = (
+                        f"Systematic risk concentration in {f_name} reached {pct_sys:.1f}%, exceeding the 45.0% factor crowding limit. "
+                        f"Diversification across style factors impaired."
+                    )
+                    alerts.append(
+                        InvalidationAlert(
+                            symbol="PORTFOLIO",
+                            predicate_type="FACTOR_CROWDING_BREACH",
+                            severity="WARNING",
+                            trigger_level=45.0,
+                            current_price=round(abs(pct_sys), 2),
+                            headline=headline,
+                            body=body,
+                            action_required="REBALANCE_FACTOR_TILT",
+                            timestamp=now_str,
+                        )
+                    )
+
+        # 14. PREDICATE: FX_COMMODITY_OVEREXPOSURE (Crude oil tilt > 0.40 or FX tilt > 0.35)
+        if factor_attribution_metrics:
+            benchmarks = factor_attribution_metrics.get("benchmarks", {})
+            primary_b = benchmarks.get("BLENDED_CROSS_BORDER", {})
+            tilts = primary_b.get("factor_tilts", {}) if isinstance(primary_b, dict) else getattr(primary_b, "factor_tilts", {})
+
+            oil_tilt_obj = tilts.get("crude_oil_beta", {})
+            oil_tilt = oil_tilt_obj.get("active_tilt", 0.0) if isinstance(oil_tilt_obj, dict) else getattr(oil_tilt_obj, "active_tilt", 0.0)
+
+            fx_tilt_obj = tilts.get("cad_usd_fx_beta", {})
+            fx_tilt = fx_tilt_obj.get("active_tilt", 0.0) if isinstance(fx_tilt_obj, dict) else getattr(fx_tilt_obj, "active_tilt", 0.0)
+
+            if abs(oil_tilt) > 0.40 or abs(fx_tilt) > 0.35:
+                headline = f"Cross-Border Commodity or FX Overexposure: Crude Oil ({oil_tilt:+.2f}) / CAD/USD ({fx_tilt:+.2f})"
+                body = (
+                    f"Cross-border commodity or foreign exchange active tilt exceeded safe threshold (Crude Oil: {oil_tilt:+.2f}, CAD/USD: {fx_tilt:+.2f}). "
+                    f"Macro volatility transmission elevated."
+                )
+                alerts.append(
+                    InvalidationAlert(
+                        symbol="PORTFOLIO",
+                        predicate_type="FX_COMMODITY_OVEREXPOSURE",
+                        severity="WARNING",
+                        trigger_level=0.40,
+                        current_price=round(max(abs(oil_tilt), abs(fx_tilt)), 2),
+                        headline=headline,
+                        body=body,
+                        action_required="REDUCE_COMMODITY_EXPOSURE",
+                        timestamp=now_str,
+                    )
+                )
+
+        # 15. PREDICATE: ALPHA_EROSION_WARNING (Specific stock selection alpha < -1.50%)
+        if factor_attribution_metrics:
+            benchmarks = factor_attribution_metrics.get("benchmarks", {})
+            primary_b = benchmarks.get("BLENDED_CROSS_BORDER", {})
+            spec_alpha = primary_b.get("specific_alpha_pct", 0.0) if isinstance(primary_b, dict) else getattr(primary_b, "specific_alpha_pct", 0.0)
+
+            if spec_alpha < -1.50:
+                headline = f"Specific Stock Selection Alpha Erosion ({spec_alpha:.2f}%)"
+                body = (
+                    f"Idiosyncratic stock-selection alpha degraded to {spec_alpha:.2f}%, indicating negative security-level attribution. "
+                    f"Fundamental factor scoring and memory weights under review."
+                )
+                alerts.append(
+                    InvalidationAlert(
+                        symbol="PORTFOLIO",
+                        predicate_type="ALPHA_EROSION_WARNING",
+                        severity="WARNING",
+                        trigger_level=-1.50,
+                        current_price=round(spec_alpha, 2),
+                        headline=headline,
+                        body=body,
+                        action_required="AUDIT_SECURITY_SELECTION",
+                        timestamp=now_str,
+                    )
+                )
+
         return alerts
 
     def evaluate_universe_sentinels(self, quant_intel_dossiers: Dict[str, Any]) -> List[InvalidationAlert]:
@@ -428,8 +522,8 @@ class QuantIntelSentinel:
                 taxonomy = "CATALYST_MATERIALITY"
             elif "LIQUIDITY" in inv.predicate_type:
                 taxonomy = "TECHNICAL_BREAKOUT"
-            elif "CONCENTRATION" in inv.predicate_type or "CORRELATION" in inv.predicate_type or "CVAR" in inv.predicate_type:
-                taxonomy = "PORTFOLIO_RISK_LIMIT"
+            elif "CONCENTRATION" in inv.predicate_type or "CORRELATION" in inv.predicate_type or "CVAR" in inv.predicate_type or "FACTOR" in inv.predicate_type or "COMMODITY" in inv.predicate_type or "ALPHA" in inv.predicate_type:
+                taxonomy = "PORTFOLIO_CIRCUIT_BREAKER"
             else:
                 taxonomy = "TECHNICAL_BREAKOUT"
 
