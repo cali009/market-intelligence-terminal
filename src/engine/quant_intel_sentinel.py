@@ -283,6 +283,115 @@ class QuantIntelSentinel:
 
         return alerts
 
+    def evaluate_portfolio_level_sentinels(
+        self,
+        positions: Dict[str, Any],
+        stress_metrics: Dict[str, Any],
+        avg_pairwise_corr: float = 0.45,
+    ) -> List[InvalidationAlert]:
+        """
+        Evaluates portfolio-level risk invariants (Concentration caps, Correlation spikes, and CVaR tail limits).
+        """
+        alerts = []
+        now_str = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+        # 10. PREDICATE: PORTFOLIO_CONCENTRATION_BREACH (>18.0% single asset or >75.0% single country)
+        total_weight = sum(p.final_weight if hasattr(p, "final_weight") else p.get("final_weight", 0) for p in positions.values())
+        us_weight = sum(p.final_weight if hasattr(p, "final_weight") else p.get("final_weight", 0) for p in positions.values() if (getattr(p, "country", None) or p.get("country")) == "US")
+        ca_weight = sum(p.final_weight if hasattr(p, "final_weight") else p.get("final_weight", 0) for p in positions.values() if (getattr(p, "country", None) or p.get("country")) == "CA")
+
+        for sym, pos in positions.items():
+            w = pos.final_weight if hasattr(pos, "final_weight") else pos.get("final_weight", 0)
+            if w > 0.180:
+                headline = f"Portfolio Concentration Limit Exceeded: {sym} ({w * 100:.1f}%)"
+                body = (
+                    f"Asset {sym} holds {w * 100:.1f}% of total portfolio capital, breaching the 18.0% single-asset risk ceiling. "
+                    f"Trimming and rebalancing indicated."
+                )
+                alerts.append(
+                    InvalidationAlert(
+                        symbol=sym,
+                        predicate_type="PORTFOLIO_CONCENTRATION_BREACH",
+                        severity="WARNING",
+                        trigger_level=0.180,
+                        current_price=getattr(pos, "effective_execution_price", 0.0),
+                        headline=headline,
+                        body=body,
+                        action_required="REBALANCE_CONCENTRATION_CAP",
+                        timestamp=now_str,
+                    )
+                )
+
+        if total_weight > 0:
+            us_pct = (us_weight / total_weight) * 100.0
+            ca_pct = (ca_weight / total_weight) * 100.0
+            if us_pct > 75.0 or ca_pct > 75.0:
+                dom_country = "US" if us_pct > 75.0 else "CA"
+                dom_pct = max(us_pct, ca_pct)
+                headline = f"Cross-Border Country Concentration Exceeded: {dom_country} ({dom_pct:.1f}%)"
+                body = (
+                    f"Total portfolio capital allocated to {dom_country} reached {dom_pct:.1f}%, exceeding the 75.0% dual-market diversification bound. "
+                    f"Cross-border rebalancing indicated."
+                )
+                alerts.append(
+                    InvalidationAlert(
+                        symbol="PORTFOLIO",
+                        predicate_type="PORTFOLIO_CONCENTRATION_BREACH",
+                        severity="WARNING",
+                        trigger_level=75.0,
+                        current_price=dom_pct,
+                        headline=headline,
+                        body=body,
+                        action_required="REBALANCE_CROSS_BORDER",
+                        timestamp=now_str,
+                    )
+                )
+
+        # 11. PREDICATE: CORRELATION_SPIKE_WARNING (Average cross-asset pairwise correlation > 0.70)
+        if avg_pairwise_corr > 0.70:
+            headline = f"Cross-Asset Systemic Correlation Spike ({avg_pairwise_corr:.2f})"
+            body = (
+                f"Average pairwise asset correlation jumped to {avg_pairwise_corr:.2f} (>0.70 threshold). "
+                f"Diversification benefits impaired; macro systemic risk elevated."
+            )
+            alerts.append(
+                InvalidationAlert(
+                    symbol="PORTFOLIO",
+                    predicate_type="CORRELATION_SPIKE_WARNING",
+                    severity="WARNING",
+                    trigger_level=0.70,
+                    current_price=avg_pairwise_corr,
+                    headline=headline,
+                    body=body,
+                    action_required="DE_RISK_SYSTEMIC_CORRELATION",
+                    timestamp=now_str,
+                )
+            )
+
+        # 12. PREDICATE: CVAR_TAIL_RISK_BREACH (1-day 99% Expected Shortfall > 3.50%)
+        cvar_val = stress_metrics.get("cvar_99_1d_pct", 0.0) if isinstance(stress_metrics, dict) else getattr(stress_metrics, "cvar_99_1d_pct", 0.0)
+        if cvar_val > 3.50:
+            headline = f"1-Day 99% Expected Shortfall Breach ({cvar_val:.2f}%)"
+            body = (
+                f"Projected 1-day 99% Conditional Value-at-Risk of {cvar_val:.2f}% exceeds the 3.50% risk budget. "
+                f"Systematic trimming of high-beta growth weights indicated."
+            )
+            alerts.append(
+                InvalidationAlert(
+                    symbol="PORTFOLIO",
+                    predicate_type="CVAR_TAIL_RISK_BREACH",
+                    severity="CRITICAL",
+                    trigger_level=3.50,
+                    current_price=cvar_val,
+                    headline=headline,
+                    body=body,
+                    action_required="TRIM_HIGH_BETA_RISK_BUDGET",
+                    timestamp=now_str,
+                )
+            )
+
+        return alerts
+
     def evaluate_universe_sentinels(self, quant_intel_dossiers: Dict[str, Any]) -> List[InvalidationAlert]:
         """
         Runs invalidation checks across the entire active universe.
@@ -319,6 +428,8 @@ class QuantIntelSentinel:
                 taxonomy = "CATALYST_MATERIALITY"
             elif "LIQUIDITY" in inv.predicate_type:
                 taxonomy = "TECHNICAL_BREAKOUT"
+            elif "CONCENTRATION" in inv.predicate_type or "CORRELATION" in inv.predicate_type or "CVAR" in inv.predicate_type:
+                taxonomy = "PORTFOLIO_RISK_LIMIT"
             else:
                 taxonomy = "TECHNICAL_BREAKOUT"
 

@@ -1367,6 +1367,45 @@ class PortfolioStressTestResult(BaseModel):
         return self.model_dump()
 
 
+# Phase 26.3: QUANT INTEL Portfolio Orchestrator & Live Risk Sentinel Schemas
+
+class OrchestratedPosition(BaseModel):
+    symbol: str
+    country: Literal["US", "CA"]
+    conviction_grade: str
+    hrp_base_weight: float
+    conviction_scalar: float
+    final_weight: float
+    dollar_allocation: float
+    target_shares: int
+    arrival_price: float
+    effective_execution_price: float
+    expected_slippage_bps: float
+    execution_strategy: str
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class PortfolioOrchestrationResult(BaseModel):
+    as_of_date: str
+    generated_at: str
+    total_capital: float
+    active_positions_count: int
+    deployed_capital: float
+    deployed_pct: float
+    cash_reserve: float
+    cash_reserve_pct: float
+    us_weight_pct: float
+    ca_weight_pct: float
+    positions: Dict[str, OrchestratedPosition]
+    portfolio_alerts: List[Dict[str, Any]]
+    disclaimers: List[str]
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
 
 
 

@@ -48,6 +48,7 @@ from src.engine.macro_regime import macro_regime_engine
 from src.engine.microstructure import microstructure_engine
 from src.engine.portfolio_hrp import hrp_portfolio_engine
 from src.engine.portfolio_stress import portfolio_stress_engine
+from src.engine.portfolio_orchestrator import portfolio_orchestrator_engine
 
 FEEDS_DIR = DATA_DIR / "feeds"
 DIST_DIR = DATA_DIR / "dist"
@@ -672,6 +673,9 @@ class EdgeExporter:
 
             # Phase 26.2: Historical & Macroeconomic Stress-Testing Feed
             portfolio_stress_engine.export_feed(d_dir)
+
+            # Phase 26.3: QUANT INTEL Portfolio Orchestrator Feed
+            portfolio_orchestrator_engine.export_feed(d_dir)
 
         return {
             "dist_files": 27,
