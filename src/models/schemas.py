@@ -1321,6 +1321,52 @@ class HrpAllocationResult(BaseModel):
         return self.model_dump()
 
 
+# Phase 26.2: Macroeconomic & Historical Scenario Stress-Testing Schemas
+
+class ScenarioImpact(BaseModel):
+    scenario_id: str
+    name: str
+    historical_period: str
+    description: str
+    macro_factor_shocks: Dict[str, float]
+    asset_shocks: Dict[str, float]
+    portfolio_pnl_dollars: float
+    portfolio_return_pct: float
+    benchmark_return_pct: float
+    capital_preservation_delta: float
+    worst_asset: str
+    worst_asset_return_pct: float
+    best_asset: str
+    best_asset_return_pct: float
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class PortfolioStressTestResult(BaseModel):
+    as_of_date: str
+    generated_at: str
+    total_capital: float
+    var_95_1d_pct: float
+    var_95_1d_dollars: float
+    var_99_1d_pct: float
+    var_99_1d_dollars: float
+    cvar_95_1d_pct: float
+    cvar_95_1d_dollars: float
+    cvar_99_1d_pct: float
+    cvar_99_1d_dollars: float
+    var_95_10d_pct: float
+    var_95_10d_dollars: float
+    cvar_99_10d_pct: float
+    cvar_99_10d_dollars: float
+    scenarios: Dict[str, ScenarioImpact]
+    tail_risk_posture: Literal["LOW_TAIL_RISK", "MODERATE_TAIL_RISK", "ELEVATED_TAIL_RISK", "CRITICAL_TAIL_RISK"]
+    disclaimers: List[str]
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
 
 
 
