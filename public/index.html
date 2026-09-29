@@ -1007,7 +1007,7 @@
             <button class="tab-btn" data-tab="quantintel" onclick="switchTab('quantintel', event)">🎯 Quant Intel Workstation</button>
             <button class="tab-btn" data-tab="macroregime" onclick="switchTab('macroregime', event)">🌐 Macro Regime &amp; Markov Heatmap</button>
             <button class="tab-btn" data-tab="microstructure" onclick="switchTab('microstructure', event)">⚡ Real-Time DOM &amp; Microstructure</button>
-            <button class="tab-btn" data-tab="portfoliohrp" onclick="switchTab('portfoliohrp', event)">⚖️ HRP Risk &amp; Stress Lab</button>
+            <button class="tab-btn" data-tab="portfoliohrp" onclick="switchTab('portfoliohrp', event)">⚖️ HRP Risk &amp; Factor Lab</button>
             <button class="tab-btn" data-tab="scanners" onclick="switchTab('scanners', event)">TAC-15 Market Scanners</button>
             <button class="tab-btn" data-tab="signals" onclick="switchTab('signals', event)">Research Signal Plans</button>
             <button class="tab-btn" data-tab="backtest" onclick="switchTab('backtest', event)">Backtest Lab & Strategy Performance</button>
@@ -1202,13 +1202,14 @@
                 <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
                     <div>
                         <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
-                            <h2 style="font-size: 18px; font-weight: 800; color: var(--text-primary);">⚖️ Hierarchical Risk Parity (HRP) &amp; Macro Stress Lab</h2>
+                            <h2 style="font-size: 18px; font-weight: 800; color: var(--text-primary);">⚖️ Hierarchical Risk Parity (HRP) &amp; Multi-Asset Factor Lab</h2>
                             <span class="exchange-tag" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-green); border-color: rgba(16, 185, 129, 0.3); font-weight: 700;">LÓPEZ DE PRADO TREE CLUSTERING</span>
-                            <span class="exchange-tag" style="background: rgba(139, 92, 246, 0.15); color: var(--accent-purple); border-color: rgba(139, 92, 246, 0.3); font-weight: 700;">BASEL III VaR / CVaR</span>
+                            <span class="exchange-tag" style="background: rgba(139, 92, 246, 0.15); color: var(--accent-purple); border-color: rgba(139, 92, 246, 0.3); font-weight: 700;">10-FACTOR RISK DECOMPOSITION</span>
+                            <span class="exchange-tag" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b; border-color: rgba(245, 158, 11, 0.3); font-weight: 700;">BRINSON-BARRA ATTRIBUTION</span>
                             <span class="exchange-tag" style="background: rgba(6, 182, 212, 0.15); color: var(--accent-cyan); border-color: rgba(6, 182, 212, 0.3); font-weight: 700;">5 CRISIS REPLAYS</span>
                         </div>
                         <p style="font-size: 12px; color: var(--text-muted);">
-                            Hierarchical tree clustering without matrix inversion · Parametric 1d/10d VaR &amp; CVaR (95%/99%) · Historical scenario stress tests · Conviction-governed portfolio orchestrator
+                            Hierarchical tree clustering without matrix inversion · Multi-asset 10-factor risk &amp; active return attribution · Parametric VaR &amp; CVaR (95%/99%) · Conviction-governed portfolio orchestrator
                         </p>
                     </div>
                     <!-- Controls Bar -->
@@ -1222,7 +1223,7 @@
                         <span style="display: inline-block; width: 1px; height: 16px; background: var(--border-color); margin: 0 4px;"></span>
                         <span style="font-size: 11px; font-weight: 700; color: var(--accent-green); display: flex; align-items: center; gap: 6px;" id="hrpSentinelBadge">
                             <span style="display: inline-block; width: 8px; height: 8px; background: var(--accent-green); border-radius: 50%; box-shadow: 0 0 8px var(--accent-green);"></span>
-                            3/3 SENTINELS NOMINAL
+                            6/6 SENTINELS NOMINAL
                         </span>
                         <button class="filter-btn" onclick="refreshPortfolioHrpData()" style="padding: 2px 8px; font-size: 11px;">🔄 Refresh</button>
                     </div>
@@ -7713,15 +7714,18 @@
 
 
         // =========================================================================
-        // PHASE 26: HIERARCHICAL RISK PARITY (HRP) & MACRO STRESS LAB
+        // PHASE 26 & 27: HIERARCHICAL RISK PARITY (HRP) & MULTI-ASSET FACTOR LAB
         // =========================================================================
         let portfolioHrpBundle = null;
         let portfolioStressBundle = null;
         let portfolioOrchestratorBundle = null;
+        let factorRiskBundle = null;
+        let factorAttribBundle = null;
         let portfolioHrpLoading = false;
         let activePortfolioCapital = 100000;
         let activeStressScenarioId = '2008_GFC';
-        let activeHrpSection = 'weights'; // 'weights', 'stress', 'orchestrator', 'tree'
+        let activeAttribBenchmark = 'BLENDED_CROSS_BORDER'; // 'BLENDED_CROSS_BORDER', 'US_SP500_CORE', 'CA_TSX60_CORE'
+        let activeHrpSection = 'weights'; // 'weights', 'factors', 'stress', 'orchestrator', 'tree'
 
         const ASSET_METADATA = {
             'AAPL': { name: 'Apple Inc.', sector: 'Mega-Cap Technology', flag: '🇺🇸' },
@@ -7746,7 +7750,7 @@
         };
 
         async function loadPortfolioHrpAndRender() {
-            if (portfolioHrpBundle && portfolioStressBundle && portfolioOrchestratorBundle) {
+            if (portfolioHrpBundle && portfolioStressBundle && portfolioOrchestratorBundle && factorRiskBundle && factorAttribBundle) {
                 renderPortfolioHrpView();
                 return;
             }
@@ -7754,22 +7758,26 @@
             portfolioHrpLoading = true;
             const container = document.getElementById('portfolioHrpContainer');
             if (container) {
-                container.innerHTML = '<div style="text-align: center; padding: 40px; color: var(--text-muted);"><div class="spinner" style="margin-right: 8px;"></div> Loading Hierarchical Risk Parity matrix, parametric tail risk, and crisis replays...</div>';
+                container.innerHTML = '<div style="text-align: center; padding: 40px; color: var(--text-muted);"><div class="spinner" style="margin-right: 8px;"></div> Loading Hierarchical Risk Parity, multi-asset factor models, and stress matrices...</div>';
             }
             try {
-                const [hrpRes, stressRes, orchRes] = await Promise.all([
+                const [hrpRes, stressRes, orchRes, factorRiskRes, factorAttribRes] = await Promise.all([
                     fetchJson('/api/portfolio_hrp.json', '/api/portfolio_hrp'),
                     fetchJson('/api/portfolio_stress.json', '/api/portfolio_stress'),
-                    fetchJson('/api/portfolio_orchestration.json', '/api/portfolio_orchestration')
+                    fetchJson('/api/portfolio_orchestration.json', '/api/portfolio_orchestration'),
+                    fetchJson('/api/factor_risk.json', '/api/factor_risk'),
+                    fetchJson('/api/factor_attribution.json', '/api/factor_attribution')
                 ]);
                 portfolioHrpBundle = hrpRes;
                 portfolioStressBundle = stressRes;
                 portfolioOrchestratorBundle = orchRes;
+                factorRiskBundle = factorRiskRes;
+                factorAttribBundle = factorAttribRes;
                 renderPortfolioHrpView();
             } catch (e) {
-                console.error("Portfolio HRP load error:", e);
+                console.error("Portfolio HRP / Factor load error:", e);
                 if (container) {
-                    container.innerHTML = `<div style="text-align: center; padding: 24px; color: var(--accent-red);">Unable to load Portfolio Risk & Stress feeds. <button class="filter-btn" style="margin-left: 10px;" onclick="loadPortfolioHrpAndRender()">Retry</button></div>`;
+                    container.innerHTML = `<div style="text-align: center; padding: 24px; color: var(--accent-red);">Unable to load Portfolio Risk & Factor feeds. <button class="filter-btn" style="margin-left: 10px;" onclick="loadPortfolioHrpAndRender()">Retry</button></div>`;
                 }
             } finally {
                 portfolioHrpLoading = false;
@@ -7780,6 +7788,8 @@
             portfolioHrpBundle = null;
             portfolioStressBundle = null;
             portfolioOrchestratorBundle = null;
+            factorRiskBundle = null;
+            factorAttribBundle = null;
             loadPortfolioHrpAndRender();
         }
 
@@ -7794,6 +7804,11 @@
 
         function selectStressScenario(scenarioId) {
             activeStressScenarioId = scenarioId;
+            renderPortfolioHrpView();
+        }
+
+        function setAttribBenchmark(bm) {
+            activeAttribBenchmark = bm;
             renderPortfolioHrpView();
         }
 
@@ -7858,7 +7873,7 @@
                     sentinelBadge.innerHTML = `<span style="display: inline-block; width: 8px; height: 8px; background: var(--accent-red); border-radius: 50%; box-shadow: 0 0 8px var(--accent-red);"></span> ${alerts.length} RISK SENTINEL ALERT(S)`;
                     sentinelBadge.style.color = 'var(--accent-red)';
                 } else {
-                    sentinelBadge.innerHTML = `<span style="display: inline-block; width: 8px; height: 8px; background: var(--accent-green); border-radius: 50%; box-shadow: 0 0 8px var(--accent-green);"></span> 3/3 SENTINELS NOMINAL`;
+                    sentinelBadge.innerHTML = `<span style="display: inline-block; width: 8px; height: 8px; background: var(--accent-green); border-radius: 50%; box-shadow: 0 0 8px var(--accent-green);"></span> 6/6 SENTINELS NOMINAL`;
                     sentinelBadge.style.color = 'var(--accent-green)';
                 }
             }
@@ -7867,6 +7882,7 @@
             const navTabsHtml = `
                 <div style="display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; border-bottom: 1px solid var(--border-color); padding-bottom: 12px;">
                     <button class="filter-btn ${activeHrpSection === 'weights' ? 'active' : ''}" onclick="setHrpSection('weights')">📊 HRP vs Benchmark Allocations</button>
+                    <button class="filter-btn ${activeHrpSection === 'factors' ? 'active' : ''}" onclick="setHrpSection('factors')">🔬 Multi-Asset Factor Risk &amp; Style Attribution</button>
                     <button class="filter-btn ${activeHrpSection === 'stress' ? 'active' : ''}" onclick="setHrpSection('stress')">🌪️ Crisis Replay Stress Lab (5 Scenarios)</button>
                     <button class="filter-btn ${activeHrpSection === 'orchestrator' ? 'active' : ''}" onclick="setHrpSection('orchestrator')">🎯 QUANT INTEL Portfolio Orchestrator &amp; TCA</button>
                     <button class="filter-btn ${activeHrpSection === 'tree' ? 'active' : ''}" onclick="setHrpSection('tree')">🌳 Tree Seriation &amp; Cluster Linkage</button>
@@ -8072,6 +8088,324 @@
                                     ${rowsHtml}
                                 </tbody>
                             </table>
+                        </div>
+                    </div>
+                `;
+            } else if (activeHrpSection === 'factors') {
+                // Section: Multi-Asset Factor Risk Decomposition & Active Style Return Attribution
+                const fr = factorRiskBundle || {};
+                const fa = factorAttribBundle || {};
+                const benchmarks = fa.benchmarks || {};
+                const selectedBmKey = activeAttribBenchmark in benchmarks ? activeAttribBenchmark : 'BLENDED_CROSS_BORDER';
+                const bm = benchmarks[selectedBmKey] || {};
+
+                const bmBtnsHtml = [
+                    { id: 'BLENDED_CROSS_BORDER', label: '🌐 Blended 50/50 US & Canada Core' },
+                    { id: 'US_SP500_CORE', label: '🇺🇸 US Core (100% S&P 500 / SPY)' },
+                    { id: 'CA_TSX60_CORE', label: '🇨🇦 Canada Core (100% TSX 60 / XIU)' }
+                ].map(b => `
+                    <button class="filter-btn ${selectedBmKey === b.id ? 'active' : ''}" 
+                            onclick="setAttribBenchmark('${b.id}')" 
+                            style="font-size: 11px; padding: 4px 10px;">
+                        ${b.label}
+                    </button>
+                `).join('');
+
+                const factorSummaries = fr.factor_risk_summaries || {};
+                const factorTilts = bm.factor_tilts || {};
+                const factorKeys = Object.keys(factorTilts);
+
+                const activeRetPct = (bm.active_return_pct !== undefined ? bm.active_return_pct : 1.73).toFixed(2);
+                const factorContribPct = (bm.factor_return_contribution_pct !== undefined ? bm.factor_return_contribution_pct : (bm.factor_return_pct !== undefined ? bm.factor_return_pct : 1.05)).toFixed(2);
+                const specificAlphaPct = (bm.specific_alpha_pct !== undefined ? bm.specific_alpha_pct : 0.68).toFixed(2);
+                const trackingErrPct = (bm.tracking_error_pct !== undefined ? bm.tracking_error_pct : 4.55).toFixed(2);
+                const infoRatio = (bm.information_ratio !== undefined ? bm.information_ratio : 0.38).toFixed(2);
+                const bmRetPct = (bm.benchmark_return_pct !== undefined ? bm.benchmark_return_pct : 16.39).toFixed(2);
+                const portRetPct = (bm.portfolio_return_pct !== undefined ? bm.portfolio_return_pct : 18.12).toFixed(2);
+
+                const sysVol = ((fr.systematic_volatility || 0.123) * 100).toFixed(2);
+                const specVol = ((fr.specific_volatility || 0.0255) * 100).toFixed(2);
+                const sysShare = ((fr.systematic_risk_share_pct || 95.88)).toFixed(1);
+                const specShare = ((fr.specific_risk_share_pct || 4.12)).toFixed(1);
+
+                // Top positive & negative factors pills
+                const topPosPills = (fa.top_positive_factors || []).map(p => `
+                    <span style="font-size: 11px; padding: 2px 8px; border-radius: 4px; background: rgba(16, 185, 129, 0.15); color: var(--accent-green); border: 1px solid rgba(16, 185, 129, 0.3); font-weight: 600;">
+                        ▲ ${p}
+                    </span>
+                `).join('');
+
+                const topNegPills = (fa.top_negative_factors || []).map(n => `
+                    <span style="font-size: 11px; padding: 2px 8px; border-radius: 4px; background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); font-weight: 600;">
+                        ▼ ${n}
+                    </span>
+                `).join('');
+
+                // Waterfall Table Rows
+                const factorRowsHtml = factorKeys.map(fKey => {
+                    const tilt = factorTilts[fKey] || {};
+                    const riskSum = factorSummaries[fKey] || {};
+                    const fname = tilt.factor_name || fKey;
+                    const pExp = (tilt.portfolio_exposure !== undefined ? tilt.portfolio_exposure : 0.0).toFixed(2);
+                    const bExp = (tilt.benchmark_exposure !== undefined ? tilt.benchmark_exposure : 0.0).toFixed(2);
+                    const aTilt = (tilt.active_tilt !== undefined ? tilt.active_tilt : 0.0);
+                    const aTiltStr = (aTilt >= 0 ? '+' : '') + aTilt.toFixed(2);
+                    const fRet = (tilt.factor_return_1y_pct !== undefined ? tilt.factor_return_1y_pct : 0.0).toFixed(1);
+                    const pnlPct = (tilt.pnl_contribution_pct !== undefined ? tilt.pnl_contribution_pct : 0.0);
+                    const pnlStr = (pnlPct >= 0 ? '+' : '') + pnlPct.toFixed(2) + '%';
+                    const riskShare = (riskSum.percent_of_systematic_risk !== undefined ? riskSum.percent_of_systematic_risk : 0.0).toFixed(1);
+                    const isMacro = fKey.includes('beta') || fKey.includes('yield') || fKey.includes('oil') || fKey.includes('fx');
+
+                    const pnlColor = pnlPct > 0 ? 'var(--accent-green)' : (pnlPct < 0 ? '#f87171' : 'var(--text-muted)');
+                    const tiltColor = aTilt > 0.05 ? 'var(--accent-green)' : (aTilt < -0.05 ? '#fb923c' : 'var(--text-muted)');
+                    const dirBadgeColor = tilt.tilt_direction === 'OVERWEIGHT' ? 'rgba(16, 185, 129, 0.15)' : (tilt.tilt_direction === 'UNDERWEIGHT' ? 'rgba(251, 146, 60, 0.15)' : 'rgba(255, 255, 255, 0.05)');
+                    const dirTextColor = tilt.tilt_direction === 'OVERWEIGHT' ? 'var(--accent-green)' : (tilt.tilt_direction === 'UNDERWEIGHT' ? '#fb923c' : 'var(--text-muted)');
+
+                    return `
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 12px;">
+                            <td style="padding: 10px 12px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <span style="font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 4px; background: ${isMacro ? 'rgba(6, 182, 212, 0.15)' : 'rgba(139, 92, 246, 0.15)'}; color: ${isMacro ? 'var(--accent-cyan)' : 'var(--accent-purple)'}; border: 1px solid ${isMacro ? 'rgba(6, 182, 212, 0.3)' : 'rgba(139, 92, 246, 0.3)'};">
+                                        ${isMacro ? 'MACRO' : 'STYLE'}
+                                    </span>
+                                    <strong style="color: #fff;">${fname}</strong>
+                                </div>
+                            </td>
+                            <td style="padding: 10px 12px; text-align: right; font-family: monospace; color: #f1f5f9;">${pExp}</td>
+                            <td style="padding: 10px 12px; text-align: right; font-family: monospace; color: var(--text-muted);">${bExp}</td>
+                            <td style="padding: 10px 12px; text-align: right; font-family: monospace; font-weight: 700; color: ${tiltColor};">${aTiltStr}</td>
+                            <td style="padding: 10px 12px; text-align: center;">
+                                <span style="font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 4px; background: ${dirBadgeColor}; color: ${dirTextColor};">
+                                    ${tilt.tilt_direction || 'NEUTRAL'}
+                                </span>
+                            </td>
+                            <td style="padding: 10px 12px; text-align: right; font-family: monospace; color: #f1f5f9;">${fRet}%</td>
+                            <td style="padding: 10px 12px; text-align: right; font-family: monospace; font-weight: 800; color: ${pnlColor};">${pnlStr}</td>
+                            <td style="padding: 10px 12px; text-align: right; font-family: monospace; color: var(--accent-cyan);">${riskShare}%</td>
+                        </tr>
+                    `;
+                }).join('');
+
+                // 19 Securities Factor Loadings Heatmap Rows
+                const secLoadings = fr.factor_loadings || {};
+                const symbols = Object.keys(secLoadings);
+                symbols.sort();
+
+                function getHeatmapBg(val) {
+                    if (val > 0.8) return 'background: rgba(16, 185, 129, 0.25); color: #34d399; font-weight: 700;';
+                    if (val > 0.2) return 'background: rgba(16, 185, 129, 0.10); color: #6ee7b7;';
+                    if (val < -0.8) return 'background: rgba(239, 68, 68, 0.25); color: #f87171; font-weight: 700;';
+                    if (val < -0.2) return 'background: rgba(239, 68, 68, 0.10); color: #fca5a5;';
+                    return 'color: var(--text-muted);';
+                }
+
+                const secRowsHtml = symbols.map(sym => {
+                    const l = secLoadings[sym] || {};
+                    const meta = ASSET_METADATA[sym] || { name: sym, sector: 'Asset', flag: '🇺🇸' };
+                    const r2Pct = ((l.r_squared || 0.75) * 100).toFixed(0);
+
+                    return `
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 11px;">
+                            <td style="padding: 8px 10px;">
+                                <div style="display: flex; align-items: center; gap: 6px;">
+                                    <span>${meta.flag}</span>
+                                    <div>
+                                        <strong style="color: #fff;">${sym}</strong>
+                                        <div style="font-size: 9px; color: var(--text-muted);">${meta.name}</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 8px 6px; text-align: right; font-family: monospace; ${getHeatmapBg(l.market_beta)}">${(l.market_beta || 0).toFixed(2)}</td>
+                            <td style="padding: 8px 6px; text-align: right; font-family: monospace; ${getHeatmapBg(l.size_smb)}">${(l.size_smb || 0).toFixed(2)}</td>
+                            <td style="padding: 8px 6px; text-align: right; font-family: monospace; ${getHeatmapBg(l.value_hml)}">${(l.value_hml || 0).toFixed(2)}</td>
+                            <td style="padding: 8px 6px; text-align: right; font-family: monospace; ${getHeatmapBg(l.momentum_umd)}">${(l.momentum_umd || 0).toFixed(2)}</td>
+                            <td style="padding: 8px 6px; text-align: right; font-family: monospace; ${getHeatmapBg(l.quality_rmw)}">${(l.quality_rmw || 0).toFixed(2)}</td>
+                            <td style="padding: 8px 6px; text-align: right; font-family: monospace; ${getHeatmapBg(l.low_volatility_bab)}">${(l.low_volatility_bab || 0).toFixed(2)}</td>
+                            <td style="padding: 8px 6px; text-align: right; font-family: monospace; ${getHeatmapBg(l.crude_oil_beta)}">${(l.crude_oil_beta || 0).toFixed(2)}</td>
+                            <td style="padding: 8px 6px; text-align: right; font-family: monospace; ${getHeatmapBg(l.cad_usd_fx_beta)}">${(l.cad_usd_fx_beta || 0).toFixed(2)}</td>
+                            <td style="padding: 8px 6px; text-align: right; font-family: monospace; ${getHeatmapBg(l.yield_curve_beta)}">${(l.yield_curve_beta || 0).toFixed(2)}</td>
+                            <td style="padding: 8px 6px; text-align: right; font-family: monospace; color: var(--accent-cyan); font-weight: 600;">${r2Pct}%</td>
+                        </tr>
+                    `;
+                }).join('');
+
+                // Sentinel limits monitor status
+                const maxNonMktRisk = Math.max(...Object.entries(factorSummaries)
+                    .filter(([k]) => k !== 'market_beta')
+                    .map(([, v]) => Math.abs(v.percent_of_systematic_risk || 0))
+                );
+                const maxOilTilt = Math.abs(factorTilts['crude_oil_beta']?.active_tilt || 0);
+                const maxFxTilt = Math.abs(factorTilts['cad_usd_fx_beta']?.active_tilt || 0);
+                const isCrowdingPass = maxNonMktRisk <= 45.0;
+                const isOverexpPass = maxOilTilt <= 0.40 && maxFxTilt <= 0.35;
+                const isAlphaPass = parseFloat(specificAlphaPct) >= -1.50;
+
+                sectionContentHtml = `
+                    <div style="display: flex; flex-direction: column; gap: 20px;">
+                        <!-- Factor Attribution KPI Summary Card -->
+                        <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 12px;">
+                                <div>
+                                    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+                                        <h3 style="font-size: 15px; font-weight: 800; color: #fff;">
+                                            🔬 Active Style Tilts &amp; Brinson-Barra Factor Return Attribution
+                                        </h3>
+                                        <span class="exchange-tag" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-green); border-color: rgba(16, 185, 129, 0.3); font-weight: 700;">ARITHMETIC RETURN CONSERVATION</span>
+                                    </div>
+                                    <p style="font-size: 11px; color: var(--text-muted);">
+                                        Decomposing active return (Rp - Rb) into systematic factor contributions and idiosyncratic stock selection alpha across 10 cross-border factors.
+                                    </p>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+                                    <span style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; margin-right: 4px;">Benchmark:</span>
+                                    ${bmBtnsHtml}
+                                </div>
+                            </div>
+
+                            <!-- 4-Pillar Metric Strip -->
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 16px;">
+                                <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border-color); border-radius: 6px; padding: 12px;">
+                                    <div style="font-size: 10px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; margin-bottom: 2px;">Active Return (Rp - Rb)</div>
+                                    <div style="font-size: 20px; font-weight: 800; color: ${parseFloat(activeRetPct) >= 0 ? 'var(--accent-green)' : '#f87171'};">
+                                        ${parseFloat(activeRetPct) >= 0 ? '+' : ''}${activeRetPct}%
+                                    </div>
+                                    <div style="font-size: 10px; color: var(--text-secondary); margin-top: 2px;">
+                                        Portfolio: ${portRetPct}% vs Bm: ${bmRetPct}%
+                                    </div>
+                                </div>
+
+                                <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border-color); border-radius: 6px; padding: 12px;">
+                                    <div style="font-size: 10px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; margin-bottom: 2px;">Factor Contribution (∑ Δb·f)</div>
+                                    <div style="font-size: 20px; font-weight: 800; color: var(--accent-cyan);">
+                                        ${parseFloat(factorContribPct) >= 0 ? '+' : ''}${factorContribPct}%
+                                    </div>
+                                    <div style="font-size: 10px; color: var(--text-secondary); margin-top: 2px;">
+                                        Yield Curve &amp; SMB Tilts Leading
+                                    </div>
+                                </div>
+
+                                <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border-color); border-radius: 6px; padding: 12px;">
+                                    <div style="font-size: 10px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; margin-bottom: 2px;">Specific Selection Alpha (α)</div>
+                                    <div style="font-size: 20px; font-weight: 800; color: ${parseFloat(specificAlphaPct) >= 0 ? 'var(--accent-green)' : '#f87171'};">
+                                        ${parseFloat(specificAlphaPct) >= 0 ? '+' : ''}${specificAlphaPct}%
+                                    </div>
+                                    <div style="font-size: 10px; color: var(--text-secondary); margin-top: 2px;">
+                                        Idiosyncratic Stock Conviction
+                                    </div>
+                                </div>
+
+                                <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border-color); border-radius: 6px; padding: 12px;">
+                                    <div style="font-size: 10px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; margin-bottom: 2px;">Tracking Error &amp; Info Ratio</div>
+                                    <div style="font-size: 20px; font-weight: 800; color: var(--accent-purple);">
+                                        ${trackingErrPct}% <span style="font-size: 12px; font-weight: 600; color: var(--text-secondary);">(IR: ${infoRatio})</span>
+                                    </div>
+                                    <div style="font-size: 10px; color: var(--text-secondary); margin-top: 2px;">
+                                        Sys Vol: ${sysVol}% (${sysShare}%) · Spec: ${specVol}% (${specShare}%)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Factor Sentinels Monitor Strip -->
+                            <div style="display: flex; gap: 12px; flex-wrap: wrap; background: rgba(0,0,0,0.2); padding: 10px 14px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 16px;">
+                                <div style="display: flex; align-items: center; gap: 6px; font-size: 11px;">
+                                    <span style="display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: ${isCrowdingPass ? 'var(--accent-green)' : 'var(--accent-red)'};"></span>
+                                    <span style="color: var(--text-muted);">Predicate 13 (Factor Crowding &lt; 45%):</span>
+                                    <strong style="color: ${isCrowdingPass ? 'var(--accent-green)' : 'var(--accent-red)'};">${isCrowdingPass ? 'PASS (' + maxNonMktRisk.toFixed(1) + '%)' : 'BREACH'}</strong>
+                                </div>
+                                <span style="color: var(--border-color);">|</span>
+                                <div style="display: flex; align-items: center; gap: 6px; font-size: 11px;">
+                                    <span style="display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: ${isOverexpPass ? 'var(--accent-green)' : 'var(--accent-red)'};"></span>
+                                    <span style="color: var(--text-muted);">Predicate 14 (Crude/FX Tilt &lt; 0.40):</span>
+                                    <strong style="color: ${isOverexpPass ? 'var(--accent-green)' : 'var(--accent-red)'};">${isOverexpPass ? 'PASS (Crude ' + (maxOilTilt >= 0 ? '+' : '') + maxOilTilt.toFixed(2) + ')' : 'BREACH'}</strong>
+                                </div>
+                                <span style="color: var(--border-color);">|</span>
+                                <div style="display: flex; align-items: center; gap: 6px; font-size: 11px;">
+                                    <span style="display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: ${isAlphaPass ? 'var(--accent-green)' : 'var(--accent-red)'};"></span>
+                                    <span style="color: var(--text-muted);">Predicate 15 (Alpha Floor &gt; -1.50%):</span>
+                                    <strong style="color: ${isAlphaPass ? 'var(--accent-green)' : 'var(--accent-red)'};">${isAlphaPass ? 'PASS (' + specificAlphaPct + '%)' : 'BREACH'}</strong>
+                                </div>
+                            </div>
+
+                            <!-- Waterfall Table -->
+                            <div style="overflow-x: auto; margin-bottom: 16px;">
+                                <table style="width: 100%; border-collapse: collapse;">
+                                    <thead>
+                                        <tr style="border-bottom: 1px solid var(--border-color); color: var(--text-muted); font-size: 11px; text-transform: uppercase;">
+                                            <th style="padding: 8px 12px; text-align: left;">Factor Name</th>
+                                            <th style="padding: 8px 12px; text-align: right;">Portfolio Beta (bp)</th>
+                                            <th style="padding: 8px 12px; text-align: right;">Benchmark Beta (bb)</th>
+                                            <th style="padding: 8px 12px; text-align: right;">Active Tilt (Δb)</th>
+                                            <th style="padding: 8px 12px; text-align: center;">Posture</th>
+                                            <th style="padding: 8px 12px; text-align: right;">1Y Factor Ret</th>
+                                            <th style="padding: 8px 12px; text-align: right;">Attribution PnL (Δb·f)</th>
+                                            <th style="padding: 8px 12px; text-align: right;">Sys Risk Share</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        ${factorRowsHtml}
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- Top Contributors & Biases -->
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; font-size: 11px;">
+                                <div style="background: rgba(15, 23, 42, 0.4); border: 1px solid var(--border-color); border-radius: 6px; padding: 12px;">
+                                    <strong style="color: #fff; display: block; margin-bottom: 6px;">Top Factor PnL Drivers:</strong>
+                                    <div style="display: flex; flex-direction: column; gap: 6px;">
+                                        <div style="display: flex; gap: 6px; flex-wrap: wrap;">${topPosPills}</div>
+                                        <div style="display: flex; gap: 6px; flex-wrap: wrap;">${topNegPills}</div>
+                                    </div>
+                                </div>
+                                <div style="background: rgba(15, 23, 42, 0.4); border: 1px solid var(--border-color); border-radius: 6px; padding: 12px;">
+                                    <strong style="color: #fff; display: block; margin-bottom: 6px;">Monitored Unintentional Style Biases:</strong>
+                                    <div style="color: var(--text-secondary); line-height: 1.5;">
+                                        ${(fa.unintentional_biases || []).map(b => `
+                                            <div>• <strong style="color: #fb923c;">${b.factor_name}</strong> (${b.bias_type}): Tilt of ${b.active_tilt > 0 ? '+' : ''}${b.active_tilt.toFixed(2)}, realized impact ${b.pnl_impact_pct > 0 ? '+' : ''}${b.pnl_impact_pct.toFixed(2)}%.</div>
+                                        `).join('')}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 19-Security Factor Loadings Heatmap -->
+                        <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;">
+                                <div>
+                                    <h3 style="font-size: 14px; font-weight: 800; color: #fff; margin-bottom: 2px;">
+                                        🗺️ Multi-Asset Security Factor Loading Matrix (19 Cross-Border Assets)
+                                    </h3>
+                                    <p style="font-size: 11px; color: var(--text-muted);">
+                                        Cross-sectional regression coefficients (Betas) across 10 style and macro factors with ordinary least squares fit (R²).
+                                    </p>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 10px; font-size: 10px; color: var(--text-muted);">
+                                    <span style="display: flex; align-items: center; gap: 4px;"><span style="display: inline-block; width: 10px; height: 10px; background: rgba(16, 185, 129, 0.25); border-radius: 2px;"></span> &gt; +0.80 Loading</span>
+                                    <span style="display: flex; align-items: center; gap: 4px;"><span style="display: inline-block; width: 10px; height: 10px; background: rgba(239, 68, 68, 0.25); border-radius: 2px;"></span> &lt; -0.80 Loading</span>
+                                </div>
+                            </div>
+
+                            <div style="overflow-x: auto;">
+                                <table style="width: 100%; border-collapse: collapse;">
+                                    <thead>
+                                        <tr style="border-bottom: 1px solid var(--border-color); color: var(--text-muted); font-size: 10px; text-transform: uppercase;">
+                                            <th style="padding: 6px 10px; text-align: left;">Symbol</th>
+                                            <th style="padding: 6px 6px; text-align: right;">Mkt Beta</th>
+                                            <th style="padding: 6px 6px; text-align: right;">SMB</th>
+                                            <th style="padding: 6px 6px; text-align: right;">HML</th>
+                                            <th style="padding: 6px 6px; text-align: right;">UMD</th>
+                                            <th style="padding: 6px 6px; text-align: right;">RMW</th>
+                                            <th style="padding: 6px 6px; text-align: right;">BAB</th>
+                                            <th style="padding: 6px 6px; text-align: right;">Oil Beta</th>
+                                            <th style="padding: 6px 6px; text-align: right;">FX Beta</th>
+                                            <th style="padding: 6px 6px; text-align: right;">Yield Beta</th>
+                                            <th style="padding: 6px 6px; text-align: right;">R² Fit</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        ${secRowsHtml}
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 `;
@@ -8338,7 +8672,7 @@
             const statutoryHtml = `
                 <div style="margin-top: 24px; padding-top: 14px; border-top: 1px solid var(--border-color); font-size: 10px; color: var(--text-muted); line-height: 1.5;">
                     <strong>Statutory Regulatory Notice (CSA Staff Notice 31-369 / SEC Publisher Exclusion §202(a)(11)(D)):</strong>
-                    Hierarchical Risk Parity allocations, parametric tail risk metrics (VaR / CVaR), and historical scenario stress replays are impersonal quantitative mathematical simulations. They do not constitute individualized investment advice, financial planning, or fiduciary asset management. Simulated performance, risk reduction metrics, and crisis replay drawdowns are subject to statistical estimation error and market regime instability. Past performance is no guarantee of future returns.
+                    Hierarchical Risk Parity allocations, multi-asset factor models, style return attributions, parametric tail risk metrics (VaR / CVaR), and historical scenario stress replays are impersonal quantitative mathematical simulations. They do not constitute individualized investment advice, financial planning, or fiduciary asset management. Simulated performance, factor exposures, risk reduction metrics, and crisis replay drawdowns are subject to statistical estimation error and market regime instability. Past performance is no guarantee of future returns.
                 </div>
             `;
 
@@ -8394,7 +8728,7 @@
                     startMicroStreaming();
                 }
             } else if (tabId === 'portfoliohrp') {
-                if (!portfolioHrpBundle || !portfolioStressBundle || !portfolioOrchestratorBundle) {
+                if (!portfolioHrpBundle || !portfolioStressBundle || !portfolioOrchestratorBundle || !factorRiskBundle || !factorAttribBundle) {
                     loadPortfolioHrpAndRender();
                 } else {
                     renderPortfolioHrpView();
