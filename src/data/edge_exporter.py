@@ -49,6 +49,7 @@ from src.engine.microstructure import microstructure_engine
 from src.engine.portfolio_hrp import hrp_portfolio_engine
 from src.engine.portfolio_stress import portfolio_stress_engine
 from src.engine.portfolio_orchestrator import portfolio_orchestrator_engine
+from src.engine.factor_risk import factor_risk_engine
 
 FEEDS_DIR = DATA_DIR / "feeds"
 DIST_DIR = DATA_DIR / "dist"
@@ -676,6 +677,9 @@ class EdgeExporter:
 
             # Phase 26.3: QUANT INTEL Portfolio Orchestrator Feed
             portfolio_orchestrator_engine.export_feed(d_dir)
+
+            # Phase 27.1: Cross-Border Multi-Asset Factor Risk Feed
+            factor_risk_engine.export_feed(d_dir)
 
         return {
             "dist_files": 27,

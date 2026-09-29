@@ -1406,6 +1406,60 @@ class PortfolioOrchestrationResult(BaseModel):
         return self.model_dump()
 
 
+# =========================================================================
+# Phase 27: Cross-Border Multi-Asset Factor Risk & Style Attribution Schemas
+# =========================================================================
+
+class FactorLoading(BaseModel):
+    symbol: str
+    market: Literal["US", "CA"]
+    market_beta: float
+    size_smb: float
+    value_hml: float
+    momentum_umd: float
+    quality_rmw: float
+    low_volatility_bab: float
+    liquidity_illiq: float
+    cad_usd_fx_beta: float
+    crude_oil_beta: float
+    yield_curve_beta: float
+    specific_residual_variance: float
+    r_squared: float
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class FactorRiskSummary(BaseModel):
+    factor_name: str
+    factor_variance: float
+    portfolio_factor_exposure: float
+    marginal_contribution_to_risk_pct: float
+    percent_of_systematic_risk: float
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class PortfolioFactorRiskResult(BaseModel):
+    as_of_date: str
+    generated_at: str
+    total_capital: float
+    portfolio_annualized_volatility: float
+    systematic_volatility: float
+    specific_volatility: float
+    systematic_risk_share_pct: float
+    specific_risk_share_pct: float
+    factor_loadings: Dict[str, FactorLoading]
+    factor_covariance_matrix: Dict[str, Dict[str, float]]
+    factor_risk_summaries: Dict[str, FactorRiskSummary]
+    disclaimers: List[str]
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+
 
 
 
