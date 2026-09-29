@@ -99,6 +99,8 @@ def build_firebase_bundle():
         ("portfolio_orchestration.json", "portfolio_orchestration"),
         ("factor_risk.json", "factor_risk.json"),
         ("factor_risk.json", "factor_risk"),
+        ("factor_attribution.json", "factor_attribution.json"),
+        ("factor_attribution.json", "factor_attribution"),
     ]
 
     for src_name, dest_name in core_feeds:

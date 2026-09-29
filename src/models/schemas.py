@@ -1459,6 +1459,53 @@ class PortfolioFactorRiskResult(BaseModel):
         return self.model_dump()
 
 
+# Phase 27.2: Active Style Tilts & Factor Return Attribution Schemas
+
+class FactorTilt(BaseModel):
+    factor_key: str
+    factor_name: str
+    portfolio_exposure: float
+    benchmark_exposure: float
+    active_tilt: float
+    tilt_direction: Literal["OVERWEIGHT", "NEUTRAL", "UNDERWEIGHT"]
+    factor_return_1y_pct: float
+    pnl_contribution_pct: float
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class BenchmarkAttribution(BaseModel):
+    benchmark_name: str
+    portfolio_return_pct: float
+    benchmark_return_pct: float
+    active_return_pct: float
+    tracking_error_pct: float
+    information_ratio: float
+    factor_return_contribution_pct: float
+    specific_alpha_pct: float
+    factor_tilts: Dict[str, FactorTilt]
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class PortfolioFactorAttributionResult(BaseModel):
+    as_of_date: str
+    generated_at: str
+    total_capital: float
+    evaluation_horizon: str
+    benchmarks: Dict[str, BenchmarkAttribution]
+    top_positive_factors: List[str]
+    top_negative_factors: List[str]
+    unintentional_biases: List[Dict[str, Any]]
+    disclaimers: List[str]
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+
 
 
 
