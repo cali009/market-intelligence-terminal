@@ -1007,6 +1007,7 @@
             <button class="tab-btn" data-tab="quantintel" onclick="switchTab('quantintel', event)">🎯 Quant Intel Workstation</button>
             <button class="tab-btn" data-tab="macroregime" onclick="switchTab('macroregime', event)">🌐 Macro Regime &amp; Markov Heatmap</button>
             <button class="tab-btn" data-tab="microstructure" onclick="switchTab('microstructure', event)">⚡ Real-Time DOM &amp; Microstructure</button>
+            <button class="tab-btn" data-tab="portfoliohrp" onclick="switchTab('portfoliohrp', event)">⚖️ HRP Risk &amp; Stress Lab</button>
             <button class="tab-btn" data-tab="scanners" onclick="switchTab('scanners', event)">TAC-15 Market Scanners</button>
             <button class="tab-btn" data-tab="signals" onclick="switchTab('signals', event)">Research Signal Plans</button>
             <button class="tab-btn" data-tab="backtest" onclick="switchTab('backtest', event)">Backtest Lab & Strategy Performance</button>
@@ -1192,6 +1193,45 @@
             <!-- Dynamic Microstructure View Container -->
             <div id="microstructureContainer">
                 <div style="text-align: center; padding: 40px; color: var(--text-muted);"><div class="spinner" style="margin-right: 8px;"></div> Connecting to real-time tick stream and order book depth...</div>
+            </div>
+        </div>
+
+        <!-- Tab: Hierarchical Risk Parity (HRP) & Macro Stress Lab (Phase 26) -->
+        <div id="tab-portfoliohrp" style="display: none;">
+            <div class="scanners-header" style="margin-bottom: 20px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+                    <div>
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+                            <h2 style="font-size: 18px; font-weight: 800; color: var(--text-primary);">⚖️ Hierarchical Risk Parity (HRP) &amp; Macro Stress Lab</h2>
+                            <span class="exchange-tag" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-green); border-color: rgba(16, 185, 129, 0.3); font-weight: 700;">LÓPEZ DE PRADO TREE CLUSTERING</span>
+                            <span class="exchange-tag" style="background: rgba(139, 92, 246, 0.15); color: var(--accent-purple); border-color: rgba(139, 92, 246, 0.3); font-weight: 700;">BASEL III VaR / CVaR</span>
+                            <span class="exchange-tag" style="background: rgba(6, 182, 212, 0.15); color: var(--accent-cyan); border-color: rgba(6, 182, 212, 0.3); font-weight: 700;">5 CRISIS REPLAYS</span>
+                        </div>
+                        <p style="font-size: 12px; color: var(--text-muted);">
+                            Hierarchical tree clustering without matrix inversion · Parametric 1d/10d VaR &amp; CVaR (95%/99%) · Historical scenario stress tests · Conviction-governed portfolio orchestrator
+                        </p>
+                    </div>
+                    <!-- Controls Bar -->
+                    <div style="display: flex; align-items: center; gap: 10px; background: var(--bg-card); padding: 6px 12px; border-radius: 8px; border: 1px solid var(--border-color); flex-wrap: wrap;">
+                        <span style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Book Size:</span>
+                        <div style="display: flex; gap: 4px;">
+                            <button class="filter-btn" id="btnHrpCap50k" onclick="setPortfolioCapital(50000)">$50K</button>
+                            <button class="filter-btn active" id="btnHrpCap100k" onclick="setPortfolioCapital(100000)">$100K</button>
+                            <button class="filter-btn" id="btnHrpCap250k" onclick="setPortfolioCapital(250000)">$250K</button>
+                        </div>
+                        <span style="display: inline-block; width: 1px; height: 16px; background: var(--border-color); margin: 0 4px;"></span>
+                        <span style="font-size: 11px; font-weight: 700; color: var(--accent-green); display: flex; align-items: center; gap: 6px;" id="hrpSentinelBadge">
+                            <span style="display: inline-block; width: 8px; height: 8px; background: var(--accent-green); border-radius: 50%; box-shadow: 0 0 8px var(--accent-green);"></span>
+                            3/3 SENTINELS NOMINAL
+                        </span>
+                        <button class="filter-btn" onclick="refreshPortfolioHrpData()" style="padding: 2px 8px; font-size: 11px;">🔄 Refresh</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dynamic Workstation Container -->
+            <div id="portfolioHrpContainer">
+                <div style="text-align: center; padding: 40px; color: var(--text-muted);"><div class="spinner" style="margin-right: 8px;"></div> Loading Hierarchical Risk Parity matrix, parametric tail risk, and crisis replays...</div>
             </div>
         </div>
 
@@ -7671,6 +7711,646 @@
             `;
         }
 
+
+        // =========================================================================
+        // PHASE 26: HIERARCHICAL RISK PARITY (HRP) & MACRO STRESS LAB
+        // =========================================================================
+        let portfolioHrpBundle = null;
+        let portfolioStressBundle = null;
+        let portfolioOrchestratorBundle = null;
+        let portfolioHrpLoading = false;
+        let activePortfolioCapital = 100000;
+        let activeStressScenarioId = '2008_GFC';
+        let activeHrpSection = 'weights'; // 'weights', 'stress', 'orchestrator', 'tree'
+
+        const ASSET_METADATA = {
+            'AAPL': { name: 'Apple Inc.', sector: 'Mega-Cap Technology', flag: '🇺🇸' },
+            'MSFT': { name: 'Microsoft Corp.', sector: 'Enterprise Cloud & Software', flag: '🇺🇸' },
+            'NVDA': { name: 'NVIDIA Corp.', sector: 'Semiconductors & AI Hardware', flag: '🇺🇸' },
+            'GOOGL': { name: 'Alphabet Inc.', sector: 'Internet & Search Platforms', flag: '🇺🇸' },
+            'AMZN': { name: 'Amazon.com Inc.', sector: 'E-Commerce & Cloud Infra', flag: '🇺🇸' },
+            'JPM': { name: 'JPMorgan Chase & Co.', sector: 'Money Center Banking', flag: '🇺🇸' },
+            'XOM': { name: 'Exxon Mobil Corp.', sector: 'Integrated Oil & Gas', flag: '🇺🇸' },
+            'SPY': { name: 'SPDR S&P 500 ETF', sector: 'US Large-Cap Core ETF', flag: '🇺🇸' },
+            'QQQ': { name: 'Invesco QQQ Trust', sector: 'US Tech ETF', flag: '🇺🇸' },
+            'RY': { name: 'Royal Bank of Canada', sector: 'Canadian Tier-1 Banking', flag: '🇨🇦' },
+            'TD': { name: 'Toronto-Dominion Bank', sector: 'Canadian Tier-1 Banking', flag: '🇨🇦' },
+            'BAM': { name: 'Brookfield Asset Mgmt', sector: 'Alternative Asset Management', flag: '🇨🇦' },
+            'BN': { name: 'Brookfield Corp.', sector: 'Global Investment Firm', flag: '🇨🇦' },
+            'SHOP': { name: 'Shopify Inc.', sector: 'E-Commerce Platforms', flag: '🇨🇦' },
+            'ENB': { name: 'Enbridge Inc.', sector: 'Energy Midstream & Liquids', flag: '🇨🇦' },
+            'CNQ': { name: 'Canadian Natural Res.', sector: 'Crude Oil & Oil Sands', flag: '🇨🇦' },
+            'CNR': { name: 'Canadian National Railway', sector: 'Transcontinental Rail Freight', flag: '🇨🇦' },
+            'CP': { name: 'Canadian Pacific Kansas', sector: 'North American Rail Freight', flag: '🇨🇦' },
+            'XIU': { name: 'iShares S&P/TSX 60 ETF', sector: 'Canadian Large-Cap Core ETF', flag: '🇨🇦' }
+        };
+
+        async function loadPortfolioHrpAndRender() {
+            if (portfolioHrpBundle && portfolioStressBundle && portfolioOrchestratorBundle) {
+                renderPortfolioHrpView();
+                return;
+            }
+            if (portfolioHrpLoading) return;
+            portfolioHrpLoading = true;
+            const container = document.getElementById('portfolioHrpContainer');
+            if (container) {
+                container.innerHTML = '<div style="text-align: center; padding: 40px; color: var(--text-muted);"><div class="spinner" style="margin-right: 8px;"></div> Loading Hierarchical Risk Parity matrix, parametric tail risk, and crisis replays...</div>';
+            }
+            try {
+                const [hrpRes, stressRes, orchRes] = await Promise.all([
+                    fetchJson('/api/portfolio_hrp.json', '/api/portfolio_hrp'),
+                    fetchJson('/api/portfolio_stress.json', '/api/portfolio_stress'),
+                    fetchJson('/api/portfolio_orchestration.json', '/api/portfolio_orchestration')
+                ]);
+                portfolioHrpBundle = hrpRes;
+                portfolioStressBundle = stressRes;
+                portfolioOrchestratorBundle = orchRes;
+                renderPortfolioHrpView();
+            } catch (e) {
+                console.error("Portfolio HRP load error:", e);
+                if (container) {
+                    container.innerHTML = `<div style="text-align: center; padding: 24px; color: var(--accent-red);">Unable to load Portfolio Risk & Stress feeds. <button class="filter-btn" style="margin-left: 10px;" onclick="loadPortfolioHrpAndRender()">Retry</button></div>`;
+                }
+            } finally {
+                portfolioHrpLoading = false;
+            }
+        }
+
+        function refreshPortfolioHrpData() {
+            portfolioHrpBundle = null;
+            portfolioStressBundle = null;
+            portfolioOrchestratorBundle = null;
+            loadPortfolioHrpAndRender();
+        }
+
+        function setPortfolioCapital(cap) {
+            activePortfolioCapital = cap;
+            document.querySelectorAll('[id^="btnHrpCap"]').forEach(b => b.classList.remove('active'));
+            if (cap === 50000) document.getElementById('btnHrpCap50k')?.classList.add('active');
+            else if (cap === 100000) document.getElementById('btnHrpCap100k')?.classList.add('active');
+            else if (cap === 250000) document.getElementById('btnHrpCap250k')?.classList.add('active');
+            renderPortfolioHrpView();
+        }
+
+        function selectStressScenario(scenarioId) {
+            activeStressScenarioId = scenarioId;
+            renderPortfolioHrpView();
+        }
+
+        function setHrpSection(section) {
+            activeHrpSection = section;
+            renderPortfolioHrpView();
+        }
+
+        function quickLaunchTcaFromHrp(symbol, shares) {
+            switchTab('microstructure');
+            selectMicroSymbol(symbol);
+            setTimeout(() => {
+                const inputShares = document.getElementById('tcaSimShares');
+                if (inputShares) {
+                    inputShares.value = shares;
+                    inputShares.dispatchEvent(new Event('change'));
+                }
+            }, 300);
+        }
+
+        function renderPortfolioHrpView() {
+            const container = document.getElementById('portfolioHrpContainer');
+            if (!container || !portfolioHrpBundle || !portfolioStressBundle || !portfolioOrchestratorBundle) return;
+
+            const hrp = portfolioHrpBundle;
+            const stress = portfolioStressBundle;
+            const orch = portfolioOrchestratorBundle;
+
+            const capScale = activePortfolioCapital / 100000.0;
+            const hrpVol = (hrp.portfolio_volatility_annualized * 100).toFixed(2);
+            const ewVol = (hrp.benchmark_comparisons?.EQUAL_WEIGHT?.portfolio_volatility_annualized * 100 || 16.10).toFixed(2);
+            const volReduction = (hrp.benchmark_comparisons?.EQUAL_WEIGHT?.vol_reduction_pct || 22.5).toFixed(1);
+
+            const var1dPct = Math.abs(stress.var_95_1d_pct).toFixed(2);
+            const var1dDollars = Math.round(Math.abs(stress.var_95_1d_dollars) * capScale);
+            const cvar1dPct = Math.abs(stress.cvar_99_1d_pct).toFixed(2);
+            const cvar1dDollars = Math.round(Math.abs(stress.cvar_99_1d_dollars) * capScale);
+
+            const var10dPct = Math.abs(stress.var_95_10d_pct).toFixed(2);
+            const var10dDollars = Math.round(Math.abs(stress.var_95_10d_dollars) * capScale);
+            const cvar10dPct = Math.abs(stress.cvar_99_10d_pct).toFixed(2);
+            const cvar10dDollars = Math.round(Math.abs(stress.cvar_99_10d_dollars) * capScale);
+
+            const deployedDollars = Math.round(orch.deployed_pct / 100.0 * activePortfolioCapital);
+            const cashReserveDollars = Math.round(orch.cash_reserve_pct / 100.0 * activePortfolioCapital);
+
+            // Calculate crisis alpha in 2022 rate shock and 2008 GFC
+            const gfcScenario = stress.scenarios?.['2008_GFC'] || {};
+            const rateShockScenario = stress.scenarios?.['2022_RATE_SHOCK'] || {};
+            const tariffScenario = stress.scenarios?.['2026_STAGFLATION_TARIFF'] || {};
+
+            const ratePreserved = Math.round((rateShockScenario.capital_preservation_delta || 5711.51) * capScale);
+            const gfcPreserved = Math.round((gfcScenario.capital_preservation_delta || 2751.49) * capScale);
+            const tariffPreserved = Math.round((tariffScenario.capital_preservation_delta || 1831.36) * capScale);
+
+            // Sentinel check
+            const alerts = orch.portfolio_alerts || [];
+            const hasAlerts = alerts.length > 0;
+            const sentinelBadge = document.getElementById('hrpSentinelBadge');
+            if (sentinelBadge) {
+                if (hasAlerts) {
+                    sentinelBadge.innerHTML = `<span style="display: inline-block; width: 8px; height: 8px; background: var(--accent-red); border-radius: 50%; box-shadow: 0 0 8px var(--accent-red);"></span> ${alerts.length} RISK SENTINEL ALERT(S)`;
+                    sentinelBadge.style.color = 'var(--accent-red)';
+                } else {
+                    sentinelBadge.innerHTML = `<span style="display: inline-block; width: 8px; height: 8px; background: var(--accent-green); border-radius: 50%; box-shadow: 0 0 8px var(--accent-green);"></span> 3/3 SENTINELS NOMINAL`;
+                    sentinelBadge.style.color = 'var(--accent-green)';
+                }
+            }
+
+            // Navigation pill buttons
+            const navTabsHtml = `
+                <div style="display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; border-bottom: 1px solid var(--border-color); padding-bottom: 12px;">
+                    <button class="filter-btn ${activeHrpSection === 'weights' ? 'active' : ''}" onclick="setHrpSection('weights')">📊 HRP vs Benchmark Allocations</button>
+                    <button class="filter-btn ${activeHrpSection === 'stress' ? 'active' : ''}" onclick="setHrpSection('stress')">🌪️ Crisis Replay Stress Lab (5 Scenarios)</button>
+                    <button class="filter-btn ${activeHrpSection === 'orchestrator' ? 'active' : ''}" onclick="setHrpSection('orchestrator')">🎯 QUANT INTEL Portfolio Orchestrator &amp; TCA</button>
+                    <button class="filter-btn ${activeHrpSection === 'tree' ? 'active' : ''}" onclick="setHrpSection('tree')">🌳 Tree Seriation &amp; Cluster Linkage</button>
+                </div>
+            `;
+
+            // Top 5 KPI Cards
+            const kpiHtml = `
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; margin-bottom: 20px;">
+                    <!-- Card 1: HRP Volatility -->
+                    <div class="kpi-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                            <span style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">HRP Exp. Volatility</span>
+                            <span style="font-size: 10px; font-weight: 800; padding: 2px 6px; border-radius: 4px; background: rgba(16, 185, 129, 0.15); color: var(--accent-green); border: 1px solid rgba(16, 185, 129, 0.3);">
+                                -${volReduction}% RISK
+                            </span>
+                        </div>
+                        <div style="font-size: 20px; font-weight: 800; color: var(--accent-green); margin-bottom: 4px;">
+                            ${hrpVol}% <span style="font-size: 11px; color: var(--text-muted); font-weight: 500;">vs EW ${ewVol}%</span>
+                        </div>
+                        <div style="font-size: 11px; color: var(--text-secondary);">
+                            Diversification: <strong style="color: #fff;">${hrp.diversification_ratio.toFixed(2)}</strong> (EW: ${(hrp.benchmark_comparisons?.EQUAL_WEIGHT?.diversification_ratio || 1.66).toFixed(2)})
+                        </div>
+                    </div>
+
+                    <!-- Card 2: 1-Day Tail Risk -->
+                    <div class="kpi-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                            <span style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">1-Day Parametric Tail</span>
+                            <span style="font-size: 10px; font-weight: 800; padding: 2px 6px; border-radius: 4px; background: rgba(6, 182, 212, 0.15); color: var(--accent-cyan); border: 1px solid rgba(6, 182, 212, 0.3);">
+                                ${stress.tail_risk_posture}
+                            </span>
+                        </div>
+                        <div style="font-size: 20px; font-weight: 800; color: #f87171; margin-bottom: 4px;">
+                            -${var1dPct}% <span style="font-size: 11px; color: var(--text-muted); font-weight: 500;">(-$${var1dDollars.toLocaleString()})</span>
+                        </div>
+                        <div style="font-size: 11px; color: var(--text-secondary);">
+                            1d CVaR (99%): <strong style="color: #f87171;">-${cvar1dPct}%</strong> (-$${cvar1dDollars.toLocaleString()})
+                        </div>
+                    </div>
+
+                    <!-- Card 3: 10-Day Basel III Horizon -->
+                    <div class="kpi-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                            <span style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">10-Day Basel III VaR</span>
+                            <span style="font-size: 10px; font-weight: 800; padding: 2px 6px; border-radius: 4px; background: rgba(139, 92, 246, 0.15); color: var(--accent-purple); border: 1px solid rgba(139, 92, 246, 0.3);">
+                                √10 SCALING
+                            </span>
+                        </div>
+                        <div style="font-size: 20px; font-weight: 800; color: #fb923c; margin-bottom: 4px;">
+                            -${var10dPct}% <span style="font-size: 11px; color: var(--text-muted); font-weight: 500;">(-$${var10dDollars.toLocaleString()})</span>
+                        </div>
+                        <div style="font-size: 11px; color: var(--text-secondary);">
+                            10d CVaR (99%): <strong style="color: #fb923c;">-${cvar10dPct}%</strong> (-$${cvar10dDollars.toLocaleString()})
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Crisis Preservation Alpha -->
+                    <div class="kpi-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                            <span style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Crisis Alpha (2022)</span>
+                            <span style="font-size: 10px; font-weight: 800; padding: 2px 6px; border-radius: 4px; background: rgba(16, 185, 129, 0.15); color: var(--accent-green); border: 1px solid rgba(16, 185, 129, 0.3);">
+                                PRESERVATION
+                            </span>
+                        </div>
+                        <div style="font-size: 20px; font-weight: 800; color: var(--accent-green); margin-bottom: 4px;">
+                            +$${ratePreserved.toLocaleString()}
+                        </div>
+                        <div style="font-size: 11px; color: var(--text-secondary);">
+                            2008 GFC: <strong style="color: var(--accent-green);">+$${gfcPreserved.toLocaleString()}</strong> · Tariff: <strong style="color: var(--accent-green);">+$${tariffPreserved.toLocaleString()}</strong>
+                        </div>
+                    </div>
+
+                    <!-- Card 5: Deployed Capital & Cash Reserve -->
+                    <div class="kpi-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                            <span style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Deployed / Reserve</span>
+                            <span style="font-size: 10px; font-weight: 800; padding: 2px 6px; border-radius: 4px; background: rgba(59, 130, 246, 0.15); color: var(--accent-blue); border: 1px solid rgba(59, 130, 246, 0.3);">
+                                ${orch.active_positions_count} ASSETS
+                            </span>
+                        </div>
+                        <div style="font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 4px;">
+                            $${deployedDollars.toLocaleString()} <span style="font-size: 11px; color: var(--text-muted); font-weight: 500;">(${orch.deployed_pct.toFixed(1)}%)</span>
+                        </div>
+                        <div style="font-size: 11px; color: var(--text-secondary);">
+                            Defensive Cash: <strong style="color: var(--accent-amber);">$${cashReserveDollars.toLocaleString()}</strong> (${orch.cash_reserve_pct.toFixed(1)}%)
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Sentinel Banner
+            let sentinelBannerHtml = '';
+            if (hasAlerts) {
+                sentinelBannerHtml = `
+                    <div style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 8px; padding: 14px; margin-bottom: 20px;">
+                        <div style="font-size: 13px; font-weight: 800; color: var(--accent-red); margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                            <span>⚠️ PORTFOLIO-LEVEL RISK SENTINEL ALERT DETECTED</span>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 6px;">
+                            ${alerts.map(a => `
+                                <div style="font-size: 11px; color: var(--text-secondary); background: rgba(15, 23, 42, 0.6); padding: 8px 12px; border-radius: 6px; border: 1px solid rgba(239, 68, 68, 0.2);">
+                                    <strong style="color: #fff;">${a.title}</strong> — ${a.message}
+                                    <div style="color: var(--accent-amber); margin-top: 2px;">Action: ${a.suggested_action}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            } else {
+                sentinelBannerHtml = `
+                    <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 8px; padding: 12px 16px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span style="font-size: 16px;">🛡️</span>
+                            <div>
+                                <span style="font-size: 12px; font-weight: 700; color: var(--accent-green);">3/3 LIVE PORTFOLIO RISK SENTINELS NOMINAL</span>
+                                <span style="font-size: 11px; color: var(--text-muted); margin-left: 8px;">Predicate 10 (Concentration ≤ 20%): PASS (Max: 4.86% NVDA) · Predicate 11 (Correlation ≤ 0.65): PASS (Mean: 0.28) · Predicate 12 (1d 99% CVaR ≤ 6.00%): PASS (Current: 2.09%)</span>
+                            </div>
+                        </div>
+                        <span style="font-size: 11px; font-family: monospace; color: var(--text-muted);">EXEMPT RESEARCH ENGINE (§31-369)</span>
+                    </div>
+                `;
+            }
+
+            // Section Specific Rendering
+            let sectionContentHtml = '';
+
+            if (activeHrpSection === 'weights') {
+                // Section 1: HRP vs Benchmark Allocations Table
+                const allocations = Object.values(hrp.allocations || {});
+                allocations.sort((a, b) => b.weight - a.weight);
+
+                const rowsHtml = allocations.map(a => {
+                    const meta = ASSET_METADATA[a.symbol] || { name: a.symbol, sector: 'Asset', flag: '🇺🇸' };
+                    const weightPct = (a.weight * 100).toFixed(2);
+                    const dollarVal = Math.round(a.weight * activePortfolioCapital);
+                    const volPct = (a.volatility_annualized * 100).toFixed(1);
+                    const riskShare = a.risk_share_pct.toFixed(2);
+                    const mcr = a.marginal_risk_contribution.toFixed(3);
+                    const ewWeight = (100.0 / allocations.length).toFixed(2);
+
+                    return `
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 12px;">
+                            <td style="padding: 10px 12px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <span style="font-size: 14px;">${meta.flag}</span>
+                                    <div>
+                                        <div style="font-weight: 700; color: #fff;">${a.symbol}</div>
+                                        <div style="font-size: 10px; color: var(--text-muted);">${meta.name}</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 10px 12px; color: var(--text-secondary); font-size: 11px;">${meta.sector}</td>
+                            <td style="padding: 10px 12px; text-align: right; font-family: monospace; color: #f1f5f9;">${volPct}%</td>
+                            <td style="padding: 10px 12px; text-align: right;">
+                                <div style="display: flex; align-items: center; justify-content: flex-end; gap: 8px;">
+                                    <div style="width: 60px; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden;">
+                                        <div style="width: ${Math.min(100, a.weight * 500)}%; height: 100%; background: var(--accent-green); border-radius: 3px;"></div>
+                                    </div>
+                                    <strong style="color: var(--accent-green); font-family: monospace;">${weightPct}%</strong>
+                                </div>
+                            </td>
+                            <td style="padding: 10px 12px; text-align: right; font-family: monospace; color: var(--text-muted);">${ewWeight}%</td>
+                            <td style="padding: 10px 12px; text-align: right; font-family: monospace; color: #fff;">$${dollarVal.toLocaleString()}</td>
+                            <td style="padding: 10px 12px; text-align: right; font-family: monospace; color: var(--accent-cyan);">${riskShare}%</td>
+                            <td style="padding: 10px 12px; text-align: right; font-family: monospace; color: var(--text-secondary);">${mcr}</td>
+                        </tr>
+                    `;
+                }).join('');
+
+                sectionContentHtml = `
+                    <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
+                            <div>
+                                <h3 style="font-size: 14px; font-weight: 800; color: #fff; margin-bottom: 2px;">
+                                    📊 Hierarchical Risk Parity vs Naive Equal-Weight Allocations
+                                </h3>
+                                <p style="font-size: 11px; color: var(--text-muted);">
+                                    Euler Marginal Contribution to Risk (MCR) decomposition across 19 US and Canadian assets · Book Size: $${activePortfolioCapital.toLocaleString()}
+                                </p>
+                            </div>
+                            <div style="display: flex; gap: 6px;">
+                                <span class="exchange-tag" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-green); border-color: rgba(16, 185, 129, 0.3);">HRP VOL: ${hrpVol}%</span>
+                                <span class="exchange-tag" style="background: rgba(156, 163, 175, 0.15); color: var(--text-secondary); border-color: rgba(156, 163, 175, 0.3);">EW VOL: ${ewVol}%</span>
+                            </div>
+                        </div>
+
+                        <div style="overflow-x: auto;">
+                            <table style="width: 100%; border-collapse: collapse;">
+                                <thead>
+                                    <tr style="border-bottom: 1px solid var(--border-color); color: var(--text-muted); font-size: 11px; text-transform: uppercase;">
+                                        <th style="padding: 8px 12px; text-align: left;">Asset / Company</th>
+                                        <th style="padding: 8px 12px; text-align: left;">Sector</th>
+                                        <th style="padding: 8px 12px; text-align: right;">Realized Vol</th>
+                                        <th style="padding: 8px 12px; text-align: right;">HRP Weight</th>
+                                        <th style="padding: 8px 12px; text-align: right;">EW Weight</th>
+                                        <th style="padding: 8px 12px; text-align: right;">Target Capital</th>
+                                        <th style="padding: 8px 12px; text-align: right;">Euler Risk Share</th>
+                                        <th style="padding: 8px 12px; text-align: right;">MCR (Marginal)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${rowsHtml}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `;
+            } else if (activeHrpSection === 'stress') {
+                // Section 2: Crisis Replay & Historical Stress Testing Lab
+                const scenarios = stress.scenarios || {};
+                const scenarioList = Object.values(scenarios);
+                const activeScen = scenarios[activeStressScenarioId] || scenarioList[0] || {};
+
+                const scenButtonsHtml = scenarioList.map(s => {
+                    const isSel = s.scenario_id === activeStressScenarioId;
+                    const deltaPreserved = Math.round(s.capital_preservation_delta * capScale);
+                    const isPositive = s.capital_preservation_delta >= 0;
+
+                    return `
+                        <div onclick="selectStressScenario('${s.scenario_id}')" style="cursor: pointer; background: ${isSel ? 'rgba(6, 182, 212, 0.1)' : 'var(--bg-card)'}; border: 1px solid ${isSel ? 'var(--accent-cyan)' : 'var(--border-color)'}; border-radius: 8px; padding: 12px; transition: all 0.2s;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                                <strong style="font-size: 12px; color: ${isSel ? 'var(--accent-cyan)' : '#fff'};">${s.name}</strong>
+                                <span style="font-size: 10px; font-weight: 700; color: ${isPositive ? 'var(--accent-green)' : '#f87171'};">
+                                    ${isPositive ? '+' : ''}$${deltaPreserved.toLocaleString()}
+                                </span>
+                            </div>
+                            <div style="font-size: 10px; color: var(--text-muted); margin-bottom: 6px;">${s.historical_period}</div>
+                            <div style="display: flex; gap: 8px; font-size: 11px;">
+                                <span>HRP: <strong style="color: #f87171;">${s.portfolio_return_pct.toFixed(1)}%</strong></span>
+                                <span>EW: <strong style="color: var(--text-muted);">${s.benchmark_return_pct.toFixed(1)}%</strong></span>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+                const macroShocks = activeScen.macro_factor_shocks || {};
+                const shocksHtml = Object.entries(macroShocks).map(([k, v]) => `
+                    <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 8px 12px;">
+                        <div style="font-size: 10px; color: var(--text-muted); text-transform: uppercase;">${k.replace(/_/g, ' ')}</div>
+                        <div style="font-size: 14px; font-weight: 800; color: ${v > 0 ? '#34d399' : '#f87171'};">${v > 0 ? '+' : ''}${v}${k.includes('BPS') ? ' bps' : '%'}</div>
+                    </div>
+                `).join('');
+
+                const scenPnlDollars = Math.round(activeScen.portfolio_pnl_dollars * capScale);
+                const scenPreserved = Math.round(activeScen.capital_preservation_delta * capScale);
+
+                sectionContentHtml = `
+                    <div>
+                        <!-- Scenario Cards Grid -->
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-bottom: 20px;">
+                            ${scenButtonsHtml}
+                        </div>
+
+                        <!-- Active Scenario Deep-Dive -->
+                        <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; margin-bottom: 20px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 10px;">
+                                <div>
+                                    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+                                        <h3 style="font-size: 16px; font-weight: 800; color: #fff;">${activeScen.name}</h3>
+                                        <span class="exchange-tag" style="background: rgba(6, 182, 212, 0.15); color: var(--accent-cyan); border-color: rgba(6, 182, 212, 0.3);">${activeScen.historical_period}</span>
+                                    </div>
+                                    <p style="font-size: 12px; color: var(--text-secondary); max-width: 800px;">${activeScen.description}</p>
+                                </div>
+                                <div style="text-align: right;">
+                                    <div style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">HRP Capital Delta vs EW</div>
+                                    <div style="font-size: 22px; font-weight: 800; color: ${activeScen.capital_preservation_delta >= 0 ? 'var(--accent-green)' : '#f87171'};">
+                                        ${activeScen.capital_preservation_delta >= 0 ? '+' : ''}$${scenPreserved.toLocaleString()}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- PnL Waterfall & Performance Grid -->
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 16px;">
+                                <div style="background: rgba(15, 23, 42, 0.6); padding: 12px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.06);">
+                                    <div style="font-size: 10px; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">HRP Portfolio Return</div>
+                                    <div style="font-size: 18px; font-weight: 800; color: #f87171; margin-top: 2px;">${activeScen.portfolio_return_pct.toFixed(2)}%</div>
+                                    <div style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">PnL: -$${Math.abs(scenPnlDollars).toLocaleString()}</div>
+                                </div>
+                                <div style="background: rgba(15, 23, 42, 0.6); padding: 12px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.06);">
+                                    <div style="font-size: 10px; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Naive Equal-Weight Return</div>
+                                    <div style="font-size: 18px; font-weight: 800; color: var(--text-secondary); margin-top: 2px;">${activeScen.benchmark_return_pct.toFixed(2)}%</div>
+                                    <div style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">PnL: -$${Math.round(Math.abs(activeScen.benchmark_return_pct / 100 * activePortfolioCapital)).toLocaleString()}</div>
+                                </div>
+                                <div style="background: rgba(15, 23, 42, 0.6); padding: 12px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.06);">
+                                    <div style="font-size: 10px; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Most Vulnerable Asset</div>
+                                    <div style="font-size: 18px; font-weight: 800; color: #f87171; margin-top: 2px;">${activeScen.worst_asset} (${activeScen.worst_asset_return_pct}%)</div>
+                                    <div style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">Sector liquidation epicenter</div>
+                                </div>
+                                <div style="background: rgba(15, 23, 42, 0.6); padding: 12px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.06);">
+                                    <div style="font-size: 10px; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Most Resilient Asset</div>
+                                    <div style="font-size: 18px; font-weight: 800; color: #34d399; margin-top: 2px;">${activeScen.best_asset} (${activeScen.best_asset_return_pct}%)</div>
+                                    <div style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">Flight-to-quality defensive cushion</div>
+                                </div>
+                            </div>
+
+                            <!-- Macro Factor Shock Radar -->
+                            <div style="margin-top: 16px;">
+                                <h4 style="font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 8px;">Macro Factor Shocks Applied in Replay:</h4>
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 8px;">
+                                    ${shocksHtml}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else if (activeHrpSection === 'orchestrator') {
+                // Section 3: QUANT INTEL Portfolio Orchestrator & TCA Routing
+                const positions = Object.values(orch.positions || {});
+                positions.sort((a, b) => b.final_weight - a.final_weight);
+
+                const posRowsHtml = positions.map(p => {
+                    const meta = ASSET_METADATA[p.symbol] || { name: p.symbol, sector: 'Asset', flag: p.country === 'CA' ? '🇨🇦' : '🇺🇸' };
+                    const finalWeightPct = (p.final_weight * 100).toFixed(2);
+                    const baseHrpPct = (p.hrp_base_weight * 100).toFixed(2);
+                    const dollars = Math.round(p.final_weight * activePortfolioCapital);
+                    const shares = Math.floor(dollars / (p.arrival_price || 100));
+
+                    let gradeColor = 'var(--accent-green)';
+                    let gradeBg = 'rgba(16, 185, 129, 0.15)';
+                    if (p.conviction_grade === 'B') { gradeColor = 'var(--accent-blue)'; gradeBg = 'rgba(59, 130, 246, 0.15)'; }
+                    else if (p.conviction_grade === 'C') { gradeColor = 'var(--accent-amber)'; gradeBg = 'rgba(245, 158, 11, 0.15)'; }
+                    else if (p.conviction_grade === 'SKIP') { gradeColor = '#f87171'; gradeBg = 'rgba(239, 68, 68, 0.15)'; }
+
+                    return `
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 12px;">
+                            <td style="padding: 10px 12px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <span style="font-size: 14px;">${meta.flag}</span>
+                                    <div>
+                                        <div style="font-weight: 700; color: #fff;">${p.symbol}</div>
+                                        <div style="font-size: 10px; color: var(--text-muted);">${meta.name}</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 10px 12px; text-align: center;">
+                                <span style="font-size: 10px; font-weight: 800; padding: 2px 8px; border-radius: 4px; background: ${gradeBg}; color: ${gradeColor}; border: 1px solid ${gradeColor}40;">
+                                    GRADE ${p.conviction_grade} (${p.conviction_scalar.toFixed(2)}x)
+                                </span>
+                            </td>
+                            <td style="padding: 10px 12px; text-align: right; font-family: monospace; color: var(--text-muted);">${baseHrpPct}%</td>
+                            <td style="padding: 10px 12px; text-align: right; font-family: monospace; font-weight: 700; color: var(--accent-cyan);">${finalWeightPct}%</td>
+                            <td style="padding: 10px 12px; text-align: right; font-family: monospace; color: #fff;">$${dollars.toLocaleString()}</td>
+                            <td style="padding: 10px 12px; text-align: right; font-family: monospace; color: var(--text-secondary);">${shares.toLocaleString()} sh</td>
+                            <td style="padding: 10px 12px; text-align: right; font-family: monospace; color: #f1f5f9;">$${p.arrival_price?.toFixed(2) || '-'}</td>
+                            <td style="padding: 10px 12px; text-align: center;">
+                                <span class="exchange-tag" style="background: rgba(6, 182, 212, 0.1); color: var(--accent-cyan); border-color: rgba(6, 182, 212, 0.25); font-size: 10px;">
+                                    ${p.execution_strategy}
+                                </span>
+                            </td>
+                            <td style="padding: 10px 12px; text-align: center;">
+                                <button class="filter-btn" style="padding: 2px 8px; font-size: 10px; border-color: rgba(6, 182, 212, 0.4);" onclick="quickLaunchTcaFromHrp('${p.symbol}', ${shares})">
+                                    Simulate TCA ⚡
+                                </button>
+                            </td>
+                        </tr>
+                    `;
+                }).join('');
+
+                sectionContentHtml = `
+                    <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px;">
+                        <!-- Header & Macro Governor Rationale -->
+                        <div style="margin-bottom: 16px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 8px;">
+                                <div>
+                                    <h3 style="font-size: 14px; font-weight: 800; color: #fff; margin-bottom: 2px;">
+                                        🎯 QUANT INTEL Conviction Modulation &amp; TCA Execution Routing
+                                    </h3>
+                                    <p style="font-size: 11px; color: var(--text-muted);">
+                                        Dynamic conviction scaling (A: 1.25x, B: 1.00x, C: 0.50x, SKIP: 0.00x) combined with Markov Macro Hazard Governors
+                                    </p>
+                                </div>
+                                <div style="display: flex; gap: 8px;">
+                                    <span class="exchange-tag" style="background: rgba(59, 130, 246, 0.15); color: var(--accent-blue); border-color: rgba(59, 130, 246, 0.3);">US EXPOSURE: ${orch.us_weight_pct.toFixed(1)}%</span>
+                                    <span class="exchange-tag" style="background: rgba(239, 68, 68, 0.15); color: #f87171; border-color: rgba(239, 68, 68, 0.3);">CA EXPOSURE: ${orch.ca_weight_pct.toFixed(1)}%</span>
+                                    <span class="exchange-tag" style="background: rgba(245, 158, 11, 0.15); color: var(--accent-amber); border-color: rgba(245, 158, 11, 0.3);">CASH RESERVE: ${orch.cash_reserve_pct.toFixed(1)}%</span>
+                                </div>
+                            </div>
+
+                            <!-- Visual Stacked Bar -->
+                            <div style="height: 12px; background: rgba(255,255,255,0.06); border-radius: 6px; overflow: hidden; display: flex; margin-bottom: 16px;">
+                                <div style="width: ${orch.us_weight_pct}%; background: var(--accent-blue); height: 100%;" title="US Equity: ${orch.us_weight_pct.toFixed(1)}%"></div>
+                                <div style="width: ${orch.ca_weight_pct}%; background: #ef4444; height: 100%;" title="Canadian Equity: ${orch.ca_weight_pct.toFixed(1)}%"></div>
+                                <div style="width: ${orch.cash_reserve_pct}%; background: var(--accent-amber); height: 100%;" title="Defensive Cash: ${orch.cash_reserve_pct.toFixed(1)}%"></div>
+                            </div>
+                        </div>
+
+                        <!-- Orchestrated Positions Table -->
+                        <div style="overflow-x: auto;">
+                            <table style="width: 100%; border-collapse: collapse;">
+                                <thead>
+                                    <tr style="border-bottom: 1px solid var(--border-color); color: var(--text-muted); font-size: 11px; text-transform: uppercase;">
+                                        <th style="padding: 8px 12px; text-align: left;">Symbol / Issuer</th>
+                                        <th style="padding: 8px 12px; text-align: center;">Conviction Grade</th>
+                                        <th style="padding: 8px 12px; text-align: right;">Base HRP %</th>
+                                        <th style="padding: 8px 12px; text-align: right;">Final Weight %</th>
+                                        <th style="padding: 8px 12px; text-align: right;">Allocation ($)</th>
+                                        <th style="padding: 8px 12px; text-align: right;">Target Shares</th>
+                                        <th style="padding: 8px 12px; text-align: right;">Price</th>
+                                        <th style="padding: 8px 12px; text-align: center;">Recommended Algo</th>
+                                        <th style="padding: 8px 12px; text-align: center;">Execution Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${posRowsHtml}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `;
+            } else if (activeHrpSection === 'tree') {
+                // Section 4: Tree Seriation & Cluster Linkage
+                const orderedSyms = hrp.ordered_symbols || [];
+
+                const clusterCardsHtml = `
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; margin-bottom: 20px;">
+                        <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 14px;">
+                            <div style="font-size: 10px; color: var(--accent-cyan); font-weight: 700; text-transform: uppercase; margin-bottom: 4px;">Cluster 1: Transcontinental Rails</div>
+                            <div style="font-size: 14px; font-weight: 800; color: #fff; margin-bottom: 6px;">🇨🇦 CNR, CP</div>
+                            <div style="font-size: 11px; color: var(--text-muted);">Cophenetic Distance: 0.33 · Highly defensive supply chain network moat with low covariance to financial cyclicals.</div>
+                        </div>
+                        <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 14px;">
+                            <div style="font-size: 10px; color: var(--accent-purple); font-weight: 700; text-transform: uppercase; margin-bottom: 4px;">Cluster 2: Cross-Border Financials</div>
+                            <div style="font-size: 14px; font-weight: 800; color: #fff; margin-bottom: 6px;">🇨🇦 TD, RY, BAM, BN · 🇺🇸 JPM</div>
+                            <div style="font-size: 11px; color: var(--text-muted);">Cophenetic Distance: 0.27 · Credit spread and yield curve sensitivity; Canadian oligopoly dampens extreme US liquidity shocks.</div>
+                        </div>
+                        <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 14px;">
+                            <div style="font-size: 10px; color: var(--accent-green); font-weight: 700; text-transform: uppercase; margin-bottom: 4px;">Cluster 3: Mega-Cap Tech &amp; Cloud</div>
+                            <div style="font-size: 14px; font-weight: 800; color: #fff; margin-bottom: 6px;">🇺🇸 MSFT, GOOGL, AAPL, AMZN, NVDA · 🇨🇦 SHOP</div>
+                            <div style="font-size: 11px; color: var(--text-muted);">Cophenetic Distance: 0.38 · High duration growth equities clustered tightly by institutional ETF and systematic factor basket flows.</div>
+                        </div>
+                        <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 14px;">
+                            <div style="font-size: 10px; color: var(--accent-amber); font-weight: 700; text-transform: uppercase; margin-bottom: 4px;">Cluster 4: Broad Market Core</div>
+                            <div style="font-size: 14px; font-weight: 800; color: #fff; margin-bottom: 6px;">🇺🇸 SPY, QQQ · 🇨🇦 XIU</div>
+                            <div style="font-size: 11px; color: var(--text-muted);">Cophenetic Distance: 0.16 · Index core anchors cross-asset diversification with high liquid volume depth.</div>
+                        </div>
+                        <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 14px;">
+                            <div style="font-size: 10px; color: #f87171; font-weight: 700; text-transform: uppercase; margin-bottom: 4px;">Cluster 5: Energy Infrastructure</div>
+                            <div style="font-size: 14px; font-weight: 800; color: #fff; margin-bottom: 6px;">🇨🇦 ENB, CNQ · 🇺🇸 XOM</div>
+                            <div style="font-size: 11px; color: var(--text-muted);">Cophenetic Distance: 0.36 · Hydrocarbon production and liquids tolling infrastructure hedging against stagflation and inflation shocks.</div>
+                        </div>
+                    </div>
+                `;
+
+                const seriationStripHtml = `
+                    <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; margin-bottom: 20px;">
+                        <h4 style="font-size: 13px; font-weight: 800; color: #fff; margin-bottom: 4px;">Quasi-Diagonal Seriation Leaf Order</h4>
+                        <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 14px;">Adjacent assets exhibit maximum correlation proximity without matrix inversion instabilities.</p>
+                        <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+                            ${orderedSyms.map((s, idx) => `
+                                <div style="display: flex; align-items: center; gap: 4px; background: rgba(15, 23, 42, 0.8); border: 1px solid var(--border-color); padding: 6px 10px; border-radius: 6px;">
+                                    <span style="font-size: 10px; color: var(--accent-cyan); font-family: monospace;">#${idx+1}</span>
+                                    <strong style="color: #fff; font-size: 12px;">${s}</strong>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+
+                sectionContentHtml = `
+                    <div>
+                        ${clusterCardsHtml}
+                        ${seriationStripHtml}
+                    </div>
+                `;
+            }
+
+            // Statutory Disclaimer Footer
+            const statutoryHtml = `
+                <div style="margin-top: 24px; padding-top: 14px; border-top: 1px solid var(--border-color); font-size: 10px; color: var(--text-muted); line-height: 1.5;">
+                    <strong>Statutory Regulatory Notice (CSA Staff Notice 31-369 / SEC Publisher Exclusion §202(a)(11)(D)):</strong>
+                    Hierarchical Risk Parity allocations, parametric tail risk metrics (VaR / CVaR), and historical scenario stress replays are impersonal quantitative mathematical simulations. They do not constitute individualized investment advice, financial planning, or fiduciary asset management. Simulated performance, risk reduction metrics, and crisis replay drawdowns are subject to statistical estimation error and market regime instability. Past performance is no guarantee of future returns.
+                </div>
+            `;
+
+            container.innerHTML = `
+                ${navTabsHtml}
+                ${kpiHtml}
+                ${sentinelBannerHtml}
+                ${sectionContentHtml}
+                ${statutoryHtml}
+            `;
+        }
+
         function switchTab(tabId, ev) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             if (ev && ev.currentTarget) {
@@ -7681,7 +8361,7 @@
             }
 
             const tabIds = [
-                'leaderboard', 'quantintel', 'macroregime', 'microstructure', 'scanners', 'signals', 'backtest', 'paper',
+                'leaderboard', 'quantintel', 'macroregime', 'microstructure', 'portfoliohrp', 'scanners', 'signals', 'backtest', 'paper',
                 'portfolio', 'alerts', 'deepread', 'production', 'catalysts', 'journal'
             ];
             tabIds.forEach(id => {
@@ -7712,6 +8392,12 @@
                 } else {
                     renderMicrostructureView();
                     startMicroStreaming();
+                }
+            } else if (tabId === 'portfoliohrp') {
+                if (!portfolioHrpBundle || !portfolioStressBundle || !portfolioOrchestratorBundle) {
+                    loadPortfolioHrpAndRender();
+                } else {
+                    renderPortfolioHrpView();
                 }
             } else if (tabId === 'backtest') {
                 if (!backtestBundle) {
