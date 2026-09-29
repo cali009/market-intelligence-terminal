@@ -1288,6 +1288,39 @@ class ExecutionPlanResult(BaseModel):
         return self.model_dump()
 
 
+# Phase 26: Hierarchical Risk Parity (HRP) & Portfolio Optimization Schemas
+
+class HrpAssetAllocation(BaseModel):
+    symbol: str
+    country: Literal["US", "CA"]
+    weight: float
+    dollar_allocation: float
+    volatility_annualized: float
+    marginal_risk_contribution: float
+    risk_share_pct: float
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class HrpAllocationResult(BaseModel):
+    as_of_date: str
+    generated_at: str
+    universe_size: int
+    total_capital: float
+    allocations: Dict[str, HrpAssetAllocation]
+    ordered_symbols: List[str]
+    portfolio_volatility_annualized: float
+    effective_constituents: float
+    diversification_ratio: float
+    benchmark_comparisons: Dict[str, Dict[str, float]]
+    cluster_linkage: List[List[float]]
+    disclaimers: List[str]
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
 
 
 

@@ -91,6 +91,8 @@ def build_firebase_bundle():
         ("macro_regime_matrix.json", "macro_regime_matrix"),
         ("microstructure_snapshot.json", "microstructure_snapshot.json"),
         ("microstructure_snapshot.json", "microstructure_snapshot"),
+        ("portfolio_hrp.json", "portfolio_hrp.json"),
+        ("portfolio_hrp.json", "portfolio_hrp"),
     ]
 
     for src_name, dest_name in core_feeds:
