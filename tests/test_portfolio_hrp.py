@@ -4,6 +4,7 @@ US + Canada Dual-Market Intelligence Platform
 """
 
 import numpy as np
+import pandas as pd
 import pytest
 
 from src.compliance.linter import linter
@@ -95,6 +96,21 @@ class TestHrpPortfolioEngine:
         """Asserts that Euler percentage risk shares sum to 100% within numerical tolerance."""
         total_risk_share = sum(a.risk_share_pct for a in self.result.allocations.values())
         assert np.isclose(total_risk_share, 100.0, atol=0.5)
+
+    def test_correlation_distance_read_only_array_resilience(self):
+        """Asserts that compute_correlation_distance handles read-only numpy arrays without throwing ValueError."""
+        # Create a dataframe and explicitly make its correlation array read-only
+        df = pd.DataFrame(np.random.randn(30, 4), columns=list("ABCD"))
+        class ReadOnlyCorrDF(pd.DataFrame):
+            def corr(self, *args, **kwargs):
+                c = super().corr(*args, **kwargs)
+                c.values.flags.writeable = False
+                return c
+
+        ro_df = ReadOnlyCorrDF(np.random.randn(30, 4), columns=list("ABCD"))
+        corr, dist = hrp_portfolio_engine.compute_correlation_distance(ro_df)
+        assert np.all(np.diag(corr) == 1.0)
+        assert np.all(np.diag(dist) == 0.0)
 
     def test_compliance_linter_zero_violations(self):
         """Asserts statutory impersonal research disclaimers have zero compliance violations."""

@@ -1,57 +1,57 @@
 {
   "as_of_date": "2026-09-25",
   "model_type": "Tree Path Exact Attribution (Zero Black-Box)",
-  "base_value": 50.89,
+  "base_value": 51.11,
   "total_securities_scored": 19,
   "additivity_error_max": 0.0,
   "global_feature_importance": [
     {
       "feature_name": "proximity_52w",
       "feature_label": "Proximity to 52W High",
-      "mean_abs_shap": 7.396,
-      "relative_importance_pct": 38.6
-    },
-    {
-      "feature_name": "momentum_rsi",
-      "feature_label": "14-Day RSI Momentum",
-      "mean_abs_shap": 5.281,
-      "relative_importance_pct": 27.5
+      "mean_abs_shap": 10.64,
+      "relative_importance_pct": 59.6
     },
     {
       "feature_name": "mtf_confluence",
       "feature_label": "Multi-Timeframe Confluence",
-      "mean_abs_shap": 2.542,
-      "relative_importance_pct": 13.3
+      "mean_abs_shap": 2.308,
+      "relative_importance_pct": 12.9
     },
     {
-      "feature_name": "conformal_rr",
-      "feature_label": "Certified Conformal R:R",
-      "mean_abs_shap": 1.315,
-      "relative_importance_pct": 6.9
-    },
-    {
-      "feature_name": "dual_basis_bps",
-      "feature_label": "Cross-Border Basis Spread",
-      "mean_abs_shap": 0.8,
-      "relative_importance_pct": 4.2
-    },
-    {
-      "feature_name": "hurst_persistence",
-      "feature_label": "Lo HAC Hurst Exponent",
-      "mean_abs_shap": 0.755,
-      "relative_importance_pct": 3.9
+      "feature_name": "momentum_rsi",
+      "feature_label": "14-Day RSI Momentum",
+      "mean_abs_shap": 1.385,
+      "relative_importance_pct": 7.8
     },
     {
       "feature_name": "trend_sma200_ratio",
       "feature_label": "Trend vs 200DMA",
-      "mean_abs_shap": 0.743,
-      "relative_importance_pct": 3.9
+      "mean_abs_shap": 1.133,
+      "relative_importance_pct": 6.3
+    },
+    {
+      "feature_name": "hurst_persistence",
+      "feature_label": "Lo HAC Hurst Exponent",
+      "mean_abs_shap": 1.114,
+      "relative_importance_pct": 6.2
     },
     {
       "feature_name": "fractional_d",
       "feature_label": "Fractional Memory Order d*",
-      "mean_abs_shap": 0.349,
-      "relative_importance_pct": 1.8
+      "mean_abs_shap": 0.497,
+      "relative_importance_pct": 2.8
+    },
+    {
+      "feature_name": "dual_basis_bps",
+      "feature_label": "Cross-Border Basis Spread",
+      "mean_abs_shap": 0.432,
+      "relative_importance_pct": 2.4
+    },
+    {
+      "feature_name": "conformal_rr",
+      "feature_label": "Certified Conformal R:R",
+      "mean_abs_shap": 0.345,
+      "relative_importance_pct": 1.9
     },
     {
       "feature_name": "roic_pct",
@@ -75,135 +75,92 @@
   "symbol_attributions": [
     {
       "symbol": "AAPL",
-      "base_value": 50.89,
-      "model_score": 63.6,
+      "base_value": 51.11,
+      "model_score": 65.9,
       "top_drivers": [
-        {
-          "feature_name": "momentum_rsi",
-          "feature_label": "14-Day RSI Momentum",
-          "feature_value": 65.7,
-          "shap_contribution": 10.04,
-          "direction": "POSITIVE"
-        },
         {
           "feature_name": "proximity_52w",
           "feature_label": "Proximity to 52W High",
-          "feature_value": -0.012,
-          "shap_contribution": 4.81,
+          "feature_value": -0.02,
+          "shap_contribution": 14.12,
           "direction": "POSITIVE"
         },
         {
           "feature_name": "mtf_confluence",
           "feature_label": "Multi-Timeframe Confluence",
           "feature_value": 85.0,
-          "shap_contribution": 1.66,
-          "direction": "POSITIVE"
-        }
-      ],
-      "top_detractors": [
-        {
-          "feature_name": "trend_sma200_ratio",
-          "feature_label": "Trend vs 200DMA",
-          "feature_value": 1.185,
-          "shap_contribution": -2.18,
-          "direction": "NEGATIVE"
-        },
-        {
-          "feature_name": "conformal_rr",
-          "feature_label": "Certified Conformal R:R",
-          "feature_value": 1.41,
-          "shap_contribution": -1.71,
-          "direction": "NEGATIVE"
-        }
-      ],
-      "all_attributions": {
-        "trend_sma200_ratio": -2.18,
-        "momentum_rsi": 10.04,
-        "proximity_52w": 4.81,
-        "mtf_confluence": 1.66,
-        "roic_pct": 0.0,
-        "pe_multiple": 0.0,
-        "hurst_persistence": 0.0,
-        "fractional_d": 0.09,
-        "amihud_illiquidity": 0.0,
-        "conformal_rr": -1.71,
-        "dual_basis_bps": 0.0
-      }
-    },
-    {
-      "symbol": "AMZN",
-      "base_value": 50.89,
-      "model_score": 49.6,
-      "top_drivers": [
-        {
-          "feature_name": "proximity_52w",
-          "feature_label": "Proximity to 52W High",
-          "feature_value": -0.131,
-          "shap_contribution": 3.42,
-          "direction": "POSITIVE"
-        },
-        {
-          "feature_name": "conformal_rr",
-          "feature_label": "Certified Conformal R:R",
-          "feature_value": 0.8,
-          "shap_contribution": 2.15,
+          "shap_contribution": 3.46,
           "direction": "POSITIVE"
         },
         {
           "feature_name": "fractional_d",
           "feature_label": "Fractional Memory Order d*",
           "feature_value": 0.39,
-          "shap_contribution": 1.59,
+          "shap_contribution": 0.27,
           "direction": "POSITIVE"
         }
       ],
       "top_detractors": [
         {
-          "feature_name": "mtf_confluence",
-          "feature_label": "Multi-Timeframe Confluence",
-          "feature_value": 40.0,
-          "shap_contribution": -5.07,
+          "feature_name": "momentum_rsi",
+          "feature_label": "14-Day RSI Momentum",
+          "feature_value": 61.8,
+          "shap_contribution": -0.96,
           "direction": "NEGATIVE"
         },
         {
-          "feature_name": "momentum_rsi",
-          "feature_label": "14-Day RSI Momentum",
-          "feature_value": 44.5,
-          "shap_contribution": -4.37,
+          "feature_name": "conformal_rr",
+          "feature_label": "Certified Conformal R:R",
+          "feature_value": 1.41,
+          "shap_contribution": -0.91,
+          "direction": "NEGATIVE"
+        },
+        {
+          "feature_name": "hurst_persistence",
+          "feature_label": "Lo HAC Hurst Exponent",
+          "feature_value": 0.474,
+          "shap_contribution": -0.7,
           "direction": "NEGATIVE"
         }
       ],
       "all_attributions": {
-        "trend_sma200_ratio": 0.0,
-        "momentum_rsi": -4.37,
-        "proximity_52w": 3.42,
-        "mtf_confluence": -5.07,
+        "trend_sma200_ratio": -0.46,
+        "momentum_rsi": -0.96,
+        "proximity_52w": 14.12,
+        "mtf_confluence": 3.46,
         "roic_pct": 0.0,
         "pe_multiple": 0.0,
-        "hurst_persistence": 0.0,
-        "fractional_d": 1.59,
+        "hurst_persistence": -0.7,
+        "fractional_d": 0.27,
         "amihud_illiquidity": 0.0,
-        "conformal_rr": 2.15,
-        "dual_basis_bps": 1.01
+        "conformal_rr": -0.91,
+        "dual_basis_bps": 0.0
       }
     },
     {
-      "symbol": "BAM",
-      "base_value": 50.89,
-      "model_score": 22.9,
+      "symbol": "AMZN",
+      "base_value": 51.11,
+      "model_score": 47.1,
       "top_drivers": [
-        {
-          "feature_name": "dual_basis_bps",
-          "feature_label": "Cross-Border Basis Spread",
-          "feature_value": 1.2,
-          "shap_contribution": 0.08,
-          "direction": "POSITIVE"
-        },
         {
           "feature_name": "trend_sma200_ratio",
           "feature_label": "Trend vs 200DMA",
-          "feature_value": 0.936,
-          "shap_contribution": 0.07,
+          "feature_value": 1.022,
+          "shap_contribution": 2.63,
+          "direction": "POSITIVE"
+        },
+        {
+          "feature_name": "momentum_rsi",
+          "feature_label": "14-Day RSI Momentum",
+          "feature_value": 41.2,
+          "shap_contribution": 1.97,
+          "direction": "POSITIVE"
+        },
+        {
+          "feature_name": "hurst_persistence",
+          "feature_label": "Lo HAC Hurst Exponent",
+          "feature_value": 0.486,
+          "shap_contribution": 0.72,
           "direction": "POSITIVE"
         }
       ],
@@ -211,212 +168,211 @@
         {
           "feature_name": "proximity_52w",
           "feature_label": "Proximity to 52W High",
-          "feature_value": -0.24,
-          "shap_contribution": -18.68,
+          "feature_value": -0.143,
+          "shap_contribution": -9.2,
           "direction": "NEGATIVE"
         },
         {
           "feature_name": "mtf_confluence",
           "feature_label": "Multi-Timeframe Confluence",
-          "feature_value": 10.0,
-          "shap_contribution": -4.65,
+          "feature_value": 40.0,
+          "shap_contribution": -0.64,
           "direction": "NEGATIVE"
         },
         {
-          "feature_name": "hurst_persistence",
-          "feature_label": "Lo HAC Hurst Exponent",
-          "feature_value": 0.521,
-          "shap_contribution": -3.55,
+          "feature_name": "fractional_d",
+          "feature_label": "Fractional Memory Order d*",
+          "feature_value": 0.39,
+          "shap_contribution": -0.12,
           "direction": "NEGATIVE"
         }
       ],
       "all_attributions": {
-        "trend_sma200_ratio": 0.07,
-        "momentum_rsi": -0.06,
-        "proximity_52w": -18.68,
-        "mtf_confluence": -4.65,
+        "trend_sma200_ratio": 2.63,
+        "momentum_rsi": 1.97,
+        "proximity_52w": -9.2,
+        "mtf_confluence": -0.64,
         "roic_pct": 0.0,
         "pe_multiple": 0.0,
-        "hurst_persistence": -3.55,
-        "fractional_d": -0.4,
+        "hurst_persistence": 0.72,
+        "fractional_d": -0.12,
         "amihud_illiquidity": 0.0,
-        "conformal_rr": -0.82,
-        "dual_basis_bps": 0.08
+        "conformal_rr": 0.0,
+        "dual_basis_bps": 0.59
       }
     },
     {
-      "symbol": "BN",
-      "base_value": 50.89,
-      "model_score": 22.2,
+      "symbol": "BAM",
+      "base_value": 51.11,
+      "model_score": 23.2,
       "top_drivers": [],
       "top_detractors": [
         {
           "feature_name": "proximity_52w",
           "feature_label": "Proximity to 52W High",
-          "feature_value": -0.238,
-          "shap_contribution": -18.84,
+          "feature_value": -0.242,
+          "shap_contribution": -16.95,
           "direction": "NEGATIVE"
         },
         {
-          "feature_name": "mtf_confluence",
-          "feature_label": "Multi-Timeframe Confluence",
-          "feature_value": 10.0,
-          "shap_contribution": -4.65,
+          "feature_name": "momentum_rsi",
+          "feature_label": "14-Day RSI Momentum",
+          "feature_value": 32.5,
+          "shap_contribution": -3.77,
           "direction": "NEGATIVE"
         },
         {
-          "feature_name": "hurst_persistence",
-          "feature_label": "Lo HAC Hurst Exponent",
-          "feature_value": 0.483,
-          "shap_contribution": -3.62,
+          "feature_name": "trend_sma200_ratio",
+          "feature_label": "Trend vs 200DMA",
+          "feature_value": 0.934,
+          "shap_contribution": -2.99,
           "direction": "NEGATIVE"
         }
       ],
       "all_attributions": {
-        "trend_sma200_ratio": -0.07,
-        "momentum_rsi": -0.2,
-        "proximity_52w": -18.84,
-        "mtf_confluence": -4.65,
+        "trend_sma200_ratio": -2.99,
+        "momentum_rsi": -3.77,
+        "proximity_52w": -16.95,
+        "mtf_confluence": -2.23,
         "roic_pct": 0.0,
         "pe_multiple": 0.0,
-        "hurst_persistence": -3.62,
-        "fractional_d": -0.4,
+        "hurst_persistence": -1.26,
+        "fractional_d": 0.0,
         "amihud_illiquidity": 0.0,
-        "conformal_rr": -0.88,
-        "dual_basis_bps": -0.08
+        "conformal_rr": -0.04,
+        "dual_basis_bps": -0.65
+      }
+    },
+    {
+      "symbol": "BN",
+      "base_value": 51.11,
+      "model_score": 23.7,
+      "top_drivers": [],
+      "top_detractors": [
+        {
+          "feature_name": "proximity_52w",
+          "feature_label": "Proximity to 52W High",
+          "feature_value": -0.249,
+          "shap_contribution": -16.89,
+          "direction": "NEGATIVE"
+        },
+        {
+          "feature_name": "momentum_rsi",
+          "feature_label": "14-Day RSI Momentum",
+          "feature_value": 30.8,
+          "shap_contribution": -3.72,
+          "direction": "NEGATIVE"
+        },
+        {
+          "feature_name": "trend_sma200_ratio",
+          "feature_label": "Trend vs 200DMA",
+          "feature_value": 0.85,
+          "shap_contribution": -2.91,
+          "direction": "NEGATIVE"
+        }
+      ],
+      "all_attributions": {
+        "trend_sma200_ratio": -2.91,
+        "momentum_rsi": -3.72,
+        "proximity_52w": -16.89,
+        "mtf_confluence": -2.23,
+        "roic_pct": 0.0,
+        "pe_multiple": 0.0,
+        "hurst_persistence": -1.13,
+        "fractional_d": 0.0,
+        "amihud_illiquidity": 0.0,
+        "conformal_rr": 0.04,
+        "dual_basis_bps": -0.59
       }
     },
     {
       "symbol": "CNQ",
-      "base_value": 50.89,
-      "model_score": 52.7,
+      "base_value": 51.11,
+      "model_score": 55.0,
       "top_drivers": [
         {
           "feature_name": "proximity_52w",
           "feature_label": "Proximity to 52W High",
-          "feature_value": -0.072,
-          "shap_contribution": 2.93,
+          "feature_value": -0.069,
+          "shap_contribution": 6.1,
           "direction": "POSITIVE"
         },
         {
-          "feature_name": "mtf_confluence",
-          "feature_label": "Multi-Timeframe Confluence",
-          "feature_value": 60.0,
-          "shap_contribution": 1.78,
+          "feature_name": "fractional_d",
+          "feature_label": "Fractional Memory Order d*",
+          "feature_value": 0.48,
+          "shap_contribution": 0.63,
           "direction": "POSITIVE"
         },
         {
           "feature_name": "conformal_rr",
           "feature_label": "Certified Conformal R:R",
           "feature_value": 1.12,
-          "shap_contribution": 1.15,
+          "shap_contribution": 0.18,
           "direction": "POSITIVE"
         }
       ],
       "top_detractors": [
         {
+          "feature_name": "mtf_confluence",
+          "feature_label": "Multi-Timeframe Confluence",
+          "feature_value": 60.0,
+          "shap_contribution": -2.0,
+          "direction": "NEGATIVE"
+        },
+        {
+          "feature_name": "hurst_persistence",
+          "feature_label": "Lo HAC Hurst Exponent",
+          "feature_value": 0.48,
+          "shap_contribution": -0.89,
+          "direction": "NEGATIVE"
+        },
+        {
           "feature_name": "momentum_rsi",
           "feature_label": "14-Day RSI Momentum",
-          "feature_value": 44.2,
-          "shap_contribution": -5.27,
+          "feature_value": 45.2,
+          "shap_contribution": -0.3,
           "direction": "NEGATIVE"
         }
       ],
       "all_attributions": {
         "trend_sma200_ratio": 0.0,
-        "momentum_rsi": -5.27,
-        "proximity_52w": 2.93,
-        "mtf_confluence": 1.78,
+        "momentum_rsi": -0.3,
+        "proximity_52w": 6.1,
+        "mtf_confluence": -2.0,
         "roic_pct": 0.0,
         "pe_multiple": 0.0,
-        "hurst_persistence": 0.0,
-        "fractional_d": 0.09,
+        "hurst_persistence": -0.89,
+        "fractional_d": 0.63,
         "amihud_illiquidity": 0.0,
-        "conformal_rr": 1.15,
-        "dual_basis_bps": 1.09
+        "conformal_rr": 0.18,
+        "dual_basis_bps": 0.18
       }
     },
     {
       "symbol": "CNR",
-      "base_value": 50.89,
-      "model_score": 49.4,
+      "base_value": 51.11,
+      "model_score": 52.5,
       "top_drivers": [
         {
           "feature_name": "proximity_52w",
           "feature_label": "Proximity to 52W High",
-          "feature_value": -0.077,
-          "shap_contribution": 2.97,
-          "direction": "POSITIVE"
-        },
-        {
-          "feature_name": "mtf_confluence",
-          "feature_label": "Multi-Timeframe Confluence",
-          "feature_value": 60.0,
-          "shap_contribution": 1.78,
+          "feature_value": -0.074,
+          "shap_contribution": 6.1,
           "direction": "POSITIVE"
         },
         {
           "feature_name": "conformal_rr",
           "feature_label": "Certified Conformal R:R",
           "feature_value": 0.95,
-          "shap_contribution": 1.15,
+          "shap_contribution": 0.18,
           "direction": "POSITIVE"
-        }
-      ],
-      "top_detractors": [
-        {
-          "feature_name": "momentum_rsi",
-          "feature_label": "14-Day RSI Momentum",
-          "feature_value": 51.0,
-          "shap_contribution": -4.82,
-          "direction": "NEGATIVE"
-        },
-        {
-          "feature_name": "dual_basis_bps",
-          "feature_label": "Cross-Border Basis Spread",
-          "feature_value": -9.1,
-          "shap_contribution": -2.51,
-          "direction": "NEGATIVE"
         },
         {
           "feature_name": "fractional_d",
           "feature_label": "Fractional Memory Order d*",
           "feature_value": 0.52,
-          "shap_contribution": -0.12,
-          "direction": "NEGATIVE"
-        }
-      ],
-      "all_attributions": {
-        "trend_sma200_ratio": 0.0,
-        "momentum_rsi": -4.82,
-        "proximity_52w": 2.97,
-        "mtf_confluence": 1.78,
-        "roic_pct": 0.0,
-        "pe_multiple": 0.0,
-        "hurst_persistence": 0.0,
-        "fractional_d": -0.12,
-        "amihud_illiquidity": 0.0,
-        "conformal_rr": 1.15,
-        "dual_basis_bps": -2.51
-      }
-    },
-    {
-      "symbol": "CP",
-      "base_value": 50.89,
-      "model_score": 42.3,
-      "top_drivers": [
-        {
-          "feature_name": "proximity_52w",
-          "feature_label": "Proximity to 52W High",
-          "feature_value": -0.079,
-          "shap_contribution": 3.97,
-          "direction": "POSITIVE"
-        },
-        {
-          "feature_name": "hurst_persistence",
-          "feature_label": "Lo HAC Hurst Exponent",
-          "feature_value": 0.478,
-          "shap_contribution": 0.19,
+          "shap_contribution": 0.11,
           "direction": "POSITIVE"
         }
       ],
@@ -425,283 +381,297 @@
           "feature_name": "mtf_confluence",
           "feature_label": "Multi-Timeframe Confluence",
           "feature_value": 40.0,
-          "shap_contribution": -5.13,
+          "shap_contribution": -3.31,
           "direction": "NEGATIVE"
         },
         {
+          "feature_name": "hurst_persistence",
+          "feature_label": "Lo HAC Hurst Exponent",
+          "feature_value": 0.386,
+          "shap_contribution": -0.89,
+          "direction": "NEGATIVE"
+        },
+        {
+          "feature_name": "dual_basis_bps",
+          "feature_label": "Cross-Border Basis Spread",
+          "feature_value": -9.1,
+          "shap_contribution": -0.55,
+          "direction": "NEGATIVE"
+        }
+      ],
+      "all_attributions": {
+        "trend_sma200_ratio": 0.0,
+        "momentum_rsi": -0.23,
+        "proximity_52w": 6.1,
+        "mtf_confluence": -3.31,
+        "roic_pct": 0.0,
+        "pe_multiple": 0.0,
+        "hurst_persistence": -0.89,
+        "fractional_d": 0.11,
+        "amihud_illiquidity": 0.0,
+        "conformal_rr": 0.18,
+        "dual_basis_bps": -0.55
+      }
+    },
+    {
+      "symbol": "CP",
+      "base_value": 51.11,
+      "model_score": 40.9,
+      "top_drivers": [
+        {
           "feature_name": "momentum_rsi",
           "feature_label": "14-Day RSI Momentum",
-          "feature_value": 42.5,
-          "shap_contribution": -4.63,
+          "feature_value": 41.7,
+          "shap_contribution": 1.97,
+          "direction": "POSITIVE"
+        },
+        {
+          "feature_name": "trend_sma200_ratio",
+          "feature_label": "Trend vs 200DMA",
+          "feature_value": 1.049,
+          "shap_contribution": 0.48,
+          "direction": "POSITIVE"
+        }
+      ],
+      "top_detractors": [
+        {
+          "feature_name": "proximity_52w",
+          "feature_label": "Proximity to 52W High",
+          "feature_value": -0.081,
+          "shap_contribution": -9.2,
+          "direction": "NEGATIVE"
+        },
+        {
+          "feature_name": "hurst_persistence",
+          "feature_label": "Lo HAC Hurst Exponent",
+          "feature_value": 0.478,
+          "shap_contribution": -1.81,
           "direction": "NEGATIVE"
         },
         {
           "feature_name": "dual_basis_bps",
           "feature_label": "Cross-Border Basis Spread",
           "feature_value": -2.8,
-          "shap_contribution": -2.35,
+          "shap_contribution": -0.88,
           "direction": "NEGATIVE"
         }
       ],
       "all_attributions": {
-        "trend_sma200_ratio": 0.0,
-        "momentum_rsi": -4.63,
-        "proximity_52w": 3.97,
-        "mtf_confluence": -5.13,
+        "trend_sma200_ratio": 0.48,
+        "momentum_rsi": 1.97,
+        "proximity_52w": -9.2,
+        "mtf_confluence": -0.64,
         "roic_pct": 0.0,
         "pe_multiple": 0.0,
-        "hurst_persistence": 0.19,
-        "fractional_d": -0.4,
+        "hurst_persistence": -1.81,
+        "fractional_d": -0.12,
         "amihud_illiquidity": 0.0,
-        "conformal_rr": -0.23,
-        "dual_basis_bps": -2.35
+        "conformal_rr": 0.0,
+        "dual_basis_bps": -0.88
       }
     },
     {
       "symbol": "ENB",
-      "base_value": 50.89,
-      "model_score": 30.9,
+      "base_value": 51.11,
+      "model_score": 31.0,
       "top_drivers": [
         {
           "feature_name": "hurst_persistence",
           "feature_label": "Lo HAC Hurst Exponent",
           "feature_value": 0.408,
-          "shap_contribution": 2.73,
-          "direction": "POSITIVE"
-        }
-      ],
-      "top_detractors": [
-        {
-          "feature_name": "proximity_52w",
-          "feature_label": "Proximity to 52W High",
-          "feature_value": -0.18,
-          "shap_contribution": -15.71,
-          "direction": "NEGATIVE"
-        },
-        {
-          "feature_name": "mtf_confluence",
-          "feature_label": "Multi-Timeframe Confluence",
-          "feature_value": 10.0,
-          "shap_contribution": -4.66,
-          "direction": "NEGATIVE"
-        },
-        {
-          "feature_name": "fractional_d",
-          "feature_label": "Fractional Memory Order d*",
-          "feature_value": 0.5,
-          "shap_contribution": -1.48,
-          "direction": "NEGATIVE"
-        }
-      ],
-      "all_attributions": {
-        "trend_sma200_ratio": -0.46,
-        "momentum_rsi": -0.19,
-        "proximity_52w": -15.71,
-        "mtf_confluence": -4.66,
-        "roic_pct": 0.0,
-        "pe_multiple": 0.0,
-        "hurst_persistence": 2.73,
-        "fractional_d": -1.48,
-        "amihud_illiquidity": 0.0,
-        "conformal_rr": -0.23,
-        "dual_basis_bps": -0.02
-      }
-    },
-    {
-      "symbol": "GOOGL",
-      "base_value": 50.89,
-      "model_score": 50.1,
-      "top_drivers": [
-        {
-          "feature_name": "proximity_52w",
-          "feature_label": "Proximity to 52W High",
-          "feature_value": -0.158,
-          "shap_contribution": 2.66,
-          "direction": "POSITIVE"
-        },
-        {
-          "feature_name": "mtf_confluence",
-          "feature_label": "Multi-Timeframe Confluence",
-          "feature_value": 45.0,
-          "shap_contribution": 1.84,
+          "shap_contribution": 1.86,
           "direction": "POSITIVE"
         },
         {
           "feature_name": "dual_basis_bps",
           "feature_label": "Cross-Border Basis Spread",
-          "feature_value": 0.0,
-          "shap_contribution": 1.09,
+          "feature_value": 2.5,
+          "shap_contribution": 1.24,
           "direction": "POSITIVE"
         }
       ],
       "top_detractors": [
-        {
-          "feature_name": "momentum_rsi",
-          "feature_label": "14-Day RSI Momentum",
-          "feature_value": 49.7,
-          "shap_contribution": -4.69,
-          "direction": "NEGATIVE"
-        },
-        {
-          "feature_name": "conformal_rr",
-          "feature_label": "Certified Conformal R:R",
-          "feature_value": 1.45,
-          "shap_contribution": -1.7,
-          "direction": "NEGATIVE"
-        }
-      ],
-      "all_attributions": {
-        "trend_sma200_ratio": 0.0,
-        "momentum_rsi": -4.69,
-        "proximity_52w": 2.66,
-        "mtf_confluence": 1.84,
-        "roic_pct": 0.0,
-        "pe_multiple": 0.0,
-        "hurst_persistence": 0.0,
-        "fractional_d": 0.0,
-        "amihud_illiquidity": 0.0,
-        "conformal_rr": -1.7,
-        "dual_basis_bps": 1.09
-      }
-    },
-    {
-      "symbol": "JPM",
-      "base_value": 50.89,
-      "model_score": 52.5,
-      "top_drivers": [
         {
           "feature_name": "proximity_52w",
           "feature_label": "Proximity to 52W High",
-          "feature_value": -0.064,
-          "shap_contribution": 2.97,
-          "direction": "POSITIVE"
-        },
-        {
-          "feature_name": "mtf_confluence",
-          "feature_label": "Multi-Timeframe Confluence",
-          "feature_value": 75.0,
-          "shap_contribution": 1.78,
-          "direction": "POSITIVE"
-        },
-        {
-          "feature_name": "conformal_rr",
-          "feature_label": "Certified Conformal R:R",
-          "feature_value": 0.98,
-          "shap_contribution": 1.15,
-          "direction": "POSITIVE"
-        }
-      ],
-      "top_detractors": [
-        {
-          "feature_name": "momentum_rsi",
-          "feature_label": "14-Day RSI Momentum",
-          "feature_value": 41.7,
-          "shap_contribution": -5.27,
-          "direction": "NEGATIVE"
-        },
-        {
-          "feature_name": "fractional_d",
-          "feature_label": "Fractional Memory Order d*",
-          "feature_value": 0.56,
-          "shap_contribution": -0.12,
-          "direction": "NEGATIVE"
-        }
-      ],
-      "all_attributions": {
-        "trend_sma200_ratio": 0.0,
-        "momentum_rsi": -5.27,
-        "proximity_52w": 2.97,
-        "mtf_confluence": 1.78,
-        "roic_pct": 0.0,
-        "pe_multiple": 0.0,
-        "hurst_persistence": 0.0,
-        "fractional_d": -0.12,
-        "amihud_illiquidity": 0.0,
-        "conformal_rr": 1.15,
-        "dual_basis_bps": 1.09
-      }
-    },
-    {
-      "symbol": "MSFT",
-      "base_value": 50.89,
-      "model_score": 63.2,
-      "top_drivers": [
-        {
-          "feature_name": "momentum_rsi",
-          "feature_label": "14-Day RSI Momentum",
-          "feature_value": 63.2,
-          "shap_contribution": 10.29,
-          "direction": "POSITIVE"
-        },
-        {
-          "feature_name": "proximity_52w",
-          "feature_label": "Proximity to 52W High",
-          "feature_value": -0.068,
-          "shap_contribution": 2.48,
-          "direction": "POSITIVE"
-        },
-        {
-          "feature_name": "mtf_confluence",
-          "feature_label": "Multi-Timeframe Confluence",
-          "feature_value": 100.0,
-          "shap_contribution": 1.66,
-          "direction": "POSITIVE"
-        }
-      ],
-      "top_detractors": [
-        {
-          "feature_name": "conformal_rr",
-          "feature_label": "Certified Conformal R:R",
-          "feature_value": 1.25,
-          "shap_contribution": -1.15,
+          "feature_value": -0.174,
+          "shap_contribution": -14.73,
           "direction": "NEGATIVE"
         },
         {
           "feature_name": "trend_sma200_ratio",
           "feature_label": "Trend vs 200DMA",
-          "feature_value": 1.195,
-          "shap_contribution": -1.03,
+          "feature_value": 0.921,
+          "shap_contribution": -3.02,
+          "direction": "NEGATIVE"
+        },
+        {
+          "feature_name": "momentum_rsi",
+          "feature_label": "14-Day RSI Momentum",
+          "feature_value": 34.7,
+          "shap_contribution": -2.85,
           "direction": "NEGATIVE"
         }
       ],
       "all_attributions": {
-        "trend_sma200_ratio": -1.03,
-        "momentum_rsi": 10.29,
-        "proximity_52w": 2.48,
-        "mtf_confluence": 1.66,
+        "trend_sma200_ratio": -3.02,
+        "momentum_rsi": -2.85,
+        "proximity_52w": -14.73,
+        "mtf_confluence": -2.27,
         "roic_pct": 0.0,
         "pe_multiple": 0.0,
-        "hurst_persistence": 0.0,
-        "fractional_d": 0.09,
+        "hurst_persistence": 1.86,
+        "fractional_d": -0.21,
         "amihud_illiquidity": 0.0,
-        "conformal_rr": -1.15,
-        "dual_basis_bps": 0.0
+        "conformal_rr": -0.16,
+        "dual_basis_bps": 1.24
       }
     },
     {
-      "symbol": "NVDA",
-      "base_value": 50.89,
-      "model_score": 63.5,
+      "symbol": "GOOGL",
+      "base_value": 51.11,
+      "model_score": 47.6,
       "top_drivers": [
         {
-          "feature_name": "momentum_rsi",
-          "feature_label": "14-Day RSI Momentum",
-          "feature_value": 55.2,
-          "shap_contribution": 9.75,
+          "feature_name": "trend_sma200_ratio",
+          "feature_label": "Trend vs 200DMA",
+          "feature_value": 1.013,
+          "shap_contribution": 2.63,
           "direction": "POSITIVE"
         },
         {
+          "feature_name": "momentum_rsi",
+          "feature_label": "14-Day RSI Momentum",
+          "feature_value": 48.8,
+          "shap_contribution": 1.97,
+          "direction": "POSITIVE"
+        },
+        {
+          "feature_name": "hurst_persistence",
+          "feature_label": "Lo HAC Hurst Exponent",
+          "feature_value": 0.495,
+          "shap_contribution": 1.3,
+          "direction": "POSITIVE"
+        }
+      ],
+      "top_detractors": [
+        {
           "feature_name": "proximity_52w",
           "feature_label": "Proximity to 52W High",
-          "feature_value": -0.048,
-          "shap_contribution": 4.88,
+          "feature_value": -0.161,
+          "shap_contribution": -9.2,
+          "direction": "NEGATIVE"
+        },
+        {
+          "feature_name": "mtf_confluence",
+          "feature_label": "Multi-Timeframe Confluence",
+          "feature_value": 40.0,
+          "shap_contribution": -0.64,
+          "direction": "NEGATIVE"
+        },
+        {
+          "feature_name": "fractional_d",
+          "feature_label": "Fractional Memory Order d*",
+          "feature_value": 0.39,
+          "shap_contribution": -0.12,
+          "direction": "NEGATIVE"
+        }
+      ],
+      "all_attributions": {
+        "trend_sma200_ratio": 2.63,
+        "momentum_rsi": 1.97,
+        "proximity_52w": -9.2,
+        "mtf_confluence": -0.64,
+        "roic_pct": 0.0,
+        "pe_multiple": 0.0,
+        "hurst_persistence": 1.3,
+        "fractional_d": -0.12,
+        "amihud_illiquidity": 0.0,
+        "conformal_rr": 0.0,
+        "dual_basis_bps": 0.59
+      }
+    },
+    {
+      "symbol": "JPM",
+      "base_value": 51.11,
+      "model_score": 48.3,
+      "top_drivers": [
+        {
+          "feature_name": "trend_sma200_ratio",
+          "feature_label": "Trend vs 200DMA",
+          "feature_value": 1.047,
+          "shap_contribution": 2.63,
+          "direction": "POSITIVE"
+        },
+        {
+          "feature_name": "momentum_rsi",
+          "feature_label": "14-Day RSI Momentum",
+          "feature_value": 36.0,
+          "shap_contribution": 1.97,
+          "direction": "POSITIVE"
+        },
+        {
+          "feature_name": "hurst_persistence",
+          "feature_label": "Lo HAC Hurst Exponent",
+          "feature_value": 0.505,
+          "shap_contribution": 1.5,
+          "direction": "POSITIVE"
+        }
+      ],
+      "top_detractors": [
+        {
+          "feature_name": "proximity_52w",
+          "feature_label": "Proximity to 52W High",
+          "feature_value": -0.082,
+          "shap_contribution": -9.2,
+          "direction": "NEGATIVE"
+        },
+        {
+          "feature_name": "mtf_confluence",
+          "feature_label": "Multi-Timeframe Confluence",
+          "feature_value": 40.0,
+          "shap_contribution": -0.64,
+          "direction": "NEGATIVE"
+        }
+      ],
+      "all_attributions": {
+        "trend_sma200_ratio": 2.63,
+        "momentum_rsi": 1.97,
+        "proximity_52w": -9.2,
+        "mtf_confluence": -0.64,
+        "roic_pct": 0.0,
+        "pe_multiple": 0.0,
+        "hurst_persistence": 1.5,
+        "fractional_d": 0.35,
+        "amihud_illiquidity": 0.0,
+        "conformal_rr": 0.0,
+        "dual_basis_bps": 0.59
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "base_value": 51.11,
+      "model_score": 62.5,
+      "top_drivers": [
+        {
+          "feature_name": "proximity_52w",
+          "feature_label": "Proximity to 52W High",
+          "feature_value": -0.08,
+          "shap_contribution": 5.19,
           "direction": "POSITIVE"
         },
         {
           "feature_name": "mtf_confluence",
           "feature_label": "Multi-Timeframe Confluence",
           "feature_value": 85.0,
-          "shap_contribution": 1.66,
+          "shap_contribution": 3.46,
+          "direction": "POSITIVE"
+        },
+        {
+          "feature_name": "hurst_persistence",
+          "feature_label": "Lo HAC Hurst Exponent",
+          "feature_value": 0.546,
+          "shap_contribution": 1.13,
           "direction": "POSITIVE"
         }
       ],
@@ -709,399 +679,478 @@
         {
           "feature_name": "trend_sma200_ratio",
           "feature_label": "Trend vs 200DMA",
-          "feature_value": 1.128,
-          "shap_contribution": -2.18,
+          "feature_value": 1.178,
+          "shap_contribution": -0.46,
+          "direction": "NEGATIVE"
+        }
+      ],
+      "all_attributions": {
+        "trend_sma200_ratio": -0.46,
+        "momentum_rsi": 0.9,
+        "proximity_52w": 5.19,
+        "mtf_confluence": 3.46,
+        "roic_pct": 0.0,
+        "pe_multiple": 0.0,
+        "hurst_persistence": 1.13,
+        "fractional_d": 0.89,
+        "amihud_illiquidity": 0.0,
+        "conformal_rr": 0.06,
+        "dual_basis_bps": 0.18
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "base_value": 51.11,
+      "model_score": 64.6,
+      "top_drivers": [
+        {
+          "feature_name": "proximity_52w",
+          "feature_label": "Proximity to 52W High",
+          "feature_value": -0.032,
+          "shap_contribution": 10.32,
+          "direction": "POSITIVE"
+        },
+        {
+          "feature_name": "mtf_confluence",
+          "feature_label": "Multi-Timeframe Confluence",
+          "feature_value": 85.0,
+          "shap_contribution": 3.46,
+          "direction": "POSITIVE"
+        },
+        {
+          "feature_name": "fractional_d",
+          "feature_label": "Fractional Memory Order d*",
+          "feature_value": 0.39,
+          "shap_contribution": 0.66,
+          "direction": "POSITIVE"
+        }
+      ],
+      "top_detractors": [
+        {
+          "feature_name": "trend_sma200_ratio",
+          "feature_label": "Trend vs 200DMA",
+          "feature_value": 1.146,
+          "shap_contribution": -0.46,
           "direction": "NEGATIVE"
         },
         {
           "feature_name": "conformal_rr",
           "feature_label": "Certified Conformal R:R",
           "feature_value": 0.95,
-          "shap_contribution": -1.63,
+          "shap_contribution": -0.42,
+          "direction": "NEGATIVE"
+        },
+        {
+          "feature_name": "hurst_persistence",
+          "feature_label": "Lo HAC Hurst Exponent",
+          "feature_value": 0.464,
+          "shap_contribution": -0.17,
           "direction": "NEGATIVE"
         }
       ],
       "all_attributions": {
-        "trend_sma200_ratio": -2.18,
-        "momentum_rsi": 9.75,
-        "proximity_52w": 4.88,
-        "mtf_confluence": 1.66,
+        "trend_sma200_ratio": -0.46,
+        "momentum_rsi": -0.06,
+        "proximity_52w": 10.32,
+        "mtf_confluence": 3.46,
         "roic_pct": 0.0,
         "pe_multiple": 0.0,
-        "hurst_persistence": 0.0,
-        "fractional_d": 0.09,
+        "hurst_persistence": -0.17,
+        "fractional_d": 0.66,
         "amihud_illiquidity": 0.0,
-        "conformal_rr": -1.63,
-        "dual_basis_bps": 0.0
+        "conformal_rr": -0.42,
+        "dual_basis_bps": 0.18
       }
     },
     {
       "symbol": "QQQ",
-      "base_value": 50.89,
-      "model_score": 78.8,
+      "base_value": 51.11,
+      "model_score": 77.9,
       "top_drivers": [
         {
           "feature_name": "proximity_52w",
           "feature_label": "Proximity to 52W High",
-          "feature_value": -0.006,
-          "shap_contribution": 10.89,
+          "feature_value": -0.016,
+          "shap_contribution": 18.39,
           "direction": "POSITIVE"
         },
         {
-          "feature_name": "momentum_rsi",
-          "feature_label": "14-Day RSI Momentum",
-          "feature_value": 64.7,
-          "shap_contribution": 10.04,
+          "feature_name": "mtf_confluence",
+          "feature_label": "Multi-Timeframe Confluence",
+          "feature_value": 85.0,
+          "shap_contribution": 3.46,
           "direction": "POSITIVE"
         },
         {
-          "feature_name": "trend_sma200_ratio",
-          "feature_label": "Trend vs 200DMA",
-          "feature_value": 1.119,
-          "shap_contribution": 2.69,
+          "feature_name": "hurst_persistence",
+          "feature_label": "Lo HAC Hurst Exponent",
+          "feature_value": 0.496,
+          "shap_contribution": 1.66,
           "direction": "POSITIVE"
         }
       ],
       "top_detractors": [],
       "all_attributions": {
-        "trend_sma200_ratio": 2.69,
-        "momentum_rsi": 10.04,
-        "proximity_52w": 10.89,
-        "mtf_confluence": 1.66,
+        "trend_sma200_ratio": 0.92,
+        "momentum_rsi": 0.96,
+        "proximity_52w": 18.39,
+        "mtf_confluence": 3.46,
         "roic_pct": 0.0,
         "pe_multiple": 0.0,
-        "hurst_persistence": 0.0,
-        "fractional_d": 0.09,
+        "hurst_persistence": 1.66,
+        "fractional_d": 0.26,
         "amihud_illiquidity": 0.0,
-        "conformal_rr": 2.57,
+        "conformal_rr": 1.15,
         "dual_basis_bps": 0.0
       }
     },
     {
       "symbol": "RY",
-      "base_value": 50.89,
-      "model_score": 45.9,
+      "base_value": 51.11,
+      "model_score": 47.1,
       "top_drivers": [
         {
           "feature_name": "proximity_52w",
           "feature_label": "Proximity to 52W High",
-          "feature_value": -0.068,
-          "shap_contribution": 2.97,
-          "direction": "POSITIVE"
-        },
-        {
-          "feature_name": "mtf_confluence",
-          "feature_label": "Multi-Timeframe Confluence",
-          "feature_value": 60.0,
-          "shap_contribution": 1.78,
+          "feature_value": -0.07,
+          "shap_contribution": 6.1,
           "direction": "POSITIVE"
         }
       ],
       "top_detractors": [
         {
-          "feature_name": "momentum_rsi",
-          "feature_label": "14-Day RSI Momentum",
-          "feature_value": 48.4,
-          "shap_contribution": -5.27,
+          "feature_name": "fractional_d",
+          "feature_label": "Fractional Memory Order d*",
+          "feature_value": 0.57,
+          "shap_contribution": -3.84,
           "direction": "NEGATIVE"
         },
         {
-          "feature_name": "dual_basis_bps",
-          "feature_label": "Cross-Border Basis Spread",
-          "feature_value": -2.5,
-          "shap_contribution": -2.51,
+          "feature_name": "mtf_confluence",
+          "feature_label": "Multi-Timeframe Confluence",
+          "feature_value": 40.0,
+          "shap_contribution": -3.31,
           "direction": "NEGATIVE"
         },
         {
           "feature_name": "conformal_rr",
           "feature_label": "Certified Conformal R:R",
           "feature_value": 1.45,
-          "shap_contribution": -1.7,
+          "shap_contribution": -1.06,
           "direction": "NEGATIVE"
         }
       ],
       "all_attributions": {
         "trend_sma200_ratio": 0.0,
-        "momentum_rsi": -5.27,
-        "proximity_52w": 2.97,
-        "mtf_confluence": 1.78,
+        "momentum_rsi": -0.45,
+        "proximity_52w": 6.1,
+        "mtf_confluence": -3.31,
         "roic_pct": 0.0,
         "pe_multiple": 0.0,
-        "hurst_persistence": 0.0,
-        "fractional_d": -0.29,
+        "hurst_persistence": -0.89,
+        "fractional_d": -3.84,
         "amihud_illiquidity": 0.0,
-        "conformal_rr": -1.7,
-        "dual_basis_bps": -2.51
+        "conformal_rr": -1.06,
+        "dual_basis_bps": -0.55
       }
     },
     {
       "symbol": "SHOP",
-      "base_value": 50.89,
-      "model_score": 38.7,
+      "base_value": 51.11,
+      "model_score": 38.1,
       "top_drivers": [
+        {
+          "feature_name": "momentum_rsi",
+          "feature_label": "14-Day RSI Momentum",
+          "feature_value": 56.8,
+          "shap_contribution": 2.48,
+          "direction": "POSITIVE"
+        },
+        {
+          "feature_name": "mtf_confluence",
+          "feature_label": "Multi-Timeframe Confluence",
+          "feature_value": 85.0,
+          "shap_contribution": 1.38,
+          "direction": "POSITIVE"
+        },
+        {
+          "feature_name": "trend_sma200_ratio",
+          "feature_label": "Trend vs 200DMA",
+          "feature_value": 1.137,
+          "shap_contribution": 0.54,
+          "direction": "POSITIVE"
+        }
+      ],
+      "top_detractors": [
+        {
+          "feature_name": "proximity_52w",
+          "feature_label": "Proximity to 52W High",
+          "feature_value": -0.193,
+          "shap_contribution": -15.7,
+          "direction": "NEGATIVE"
+        },
         {
           "feature_name": "hurst_persistence",
           "feature_label": "Lo HAC Hurst Exponent",
           "feature_value": 0.469,
-          "shap_contribution": 4.25,
-          "direction": "POSITIVE"
-        },
-        {
-          "feature_name": "mtf_confluence",
-          "feature_label": "Multi-Timeframe Confluence",
-          "feature_value": 85.0,
-          "shap_contribution": 1.48,
-          "direction": "POSITIVE"
-        },
-        {
-          "feature_name": "fractional_d",
-          "feature_label": "Fractional Memory Order d*",
-          "feature_value": 0.44,
-          "shap_contribution": 1.08,
-          "direction": "POSITIVE"
-        }
-      ],
-      "top_detractors": [
-        {
-          "feature_name": "proximity_52w",
-          "feature_label": "Proximity to 52W High",
-          "feature_value": -0.205,
-          "shap_contribution": -17.03,
+          "shap_contribution": -1.16,
           "direction": "NEGATIVE"
-        },
-        {
-          "feature_name": "conformal_rr",
-          "feature_label": "Certified Conformal R:R",
-          "feature_value": 1.26,
-          "shap_contribution": -1.7,
-          "direction": "NEGATIVE"
-        },
-        {
-          "feature_name": "momentum_rsi",
-          "feature_label": "14-Day RSI Momentum",
-          "feature_value": 55.1,
-          "shap_contribution": -0.58,
-          "direction": "NEGATIVE"
-        }
-      ],
-      "all_attributions": {
-        "trend_sma200_ratio": 0.46,
-        "momentum_rsi": -0.58,
-        "proximity_52w": -17.03,
-        "mtf_confluence": 1.48,
-        "roic_pct": 0.0,
-        "pe_multiple": 0.0,
-        "hurst_persistence": 4.25,
-        "fractional_d": 1.08,
-        "amihud_illiquidity": 0.0,
-        "conformal_rr": -1.7,
-        "dual_basis_bps": -0.14
-      }
-    },
-    {
-      "symbol": "SPY",
-      "base_value": 50.89,
-      "model_score": 72.8,
-      "top_drivers": [
-        {
-          "feature_name": "momentum_rsi",
-          "feature_label": "14-Day RSI Momentum",
-          "feature_value": 55.9,
-          "shap_contribution": 10.04,
-          "direction": "POSITIVE"
-        },
-        {
-          "feature_name": "proximity_52w",
-          "feature_label": "Proximity to 52W High",
-          "feature_value": -0.01,
-          "shap_contribution": 4.81,
-          "direction": "POSITIVE"
-        },
-        {
-          "feature_name": "trend_sma200_ratio",
-          "feature_label": "Trend vs 200DMA",
-          "feature_value": 1.074,
-          "shap_contribution": 2.69,
-          "direction": "POSITIVE"
-        }
-      ],
-      "top_detractors": [],
-      "all_attributions": {
-        "trend_sma200_ratio": 2.69,
-        "momentum_rsi": 10.04,
-        "proximity_52w": 4.81,
-        "mtf_confluence": 1.66,
-        "roic_pct": 0.0,
-        "pe_multiple": 0.0,
-        "hurst_persistence": 0.0,
-        "fractional_d": 0.09,
-        "amihud_illiquidity": 0.0,
-        "conformal_rr": 2.57,
-        "dual_basis_bps": 0.0
-      }
-    },
-    {
-      "symbol": "TD",
-      "base_value": 50.89,
-      "model_score": 55.6,
-      "top_drivers": [
-        {
-          "feature_name": "proximity_52w",
-          "feature_label": "Proximity to 52W High",
-          "feature_value": -0.026,
-          "shap_contribution": 8.94,
-          "direction": "POSITIVE"
-        },
-        {
-          "feature_name": "mtf_confluence",
-          "feature_label": "Multi-Timeframe Confluence",
-          "feature_value": 85.0,
-          "shap_contribution": 1.78,
-          "direction": "POSITIVE"
         },
         {
           "feature_name": "dual_basis_bps",
           "feature_label": "Cross-Border Basis Spread",
-          "feature_value": 1.8,
-          "shap_contribution": 1.09,
-          "direction": "POSITIVE"
-        }
-      ],
-      "top_detractors": [
-        {
-          "feature_name": "momentum_rsi",
-          "feature_label": "14-Day RSI Momentum",
-          "feature_value": 54.4,
-          "shap_contribution": -5.07,
-          "direction": "NEGATIVE"
-        },
-        {
-          "feature_name": "trend_sma200_ratio",
-          "feature_label": "Trend vs 200DMA",
-          "feature_value": 1.149,
-          "shap_contribution": -1.14,
-          "direction": "NEGATIVE"
-        },
-        {
-          "feature_name": "conformal_rr",
-          "feature_label": "Certified Conformal R:R",
-          "feature_value": 1.45,
-          "shap_contribution": -0.76,
+          "feature_value": -0.6,
+          "shap_contribution": -0.88,
           "direction": "NEGATIVE"
         }
       ],
       "all_attributions": {
-        "trend_sma200_ratio": -1.14,
-        "momentum_rsi": -5.07,
-        "proximity_52w": 8.94,
-        "mtf_confluence": 1.78,
+        "trend_sma200_ratio": 0.54,
+        "momentum_rsi": 2.48,
+        "proximity_52w": -15.7,
+        "mtf_confluence": 1.38,
         "roic_pct": 0.0,
         "pe_multiple": 0.0,
-        "hurst_persistence": 0.0,
-        "fractional_d": -0.12,
+        "hurst_persistence": -1.16,
+        "fractional_d": 0.21,
         "amihud_illiquidity": 0.0,
-        "conformal_rr": -0.76,
-        "dual_basis_bps": 1.09
+        "conformal_rr": 0.16,
+        "dual_basis_bps": -0.88
       }
     },
     {
-      "symbol": "XIU",
-      "base_value": 50.89,
-      "model_score": 59.4,
+      "symbol": "SPY",
+      "base_value": 51.11,
+      "model_score": 73.9,
       "top_drivers": [
         {
           "feature_name": "proximity_52w",
           "feature_label": "Proximity to 52W High",
-          "feature_value": -0.034,
-          "shap_contribution": 8.91,
+          "feature_value": -0.018,
+          "shap_contribution": 17.02,
           "direction": "POSITIVE"
         },
         {
           "feature_name": "mtf_confluence",
           "feature_label": "Multi-Timeframe Confluence",
-          "feature_value": 60.0,
-          "shap_contribution": 1.78,
-          "direction": "POSITIVE"
-        },
-        {
-          "feature_name": "trend_sma200_ratio",
-          "feature_label": "Trend vs 200DMA",
-          "feature_value": 1.053,
-          "shap_contribution": 1.14,
-          "direction": "POSITIVE"
-        }
-      ],
-      "top_detractors": [
-        {
-          "feature_name": "momentum_rsi",
-          "feature_label": "14-Day RSI Momentum",
-          "feature_value": 46.5,
-          "shap_contribution": -5.07,
-          "direction": "NEGATIVE"
-        }
-      ],
-      "all_attributions": {
-        "trend_sma200_ratio": 1.14,
-        "momentum_rsi": -5.07,
-        "proximity_52w": 8.91,
-        "mtf_confluence": 1.78,
-        "roic_pct": 0.0,
-        "pe_multiple": 0.0,
-        "hurst_persistence": 0.0,
-        "fractional_d": 0.09,
-        "amihud_illiquidity": 0.0,
-        "conformal_rr": 0.59,
-        "dual_basis_bps": 1.09
-      }
-    },
-    {
-      "symbol": "XOM",
-      "base_value": 50.89,
-      "model_score": 52.9,
-      "top_drivers": [
-        {
-          "feature_name": "proximity_52w",
-          "feature_label": "Proximity to 52W High",
-          "feature_value": -0.09,
-          "shap_contribution": 2.66,
-          "direction": "POSITIVE"
-        },
-        {
-          "feature_name": "mtf_confluence",
-          "feature_label": "Multi-Timeframe Confluence",
-          "feature_value": 70.0,
-          "shap_contribution": 1.84,
+          "feature_value": 85.0,
+          "shap_contribution": 3.46,
           "direction": "POSITIVE"
         },
         {
           "feature_name": "conformal_rr",
           "feature_label": "Certified Conformal R:R",
-          "feature_value": 1.0,
+          "feature_value": 0.79,
           "shap_contribution": 1.15,
           "direction": "POSITIVE"
         }
       ],
       "top_detractors": [
         {
+          "feature_name": "hurst_persistence",
+          "feature_label": "Lo HAC Hurst Exponent",
+          "feature_value": 0.471,
+          "shap_contribution": -0.8,
+          "direction": "NEGATIVE"
+        }
+      ],
+      "all_attributions": {
+        "trend_sma200_ratio": 0.92,
+        "momentum_rsi": 0.96,
+        "proximity_52w": 17.02,
+        "mtf_confluence": 3.46,
+        "roic_pct": 0.0,
+        "pe_multiple": 0.0,
+        "hurst_persistence": -0.8,
+        "fractional_d": 0.08,
+        "amihud_illiquidity": 0.0,
+        "conformal_rr": 1.15,
+        "dual_basis_bps": 0.0
+      }
+    },
+    {
+      "symbol": "TD",
+      "base_value": 51.11,
+      "model_score": 59.2,
+      "top_drivers": [
+        {
+          "feature_name": "proximity_52w",
+          "feature_label": "Proximity to 52W High",
+          "feature_value": -0.033,
+          "shap_contribution": 5.19,
+          "direction": "POSITIVE"
+        },
+        {
+          "feature_name": "mtf_confluence",
+          "feature_label": "Multi-Timeframe Confluence",
+          "feature_value": 85.0,
+          "shap_contribution": 3.27,
+          "direction": "POSITIVE"
+        },
+        {
+          "feature_name": "hurst_persistence",
+          "feature_label": "Lo HAC Hurst Exponent",
+          "feature_value": 0.5,
+          "shap_contribution": 1.13,
+          "direction": "POSITIVE"
+        }
+      ],
+      "top_detractors": [
+        {
+          "feature_name": "conformal_rr",
+          "feature_label": "Certified Conformal R:R",
+          "feature_value": 1.45,
+          "shap_contribution": -0.69,
+          "direction": "NEGATIVE"
+        },
+        {
+          "feature_name": "trend_sma200_ratio",
+          "feature_label": "Trend vs 200DMA",
+          "feature_value": 1.14,
+          "shap_contribution": -0.46,
+          "direction": "NEGATIVE"
+        },
+        {
+          "feature_name": "fractional_d",
+          "feature_label": "Fractional Memory Order d*",
+          "feature_value": 0.56,
+          "shap_contribution": -0.32,
+          "direction": "NEGATIVE"
+        }
+      ],
+      "all_attributions": {
+        "trend_sma200_ratio": -0.46,
+        "momentum_rsi": -0.23,
+        "proximity_52w": 5.19,
+        "mtf_confluence": 3.27,
+        "roic_pct": 0.0,
+        "pe_multiple": 0.0,
+        "hurst_persistence": 1.13,
+        "fractional_d": -0.32,
+        "amihud_illiquidity": 0.0,
+        "conformal_rr": -0.69,
+        "dual_basis_bps": 0.18
+      }
+    },
+    {
+      "symbol": "XIU",
+      "base_value": 51.11,
+      "model_score": 57.5,
+      "top_drivers": [
+        {
+          "feature_name": "proximity_52w",
+          "feature_label": "Proximity to 52W High",
+          "feature_value": -0.04,
+          "shap_contribution": 6.46,
+          "direction": "POSITIVE"
+        },
+        {
+          "feature_name": "hurst_persistence",
+          "feature_label": "Lo HAC Hurst Exponent",
+          "feature_value": 0.498,
+          "shap_contribution": 1.29,
+          "direction": "POSITIVE"
+        },
+        {
+          "feature_name": "fractional_d",
+          "feature_label": "Fractional Memory Order d*",
+          "feature_value": 0.5,
+          "shap_contribution": 0.63,
+          "direction": "POSITIVE"
+        }
+      ],
+      "top_detractors": [
+        {
+          "feature_name": "mtf_confluence",
+          "feature_label": "Multi-Timeframe Confluence",
+          "feature_value": 60.0,
+          "shap_contribution": -2.0,
+          "direction": "NEGATIVE"
+        },
+        {
           "feature_name": "momentum_rsi",
           "feature_label": "14-Day RSI Momentum",
-          "feature_value": 48.7,
-          "shap_contribution": -4.69,
+          "feature_value": 43.1,
+          "shap_contribution": -0.3,
           "direction": "NEGATIVE"
         }
       ],
       "all_attributions": {
         "trend_sma200_ratio": 0.0,
-        "momentum_rsi": -4.69,
-        "proximity_52w": 2.66,
-        "mtf_confluence": 1.84,
+        "momentum_rsi": -0.3,
+        "proximity_52w": 6.46,
+        "mtf_confluence": -2.0,
         "roic_pct": 0.0,
         "pe_multiple": 0.0,
-        "hurst_persistence": 0.0,
-        "fractional_d": 0.0,
+        "hurst_persistence": 1.29,
+        "fractional_d": 0.63,
         "amihud_illiquidity": 0.0,
-        "conformal_rr": 1.15,
-        "dual_basis_bps": 1.09
+        "conformal_rr": 0.18,
+        "dual_basis_bps": 0.18
+      }
+    },
+    {
+      "symbol": "XOM",
+      "base_value": 51.11,
+      "model_score": 55.0,
+      "top_drivers": [
+        {
+          "feature_name": "proximity_52w",
+          "feature_label": "Proximity to 52W High",
+          "feature_value": -0.079,
+          "shap_contribution": 6.1,
+          "direction": "POSITIVE"
+        },
+        {
+          "feature_name": "fractional_d",
+          "feature_label": "Fractional Memory Order d*",
+          "feature_value": 0.49,
+          "shap_contribution": 0.63,
+          "direction": "POSITIVE"
+        },
+        {
+          "feature_name": "conformal_rr",
+          "feature_label": "Certified Conformal R:R",
+          "feature_value": 1.0,
+          "shap_contribution": 0.18,
+          "direction": "POSITIVE"
+        }
+      ],
+      "top_detractors": [
+        {
+          "feature_name": "mtf_confluence",
+          "feature_label": "Multi-Timeframe Confluence",
+          "feature_value": 70.0,
+          "shap_contribution": -2.0,
+          "direction": "NEGATIVE"
+        },
+        {
+          "feature_name": "hurst_persistence",
+          "feature_label": "Lo HAC Hurst Exponent",
+          "feature_value": 0.444,
+          "shap_contribution": -0.89,
+          "direction": "NEGATIVE"
+        },
+        {
+          "feature_name": "momentum_rsi",
+          "feature_label": "14-Day RSI Momentum",
+          "feature_value": 52.3,
+          "shap_contribution": -0.3,
+          "direction": "NEGATIVE"
+        }
+      ],
+      "all_attributions": {
+        "trend_sma200_ratio": 0.0,
+        "momentum_rsi": -0.3,
+        "proximity_52w": 6.1,
+        "mtf_confluence": -2.0,
+        "roic_pct": 0.0,
+        "pe_multiple": 0.0,
+        "hurst_persistence": -0.89,
+        "fractional_d": 0.63,
+        "amihud_illiquidity": 0.0,
+        "conformal_rr": 0.18,
+        "dual_basis_bps": 0.18
       }
     }
   ],

@@ -268,7 +268,9 @@ class PortfolioStressEngine:
         hrp_res = hrp_portfolio_engine.generate_hrp_allocation(total_capital=total_capital, force_refresh=force_refresh)
         returns_df, _ = hrp_portfolio_engine.load_universe_returns()
         symbols = list(returns_df.columns)
-        cov_matrix = returns_df.cov().values
+        cov_matrix = np.array(returns_df.cov().values, dtype=float, copy=True)
+        if not cov_matrix.flags.writeable:
+            cov_matrix = cov_matrix.copy()
 
         weights = np.array([hrp_res.allocations[sym].weight for sym in symbols])
         weights /= np.sum(weights)

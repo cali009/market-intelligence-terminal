@@ -3,9 +3,9 @@
     "model_id": "ML_META_ENSEMBLE_V1",
     "model_architecture": "Ensemble (L2-Logistic Regression + Constrained Random Forest)",
     "train_auc": 0.7031,
-    "validation_auc": 0.4026,
-    "test_auc": 0.5416,
-    "brier_score": 0.2467,
+    "validation_auc": 0.4023,
+    "test_auc": 0.5478,
+    "brier_score": 0.2452,
     "total_training_samples": 944,
     "top_features": [
       {
@@ -109,7 +109,7 @@
         "directional_impact": "NEGATIVE"
       }
     ],
-    "calibrated_at": "2026-09-28T23:37:01.261823+00:00"
+    "calibrated_at": "2026-09-29T03:21:54.055453+00:00"
   },
   "disclaimers": [
     "Machine learning meta-labeling models generate statistical decision-support probabilities for risk management and trade filtering.",

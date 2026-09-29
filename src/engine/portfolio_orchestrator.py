@@ -186,7 +186,9 @@ class PortfolioOrchestratorEngine:
         # 6. Evaluate Portfolio-Level Sentinels
         stress_res = portfolio_stress_engine.run_stress_test(total_capital=total_capital)
         returns_df, _ = hrp_portfolio_engine.load_universe_returns()
-        corr_matrix = returns_df.corr().values
+        corr_matrix = np.array(returns_df.corr().values, dtype=float, copy=True)
+        if not corr_matrix.flags.writeable:
+            corr_matrix = corr_matrix.copy()
         np.fill_diagonal(corr_matrix, np.nan)
         avg_pairwise_corr = float(np.nanmean(corr_matrix))
 

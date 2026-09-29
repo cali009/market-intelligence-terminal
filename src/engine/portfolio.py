@@ -196,6 +196,9 @@ class PortfolioIntelligenceEngine:
         # Correlation matrix
         corr = np.corrcoef(returns_matrix, rowvar=False)
         corr = np.nan_to_num(corr, nan=0.0)
+        corr = np.array(corr, dtype=float, copy=True)
+        if not corr.flags.writeable:
+            corr = corr.copy()
         np.fill_diagonal(corr, 1.0)
 
         # Eigenvalues

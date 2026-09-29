@@ -88,12 +88,16 @@ class HrpPortfolioEngine:
         Computes Pearson correlation matrix C and transforms to correlation distance matrix D:
         d_{i,j} = sqrt(0.5 * (1 - rho_{i,j})) in [0, 1].
         """
-        corr = returns.corr().values
+        corr = np.array(returns.corr().values, dtype=float, copy=True)
+        if not corr.flags.writeable:
+            corr = corr.copy()
         # Handle tiny floating point noise ensuring diagonal is strictly 1.0 and bounds [-1, 1]
         np.fill_diagonal(corr, 1.0)
         corr = np.clip(corr, -1.0, 1.0)
 
-        dist = np.sqrt(0.5 * (1.0 - corr))
+        dist = np.array(np.sqrt(0.5 * (1.0 - corr)), dtype=float, copy=True)
+        if not dist.flags.writeable:
+            dist = dist.copy()
         np.fill_diagonal(dist, 0.0)
         return corr, dist
 
@@ -246,7 +250,9 @@ class HrpPortfolioEngine:
         symbols = list(returns_df.columns)
         n = len(symbols)
 
-        cov_matrix = returns_df.cov().values
+        cov_matrix = np.array(returns_df.cov().values, dtype=float, copy=True)
+        if not cov_matrix.flags.writeable:
+            cov_matrix = cov_matrix.copy()
         corr_matrix, dist_matrix = self.compute_correlation_distance(returns_df)
         linkage_matrix = self.build_hierarchical_tree(dist_matrix, method="single")
         ordered_indices = self.quasi_diagonalize(linkage_matrix)
