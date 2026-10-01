@@ -55,6 +55,7 @@ from src.engine.portfolio_bayesian import portfolio_bayesian_engine
 from src.engine.cross_border_fx import cross_border_fx_engine
 from src.engine.sovereign_yield_curve import sovereign_yield_curve_engine
 from src.engine.dark_pool_liquidity import dark_pool_liquidity_engine
+from src.engine.volatility_forecast_vrp import volatility_forecast_vrp_engine
 from src.engine.options_surface_gex import cross_border_options_engine
 
 FEEDS_DIR = DATA_DIR / "feeds"
@@ -705,6 +706,9 @@ class EdgeExporter:
             # Phase 32: Dark Pool & Off-Exchange Liquidity Feed
             # DECISION 1(b): commercial build; research-only short metrics are omitted.
             dark_pool_liquidity_engine.export_feed(d_dir / "dark_pool_liquidity.json")
+
+            # Phase 33: Multi-Horizon Volatility Forecast & Variance Risk Premium Feed
+            volatility_forecast_vrp_engine.export_feed(d_dir / "volatility_vrp.json")
 
         return {
             "dist_files": 30,

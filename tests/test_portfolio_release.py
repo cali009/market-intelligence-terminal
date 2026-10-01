@@ -127,15 +127,94 @@ class TestPortfolioReleaseAudit:
         assert abs(var_95_10d - round(expected_var_10d, 2)) <= 0.05, f"10d VaR {var_95_10d} deviates from sqrt(10) scaling {expected_var_10d}"
         assert abs(cvar_99_10d - round(expected_cvar_10d, 2)) <= 0.05, f"10d CVaR {cvar_99_10d} deviates from sqrt(10) scaling {expected_cvar_10d}"
 
+    # Sentinel predicates fall into two disjoint families.
+    #
+    # ALLOCATION-CONSTRUCTION predicates are a function of the weights the orchestrator
+    # chose, so under a nominal allocation they are a true invariant: if one fires, the
+    # allocation math regressed.
+    #
+    # MARKET-CONDITION predicates are a function of live market state (FX basis, dealer
+    # positioning, sovereign yields, venue flow, options IV vs realized vol) and fire
+    # whenever the market warrants it, irrespective of the nominal allocation. Requiring
+    # these to be silent would make the suite depend on a specific market regime.
+    ALLOCATION_PREDICATES = {
+        "PORTFOLIO_CONCENTRATION_BREACH",
+        "CORRELATION_SPIKE_WARNING",
+        "CVAR_TAIL_RISK_BREACH",
+        "FACTOR_CROWDING_BREACH",
+        "FX_COMMODITY_OVEREXPOSURE",
+        "ALPHA_EROSION_WARNING",
+        "EXCESSIVE_TURNOVER_BREACH",
+        "ESTIMATION_ERROR_SPIKE",
+        "UNHEDGED_CURRENCY_DRAG",
+    }
+    MARKET_PREDICATES = {
+        "CROSS_BORDER_PARITY_DISLOCATION",
+        "GAMMA_FLIP_REGIME_TRANSITION",
+        "VOLATILITY_SKEW_TAIL_INVERSION",
+        "SOVEREIGN_YIELD_CURVE_INVERSION",
+        "TERM_PREMIUM_SHOCK",
+        "DARK_POOL_STEALTH_DISTRIBUTION",
+        "SHORT_VOLUME_SQUEEZE_SPIKE",
+        "VARIANCE_RISK_PREMIUM_COLLAPSE",
+        "VOLATILITY_CLUSTERING_HAZARD",
+    }
+
     def test_portfolio_risk_sentinels_integrity(self):
-        """Verify that live risk sentinels evaluate cleanly with zero limit breaches."""
+        """
+        Verify that the nominal allocation breaches no construction limit, and that any
+        sentinel which does fire is a legitimate market-condition warning.
+        """
         alerts = self.orch_feed.get("portfolio_alerts", [])
-        assert len(alerts) == 0, f"Expected 0 sentinel alerts under nominal allocation, got {len(alerts)}"
+
+        # 1. The invariant: a nominal allocation must never breach a construction limit.
+        breaches = [a for a in alerts if a["predicate_type"] in self.ALLOCATION_PREDICATES]
+        assert breaches == [], (
+            "Nominal allocation breached a construction limit: "
+            + ", ".join(sorted({a["predicate_type"] for a in breaches}))
+        )
+
+        # 2. Every alert must be a known predicate -- no orphaned or malformed type.
+        unknown = [a["predicate_type"] for a in alerts
+                   if a["predicate_type"] not in self.ALLOCATION_PREDICATES | self.MARKET_PREDICATES]
+        assert unknown == [], f"Unknown predicate types emitted: {unknown}"
+
+        # 3. Any alert that does fire must be well-formed and risk-framed, not advisory.
+        for a in alerts:
+            assert a["predicate_type"] in self.MARKET_PREDICATES
+            assert a["severity"] in ("CRITICAL", "WARNING", "NOTICE")
+            assert a["symbol"] and a["headline"] and a["body"] and a["action_required"]
+            assert isinstance(a["trigger_level"], (int, float))
+            assert isinstance(a["current_price"], (int, float))
 
         # Validate posture classification
         posture = self.stress_feed["tail_risk_posture"]
         assert posture in ["LOW_TAIL_RISK", "MODERATE_TAIL_RISK", "ELEVATED_TAIL_RISK", "CRITICAL_TAIL_RISK"]
         assert posture == "LOW_TAIL_RISK", f"Expected LOW_TAIL_RISK, got {posture}"
+
+    def test_sentinel_predicate_families_cover_every_emitted_type(self):
+        """
+        Guard against the two families drifting out of sync with the engine: every
+        predicate the sentinel can emit must be classified above.
+        """
+        import re
+        from pathlib import Path
+
+        src = (Path("src") / "engine" / "quant_intel_sentinel.py").read_text(encoding="utf-8")
+        start = src.find("def evaluate_portfolio_level_sentinels")
+        end = src.find("def evaluate_universe_sentinels")
+        assert start > 0 and end > start
+
+        emitted = set(re.findall(r'predicate_type="([A-Z_0-9]+)"', src[start:end]))
+        assert emitted, "no predicates found -- parsing assumption broke"
+
+        overlap = self.ALLOCATION_PREDICATES & self.MARKET_PREDICATES
+        assert not overlap, f"Predicate in both families: {overlap}"
+
+        unclassified = emitted - self.ALLOCATION_PREDICATES - self.MARKET_PREDICATES
+        assert not unclassified, (
+            f"New predicate(s) not classified into a family: {sorted(unclassified)}"
+        )
 
     def test_ui_bundle_synchronization_and_tab_integration(self):
         """Audit web/index.html and public/index.html for Phase 26 UI workstations."""

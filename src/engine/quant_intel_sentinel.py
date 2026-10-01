@@ -295,6 +295,7 @@ class QuantIntelSentinel:
         options_intelligence_metrics: Optional[Dict[str, Any]] = None,
         sovereign_yield_metrics: Optional[Dict[str, Any]] = None,
         dark_pool_metrics: Optional[Dict[str, Any]] = None,
+        volatility_vrp_metrics: Optional[Dict[str, Any]] = None,
     ) -> List[InvalidationAlert]:
         """
         Evaluates portfolio-level risk invariants:
@@ -310,6 +311,10 @@ class QuantIntelSentinel:
         - Unhedged currency volatility drag (Predicate 19)
         - Gamma flip dealer regime transitions (Predicate 20)
         - Volatility skew tail inversion (Predicate 21)
+        - Sovereign yield curve inversion & term premium shock (Predicates 22-23)
+        - Dark pool stealth distribution & short volume squeeze (Predicates 24-25)
+        - Variance risk premium collapse (Predicate 26)
+        - Volatility clustering hazard (Predicate 27)
         """
         alerts = []
         now_str = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -776,6 +781,74 @@ class QuantIntelSentinel:
                             headline=headline,
                             body=body,
                             action_required="FLAG_SHORT_COVERING_CASCADE",
+                            timestamp=now_str,
+                        )
+                    )
+
+        # 26. PREDICATE: VARIANCE_RISK_PREMIUM_COLLAPSE
+        #     VRP = IV^2 - RV^2 falls below -100 annualized variance points, i.e. realized
+        #     volatility is materially exceeding what the options market is pricing.
+        #     Short-volatility structures then carry uncompensated tail risk.
+        if volatility_vrp_metrics:
+            per_symbol = volatility_vrp_metrics.get("per_symbol", {})
+            for sym, m in per_symbol.items():
+                # 26. VARIANCE_RISK_PREMIUM_COLLAPSE -- guarded by VRP availability.
+                # NOTE: this guard must NOT `continue`, because Predicate 27 below is
+                # independent of the options surface and must still be evaluated for
+                # symbols that have no implied volatility.
+                vrp = m.get("vrp_variance_pts")
+                if vrp is not None and vrp < -100.0:
+                    iv = m.get("implied_vol_pct")
+                    rv = m.get("realized_vol_pct")
+                    detail = ""
+                    if iv is not None and rv is not None:
+                        detail = f" Implied volatility {iv:.1f}% against realized {rv:.1f}%."
+                    headline = f"Variance Risk Premium Collapse Warning: {sym} ({vrp:.0f} variance points)"
+                    body = (
+                        f"{sym} Variance Risk Premium reached {vrp:.0f} annualized variance points, below the "
+                        f"-100.0 point hazard boundary.{detail} Realized volatility is exceeding implied "
+                        "volatility, so short-volatility structures carry uncompensated tail risk."
+                    )
+                    alerts.append(
+                        InvalidationAlert(
+                            symbol=sym,
+                            predicate_type="VARIANCE_RISK_PREMIUM_COLLAPSE",
+                            severity="WARNING",
+                            trigger_level=-100.0,
+                            current_price=round(float(vrp), 2),
+                            headline=headline,
+                            body=body,
+                            action_required="AVOID_SHORT_VOLATILITY",
+                            timestamp=now_str,
+                        )
+                    )
+
+                # 27. PREDICATE: VOLATILITY_CLUSTERING_HAZARD
+                #     GARCH conditional volatility exceeds 2.0x the trailing 20-day baseline.
+                #     Volatility clustering means today's shock predicts tomorrow's scale.
+                #     Independent of VRP availability -- covers the full universe.
+                ratio = m.get("baseline_ratio")
+                if ratio is None:
+                    continue
+                if ratio > 2.0:
+                    cond = m.get("conditional_vol_pct", 0.0)
+                    base = m.get("baseline_20d_pct", 0.0)
+                    headline = f"Volatility Clustering Hazard Warning: {sym} ({ratio:.2f}x baseline)"
+                    body = (
+                        f"{sym} GARCH conditional volatility forecast reached {cond:.1f}% annualized, "
+                        f"{ratio:.2f}x the trailing 20-day baseline of {base:.1f}%, exceeding the 2.0x "
+                        "hazard boundary. Volatility clustering indicates elevated forward dispersion."
+                    )
+                    alerts.append(
+                        InvalidationAlert(
+                            symbol=sym,
+                            predicate_type="VOLATILITY_CLUSTERING_HAZARD",
+                            severity="WARNING",
+                            trigger_level=2.0,
+                            current_price=round(float(ratio), 3),
+                            headline=headline,
+                            body=body,
+                            action_required="SCALE_DOWN_EQUITY_SIZING",
                             timestamp=now_str,
                         )
                     )

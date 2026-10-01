@@ -111,6 +111,8 @@ def build_firebase_bundle():
         ("sovereign_yield_curve.json", "sovereign_yield_curve"),
         ("dark_pool_liquidity.json", "dark_pool_liquidity.json"),
         ("dark_pool_liquidity.json", "dark_pool_liquidity"),
+        ("volatility_vrp.json", "volatility_vrp.json"),
+        ("volatility_vrp.json", "volatility_vrp"),
     ]
 
     for src_name, dest_name in core_feeds:

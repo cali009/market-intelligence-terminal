@@ -1012,6 +1012,7 @@
             <button class="tab-btn" data-tab="optionssurface" onclick="switchTab('optionssurface', event)">📊 Options &amp; Volatility Surface Lab</button>
             <button class="tab-btn" data-tab="sovereigncurve" onclick="switchTab('sovereigncurve', event)">📈 Sovereign Curve &amp; Term Premium</button>
             <button class="tab-btn" data-tab="darkpool" onclick="switchTab('darkpool', event)">🕶️ Dark Pool &amp; Short Activity</button>
+            <button class="tab-btn" data-tab="volatilityvrp" onclick="switchTab('volatilityvrp', event)">📉 Volatility Forecast &amp; VRP</button>
             <button class="tab-btn" data-tab="scanners" onclick="switchTab('scanners', event)">TAC-15 Market Scanners</button>
             <button class="tab-btn" data-tab="signals" onclick="switchTab('signals', event)">Research Signal Plans</button>
             <button class="tab-btn" data-tab="backtest" onclick="switchTab('backtest', event)">Backtest Lab & Strategy Performance</button>
@@ -1401,6 +1402,53 @@
             <!-- Dynamic Workstation Container -->
             <div id="darkPoolContainer">
                 <div style="text-align: center; padding: 40px; color: var(--text-muted);"><div class="spinner" style="margin-right: 8px;"></div> Loading off-exchange liquidity intelligence, block clustering, and fragmentation analytics...</div>
+            </div>
+        </div>
+
+        <!-- Tab: Multi-Horizon Volatility Forecast & VRP Lab (Phase 33) -->
+        <div id="tab-volatilityvrp" style="display: none;">
+            <div class="scanners-header" style="margin-bottom: 20px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+                    <div>
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px; flex-wrap: wrap;">
+                            <h2 style="font-size: 18px; font-weight: 800; color: var(--text-primary);">📉 Multi-Horizon Volatility Forecast &amp; VRP Lab</h2>
+                            <span class="exchange-tag" style="background: rgba(139, 92, 246, 0.15); color: var(--accent-purple); border-color: rgba(139, 92, 246, 0.3); font-weight: 700;">4 RV ESTIMATORS</span>
+                            <span class="exchange-tag" style="background: rgba(6, 182, 212, 0.15); color: var(--accent-cyan); border-color: rgba(6, 182, 212, 0.3); font-weight: 700;">GARCH / EGARCH / GJR MLE</span>
+                            <span class="exchange-tag" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b; border-color: rgba(245, 158, 11, 0.3); font-weight: 700;">HAR-RV CASCADE</span>
+                            <span class="exchange-tag" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-green); border-color: rgba(16, 185, 129, 0.3); font-weight: 700;">VARIANCE RISK PREMIUM</span>
+                        </div>
+                        <p style="font-size: 12px; color: var(--text-muted);">
+                            Close-to-close · Parkinson · Garman-Klass · Yang-Zhang realized volatility on real OHLC · Maximum-likelihood GARCH family with AIC model selection · Corsi (2009) HAR-RV 1D/5D/22D forecasts · VRP = IV² − RV² from internally derived inputs
+                        </p>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px; background: var(--bg-card); padding: 6px 12px; border-radius: 8px; border: 1px solid var(--border-color); flex-wrap: wrap;">
+                        <span style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Market:</span>
+                        <div style="display: flex; gap: 4px;">
+                            <button class="filter-btn active" id="btnVrpMktAll" onclick="setVrpMarketFilter('ALL')">All</button>
+                            <button class="filter-btn" id="btnVrpMktUS" onclick="setVrpMarketFilter('US')">🇺🇸 US</button>
+                            <button class="filter-btn" id="btnVrpMktCA" onclick="setVrpMarketFilter('CA')">🇨🇦 CA</button>
+                        </div>
+                        <span style="font-size: 11px; font-weight: 700; color: var(--accent-green); display: flex; align-items: center; gap: 6px;" id="volVrpSentinelBadge">
+                            <span style="display: inline-block; width: 8px; height: 8px; background: var(--accent-green); border-radius: 50%; box-shadow: 0 0 8px var(--accent-green);"></span>
+                            VOL NOMINAL
+                        </span>
+                        <button class="filter-btn" onclick="refreshVolVrpData()" style="padding: 2px 8px; font-size: 11px;">🔄 Refresh</button>
+                    </div>
+                </div>
+            </div>
+
+            <div style="background: rgba(6, 182, 212, 0.07); border: 1px solid rgba(6, 182, 212, 0.28); border-radius: 8px; padding: 10px 14px; margin-bottom: 16px;">
+                <div style="font-size: 11px; font-weight: 800; color: var(--accent-cyan); margin-bottom: 4px;">🧮 MODEL PROVENANCE &amp; LICENSING NOTICE</div>
+                <div style="font-size: 11px; color: var(--text-muted); line-height: 1.6;">
+                    The Variance Risk Premium is computed as <strong>IV² − RV²</strong> using <strong>internally derived inputs only</strong>:
+                    platform Black-Scholes-Merton implied volatility (Phase 30 options surface) and platform-computed realized volatility from daily OHLC history.
+                    <strong>No third-party index value is referenced.</strong>
+                    Volatility forecasts estimate the <em>scale</em> of future price dispersion &mdash; they do not predict direction and carry substantial model risk.
+                </div>
+            </div>
+
+            <div id="volVrpContainer">
+                <div style="text-align: center; padding: 40px; color: var(--text-muted);"><div class="spinner" style="margin-right: 8px;"></div> Loading realized volatility estimators, GARCH-family MLE fits, HAR-RV forecasts, and VRP analytics...</div>
             </div>
         </div>
 
@@ -10749,6 +10797,225 @@
                 && e.block_cluster.rangebound_near_resistance;
         }
 
+        // =========================================================================
+        // PHASE 33: MULTI-HORIZON VOLATILITY FORECASTING & VARIANCE RISK PREMIUM LAB
+        //
+        // LICENSING: VRP is computed from internally derived IV (Phase 30) and
+        // platform-computed RV. No third-party index value is referenced anywhere.
+        // =========================================================================
+        let volVrpBundle = null;
+        let activeVrpMarketFilter = 'ALL'; // 'ALL' | 'US' | 'CA'
+
+        async function loadVolVrpAndRender() {
+            try {
+                const res = await fetch('/api/volatility_vrp.json');
+                if (!res.ok) throw new Error('HTTP ' + res.status);
+                volVrpBundle = await res.json();
+            } catch (err) {
+                console.warn('Direct fetch /api/volatility_vrp.json failed, trying extensionless route:', err);
+                try {
+                    const res2 = await fetch('/api/volatility_vrp');
+                    if (!res2.ok) throw new Error('HTTP ' + res2.status);
+                    volVrpBundle = await res2.json();
+                } catch (err2) {
+                    console.error('All fetches for volatility_vrp failed:', err2);
+                    const container = document.getElementById('volVrpContainer');
+                    if (container) {
+                        container.innerHTML = '<div style="padding: 24px; color: var(--accent-red);">Failed to load the Volatility &amp; VRP feed. Please ensure the data service is operational.</div>';
+                    }
+                    return;
+                }
+            }
+            renderVolVrpView();
+        }
+
+        function refreshVolVrpData() {
+            volVrpBundle = null;
+            const container = document.getElementById('volVrpContainer');
+            if (container) {
+                container.innerHTML = '<div style="text-align: center; padding: 40px; color: var(--text-muted);"><div class="spinner" style="margin-right: 8px;"></div> Re-fitting realized volatility estimators, GARCH-family MLE, and HAR-RV cascades...</div>';
+            }
+            loadVolVrpAndRender();
+        }
+
+        function setVrpMarketFilter(mkt) {
+            activeVrpMarketFilter = mkt;
+            ['ALL', 'US', 'CA'].forEach(m => {
+                const btn = document.getElementById('btnVrpMkt' + m);
+                if (btn) btn.classList.toggle('active', m === mkt);
+            });
+            renderVolVrpView();
+        }
+
+        const VRP_REGIME_META = {
+            'LOW':      { color: 'var(--accent-cyan)',  label: 'LOW' },
+            'NORMAL':   { color: 'var(--accent-green)', label: 'NORMAL' },
+            'ELEVATED': { color: '#f59e0b',             label: 'ELEVATED' },
+            'CRISIS':   { color: 'var(--accent-red)',   label: 'CRISIS' }
+        };
+
+        const VRP_EDGE_META = {
+            'FAVOURABLE': { color: 'var(--accent-green)', label: 'FAVOURABLE' },
+            'NEUTRAL':    { color: 'var(--text-muted)',   label: 'NEUTRAL' },
+            'ADVERSE':    { color: 'var(--accent-red)',   label: 'ADVERSE' }
+        };
+
+        // Diverging bar chart for VRP: positive = sellers historically compensated.
+        function buildVrpChart(entries) {
+            const withVrp = entries.filter(e => e.vrp && e.vrp.available);
+            if (withVrp.length === 0) {
+                return '<div style="font-size: 11px; color: var(--text-muted); padding: 12px;">No symbols with a Phase 30 options surface in the current filter.</div>';
+            }
+            const W = 920, rowH = 24, padL = 62, padR = 84, padT = 26, padB = 22;
+            const H = padT + padB + withVrp.length * rowH;
+            const axisX = padL + (W - padL - padR) / 2;
+            const maxAbs = Math.max.apply(null, withVrp.map(e => Math.abs(e.vrp.vrp_variance_pts)).concat([50]));
+            const halfW = (W - padL - padR) / 2;
+
+            let rows = '';
+            withVrp.forEach((e, i) => {
+                const y = padT + i * rowH;
+                const v = e.vrp.vrp_variance_pts;
+                const w = (Math.abs(v) / maxAbs) * halfW;
+                const color = v >= 0 ? 'var(--accent-green)' : 'var(--accent-red)';
+                const x = v >= 0 ? axisX : axisX - w;
+                rows += `
+                <text x="${padL - 8}" y="${y + rowH / 2 + 4}" text-anchor="end" font-size="10.5" fill="#cbd5e1" font-weight="700">${e.symbol}</text>
+                <rect x="${x.toFixed(1)}" y="${y + 5}" width="${Math.max(w, 1).toFixed(1)}" height="${rowH - 10}" fill="${color}" opacity="0.82" rx="2"/>
+                <text x="${(v >= 0 ? axisX + w + 6 : axisX - w - 6).toFixed(1)}" y="${y + rowH / 2 + 4}" text-anchor="${v >= 0 ? 'start' : 'end'}" font-size="10" fill="#e2e8f0" font-weight="700">${v >= 0 ? '+' : ''}${v.toFixed(0)}</text>`;
+            });
+
+            return `
+            <svg viewBox="0 0 ${W} ${H}" style="width: 100%; height: auto; max-width: 920px; display: block;">
+                <text x="${padL}" y="14" font-size="10" fill="#94a3b8">VRP = IV² − RV² in annualized variance points &mdash; green = sellers historically compensated, red = realized exceeding implied</text>
+                <line x1="${axisX}" y1="${padT - 4}" x2="${axisX}" y2="${H - padB}" stroke="rgba(148,163,184,0.55)" stroke-width="1"/>
+                <text x="${axisX}" y="${H - padB + 14}" text-anchor="middle" font-size="9.5" fill="#94a3b8">0</text>
+                ${rows}
+            </svg>`;
+        }
+
+        function renderVolVrpView() {
+            if (!volVrpBundle) return;
+            const container = document.getElementById('volVrpContainer');
+            if (!container) return;
+            const b = volVrpBundle;
+
+            let entries = Object.values(b.dossiers || {});
+            if (activeVrpMarketFilter !== 'ALL') {
+                entries = entries.filter(e => e.country === activeVrpMarketFilter);
+            }
+            entries.sort((x, y) => {
+                const xv = (x.vrp && x.vrp.available) ? x.vrp.vrp_variance_pts : -1e9;
+                const yv = (y.vrp && y.vrp.available) ? y.vrp.vrp_variance_pts : -1e9;
+                return xv - yv;  // most adverse first
+            });
+
+            // Sentinel badge from the shipped regime labels.
+            const badge = document.getElementById('volVrpSentinelBadge');
+            if (badge) {
+                const crisis = entries.filter(e => e.regime.regime === 'CRISIS');
+                const adverse = entries.filter(e => e.vrp && e.vrp.available && e.vrp.seller_edge === 'ADVERSE');
+                const n = crisis.length + adverse.length;
+                if (n > 0) {
+                    badge.style.color = 'var(--accent-red)';
+                    badge.innerHTML = `<span style="display: inline-block; width: 8px; height: 8px; background: var(--accent-red); border-radius: 50%; box-shadow: 0 0 8px var(--accent-red);"></span> P26/P27 WATCH (${n})`;
+                } else {
+                    badge.style.color = 'var(--accent-green)';
+                    badge.innerHTML = `<span style="display: inline-block; width: 8px; height: 8px; background: var(--accent-green); border-radius: 50%; box-shadow: 0 0 8px var(--accent-green);"></span> VOL NOMINAL`;
+                }
+            }
+
+            const kpi = (label, value, sub, color) => `
+                <div style="flex: 1 1 165px; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 12px;">
+                    <div style="font-size: 10px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; letter-spacing: 0.5px;">${label}</div>
+                    <div style="font-size: 22px; font-weight: 800; color: ${color}; margin-top: 4px;">${value}</div>
+                    ${sub ? `<div style="font-size: 10px; color: var(--text-muted); margin-top: 2px;">${sub}</div>` : ''}
+                </div>`;
+
+            const medianVrp = b.median_vrp_variance_pts;
+            const kpiHtml = `
+            <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px;">
+                ${kpi('Median Realized Vol', b.median_realized_vol_pct.toFixed(2) + '%', 'Parkinson, annualized', 'var(--accent-cyan)')}
+                ${kpi('Median VRP', medianVrp !== null && medianVrp !== undefined ? (medianVrp > 0 ? '+' : '') + medianVrp.toFixed(0) + ' pts' : 'n/a', 'IV² − RV² variance points', medianVrp >= 0 ? 'var(--accent-green)' : 'var(--accent-red)')}
+                ${kpi('VRP Coverage', `${b.vrp_coverage_count} / ${b.universe_count}`, 'symbols with options surface', 'var(--accent-purple)')}
+                ${kpi('Return Window', String((entries[0] && entries[0].realized.bars_used) || 0) + ' bars', (entries[0] ? entries[0].return_window_start + ' → ' + entries[0].return_window_end : ''), 'var(--text-muted)')}
+            </div>`;
+
+            const chartHtml = `
+            <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px; margin-bottom: 16px;">
+                <h3 style="font-size: 13px; font-weight: 800; color: var(--text-primary); margin-bottom: 8px;">⚖️ Variance Risk Premium by Security</h3>
+                ${buildVrpChart(entries)}
+            </div>`;
+
+            const rows = entries.map(e => {
+                const best = e.model_selection;
+                const reg = VRP_REGIME_META[e.regime.regime] || VRP_REGIME_META['NORMAL'];
+                const hl = best.fits.find(f => f.variant === best.best_variant);
+                const vrpCell = (e.vrp && e.vrp.available)
+                    ? `<td style="padding: 6px 8px; text-align: right; color: var(--text-muted);">${e.vrp.implied_vol_pct.toFixed(1)}%</td>
+                       <td style="padding: 6px 8px; text-align: right; color: ${e.vrp.vrp_variance_pts >= 0 ? 'var(--accent-green)' : 'var(--accent-red)'}; font-weight: 700;">${e.vrp.vrp_variance_pts > 0 ? '+' : ''}${e.vrp.vrp_variance_pts.toFixed(0)}</td>
+                       <td style="padding: 6px 8px; text-align: center;"><span style="font-size: 9px; font-weight: 800; color: ${(VRP_EDGE_META[e.vrp.seller_edge] || VRP_EDGE_META['NEUTRAL']).color}; border: 1px solid ${(VRP_EDGE_META[e.vrp.seller_edge] || VRP_EDGE_META['NEUTRAL']).color}; border-radius: 3px; padding: 1px 5px;">${(VRP_EDGE_META[e.vrp.seller_edge] || VRP_EDGE_META['NEUTRAL']).label}</span></td>`
+                    : `<td style="padding: 6px 8px; text-align: right; color: var(--text-muted);">—</td>
+                       <td style="padding: 6px 8px; text-align: right; color: var(--text-muted);">—</td>
+                       <td style="padding: 6px 8px; text-align: center; font-size: 9px; color: var(--text-muted);">no options</td>`;
+
+                return `<tr>
+                    <td style="padding: 6px 8px; font-weight: 700; color: var(--text-primary);">${e.symbol} <span style="font-size: 9px; color: var(--text-muted);">${e.country}</span></td>
+                    <td style="padding: 6px 8px; text-align: right; color: var(--text-muted);">${e.realized.close_to_close_pct.toFixed(1)}</td>
+                    <td style="padding: 6px 8px; text-align: right; color: var(--accent-cyan); font-weight: 700;">${e.realized.parkinson_pct.toFixed(1)}</td>
+                    <td style="padding: 6px 8px; text-align: right; color: var(--text-muted);">${e.realized.garman_klass_pct.toFixed(1)}</td>
+                    <td style="padding: 6px 8px; text-align: right; color: var(--text-muted);">${e.realized.yang_zhang_pct.toFixed(1)}</td>
+                    <td style="padding: 6px 8px; text-align: center; font-size: 10px; color: var(--accent-purple); font-weight: 700;">${best.best_variant.replace('_1_1', '(1,1)')}</td>
+                    <td style="padding: 6px 8px; text-align: right; color: var(--text-muted);">${hl ? hl.persistence.toFixed(3) : '—'}</td>
+                    <td style="padding: 6px 8px; text-align: right; color: var(--text-muted);">${hl && hl.half_life_days !== null ? hl.half_life_days.toFixed(1) + 'd' : '—'}</td>
+                    <td style="padding: 6px 8px; text-align: right; color: var(--accent-cyan);">${e.har_rv.forecast_1d_pct.toFixed(1)} / ${e.har_rv.forecast_5d_pct.toFixed(1)} / ${e.har_rv.forecast_22d_pct.toFixed(1)}</td>
+                    <td style="padding: 6px 8px; text-align: center;"><span style="font-size: 9px; font-weight: 800; color: ${reg.color}; border: 1px solid ${reg.color}; border-radius: 3px; padding: 1px 5px;">${reg.label}</span></td>
+                    <td style="padding: 6px 8px; text-align: right; color: var(--text-muted);">${e.regime.baseline_ratio.toFixed(2)}x</td>
+                    ${vrpCell}
+                </tr>`;
+            }).join('');
+
+            const tableHtml = `
+            <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px; margin-bottom: 16px; overflow-x: auto;">
+                <h3 style="font-size: 13px; font-weight: 800; color: var(--text-primary); margin-bottom: 10px;">📊 Volatility Term Structure &amp; VRP Dossier <span style="font-size: 10px; font-weight: 600; color: var(--text-muted);">(realized volatility in % annualized · sorted most adverse VRP first)</span></h3>
+                <table style="width: 100%; border-collapse: collapse; font-size: 11.5px;">
+                    <thead><tr style="border-bottom: 1px solid var(--border-color);">
+                        <th style="padding: 6px 8px; text-align: left; color: var(--text-muted); font-weight: 700;">Symbol</th>
+                        <th style="padding: 6px 8px; text-align: right; color: var(--text-muted); font-weight: 700;">RV C-C</th>
+                        <th style="padding: 6px 8px; text-align: right; color: var(--text-muted); font-weight: 700;">RV Park</th>
+                        <th style="padding: 6px 8px; text-align: right; color: var(--text-muted); font-weight: 700;">RV G-K</th>
+                        <th style="padding: 6px 8px; text-align: right; color: var(--text-muted); font-weight: 700;">RV Y-Z</th>
+                        <th style="padding: 6px 8px; text-align: center; color: var(--text-muted); font-weight: 700;">Best Model (AIC)</th>
+                        <th style="padding: 6px 8px; text-align: right; color: var(--text-muted); font-weight: 700;">Persistence</th>
+                        <th style="padding: 6px 8px; text-align: right; color: var(--text-muted); font-weight: 700;">Half-Life</th>
+                        <th style="padding: 6px 8px; text-align: right; color: var(--text-muted); font-weight: 700;">HAR 1D/5D/22D</th>
+                        <th style="padding: 6px 8px; text-align: center; color: var(--text-muted); font-weight: 700;">Regime</th>
+                        <th style="padding: 6px 8px; text-align: right; color: var(--text-muted); font-weight: 700;">Cond/Base</th>
+                        <th style="padding: 6px 8px; text-align: right; color: var(--text-muted); font-weight: 700;">IV 30D</th>
+                        <th style="padding: 6px 8px; text-align: right; color: var(--text-muted); font-weight: 700;">VRP pts</th>
+                        <th style="padding: 6px 8px; text-align: center; color: var(--text-muted); font-weight: 700;">Seller Edge</th>
+                    </tr></thead>
+                    <tbody>${rows}</tbody>
+                </table>
+                <div style="font-size: 10px; color: var(--text-muted); margin-top: 10px; line-height: 1.6;">
+                    <strong>Persistence</strong> = α + β (+ γ/2 for GJR); values near 1.0 indicate slow-decaying volatility.
+                    <strong>Half-life</strong> = ln(0.5)/ln(persistence), the days for a volatility shock to halve.
+                    <strong>HAR</strong> = Corsi (2009) cascade forecasts. <strong>Cond/Base</strong> = GARCH conditional vol ÷ trailing 20-day baseline; Predicate 27 fires above 2.00x.
+                </div>
+            </div>`;
+
+            const statutoryHtml = `
+            <div style="background: rgba(245, 158, 11, 0.06); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: 8px; padding: 12px 14px;">
+                <div style="font-size: 11px; font-weight: 800; color: #f59e0b; margin-bottom: 6px;">⚖️ STATUTORY RESEARCH NOTICE &amp; MODEL RISK</div>
+                <ul style="margin: 0; padding-left: 18px; font-size: 11px; color: var(--text-muted); line-height: 1.6;">
+                    ${(b.disclaimers || []).map(d => `<li>${d}</li>`).join('')}
+                </ul>
+                <div style="font-size: 10px; color: var(--text-muted); margin-top: 8px;">Feed generated: ${b.generated_at} · As of ${b.as_of_date} · Cboe index reference free: ${b.cboe_index_reference_free}</div>
+            </div>`;
+
+            container.innerHTML = `${kpiHtml}${chartHtml}${tableHtml}${statutoryHtml}`;
+        }
+
         function switchTab(tabId, ev) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             if (ev && ev.currentTarget) {
@@ -10759,7 +11026,7 @@
             }
 
             const tabIds = [
-                'leaderboard', 'quantintel', 'macroregime', 'microstructure', 'portfoliohrp', 'crossborderfx', 'optionssurface', 'sovereigncurve', 'darkpool', 'scanners', 'signals', 'backtest', 'paper',
+                'leaderboard', 'quantintel', 'macroregime', 'microstructure', 'portfoliohrp', 'crossborderfx', 'optionssurface', 'sovereigncurve', 'darkpool', 'volatilityvrp', 'scanners', 'signals', 'backtest', 'paper',
                 'portfolio', 'alerts', 'deepread', 'production', 'catalysts', 'journal'
             ];
             tabIds.forEach(id => {
@@ -10820,6 +11087,12 @@
                     loadDarkPoolAndRender();
                 } else {
                     renderDarkPoolView();
+                }
+            } else if (tabId === 'volatilityvrp') {
+                if (!volVrpBundle) {
+                    loadVolVrpAndRender();
+                } else {
+                    renderVolVrpView();
                 }
             } else if (tabId === 'backtest') {
                 if (!backtestBundle) {

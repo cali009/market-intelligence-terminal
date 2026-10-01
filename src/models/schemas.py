@@ -1955,3 +1955,140 @@ class DarkPoolIntelligenceFeed(BaseModel):
 
     def to_dict(self) -> Dict[str, Any]:
         return self.model_dump()
+# ==========================================
+# PHASE 33: MULTI-HORIZON VOLATILITY FORECASTING & VARIANCE RISK PREMIUM SCHEMAS
+#
+# LICENSING DETERMINATION (locked 2026-10-01):
+#   Cboe VIX index levels are licensed commercial index data ("For Cboe Global
+#   Indices Feed fees, please contact IndexData@cboe.com", Cboe Market Data
+#   Policies effective July 1, 2026). This phase therefore computes the Variance
+#   Risk Premium entirely from internally derived inputs -- Phase 30 BSM implied
+#   volatility and platform-computed realized volatility from bar_1d OHLC -- and
+#   carries no Cboe index value, name, or reference in any feed or UI.
+# ==========================================
+
+
+class RealizedVolatilityEstimates(BaseModel):
+    """Four independent realized-volatility estimators computed on real bar_1d OHLC."""
+
+    close_to_close_pct: float
+    parkinson_pct: float
+    garman_klass_pct: float
+    yang_zhang_pct: float
+    # Spread across estimators is itself a model-uncertainty signal.
+    estimator_dispersion_pct: float
+    most_efficient_estimator: Literal["CLOSE_TO_CLOSE", "PARKINSON", "GARMAN_KLASS", "YANG_ZHANG"]
+    bars_used: int
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class GarchModelFit(BaseModel):
+    """Maximum-likelihood fit of one GARCH-family variant."""
+
+    variant: Literal["GARCH_1_1", "EGARCH_1_1", "GJR_GARCH_1_1"]
+    omega: float
+    alpha: float
+    beta: float
+    gamma: float
+    # alpha + beta (+ gamma/2 for GJR) -- the volatility shock persistence.
+    persistence: float
+    half_life_days: Optional[float]
+    log_likelihood: float
+    aic: float
+    converged: bool
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class VolatilityModelSelection(BaseModel):
+    """AIC-based selection across the three GARCH-family variants."""
+
+    best_variant: Literal["GARCH_1_1", "EGARCH_1_1", "GJR_GARCH_1_1"]
+    best_aic: float
+    aic_delta_to_runner_up: float
+    # Asymmetry is economically meaningful only if the leverage term is material.
+    asymmetry_material: bool
+    fits: List[GarchModelFit]
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class HarRvModel(BaseModel):
+    """Corsi (2009) Heterogeneous Autoregressive Realized Volatility model."""
+
+    beta_daily: float
+    beta_weekly: float
+    beta_monthly: float
+    r_squared: float
+    forecast_1d_pct: float
+    forecast_5d_pct: float
+    forecast_22d_pct: float
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class VolatilityRegimeProfile(BaseModel):
+    regime: Literal["LOW", "NORMAL", "ELEVATED", "CRISIS"]
+    conditional_vol_pct: float
+    baseline_20d_pct: float
+    baseline_ratio: float
+    vol_of_vol_pct: float
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class VarianceRiskPremiumProfile(BaseModel):
+    """
+    VRP = IV^2 - RV^2. Available only for symbols with a Phase 30 options surface;
+    the remaining universe receives RV and GARCH forecasts but no fabricated IV.
+    """
+
+    available: bool
+    implied_vol_pct: Optional[float] = None
+    realized_vol_pct: Optional[float] = None
+    vrp_variance_pts: Optional[float] = None
+    vrp_vol_pts: Optional[float] = None
+    vrp_zscore_252d: Optional[float] = None
+    seller_edge: Optional[Literal["FAVOURABLE", "NEUTRAL", "ADVERSE"]] = None
+    unavailable_reason: Optional[str] = None
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class VolatilityForecastDossier(BaseModel):
+    symbol: str
+    country: Literal["US", "CA"]
+    return_window_start: str
+    return_window_end: str
+    realized: RealizedVolatilityEstimates
+    model_selection: VolatilityModelSelection
+    har_rv: HarRvModel
+    regime: VolatilityRegimeProfile
+    vrp: VarianceRiskPremiumProfile
+    primary_volatility_concern: str
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class VolatilityVrpFeed(BaseModel):
+    as_of_date: str
+    generated_at: str
+    universe_count: int
+    vrp_coverage_count: int
+    median_realized_vol_pct: float
+    median_vrp_variance_pts: Optional[float]
+    # Machine-checkable licensing posture: no Cboe index reference anywhere.
+    cboe_index_reference_free: Literal[True] = True
+    dossiers: Dict[str, VolatilityForecastDossier]
+    disclaimers: List[str]
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()

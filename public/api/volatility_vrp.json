@@ -1,0 +1,1652 @@
+{
+  "as_of_date": "2026-10-01",
+  "generated_at": "2026-10-01T21:30:56.355428+00:00",
+  "universe_count": 19,
+  "vrp_coverage_count": 10,
+  "median_realized_vol_pct": 21.17,
+  "median_vrp_variance_pts": 24.35,
+  "cboe_index_reference_free": true,
+  "dossiers": {
+    "AAPL": {
+      "symbol": "AAPL",
+      "country": "US",
+      "return_window_start": "2024-09-26",
+      "return_window_end": "2026-09-28",
+      "realized": {
+        "close_to_close_pct": 28.68,
+        "parkinson_pct": 23.74,
+        "garman_klass_pct": 23.48,
+        "yang_zhang_pct": 29.54,
+        "estimator_dispersion_pct": 6.07,
+        "most_efficient_estimator": "PARKINSON",
+        "bars_used": 502
+      },
+      "model_selection": {
+        "best_variant": "EGARCH_1_1",
+        "best_aic": -2698.4754,
+        "aic_delta_to_runner_up": 6.9448,
+        "asymmetry_material": true,
+        "fits": [
+          {
+            "variant": "GARCH_1_1",
+            "omega": 1.539e-05,
+            "alpha": 0.086278,
+            "beta": 0.86552,
+            "gamma": 0.0,
+            "persistence": 0.951798,
+            "half_life_days": 14.03,
+            "log_likelihood": 1342.707,
+            "aic": -2677.4141,
+            "converged": true
+          },
+          {
+            "variant": "EGARCH_1_1",
+            "omega": -0.43993732,
+            "alpha": 0.142227,
+            "beta": 0.945455,
+            "gamma": -0.146382,
+            "persistence": 0.945455,
+            "half_life_days": 12.36,
+            "log_likelihood": 1354.2377,
+            "aic": -2698.4754,
+            "converged": true
+          },
+          {
+            "variant": "GJR_GARCH_1_1",
+            "omega": 1.75e-05,
+            "alpha": 0.0,
+            "beta": 0.873432,
+            "gamma": 0.126568,
+            "persistence": 0.936716,
+            "half_life_days": 10.6,
+            "log_likelihood": 1350.7653,
+            "aic": -2691.5306,
+            "converged": true
+          }
+        ]
+      },
+      "har_rv": {
+        "beta_daily": 0.051854,
+        "beta_weekly": 0.456952,
+        "beta_monthly": 0.025152,
+        "r_squared": 0.0968,
+        "forecast_1d_pct": 22.33,
+        "forecast_5d_pct": 25.78,
+        "forecast_22d_pct": 28.8
+      },
+      "regime": {
+        "regime": "NORMAL",
+        "conditional_vol_pct": 21.48,
+        "baseline_20d_pct": 21.55,
+        "baseline_ratio": 0.997,
+        "vol_of_vol_pct": 14.59
+      },
+      "vrp": {
+        "available": true,
+        "implied_vol_pct": 22.5,
+        "realized_vol_pct": 23.74,
+        "vrp_variance_pts": -57.34,
+        "vrp_vol_pts": -1.24,
+        "vrp_zscore_252d": 0.25,
+        "seller_edge": "NEUTRAL",
+        "unavailable_reason": null
+      },
+      "primary_volatility_concern": "NONE_MATERIAL"
+    },
+    "AMZN": {
+      "symbol": "AMZN",
+      "country": "US",
+      "return_window_start": "2024-09-26",
+      "return_window_end": "2026-09-28",
+      "realized": {
+        "close_to_close_pct": 33.71,
+        "parkinson_pct": 25.61,
+        "garman_klass_pct": 25.72,
+        "yang_zhang_pct": 36.25,
+        "estimator_dispersion_pct": 10.64,
+        "most_efficient_estimator": "PARKINSON",
+        "bars_used": 502
+      },
+      "model_selection": {
+        "best_variant": "GARCH_1_1",
+        "best_aic": -2469.7737,
+        "aic_delta_to_runner_up": 0.5908,
+        "asymmetry_material": false,
+        "fits": [
+          {
+            "variant": "GARCH_1_1",
+            "omega": 0.00030033,
+            "alpha": 0.412555,
+            "beta": 0.0,
+            "gamma": 0.0,
+            "persistence": 0.412555,
+            "half_life_days": 0.78,
+            "log_likelihood": 1238.8869,
+            "aic": -2469.7737,
+            "converged": true
+          },
+          {
+            "variant": "EGARCH_1_1",
+            "omega": -5.02132599,
+            "alpha": 0.546782,
+            "beta": 0.350965,
+            "gamma": 0.102879,
+            "persistence": 0.350965,
+            "half_life_days": 0.66,
+            "log_likelihood": 1239.5914,
+            "aic": -2469.1829,
+            "converged": true
+          },
+          {
+            "variant": "GJR_GARCH_1_1",
+            "omega": 0.00030033,
+            "alpha": 0.412555,
+            "beta": 0.0,
+            "gamma": 0.0,
+            "persistence": 0.412555,
+            "half_life_days": 0.78,
+            "log_likelihood": 1238.8869,
+            "aic": -2467.7737,
+            "converged": true
+          }
+        ]
+      },
+      "har_rv": {
+        "beta_daily": 0.110365,
+        "beta_weekly": 0.085115,
+        "beta_monthly": -0.026777,
+        "r_squared": 0.0181,
+        "forecast_1d_pct": 32.38,
+        "forecast_5d_pct": 34.17,
+        "forecast_22d_pct": 34.23
+      },
+      "regime": {
+        "regime": "ELEVATED",
+        "conditional_vol_pct": 31.33,
+        "baseline_20d_pct": 22.76,
+        "baseline_ratio": 1.377,
+        "vol_of_vol_pct": 14.1
+      },
+      "vrp": {
+        "available": false,
+        "implied_vol_pct": null,
+        "realized_vol_pct": null,
+        "vrp_variance_pts": null,
+        "vrp_vol_pts": null,
+        "vrp_zscore_252d": null,
+        "seller_edge": null,
+        "unavailable_reason": "No Phase 30 options surface available for this symbol"
+      },
+      "primary_volatility_concern": "ELEVATED_CONDITIONAL_VOLATILITY"
+    },
+    "BAM": {
+      "symbol": "BAM",
+      "country": "CA",
+      "return_window_start": "2024-09-25",
+      "return_window_end": "2026-09-28",
+      "realized": {
+        "close_to_close_pct": 31.58,
+        "parkinson_pct": 27.05,
+        "garman_klass_pct": 26.42,
+        "yang_zhang_pct": 31.29,
+        "estimator_dispersion_pct": 5.16,
+        "most_efficient_estimator": "PARKINSON",
+        "bars_used": 504
+      },
+      "model_selection": {
+        "best_variant": "GARCH_1_1",
+        "best_aic": -2519.4733,
+        "aic_delta_to_runner_up": 1.0988,
+        "asymmetry_material": false,
+        "fits": [
+          {
+            "variant": "GARCH_1_1",
+            "omega": 8.747e-05,
+            "alpha": 0.076509,
+            "beta": 0.702971,
+            "gamma": 0.0,
+            "persistence": 0.77948,
+            "half_life_days": 2.78,
+            "log_likelihood": 1263.7367,
+            "aic": -2519.4733,
+            "converged": true
+          },
+          {
+            "variant": "EGARCH_1_1",
+            "omega": -0.4183822,
+            "alpha": 0.069762,
+            "beta": 0.946193,
+            "gamma": -0.031399,
+            "persistence": 0.946193,
+            "half_life_days": 12.53,
+            "log_likelihood": 1263.5862,
+            "aic": -2517.1724,
+            "converged": true
+          },
+          {
+            "variant": "GJR_GARCH_1_1",
+            "omega": 2.695e-05,
+            "alpha": 0.004082,
+            "beta": 0.905732,
+            "gamma": 0.040324,
+            "persistence": 0.929976,
+            "half_life_days": 9.55,
+            "log_likelihood": 1264.1873,
+            "aic": -2518.3745,
+            "converged": true
+          }
+        ]
+      },
+      "har_rv": {
+        "beta_daily": 0.021305,
+        "beta_weekly": 0.243234,
+        "beta_monthly": 0.191046,
+        "r_squared": 0.0301,
+        "forecast_1d_pct": 26.59,
+        "forecast_5d_pct": 28.63,
+        "forecast_22d_pct": 31.05
+      },
+      "regime": {
+        "regime": "NORMAL",
+        "conditional_vol_pct": 28.09,
+        "baseline_20d_pct": 21.44,
+        "baseline_ratio": 1.31,
+        "vol_of_vol_pct": 10.96
+      },
+      "vrp": {
+        "available": false,
+        "implied_vol_pct": null,
+        "realized_vol_pct": null,
+        "vrp_variance_pts": null,
+        "vrp_vol_pts": null,
+        "vrp_zscore_252d": null,
+        "seller_edge": null,
+        "unavailable_reason": "No Phase 30 options surface available for this symbol"
+      },
+      "primary_volatility_concern": "NONE_MATERIAL"
+    },
+    "BN": {
+      "symbol": "BN",
+      "country": "CA",
+      "return_window_start": "2024-09-25",
+      "return_window_end": "2026-09-28",
+      "realized": {
+        "close_to_close_pct": 30.55,
+        "parkinson_pct": 25.31,
+        "garman_klass_pct": 24.8,
+        "yang_zhang_pct": 30.11,
+        "estimator_dispersion_pct": 5.75,
+        "most_efficient_estimator": "PARKINSON",
+        "bars_used": 504
+      },
+      "model_selection": {
+        "best_variant": "GARCH_1_1",
+        "best_aic": -2586.2799,
+        "aic_delta_to_runner_up": 0.608,
+        "asymmetry_material": false,
+        "fits": [
+          {
+            "variant": "GARCH_1_1",
+            "omega": 9.786e-05,
+            "alpha": 0.155654,
+            "beta": 0.573117,
+            "gamma": 0.0,
+            "persistence": 0.728771,
+            "half_life_days": 2.19,
+            "log_likelihood": 1297.14,
+            "aic": -2586.2799,
+            "converged": true
+          },
+          {
+            "variant": "EGARCH_1_1",
+            "omega": -2.44177862,
+            "alpha": 0.328321,
+            "beta": 0.691369,
+            "gamma": -0.037971,
+            "persistence": 0.691369,
+            "half_life_days": 1.88,
+            "log_likelihood": 1294.5437,
+            "aic": -2579.0874,
+            "converged": true
+          },
+          {
+            "variant": "GJR_GARCH_1_1",
+            "omega": 9.567e-05,
+            "alpha": 0.090318,
+            "beta": 0.594456,
+            "gamma": 0.090637,
+            "persistence": 0.730093,
+            "half_life_days": 2.2,
+            "log_likelihood": 1297.836,
+            "aic": -2585.6719,
+            "converged": true
+          }
+        ]
+      },
+      "har_rv": {
+        "beta_daily": 0.202301,
+        "beta_weekly": 0.271046,
+        "beta_monthly": 0.102033,
+        "r_squared": 0.1188,
+        "forecast_1d_pct": 25.75,
+        "forecast_5d_pct": 28.15,
+        "forecast_22d_pct": 30.36
+      },
+      "regime": {
+        "regime": "NORMAL",
+        "conditional_vol_pct": 26.88,
+        "baseline_20d_pct": 20.44,
+        "baseline_ratio": 1.316,
+        "vol_of_vol_pct": 12.6
+      },
+      "vrp": {
+        "available": false,
+        "implied_vol_pct": null,
+        "realized_vol_pct": null,
+        "vrp_variance_pts": null,
+        "vrp_vol_pts": null,
+        "vrp_zscore_252d": null,
+        "seller_edge": null,
+        "unavailable_reason": "No Phase 30 options surface available for this symbol"
+      },
+      "primary_volatility_concern": "NONE_MATERIAL"
+    },
+    "CNQ": {
+      "symbol": "CNQ",
+      "country": "CA",
+      "return_window_start": "2024-09-25",
+      "return_window_end": "2026-09-28",
+      "realized": {
+        "close_to_close_pct": 30.5,
+        "parkinson_pct": 24.47,
+        "garman_klass_pct": 24.34,
+        "yang_zhang_pct": 30.85,
+        "estimator_dispersion_pct": 6.51,
+        "most_efficient_estimator": "PARKINSON",
+        "bars_used": 504
+      },
+      "model_selection": {
+        "best_variant": "GARCH_1_1",
+        "best_aic": -2567.0377,
+        "aic_delta_to_runner_up": 0.2849,
+        "asymmetry_material": false,
+        "fits": [
+          {
+            "variant": "GARCH_1_1",
+            "omega": 4.338e-05,
+            "alpha": 0.062826,
+            "beta": 0.814133,
+            "gamma": 0.0,
+            "persistence": 0.876959,
+            "half_life_days": 5.28,
+            "log_likelihood": 1287.5189,
+            "aic": -2567.0377,
+            "converged": true
+          },
+          {
+            "variant": "EGARCH_1_1",
+            "omega": -0.70679907,
+            "alpha": 0.151095,
+            "beta": 0.910512,
+            "gamma": -0.005517,
+            "persistence": 0.910512,
+            "half_life_days": 7.39,
+            "log_likelihood": 1286.0482,
+            "aic": -2562.0963,
+            "converged": true
+          },
+          {
+            "variant": "GJR_GARCH_1_1",
+            "omega": 4.469e-05,
+            "alpha": 0.016459,
+            "beta": 0.824851,
+            "gamma": 0.056428,
+            "persistence": 0.869523,
+            "half_life_days": 4.96,
+            "log_likelihood": 1288.3764,
+            "aic": -2566.7528,
+            "converged": true
+          }
+        ]
+      },
+      "har_rv": {
+        "beta_daily": 0.168012,
+        "beta_weekly": 0.344586,
+        "beta_monthly": -0.064126,
+        "r_squared": 0.1093,
+        "forecast_1d_pct": 22.81,
+        "forecast_5d_pct": 27.82,
+        "forecast_22d_pct": 30.59
+      },
+      "regime": {
+        "regime": "NORMAL",
+        "conditional_vol_pct": 26.93,
+        "baseline_20d_pct": 25.26,
+        "baseline_ratio": 1.066,
+        "vol_of_vol_pct": 11.09
+      },
+      "vrp": {
+        "available": false,
+        "implied_vol_pct": null,
+        "realized_vol_pct": null,
+        "vrp_variance_pts": null,
+        "vrp_vol_pts": null,
+        "vrp_zscore_252d": null,
+        "seller_edge": null,
+        "unavailable_reason": "No Phase 30 options surface available for this symbol"
+      },
+      "primary_volatility_concern": "NONE_MATERIAL"
+    },
+    "CNR": {
+      "symbol": "CNR",
+      "country": "CA",
+      "return_window_start": "2024-09-25",
+      "return_window_end": "2026-09-28",
+      "realized": {
+        "close_to_close_pct": 21.22,
+        "parkinson_pct": 18.41,
+        "garman_klass_pct": 18.14,
+        "yang_zhang_pct": 20.77,
+        "estimator_dispersion_pct": 3.07,
+        "most_efficient_estimator": "PARKINSON",
+        "bars_used": 504
+      },
+      "model_selection": {
+        "best_variant": "GARCH_1_1",
+        "best_aic": -2915.1781,
+        "aic_delta_to_runner_up": 0.8851,
+        "asymmetry_material": false,
+        "fits": [
+          {
+            "variant": "GARCH_1_1",
+            "omega": 1.253e-05,
+            "alpha": 0.036655,
+            "beta": 0.894208,
+            "gamma": 0.0,
+            "persistence": 0.930862,
+            "half_life_days": 9.67,
+            "log_likelihood": 1461.5891,
+            "aic": -2915.1781,
+            "converged": true
+          },
+          {
+            "variant": "EGARCH_1_1",
+            "omega": -0.19973358,
+            "alpha": 0.069956,
+            "beta": 0.976339,
+            "gamma": -0.00241,
+            "persistence": 0.976339,
+            "half_life_days": 28.95,
+            "log_likelihood": 1462.1465,
+            "aic": -2914.293,
+            "converged": true
+          },
+          {
+            "variant": "GJR_GARCH_1_1",
+            "omega": 1.253e-05,
+            "alpha": 0.036655,
+            "beta": 0.894208,
+            "gamma": 0.0,
+            "persistence": 0.930862,
+            "half_life_days": 9.67,
+            "log_likelihood": 1461.5891,
+            "aic": -2913.1781,
+            "converged": true
+          }
+        ]
+      },
+      "har_rv": {
+        "beta_daily": 0.046346,
+        "beta_weekly": 0.139238,
+        "beta_monthly": 0.116696,
+        "r_squared": 0.0138,
+        "forecast_1d_pct": 19.9,
+        "forecast_5d_pct": 20.41,
+        "forecast_22d_pct": 21.42
+      },
+      "regime": {
+        "regime": "NORMAL",
+        "conditional_vol_pct": 19.32,
+        "baseline_20d_pct": 17.39,
+        "baseline_ratio": 1.111,
+        "vol_of_vol_pct": 7.95
+      },
+      "vrp": {
+        "available": false,
+        "implied_vol_pct": null,
+        "realized_vol_pct": null,
+        "vrp_variance_pts": null,
+        "vrp_vol_pts": null,
+        "vrp_zscore_252d": null,
+        "seller_edge": null,
+        "unavailable_reason": "No Phase 30 options surface available for this symbol"
+      },
+      "primary_volatility_concern": "NONE_MATERIAL"
+    },
+    "CP": {
+      "symbol": "CP",
+      "country": "CA",
+      "return_window_start": "2024-09-25",
+      "return_window_end": "2026-09-28",
+      "realized": {
+        "close_to_close_pct": 22.77,
+        "parkinson_pct": 20.74,
+        "garman_klass_pct": 20.53,
+        "yang_zhang_pct": 24.18,
+        "estimator_dispersion_pct": 3.64,
+        "most_efficient_estimator": "PARKINSON",
+        "bars_used": 504
+      },
+      "model_selection": {
+        "best_variant": "EGARCH_1_1",
+        "best_aic": -2853.025,
+        "aic_delta_to_runner_up": 1.3537,
+        "asymmetry_material": true,
+        "fits": [
+          {
+            "variant": "GARCH_1_1",
+            "omega": 2.124e-05,
+            "alpha": 0.063994,
+            "beta": 0.833399,
+            "gamma": 0.0,
+            "persistence": 0.897393,
+            "half_life_days": 6.4,
+            "log_likelihood": 1429.4526,
+            "aic": -2850.9051,
+            "converged": true
+          },
+          {
+            "variant": "EGARCH_1_1",
+            "omega": -0.48736045,
+            "alpha": 0.114954,
+            "beta": 0.942275,
+            "gamma": -0.03785,
+            "persistence": 0.942275,
+            "half_life_days": 11.66,
+            "log_likelihood": 1431.5125,
+            "aic": -2853.025,
+            "converged": true
+          },
+          {
+            "variant": "GJR_GARCH_1_1",
+            "omega": 6.62e-06,
+            "alpha": 0.0,
+            "beta": 0.938396,
+            "gamma": 0.061604,
+            "persistence": 0.969198,
+            "half_life_days": 22.15,
+            "log_likelihood": 1430.8356,
+            "aic": -2851.6713,
+            "converged": true
+          }
+        ]
+      },
+      "har_rv": {
+        "beta_daily": 0.027407,
+        "beta_weekly": 0.18858,
+        "beta_monthly": 0.241871,
+        "r_squared": 0.0247,
+        "forecast_1d_pct": 20.41,
+        "forecast_5d_pct": 20.72,
+        "forecast_22d_pct": 22.38
+      },
+      "regime": {
+        "regime": "NORMAL",
+        "conditional_vol_pct": 21.09,
+        "baseline_20d_pct": 19.88,
+        "baseline_ratio": 1.061,
+        "vol_of_vol_pct": 8.36
+      },
+      "vrp": {
+        "available": false,
+        "implied_vol_pct": null,
+        "realized_vol_pct": null,
+        "vrp_variance_pts": null,
+        "vrp_vol_pts": null,
+        "vrp_zscore_252d": null,
+        "seller_edge": null,
+        "unavailable_reason": "No Phase 30 options surface available for this symbol"
+      },
+      "primary_volatility_concern": "NONE_MATERIAL"
+    },
+    "ENB": {
+      "symbol": "ENB",
+      "country": "CA",
+      "return_window_start": "2024-09-25",
+      "return_window_end": "2026-09-28",
+      "realized": {
+        "close_to_close_pct": 17.04,
+        "parkinson_pct": 16.04,
+        "garman_klass_pct": 15.86,
+        "yang_zhang_pct": 19.29,
+        "estimator_dispersion_pct": 3.43,
+        "most_efficient_estimator": "PARKINSON",
+        "bars_used": 504
+      },
+      "model_selection": {
+        "best_variant": "EGARCH_1_1",
+        "best_aic": -3139.3122,
+        "aic_delta_to_runner_up": 0.1673,
+        "asymmetry_material": true,
+        "fits": [
+          {
+            "variant": "GARCH_1_1",
+            "omega": 7.213e-05,
+            "alpha": 0.136246,
+            "beta": 0.239087,
+            "gamma": 0.0,
+            "persistence": 0.375333,
+            "half_life_days": 0.71,
+            "log_likelihood": 1573.5724,
+            "aic": -3139.1449,
+            "converged": true
+          },
+          {
+            "variant": "EGARCH_1_1",
+            "omega": -4.58494661,
+            "alpha": 0.281702,
+            "beta": 0.494695,
+            "gamma": 0.072586,
+            "persistence": 0.494695,
+            "half_life_days": 0.98,
+            "log_likelihood": 1574.6561,
+            "aic": -3139.3122,
+            "converged": true
+          },
+          {
+            "variant": "GJR_GARCH_1_1",
+            "omega": 7.213e-05,
+            "alpha": 0.136246,
+            "beta": 0.239087,
+            "gamma": 0.0,
+            "persistence": 0.375333,
+            "half_life_days": 0.71,
+            "log_likelihood": 1573.5724,
+            "aic": -3137.1449,
+            "converged": true
+          }
+        ]
+      },
+      "har_rv": {
+        "beta_daily": 0.108211,
+        "beta_weekly": -0.000523,
+        "beta_monthly": 0.039638,
+        "r_squared": 0.0122,
+        "forecast_1d_pct": 16.71,
+        "forecast_5d_pct": 17.33,
+        "forecast_22d_pct": 17.31
+      },
+      "regime": {
+        "regime": "NORMAL",
+        "conditional_vol_pct": 16.75,
+        "baseline_20d_pct": 16.68,
+        "baseline_ratio": 1.004,
+        "vol_of_vol_pct": 5.78
+      },
+      "vrp": {
+        "available": true,
+        "implied_vol_pct": 14.2,
+        "realized_vol_pct": 16.04,
+        "vrp_variance_pts": -55.64,
+        "vrp_vol_pts": -1.84,
+        "vrp_zscore_252d": 0.24,
+        "seller_edge": "NEUTRAL",
+        "unavailable_reason": null
+      },
+      "primary_volatility_concern": "NONE_MATERIAL"
+    },
+    "GOOGL": {
+      "symbol": "GOOGL",
+      "country": "US",
+      "return_window_start": "2024-09-26",
+      "return_window_end": "2026-09-28",
+      "realized": {
+        "close_to_close_pct": 31.82,
+        "parkinson_pct": 25.93,
+        "garman_klass_pct": 25.97,
+        "yang_zhang_pct": 33.73,
+        "estimator_dispersion_pct": 7.8,
+        "most_efficient_estimator": "PARKINSON",
+        "bars_used": 502
+      },
+      "model_selection": {
+        "best_variant": "EGARCH_1_1",
+        "best_aic": -2498.9386,
+        "aic_delta_to_runner_up": 5.31,
+        "asymmetry_material": true,
+        "fits": [
+          {
+            "variant": "GARCH_1_1",
+            "omega": 3.07e-05,
+            "alpha": 0.017801,
+            "beta": 0.906703,
+            "gamma": 0.0,
+            "persistence": 0.924503,
+            "half_life_days": 8.83,
+            "log_likelihood": 1250.373,
+            "aic": -2492.746,
+            "converged": true
+          },
+          {
+            "variant": "EGARCH_1_1",
+            "omega": -0.15905574,
+            "alpha": 0.0,
+            "beta": 0.979629,
+            "gamma": -0.038444,
+            "persistence": 0.979629,
+            "half_life_days": 33.68,
+            "log_likelihood": 1254.4693,
+            "aic": -2498.9386,
+            "converged": true
+          },
+          {
+            "variant": "GJR_GARCH_1_1",
+            "omega": 1.116e-05,
+            "alpha": 0.0,
+            "beta": 0.952725,
+            "gamma": 0.047275,
+            "persistence": 0.976362,
+            "half_life_days": 28.98,
+            "log_likelihood": 1251.8143,
+            "aic": -2493.6286,
+            "converged": true
+          }
+        ]
+      },
+      "har_rv": {
+        "beta_daily": -0.004856,
+        "beta_weekly": 0.002807,
+        "beta_monthly": 0.135044,
+        "r_squared": 0.0009,
+        "forecast_1d_pct": 31.63,
+        "forecast_5d_pct": 31.71,
+        "forecast_22d_pct": 32.24
+      },
+      "regime": {
+        "regime": "NORMAL",
+        "conditional_vol_pct": 34.6,
+        "baseline_20d_pct": 26.03,
+        "baseline_ratio": 1.329,
+        "vol_of_vol_pct": 11.29
+      },
+      "vrp": {
+        "available": false,
+        "implied_vol_pct": null,
+        "realized_vol_pct": null,
+        "vrp_variance_pts": null,
+        "vrp_vol_pts": null,
+        "vrp_zscore_252d": null,
+        "seller_edge": null,
+        "unavailable_reason": "No Phase 30 options surface available for this symbol"
+      },
+      "primary_volatility_concern": "NONE_MATERIAL"
+    },
+    "JPM": {
+      "symbol": "JPM",
+      "country": "US",
+      "return_window_start": "2024-09-26",
+      "return_window_end": "2026-09-28",
+      "realized": {
+        "close_to_close_pct": 24.86,
+        "parkinson_pct": 21.55,
+        "garman_klass_pct": 21.59,
+        "yang_zhang_pct": 25.78,
+        "estimator_dispersion_pct": 4.24,
+        "most_efficient_estimator": "PARKINSON",
+        "bars_used": 502
+      },
+      "model_selection": {
+        "best_variant": "GJR_GARCH_1_1",
+        "best_aic": -2774.6947,
+        "aic_delta_to_runner_up": 1.4368,
+        "asymmetry_material": true,
+        "fits": [
+          {
+            "variant": "GARCH_1_1",
+            "omega": 7.668e-05,
+            "alpha": 0.085228,
+            "beta": 0.592395,
+            "gamma": 0.0,
+            "persistence": 0.677623,
+            "half_life_days": 1.78,
+            "log_likelihood": 1387.5339,
+            "aic": -2767.0677,
+            "converged": true
+          },
+          {
+            "variant": "EGARCH_1_1",
+            "omega": -1.40425201,
+            "alpha": 0.166221,
+            "beta": 0.830836,
+            "gamma": -0.128339,
+            "persistence": 0.830836,
+            "half_life_days": 3.74,
+            "log_likelihood": 1391.629,
+            "aic": -2773.2579,
+            "converged": true
+          },
+          {
+            "variant": "GJR_GARCH_1_1",
+            "omega": 6.446e-05,
+            "alpha": 0.014421,
+            "beta": 0.641181,
+            "gamma": 0.137499,
+            "persistence": 0.724352,
+            "half_life_days": 2.15,
+            "log_likelihood": 1392.3473,
+            "aic": -2774.6947,
+            "converged": true
+          }
+        ]
+      },
+      "har_rv": {
+        "beta_daily": 0.149052,
+        "beta_weekly": 0.16837,
+        "beta_monthly": 0.001821,
+        "r_squared": 0.0451,
+        "forecast_1d_pct": 26.78,
+        "forecast_5d_pct": 25.27,
+        "forecast_22d_pct": 25.04
+      },
+      "regime": {
+        "regime": "ELEVATED",
+        "conditional_vol_pct": 26.49,
+        "baseline_20d_pct": 18.8,
+        "baseline_ratio": 1.409,
+        "vol_of_vol_pct": 11.25
+      },
+      "vrp": {
+        "available": false,
+        "implied_vol_pct": null,
+        "realized_vol_pct": null,
+        "vrp_variance_pts": null,
+        "vrp_vol_pts": null,
+        "vrp_zscore_252d": null,
+        "seller_edge": null,
+        "unavailable_reason": "No Phase 30 options surface available for this symbol"
+      },
+      "primary_volatility_concern": "ELEVATED_CONDITIONAL_VOLATILITY"
+    },
+    "MSFT": {
+      "symbol": "MSFT",
+      "country": "US",
+      "return_window_start": "2024-09-26",
+      "return_window_end": "2026-09-28",
+      "realized": {
+        "close_to_close_pct": 28.73,
+        "parkinson_pct": 21.17,
+        "garman_klass_pct": 21.13,
+        "yang_zhang_pct": 29.2,
+        "estimator_dispersion_pct": 8.07,
+        "most_efficient_estimator": "PARKINSON",
+        "bars_used": 502
+      },
+      "model_selection": {
+        "best_variant": "EGARCH_1_1",
+        "best_aic": -2650.6372,
+        "aic_delta_to_runner_up": 39.442,
+        "asymmetry_material": true,
+        "fits": [
+          {
+            "variant": "GARCH_1_1",
+            "omega": 2.142e-05,
+            "alpha": 0.091295,
+            "beta": 0.857276,
+            "gamma": 0.0,
+            "persistence": 0.948571,
+            "half_life_days": 13.13,
+            "log_likelihood": 1309.5976,
+            "aic": -2611.1952,
+            "converged": true
+          },
+          {
+            "variant": "EGARCH_1_1",
+            "omega": -0.02284661,
+            "alpha": 0.013298,
+            "beta": 0.997165,
+            "gamma": -0.076914,
+            "persistence": 0.997165,
+            "half_life_days": 244.14,
+            "log_likelihood": 1330.3186,
+            "aic": -2650.6372,
+            "converged": true
+          },
+          {
+            "variant": "GJR_GARCH_1_1",
+            "omega": 2.142e-05,
+            "alpha": 0.091295,
+            "beta": 0.857276,
+            "gamma": 0.0,
+            "persistence": 0.948571,
+            "half_life_days": 13.13,
+            "log_likelihood": 1309.5976,
+            "aic": -2609.1952,
+            "converged": true
+          }
+        ]
+      },
+      "har_rv": {
+        "beta_daily": -0.02506,
+        "beta_weekly": 0.167899,
+        "beta_monthly": -0.013298,
+        "r_squared": 0.0048,
+        "forecast_1d_pct": 29.32,
+        "forecast_5d_pct": 29.12,
+        "forecast_22d_pct": 29.26
+      },
+      "regime": {
+        "regime": "NORMAL",
+        "conditional_vol_pct": 25.24,
+        "baseline_20d_pct": 24.25,
+        "baseline_ratio": 1.041,
+        "vol_of_vol_pct": 13.71
+      },
+      "vrp": {
+        "available": true,
+        "implied_vol_pct": 21.0,
+        "realized_vol_pct": 21.17,
+        "vrp_variance_pts": -7.17,
+        "vrp_vol_pts": -0.17,
+        "vrp_zscore_252d": 0.5,
+        "seller_edge": "NEUTRAL",
+        "unavailable_reason": null
+      },
+      "primary_volatility_concern": "REALIZED_ESTIMATOR_DISPERSION"
+    },
+    "NVDA": {
+      "symbol": "NVDA",
+      "country": "US",
+      "return_window_start": "2024-09-26",
+      "return_window_end": "2026-09-28",
+      "realized": {
+        "close_to_close_pct": 44.16,
+        "parkinson_pct": 35.09,
+        "garman_klass_pct": 34.66,
+        "yang_zhang_pct": 44.24,
+        "estimator_dispersion_pct": 9.57,
+        "most_efficient_estimator": "PARKINSON",
+        "bars_used": 502
+      },
+      "model_selection": {
+        "best_variant": "EGARCH_1_1",
+        "best_aic": -2219.4579,
+        "aic_delta_to_runner_up": 8.2822,
+        "asymmetry_material": true,
+        "fits": [
+          {
+            "variant": "GARCH_1_1",
+            "omega": 9.832e-05,
+            "alpha": 0.164596,
+            "beta": 0.717842,
+            "gamma": 0.0,
+            "persistence": 0.882437,
+            "half_life_days": 5.54,
+            "log_likelihood": 1107.5502,
+            "aic": -2207.1004,
+            "converged": true
+          },
+          {
+            "variant": "EGARCH_1_1",
+            "omega": -0.16495235,
+            "alpha": 0.087185,
+            "beta": 0.977026,
+            "gamma": -0.089118,
+            "persistence": 0.977026,
+            "half_life_days": 29.82,
+            "log_likelihood": 1114.7289,
+            "aic": -2219.4579,
+            "converged": true
+          },
+          {
+            "variant": "GJR_GARCH_1_1",
+            "omega": 0.00013273,
+            "alpha": 0.074817,
+            "beta": 0.653903,
+            "gamma": 0.218183,
+            "persistence": 0.837811,
+            "half_life_days": 3.92,
+            "log_likelihood": 1110.5878,
+            "aic": -2211.1757,
+            "converged": true
+          }
+        ]
+      },
+      "har_rv": {
+        "beta_daily": 0.090189,
+        "beta_weekly": 0.149127,
+        "beta_monthly": 0.195526,
+        "r_squared": 0.0321,
+        "forecast_1d_pct": 39.55,
+        "forecast_5d_pct": 40.59,
+        "forecast_22d_pct": 43.43
+      },
+      "regime": {
+        "regime": "NORMAL",
+        "conditional_vol_pct": 36.2,
+        "baseline_20d_pct": 27.33,
+        "baseline_ratio": 1.325,
+        "vol_of_vol_pct": 19.13
+      },
+      "vrp": {
+        "available": true,
+        "implied_vol_pct": 38.5,
+        "realized_vol_pct": 35.09,
+        "vrp_variance_pts": 250.94,
+        "vrp_vol_pts": 3.41,
+        "vrp_zscore_252d": 0.43,
+        "seller_edge": "FAVOURABLE",
+        "unavailable_reason": null
+      },
+      "primary_volatility_concern": "REALIZED_ESTIMATOR_DISPERSION"
+    },
+    "QQQ": {
+      "symbol": "QQQ",
+      "country": "US",
+      "return_window_start": "2024-09-26",
+      "return_window_end": "2026-09-28",
+      "realized": {
+        "close_to_close_pct": 21.65,
+        "parkinson_pct": 16.62,
+        "garman_klass_pct": 16.24,
+        "yang_zhang_pct": 21.28,
+        "estimator_dispersion_pct": 5.41,
+        "most_efficient_estimator": "PARKINSON",
+        "bars_used": 502
+      },
+      "model_selection": {
+        "best_variant": "GJR_GARCH_1_1",
+        "best_aic": -2990.7787,
+        "aic_delta_to_runner_up": 2.3809,
+        "asymmetry_material": true,
+        "fits": [
+          {
+            "variant": "GARCH_1_1",
+            "omega": 1.026e-05,
+            "alpha": 0.109324,
+            "beta": 0.833685,
+            "gamma": 0.0,
+            "persistence": 0.943009,
+            "half_life_days": 11.81,
+            "log_likelihood": 1490.1715,
+            "aic": -2972.3431,
+            "converged": true
+          },
+          {
+            "variant": "EGARCH_1_1",
+            "omega": -0.65586439,
+            "alpha": 0.160395,
+            "beta": 0.924855,
+            "gamma": -0.147827,
+            "persistence": 0.924855,
+            "half_life_days": 8.87,
+            "log_likelihood": 1499.1989,
+            "aic": -2988.3978,
+            "converged": true
+          },
+          {
+            "variant": "GJR_GARCH_1_1",
+            "omega": 1.142e-05,
+            "alpha": 0.0,
+            "beta": 0.848517,
+            "gamma": 0.151483,
+            "persistence": 0.924259,
+            "half_life_days": 8.8,
+            "log_likelihood": 1500.3893,
+            "aic": -2990.7787,
+            "converged": true
+          }
+        ]
+      },
+      "har_rv": {
+        "beta_daily": 0.018637,
+        "beta_weekly": 0.408064,
+        "beta_monthly": 0.07956,
+        "r_squared": 0.0641,
+        "forecast_1d_pct": 17.9,
+        "forecast_5d_pct": 20.09,
+        "forecast_22d_pct": 21.73
+      },
+      "regime": {
+        "regime": "NORMAL",
+        "conditional_vol_pct": 16.94,
+        "baseline_20d_pct": 15.62,
+        "baseline_ratio": 1.085,
+        "vol_of_vol_pct": 10.75
+      },
+      "vrp": {
+        "available": true,
+        "implied_vol_pct": 19.8,
+        "realized_vol_pct": 16.62,
+        "vrp_variance_pts": 115.82,
+        "vrp_vol_pts": 3.18,
+        "vrp_zscore_252d": 0.33,
+        "seller_edge": "FAVOURABLE",
+        "unavailable_reason": null
+      },
+      "primary_volatility_concern": "NONE_MATERIAL"
+    },
+    "RY": {
+      "symbol": "RY",
+      "country": "CA",
+      "return_window_start": "2024-09-25",
+      "return_window_end": "2026-09-28",
+      "realized": {
+        "close_to_close_pct": 15.95,
+        "parkinson_pct": 13.92,
+        "garman_klass_pct": 13.72,
+        "yang_zhang_pct": 16.41,
+        "estimator_dispersion_pct": 2.69,
+        "most_efficient_estimator": "PARKINSON",
+        "bars_used": 504
+      },
+      "model_selection": {
+        "best_variant": "EGARCH_1_1",
+        "best_aic": -3223.5164,
+        "aic_delta_to_runner_up": 1.6955,
+        "asymmetry_material": true,
+        "fits": [
+          {
+            "variant": "GARCH_1_1",
+            "omega": 4.262e-05,
+            "alpha": 0.160852,
+            "beta": 0.414345,
+            "gamma": 0.0,
+            "persistence": 0.575197,
+            "half_life_days": 1.25,
+            "log_likelihood": 1614.9105,
+            "aic": -3221.8209,
+            "converged": true
+          },
+          {
+            "variant": "EGARCH_1_1",
+            "omega": -3.75213701,
+            "alpha": 0.302095,
+            "beta": 0.593044,
+            "gamma": -0.087763,
+            "persistence": 0.593044,
+            "half_life_days": 1.33,
+            "log_likelihood": 1616.7582,
+            "aic": -3223.5164,
+            "converged": true
+          },
+          {
+            "variant": "GJR_GARCH_1_1",
+            "omega": 1.903e-05,
+            "alpha": 0.0,
+            "beta": 0.687105,
+            "gamma": 0.312895,
+            "persistence": 0.843552,
+            "half_life_days": 4.07,
+            "log_likelihood": 1613.8044,
+            "aic": -3217.6089,
+            "converged": true
+          }
+        ]
+      },
+      "har_rv": {
+        "beta_daily": 0.129231,
+        "beta_weekly": 0.116232,
+        "beta_monthly": 0.145127,
+        "r_squared": 0.0363,
+        "forecast_1d_pct": 15.24,
+        "forecast_5d_pct": 15.82,
+        "forecast_22d_pct": 16.03
+      },
+      "regime": {
+        "regime": "NORMAL",
+        "conditional_vol_pct": 15.18,
+        "baseline_20d_pct": 15.1,
+        "baseline_ratio": 1.005,
+        "vol_of_vol_pct": 6.01
+      },
+      "vrp": {
+        "available": true,
+        "implied_vol_pct": 13.8,
+        "realized_vol_pct": 13.92,
+        "vrp_variance_pts": -3.33,
+        "vrp_vol_pts": -0.12,
+        "vrp_zscore_252d": 0.34,
+        "seller_edge": "NEUTRAL",
+        "unavailable_reason": null
+      },
+      "primary_volatility_concern": "NONE_MATERIAL"
+    },
+    "SHOP": {
+      "symbol": "SHOP",
+      "country": "CA",
+      "return_window_start": "2024-09-25",
+      "return_window_end": "2026-09-28",
+      "realized": {
+        "close_to_close_pct": 59.0,
+        "parkinson_pct": 45.37,
+        "garman_klass_pct": 44.72,
+        "yang_zhang_pct": 58.28,
+        "estimator_dispersion_pct": 14.27,
+        "most_efficient_estimator": "PARKINSON",
+        "bars_used": 504
+      },
+      "model_selection": {
+        "best_variant": "EGARCH_1_1",
+        "best_aic": -1900.5035,
+        "aic_delta_to_runner_up": 14.851,
+        "asymmetry_material": true,
+        "fits": [
+          {
+            "variant": "GARCH_1_1",
+            "omega": 0.00042457,
+            "alpha": 0.093278,
+            "beta": 0.607664,
+            "gamma": 0.0,
+            "persistence": 0.700942,
+            "half_life_days": 1.95,
+            "log_likelihood": 946.8262,
+            "aic": -1885.6525,
+            "converged": true
+          },
+          {
+            "variant": "EGARCH_1_1",
+            "omega": -5.07681501,
+            "alpha": 0.241801,
+            "beta": 0.231331,
+            "gamma": 0.280872,
+            "persistence": 0.231331,
+            "half_life_days": 0.47,
+            "log_likelihood": 955.2517,
+            "aic": -1900.5035,
+            "converged": true
+          },
+          {
+            "variant": "GJR_GARCH_1_1",
+            "omega": 0.00042457,
+            "alpha": 0.093278,
+            "beta": 0.607664,
+            "gamma": 0.0,
+            "persistence": 0.700942,
+            "half_life_days": 1.95,
+            "log_likelihood": 946.8262,
+            "aic": -1883.6525,
+            "converged": true
+          }
+        ]
+      },
+      "har_rv": {
+        "beta_daily": 0.007775,
+        "beta_weekly": 0.176488,
+        "beta_monthly": -0.134336,
+        "r_squared": 0.0061,
+        "forecast_1d_pct": 60.16,
+        "forecast_5d_pct": 58.78,
+        "forecast_22d_pct": 60.27
+      },
+      "regime": {
+        "regime": "NORMAL",
+        "conditional_vol_pct": 57.68,
+        "baseline_20d_pct": 61.95,
+        "baseline_ratio": 0.931,
+        "vol_of_vol_pct": 24.63
+      },
+      "vrp": {
+        "available": true,
+        "implied_vol_pct": 33.5,
+        "realized_vol_pct": 45.37,
+        "vrp_variance_pts": -936.19,
+        "vrp_vol_pts": -11.87,
+        "vrp_zscore_252d": 0.58,
+        "seller_edge": "ADVERSE",
+        "unavailable_reason": null
+      },
+      "primary_volatility_concern": "VARIANCE_RISK_PREMIUM_COLLAPSE"
+    },
+    "SPY": {
+      "symbol": "SPY",
+      "country": "US",
+      "return_window_start": "2024-09-26",
+      "return_window_end": "2026-09-28",
+      "realized": {
+        "close_to_close_pct": 16.45,
+        "parkinson_pct": 12.9,
+        "garman_klass_pct": 12.48,
+        "yang_zhang_pct": 16.14,
+        "estimator_dispersion_pct": 3.97,
+        "most_efficient_estimator": "PARKINSON",
+        "bars_used": 502
+      },
+      "model_selection": {
+        "best_variant": "EGARCH_1_1",
+        "best_aic": -3342.5555,
+        "aic_delta_to_runner_up": 3.8351,
+        "asymmetry_material": true,
+        "fits": [
+          {
+            "variant": "GARCH_1_1",
+            "omega": 7.31e-06,
+            "alpha": 0.119263,
+            "beta": 0.80009,
+            "gamma": 0.0,
+            "persistence": 0.919353,
+            "half_life_days": 8.24,
+            "log_likelihood": 1656.5109,
+            "aic": -3305.0218,
+            "converged": true
+          },
+          {
+            "variant": "EGARCH_1_1",
+            "omega": -0.42175528,
+            "alpha": 0.07544,
+            "beta": 0.955705,
+            "gamma": -0.186064,
+            "persistence": 0.955705,
+            "half_life_days": 15.3,
+            "log_likelihood": 1676.2778,
+            "aic": -3342.5555,
+            "converged": true
+          },
+          {
+            "variant": "GJR_GARCH_1_1",
+            "omega": 6.28e-06,
+            "alpha": 0.0,
+            "beta": 0.826819,
+            "gamma": 0.173181,
+            "persistence": 0.913409,
+            "half_life_days": 7.65,
+            "log_likelihood": 1674.3602,
+            "aic": -3338.7204,
+            "converged": true
+          }
+        ]
+      },
+      "har_rv": {
+        "beta_daily": 0.082792,
+        "beta_weekly": 0.403821,
+        "beta_monthly": 0.034226,
+        "r_squared": 0.0903,
+        "forecast_1d_pct": 13.34,
+        "forecast_5d_pct": 15.26,
+        "forecast_22d_pct": 16.62
+      },
+      "regime": {
+        "regime": "NORMAL",
+        "conditional_vol_pct": 14.22,
+        "baseline_20d_pct": 10.78,
+        "baseline_ratio": 1.319,
+        "vol_of_vol_pct": 9.4
+      },
+      "vrp": {
+        "available": true,
+        "implied_vol_pct": 15.5,
+        "realized_vol_pct": 12.9,
+        "vrp_variance_pts": 73.84,
+        "vrp_vol_pts": 2.6,
+        "vrp_zscore_252d": 0.23,
+        "seller_edge": "NEUTRAL",
+        "unavailable_reason": null
+      },
+      "primary_volatility_concern": "NONE_MATERIAL"
+    },
+    "TD": {
+      "symbol": "TD",
+      "country": "CA",
+      "return_window_start": "2024-09-25",
+      "return_window_end": "2026-09-28",
+      "realized": {
+        "close_to_close_pct": 17.67,
+        "parkinson_pct": 14.84,
+        "garman_klass_pct": 14.46,
+        "yang_zhang_pct": 17.53,
+        "estimator_dispersion_pct": 3.21,
+        "most_efficient_estimator": "PARKINSON",
+        "bars_used": 504
+      },
+      "model_selection": {
+        "best_variant": "GARCH_1_1",
+        "best_aic": -3109.5475,
+        "aic_delta_to_runner_up": 0.3113,
+        "asymmetry_material": false,
+        "fits": [
+          {
+            "variant": "GARCH_1_1",
+            "omega": 0.00011056,
+            "alpha": 0.08791,
+            "beta": 0.000531,
+            "gamma": 0.0,
+            "persistence": 0.088441,
+            "half_life_days": 0.29,
+            "log_likelihood": 1558.7738,
+            "aic": -3109.5475,
+            "converged": true
+          },
+          {
+            "variant": "EGARCH_1_1",
+            "omega": -0.36500182,
+            "alpha": 0.0,
+            "beta": 0.959791,
+            "gamma": -0.069057,
+            "persistence": 0.959791,
+            "half_life_days": 16.89,
+            "log_likelihood": 1559.4066,
+            "aic": -3108.8131,
+            "converged": true
+          },
+          {
+            "variant": "GJR_GARCH_1_1",
+            "omega": 0.00011313,
+            "alpha": 0.0,
+            "beta": 0.0,
+            "gamma": 0.109199,
+            "persistence": 0.054599,
+            "half_life_days": 0.24,
+            "log_likelihood": 1559.6181,
+            "aic": -3109.2362,
+            "converged": true
+          }
+        ]
+      },
+      "har_rv": {
+        "beta_daily": 0.04748,
+        "beta_weekly": 0.012006,
+        "beta_monthly": -0.264537,
+        "r_squared": 0.0045,
+        "forecast_1d_pct": 17.25,
+        "forecast_5d_pct": 17.27,
+        "forecast_22d_pct": 17.24
+      },
+      "regime": {
+        "regime": "NORMAL",
+        "conditional_vol_pct": 17.09,
+        "baseline_20d_pct": 16.21,
+        "baseline_ratio": 1.054,
+        "vol_of_vol_pct": 7.46
+      },
+      "vrp": {
+        "available": true,
+        "implied_vol_pct": 16.5,
+        "realized_vol_pct": 14.84,
+        "vrp_variance_pts": 52.02,
+        "vrp_vol_pts": 1.66,
+        "vrp_zscore_252d": 0.41,
+        "seller_edge": "NEUTRAL",
+        "unavailable_reason": null
+      },
+      "primary_volatility_concern": "NONE_MATERIAL"
+    },
+    "XIU": {
+      "symbol": "XIU",
+      "country": "CA",
+      "return_window_start": "2024-09-25",
+      "return_window_end": "2026-09-28",
+      "realized": {
+        "close_to_close_pct": 12.93,
+        "parkinson_pct": 10.31,
+        "garman_klass_pct": 10.04,
+        "yang_zhang_pct": 12.91,
+        "estimator_dispersion_pct": 2.89,
+        "most_efficient_estimator": "PARKINSON",
+        "bars_used": 504
+      },
+      "model_selection": {
+        "best_variant": "EGARCH_1_1",
+        "best_aic": -3524.4794,
+        "aic_delta_to_runner_up": 4.6058,
+        "asymmetry_material": true,
+        "fits": [
+          {
+            "variant": "GARCH_1_1",
+            "omega": 8.98e-06,
+            "alpha": 0.184915,
+            "beta": 0.669226,
+            "gamma": 0.0,
+            "persistence": 0.854141,
+            "half_life_days": 4.4,
+            "log_likelihood": 1760.2508,
+            "aic": -3512.5015,
+            "converged": true
+          },
+          {
+            "variant": "EGARCH_1_1",
+            "omega": -0.7184339,
+            "alpha": 0.162336,
+            "beta": 0.926673,
+            "gamma": -0.175634,
+            "persistence": 0.926673,
+            "half_life_days": 9.1,
+            "log_likelihood": 1767.2397,
+            "aic": -3524.4794,
+            "converged": true
+          },
+          {
+            "variant": "GJR_GARCH_1_1",
+            "omega": 5.81e-06,
+            "alpha": 0.0,
+            "beta": 0.786135,
+            "gamma": 0.213865,
+            "persistence": 0.893067,
+            "half_life_days": 6.13,
+            "log_likelihood": 1764.9368,
+            "aic": -3519.8736,
+            "converged": true
+          }
+        ]
+      },
+      "har_rv": {
+        "beta_daily": 0.199202,
+        "beta_weekly": 0.454595,
+        "beta_monthly": -0.078808,
+        "r_squared": 0.2007,
+        "forecast_1d_pct": 12.51,
+        "forecast_5d_pct": 12.36,
+        "forecast_22d_pct": 13.26
+      },
+      "regime": {
+        "regime": "NORMAL",
+        "conditional_vol_pct": 14.33,
+        "baseline_20d_pct": 12.46,
+        "baseline_ratio": 1.15,
+        "vol_of_vol_pct": 6.24
+      },
+      "vrp": {
+        "available": true,
+        "implied_vol_pct": 12.8,
+        "realized_vol_pct": 10.31,
+        "vrp_variance_pts": 57.54,
+        "vrp_vol_pts": 2.49,
+        "vrp_zscore_252d": 0.31,
+        "seller_edge": "NEUTRAL",
+        "unavailable_reason": null
+      },
+      "primary_volatility_concern": "NONE_MATERIAL"
+    },
+    "XOM": {
+      "symbol": "XOM",
+      "country": "US",
+      "return_window_start": "2024-09-26",
+      "return_window_end": "2026-09-28",
+      "realized": {
+        "close_to_close_pct": 25.01,
+        "parkinson_pct": 21.16,
+        "garman_klass_pct": 21.34,
+        "yang_zhang_pct": 26.72,
+        "estimator_dispersion_pct": 5.56,
+        "most_efficient_estimator": "PARKINSON",
+        "bars_used": 502
+      },
+      "model_selection": {
+        "best_variant": "GARCH_1_1",
+        "best_aic": -2750.7995,
+        "aic_delta_to_runner_up": 2.0,
+        "asymmetry_material": false,
+        "fits": [
+          {
+            "variant": "GARCH_1_1",
+            "omega": 1.986e-05,
+            "alpha": 0.064132,
+            "beta": 0.85483,
+            "gamma": 0.0,
+            "persistence": 0.918963,
+            "half_life_days": 8.2,
+            "log_likelihood": 1379.3998,
+            "aic": -2750.7995,
+            "converged": true
+          },
+          {
+            "variant": "EGARCH_1_1",
+            "omega": -0.21357318,
+            "alpha": 0.103626,
+            "beta": 0.973806,
+            "gamma": 0.022422,
+            "persistence": 0.973806,
+            "half_life_days": 26.11,
+            "log_likelihood": 1377.8116,
+            "aic": -2745.6232,
+            "converged": true
+          },
+          {
+            "variant": "GJR_GARCH_1_1",
+            "omega": 1.986e-05,
+            "alpha": 0.064132,
+            "beta": 0.85483,
+            "gamma": 0.0,
+            "persistence": 0.918963,
+            "half_life_days": 8.2,
+            "log_likelihood": 1379.3998,
+            "aic": -2748.7995,
+            "converged": true
+          }
+        ]
+      },
+      "har_rv": {
+        "beta_daily": 0.052313,
+        "beta_weekly": 0.372022,
+        "beta_monthly": -0.010784,
+        "r_squared": 0.0555,
+        "forecast_1d_pct": 21.94,
+        "forecast_5d_pct": 23.98,
+        "forecast_22d_pct": 25.2
+      },
+      "regime": {
+        "regime": "NORMAL",
+        "conditional_vol_pct": 24.75,
+        "baseline_20d_pct": 26.87,
+        "baseline_ratio": 0.921,
+        "vol_of_vol_pct": 8.56
+      },
+      "vrp": {
+        "available": false,
+        "implied_vol_pct": null,
+        "realized_vol_pct": null,
+        "vrp_variance_pts": null,
+        "vrp_vol_pts": null,
+        "vrp_zscore_252d": null,
+        "seller_edge": null,
+        "unavailable_reason": "No Phase 30 options surface available for this symbol"
+      },
+      "primary_volatility_concern": "NONE_MATERIAL"
+    }
+  },
+  "disclaimers": [
+    "Realized volatility estimates, GARCH-family conditional variance forecasts, HAR-RV cascades, and Variance Risk Premium figures are quantitative econometric simulations computed from historical price data. Model parameters are estimated and subject to instability across estimation windows.",
+    "The Variance Risk Premium is computed as implied volatility squared minus realized volatility squared, using internally derived inputs only: platform Black-Scholes-Merton implied volatility and platform-computed realized volatility. No third-party index value is referenced.",
+    "A positive Variance Risk Premium indicates that implied volatility has historically exceeded subsequently realized volatility. This is an empirical regularity, not a guarantee, and can invert without warning during volatility crises.",
+    "Volatility forecasts do not predict price direction. They estimate the scale of future price dispersion and carry substantial model risk.",
+    "Provided strictly for impersonal decision-support research. Does not constitute investment advice, a recommendation to buy or sell, or a solicitation, under CSA Staff Notice 31-369 and SEC Publisher Exclusion section 202(a)(11)(D)."
+  ]
+}
