@@ -292,6 +292,7 @@ class QuantIntelSentinel:
         factor_attribution_metrics: Optional[Dict[str, Any]] = None,
         bayesian_metrics: Optional[Dict[str, Any]] = None,
         cross_border_fx_metrics: Optional[Dict[str, Any]] = None,
+        options_intelligence_metrics: Optional[Dict[str, Any]] = None,
     ) -> List[InvalidationAlert]:
         """
         Evaluates portfolio-level risk invariants:
@@ -305,6 +306,8 @@ class QuantIntelSentinel:
         - Bayesian estimation error spike (Predicate 17)
         - Dual-listed parity dislocations (Predicate 18)
         - Unhedged currency volatility drag (Predicate 19)
+        - Gamma flip dealer regime transitions (Predicate 20)
+        - Volatility skew tail inversion (Predicate 21)
         """
         alerts = []
         now_str = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -588,6 +591,64 @@ class QuantIntelSentinel:
                     )
                 )
 
+        # 20. PREDICATE: GAMMA_FLIP_REGIME_TRANSITION (Spot breaches below Gamma Flip with negative Net GEX)
+        if options_intelligence_metrics:
+            dossiers = options_intelligence_metrics.get("dossiers", {})
+            for sym, d in dossiers.items():
+                regime = d.get("gamma_regime") if isinstance(d, dict) else getattr(d, "gamma_regime", "LONG_GAMMA")
+                net_gex = d.get("net_gex_millions", 0.0) if isinstance(d, dict) else getattr(d, "net_gex_millions", 0.0)
+                flip = d.get("gamma_flip_strike", 0.0) if isinstance(d, dict) else getattr(d, "gamma_flip_strike", 0.0)
+                mkt = d.get("exchange_market", "US_CBOE") if isinstance(d, dict) else getattr(d, "exchange_market", "US_CBOE")
+                gex_threshold = -5.0 if mkt == "CA_MX" else -50.0
+
+                if regime == "SHORT_GAMMA" and net_gex < gex_threshold:
+                    headline = f"Gamma Flip Negative Dealer Regime: {sym} (${net_gex:.1f}M GEX)"
+                    body = (
+                        f"Spot price for {sym} breached below the dealer Gamma Flip level (${flip:.2f}). "
+                        f"Market makers are net short gamma, transitioning from volatility-dampening to volatility-amplifying posture."
+                    )
+                    alerts.append(
+                        InvalidationAlert(
+                            symbol=sym,
+                            predicate_type="GAMMA_FLIP_REGIME_TRANSITION",
+                            severity="WARNING",
+                            trigger_level=round(gex_threshold, 1),
+                            current_price=round(net_gex, 1),
+                            headline=headline,
+                            body=body,
+                            action_required="WIDEN_STOP_THRESHOLDS",
+                            timestamp=now_str,
+                        )
+                    )
+
+        # 21. PREDICATE: VOLATILITY_SKEW_TAIL_INVERSION (25-Delta Put Skew Z-Score > +2.50σ)
+        if options_intelligence_metrics:
+            dossiers = options_intelligence_metrics.get("dossiers", {})
+            for sym, d in dossiers.items():
+                zscore = d.get("skew_zscore", 0.0) if isinstance(d, dict) else getattr(d, "skew_zscore", 0.0)
+                skew_val = d.get("thirty_day_skew_pct", 0.0) if isinstance(d, dict) else getattr(d, "thirty_day_skew_pct", 0.0)
+                pctl = d.get("skew_percentile_1y", 50.0) if isinstance(d, dict) else getattr(d, "skew_percentile_1y", 50.0)
+
+                if zscore > 2.50:
+                    headline = f"Volatility Skew Tail Inversion: {sym} (+{zscore:.2f}σ Z-Score)"
+                    body = (
+                        f"25-delta put implied volatility for {sym} expanded to {skew_val:.2f}%, "
+                        f"reaching the {pctl:.1f}th historical percentile (+{zscore:.2f}σ). Elevated crash protection pricing detected."
+                    )
+                    alerts.append(
+                        InvalidationAlert(
+                            symbol=sym,
+                            predicate_type="VOLATILITY_SKEW_TAIL_INVERSION",
+                            severity="WARNING",
+                            trigger_level=2.50,
+                            current_price=round(zscore, 2),
+                            headline=headline,
+                            body=body,
+                            action_required="SCRUTINIZE_TAIL_RISK_PROTECTION",
+                            timestamp=now_str,
+                        )
+                    )
+
         return alerts
 
     def evaluate_universe_sentinels(self, quant_intel_dossiers: Dict[str, Any]) -> List[InvalidationAlert]:
@@ -620,6 +681,10 @@ class QuantIntelSentinel:
 
             if "STOP" in inv.predicate_type or "BREAKOUT_FAILURE" in inv.predicate_type or "SWEEP" in inv.predicate_type:
                 taxonomy = "EXIT_TRIGGER_ESCALATION"
+            elif "GAMMA" in inv.predicate_type:
+                taxonomy = "REGIME_SHIFT"
+            elif "SKEW" in inv.predicate_type:
+                taxonomy = "PORTFOLIO_CIRCUIT_BREAKER"
             elif "REGIME" in inv.predicate_type:
                 taxonomy = "REGIME_SHIFT"
             elif "CATALYST" in inv.predicate_type:

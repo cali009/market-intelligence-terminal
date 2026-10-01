@@ -1650,6 +1650,85 @@ class CrossBorderFxFeed(BaseModel):
         return self.model_dump()
 
 
+# =========================================================================
+# PHASE 30: OPTIONS VOLATILITY SURFACE & GEX INTELLIGENCE SCHEMAS
+# =========================================================================
+
+class OptionStrikeGex(BaseModel):
+    strike: float
+    call_oi: int
+    put_oi: int
+    call_gamma: float
+    put_gamma: float
+    call_gex_millions: float
+    put_gex_millions: float
+    net_gex_millions: float
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class VolatilitySmilePoint(BaseModel):
+    moneyness_pct: float
+    strike: float
+    implied_volatility_pct: float
+    delta: float
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class TermVolatilitySurface(BaseModel):
+    tenor_label: Literal["7D", "30D", "60D", "90D", "180D"]
+    days_to_expiry: int
+    atm_iv_pct: float
+    skew_25d_pct: float
+    butterfly_25d_pct: float
+    smile_points: List[VolatilitySmilePoint]
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class TickerOptionsDossier(BaseModel):
+    symbol: str
+    name: str
+    exchange_market: Literal["US_CBOE", "CA_MX"]
+    currency: Literal["USD", "CAD"]
+    underlying_spot_price: float
+    net_gex_millions: float
+    gamma_regime: Literal["LONG_GAMMA", "SHORT_GAMMA", "TRANSITION_ZONE"]
+    gamma_flip_strike: float
+    distance_to_gamma_flip_pct: float
+    max_pain_strike: float
+    put_call_ratio_oi: float
+    put_call_ratio_volume: float
+    thirty_day_atm_iv_pct: float
+    thirty_day_skew_pct: float
+    skew_percentile_1y: float
+    skew_zscore: float
+    market_maker_posture: Literal["SUPPRESSING_VOLATILITY", "AMPLIFYING_VOLATILITY", "NEUTRAL_REBALANCING"]
+    volatility_surface: List[TermVolatilitySurface]
+    strike_gex_distribution: List[OptionStrikeGex]
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class OptionsIntelligenceFeed(BaseModel):
+    as_of_date: str
+    generated_at: str
+    us_cboe_aggregate_net_gex_millions: float
+    ca_mx_aggregate_net_gex_millions: float
+    symbols_monitored: List[str]
+    dossiers: Dict[str, TickerOptionsDossier]
+    disclaimers: List[str]
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+
 
 
 

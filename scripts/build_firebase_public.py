@@ -105,6 +105,8 @@ def build_firebase_bundle():
         ("portfolio_bayesian.json", "portfolio_bayesian"),
         ("cross_border_fx.json", "cross_border_fx.json"),
         ("cross_border_fx.json", "cross_border_fx"),
+        ("options_intelligence.json", "options_intelligence.json"),
+        ("options_intelligence.json", "options_intelligence"),
     ]
 
     for src_name, dest_name in core_feeds:

@@ -53,6 +53,7 @@ from src.engine.factor_risk import factor_risk_engine
 from src.engine.factor_attribution import factor_attribution_engine
 from src.engine.portfolio_bayesian import portfolio_bayesian_engine
 from src.engine.cross_border_fx import cross_border_fx_engine
+from src.engine.options_surface_gex import cross_border_options_engine
 
 FEEDS_DIR = DATA_DIR / "feeds"
 DIST_DIR = DATA_DIR / "dist"
@@ -693,8 +694,11 @@ class EdgeExporter:
             # Phase 29: Cross-Border Dual-Currency & Dual-Listed Arbitrage Feed
             cross_border_fx_engine.export_feed(d_dir / "cross_border_fx.json")
 
+            # Phase 30: Options Volatility Surface & GEX Intelligence Feed
+            cross_border_options_engine.export_feed(d_dir / "options_intelligence.json")
+
         return {
-            "dist_files": 29,
+            "dist_files": 30,
             "symbol_files": symbol_files_count,
             "total_matches": len(scanner_results),
             "total_signals": len(signals_list),

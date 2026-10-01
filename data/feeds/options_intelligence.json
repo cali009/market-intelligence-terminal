@@ -1,0 +1,5905 @@
+{
+  "as_of_date": "2026-10-01",
+  "generated_at": "2026-10-01T16:01:14.406803+00:00",
+  "us_cboe_aggregate_net_gex_millions": 460.66,
+  "ca_mx_aggregate_net_gex_millions": 14.02,
+  "symbols_monitored": [
+    "SPY",
+    "QQQ",
+    "AAPL",
+    "MSFT",
+    "NVDA",
+    "XIU",
+    "SHOP",
+    "RY",
+    "TD",
+    "ENB"
+  ],
+  "dossiers": {
+    "SPY": {
+      "symbol": "SPY",
+      "name": "SPDR S&P 500 ETF Trust",
+      "exchange_market": "US_CBOE",
+      "currency": "USD",
+      "underlying_spot_price": 765.61,
+      "net_gex_millions": 204.84,
+      "gamma_regime": "TRANSITION_ZONE",
+      "gamma_flip_strike": 767.51,
+      "distance_to_gamma_flip_pct": -0.25,
+      "max_pain_strike": 765.0,
+      "put_call_ratio_oi": 1.0,
+      "put_call_ratio_volume": 0.92,
+      "thirty_day_atm_iv_pct": 15.5,
+      "thirty_day_skew_pct": 3.6,
+      "skew_percentile_1y": 42.8,
+      "skew_zscore": -0.18,
+      "market_maker_posture": "NEUTRAL_REBALANCING",
+      "volatility_surface": [
+        {
+          "tenor_label": "7D",
+          "days_to_expiry": 7,
+          "atm_iv_pct": 14.88,
+          "skew_25d_pct": 4.2,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 612.49,
+              "implied_volatility_pct": 24.68,
+              "delta": 1.0
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 650.77,
+              "implied_volatility_pct": 21.97,
+              "delta": 1.0
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 689.05,
+              "implied_volatility_pct": 19.43,
+              "delta": 1.0
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 727.33,
+              "implied_volatility_pct": 17.07,
+              "delta": 0.986
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 765.61,
+              "implied_volatility_pct": 14.88,
+              "delta": 0.517
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 803.89,
+              "implied_volatility_pct": 12.87,
+              "delta": 0.004
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 842.17,
+              "implied_volatility_pct": 11.03,
+              "delta": 0.0
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 880.45,
+              "implied_volatility_pct": 9.37,
+              "delta": 0.0
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 918.73,
+              "implied_volatility_pct": 7.88,
+              "delta": 0.0
+            }
+          ]
+        },
+        {
+          "tenor_label": "30D",
+          "days_to_expiry": 30,
+          "atm_iv_pct": 15.5,
+          "skew_25d_pct": 3.6,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 612.49,
+              "implied_volatility_pct": 24.1,
+              "delta": 0.999
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 650.77,
+              "implied_volatility_pct": 21.69,
+              "delta": 0.995
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 689.05,
+              "implied_volatility_pct": 19.45,
+              "delta": 0.975
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 727.33,
+              "implied_volatility_pct": 17.39,
+              "delta": 0.866
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 765.61,
+              "implied_volatility_pct": 15.5,
+              "delta": 0.535
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 803.89,
+              "implied_volatility_pct": 13.79,
+              "delta": 0.127
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 842.17,
+              "implied_volatility_pct": 12.25,
+              "delta": 0.004
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 880.45,
+              "implied_volatility_pct": 10.89,
+              "delta": 0.0
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 918.73,
+              "implied_volatility_pct": 9.7,
+              "delta": 0.0
+            }
+          ]
+        },
+        {
+          "tenor_label": "60D",
+          "days_to_expiry": 60,
+          "atm_iv_pct": 15.97,
+          "skew_25d_pct": 3.2,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 612.49,
+              "implied_volatility_pct": 23.77,
+              "delta": 0.99
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 650.77,
+              "implied_volatility_pct": 21.55,
+              "delta": 0.974
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 689.05,
+              "implied_volatility_pct": 19.52,
+              "delta": 0.924
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 727.33,
+              "implied_volatility_pct": 17.65,
+              "delta": 0.797
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 765.61,
+              "implied_volatility_pct": 15.97,
+              "delta": 0.548
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 803.89,
+              "implied_volatility_pct": 14.45,
+              "delta": 0.241
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 842.17,
+              "implied_volatility_pct": 13.11,
+              "delta": 0.049
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 880.45,
+              "implied_volatility_pct": 11.95,
+              "delta": 0.003
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 918.73,
+              "implied_volatility_pct": 10.97,
+              "delta": 0.0
+            }
+          ]
+        },
+        {
+          "tenor_label": "90D",
+          "days_to_expiry": 90,
+          "atm_iv_pct": 16.43,
+          "skew_25d_pct": 2.8,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 612.49,
+              "implied_volatility_pct": 23.43,
+              "delta": 0.977
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 650.77,
+              "implied_volatility_pct": 21.42,
+              "delta": 0.949
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 689.05,
+              "implied_volatility_pct": 19.58,
+              "delta": 0.887
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 727.33,
+              "implied_volatility_pct": 17.92,
+              "delta": 0.762
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 765.61,
+              "implied_volatility_pct": 16.43,
+              "delta": 0.558
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 803.89,
+              "implied_volatility_pct": 15.12,
+              "delta": 0.31
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 842.17,
+              "implied_volatility_pct": 13.98,
+              "delta": 0.113
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 880.45,
+              "implied_volatility_pct": 13.02,
+              "delta": 0.023
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 918.73,
+              "implied_volatility_pct": 12.23,
+              "delta": 0.002
+            }
+          ]
+        },
+        {
+          "tenor_label": "180D",
+          "days_to_expiry": 180,
+          "atm_iv_pct": 17.05,
+          "skew_25d_pct": 2.4,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 612.49,
+              "implied_volatility_pct": 23.25,
+              "delta": 0.934
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 650.77,
+              "implied_volatility_pct": 21.44,
+              "delta": 0.893
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 689.05,
+              "implied_volatility_pct": 19.8,
+              "delta": 0.825
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 727.33,
+              "implied_volatility_pct": 18.34,
+              "delta": 0.721
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 765.61,
+              "implied_volatility_pct": 17.05,
+              "delta": 0.579
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 803.89,
+              "implied_volatility_pct": 15.94,
+              "delta": 0.41
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 842.17,
+              "implied_volatility_pct": 15.0,
+              "delta": 0.246
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 880.45,
+              "implied_volatility_pct": 14.24,
+              "delta": 0.12
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 918.73,
+              "implied_volatility_pct": 13.65,
+              "delta": 0.047
+            }
+          ]
+        }
+      ],
+      "strike_gex_distribution": [
+        {
+          "strike": 705.0,
+          "call_oi": 4299,
+          "put_oi": 27731,
+          "call_gamma": 0.001911,
+          "put_gamma": 0.001911,
+          "call_gex_millions": 4.82,
+          "put_gex_millions": -31.07,
+          "net_gex_millions": -26.25
+        },
+        {
+          "strike": 710.0,
+          "call_oi": 4530,
+          "put_oi": 28559,
+          "call_gamma": 0.002515,
+          "put_gamma": 0.002515,
+          "call_gex_millions": 6.68,
+          "put_gex_millions": -42.1,
+          "net_gex_millions": -35.42
+        },
+        {
+          "strike": 715.0,
+          "call_oi": 4773,
+          "put_oi": 29410,
+          "call_gamma": 0.003234,
+          "put_gamma": 0.003234,
+          "call_gex_millions": 9.05,
+          "put_gex_millions": -55.75,
+          "net_gex_millions": -46.7
+        },
+        {
+          "strike": 720.0,
+          "call_oi": 5029,
+          "put_oi": 30287,
+          "call_gamma": 0.004065,
+          "put_gamma": 0.004065,
+          "call_gex_millions": 11.98,
+          "put_gex_millions": -72.17,
+          "net_gex_millions": -60.19
+        },
+        {
+          "strike": 725.0,
+          "call_oi": 11657,
+          "put_oi": 68620,
+          "call_gamma": 0.004995,
+          "put_gamma": 0.004995,
+          "call_gex_millions": 34.13,
+          "put_gex_millions": -200.92,
+          "net_gex_millions": -166.79
+        },
+        {
+          "strike": 730.0,
+          "call_oi": 5583,
+          "put_oi": 32121,
+          "call_gamma": 0.006002,
+          "put_gamma": 0.006002,
+          "call_gex_millions": 19.64,
+          "put_gex_millions": -113.0,
+          "net_gex_millions": -93.36
+        },
+        {
+          "strike": 735.0,
+          "call_oi": 5882,
+          "put_oi": 33079,
+          "call_gamma": 0.00705,
+          "put_gamma": 0.00705,
+          "call_gex_millions": 24.31,
+          "put_gex_millions": -136.71,
+          "net_gex_millions": -112.4
+        },
+        {
+          "strike": 740.0,
+          "call_oi": 6198,
+          "put_oi": 34066,
+          "call_gamma": 0.0081,
+          "put_gamma": 0.0081,
+          "call_gex_millions": 29.43,
+          "put_gex_millions": -161.74,
+          "net_gex_millions": -132.31
+        },
+        {
+          "strike": 745.0,
+          "call_oi": 6530,
+          "put_oi": 35082,
+          "call_gamma": 0.009101,
+          "put_gamma": 0.009101,
+          "call_gex_millions": 34.84,
+          "put_gex_millions": -187.15,
+          "net_gex_millions": -152.32
+        },
+        {
+          "strike": 750.0,
+          "call_oi": 15138,
+          "put_oi": 79482,
+          "call_gamma": 0.010003,
+          "put_gamma": 0.010003,
+          "call_gex_millions": 88.76,
+          "put_gex_millions": -466.02,
+          "net_gex_millions": -377.26
+        },
+        {
+          "strike": 755.0,
+          "call_oi": 7249,
+          "put_oi": 37205,
+          "call_gamma": 0.010755,
+          "put_gamma": 0.010755,
+          "call_gex_millions": 45.7,
+          "put_gex_millions": -234.54,
+          "net_gex_millions": -188.84
+        },
+        {
+          "strike": 760.0,
+          "call_oi": 7638,
+          "put_oi": 38315,
+          "call_gamma": 0.011313,
+          "put_gamma": 0.011313,
+          "call_gex_millions": 50.65,
+          "put_gex_millions": -254.07,
+          "net_gex_millions": -203.42
+        },
+        {
+          "strike": 765.0,
+          "call_oi": 8048,
+          "put_oi": 39458,
+          "call_gamma": 0.011644,
+          "put_gamma": 0.011644,
+          "call_gex_millions": 54.93,
+          "put_gex_millions": -269.32,
+          "net_gex_millions": -214.39
+        },
+        {
+          "strike": 770.0,
+          "call_oi": 38591,
+          "put_oi": 7736,
+          "call_gamma": 0.011729,
+          "put_gamma": 0.011729,
+          "call_gex_millions": 265.31,
+          "put_gex_millions": -53.18,
+          "net_gex_millions": 212.13
+        },
+        {
+          "strike": 775.0,
+          "call_oi": 82442,
+          "put_oi": 16154,
+          "call_gamma": 0.011563,
+          "put_gamma": 0.011563,
+          "call_gex_millions": 558.75,
+          "put_gex_millions": -109.48,
+          "net_gex_millions": 449.27
+        },
+        {
+          "strike": 780.0,
+          "call_oi": 36388,
+          "put_oi": 6969,
+          "call_gamma": 0.011157,
+          "put_gamma": 0.011157,
+          "call_gex_millions": 237.98,
+          "put_gex_millions": -45.58,
+          "net_gex_millions": 192.4
+        },
+        {
+          "strike": 785.0,
+          "call_oi": 35334,
+          "put_oi": 6614,
+          "call_gamma": 0.01054,
+          "put_gamma": 0.01054,
+          "call_gex_millions": 218.29,
+          "put_gex_millions": -40.86,
+          "net_gex_millions": 177.43
+        },
+        {
+          "strike": 790.0,
+          "call_oi": 34311,
+          "put_oi": 6277,
+          "call_gamma": 0.009748,
+          "put_gamma": 0.009748,
+          "call_gex_millions": 196.05,
+          "put_gex_millions": -35.87,
+          "net_gex_millions": 160.18
+        },
+        {
+          "strike": 795.0,
+          "call_oi": 33317,
+          "put_oi": 5958,
+          "call_gamma": 0.008828,
+          "put_gamma": 0.008828,
+          "call_gex_millions": 172.41,
+          "put_gex_millions": -30.83,
+          "net_gex_millions": 141.58
+        },
+        {
+          "strike": 800.0,
+          "call_oi": 71175,
+          "put_oi": 12440,
+          "call_gamma": 0.00783,
+          "put_gamma": 0.00783,
+          "call_gex_millions": 326.66,
+          "put_gex_millions": -57.09,
+          "net_gex_millions": 269.57
+        },
+        {
+          "strike": 805.0,
+          "call_oi": 31415,
+          "put_oi": 5367,
+          "call_gamma": 0.006802,
+          "put_gamma": 0.006802,
+          "call_gex_millions": 125.25,
+          "put_gex_millions": -21.4,
+          "net_gex_millions": 103.85
+        },
+        {
+          "strike": 810.0,
+          "call_oi": 30505,
+          "put_oi": 5093,
+          "call_gamma": 0.005788,
+          "put_gamma": 0.005788,
+          "call_gex_millions": 103.49,
+          "put_gex_millions": -17.28,
+          "net_gex_millions": 86.21
+        },
+        {
+          "strike": 815.0,
+          "call_oi": 29622,
+          "put_oi": 4834,
+          "call_gamma": 0.004825,
+          "put_gamma": 0.004825,
+          "call_gex_millions": 83.78,
+          "put_gex_millions": -13.67,
+          "net_gex_millions": 70.11
+        },
+        {
+          "strike": 820.0,
+          "call_oi": 28764,
+          "put_oi": 4588,
+          "call_gamma": 0.003941,
+          "put_gamma": 0.003941,
+          "call_gex_millions": 66.45,
+          "put_gex_millions": -10.6,
+          "net_gex_millions": 55.85
+        },
+        {
+          "strike": 825.0,
+          "call_oi": 61449,
+          "put_oi": 9580,
+          "call_gamma": 0.003155,
+          "put_gamma": 0.003155,
+          "call_gex_millions": 113.64,
+          "put_gex_millions": -17.72,
+          "net_gex_millions": 95.92
+        }
+      ]
+    },
+    "QQQ": {
+      "symbol": "QQQ",
+      "name": "Invesco QQQ Trust",
+      "exchange_market": "US_CBOE",
+      "currency": "USD",
+      "underlying_spot_price": 736.53,
+      "net_gex_millions": 74.85,
+      "gamma_regime": "TRANSITION_ZONE",
+      "gamma_flip_strike": 737.5,
+      "distance_to_gamma_flip_pct": -0.13,
+      "max_pain_strike": 735.0,
+      "put_call_ratio_oi": 1.1,
+      "put_call_ratio_volume": 1.01,
+      "thirty_day_atm_iv_pct": 19.8,
+      "thirty_day_skew_pct": 3.6,
+      "skew_percentile_1y": 42.8,
+      "skew_zscore": -0.18,
+      "market_maker_posture": "NEUTRAL_REBALANCING",
+      "volatility_surface": [
+        {
+          "tenor_label": "7D",
+          "days_to_expiry": 7,
+          "atm_iv_pct": 19.01,
+          "skew_25d_pct": 4.2,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 589.22,
+              "implied_volatility_pct": 28.81,
+              "delta": 1.0
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 626.05,
+              "implied_volatility_pct": 26.1,
+              "delta": 1.0
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 662.88,
+              "implied_volatility_pct": 23.56,
+              "delta": 0.999
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 699.7,
+              "implied_volatility_pct": 21.2,
+              "delta": 0.963
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 736.53,
+              "implied_volatility_pct": 19.01,
+              "delta": 0.517
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 773.36,
+              "implied_volatility_pct": 17.0,
+              "delta": 0.021
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 810.18,
+              "implied_volatility_pct": 15.16,
+              "delta": 0.0
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 847.01,
+              "implied_volatility_pct": 13.5,
+              "delta": 0.0
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 883.84,
+              "implied_volatility_pct": 12.01,
+              "delta": 0.0
+            }
+          ]
+        },
+        {
+          "tenor_label": "30D",
+          "days_to_expiry": 30,
+          "atm_iv_pct": 19.8,
+          "skew_25d_pct": 3.6,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 589.22,
+              "implied_volatility_pct": 28.4,
+              "delta": 0.997
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 626.05,
+              "implied_volatility_pct": 25.99,
+              "delta": 0.988
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 662.88,
+              "implied_volatility_pct": 23.75,
+              "delta": 0.948
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 699.7,
+              "implied_volatility_pct": 21.69,
+              "delta": 0.819
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 736.53,
+              "implied_volatility_pct": 19.8,
+              "delta": 0.535
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 773.36,
+              "implied_volatility_pct": 18.09,
+              "delta": 0.198
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 810.18,
+              "implied_volatility_pct": 16.55,
+              "delta": 0.028
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 847.01,
+              "implied_volatility_pct": 15.19,
+              "delta": 0.001
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 883.84,
+              "implied_volatility_pct": 14.0,
+              "delta": 0.0
+            }
+          ]
+        },
+        {
+          "tenor_label": "60D",
+          "days_to_expiry": 60,
+          "atm_iv_pct": 20.39,
+          "skew_25d_pct": 3.2,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 589.22,
+              "implied_volatility_pct": 28.19,
+              "delta": 0.98
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 626.05,
+              "implied_volatility_pct": 25.98,
+              "delta": 0.951
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 662.88,
+              "implied_volatility_pct": 23.94,
+              "delta": 0.885
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 699.7,
+              "implied_volatility_pct": 22.08,
+              "delta": 0.756
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 736.53,
+              "implied_volatility_pct": 20.39,
+              "delta": 0.549
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 773.36,
+              "implied_volatility_pct": 18.88,
+              "delta": 0.305
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 810.18,
+              "implied_volatility_pct": 17.54,
+              "delta": 0.114
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 847.01,
+              "implied_volatility_pct": 16.38,
+              "delta": 0.025
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 883.84,
+              "implied_volatility_pct": 15.39,
+              "delta": 0.003
+            }
+          ]
+        },
+        {
+          "tenor_label": "90D",
+          "days_to_expiry": 90,
+          "atm_iv_pct": 20.99,
+          "skew_25d_pct": 2.8,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 589.22,
+              "implied_volatility_pct": 27.99,
+              "delta": 0.958
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 626.05,
+              "implied_volatility_pct": 25.98,
+              "delta": 0.918
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 662.88,
+              "implied_volatility_pct": 24.14,
+              "delta": 0.846
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 699.7,
+              "implied_volatility_pct": 22.48,
+              "delta": 0.727
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 736.53,
+              "implied_volatility_pct": 20.99,
+              "delta": 0.559
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 773.36,
+              "implied_volatility_pct": 19.68,
+              "delta": 0.365
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 810.18,
+              "implied_volatility_pct": 18.54,
+              "delta": 0.19
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 847.01,
+              "implied_volatility_pct": 17.58,
+              "delta": 0.075
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 883.84,
+              "implied_volatility_pct": 16.79,
+              "delta": 0.022
+            }
+          ]
+        },
+        {
+          "tenor_label": "180D",
+          "days_to_expiry": 180,
+          "atm_iv_pct": 21.78,
+          "skew_25d_pct": 2.4,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 589.22,
+              "implied_volatility_pct": 27.98,
+              "delta": 0.907
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 626.05,
+              "implied_volatility_pct": 26.17,
+              "delta": 0.859
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 662.88,
+              "implied_volatility_pct": 24.53,
+              "delta": 0.791
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 699.7,
+              "implied_volatility_pct": 23.07,
+              "delta": 0.698
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 736.53,
+              "implied_volatility_pct": 21.78,
+              "delta": 0.582
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 773.36,
+              "implied_volatility_pct": 20.67,
+              "delta": 0.45
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 810.18,
+              "implied_volatility_pct": 19.73,
+              "delta": 0.318
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 847.01,
+              "implied_volatility_pct": 18.97,
+              "delta": 0.203
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 883.84,
+              "implied_volatility_pct": 18.38,
+              "delta": 0.117
+            }
+          ]
+        }
+      ],
+      "strike_gex_distribution": [
+        {
+          "strike": 675.0,
+          "call_oi": 9133,
+          "put_oi": 59820,
+          "call_gamma": 0.002665,
+          "put_gamma": 0.002665,
+          "call_gex_millions": 13.2,
+          "put_gex_millions": -86.49,
+          "net_gex_millions": -73.29
+        },
+        {
+          "strike": 680.0,
+          "call_oi": 4383,
+          "put_oi": 28034,
+          "call_gamma": 0.003216,
+          "put_gamma": 0.003216,
+          "call_gex_millions": 7.65,
+          "put_gex_millions": -48.91,
+          "net_gex_millions": -41.26
+        },
+        {
+          "strike": 685.0,
+          "call_oi": 4628,
+          "put_oi": 28904,
+          "call_gamma": 0.003822,
+          "put_gamma": 0.003822,
+          "call_gex_millions": 9.59,
+          "put_gex_millions": -59.92,
+          "net_gex_millions": -50.33
+        },
+        {
+          "strike": 690.0,
+          "call_oi": 4886,
+          "put_oi": 29801,
+          "call_gamma": 0.004473,
+          "put_gamma": 0.004473,
+          "call_gex_millions": 11.86,
+          "put_gex_millions": -72.31,
+          "net_gex_millions": -60.46
+        },
+        {
+          "strike": 695.0,
+          "call_oi": 5159,
+          "put_oi": 30725,
+          "call_gamma": 0.005157,
+          "put_gamma": 0.005157,
+          "call_gex_millions": 14.43,
+          "put_gex_millions": -85.96,
+          "net_gex_millions": -71.53
+        },
+        {
+          "strike": 700.0,
+          "call_oi": 11983,
+          "put_oi": 69692,
+          "call_gamma": 0.005858,
+          "put_gamma": 0.005858,
+          "call_gex_millions": 38.08,
+          "put_gex_millions": -221.47,
+          "net_gex_millions": -183.39
+        },
+        {
+          "strike": 705.0,
+          "call_oi": 5751,
+          "put_oi": 32661,
+          "call_gamma": 0.006556,
+          "put_gamma": 0.006556,
+          "call_gex_millions": 20.45,
+          "put_gex_millions": -116.15,
+          "net_gex_millions": -95.7
+        },
+        {
+          "strike": 710.0,
+          "call_oi": 6072,
+          "put_oi": 33674,
+          "call_gamma": 0.007228,
+          "put_gamma": 0.007228,
+          "call_gex_millions": 23.81,
+          "put_gex_millions": -132.04,
+          "net_gex_millions": -108.23
+        },
+        {
+          "strike": 715.0,
+          "call_oi": 6410,
+          "put_oi": 34718,
+          "call_gamma": 0.007853,
+          "put_gamma": 0.007853,
+          "call_gex_millions": 27.31,
+          "put_gex_millions": -147.89,
+          "net_gex_millions": -120.59
+        },
+        {
+          "strike": 720.0,
+          "call_oi": 6768,
+          "put_oi": 35795,
+          "call_gamma": 0.008407,
+          "put_gamma": 0.008407,
+          "call_gex_millions": 30.87,
+          "put_gex_millions": -163.25,
+          "net_gex_millions": -132.38
+        },
+        {
+          "strike": 725.0,
+          "call_oi": 15722,
+          "put_oi": 81193,
+          "call_gamma": 0.00887,
+          "put_gamma": 0.00887,
+          "call_gex_millions": 75.65,
+          "put_gex_millions": -390.7,
+          "net_gex_millions": -315.04
+        },
+        {
+          "strike": 730.0,
+          "call_oi": 7545,
+          "put_oi": 38051,
+          "call_gamma": 0.009224,
+          "put_gamma": 0.009224,
+          "call_gex_millions": 37.75,
+          "put_gex_millions": -190.4,
+          "net_gex_millions": -152.65
+        },
+        {
+          "strike": 735.0,
+          "call_oi": 7966,
+          "put_oi": 39231,
+          "call_gamma": 0.009455,
+          "put_gamma": 0.009455,
+          "call_gex_millions": 40.86,
+          "put_gex_millions": -201.21,
+          "net_gex_millions": -160.36
+        },
+        {
+          "strike": 740.0,
+          "call_oi": 38769,
+          "put_oi": 7800,
+          "call_gamma": 0.009553,
+          "put_gamma": 0.009553,
+          "call_gex_millions": 200.91,
+          "put_gex_millions": -40.42,
+          "net_gex_millions": 160.49
+        },
+        {
+          "strike": 745.0,
+          "call_oi": 37602,
+          "put_oi": 7388,
+          "call_gamma": 0.009515,
+          "put_gamma": 0.009515,
+          "call_gex_millions": 194.09,
+          "put_gex_millions": -38.14,
+          "net_gex_millions": 155.96
+        },
+        {
+          "strike": 750.0,
+          "call_oi": 80237,
+          "put_oi": 15394,
+          "call_gamma": 0.009344,
+          "put_gamma": 0.009344,
+          "call_gex_millions": 406.72,
+          "put_gex_millions": -78.03,
+          "net_gex_millions": 328.69
+        },
+        {
+          "strike": 755.0,
+          "call_oi": 35374,
+          "put_oi": 6627,
+          "call_gamma": 0.009048,
+          "put_gamma": 0.009048,
+          "call_gex_millions": 173.62,
+          "put_gex_millions": -32.53,
+          "net_gex_millions": 141.1
+        },
+        {
+          "strike": 760.0,
+          "call_oi": 34309,
+          "put_oi": 6277,
+          "call_gamma": 0.008639,
+          "put_gamma": 0.008639,
+          "call_gex_millions": 160.78,
+          "put_gex_millions": -29.42,
+          "net_gex_millions": 131.37
+        },
+        {
+          "strike": 765.0,
+          "call_oi": 33277,
+          "put_oi": 5945,
+          "call_gamma": 0.008134,
+          "put_gamma": 0.008134,
+          "call_gex_millions": 146.83,
+          "put_gex_millions": -26.23,
+          "net_gex_millions": 120.6
+        },
+        {
+          "strike": 770.0,
+          "call_oi": 32276,
+          "put_oi": 5631,
+          "call_gamma": 0.007553,
+          "put_gamma": 0.007553,
+          "call_gex_millions": 132.25,
+          "put_gex_millions": -23.07,
+          "net_gex_millions": 109.18
+        },
+        {
+          "strike": 775.0,
+          "call_oi": 68871,
+          "put_oi": 11733,
+          "call_gamma": 0.006918,
+          "put_gamma": 0.006918,
+          "call_gex_millions": 258.47,
+          "put_gex_millions": -44.03,
+          "net_gex_millions": 214.44
+        },
+        {
+          "strike": 780.0,
+          "call_oi": 30363,
+          "put_oi": 5051,
+          "call_gamma": 0.006251,
+          "put_gamma": 0.006251,
+          "call_gex_millions": 102.96,
+          "put_gex_millions": -17.13,
+          "net_gex_millions": 85.83
+        },
+        {
+          "strike": 785.0,
+          "call_oi": 29449,
+          "put_oi": 4784,
+          "call_gamma": 0.005571,
+          "put_gamma": 0.005571,
+          "call_gex_millions": 89.0,
+          "put_gex_millions": -14.46,
+          "net_gex_millions": 74.54
+        },
+        {
+          "strike": 790.0,
+          "call_oi": 28563,
+          "put_oi": 4531,
+          "call_gamma": 0.004899,
+          "put_gamma": 0.004899,
+          "call_gex_millions": 75.91,
+          "put_gex_millions": -12.04,
+          "net_gex_millions": 63.87
+        },
+        {
+          "strike": 795.0,
+          "call_oi": 27704,
+          "put_oi": 4292,
+          "call_gamma": 0.004251,
+          "put_gamma": 0.004251,
+          "call_gex_millions": 63.88,
+          "put_gex_millions": -9.9,
+          "net_gex_millions": 53.99
+        }
+      ]
+    },
+    "AAPL": {
+      "symbol": "AAPL",
+      "name": "Apple Inc.",
+      "exchange_market": "US_CBOE",
+      "currency": "USD",
+      "underlying_spot_price": 338.4,
+      "net_gex_millions": -13.29,
+      "gamma_regime": "TRANSITION_ZONE",
+      "gamma_flip_strike": 339.22,
+      "distance_to_gamma_flip_pct": -0.24,
+      "max_pain_strike": 337.5,
+      "put_call_ratio_oi": 1.11,
+      "put_call_ratio_volume": 1.02,
+      "thirty_day_atm_iv_pct": 22.5,
+      "thirty_day_skew_pct": 3.6,
+      "skew_percentile_1y": 42.8,
+      "skew_zscore": -0.18,
+      "market_maker_posture": "NEUTRAL_REBALANCING",
+      "volatility_surface": [
+        {
+          "tenor_label": "7D",
+          "days_to_expiry": 7,
+          "atm_iv_pct": 21.6,
+          "skew_25d_pct": 4.2,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 270.72,
+              "implied_volatility_pct": 31.4,
+              "delta": 1.0
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 287.64,
+              "implied_volatility_pct": 28.69,
+              "delta": 1.0
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 304.56,
+              "implied_volatility_pct": 26.15,
+              "delta": 0.998
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 321.48,
+              "implied_volatility_pct": 23.79,
+              "delta": 0.945
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 338.4,
+              "implied_volatility_pct": 21.6,
+              "delta": 0.517
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 355.32,
+              "implied_volatility_pct": 19.59,
+              "delta": 0.04
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 372.24,
+              "implied_volatility_pct": 17.75,
+              "delta": 0.0
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 389.16,
+              "implied_volatility_pct": 16.09,
+              "delta": 0.0
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 406.08,
+              "implied_volatility_pct": 14.6,
+              "delta": 0.0
+            }
+          ]
+        },
+        {
+          "tenor_label": "30D",
+          "days_to_expiry": 30,
+          "atm_iv_pct": 22.5,
+          "skew_25d_pct": 3.6,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 270.72,
+              "implied_volatility_pct": 31.1,
+              "delta": 0.995
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 287.64,
+              "implied_volatility_pct": 28.69,
+              "delta": 0.98
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 304.56,
+              "implied_volatility_pct": 26.45,
+              "delta": 0.929
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 321.48,
+              "implied_volatility_pct": 24.39,
+              "delta": 0.793
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 338.4,
+              "implied_volatility_pct": 22.5,
+              "delta": 0.535
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 355.32,
+              "implied_volatility_pct": 20.79,
+              "delta": 0.233
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 372.24,
+              "implied_volatility_pct": 19.25,
+              "delta": 0.051
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 389.16,
+              "implied_volatility_pct": 17.89,
+              "delta": 0.004
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 406.08,
+              "implied_volatility_pct": 16.7,
+              "delta": 0.0
+            }
+          ]
+        },
+        {
+          "tenor_label": "60D",
+          "days_to_expiry": 60,
+          "atm_iv_pct": 23.18,
+          "skew_25d_pct": 3.2,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 270.72,
+              "implied_volatility_pct": 30.97,
+              "delta": 0.97
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 287.64,
+              "implied_volatility_pct": 28.76,
+              "delta": 0.934
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 304.56,
+              "implied_volatility_pct": 26.72,
+              "delta": 0.862
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 321.48,
+              "implied_volatility_pct": 24.86,
+              "delta": 0.735
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 338.4,
+              "implied_volatility_pct": 23.18,
+              "delta": 0.549
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 355.32,
+              "implied_volatility_pct": 21.66,
+              "delta": 0.333
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 372.24,
+              "implied_volatility_pct": 20.32,
+              "delta": 0.152
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 389.16,
+              "implied_volatility_pct": 19.16,
+              "delta": 0.048
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 406.08,
+              "implied_volatility_pct": 18.18,
+              "delta": 0.01
+            }
+          ]
+        },
+        {
+          "tenor_label": "90D",
+          "days_to_expiry": 90,
+          "atm_iv_pct": 23.85,
+          "skew_25d_pct": 2.8,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 270.72,
+              "implied_volatility_pct": 30.85,
+              "delta": 0.944
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 287.64,
+              "implied_volatility_pct": 28.84,
+              "delta": 0.899
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 304.56,
+              "implied_volatility_pct": 27.0,
+              "delta": 0.824
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 321.48,
+              "implied_volatility_pct": 25.34,
+              "delta": 0.71
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 338.4,
+              "implied_volatility_pct": 23.85,
+              "delta": 0.559
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 355.32,
+              "implied_volatility_pct": 22.54,
+              "delta": 0.388
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 372.24,
+              "implied_volatility_pct": 21.4,
+              "delta": 0.229
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 389.16,
+              "implied_volatility_pct": 20.44,
+              "delta": 0.111
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 406.08,
+              "implied_volatility_pct": 19.65,
+              "delta": 0.044
+            }
+          ]
+        },
+        {
+          "tenor_label": "180D",
+          "days_to_expiry": 180,
+          "atm_iv_pct": 24.75,
+          "skew_25d_pct": 2.4,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 270.72,
+              "implied_volatility_pct": 30.95,
+              "delta": 0.889
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 287.64,
+              "implied_volatility_pct": 29.14,
+              "delta": 0.84
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 304.56,
+              "implied_volatility_pct": 27.5,
+              "delta": 0.772
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 321.48,
+              "implied_volatility_pct": 26.04,
+              "delta": 0.686
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 338.4,
+              "implied_volatility_pct": 24.75,
+              "delta": 0.582
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 355.32,
+              "implied_volatility_pct": 23.64,
+              "delta": 0.466
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 372.24,
+              "implied_volatility_pct": 22.7,
+              "delta": 0.35
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 389.16,
+              "implied_volatility_pct": 21.94,
+              "delta": 0.244
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 406.08,
+              "implied_volatility_pct": 21.35,
+              "delta": 0.159
+            }
+          ]
+        }
+      ],
+      "strike_gex_distribution": [
+        {
+          "strike": 307.5,
+          "call_oi": 3901,
+          "put_oi": 26256,
+          "call_gamma": 0.005555,
+          "put_gamma": 0.005555,
+          "call_gex_millions": 2.48,
+          "put_gex_millions": -16.7,
+          "net_gex_millions": -14.22
+        },
+        {
+          "strike": 310.0,
+          "call_oi": 4139,
+          "put_oi": 27144,
+          "call_gamma": 0.006613,
+          "put_gamma": 0.006613,
+          "call_gex_millions": 3.13,
+          "put_gex_millions": -20.55,
+          "net_gex_millions": -17.42
+        },
+        {
+          "strike": 312.5,
+          "call_oi": 9660,
+          "put_oi": 61736,
+          "call_gamma": 0.007762,
+          "put_gamma": 0.007762,
+          "call_gex_millions": 8.59,
+          "put_gex_millions": -54.87,
+          "net_gex_millions": -46.29
+        },
+        {
+          "strike": 315.0,
+          "call_oi": 4658,
+          "put_oi": 29010,
+          "call_gamma": 0.008984,
+          "put_gamma": 0.008984,
+          "call_gex_millions": 4.79,
+          "put_gex_millions": -29.85,
+          "net_gex_millions": -25.05
+        },
+        {
+          "strike": 317.5,
+          "call_oi": 4942,
+          "put_oi": 29991,
+          "call_gamma": 0.010255,
+          "put_gamma": 0.010255,
+          "call_gex_millions": 5.8,
+          "put_gex_millions": -35.22,
+          "net_gex_millions": -29.42
+        },
+        {
+          "strike": 320.0,
+          "call_oi": 5242,
+          "put_oi": 31004,
+          "call_gamma": 0.011546,
+          "put_gamma": 0.011546,
+          "call_gex_millions": 6.93,
+          "put_gex_millions": -40.99,
+          "net_gex_millions": -34.06
+        },
+        {
+          "strike": 322.5,
+          "call_oi": 5562,
+          "put_oi": 32053,
+          "call_gamma": 0.012822,
+          "put_gamma": 0.012822,
+          "call_gex_millions": 8.17,
+          "put_gex_millions": -47.06,
+          "net_gex_millions": -38.9
+        },
+        {
+          "strike": 325.0,
+          "call_oi": 12981,
+          "put_oi": 72900,
+          "call_gamma": 0.014045,
+          "put_gamma": 0.014045,
+          "call_gex_millions": 20.88,
+          "put_gex_millions": -117.25,
+          "net_gex_millions": -96.37
+        },
+        {
+          "strike": 327.5,
+          "call_oi": 6260,
+          "put_oi": 34256,
+          "call_gamma": 0.015178,
+          "put_gamma": 0.015178,
+          "call_gex_millions": 10.88,
+          "put_gex_millions": -59.54,
+          "net_gex_millions": -48.66
+        },
+        {
+          "strike": 330.0,
+          "call_oi": 6641,
+          "put_oi": 35414,
+          "call_gamma": 0.016182,
+          "put_gamma": 0.016182,
+          "call_gex_millions": 12.31,
+          "put_gex_millions": -65.63,
+          "net_gex_millions": -53.32
+        },
+        {
+          "strike": 332.5,
+          "call_oi": 7045,
+          "put_oi": 36611,
+          "call_gamma": 0.017023,
+          "put_gamma": 0.017023,
+          "call_gex_millions": 13.73,
+          "put_gex_millions": -71.37,
+          "net_gex_millions": -57.64
+        },
+        {
+          "strike": 335.0,
+          "call_oi": 7474,
+          "put_oi": 37849,
+          "call_gamma": 0.01767,
+          "put_gamma": 0.01767,
+          "call_gex_millions": 15.12,
+          "put_gex_millions": -76.59,
+          "net_gex_millions": -61.46
+        },
+        {
+          "strike": 337.5,
+          "call_oi": 17444,
+          "put_oi": 86083,
+          "call_gamma": 0.0181,
+          "put_gamma": 0.0181,
+          "call_gex_millions": 36.16,
+          "put_gex_millions": -178.43,
+          "net_gex_millions": -142.27
+        },
+        {
+          "strike": 340.0,
+          "call_oi": 38766,
+          "put_oi": 7799,
+          "call_gamma": 0.018298,
+          "put_gamma": 0.018298,
+          "call_gex_millions": 81.23,
+          "put_gex_millions": -16.34,
+          "net_gex_millions": 64.89
+        },
+        {
+          "strike": 342.5,
+          "call_oi": 37498,
+          "put_oi": 7351,
+          "call_gamma": 0.018257,
+          "put_gamma": 0.018257,
+          "call_gex_millions": 78.4,
+          "put_gex_millions": -15.37,
+          "net_gex_millions": 63.03
+        },
+        {
+          "strike": 345.0,
+          "call_oi": 36272,
+          "put_oi": 6929,
+          "call_gamma": 0.01798,
+          "put_gamma": 0.01798,
+          "call_gex_millions": 74.68,
+          "put_gex_millions": -14.27,
+          "net_gex_millions": 60.42
+        },
+        {
+          "strike": 347.5,
+          "call_oi": 35086,
+          "put_oi": 6532,
+          "call_gamma": 0.01748,
+          "put_gamma": 0.01748,
+          "call_gex_millions": 70.23,
+          "put_gex_millions": -13.08,
+          "net_gex_millions": 57.16
+        },
+        {
+          "strike": 350.0,
+          "call_oi": 74666,
+          "put_oi": 13545,
+          "call_gamma": 0.016777,
+          "put_gamma": 0.016777,
+          "call_gex_millions": 143.45,
+          "put_gex_millions": -26.02,
+          "net_gex_millions": 117.43
+        },
+        {
+          "strike": 352.5,
+          "call_oi": 32829,
+          "put_oi": 5803,
+          "call_gamma": 0.015898,
+          "put_gamma": 0.015898,
+          "call_gex_millions": 59.77,
+          "put_gex_millions": -10.56,
+          "net_gex_millions": 49.2
+        },
+        {
+          "strike": 355.0,
+          "call_oi": 31756,
+          "put_oi": 5470,
+          "call_gamma": 0.014875,
+          "put_gamma": 0.014875,
+          "call_gex_millions": 54.09,
+          "put_gex_millions": -9.32,
+          "net_gex_millions": 44.78
+        },
+        {
+          "strike": 357.5,
+          "call_oi": 30717,
+          "put_oi": 5156,
+          "call_gamma": 0.013744,
+          "put_gamma": 0.013744,
+          "call_gex_millions": 48.34,
+          "put_gex_millions": -8.11,
+          "net_gex_millions": 40.23
+        },
+        {
+          "strike": 360.0,
+          "call_oi": 29713,
+          "put_oi": 4860,
+          "call_gamma": 0.012541,
+          "put_gamma": 0.012541,
+          "call_gex_millions": 42.67,
+          "put_gex_millions": -6.98,
+          "net_gex_millions": 35.69
+        },
+        {
+          "strike": 362.5,
+          "call_oi": 63231,
+          "put_oi": 10080,
+          "call_gamma": 0.011302,
+          "put_gamma": 0.011302,
+          "call_gex_millions": 81.84,
+          "put_gex_millions": -13.05,
+          "net_gex_millions": 68.79
+        },
+        {
+          "strike": 365.0,
+          "call_oi": 27801,
+          "put_oi": 4318,
+          "call_gamma": 0.010061,
+          "put_gamma": 0.010061,
+          "call_gex_millions": 32.03,
+          "put_gex_millions": -4.98,
+          "net_gex_millions": 27.06
+        },
+        {
+          "strike": 367.5,
+          "call_oi": 26892,
+          "put_oi": 4071,
+          "call_gamma": 0.008848,
+          "put_gamma": 0.008848,
+          "call_gex_millions": 27.25,
+          "put_gex_millions": -4.12,
+          "net_gex_millions": 23.12
+        }
+      ]
+    },
+    "MSFT": {
+      "symbol": "MSFT",
+      "name": "Microsoft Corp.",
+      "exchange_market": "US_CBOE",
+      "currency": "USD",
+      "underlying_spot_price": 509.22,
+      "net_gex_millions": 166.74,
+      "gamma_regime": "TRANSITION_ZONE",
+      "gamma_flip_strike": 507.44,
+      "distance_to_gamma_flip_pct": 0.35,
+      "max_pain_strike": 510.0,
+      "put_call_ratio_oi": 1.0,
+      "put_call_ratio_volume": 0.92,
+      "thirty_day_atm_iv_pct": 21.0,
+      "thirty_day_skew_pct": 3.6,
+      "skew_percentile_1y": 42.8,
+      "skew_zscore": -0.18,
+      "market_maker_posture": "NEUTRAL_REBALANCING",
+      "volatility_surface": [
+        {
+          "tenor_label": "7D",
+          "days_to_expiry": 7,
+          "atm_iv_pct": 20.16,
+          "skew_25d_pct": 4.2,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 407.38,
+              "implied_volatility_pct": 29.96,
+              "delta": 1.0
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 432.84,
+              "implied_volatility_pct": 27.25,
+              "delta": 1.0
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 458.3,
+              "implied_volatility_pct": 24.71,
+              "delta": 0.999
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 483.76,
+              "implied_volatility_pct": 22.35,
+              "delta": 0.955
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 509.22,
+              "implied_volatility_pct": 20.16,
+              "delta": 0.517
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 534.68,
+              "implied_volatility_pct": 18.15,
+              "delta": 0.029
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 560.14,
+              "implied_volatility_pct": 16.31,
+              "delta": 0.0
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 585.6,
+              "implied_volatility_pct": 14.65,
+              "delta": 0.0
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 611.06,
+              "implied_volatility_pct": 13.16,
+              "delta": 0.0
+            }
+          ]
+        },
+        {
+          "tenor_label": "30D",
+          "days_to_expiry": 30,
+          "atm_iv_pct": 21.0,
+          "skew_25d_pct": 3.6,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 407.38,
+              "implied_volatility_pct": 29.6,
+              "delta": 0.996
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 432.84,
+              "implied_volatility_pct": 27.19,
+              "delta": 0.984
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 458.3,
+              "implied_volatility_pct": 24.95,
+              "delta": 0.94
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 483.76,
+              "implied_volatility_pct": 22.89,
+              "delta": 0.806
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 509.22,
+              "implied_volatility_pct": 21.0,
+              "delta": 0.534
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 534.68,
+              "implied_volatility_pct": 19.29,
+              "delta": 0.214
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 560.14,
+              "implied_volatility_pct": 17.75,
+              "delta": 0.037
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 585.6,
+              "implied_volatility_pct": 16.39,
+              "delta": 0.002
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 611.06,
+              "implied_volatility_pct": 15.2,
+              "delta": 0.0
+            }
+          ]
+        },
+        {
+          "tenor_label": "60D",
+          "days_to_expiry": 60,
+          "atm_iv_pct": 21.63,
+          "skew_25d_pct": 3.2,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 407.38,
+              "implied_volatility_pct": 29.43,
+              "delta": 0.975
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 432.84,
+              "implied_volatility_pct": 27.22,
+              "delta": 0.943
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 458.3,
+              "implied_volatility_pct": 25.18,
+              "delta": 0.874
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 483.76,
+              "implied_volatility_pct": 23.32,
+              "delta": 0.745
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 509.22,
+              "implied_volatility_pct": 21.63,
+              "delta": 0.547
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 534.68,
+              "implied_volatility_pct": 20.12,
+              "delta": 0.317
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 560.14,
+              "implied_volatility_pct": 18.78,
+              "delta": 0.13
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 585.6,
+              "implied_volatility_pct": 17.62,
+              "delta": 0.034
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 611.06,
+              "implied_volatility_pct": 16.63,
+              "delta": 0.005
+            }
+          ]
+        },
+        {
+          "tenor_label": "90D",
+          "days_to_expiry": 90,
+          "atm_iv_pct": 22.26,
+          "skew_25d_pct": 2.8,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 407.38,
+              "implied_volatility_pct": 29.26,
+              "delta": 0.952
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 432.84,
+              "implied_volatility_pct": 27.25,
+              "delta": 0.909
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 458.3,
+              "implied_volatility_pct": 25.41,
+              "delta": 0.834
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 483.76,
+              "implied_volatility_pct": 23.75,
+              "delta": 0.718
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 509.22,
+              "implied_volatility_pct": 22.26,
+              "delta": 0.557
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 534.68,
+              "implied_volatility_pct": 20.95,
+              "delta": 0.374
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 560.14,
+              "implied_volatility_pct": 19.81,
+              "delta": 0.207
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 585.6,
+              "implied_volatility_pct": 18.85,
+              "delta": 0.09
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 611.06,
+              "implied_volatility_pct": 18.06,
+              "delta": 0.03
+            }
+          ]
+        },
+        {
+          "tenor_label": "180D",
+          "days_to_expiry": 180,
+          "atm_iv_pct": 23.1,
+          "skew_25d_pct": 2.4,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 407.38,
+              "implied_volatility_pct": 29.3,
+              "delta": 0.897
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 432.84,
+              "implied_volatility_pct": 27.49,
+              "delta": 0.848
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 458.3,
+              "implied_volatility_pct": 25.85,
+              "delta": 0.78
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 483.76,
+              "implied_volatility_pct": 24.39,
+              "delta": 0.69
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 509.22,
+              "implied_volatility_pct": 23.1,
+              "delta": 0.579
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 534.68,
+              "implied_volatility_pct": 21.99,
+              "delta": 0.455
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 560.14,
+              "implied_volatility_pct": 21.05,
+              "delta": 0.331
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 585.6,
+              "implied_volatility_pct": 20.29,
+              "delta": 0.22
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 611.06,
+              "implied_volatility_pct": 19.7,
+              "delta": 0.135
+            }
+          ]
+        }
+      ],
+      "strike_gex_distribution": [
+        {
+          "strike": 450.0,
+          "call_oi": 7028,
+          "put_oi": 51622,
+          "call_gamma": 0.001529,
+          "put_gamma": 0.001529,
+          "call_gex_millions": 2.79,
+          "put_gex_millions": -20.46,
+          "net_gex_millions": -17.68
+        },
+        {
+          "strike": 455.0,
+          "call_oi": 3455,
+          "put_oi": 24524,
+          "call_gamma": 0.002135,
+          "put_gamma": 0.002135,
+          "call_gex_millions": 1.91,
+          "put_gex_millions": -13.57,
+          "net_gex_millions": -11.66
+        },
+        {
+          "strike": 460.0,
+          "call_oi": 3738,
+          "put_oi": 25632,
+          "call_gamma": 0.002895,
+          "put_gamma": 0.002895,
+          "call_gex_millions": 2.81,
+          "put_gex_millions": -19.24,
+          "net_gex_millions": -16.44
+        },
+        {
+          "strike": 465.0,
+          "call_oi": 4043,
+          "put_oi": 26790,
+          "call_gamma": 0.003815,
+          "put_gamma": 0.003815,
+          "call_gex_millions": 4.0,
+          "put_gex_millions": -26.5,
+          "net_gex_millions": -22.5
+        },
+        {
+          "strike": 470.0,
+          "call_oi": 4374,
+          "put_oi": 28000,
+          "call_gamma": 0.004886,
+          "put_gamma": 0.004886,
+          "call_gex_millions": 5.54,
+          "put_gex_millions": -35.48,
+          "net_gex_millions": -29.93
+        },
+        {
+          "strike": 475.0,
+          "call_oi": 10409,
+          "put_oi": 64385,
+          "call_gamma": 0.006083,
+          "put_gamma": 0.006083,
+          "call_gex_millions": 16.42,
+          "put_gex_millions": -101.56,
+          "net_gex_millions": -85.14
+        },
+        {
+          "strike": 480.0,
+          "call_oi": 5118,
+          "put_oi": 30588,
+          "call_gamma": 0.007364,
+          "put_gamma": 0.007364,
+          "call_gex_millions": 9.77,
+          "put_gex_millions": -58.41,
+          "net_gex_millions": -48.63
+        },
+        {
+          "strike": 485.0,
+          "call_oi": 5536,
+          "put_oi": 31969,
+          "call_gamma": 0.008668,
+          "put_gamma": 0.008668,
+          "call_gex_millions": 12.44,
+          "put_gex_millions": -71.86,
+          "net_gex_millions": -59.41
+        },
+        {
+          "strike": 490.0,
+          "call_oi": 5988,
+          "put_oi": 33414,
+          "call_gamma": 0.009925,
+          "put_gamma": 0.009925,
+          "call_gex_millions": 15.41,
+          "put_gex_millions": -86.0,
+          "net_gex_millions": -70.58
+        },
+        {
+          "strike": 495.0,
+          "call_oi": 6478,
+          "put_oi": 34923,
+          "call_gamma": 0.011056,
+          "put_gamma": 0.011056,
+          "call_gex_millions": 18.57,
+          "put_gex_millions": -100.12,
+          "net_gex_millions": -81.55
+        },
+        {
+          "strike": 500.0,
+          "call_oi": 15417,
+          "put_oi": 80303,
+          "call_gamma": 0.011985,
+          "put_gamma": 0.011985,
+          "call_gex_millions": 47.91,
+          "put_gex_millions": -249.57,
+          "net_gex_millions": -201.65
+        },
+        {
+          "strike": 505.0,
+          "call_oi": 7580,
+          "put_oi": 38150,
+          "call_gamma": 0.012645,
+          "put_gamma": 0.012645,
+          "call_gex_millions": 24.85,
+          "put_gex_millions": -125.09,
+          "net_gex_millions": -100.24
+        },
+        {
+          "strike": 510.0,
+          "call_oi": 39327,
+          "put_oi": 8001,
+          "call_gamma": 0.012988,
+          "put_gamma": 0.012988,
+          "call_gex_millions": 132.45,
+          "put_gex_millions": -26.95,
+          "net_gex_millions": 105.5
+        },
+        {
+          "strike": 515.0,
+          "call_oi": 37628,
+          "put_oi": 7396,
+          "call_gamma": 0.01299,
+          "put_gamma": 0.01299,
+          "call_gex_millions": 126.74,
+          "put_gex_millions": -24.91,
+          "net_gex_millions": 101.83
+        },
+        {
+          "strike": 520.0,
+          "call_oi": 36001,
+          "put_oi": 6838,
+          "call_gamma": 0.012653,
+          "put_gamma": 0.012653,
+          "call_gex_millions": 118.12,
+          "put_gex_millions": -22.44,
+          "net_gex_millions": 95.68
+        },
+        {
+          "strike": 525.0,
+          "call_oi": 75780,
+          "put_oi": 13907,
+          "call_gamma": 0.012006,
+          "put_gamma": 0.012006,
+          "call_gex_millions": 235.92,
+          "put_gex_millions": -43.3,
+          "net_gex_millions": 192.63
+        },
+        {
+          "strike": 530.0,
+          "call_oi": 32956,
+          "put_oi": 5843,
+          "call_gamma": 0.011101,
+          "put_gamma": 0.011101,
+          "call_gex_millions": 94.86,
+          "put_gex_millions": -16.82,
+          "net_gex_millions": 78.04
+        },
+        {
+          "strike": 535.0,
+          "call_oi": 31532,
+          "put_oi": 5402,
+          "call_gamma": 0.010003,
+          "put_gamma": 0.010003,
+          "call_gex_millions": 81.79,
+          "put_gex_millions": -14.01,
+          "net_gex_millions": 67.78
+        },
+        {
+          "strike": 540.0,
+          "call_oi": 30169,
+          "put_oi": 4994,
+          "call_gamma": 0.008787,
+          "put_gamma": 0.008787,
+          "call_gex_millions": 68.74,
+          "put_gex_millions": -11.38,
+          "net_gex_millions": 57.36
+        },
+        {
+          "strike": 545.0,
+          "call_oi": 28865,
+          "put_oi": 4617,
+          "call_gamma": 0.007526,
+          "put_gamma": 0.007526,
+          "call_gex_millions": 56.33,
+          "put_gex_millions": -9.01,
+          "net_gex_millions": 47.32
+        },
+        {
+          "strike": 550.0,
+          "call_oi": 60758,
+          "put_oi": 9390,
+          "call_gamma": 0.006288,
+          "put_gamma": 0.006288,
+          "call_gex_millions": 99.06,
+          "put_gex_millions": -15.31,
+          "net_gex_millions": 83.75
+        },
+        {
+          "strike": 555.0,
+          "call_oi": 26423,
+          "put_oi": 3945,
+          "call_gamma": 0.005125,
+          "put_gamma": 0.005125,
+          "call_gex_millions": 35.11,
+          "put_gex_millions": -5.24,
+          "net_gex_millions": 29.87
+        },
+        {
+          "strike": 560.0,
+          "call_oi": 25281,
+          "put_oi": 3647,
+          "call_gamma": 0.004076,
+          "put_gamma": 0.004076,
+          "call_gex_millions": 26.72,
+          "put_gex_millions": -3.85,
+          "net_gex_millions": 22.86
+        },
+        {
+          "strike": 565.0,
+          "call_oi": 24189,
+          "put_oi": 3372,
+          "call_gamma": 0.003164,
+          "put_gamma": 0.003164,
+          "call_gex_millions": 19.85,
+          "put_gex_millions": -2.77,
+          "net_gex_millions": 17.08
+        },
+        {
+          "strike": 570.0,
+          "call_oi": 23143,
+          "put_oi": 3117,
+          "call_gamma": 0.002399,
+          "put_gamma": 0.002399,
+          "call_gex_millions": 14.39,
+          "put_gex_millions": -1.94,
+          "net_gex_millions": 12.46
+        }
+      ]
+    },
+    "NVDA": {
+      "symbol": "NVDA",
+      "name": "NVIDIA Corp.",
+      "exchange_market": "US_CBOE",
+      "currency": "USD",
+      "underlying_spot_price": 228.86,
+      "net_gex_millions": 27.52,
+      "gamma_regime": "TRANSITION_ZONE",
+      "gamma_flip_strike": 228.74,
+      "distance_to_gamma_flip_pct": 0.05,
+      "max_pain_strike": 227.5,
+      "put_call_ratio_oi": 1.02,
+      "put_call_ratio_volume": 0.93,
+      "thirty_day_atm_iv_pct": 38.5,
+      "thirty_day_skew_pct": 3.6,
+      "skew_percentile_1y": 42.8,
+      "skew_zscore": -0.18,
+      "market_maker_posture": "NEUTRAL_REBALANCING",
+      "volatility_surface": [
+        {
+          "tenor_label": "7D",
+          "days_to_expiry": 7,
+          "atm_iv_pct": 36.96,
+          "skew_25d_pct": 4.2,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 183.09,
+              "implied_volatility_pct": 46.76,
+              "delta": 1.0
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 194.53,
+              "implied_volatility_pct": 44.05,
+              "delta": 0.997
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 205.97,
+              "implied_volatility_pct": 41.51,
+              "delta": 0.97
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 217.42,
+              "implied_volatility_pct": 39.15,
+              "delta": 0.839
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 228.86,
+              "implied_volatility_pct": 36.96,
+              "delta": 0.517
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 240.3,
+              "implied_volatility_pct": 34.95,
+              "delta": 0.167
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 251.75,
+              "implied_volatility_pct": 33.11,
+              "delta": 0.021
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 263.19,
+              "implied_volatility_pct": 31.45,
+              "delta": 0.001
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 274.63,
+              "implied_volatility_pct": 29.96,
+              "delta": 0.0
+            }
+          ]
+        },
+        {
+          "tenor_label": "30D",
+          "days_to_expiry": 30,
+          "atm_iv_pct": 38.5,
+          "skew_25d_pct": 3.6,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 183.09,
+              "implied_volatility_pct": 47.1,
+              "delta": 0.96
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 194.53,
+              "implied_volatility_pct": 44.69,
+              "delta": 0.914
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 205.97,
+              "implied_volatility_pct": 42.45,
+              "delta": 0.831
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 217.42,
+              "implied_volatility_pct": 40.39,
+              "delta": 0.704
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 228.86,
+              "implied_volatility_pct": 38.5,
+              "delta": 0.536
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 240.3,
+              "implied_volatility_pct": 36.79,
+              "delta": 0.355
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 251.75,
+              "implied_volatility_pct": 35.25,
+              "delta": 0.197
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 263.19,
+              "implied_volatility_pct": 33.89,
+              "delta": 0.089
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 274.63,
+              "implied_volatility_pct": 32.7,
+              "delta": 0.032
+            }
+          ]
+        },
+        {
+          "tenor_label": "60D",
+          "days_to_expiry": 60,
+          "atm_iv_pct": 39.66,
+          "skew_25d_pct": 3.2,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 183.09,
+              "implied_volatility_pct": 47.46,
+              "delta": 0.903
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 194.53,
+              "implied_volatility_pct": 45.24,
+              "delta": 0.846
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 205.97,
+              "implied_volatility_pct": 43.2,
+              "delta": 0.769
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 217.42,
+              "implied_volatility_pct": 41.34,
+              "delta": 0.669
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 228.86,
+              "implied_volatility_pct": 39.66,
+              "delta": 0.551
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 240.3,
+              "implied_volatility_pct": 38.14,
+              "delta": 0.426
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 251.75,
+              "implied_volatility_pct": 36.8,
+              "delta": 0.305
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 263.19,
+              "implied_volatility_pct": 35.64,
+              "delta": 0.2
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 274.63,
+              "implied_volatility_pct": 34.66,
+              "delta": 0.121
+            }
+          ]
+        },
+        {
+          "tenor_label": "90D",
+          "days_to_expiry": 90,
+          "atm_iv_pct": 40.81,
+          "skew_25d_pct": 2.8,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 183.09,
+              "implied_volatility_pct": 47.81,
+              "delta": 0.866
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 194.53,
+              "implied_volatility_pct": 45.8,
+              "delta": 0.811
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 205.97,
+              "implied_volatility_pct": 43.96,
+              "delta": 0.741
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 217.42,
+              "implied_volatility_pct": 42.3,
+              "delta": 0.657
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 228.86,
+              "implied_volatility_pct": 40.81,
+              "delta": 0.563
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 240.3,
+              "implied_volatility_pct": 39.5,
+              "delta": 0.464
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 251.75,
+              "implied_volatility_pct": 38.36,
+              "delta": 0.366
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 263.19,
+              "implied_volatility_pct": 37.4,
+              "delta": 0.276
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 274.63,
+              "implied_volatility_pct": 36.61,
+              "delta": 0.199
+            }
+          ]
+        },
+        {
+          "tenor_label": "180D",
+          "days_to_expiry": 180,
+          "atm_iv_pct": 42.35,
+          "skew_25d_pct": 2.4,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 183.09,
+              "implied_volatility_pct": 48.55,
+              "delta": 0.814
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 194.53,
+              "implied_volatility_pct": 46.74,
+              "delta": 0.768
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 205.97,
+              "implied_volatility_pct": 45.1,
+              "delta": 0.714
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 217.42,
+              "implied_volatility_pct": 43.64,
+              "delta": 0.654
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 228.86,
+              "implied_volatility_pct": 42.35,
+              "delta": 0.59
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 240.3,
+              "implied_volatility_pct": 41.24,
+              "delta": 0.523
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 251.75,
+              "implied_volatility_pct": 40.3,
+              "delta": 0.455
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 263.19,
+              "implied_volatility_pct": 39.54,
+              "delta": 0.39
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 274.63,
+              "implied_volatility_pct": 38.95,
+              "delta": 0.329
+            }
+          ]
+        }
+      ],
+      "strike_gex_distribution": [
+        {
+          "strike": 200.0,
+          "call_oi": 6498,
+          "put_oi": 49393,
+          "call_gamma": 0.006845,
+          "put_gamma": 0.006845,
+          "call_gex_millions": 2.33,
+          "put_gex_millions": -17.71,
+          "net_gex_millions": -15.38
+        },
+        {
+          "strike": 202.5,
+          "call_oi": 3223,
+          "put_oi": 23582,
+          "call_gamma": 0.007778,
+          "put_gamma": 0.007778,
+          "call_gex_millions": 1.31,
+          "put_gex_millions": -9.61,
+          "net_gex_millions": -8.29
+        },
+        {
+          "strike": 205.0,
+          "call_oi": 3517,
+          "put_oi": 24771,
+          "call_gamma": 0.008742,
+          "put_gamma": 0.008742,
+          "call_gex_millions": 1.61,
+          "put_gex_millions": -11.34,
+          "net_gex_millions": -9.73
+        },
+        {
+          "strike": 207.5,
+          "call_oi": 3838,
+          "put_oi": 26019,
+          "call_gamma": 0.00972,
+          "put_gamma": 0.00972,
+          "call_gex_millions": 1.95,
+          "put_gex_millions": -13.25,
+          "net_gex_millions": -11.29
+        },
+        {
+          "strike": 210.0,
+          "call_oi": 4189,
+          "put_oi": 27330,
+          "call_gamma": 0.010694,
+          "put_gamma": 0.010694,
+          "call_gex_millions": 2.35,
+          "put_gex_millions": -15.31,
+          "net_gex_millions": -12.96
+        },
+        {
+          "strike": 212.5,
+          "call_oi": 10058,
+          "put_oi": 63155,
+          "call_gamma": 0.011641,
+          "put_gamma": 0.011641,
+          "call_gex_millions": 6.13,
+          "put_gex_millions": -38.51,
+          "net_gex_millions": -32.37
+        },
+        {
+          "strike": 215.0,
+          "call_oi": 4989,
+          "put_oi": 30153,
+          "call_gamma": 0.01254,
+          "put_gamma": 0.01254,
+          "call_gex_millions": 3.28,
+          "put_gex_millions": -19.8,
+          "net_gex_millions": -16.53
+        },
+        {
+          "strike": 217.5,
+          "call_oi": 5445,
+          "put_oi": 31672,
+          "call_gamma": 0.013369,
+          "put_gamma": 0.013369,
+          "call_gex_millions": 3.81,
+          "put_gex_millions": -22.18,
+          "net_gex_millions": -18.37
+        },
+        {
+          "strike": 220.0,
+          "call_oi": 5942,
+          "put_oi": 33268,
+          "call_gamma": 0.014107,
+          "put_gamma": 0.014107,
+          "call_gex_millions": 4.39,
+          "put_gex_millions": -24.58,
+          "net_gex_millions": -20.19
+        },
+        {
+          "strike": 222.5,
+          "call_oi": 6485,
+          "put_oi": 34944,
+          "call_gamma": 0.014734,
+          "put_gamma": 0.014734,
+          "call_gex_millions": 5.0,
+          "put_gex_millions": -26.97,
+          "net_gex_millions": -21.96
+        },
+        {
+          "strike": 225.0,
+          "call_oi": 15570,
+          "put_oi": 80752,
+          "call_gamma": 0.015234,
+          "put_gamma": 0.015234,
+          "call_gex_millions": 12.42,
+          "put_gex_millions": -64.43,
+          "net_gex_millions": -52.01
+        },
+        {
+          "strike": 227.5,
+          "call_oi": 7723,
+          "put_oi": 38555,
+          "call_gamma": 0.015594,
+          "put_gamma": 0.015594,
+          "call_gex_millions": 6.31,
+          "put_gex_millions": -31.49,
+          "net_gex_millions": -25.18
+        },
+        {
+          "strike": 230.0,
+          "call_oi": 38722,
+          "put_oi": 7783,
+          "call_gamma": 0.015804,
+          "put_gamma": 0.015804,
+          "call_gex_millions": 32.05,
+          "put_gex_millions": -6.44,
+          "net_gex_millions": 25.61
+        },
+        {
+          "strike": 232.5,
+          "call_oi": 36864,
+          "put_oi": 7132,
+          "call_gamma": 0.01586,
+          "put_gamma": 0.01586,
+          "call_gex_millions": 30.62,
+          "put_gex_millions": -5.92,
+          "net_gex_millions": 24.7
+        },
+        {
+          "strike": 235.0,
+          "call_oi": 35096,
+          "put_oi": 6535,
+          "call_gamma": 0.015761,
+          "put_gamma": 0.015761,
+          "call_gex_millions": 28.97,
+          "put_gex_millions": -5.39,
+          "net_gex_millions": 23.58
+        },
+        {
+          "strike": 237.5,
+          "call_oi": 73508,
+          "put_oi": 13174,
+          "call_gamma": 0.015511,
+          "put_gamma": 0.015511,
+          "call_gex_millions": 59.72,
+          "put_gex_millions": -10.7,
+          "net_gex_millions": 49.02
+        },
+        {
+          "strike": 240.0,
+          "call_oi": 31810,
+          "put_oi": 5487,
+          "call_gamma": 0.015121,
+          "put_gamma": 0.015121,
+          "call_gex_millions": 25.19,
+          "put_gex_millions": -4.35,
+          "net_gex_millions": 20.85
+        },
+        {
+          "strike": 242.5,
+          "call_oi": 30284,
+          "put_oi": 5028,
+          "call_gamma": 0.0146,
+          "put_gamma": 0.0146,
+          "call_gex_millions": 23.16,
+          "put_gex_millions": -3.85,
+          "net_gex_millions": 19.31
+        },
+        {
+          "strike": 245.0,
+          "call_oi": 28831,
+          "put_oi": 4607,
+          "call_gamma": 0.013966,
+          "put_gamma": 0.013966,
+          "call_gex_millions": 21.09,
+          "put_gex_millions": -3.37,
+          "net_gex_millions": 17.72
+        },
+        {
+          "strike": 247.5,
+          "call_oi": 27448,
+          "put_oi": 4221,
+          "call_gamma": 0.013236,
+          "put_gamma": 0.013236,
+          "call_gex_millions": 19.03,
+          "put_gex_millions": -2.93,
+          "net_gex_millions": 16.1
+        },
+        {
+          "strike": 250.0,
+          "call_oi": 57490,
+          "put_oi": 8510,
+          "call_gamma": 0.01243,
+          "put_gamma": 0.01243,
+          "call_gex_millions": 37.43,
+          "put_gex_millions": -5.54,
+          "net_gex_millions": 31.89
+        },
+        {
+          "strike": 252.5,
+          "call_oi": 24878,
+          "put_oi": 3544,
+          "call_gamma": 0.011567,
+          "put_gamma": 0.011567,
+          "call_gex_millions": 15.07,
+          "put_gex_millions": -2.15,
+          "net_gex_millions": 12.93
+        },
+        {
+          "strike": 255.0,
+          "call_oi": 23685,
+          "put_oi": 3248,
+          "call_gamma": 0.010669,
+          "put_gamma": 0.010669,
+          "call_gex_millions": 13.24,
+          "put_gex_millions": -1.81,
+          "net_gex_millions": 11.42
+        },
+        {
+          "strike": 257.5,
+          "call_oi": 22548,
+          "put_oi": 2976,
+          "call_gamma": 0.009753,
+          "put_gamma": 0.009753,
+          "call_gex_millions": 11.52,
+          "put_gex_millions": -1.52,
+          "net_gex_millions": 10.0
+        },
+        {
+          "strike": 260.0,
+          "call_oi": 21467,
+          "put_oi": 2727,
+          "call_gamma": 0.008839,
+          "put_gamma": 0.008839,
+          "call_gex_millions": 9.94,
+          "put_gex_millions": -1.26,
+          "net_gex_millions": 8.68
+        }
+      ]
+    },
+    "XIU": {
+      "symbol": "XIU",
+      "name": "iShares S&P/TSX 60 ETF",
+      "exchange_market": "CA_MX",
+      "currency": "CAD",
+      "underlying_spot_price": 52.76,
+      "net_gex_millions": 2.03,
+      "gamma_regime": "TRANSITION_ZONE",
+      "gamma_flip_strike": 52.46,
+      "distance_to_gamma_flip_pct": 0.56,
+      "max_pain_strike": 53.0,
+      "put_call_ratio_oi": 0.91,
+      "put_call_ratio_volume": 0.84,
+      "thirty_day_atm_iv_pct": 12.8,
+      "thirty_day_skew_pct": 3.6,
+      "skew_percentile_1y": 42.8,
+      "skew_zscore": -0.18,
+      "market_maker_posture": "NEUTRAL_REBALANCING",
+      "volatility_surface": [
+        {
+          "tenor_label": "7D",
+          "days_to_expiry": 7,
+          "atm_iv_pct": 12.29,
+          "skew_25d_pct": 4.2,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 42.21,
+              "implied_volatility_pct": 22.09,
+              "delta": 0.999
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 44.85,
+              "implied_volatility_pct": 19.38,
+              "delta": 0.999
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 47.48,
+              "implied_volatility_pct": 16.84,
+              "delta": 0.999
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 50.12,
+              "implied_volatility_pct": 14.48,
+              "delta": 0.995
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 52.76,
+              "implied_volatility_pct": 12.29,
+              "delta": 0.51
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 55.4,
+              "implied_volatility_pct": 10.28,
+              "delta": 0.0
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 58.04,
+              "implied_volatility_pct": 8.44,
+              "delta": 0.0
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 60.67,
+              "implied_volatility_pct": 6.78,
+              "delta": 0.0
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 63.31,
+              "implied_volatility_pct": 5.29,
+              "delta": 0.0
+            }
+          ]
+        },
+        {
+          "tenor_label": "30D",
+          "days_to_expiry": 30,
+          "atm_iv_pct": 12.8,
+          "skew_25d_pct": 3.6,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 42.21,
+              "implied_volatility_pct": 21.4,
+              "delta": 0.998
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 44.85,
+              "implied_volatility_pct": 18.99,
+              "delta": 0.996
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 47.48,
+              "implied_volatility_pct": 16.75,
+              "delta": 0.985
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 50.12,
+              "implied_volatility_pct": 14.69,
+              "delta": 0.896
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 52.76,
+              "implied_volatility_pct": 12.8,
+              "delta": 0.519
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 55.4,
+              "implied_volatility_pct": 11.09,
+              "delta": 0.069
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 58.04,
+              "implied_volatility_pct": 9.55,
+              "delta": 0.0
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 60.67,
+              "implied_volatility_pct": 8.19,
+              "delta": 0.0
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 63.31,
+              "implied_volatility_pct": 7.0,
+              "delta": 0.0
+            }
+          ]
+        },
+        {
+          "tenor_label": "60D",
+          "days_to_expiry": 60,
+          "atm_iv_pct": 13.18,
+          "skew_25d_pct": 3.2,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 42.21,
+              "implied_volatility_pct": 20.98,
+              "delta": 0.992
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 44.85,
+              "implied_volatility_pct": 18.77,
+              "delta": 0.982
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 47.48,
+              "implied_volatility_pct": 16.73,
+              "delta": 0.943
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 50.12,
+              "implied_volatility_pct": 14.87,
+              "delta": 0.818
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 52.76,
+              "implied_volatility_pct": 13.18,
+              "delta": 0.526
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 55.4,
+              "implied_volatility_pct": 11.67,
+              "delta": 0.168
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 58.04,
+              "implied_volatility_pct": 10.33,
+              "delta": 0.014
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 60.67,
+              "implied_volatility_pct": 9.17,
+              "delta": 0.0
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 63.31,
+              "implied_volatility_pct": 8.18,
+              "delta": 0.0
+            }
+          ]
+        },
+        {
+          "tenor_label": "90D",
+          "days_to_expiry": 90,
+          "atm_iv_pct": 13.57,
+          "skew_25d_pct": 2.8,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 42.21,
+              "implied_volatility_pct": 20.57,
+              "delta": 0.982
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 44.85,
+              "implied_volatility_pct": 18.56,
+              "delta": 0.961
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 47.48,
+              "implied_volatility_pct": 16.72,
+              "delta": 0.906
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 50.12,
+              "implied_volatility_pct": 15.06,
+              "delta": 0.775
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 52.76,
+              "implied_volatility_pct": 13.57,
+              "delta": 0.531
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 55.4,
+              "implied_volatility_pct": 12.26,
+              "delta": 0.236
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 58.04,
+              "implied_volatility_pct": 11.12,
+              "delta": 0.051
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 60.67,
+              "implied_volatility_pct": 10.16,
+              "delta": 0.004
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 63.31,
+              "implied_volatility_pct": 9.37,
+              "delta": 0.0
+            }
+          ]
+        },
+        {
+          "tenor_label": "180D",
+          "days_to_expiry": 180,
+          "atm_iv_pct": 14.08,
+          "skew_25d_pct": 2.4,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 42.21,
+              "implied_volatility_pct": 20.28,
+              "delta": 0.941
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 44.85,
+              "implied_volatility_pct": 18.47,
+              "delta": 0.902
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 47.48,
+              "implied_volatility_pct": 16.83,
+              "delta": 0.833
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 50.12,
+              "implied_volatility_pct": 15.37,
+              "delta": 0.714
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 52.76,
+              "implied_volatility_pct": 14.08,
+              "delta": 0.541
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 55.4,
+              "implied_volatility_pct": 12.97,
+              "delta": 0.335
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 58.04,
+              "implied_volatility_pct": 12.03,
+              "delta": 0.156
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 60.67,
+              "implied_volatility_pct": 11.27,
+              "delta": 0.05
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 63.31,
+              "implied_volatility_pct": 10.68,
+              "delta": 0.011
+            }
+          ]
+        }
+      ],
+      "strike_gex_distribution": [
+        {
+          "strike": 41.0,
+          "call_oi": 151,
+          "put_oi": 1613,
+          "call_gamma": 0.0,
+          "put_gamma": 0.0,
+          "call_gex_millions": 0.0,
+          "put_gex_millions": -0.0,
+          "net_gex_millions": -0.0
+        },
+        {
+          "strike": 42.0,
+          "call_oi": 176,
+          "put_oi": 1757,
+          "call_gamma": 0.0,
+          "put_gamma": 0.0,
+          "call_gex_millions": 0.0,
+          "put_gex_millions": -0.0,
+          "net_gex_millions": -0.0
+        },
+        {
+          "strike": 43.0,
+          "call_oi": 204,
+          "put_oi": 1913,
+          "call_gamma": 0.0,
+          "put_gamma": 0.0,
+          "call_gex_millions": 0.0,
+          "put_gex_millions": -0.0,
+          "net_gex_millions": -0.0
+        },
+        {
+          "strike": 44.0,
+          "call_oi": 238,
+          "put_oi": 2084,
+          "call_gamma": 3e-06,
+          "put_gamma": 3e-06,
+          "call_gex_millions": 0.0,
+          "put_gex_millions": -0.0,
+          "net_gex_millions": -0.0
+        },
+        {
+          "strike": 45.0,
+          "call_oi": 610,
+          "put_oi": 4993,
+          "call_gamma": 3.7e-05,
+          "put_gamma": 3.7e-05,
+          "call_gex_millions": 0.0,
+          "put_gex_millions": -0.0,
+          "net_gex_millions": -0.0
+        },
+        {
+          "strike": 46.0,
+          "call_oi": 322,
+          "put_oi": 2472,
+          "call_gamma": 0.000297,
+          "put_gamma": 0.000297,
+          "call_gex_millions": 0.0,
+          "put_gex_millions": -0.0,
+          "net_gex_millions": -0.0
+        },
+        {
+          "strike": 47.0,
+          "call_oi": 375,
+          "put_oi": 2692,
+          "call_gamma": 0.001773,
+          "put_gamma": 0.001773,
+          "call_gex_millions": 0.0,
+          "put_gex_millions": -0.01,
+          "net_gex_millions": -0.01
+        },
+        {
+          "strike": 48.0,
+          "call_oi": 437,
+          "put_oi": 2931,
+          "call_gamma": 0.007907,
+          "put_gamma": 0.007907,
+          "call_gex_millions": 0.01,
+          "put_gex_millions": -0.06,
+          "net_gex_millions": -0.05
+        },
+        {
+          "strike": 49.0,
+          "call_oi": 508,
+          "put_oi": 3192,
+          "call_gamma": 0.026468,
+          "put_gamma": 0.026468,
+          "call_gex_millions": 0.04,
+          "put_gex_millions": -0.24,
+          "net_gex_millions": -0.2
+        },
+        {
+          "strike": 50.0,
+          "call_oi": 1302,
+          "put_oi": 7649,
+          "call_gamma": 0.066797,
+          "put_gamma": 0.066797,
+          "call_gex_millions": 0.24,
+          "put_gex_millions": -1.42,
+          "net_gex_millions": -1.18
+        },
+        {
+          "strike": 51.0,
+          "call_oi": 689,
+          "put_oi": 3786,
+          "call_gamma": 0.12761,
+          "put_gamma": 0.12761,
+          "call_gex_millions": 0.24,
+          "put_gex_millions": -1.34,
+          "net_gex_millions": -1.1
+        },
+        {
+          "strike": 52.0,
+          "call_oi": 802,
+          "put_oi": 4123,
+          "call_gamma": 0.185303,
+          "put_gamma": 0.185303,
+          "call_gex_millions": 0.41,
+          "put_gex_millions": -2.13,
+          "net_gex_millions": -1.71
+        },
+        {
+          "strike": 53.0,
+          "call_oi": 4310,
+          "put_oi": 867,
+          "call_gamma": 0.205368,
+          "put_gamma": 0.205368,
+          "call_gex_millions": 2.46,
+          "put_gex_millions": -0.5,
+          "net_gex_millions": 1.97
+        },
+        {
+          "strike": 54.0,
+          "call_oi": 3958,
+          "put_oi": 745,
+          "call_gamma": 0.174448,
+          "put_gamma": 0.174448,
+          "call_gex_millions": 1.92,
+          "put_gex_millions": -0.36,
+          "net_gex_millions": 1.56
+        },
+        {
+          "strike": 55.0,
+          "call_oi": 7996,
+          "put_oi": 1409,
+          "call_gamma": 0.114071,
+          "put_gamma": 0.114071,
+          "call_gex_millions": 2.54,
+          "put_gex_millions": -0.45,
+          "net_gex_millions": 2.09
+        },
+        {
+          "strike": 56.0,
+          "call_oi": 3337,
+          "put_oi": 550,
+          "call_gamma": 0.05768,
+          "put_gamma": 0.05768,
+          "call_gex_millions": 0.54,
+          "put_gex_millions": -0.09,
+          "net_gex_millions": 0.45
+        },
+        {
+          "strike": 57.0,
+          "call_oi": 3064,
+          "put_oi": 473,
+          "call_gamma": 0.022662,
+          "put_gamma": 0.022662,
+          "call_gex_millions": 0.19,
+          "put_gex_millions": -0.03,
+          "net_gex_millions": 0.16
+        },
+        {
+          "strike": 58.0,
+          "call_oi": 2814,
+          "put_oi": 406,
+          "call_gamma": 0.006953,
+          "put_gamma": 0.006953,
+          "call_gex_millions": 0.05,
+          "put_gex_millions": -0.01,
+          "net_gex_millions": 0.05
+        },
+        {
+          "strike": 59.0,
+          "call_oi": 2584,
+          "put_oi": 349,
+          "call_gamma": 0.001675,
+          "put_gamma": 0.001675,
+          "call_gex_millions": 0.01,
+          "put_gex_millions": -0.0,
+          "net_gex_millions": 0.01
+        },
+        {
+          "strike": 60.0,
+          "call_oi": 5220,
+          "put_oi": 660,
+          "call_gamma": 0.000318,
+          "put_gamma": 0.000318,
+          "call_gex_millions": 0.0,
+          "put_gex_millions": -0.0,
+          "net_gex_millions": 0.0
+        },
+        {
+          "strike": 61.0,
+          "call_oi": 2178,
+          "put_oi": 258,
+          "call_gamma": 4.8e-05,
+          "put_gamma": 4.8e-05,
+          "call_gex_millions": 0.0,
+          "put_gex_millions": -0.0,
+          "net_gex_millions": 0.0
+        },
+        {
+          "strike": 62.0,
+          "call_oi": 2000,
+          "put_oi": 221,
+          "call_gamma": 6e-06,
+          "put_gamma": 6e-06,
+          "call_gex_millions": 0.0,
+          "put_gex_millions": -0.0,
+          "net_gex_millions": 0.0
+        },
+        {
+          "strike": 63.0,
+          "call_oi": 1837,
+          "put_oi": 190,
+          "call_gamma": 1e-06,
+          "put_gamma": 1e-06,
+          "call_gex_millions": 0.0,
+          "put_gex_millions": -0.0,
+          "net_gex_millions": 0.0
+        },
+        {
+          "strike": 64.0,
+          "call_oi": 1686,
+          "put_oi": 163,
+          "call_gamma": 0.0,
+          "put_gamma": 0.0,
+          "call_gex_millions": 0.0,
+          "put_gex_millions": -0.0,
+          "net_gex_millions": 0.0
+        },
+        {
+          "strike": 65.0,
+          "call_oi": 3407,
+          "put_oi": 309,
+          "call_gamma": 0.0,
+          "put_gamma": 0.0,
+          "call_gex_millions": 0.0,
+          "put_gex_millions": -0.0,
+          "net_gex_millions": 0.0
+        }
+      ]
+    },
+    "SHOP": {
+      "symbol": "SHOP",
+      "name": "Shopify Inc.",
+      "exchange_market": "CA_MX",
+      "currency": "CAD",
+      "underlying_spot_price": 204.2,
+      "net_gex_millions": 3.76,
+      "gamma_regime": "TRANSITION_ZONE",
+      "gamma_flip_strike": 203.73,
+      "distance_to_gamma_flip_pct": 0.23,
+      "max_pain_strike": 202.5,
+      "put_call_ratio_oi": 1.01,
+      "put_call_ratio_volume": 0.93,
+      "thirty_day_atm_iv_pct": 33.5,
+      "thirty_day_skew_pct": 3.6,
+      "skew_percentile_1y": 42.8,
+      "skew_zscore": -0.18,
+      "market_maker_posture": "NEUTRAL_REBALANCING",
+      "volatility_surface": [
+        {
+          "tenor_label": "7D",
+          "days_to_expiry": 7,
+          "atm_iv_pct": 32.16,
+          "skew_25d_pct": 4.2,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 163.36,
+              "implied_volatility_pct": 41.96,
+              "delta": 1.0
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 173.57,
+              "implied_volatility_pct": 39.25,
+              "delta": 0.999
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 183.78,
+              "implied_volatility_pct": 36.71,
+              "delta": 0.983
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 193.99,
+              "implied_volatility_pct": 34.35,
+              "delta": 0.868
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 204.2,
+              "implied_volatility_pct": 32.16,
+              "delta": 0.516
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 214.41,
+              "implied_volatility_pct": 30.15,
+              "delta": 0.13
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 224.62,
+              "implied_volatility_pct": 28.31,
+              "delta": 0.008
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 234.83,
+              "implied_volatility_pct": 26.65,
+              "delta": 0.0
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 245.04,
+              "implied_volatility_pct": 25.16,
+              "delta": 0.0
+            }
+          ]
+        },
+        {
+          "tenor_label": "30D",
+          "days_to_expiry": 30,
+          "atm_iv_pct": 33.5,
+          "skew_25d_pct": 3.6,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 163.36,
+              "implied_volatility_pct": 42.1,
+              "delta": 0.974
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 173.57,
+              "implied_volatility_pct": 39.69,
+              "delta": 0.935
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 183.78,
+              "implied_volatility_pct": 37.45,
+              "delta": 0.857
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 193.99,
+              "implied_volatility_pct": 35.39,
+              "delta": 0.723
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 204.2,
+              "implied_volatility_pct": 33.5,
+              "delta": 0.534
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 214.41,
+              "implied_volatility_pct": 31.79,
+              "delta": 0.326
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 224.62,
+              "implied_volatility_pct": 30.25,
+              "delta": 0.155
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 234.83,
+              "implied_volatility_pct": 28.89,
+              "delta": 0.054
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 245.04,
+              "implied_volatility_pct": 27.7,
+              "delta": 0.013
+            }
+          ]
+        },
+        {
+          "tenor_label": "60D",
+          "days_to_expiry": 60,
+          "atm_iv_pct": 34.51,
+          "skew_25d_pct": 3.2,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 163.36,
+              "implied_volatility_pct": 42.31,
+              "delta": 0.923
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 173.57,
+              "implied_volatility_pct": 40.09,
+              "delta": 0.87
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 183.78,
+              "implied_volatility_pct": 38.05,
+              "delta": 0.79
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 193.99,
+              "implied_volatility_pct": 36.19,
+              "delta": 0.681
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 204.2,
+              "implied_volatility_pct": 34.51,
+              "delta": 0.548
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 214.41,
+              "implied_volatility_pct": 32.99,
+              "delta": 0.403
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 224.62,
+              "implied_volatility_pct": 31.66,
+              "delta": 0.266
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 234.83,
+              "implied_volatility_pct": 30.49,
+              "delta": 0.156
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 245.04,
+              "implied_volatility_pct": 29.51,
+              "delta": 0.08
+            }
+          ]
+        },
+        {
+          "tenor_label": "90D",
+          "days_to_expiry": 90,
+          "atm_iv_pct": 35.51,
+          "skew_25d_pct": 2.8,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 163.36,
+              "implied_volatility_pct": 42.51,
+              "delta": 0.887
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 173.57,
+              "implied_volatility_pct": 40.5,
+              "delta": 0.832
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 183.78,
+              "implied_volatility_pct": 38.66,
+              "delta": 0.758
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 193.99,
+              "implied_volatility_pct": 37.0,
+              "delta": 0.666
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 204.2,
+              "implied_volatility_pct": 35.51,
+              "delta": 0.559
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 214.41,
+              "implied_volatility_pct": 34.2,
+              "delta": 0.444
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 224.62,
+              "implied_volatility_pct": 33.06,
+              "delta": 0.332
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 234.83,
+              "implied_volatility_pct": 32.1,
+              "delta": 0.232
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 245.04,
+              "implied_volatility_pct": 31.31,
+              "delta": 0.152
+            }
+          ]
+        },
+        {
+          "tenor_label": "180D",
+          "days_to_expiry": 180,
+          "atm_iv_pct": 36.85,
+          "skew_25d_pct": 2.4,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 163.36,
+              "implied_volatility_pct": 43.05,
+              "delta": 0.831
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 173.57,
+              "implied_volatility_pct": 41.24,
+              "delta": 0.782
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 183.78,
+              "implied_volatility_pct": 39.6,
+              "delta": 0.724
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 193.99,
+              "implied_volatility_pct": 38.14,
+              "delta": 0.657
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 204.2,
+              "implied_volatility_pct": 36.85,
+              "delta": 0.583
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 214.41,
+              "implied_volatility_pct": 35.74,
+              "delta": 0.506
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 224.62,
+              "implied_volatility_pct": 34.8,
+              "delta": 0.428
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 234.83,
+              "implied_volatility_pct": 34.04,
+              "delta": 0.353
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 245.04,
+              "implied_volatility_pct": 33.45,
+              "delta": 0.285
+            }
+          ]
+        }
+      ],
+      "strike_gex_distribution": [
+        {
+          "strike": 175.0,
+          "call_oi": 630,
+          "put_oi": 5086,
+          "call_gamma": 0.005317,
+          "put_gamma": 0.005317,
+          "call_gex_millions": 0.14,
+          "put_gex_millions": -1.13,
+          "net_gex_millions": -0.99
+        },
+        {
+          "strike": 177.5,
+          "call_oi": 316,
+          "put_oi": 2442,
+          "call_gamma": 0.006551,
+          "put_gamma": 0.006551,
+          "call_gex_millions": 0.09,
+          "put_gex_millions": -0.67,
+          "net_gex_millions": -0.58
+        },
+        {
+          "strike": 180.0,
+          "call_oi": 348,
+          "put_oi": 2581,
+          "call_gamma": 0.007925,
+          "put_gamma": 0.007925,
+          "call_gex_millions": 0.11,
+          "put_gex_millions": -0.85,
+          "net_gex_millions": -0.74
+        },
+        {
+          "strike": 182.5,
+          "call_oi": 384,
+          "put_oi": 2727,
+          "call_gamma": 0.009417,
+          "put_gamma": 0.009417,
+          "call_gex_millions": 0.15,
+          "put_gex_millions": -1.07,
+          "net_gex_millions": -0.92
+        },
+        {
+          "strike": 185.0,
+          "call_oi": 424,
+          "put_oi": 2882,
+          "call_gamma": 0.010991,
+          "put_gamma": 0.010991,
+          "call_gex_millions": 0.19,
+          "put_gex_millions": -1.32,
+          "net_gex_millions": -1.13
+        },
+        {
+          "strike": 187.5,
+          "call_oi": 1029,
+          "put_oi": 6699,
+          "call_gamma": 0.012605,
+          "put_gamma": 0.012605,
+          "call_gex_millions": 0.54,
+          "put_gex_millions": -3.52,
+          "net_gex_millions": -2.98
+        },
+        {
+          "strike": 190.0,
+          "call_oi": 515,
+          "put_oi": 3217,
+          "call_gamma": 0.014206,
+          "put_gamma": 0.014206,
+          "call_gex_millions": 0.31,
+          "put_gex_millions": -1.91,
+          "net_gex_millions": -1.6
+        },
+        {
+          "strike": 192.5,
+          "call_oi": 569,
+          "put_oi": 3399,
+          "call_gamma": 0.015735,
+          "put_gamma": 0.015735,
+          "call_gex_millions": 0.37,
+          "put_gex_millions": -2.23,
+          "net_gex_millions": -1.86
+        },
+        {
+          "strike": 195.0,
+          "call_oi": 627,
+          "put_oi": 3592,
+          "call_gamma": 0.017133,
+          "put_gamma": 0.017133,
+          "call_gex_millions": 0.45,
+          "put_gex_millions": -2.57,
+          "net_gex_millions": -2.12
+        },
+        {
+          "strike": 197.5,
+          "call_oi": 692,
+          "put_oi": 3796,
+          "call_gamma": 0.01834,
+          "put_gamma": 0.01834,
+          "call_gex_millions": 0.53,
+          "put_gex_millions": -2.9,
+          "net_gex_millions": -2.37
+        },
+        {
+          "strike": 200.0,
+          "call_oi": 1679,
+          "put_oi": 8824,
+          "call_gamma": 0.019306,
+          "put_gamma": 0.019306,
+          "call_gex_millions": 1.35,
+          "put_gex_millions": -7.1,
+          "net_gex_millions": -5.75
+        },
+        {
+          "strike": 202.5,
+          "call_oi": 842,
+          "put_oi": 4238,
+          "call_gamma": 0.019986,
+          "put_gamma": 0.019986,
+          "call_gex_millions": 0.7,
+          "put_gex_millions": -3.53,
+          "net_gex_millions": -2.83
+        },
+        {
+          "strike": 205.0,
+          "call_oi": 4323,
+          "put_oi": 872,
+          "call_gamma": 0.020351,
+          "put_gamma": 0.020351,
+          "call_gex_millions": 3.67,
+          "put_gex_millions": -0.74,
+          "net_gex_millions": 2.93
+        },
+        {
+          "strike": 207.5,
+          "call_oi": 4091,
+          "put_oi": 790,
+          "call_gamma": 0.020388,
+          "put_gamma": 0.020388,
+          "call_gex_millions": 3.48,
+          "put_gex_millions": -0.67,
+          "net_gex_millions": 2.81
+        },
+        {
+          "strike": 210.0,
+          "call_oi": 3872,
+          "put_oi": 717,
+          "call_gamma": 0.020097,
+          "put_gamma": 0.020097,
+          "call_gex_millions": 3.24,
+          "put_gex_millions": -0.6,
+          "net_gex_millions": 2.64
+        },
+        {
+          "strike": 212.5,
+          "call_oi": 8061,
+          "put_oi": 1430,
+          "call_gamma": 0.019496,
+          "put_gamma": 0.019496,
+          "call_gex_millions": 6.55,
+          "put_gex_millions": -1.16,
+          "net_gex_millions": 5.39
+        },
+        {
+          "strike": 215.0,
+          "call_oi": 3468,
+          "put_oi": 589,
+          "call_gamma": 0.018617,
+          "put_gamma": 0.018617,
+          "call_gex_millions": 2.69,
+          "put_gex_millions": -0.46,
+          "net_gex_millions": 2.23
+        },
+        {
+          "strike": 217.5,
+          "call_oi": 3282,
+          "put_oi": 534,
+          "call_gamma": 0.017501,
+          "put_gamma": 0.017501,
+          "call_gex_millions": 2.4,
+          "put_gex_millions": -0.39,
+          "net_gex_millions": 2.01
+        },
+        {
+          "strike": 220.0,
+          "call_oi": 3106,
+          "put_oi": 484,
+          "call_gamma": 0.0162,
+          "put_gamma": 0.0162,
+          "call_gex_millions": 2.1,
+          "put_gex_millions": -0.33,
+          "net_gex_millions": 1.77
+        },
+        {
+          "strike": 222.5,
+          "call_oi": 2939,
+          "put_oi": 439,
+          "call_gamma": 0.01477,
+          "put_gamma": 0.01477,
+          "call_gex_millions": 1.81,
+          "put_gex_millions": -0.27,
+          "net_gex_millions": 1.54
+        },
+        {
+          "strike": 225.0,
+          "call_oi": 6120,
+          "put_oi": 876,
+          "call_gamma": 0.013264,
+          "put_gamma": 0.013264,
+          "call_gex_millions": 3.38,
+          "put_gex_millions": -0.48,
+          "net_gex_millions": 2.9
+        },
+        {
+          "strike": 227.5,
+          "call_oi": 2633,
+          "put_oi": 361,
+          "call_gamma": 0.011737,
+          "put_gamma": 0.011737,
+          "call_gex_millions": 1.29,
+          "put_gex_millions": -0.18,
+          "net_gex_millions": 1.11
+        },
+        {
+          "strike": 230.0,
+          "call_oi": 2491,
+          "put_oi": 327,
+          "call_gamma": 0.010235,
+          "put_gamma": 0.010235,
+          "call_gex_millions": 1.06,
+          "put_gex_millions": -0.14,
+          "net_gex_millions": 0.92
+        },
+        {
+          "strike": 232.5,
+          "call_oi": 2358,
+          "put_oi": 296,
+          "call_gamma": 0.008798,
+          "put_gamma": 0.008798,
+          "call_gex_millions": 0.87,
+          "put_gex_millions": -0.11,
+          "net_gex_millions": 0.76
+        },
+        {
+          "strike": 235.0,
+          "call_oi": 2231,
+          "put_oi": 269,
+          "call_gamma": 0.007456,
+          "put_gamma": 0.007456,
+          "call_gex_millions": 0.69,
+          "put_gex_millions": -0.08,
+          "net_gex_millions": 0.61
+        }
+      ]
+    },
+    "RY": {
+      "symbol": "RY",
+      "name": "Royal Bank of Canada",
+      "exchange_market": "CA_MX",
+      "currency": "CAD",
+      "underlying_spot_price": 285.07,
+      "net_gex_millions": 2.95,
+      "gamma_regime": "TRANSITION_ZONE",
+      "gamma_flip_strike": 285.8,
+      "distance_to_gamma_flip_pct": -0.26,
+      "max_pain_strike": 285.0,
+      "put_call_ratio_oi": 1.0,
+      "put_call_ratio_volume": 0.92,
+      "thirty_day_atm_iv_pct": 13.8,
+      "thirty_day_skew_pct": 3.6,
+      "skew_percentile_1y": 42.8,
+      "skew_zscore": -0.18,
+      "market_maker_posture": "NEUTRAL_REBALANCING",
+      "volatility_surface": [
+        {
+          "tenor_label": "7D",
+          "days_to_expiry": 7,
+          "atm_iv_pct": 13.25,
+          "skew_25d_pct": 4.2,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 228.06,
+              "implied_volatility_pct": 23.05,
+              "delta": 0.999
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 242.31,
+              "implied_volatility_pct": 20.34,
+              "delta": 0.999
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 256.56,
+              "implied_volatility_pct": 17.8,
+              "delta": 0.999
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 270.82,
+              "implied_volatility_pct": 15.44,
+              "delta": 0.991
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 285.07,
+              "implied_volatility_pct": 13.25,
+              "delta": 0.505
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 299.32,
+              "implied_volatility_pct": 11.24,
+              "delta": 0.001
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 313.58,
+              "implied_volatility_pct": 9.4,
+              "delta": 0.0
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 327.83,
+              "implied_volatility_pct": 7.74,
+              "delta": 0.0
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 342.08,
+              "implied_volatility_pct": 6.25,
+              "delta": 0.0
+            }
+          ]
+        },
+        {
+          "tenor_label": "30D",
+          "days_to_expiry": 30,
+          "atm_iv_pct": 13.8,
+          "skew_25d_pct": 3.6,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 228.06,
+              "implied_volatility_pct": 22.4,
+              "delta": 0.997
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 242.31,
+              "implied_volatility_pct": 19.99,
+              "delta": 0.995
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 256.56,
+              "implied_volatility_pct": 17.75,
+              "delta": 0.979
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 270.82,
+              "implied_volatility_pct": 15.69,
+              "delta": 0.876
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 285.07,
+              "implied_volatility_pct": 13.8,
+              "delta": 0.51
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 299.32,
+              "implied_volatility_pct": 12.09,
+              "delta": 0.083
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 313.58,
+              "implied_volatility_pct": 10.55,
+              "delta": 0.001
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 327.83,
+              "implied_volatility_pct": 9.19,
+              "delta": 0.0
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 342.08,
+              "implied_volatility_pct": 8.0,
+              "delta": 0.0
+            }
+          ]
+        },
+        {
+          "tenor_label": "60D",
+          "days_to_expiry": 60,
+          "atm_iv_pct": 14.21,
+          "skew_25d_pct": 3.2,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 228.06,
+              "implied_volatility_pct": 22.01,
+              "delta": 0.988
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 242.31,
+              "implied_volatility_pct": 19.8,
+              "delta": 0.975
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 256.56,
+              "implied_volatility_pct": 17.76,
+              "delta": 0.928
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 270.82,
+              "implied_volatility_pct": 15.9,
+              "delta": 0.794
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 285.07,
+              "implied_volatility_pct": 14.21,
+              "delta": 0.513
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 299.32,
+              "implied_volatility_pct": 12.7,
+              "delta": 0.181
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 313.58,
+              "implied_volatility_pct": 11.36,
+              "delta": 0.021
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 327.83,
+              "implied_volatility_pct": 10.2,
+              "delta": 0.0
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 342.08,
+              "implied_volatility_pct": 9.21,
+              "delta": 0.0
+            }
+          ]
+        },
+        {
+          "tenor_label": "90D",
+          "days_to_expiry": 90,
+          "atm_iv_pct": 14.63,
+          "skew_25d_pct": 2.8,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 228.06,
+              "implied_volatility_pct": 21.63,
+              "delta": 0.975
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 242.31,
+              "implied_volatility_pct": 19.62,
+              "delta": 0.949
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 256.56,
+              "implied_volatility_pct": 17.78,
+              "delta": 0.886
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 270.82,
+              "implied_volatility_pct": 16.12,
+              "delta": 0.749
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 285.07,
+              "implied_volatility_pct": 14.63,
+              "delta": 0.515
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 299.32,
+              "implied_volatility_pct": 13.32,
+              "delta": 0.243
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 313.58,
+              "implied_volatility_pct": 12.18,
+              "delta": 0.062
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 327.83,
+              "implied_volatility_pct": 11.22,
+              "delta": 0.007
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 342.08,
+              "implied_volatility_pct": 10.43,
+              "delta": 0.0
+            }
+          ]
+        },
+        {
+          "tenor_label": "180D",
+          "days_to_expiry": 180,
+          "atm_iv_pct": 15.18,
+          "skew_25d_pct": 2.4,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 228.06,
+              "implied_volatility_pct": 21.38,
+              "delta": 0.925
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 242.31,
+              "implied_volatility_pct": 19.57,
+              "delta": 0.88
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 256.56,
+              "implied_volatility_pct": 17.93,
+              "delta": 0.805
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 270.82,
+              "implied_volatility_pct": 16.47,
+              "delta": 0.685
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 285.07,
+              "implied_volatility_pct": 15.18,
+              "delta": 0.519
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 299.32,
+              "implied_volatility_pct": 14.07,
+              "delta": 0.329
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 313.58,
+              "implied_volatility_pct": 13.13,
+              "delta": 0.164
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 327.83,
+              "implied_volatility_pct": 12.37,
+              "delta": 0.06
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 342.08,
+              "implied_volatility_pct": 11.78,
+              "delta": 0.016
+            }
+          ]
+        }
+      ],
+      "strike_gex_distribution": [
+        {
+          "strike": 255.0,
+          "call_oi": 387,
+          "put_oi": 2737,
+          "call_gamma": 0.000808,
+          "put_gamma": 0.000808,
+          "call_gex_millions": 0.03,
+          "put_gex_millions": -0.18,
+          "net_gex_millions": -0.15
+        },
+        {
+          "strike": 257.5,
+          "call_oi": 415,
+          "put_oi": 2847,
+          "call_gamma": 0.001473,
+          "put_gamma": 0.001473,
+          "call_gex_millions": 0.05,
+          "put_gex_millions": -0.34,
+          "net_gex_millions": -0.29
+        },
+        {
+          "strike": 260.0,
+          "call_oi": 445,
+          "put_oi": 2961,
+          "call_gamma": 0.002546,
+          "put_gamma": 0.002546,
+          "call_gex_millions": 0.09,
+          "put_gex_millions": -0.61,
+          "net_gex_millions": -0.52
+        },
+        {
+          "strike": 262.5,
+          "call_oi": 1050,
+          "put_oi": 6778,
+          "call_gamma": 0.004174,
+          "put_gamma": 0.004174,
+          "call_gex_millions": 0.36,
+          "put_gex_millions": -2.3,
+          "net_gex_millions": -1.94
+        },
+        {
+          "strike": 265.0,
+          "call_oi": 512,
+          "put_oi": 3205,
+          "call_gamma": 0.006493,
+          "put_gamma": 0.006493,
+          "call_gex_millions": 0.27,
+          "put_gex_millions": -1.69,
+          "net_gex_millions": -1.42
+        },
+        {
+          "strike": 267.5,
+          "call_oi": 549,
+          "put_oi": 3334,
+          "call_gamma": 0.009588,
+          "put_gamma": 0.009588,
+          "call_gex_millions": 0.43,
+          "put_gex_millions": -2.6,
+          "net_gex_millions": -2.17
+        },
+        {
+          "strike": 270.0,
+          "call_oi": 589,
+          "put_oi": 3468,
+          "call_gamma": 0.013447,
+          "put_gamma": 0.013447,
+          "call_gex_millions": 0.64,
+          "put_gex_millions": -3.79,
+          "net_gex_millions": -3.15
+        },
+        {
+          "strike": 272.5,
+          "call_oi": 632,
+          "put_oi": 3608,
+          "call_gamma": 0.017914,
+          "put_gamma": 0.017914,
+          "call_gex_millions": 0.92,
+          "put_gex_millions": -5.25,
+          "net_gex_millions": -4.33
+        },
+        {
+          "strike": 275.0,
+          "call_oi": 1492,
+          "put_oi": 8257,
+          "call_gamma": 0.02268,
+          "put_gamma": 0.02268,
+          "call_gex_millions": 2.75,
+          "put_gex_millions": -15.22,
+          "net_gex_millions": -12.47
+        },
+        {
+          "strike": 277.5,
+          "call_oi": 727,
+          "put_oi": 3904,
+          "call_gamma": 0.027295,
+          "put_gamma": 0.027295,
+          "call_gex_millions": 1.61,
+          "put_gex_millions": -8.66,
+          "net_gex_millions": -7.05
+        },
+        {
+          "strike": 280.0,
+          "call_oi": 780,
+          "put_oi": 4061,
+          "call_gamma": 0.031238,
+          "put_gamma": 0.031238,
+          "call_gex_millions": 1.98,
+          "put_gex_millions": -10.31,
+          "net_gex_millions": -8.33
+        },
+        {
+          "strike": 282.5,
+          "call_oi": 837,
+          "put_oi": 4225,
+          "call_gamma": 0.03401,
+          "put_gamma": 0.03401,
+          "call_gex_millions": 2.31,
+          "put_gex_millions": -11.68,
+          "net_gex_millions": -9.36
+        },
+        {
+          "strike": 285.0,
+          "call_oi": 898,
+          "put_oi": 4395,
+          "call_gamma": 0.035237,
+          "put_gamma": 0.035237,
+          "call_gex_millions": 2.57,
+          "put_gex_millions": -12.59,
+          "net_gex_millions": -10.01
+        },
+        {
+          "strike": 287.5,
+          "call_oi": 9315,
+          "put_oi": 1849,
+          "call_gamma": 0.034754,
+          "put_gamma": 0.034754,
+          "call_gex_millions": 26.31,
+          "put_gex_millions": -5.22,
+          "net_gex_millions": 21.09
+        },
+        {
+          "strike": 290.0,
+          "call_oi": 4070,
+          "put_oi": 783,
+          "call_gamma": 0.032644,
+          "put_gamma": 0.032644,
+          "call_gex_millions": 10.8,
+          "put_gex_millions": -2.08,
+          "net_gex_millions": 8.72
+        },
+        {
+          "strike": 292.5,
+          "call_oi": 3913,
+          "put_oi": 730,
+          "call_gamma": 0.029211,
+          "put_gamma": 0.029211,
+          "call_gex_millions": 9.29,
+          "put_gex_millions": -1.73,
+          "net_gex_millions": 7.56
+        },
+        {
+          "strike": 295.0,
+          "call_oi": 3761,
+          "put_oi": 681,
+          "call_gamma": 0.024911,
+          "put_gamma": 0.024911,
+          "call_gex_millions": 7.61,
+          "put_gex_millions": -1.38,
+          "net_gex_millions": 6.24
+        },
+        {
+          "strike": 297.5,
+          "call_oi": 3616,
+          "put_oi": 634,
+          "call_gamma": 0.020254,
+          "put_gamma": 0.020254,
+          "call_gex_millions": 5.95,
+          "put_gex_millions": -1.04,
+          "net_gex_millions": 4.91
+        },
+        {
+          "strike": 300.0,
+          "call_oi": 7647,
+          "put_oi": 1302,
+          "call_gamma": 0.015706,
+          "put_gamma": 0.015706,
+          "call_gex_millions": 9.76,
+          "put_gex_millions": -1.66,
+          "net_gex_millions": 8.1
+        },
+        {
+          "strike": 302.5,
+          "call_oi": 3341,
+          "put_oi": 551,
+          "call_gamma": 0.011621,
+          "put_gamma": 0.011621,
+          "call_gex_millions": 3.16,
+          "put_gex_millions": -0.52,
+          "net_gex_millions": 2.63
+        },
+        {
+          "strike": 305.0,
+          "call_oi": 3212,
+          "put_oi": 514,
+          "call_gamma": 0.008208,
+          "put_gamma": 0.008208,
+          "call_gex_millions": 2.14,
+          "put_gex_millions": -0.34,
+          "net_gex_millions": 1.8
+        },
+        {
+          "strike": 307.5,
+          "call_oi": 3088,
+          "put_oi": 479,
+          "call_gamma": 0.005536,
+          "put_gamma": 0.005536,
+          "call_gex_millions": 1.39,
+          "put_gex_millions": -0.22,
+          "net_gex_millions": 1.17
+        },
+        {
+          "strike": 310.0,
+          "call_oi": 2968,
+          "put_oi": 447,
+          "call_gamma": 0.003567,
+          "put_gamma": 0.003567,
+          "call_gex_millions": 0.86,
+          "put_gex_millions": -0.13,
+          "net_gex_millions": 0.73
+        },
+        {
+          "strike": 312.5,
+          "call_oi": 6278,
+          "put_oi": 916,
+          "call_gamma": 0.002197,
+          "put_gamma": 0.002197,
+          "call_gex_millions": 1.12,
+          "put_gex_millions": -0.16,
+          "net_gex_millions": 0.96
+        },
+        {
+          "strike": 315.0,
+          "call_oi": 2743,
+          "put_oi": 388,
+          "call_gamma": 0.001294,
+          "put_gamma": 0.001294,
+          "call_gex_millions": 0.29,
+          "put_gex_millions": -0.04,
+          "net_gex_millions": 0.25
+        }
+      ]
+    },
+    "TD": {
+      "symbol": "TD",
+      "name": "Toronto-Dominion Bank",
+      "exchange_market": "CA_MX",
+      "currency": "CAD",
+      "underlying_spot_price": 169.6,
+      "net_gex_millions": 6.07,
+      "gamma_regime": "TRANSITION_ZONE",
+      "gamma_flip_strike": 168.7,
+      "distance_to_gamma_flip_pct": 0.53,
+      "max_pain_strike": 170.0,
+      "put_call_ratio_oi": 0.91,
+      "put_call_ratio_volume": 0.83,
+      "thirty_day_atm_iv_pct": 16.5,
+      "thirty_day_skew_pct": 3.6,
+      "skew_percentile_1y": 42.8,
+      "skew_zscore": -0.18,
+      "market_maker_posture": "NEUTRAL_REBALANCING",
+      "volatility_surface": [
+        {
+          "tenor_label": "7D",
+          "days_to_expiry": 7,
+          "atm_iv_pct": 15.84,
+          "skew_25d_pct": 4.2,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 135.68,
+              "implied_volatility_pct": 25.64,
+              "delta": 0.999
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 144.16,
+              "implied_volatility_pct": 22.93,
+              "delta": 0.999
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 152.64,
+              "implied_volatility_pct": 20.39,
+              "delta": 0.999
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 161.12,
+              "implied_volatility_pct": 18.03,
+              "delta": 0.98
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 169.6,
+              "implied_volatility_pct": 15.84,
+              "delta": 0.504
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 178.08,
+              "implied_volatility_pct": 13.83,
+              "delta": 0.006
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 186.56,
+              "implied_volatility_pct": 11.99,
+              "delta": 0.0
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 195.04,
+              "implied_volatility_pct": 10.33,
+              "delta": 0.0
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 203.52,
+              "implied_volatility_pct": 8.84,
+              "delta": 0.0
+            }
+          ]
+        },
+        {
+          "tenor_label": "30D",
+          "days_to_expiry": 30,
+          "atm_iv_pct": 16.5,
+          "skew_25d_pct": 3.6,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 135.68,
+              "implied_volatility_pct": 25.1,
+              "delta": 0.996
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 144.16,
+              "implied_volatility_pct": 22.69,
+              "delta": 0.991
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 152.64,
+              "implied_volatility_pct": 20.45,
+              "delta": 0.963
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 161.12,
+              "implied_volatility_pct": 18.39,
+              "delta": 0.838
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 169.6,
+              "implied_volatility_pct": 16.5,
+              "delta": 0.508
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 178.08,
+              "implied_volatility_pct": 14.79,
+              "delta": 0.129
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 186.56,
+              "implied_volatility_pct": 13.25,
+              "delta": 0.006
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 195.04,
+              "implied_volatility_pct": 11.89,
+              "delta": 0.0
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 203.52,
+              "implied_volatility_pct": 10.7,
+              "delta": 0.0
+            }
+          ]
+        },
+        {
+          "tenor_label": "60D",
+          "days_to_expiry": 60,
+          "atm_iv_pct": 17.0,
+          "skew_25d_pct": 3.2,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 135.68,
+              "implied_volatility_pct": 24.8,
+              "delta": 0.982
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 144.16,
+              "implied_volatility_pct": 22.58,
+              "delta": 0.959
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 152.64,
+              "implied_volatility_pct": 20.55,
+              "delta": 0.898
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 161.12,
+              "implied_volatility_pct": 18.68,
+              "delta": 0.758
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 169.6,
+              "implied_volatility_pct": 17.0,
+              "delta": 0.511
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 178.08,
+              "implied_volatility_pct": 15.48,
+              "delta": 0.227
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 186.56,
+              "implied_volatility_pct": 14.14,
+              "delta": 0.051
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 195.04,
+              "implied_volatility_pct": 12.98,
+              "delta": 0.004
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 203.52,
+              "implied_volatility_pct": 12.0,
+              "delta": 0.0
+            }
+          ]
+        },
+        {
+          "tenor_label": "90D",
+          "days_to_expiry": 90,
+          "atm_iv_pct": 17.49,
+          "skew_25d_pct": 2.8,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 135.68,
+              "implied_volatility_pct": 24.49,
+              "delta": 0.961
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 144.16,
+              "implied_volatility_pct": 22.48,
+              "delta": 0.925
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 152.64,
+              "implied_volatility_pct": 20.64,
+              "delta": 0.851
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 161.12,
+              "implied_volatility_pct": 18.98,
+              "delta": 0.716
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 169.6,
+              "implied_volatility_pct": 17.49,
+              "delta": 0.513
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 178.08,
+              "implied_volatility_pct": 16.18,
+              "delta": 0.283
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 186.56,
+              "implied_volatility_pct": 15.04,
+              "delta": 0.107
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 195.04,
+              "implied_volatility_pct": 14.08,
+              "delta": 0.025
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 203.52,
+              "implied_volatility_pct": 13.29,
+              "delta": 0.003
+            }
+          ]
+        },
+        {
+          "tenor_label": "180D",
+          "days_to_expiry": 180,
+          "atm_iv_pct": 18.15,
+          "skew_25d_pct": 2.4,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 135.68,
+              "implied_volatility_pct": 24.35,
+              "delta": 0.899
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 144.16,
+              "implied_volatility_pct": 22.54,
+              "delta": 0.848
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 152.64,
+              "implied_volatility_pct": 20.9,
+              "delta": 0.77
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 161.12,
+              "implied_volatility_pct": 19.44,
+              "delta": 0.658
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 169.6,
+              "implied_volatility_pct": 18.15,
+              "delta": 0.515
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 178.08,
+              "implied_volatility_pct": 17.04,
+              "delta": 0.357
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 186.56,
+              "implied_volatility_pct": 16.1,
+              "delta": 0.212
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 195.04,
+              "implied_volatility_pct": 15.34,
+              "delta": 0.105
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 203.52,
+              "implied_volatility_pct": 14.75,
+              "delta": 0.043
+            }
+          ]
+        }
+      ],
+      "strike_gex_distribution": [
+        {
+          "strike": 140.0,
+          "call_oi": 222,
+          "put_oi": 2006,
+          "call_gamma": 3.3e-05,
+          "put_gamma": 3.3e-05,
+          "call_gex_millions": 0.0,
+          "put_gex_millions": -0.0,
+          "net_gex_millions": -0.0
+        },
+        {
+          "strike": 142.5,
+          "call_oi": 250,
+          "put_oi": 2143,
+          "call_gamma": 0.00011,
+          "put_gamma": 0.00011,
+          "call_gex_millions": 0.0,
+          "put_gex_millions": -0.01,
+          "net_gex_millions": -0.01
+        },
+        {
+          "strike": 145.0,
+          "call_oi": 282,
+          "put_oi": 2290,
+          "call_gamma": 0.000325,
+          "put_gamma": 0.000325,
+          "call_gex_millions": 0.0,
+          "put_gex_millions": -0.02,
+          "net_gex_millions": -0.02
+        },
+        {
+          "strike": 147.5,
+          "call_oi": 317,
+          "put_oi": 2447,
+          "call_gamma": 0.000861,
+          "put_gamma": 0.000861,
+          "call_gex_millions": 0.01,
+          "put_gex_millions": -0.06,
+          "net_gex_millions": -0.05
+        },
+        {
+          "strike": 150.0,
+          "call_oi": 785,
+          "put_oi": 5754,
+          "call_gamma": 0.002045,
+          "put_gamma": 0.002045,
+          "call_gex_millions": 0.05,
+          "put_gex_millions": -0.34,
+          "net_gex_millions": -0.29
+        },
+        {
+          "strike": 152.5,
+          "call_oi": 401,
+          "put_oi": 2795,
+          "call_gamma": 0.00437,
+          "put_gamma": 0.00437,
+          "call_gex_millions": 0.05,
+          "put_gex_millions": -0.35,
+          "net_gex_millions": -0.3
+        },
+        {
+          "strike": 155.0,
+          "call_oi": 452,
+          "put_oi": 2986,
+          "call_gamma": 0.008401,
+          "put_gamma": 0.008401,
+          "call_gex_millions": 0.11,
+          "put_gex_millions": -0.72,
+          "net_gex_millions": -0.61
+        },
+        {
+          "strike": 157.5,
+          "call_oi": 508,
+          "put_oi": 3191,
+          "call_gamma": 0.014553,
+          "put_gamma": 0.014553,
+          "call_gex_millions": 0.21,
+          "put_gex_millions": -1.34,
+          "net_gex_millions": -1.12
+        },
+        {
+          "strike": 160.0,
+          "call_oi": 572,
+          "put_oi": 3410,
+          "call_gamma": 0.022743,
+          "put_gamma": 0.022743,
+          "call_gex_millions": 0.37,
+          "put_gex_millions": -2.23,
+          "net_gex_millions": -1.86
+        },
+        {
+          "strike": 162.5,
+          "call_oi": 1416,
+          "put_oi": 8017,
+          "call_gamma": 0.032103,
+          "put_gamma": 0.032103,
+          "call_gex_millions": 1.31,
+          "put_gex_millions": -7.4,
+          "net_gex_millions": -6.1
+        },
+        {
+          "strike": 165.0,
+          "call_oi": 724,
+          "put_oi": 3894,
+          "call_gamma": 0.040974,
+          "put_gamma": 0.040974,
+          "call_gex_millions": 0.85,
+          "put_gex_millions": -4.59,
+          "net_gex_millions": -3.74
+        },
+        {
+          "strike": 167.5,
+          "call_oi": 815,
+          "put_oi": 4161,
+          "call_gamma": 0.047344,
+          "put_gamma": 0.047344,
+          "call_gex_millions": 1.11,
+          "put_gex_millions": -5.67,
+          "net_gex_millions": -4.56
+        },
+        {
+          "strike": 170.0,
+          "call_oi": 4353,
+          "put_oi": 883,
+          "call_gamma": 0.049581,
+          "put_gamma": 0.049581,
+          "call_gex_millions": 6.21,
+          "put_gex_millions": -1.26,
+          "net_gex_millions": 4.95
+        },
+        {
+          "strike": 172.5,
+          "call_oi": 4074,
+          "put_oi": 784,
+          "call_gamma": 0.047117,
+          "put_gamma": 0.047117,
+          "call_gex_millions": 5.52,
+          "put_gex_millions": -1.06,
+          "net_gex_millions": 4.46
+        },
+        {
+          "strike": 175.0,
+          "call_oi": 8387,
+          "put_oi": 1534,
+          "call_gamma": 0.04068,
+          "put_gamma": 0.04068,
+          "call_gex_millions": 9.81,
+          "put_gex_millions": -1.79,
+          "net_gex_millions": 8.02
+        },
+        {
+          "strike": 177.5,
+          "call_oi": 3567,
+          "put_oi": 620,
+          "call_gamma": 0.031951,
+          "put_gamma": 0.031951,
+          "call_gex_millions": 3.28,
+          "put_gex_millions": -0.57,
+          "net_gex_millions": 2.71
+        },
+        {
+          "strike": 180.0,
+          "call_oi": 3338,
+          "put_oi": 551,
+          "call_gamma": 0.022859,
+          "put_gamma": 0.022859,
+          "call_gex_millions": 2.19,
+          "put_gex_millions": -0.36,
+          "net_gex_millions": 1.83
+        },
+        {
+          "strike": 182.5,
+          "call_oi": 3124,
+          "put_oi": 489,
+          "call_gamma": 0.014916,
+          "put_gamma": 0.014916,
+          "call_gex_millions": 1.34,
+          "put_gex_millions": -0.21,
+          "net_gex_millions": 1.13
+        },
+        {
+          "strike": 185.0,
+          "call_oi": 2924,
+          "put_oi": 435,
+          "call_gamma": 0.008891,
+          "put_gamma": 0.008891,
+          "call_gex_millions": 0.75,
+          "put_gex_millions": -0.11,
+          "net_gex_millions": 0.64
+        },
+        {
+          "strike": 187.5,
+          "call_oi": 6020,
+          "put_oi": 851,
+          "call_gamma": 0.004848,
+          "put_gamma": 0.004848,
+          "call_gex_millions": 0.84,
+          "put_gex_millions": -0.12,
+          "net_gex_millions": 0.72
+        },
+        {
+          "strike": 190.0,
+          "call_oi": 2560,
+          "put_oi": 343,
+          "call_gamma": 0.002422,
+          "put_gamma": 0.002422,
+          "call_gex_millions": 0.18,
+          "put_gex_millions": -0.02,
+          "net_gex_millions": 0.15
+        },
+        {
+          "strike": 192.5,
+          "call_oi": 2396,
+          "put_oi": 305,
+          "call_gamma": 0.00111,
+          "put_gamma": 0.00111,
+          "call_gex_millions": 0.08,
+          "put_gex_millions": -0.01,
+          "net_gex_millions": 0.07
+        },
+        {
+          "strike": 195.0,
+          "call_oi": 2242,
+          "put_oi": 271,
+          "call_gamma": 0.000468,
+          "put_gamma": 0.000468,
+          "call_gex_millions": 0.03,
+          "put_gex_millions": -0.0,
+          "net_gex_millions": 0.03
+        },
+        {
+          "strike": 197.5,
+          "call_oi": 2098,
+          "put_oi": 241,
+          "call_gamma": 0.000182,
+          "put_gamma": 0.000182,
+          "call_gex_millions": 0.01,
+          "put_gex_millions": -0.0,
+          "net_gex_millions": 0.01
+        },
+        {
+          "strike": 200.0,
+          "call_oi": 4320,
+          "put_oi": 471,
+          "call_gamma": 6.5e-05,
+          "put_gamma": 6.5e-05,
+          "call_gex_millions": 0.01,
+          "put_gex_millions": -0.0,
+          "net_gex_millions": 0.01
+        }
+      ]
+    },
+    "ENB": {
+      "symbol": "ENB",
+      "name": "Enbridge Inc.",
+      "exchange_market": "CA_MX",
+      "currency": "CAD",
+      "underlying_spot_price": 66.58,
+      "net_gex_millions": -0.79,
+      "gamma_regime": "TRANSITION_ZONE",
+      "gamma_flip_strike": 66.5,
+      "distance_to_gamma_flip_pct": 0.13,
+      "max_pain_strike": 66.0,
+      "put_call_ratio_oi": 1.02,
+      "put_call_ratio_volume": 0.93,
+      "thirty_day_atm_iv_pct": 14.2,
+      "thirty_day_skew_pct": 3.6,
+      "skew_percentile_1y": 42.8,
+      "skew_zscore": -0.18,
+      "market_maker_posture": "NEUTRAL_REBALANCING",
+      "volatility_surface": [
+        {
+          "tenor_label": "7D",
+          "days_to_expiry": 7,
+          "atm_iv_pct": 13.63,
+          "skew_25d_pct": 4.2,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 53.26,
+              "implied_volatility_pct": 23.43,
+              "delta": 0.999
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 56.59,
+              "implied_volatility_pct": 20.72,
+              "delta": 0.999
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 59.92,
+              "implied_volatility_pct": 18.18,
+              "delta": 0.999
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 63.25,
+              "implied_volatility_pct": 15.82,
+              "delta": 0.989
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 66.58,
+              "implied_volatility_pct": 13.63,
+              "delta": 0.494
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 69.91,
+              "implied_volatility_pct": 11.62,
+              "delta": 0.001
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 73.24,
+              "implied_volatility_pct": 9.78,
+              "delta": 0.0
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 76.57,
+              "implied_volatility_pct": 8.12,
+              "delta": 0.0
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 79.9,
+              "implied_volatility_pct": 6.63,
+              "delta": 0.0
+            }
+          ]
+        },
+        {
+          "tenor_label": "30D",
+          "days_to_expiry": 30,
+          "atm_iv_pct": 14.2,
+          "skew_25d_pct": 3.6,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 53.26,
+              "implied_volatility_pct": 22.8,
+              "delta": 0.994
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 56.59,
+              "implied_volatility_pct": 20.39,
+              "delta": 0.992
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 59.92,
+              "implied_volatility_pct": 18.15,
+              "delta": 0.973
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 63.25,
+              "implied_volatility_pct": 16.09,
+              "delta": 0.859
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 66.58,
+              "implied_volatility_pct": 14.2,
+              "delta": 0.488
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 69.91,
+              "implied_volatility_pct": 12.49,
+              "delta": 0.081
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 73.24,
+              "implied_volatility_pct": 10.95,
+              "delta": 0.001
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 76.57,
+              "implied_volatility_pct": 9.59,
+              "delta": 0.0
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 79.9,
+              "implied_volatility_pct": 8.4,
+              "delta": 0.0
+            }
+          ]
+        },
+        {
+          "tenor_label": "60D",
+          "days_to_expiry": 60,
+          "atm_iv_pct": 14.63,
+          "skew_25d_pct": 3.2,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 53.26,
+              "implied_volatility_pct": 22.43,
+              "delta": 0.983
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 56.59,
+              "implied_volatility_pct": 20.21,
+              "delta": 0.966
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 59.92,
+              "implied_volatility_pct": 18.18,
+              "delta": 0.912
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 63.25,
+              "implied_volatility_pct": 16.31,
+              "delta": 0.767
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 66.58,
+              "implied_volatility_pct": 14.63,
+              "delta": 0.483
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 69.91,
+              "implied_volatility_pct": 13.11,
+              "delta": 0.167
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 73.24,
+              "implied_volatility_pct": 11.78,
+              "delta": 0.02
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 76.57,
+              "implied_volatility_pct": 10.61,
+              "delta": 0.0
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 79.9,
+              "implied_volatility_pct": 9.63,
+              "delta": 0.0
+            }
+          ]
+        },
+        {
+          "tenor_label": "90D",
+          "days_to_expiry": 90,
+          "atm_iv_pct": 15.05,
+          "skew_25d_pct": 2.8,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 53.26,
+              "implied_volatility_pct": 22.05,
+              "delta": 0.964
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 56.59,
+              "implied_volatility_pct": 20.04,
+              "delta": 0.934
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 59.92,
+              "implied_volatility_pct": 18.2,
+              "delta": 0.862
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 63.25,
+              "implied_volatility_pct": 16.54,
+              "delta": 0.715
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 66.58,
+              "implied_volatility_pct": 15.05,
+              "delta": 0.479
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 69.91,
+              "implied_volatility_pct": 13.74,
+              "delta": 0.22
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 73.24,
+              "implied_volatility_pct": 12.6,
+              "delta": 0.057
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 76.57,
+              "implied_volatility_pct": 11.64,
+              "delta": 0.006
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 79.9,
+              "implied_volatility_pct": 10.85,
+              "delta": 0.0
+            }
+          ]
+        },
+        {
+          "tenor_label": "180D",
+          "days_to_expiry": 180,
+          "atm_iv_pct": 15.62,
+          "skew_25d_pct": 2.4,
+          "butterfly_25d_pct": 0.09,
+          "smile_points": [
+            {
+              "moneyness_pct": 80.0,
+              "strike": 53.26,
+              "implied_volatility_pct": 21.82,
+              "delta": 0.9
+            },
+            {
+              "moneyness_pct": 85.0,
+              "strike": 56.59,
+              "implied_volatility_pct": 20.01,
+              "delta": 0.848
+            },
+            {
+              "moneyness_pct": 90.0,
+              "strike": 59.92,
+              "implied_volatility_pct": 18.37,
+              "delta": 0.763
+            },
+            {
+              "moneyness_pct": 95.0,
+              "strike": 63.25,
+              "implied_volatility_pct": 16.91,
+              "delta": 0.636
+            },
+            {
+              "moneyness_pct": 100.0,
+              "strike": 66.58,
+              "implied_volatility_pct": 15.62,
+              "delta": 0.468
+            },
+            {
+              "moneyness_pct": 105.0,
+              "strike": 69.91,
+              "implied_volatility_pct": 14.51,
+              "delta": 0.288
+            },
+            {
+              "moneyness_pct": 110.0,
+              "strike": 73.24,
+              "implied_volatility_pct": 13.57,
+              "delta": 0.139
+            },
+            {
+              "moneyness_pct": 115.0,
+              "strike": 76.57,
+              "implied_volatility_pct": 12.81,
+              "delta": 0.05
+            },
+            {
+              "moneyness_pct": 120.0,
+              "strike": 79.9,
+              "implied_volatility_pct": 12.22,
+              "delta": 0.013
+            }
+          ]
+        }
+      ],
+      "strike_gex_distribution": [
+        {
+          "strike": 55.0,
+          "call_oi": 492,
+          "put_oi": 4425,
+          "call_gamma": 1e-05,
+          "put_gamma": 1e-05,
+          "call_gex_millions": 0.0,
+          "put_gex_millions": -0.0,
+          "net_gex_millions": -0.0
+        },
+        {
+          "strike": 56.0,
+          "call_oi": 252,
+          "put_oi": 2152,
+          "call_gamma": 5.2e-05,
+          "put_gamma": 5.2e-05,
+          "call_gex_millions": 0.0,
+          "put_gex_millions": -0.0,
+          "net_gex_millions": -0.0
+        },
+        {
+          "strike": 57.0,
+          "call_oi": 284,
+          "put_oi": 2302,
+          "call_gamma": 0.000225,
+          "put_gamma": 0.000225,
+          "call_gex_millions": 0.0,
+          "put_gex_millions": -0.0,
+          "net_gex_millions": -0.0
+        },
+        {
+          "strike": 58.0,
+          "call_oi": 321,
+          "put_oi": 2463,
+          "call_gamma": 0.000829,
+          "put_gamma": 0.000829,
+          "call_gex_millions": 0.0,
+          "put_gex_millions": -0.01,
+          "net_gex_millions": -0.01
+        },
+        {
+          "strike": 59.0,
+          "call_oi": 361,
+          "put_oi": 2636,
+          "call_gamma": 0.002631,
+          "put_gamma": 0.002631,
+          "call_gex_millions": 0.0,
+          "put_gex_millions": -0.03,
+          "net_gex_millions": -0.03
+        },
+        {
+          "strike": 60.0,
+          "call_oi": 898,
+          "put_oi": 6204,
+          "call_gamma": 0.007189,
+          "put_gamma": 0.007189,
+          "call_gex_millions": 0.03,
+          "put_gex_millions": -0.2,
+          "net_gex_millions": -0.17
+        },
+        {
+          "strike": 61.0,
+          "call_oi": 460,
+          "put_oi": 3017,
+          "call_gamma": 0.016949,
+          "put_gamma": 0.016949,
+          "call_gex_millions": 0.03,
+          "put_gex_millions": -0.23,
+          "net_gex_millions": -0.19
+        },
+        {
+          "strike": 62.0,
+          "call_oi": 519,
+          "put_oi": 3228,
+          "call_gamma": 0.034539,
+          "put_gamma": 0.034539,
+          "call_gex_millions": 0.08,
+          "put_gex_millions": -0.49,
+          "net_gex_millions": -0.41
+        },
+        {
+          "strike": 63.0,
+          "call_oi": 585,
+          "put_oi": 3454,
+          "call_gamma": 0.060937,
+          "put_gamma": 0.060937,
+          "call_gex_millions": 0.16,
+          "put_gex_millions": -0.93,
+          "net_gex_millions": -0.77
+        },
+        {
+          "strike": 64.0,
+          "call_oi": 660,
+          "put_oi": 3695,
+          "call_gamma": 0.093236,
+          "put_gamma": 0.093236,
+          "call_gex_millions": 0.27,
+          "put_gex_millions": -1.53,
+          "net_gex_millions": -1.25
+        },
+        {
+          "strike": 65.0,
+          "call_oi": 1637,
+          "put_oi": 8699,
+          "call_gamma": 0.123917,
+          "put_gamma": 0.123917,
+          "call_gex_millions": 0.9,
+          "put_gex_millions": -4.78,
+          "net_gex_millions": -3.88
+        },
+        {
+          "strike": 66.0,
+          "call_oi": 839,
+          "put_oi": 4230,
+          "call_gamma": 0.143302,
+          "put_gamma": 0.143302,
+          "call_gex_millions": 0.53,
+          "put_gex_millions": -2.69,
+          "net_gex_millions": -2.15
+        },
+        {
+          "strike": 67.0,
+          "call_oi": 4276,
+          "put_oi": 855,
+          "call_gamma": 0.144437,
+          "put_gamma": 0.144437,
+          "call_gex_millions": 2.74,
+          "put_gex_millions": -0.55,
+          "net_gex_millions": 2.19
+        },
+        {
+          "strike": 68.0,
+          "call_oi": 3997,
+          "put_oi": 758,
+          "call_gamma": 0.127104,
+          "put_gamma": 0.127104,
+          "call_gex_millions": 2.25,
+          "put_gex_millions": -0.43,
+          "net_gex_millions": 1.82
+        },
+        {
+          "strike": 69.0,
+          "call_oi": 3736,
+          "put_oi": 672,
+          "call_gamma": 0.097827,
+          "put_gamma": 0.097827,
+          "call_gex_millions": 1.62,
+          "put_gex_millions": -0.29,
+          "net_gex_millions": 1.33
+        },
+        {
+          "strike": 70.0,
+          "call_oi": 7682,
+          "put_oi": 1312,
+          "call_gamma": 0.065975,
+          "put_gamma": 0.065975,
+          "call_gex_millions": 2.25,
+          "put_gex_millions": -0.38,
+          "net_gex_millions": 1.86
+        },
+        {
+          "strike": 71.0,
+          "call_oi": 3263,
+          "put_oi": 529,
+          "call_gamma": 0.039061,
+          "put_gamma": 0.039061,
+          "call_gex_millions": 0.56,
+          "put_gex_millions": -0.09,
+          "net_gex_millions": 0.47
+        },
+        {
+          "strike": 72.0,
+          "call_oi": 3050,
+          "put_oi": 469,
+          "call_gamma": 0.020342,
+          "put_gamma": 0.020342,
+          "call_gex_millions": 0.28,
+          "put_gex_millions": -0.04,
+          "net_gex_millions": 0.23
+        },
+        {
+          "strike": 73.0,
+          "call_oi": 2851,
+          "put_oi": 416,
+          "call_gamma": 0.009338,
+          "put_gamma": 0.009338,
+          "call_gex_millions": 0.12,
+          "put_gex_millions": -0.02,
+          "net_gex_millions": 0.1
+        },
+        {
+          "strike": 74.0,
+          "call_oi": 2664,
+          "put_oi": 369,
+          "call_gamma": 0.003787,
+          "put_gamma": 0.003787,
+          "call_gex_millions": 0.04,
+          "put_gex_millions": -0.01,
+          "net_gex_millions": 0.04
+        },
+        {
+          "strike": 75.0,
+          "call_oi": 5479,
+          "put_oi": 719,
+          "call_gamma": 0.001359,
+          "put_gamma": 0.001359,
+          "call_gex_millions": 0.03,
+          "put_gex_millions": -0.0,
+          "net_gex_millions": 0.03
+        },
+        {
+          "strike": 76.0,
+          "call_oi": 2327,
+          "put_oi": 290,
+          "call_gamma": 0.000433,
+          "put_gamma": 0.000433,
+          "call_gex_millions": 0.0,
+          "put_gex_millions": -0.0,
+          "net_gex_millions": 0.0
+        },
+        {
+          "strike": 77.0,
+          "call_oi": 2175,
+          "put_oi": 257,
+          "call_gamma": 0.000123,
+          "put_gamma": 0.000123,
+          "call_gex_millions": 0.0,
+          "put_gex_millions": -0.0,
+          "net_gex_millions": 0.0
+        },
+        {
+          "strike": 78.0,
+          "call_oi": 2033,
+          "put_oi": 228,
+          "call_gamma": 3.1e-05,
+          "put_gamma": 3.1e-05,
+          "call_gex_millions": 0.0,
+          "put_gex_millions": -0.0,
+          "net_gex_millions": 0.0
+        },
+        {
+          "strike": 79.0,
+          "call_oi": 1900,
+          "put_oi": 202,
+          "call_gamma": 7e-06,
+          "put_gamma": 7e-06,
+          "call_gex_millions": 0.0,
+          "put_gex_millions": -0.0,
+          "net_gex_millions": 0.0
+        }
+      ]
+    }
+  },
+  "disclaimers": [
+    "Options volatility surface metrics, dealer Net Gamma Exposure (GEX), and Max Pain distributions represent quantitative mathematical estimates derived from exchange open interest and option pricing models.",
+    "Provided strictly for impersonal decision-support research. Does not constitute tailored options trading recommendations, multi-leg derivative strategies, or personalized investment advice under CSA Staff Notice 31-369 and SEC Publisher Exclusion \u00a7202(a)(11)(D).",
+    "Options trading entails substantial risk of capital loss, leverage amplification, time decay, and liquidity friction. Open interest data reflects end-of-day positions and does not capture intraday proprietary order flow."
+  ]
+}
