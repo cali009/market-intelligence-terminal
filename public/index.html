@@ -1011,6 +1011,7 @@
             <button class="tab-btn" data-tab="crossborderfx" onclick="switchTab('crossborderfx', event)">💱 Cross-Border FX &amp; Arbitrage</button>
             <button class="tab-btn" data-tab="optionssurface" onclick="switchTab('optionssurface', event)">📊 Options &amp; Volatility Surface Lab</button>
             <button class="tab-btn" data-tab="sovereigncurve" onclick="switchTab('sovereigncurve', event)">📈 Sovereign Curve &amp; Term Premium</button>
+            <button class="tab-btn" data-tab="darkpool" onclick="switchTab('darkpool', event)">🕶️ Dark Pool &amp; Short Activity</button>
             <button class="tab-btn" data-tab="scanners" onclick="switchTab('scanners', event)">TAC-15 Market Scanners</button>
             <button class="tab-btn" data-tab="signals" onclick="switchTab('signals', event)">Research Signal Plans</button>
             <button class="tab-btn" data-tab="backtest" onclick="switchTab('backtest', event)">Backtest Lab & Strategy Performance</button>
@@ -1352,6 +1353,54 @@
             <!-- Dynamic Workstation Container -->
             <div id="sovereignCurveContainer">
                 <div style="text-align: center; padding: 40px; color: var(--text-muted);"><div class="spinner" style="margin-right: 8px;"></div> Loading Nelson-Siegel curves, ACM term premium decompositions, and slope regimes...</div>
+            </div>
+        </div>
+
+        <!-- Tab: Dark Pool & Off-Exchange Liquidity Intelligence (Phase 32) -->
+        <div id="tab-darkpool" style="display: none;">
+            <div class="scanners-header" style="margin-bottom: 20px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+                    <div>
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px; flex-wrap: wrap;">
+                            <h2 style="font-size: 18px; font-weight: 800; color: var(--text-primary);">🕶️ Dark Pool &amp; Off-Exchange Liquidity Lab</h2>
+                            <span class="exchange-tag" style="background: rgba(139, 92, 246, 0.15); color: var(--accent-purple); border-color: rgba(139, 92, 246, 0.3); font-weight: 700;">OFF-EXCHANGE VOLUME RATIO</span>
+                            <span class="exchange-tag" style="background: rgba(6, 182, 212, 0.15); color: var(--accent-cyan); border-color: rgba(6, 182, 212, 0.3); font-weight: 700;">BLOCK TRADE CLUSTERING</span>
+                            <span class="exchange-tag" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b; border-color: rgba(245, 158, 11, 0.3); font-weight: 700;">LIQUIDITY FRAGMENTATION</span>
+                            <span class="exchange-tag" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-green); border-color: rgba(16, 185, 129, 0.3); font-weight: 700;">FINRA TRF &amp; CIRO</span>
+                        </div>
+                        <p style="font-size: 12px; color: var(--text-muted);">
+                            Off-exchange (TRF / non-ATS) volume share with 60-day self-standardization · Institutional block clustering with signed accumulation/distribution impression · Venue-concentration Herfindahl index · Derived ratios and z-scores only
+                        </p>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px; background: var(--bg-card); padding: 6px 12px; border-radius: 8px; border: 1px solid var(--border-color); flex-wrap: wrap;">
+                        <span style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Market:</span>
+                        <div style="display: flex; gap: 4px;">
+                            <button class="filter-btn active" id="btnDpMktAll" onclick="setDarkPoolMarketFilter('ALL')">All</button>
+                            <button class="filter-btn" id="btnDpMktUS" onclick="setDarkPoolMarketFilter('US')">🇺🇸 US</button>
+                            <button class="filter-btn" id="btnDpMktCA" onclick="setDarkPoolMarketFilter('CA')">🇨🇦 CA</button>
+                        </div>
+                        <span style="font-size: 11px; font-weight: 700; color: var(--accent-green); display: flex; align-items: center; gap: 6px;" id="darkPoolSentinelBadge">
+                            <span style="display: inline-block; width: 8px; height: 8px; background: var(--accent-green); border-radius: 50%; box-shadow: 0 0 8px var(--accent-green);"></span>
+                            LIQUIDITY NOMINAL
+                        </span>
+                        <button class="filter-btn" onclick="refreshDarkPoolData()" style="padding: 2px 8px; font-size: 11px;">🔄 Refresh</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Derived-data / entitlement disclosure banner -->
+            <div style="background: rgba(139, 92, 246, 0.07); border: 1px solid rgba(139, 92, 246, 0.28); border-radius: 8px; padding: 10px 14px; margin-bottom: 16px;">
+                <div style="font-size: 11px; font-weight: 800; color: var(--accent-purple); margin-bottom: 4px;">🔒 DERIVED-DATA &amp; ENTITLEMENT NOTICE</div>
+                <div style="font-size: 11px; color: var(--text-muted); line-height: 1.6;">
+                    This workstation publishes <strong>ratios, z-scores and regime labels only</strong> &mdash; raw per-venue share counts are never redistributed (FINRA Rule 4553(e)(2) Derived Data).
+                    Short-sale metrics (short volume ratio, short interest, days-to-cover, squeeze composite) are <strong>gated to a research-only, non-commercial entitlement</strong> because the underlying FINRA Daily Short Sale Volume file is licensed for non-commercial use only; they are absent from this commercial payload.
+                    ATS / dark-pool participation share is shown <strong>for reference only</strong> and is excluded from all scoring and sentinel logic (FINRA publishes it weekly with a 21&ndash;35 day lag).
+                </div>
+            </div>
+
+            <!-- Dynamic Workstation Container -->
+            <div id="darkPoolContainer">
+                <div style="text-align: center; padding: 40px; color: var(--text-muted);"><div class="spinner" style="margin-right: 8px;"></div> Loading off-exchange liquidity intelligence, block clustering, and fragmentation analytics...</div>
             </div>
         </div>
 
@@ -10482,6 +10531,224 @@
             container.innerHTML = `${kpiHtml}${curveHtml}${tableHtml}${statutoryHtml}`;
         }
 
+        // =========================================================================
+        // PHASE 32: DARK POOL, OFF-EXCHANGE LIQUIDITY & SHORT ACTIVITY LAB
+        //
+        // DECISION 2(b): ATS share is rendered for reference only and is never used
+        // in any client-side scoring, sorting default, or badge computation.
+        // DECISION 1(b): short metrics are absent from the commercial payload; the UI
+        // renders a locked entitlement panel instead of fabricating values.
+        // =========================================================================
+        let darkPoolBundle = null;
+        let activeDarkPoolMarketFilter = 'ALL'; // 'ALL' | 'US' | 'CA'
+
+        async function loadDarkPoolAndRender() {
+            try {
+                const res = await fetch('/api/dark_pool_liquidity.json');
+                if (!res.ok) throw new Error('HTTP ' + res.status);
+                darkPoolBundle = await res.json();
+            } catch (err) {
+                console.warn('Direct fetch /api/dark_pool_liquidity.json failed, trying extensionless route:', err);
+                try {
+                    const res2 = await fetch('/api/dark_pool_liquidity');
+                    if (!res2.ok) throw new Error('HTTP ' + res2.status);
+                    darkPoolBundle = await res2.json();
+                } catch (err2) {
+                    console.error('All fetches for dark_pool_liquidity failed:', err2);
+                    const container = document.getElementById('darkPoolContainer');
+                    if (container) {
+                        container.innerHTML = '<div style="padding: 24px; color: var(--accent-red);">Failed to load the Off-Exchange Liquidity feed. Please ensure the data service is operational.</div>';
+                    }
+                    return;
+                }
+            }
+            renderDarkPoolView();
+        }
+
+        function refreshDarkPoolData() {
+            darkPoolBundle = null;
+            const container = document.getElementById('darkPoolContainer');
+            if (container) {
+                container.innerHTML = '<div style="text-align: center; padding: 40px; color: var(--text-muted);"><div class="spinner" style="margin-right: 8px;"></div> Refreshing off-exchange volume ratios, block clustering, and venue fragmentation...</div>';
+            }
+            loadDarkPoolAndRender();
+        }
+
+        function setDarkPoolMarketFilter(mkt) {
+            activeDarkPoolMarketFilter = mkt;
+            ['ALL', 'US', 'CA'].forEach(m => {
+                const btn = document.getElementById('btnDpMkt' + m);
+                if (btn) btn.classList.toggle('active', m === mkt);
+            });
+            renderDarkPoolView();
+        }
+
+        const DP_OVR_REGIME_META = {
+            'NORMAL':   { color: 'var(--accent-green)', label: 'NORMAL' },
+            'ELEVATED': { color: '#f59e0b',             label: 'ELEVATED' },
+            'EXTREME':  { color: 'var(--accent-red)',   label: 'EXTREME' }
+        };
+
+        const DP_IMPRESSION_META = {
+            'ACCUMULATION': { color: 'var(--accent-green)', icon: '▲' },
+            'DISTRIBUTION': { color: 'var(--accent-red)',   icon: '▼' },
+            'NEUTRAL':      { color: 'var(--text-muted)',   icon: '◆' }
+        };
+
+        function buildOvrBarChart(entries) {
+            const W = 920, rowH = 22, padL = 62, padR = 46, padT = 24, padB = 26;
+            const H = padT + padB + entries.length * rowH;
+            const maxOvr = Math.max.apply(null, entries.map(e => e.off_exchange.ovr_pct).concat([10]));
+
+            let rows = '';
+            entries.forEach((e, i) => {
+                const y = padT + i * rowH;
+                const w = (e.off_exchange.ovr_pct / maxOvr) * (W - padL - padR);
+                const meta = DP_OVR_REGIME_META[e.off_exchange.ovr_regime] || DP_OVR_REGIME_META['NORMAL'];
+                const zc = e.off_exchange.ovr_zscore_60d >= 1.5 ? 'var(--accent-red)' : (e.off_exchange.ovr_zscore_60d >= 0.5 ? '#f59e0b' : 'var(--text-muted)');
+                rows += `
+                <text x="${padL - 8}" y="${y + rowH / 2 + 4}" text-anchor="end" font-size="10.5" fill="#cbd5e1" font-weight="700">${e.symbol}</text>
+                <rect x="${padL}" y="${y + 4}" width="${(W - padL - padR)}" height="${rowH - 9}" fill="rgba(148,163,184,0.08)" rx="2"/>
+                <rect x="${padL}" y="${y + 4}" width="${Math.max(w, 1).toFixed(1)}" height="${rowH - 9}" fill="${meta.color}" opacity="0.82" rx="2"/>
+                <text x="${(padL + Math.max(w, 1) + 6).toFixed(1)}" y="${y + rowH / 2 + 4}" font-size="10" fill="#e2e8f0" font-weight="700">${e.off_exchange.ovr_pct.toFixed(1)}%</text>
+                <text x="${W - 4}" y="${y + rowH / 2 + 4}" text-anchor="end" font-size="10" fill="${zc}" font-weight="700">z ${e.off_exchange.ovr_zscore_60d >= 0 ? '+' : ''}${e.off_exchange.ovr_zscore_60d.toFixed(2)}</text>`;
+            });
+
+            return `
+            <svg viewBox="0 0 ${W} ${H}" style="width: 100%; height: auto; max-width: 920px; display: block;">
+                <text x="${padL}" y="14" font-size="10" fill="#94a3b8">Off-exchange share of consolidated volume (%) &mdash; bar colour = 60-day regime</text>
+                ${rows}
+            </svg>`;
+        }
+
+        function renderDarkPoolView() {
+            if (!darkPoolBundle) return;
+            const container = document.getElementById('darkPoolContainer');
+            if (!container) return;
+            const b = darkPoolBundle;
+
+            let entries = Object.values(b.dossiers || {});
+            if (activeDarkPoolMarketFilter !== 'ALL') {
+                entries = entries.filter(e => e.country === activeDarkPoolMarketFilter);
+            }
+            entries.sort((x, y) => y.composite_stealth_liquidity_score - x.composite_stealth_liquidity_score);
+
+            // Sentinel badge. NOTE: ATS share is intentionally not referenced here (Decision 2b).
+            const badge = document.getElementById('darkPoolSentinelBadge');
+            if (badge) {
+                const extreme = entries.filter(e => e.off_exchange.ovr_regime === 'EXTREME');
+                const distro = entries.filter(e => e.block_cluster.signed_impression === 'DISTRIBUTION' && e.block_cluster.rangebound_near_resistance && e.off_exchange.ovr_pct > 60);
+                if (extreme.length > 0 || distro.length > 0) {
+                    badge.style.color = 'var(--accent-red)';
+                    badge.innerHTML = `<span style="display: inline-block; width: 8px; height: 8px; background: var(--accent-red); border-radius: 50%; box-shadow: 0 0 8px var(--accent-red);"></span> P24 WATCH (${extreme.length + distro.length})`;
+                } else {
+                    badge.style.color = 'var(--accent-green)';
+                    badge.innerHTML = `<span style="display: inline-block; width: 8px; height: 8px; background: var(--accent-green); border-radius: 50%; box-shadow: 0 0 8px var(--accent-green);"></span> LIQUIDITY NOMINAL`;
+                }
+            }
+
+            const kpi = (label, value, sub, color) => `
+                <div style="flex: 1 1 165px; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 12px;">
+                    <div style="font-size: 10px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; letter-spacing: 0.5px;">${label}</div>
+                    <div style="font-size: 22px; font-weight: 800; color: ${color}; margin-top: 4px;">${value}</div>
+                    ${sub ? `<div style="font-size: 10px; color: var(--text-muted); margin-top: 2px;">${sub}</div>` : ''}
+                </div>`;
+
+            const kpiHtml = `
+            <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px;">
+                ${kpi('US Off-Exchange Share', b.aggregate_us_off_exchange_share_pct.toFixed(2) + '%', 'FINRA TRF / ADF / ORF', '#60a5fa')}
+                ${kpi('CA Off-Exchange Share', b.aggregate_ca_off_exchange_share_pct.toFixed(2) + '%', 'CIRO marketplace reports', '#f87171')}
+                ${kpi('Block Trade Intensity', b.aggregate_block_trade_intensity_pct.toFixed(2) + '%', '≥10k sh / ≥$200k notional', 'var(--accent-cyan)')}
+                ${kpi('Universe Monitored', String(b.universe_count), 'US + Canada dual-market', 'var(--accent-purple)')}
+            </div>`;
+
+            const chartHtml = `
+            <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px; margin-bottom: 16px;">
+                <h3 style="font-size: 13px; font-weight: 800; color: var(--text-primary); margin-bottom: 8px;">📊 Off-Exchange Volume Ratio by Security (60-day self-standardized)</h3>
+                ${buildOvrBarChart(entries)}
+            </div>`;
+
+            const rows = entries.map(e => {
+                const ovrMeta = DP_OVR_REGIME_META[e.off_exchange.ovr_regime] || DP_OVR_REGIME_META['NORMAL'];
+                const imp = DP_IMPRESSION_META[e.block_cluster.signed_impression] || DP_IMPRESSION_META['NEUTRAL'];
+                const flag = flag24(e);
+                return `<tr>
+                    <td style="padding: 6px 8px; font-weight: 700; color: var(--text-primary);">${e.symbol} <span style="font-size: 9px; color: var(--text-muted);">${e.country}</span></td>
+                    <td style="padding: 6px 8px; text-align: right; color: ${ovrMeta.color}; font-weight: 700;">${e.off_exchange.ovr_pct.toFixed(1)}%</td>
+                    <td style="padding: 6px 8px; text-align: right; color: var(--text-muted);">${e.off_exchange.ovr_zscore_60d >= 0 ? '+' : ''}${e.off_exchange.ovr_zscore_60d.toFixed(2)}</td>
+                    <td style="padding: 6px 8px; text-align: center;"><span style="font-size: 9px; font-weight: 800; color: ${ovrMeta.color}; border: 1px solid ${ovrMeta.color}; border-radius: 3px; padding: 1px 5px;">${ovrMeta.label}</span></td>
+                    <td style="padding: 6px 8px; text-align: right; color: #94a3b8;" title="Reference only — excluded from all scoring (Decision 2b)">${e.off_exchange.ats_share_pct_reference_only !== null ? e.off_exchange.ats_share_pct_reference_only.toFixed(1) + '%' : '—'} <span style="font-size: 8px; color: var(--text-muted);">ref</span></td>
+                    <td style="padding: 6px 8px; text-align: right; color: var(--accent-cyan); font-weight: 600;">${e.block_cluster.bti_pct.toFixed(1)}%</td>
+                    <td style="padding: 6px 8px; text-align: center; color: ${imp.color}; font-weight: 700;">${imp.icon} ${e.block_cluster.signed_impression.slice(0, 4)}</td>
+                    <td style="padding: 6px 8px; text-align: right; color: var(--text-muted);">${e.fragmentation.liquidity_fragmentation_index.toFixed(3)}</td>
+                    <td style="padding: 6px 8px; text-align: right; color: var(--accent-purple); font-weight: 700;">${(e.composite_stealth_liquidity_score * 100).toFixed(0)}</td>
+                    <td style="padding: 6px 8px; font-size: 10px; color: var(--text-muted);">${e.primary_liquidity_concern.replace(/_/g, ' ')}</td>
+                    <td style="padding: 6px 8px; text-align: center;">${flag ? '<span style="font-size: 9px; font-weight: 800; color: var(--accent-red); border: 1px solid var(--accent-red); border-radius: 3px; padding: 1px 5px;">P24</span>' : '<span style="font-size: 9px; color: var(--text-muted);">—</span>'}</td>
+                </tr>`;
+            }).join('');
+
+            const tableHtml = `
+            <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px; margin-bottom: 16px; overflow-x: auto;">
+                <h3 style="font-size: 13px; font-weight: 800; color: var(--text-primary); margin-bottom: 10px;">🕶️ Off-Exchange Liquidity Dossier <span style="font-size: 10px; font-weight: 600; color: var(--text-muted);">(sorted by composite stealth-liquidity score)</span></h3>
+                <table style="width: 100%; border-collapse: collapse; font-size: 11.5px;">
+                    <thead><tr style="border-bottom: 1px solid var(--border-color);">
+                        <th style="padding: 6px 8px; text-align: left; color: var(--text-muted); font-weight: 700;">Symbol</th>
+                        <th style="padding: 6px 8px; text-align: right; color: var(--text-muted); font-weight: 700;">OVR</th>
+                        <th style="padding: 6px 8px; text-align: right; color: var(--text-muted); font-weight: 700;">z(60d)</th>
+                        <th style="padding: 6px 8px; text-align: center; color: var(--text-muted); font-weight: 700;">Regime</th>
+                        <th style="padding: 6px 8px; text-align: right; color: var(--text-muted); font-weight: 700;">ATS Share</th>
+                        <th style="padding: 6px 8px; text-align: right; color: var(--text-muted); font-weight: 700;">BTI</th>
+                        <th style="padding: 6px 8px; text-align: center; color: var(--text-muted); font-weight: 700;">Block Impression</th>
+                        <th style="padding: 6px 8px; text-align: right; color: var(--text-muted); font-weight: 700;">LFI</th>
+                        <th style="padding: 6px 8px; text-align: right; color: var(--text-muted); font-weight: 700;">Stealth</th>
+                        <th style="padding: 6px 8px; text-align: left; color: var(--text-muted); font-weight: 700;">Primary Concern</th>
+                        <th style="padding: 6px 8px; text-align: center; color: var(--text-muted); font-weight: 700;">Sentinel</th>
+                    </tr></thead>
+                    <tbody>${rows}</tbody>
+                </table>
+            </div>`;
+
+            // DECISION 1(b): short metrics are entitlement-gated and absent from this payload.
+            const gate = b.entitlement_gate || {};
+            const lockedHtml = `
+            <div style="background: var(--bg-card); border: 1px dashed rgba(139, 92, 246, 0.45); border-radius: 8px; padding: 14px; margin-bottom: 16px;">
+                <h3 style="font-size: 13px; font-weight: 800; color: var(--accent-purple); margin-bottom: 8px;">🔒 Short Activity Triad — Research-Only Entitlement Required</h3>
+                <div style="font-size: 11px; color: var(--text-muted); line-height: 1.65;">
+                    Short volume ratio, short interest ratio, days-to-cover and the multi-factor squeeze composite are
+                    <strong>not present in this payload</strong>. License class:
+                    <code style="background: var(--bg-primary); padding: 1px 5px; border-radius: 3px; color: var(--accent-purple);">${gate.short_metrics_license_class || 'RESEARCH_ONLY_NON_COMMERCIAL'}</code>.
+                    Commercial redistribution is <strong>not permitted</strong> because the FINRA Daily Short Sale Volume file is licensed for non-commercial use only.
+                    <br/><br/>
+                    <strong>Analytical caveat:</strong> short volume ratio is measured against <em>off-exchange</em> volume and is not consolidated with exchange prints.
+                    Market makers internalizing retail flow book the offsetting side as short, so an elevated reading is normal rather than bearish.
+                    Where entitled, these metrics are scored only against each security's own 60-day distribution &mdash; never an absolute threshold.
+                </div>
+            </div>`;
+
+            const statutoryHtml = `
+            <div style="background: rgba(245, 158, 11, 0.06); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: 8px; padding: 12px 14px;">
+                <div style="font-size: 11px; font-weight: 800; color: #f59e0b; margin-bottom: 6px;">⚖️ STATUTORY RESEARCH NOTICE &amp; DATA ATTRIBUTION</div>
+                <ul style="margin: 0 0 8px 0; padding-left: 18px; font-size: 11px; color: var(--text-muted); line-height: 1.6;">
+                    ${(b.disclaimers || []).map(d => `<li>${d}</li>`).join('')}
+                </ul>
+                <ul style="margin: 0; padding-left: 18px; font-size: 10px; color: var(--text-muted); line-height: 1.6;">
+                    ${((gate.attribution) || []).map(a => `<li>${a}</li>`).join('')}
+                </ul>
+                <div style="font-size: 10px; color: var(--text-muted); margin-top: 8px;">Feed generated: ${b.generated_at} · As of ${b.as_of_date}</div>
+            </div>`;
+
+            container.innerHTML = `${kpiHtml}${chartHtml}${tableHtml}${lockedHtml}${statutoryHtml}`;
+        }
+
+        // Predicate 24 confluence test, mirrored client-side for display only.
+        // ATS share is deliberately NOT part of this test (Decision 2b).
+        function flag24(e) {
+            return e.off_exchange.ovr_pct > 60.0
+                && e.off_exchange.ovr_zscore_60d > 1.5
+                && e.block_cluster.signed_impression === 'DISTRIBUTION'
+                && e.block_cluster.rangebound_near_resistance;
+        }
+
         function switchTab(tabId, ev) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             if (ev && ev.currentTarget) {
@@ -10492,7 +10759,7 @@
             }
 
             const tabIds = [
-                'leaderboard', 'quantintel', 'macroregime', 'microstructure', 'portfoliohrp', 'crossborderfx', 'optionssurface', 'sovereigncurve', 'scanners', 'signals', 'backtest', 'paper',
+                'leaderboard', 'quantintel', 'macroregime', 'microstructure', 'portfoliohrp', 'crossborderfx', 'optionssurface', 'sovereigncurve', 'darkpool', 'scanners', 'signals', 'backtest', 'paper',
                 'portfolio', 'alerts', 'deepread', 'production', 'catalysts', 'journal'
             ];
             tabIds.forEach(id => {
@@ -10547,6 +10814,12 @@
                     loadSovereignCurveAndRender();
                 } else {
                     renderSovereignCurveView();
+                }
+            } else if (tabId === 'darkpool') {
+                if (!darkPoolBundle) {
+                    loadDarkPoolAndRender();
+                } else {
+                    renderDarkPoolView();
                 }
             } else if (tabId === 'backtest') {
                 if (!backtestBundle) {

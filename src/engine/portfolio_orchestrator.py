@@ -36,6 +36,7 @@ from src.engine.portfolio_bayesian import portfolio_bayesian_engine
 from src.engine.cross_border_fx import cross_border_fx_engine
 from src.engine.options_surface_gex import cross_border_options_engine
 from src.engine.sovereign_yield_curve import sovereign_yield_curve_engine
+from src.engine.dark_pool_liquidity import dark_pool_liquidity_engine
 from src.engine.quant_intel import quant_intel_engine
 from src.engine.quant_intel_sentinel import quant_intel_sentinel
 from src.models.schemas import (
@@ -204,6 +205,9 @@ class PortfolioOrchestratorEngine:
         cross_border_res = cross_border_fx_engine.evaluate_cross_border_fx()
         options_res = cross_border_options_engine.evaluate_options_intelligence()
         sovereign_res = sovereign_yield_curve_engine.evaluate_sovereign_curves()
+        # DECISION 1(b): commercial orchestration uses the entitlement-gated build,
+        # which omits research-only short metrics entirely.
+        dark_pool_res = dark_pool_liquidity_engine.evaluate_dark_pool_liquidity()
 
         portfolio_alerts = quant_intel_sentinel.evaluate_portfolio_level_sentinels(
             positions=positions,  # type: ignore
@@ -215,6 +219,7 @@ class PortfolioOrchestratorEngine:
             cross_border_fx_metrics=cross_border_res.model_dump(),
             options_intelligence_metrics=options_res.model_dump(),
             sovereign_yield_metrics=sovereign_res.model_dump(),
+            dark_pool_metrics=dark_pool_liquidity_engine.compute_sentinel_metrics(dark_pool_res),
         )
 
         now = datetime.now(timezone.utc)

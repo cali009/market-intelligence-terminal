@@ -1,6 +1,6 @@
 {
   "as_of_date": "2026-10-01",
-  "generated_at": "2026-10-01T18:30:43.023651+00:00",
+  "generated_at": "2026-10-01T19:58:06.160376+00:00",
   "total_capital": 100000.0,
   "active_positions_count": 17,
   "deployed_capital": 58400.0,
@@ -20,8 +20,8 @@
       "dollar_allocation": 3460.0,
       "target_shares": 10,
       "arrival_price": 334.3,
-      "effective_execution_price": 338.41,
-      "expected_slippage_bps": 0.3,
+      "effective_execution_price": 338.4,
+      "expected_slippage_bps": 0.0,
       "execution_strategy": "DIRECT_MARKET"
     },
     "AMZN": {
@@ -35,7 +35,7 @@
       "target_shares": 3,
       "arrival_price": 247.72,
       "effective_execution_price": 246.16,
-      "expected_slippage_bps": 0.41,
+      "expected_slippage_bps": 0.81,
       "execution_strategy": "DIRECT_MARKET"
     },
     "BAM": {
@@ -118,8 +118,8 @@
       "dollar_allocation": 1555.0,
       "target_shares": 4,
       "arrival_price": 344.42,
-      "effective_execution_price": 342.77,
-      "expected_slippage_bps": 0.58,
+      "effective_execution_price": 342.76,
+      "expected_slippage_bps": 0.29,
       "execution_strategy": "DIRECT_MARKET"
     },
     "MSFT": {
@@ -161,7 +161,7 @@
       "target_shares": 7,
       "arrival_price": 733.35,
       "effective_execution_price": 736.54,
-      "expected_slippage_bps": 0.14,
+      "expected_slippage_bps": 0.0,
       "execution_strategy": "DIRECT_MARKET"
     },
     "RY": {
@@ -174,7 +174,7 @@
       "dollar_allocation": 5340.0,
       "target_shares": 18,
       "arrival_price": 286.05,
-      "effective_execution_price": 285.1,
+      "effective_execution_price": 285.09,
       "expected_slippage_bps": 0.7,
       "execution_strategy": "DIRECT_MARKET"
     },
@@ -188,8 +188,8 @@
       "dollar_allocation": 450.0,
       "target_shares": 2,
       "arrival_price": 198.57,
-      "effective_execution_price": 204.22,
-      "expected_slippage_bps": 0.98,
+      "effective_execution_price": 204.21,
+      "expected_slippage_bps": 0.49,
       "execution_strategy": "DIRECT_MARKET"
     },
     "SPY": {
@@ -216,9 +216,9 @@
       "dollar_allocation": 6675.0,
       "target_shares": 39,
       "arrival_price": 169.77,
-      "effective_execution_price": 169.62,
-      "expected_slippage_bps": 1.18,
-      "execution_strategy": "DIRECT_MARKET"
+      "effective_execution_price": 169.61,
+      "expected_slippage_bps": 0.83,
+      "execution_strategy": "TWAP"
     },
     "XIU": {
       "symbol": "XIU",
@@ -231,7 +231,7 @@
       "target_shares": 82,
       "arrival_price": 52.88,
       "effective_execution_price": 52.76,
-      "expected_slippage_bps": 0.67,
+      "expected_slippage_bps": 0.68,
       "execution_strategy": "TWAP"
     },
     "XOM": {

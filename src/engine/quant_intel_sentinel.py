@@ -294,6 +294,7 @@ class QuantIntelSentinel:
         cross_border_fx_metrics: Optional[Dict[str, Any]] = None,
         options_intelligence_metrics: Optional[Dict[str, Any]] = None,
         sovereign_yield_metrics: Optional[Dict[str, Any]] = None,
+        dark_pool_metrics: Optional[Dict[str, Any]] = None,
     ) -> List[InvalidationAlert]:
         """
         Evaluates portfolio-level risk invariants:
@@ -710,6 +711,74 @@ class QuantIntelSentinel:
                                 timestamp=now_str,
                             )
                         )
+
+        # 24. PREDICATE: DARK_POOL_STEALTH_DISTRIBUTION
+        #     Off-exchange share > 60% AND z(OVR) > 1.5 AND signed block impression is
+        #     DISTRIBUTION AND price rangebound near resistance.
+        #     NOTE (Decision 2b): ATS participation share is deliberately absent from
+        #     dark_pool_metrics, so it cannot contribute to this predicate.
+        if dark_pool_metrics:
+            per_symbol = dark_pool_metrics.get("per_symbol", {})
+            for sym, m in per_symbol.items():
+                ovr = m.get("ovr_pct", 0.0)
+                ovr_z = m.get("ovr_zscore_60d", 0.0)
+                impression = m.get("signed_impression", "NEUTRAL")
+                near_res = m.get("rangebound_near_resistance", False)
+
+                if ovr > 60.0 and ovr_z > 1.5 and impression == "DISTRIBUTION" and near_res:
+                    headline = f"Dark Pool Stealth Distribution Warning: {sym} ({ovr:.1f}% Off-Exchange)"
+                    body = (
+                        f"{sym} off-exchange volume share reached {ovr:.1f}% of consolidated volume "
+                        f"(z-score +{ovr_z:.2f} vs 60-day baseline) while institutional block prints carried a "
+                        "DISTRIBUTION impression and price held rangebound near resistance. Off-exchange "
+                        "distribution ahead of a lit breakout attempt indicated."
+                    )
+                    alerts.append(
+                        InvalidationAlert(
+                            symbol=sym,
+                            predicate_type="DARK_POOL_STEALTH_DISTRIBUTION",
+                            severity="WARNING",
+                            trigger_level=60.0,
+                            current_price=round(ovr, 2),
+                            headline=headline,
+                            body=body,
+                            action_required="SCRUTINIZE_BUY_SIGNALS",
+                            timestamp=now_str,
+                        )
+                    )
+
+                # 25. PREDICATE: SHORT_VOLUME_SQUEEZE_SPIKE
+                #     z(SVR) > 2.0 AND days-to-cover > 5.0 AND elevated/cascade squeeze regime.
+                #     RESEARCH-ONLY (Decision 1b): short metrics are only present when the
+                #     caller holds a research-only entitlement, so this predicate cannot fire
+                #     on a commercial payload because the fields simply are not there.
+                svr_z = m.get("svr_zscore_60d")
+                dtc = m.get("days_to_cover")
+                if svr_z is None or dtc is None:
+                    continue
+
+                squeeze_regime = m.get("squeeze_regime", "DORMANT")
+                if svr_z > 2.0 and dtc > 5.0 and squeeze_regime in ("ELEVATED", "CASCADE_RISK"):
+                    headline = f"Short Volume Squeeze Spike Warning: {sym} (z +{svr_z:.2f}, DTC {dtc:.1f}d)"
+                    body = (
+                        f"{sym} short volume ratio reached z-score +{svr_z:.2f} against its own 60-day "
+                        f"distribution with {dtc:.1f} days-to-cover and a {squeeze_regime.replace('_', ' ').title()} "
+                        "squeeze composite. Short-covering cascade conditions indicated. Short volume is measured "
+                        "against off-exchange volume and is not consolidated with exchange prints."
+                    )
+                    alerts.append(
+                        InvalidationAlert(
+                            symbol=sym,
+                            predicate_type="SHORT_VOLUME_SQUEEZE_SPIKE",
+                            severity="WARNING",
+                            trigger_level=2.0,
+                            current_price=round(svr_z, 2),
+                            headline=headline,
+                            body=body,
+                            action_required="FLAG_SHORT_COVERING_CASCADE",
+                            timestamp=now_str,
+                        )
+                    )
 
         return alerts
 

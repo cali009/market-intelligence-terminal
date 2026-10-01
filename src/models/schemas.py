@@ -1817,3 +1817,141 @@ class SovereignYieldFeed(BaseModel):
 
 
 
+# ==========================================
+# PHASE 32: DARK POOL, OFF-EXCHANGE LIQUIDITY & SHORT ACTIVITY SCHEMAS
+#
+# LICENSING DETERMINATIONS (locked 2026-10-01):
+#   D1 -> (b) Short-sale metrics are gated behind a RESEARCH_ONLY / non-commercial
+#             entitlement tier. FINRA Daily Short Sale Volume is expressly
+#             "free for non-commercial use" and may not be commercially
+#             redistributed, so short fields never enter commercial feeds unentitled.
+#   D2 -> (b) ATS / dark-pool participation share is computed and displayed for
+#             reference ONLY, and is excluded from every scoring path and every
+#             sentinel predicate. It is never a scoring input.
+# ==========================================
+
+
+class OffExchangeVolumePoint(BaseModel):
+    """Off-exchange (TRF / non-ATS) volume share with 60-day self-standardization."""
+
+    symbol: str
+    country: Literal["US", "CA"]
+    consolidated_volume: int
+    off_exchange_volume: int
+    ovr_pct: float
+    ovr_zscore_60d: float
+    ovr_regime: Literal["NORMAL", "ELEVATED", "EXTREME"]
+    # DECISION 2(b): informational only. Excluded from all scoring and sentinels.
+    ats_share_pct_reference_only: Optional[float] = None
+    ats_share_scoring_eligible: Literal[False] = False
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class BlockTradeCluster(BaseModel):
+    """Institutional block clustering with signed accumulation/distribution impression."""
+
+    block_count: int
+    block_volume: int
+    bti_pct: float
+    bti_zscore_60d: float
+    avg_block_shares: int
+    signed_impression: Literal["ACCUMULATION", "DISTRIBUTION", "NEUTRAL"]
+    price_vs_resistance_pct: float
+    rangebound_near_resistance: bool
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class ShortActivityProfile(BaseModel):
+    """
+    Short activity triad (SVR z-score, short-interest ratio, days-to-cover).
+
+    DECISION 1(b): This entire block is RESEARCH_ONLY / non-commercial. It is
+    published only under a research-only entitlement and must never be carried
+    in a commercially redistributable payload.
+    """
+
+    entitlement_required: Literal["RESEARCH_ONLY_NON_COMMERCIAL"] = "RESEARCH_ONLY_NON_COMMERCIAL"
+    commercially_redistributable: Literal[False] = False
+    svr_pct: float
+    svr_zscore_60d: float
+    short_interest_shares: int
+    short_interest_ratio_pct: float
+    days_to_cover: float
+    delta_short_interest_z: float
+    # Squeeze composite: multi-factor by construction, never a single-indicator trigger.
+    squeeze_score: float
+    squeeze_regime: Literal["DORMANT", "BUILDING", "ELEVATED", "CASCADE_RISK"]
+    internalization_bias_note: str
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class LiquidityFragmentationProfile(BaseModel):
+    """Venue-concentration Herfindahl index feeding Phase 25 slippage governance."""
+
+    venue_count: int
+    top_venue: str
+    top_venue_share_pct: float
+    venue_hhi: float
+    liquidity_fragmentation_index: float
+    fragmentation_regime: Literal["CONCENTRATED", "MODERATE", "FRAGMENTED"]
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class DarkPoolLiquidityDossier(BaseModel):
+    """Per-symbol off-exchange liquidity intelligence dossier."""
+
+    symbol: str
+    country: Literal["US", "CA"]
+    sector: str
+    market_cap_millions: float
+    average_daily_volume: int
+    off_exchange: OffExchangeVolumePoint
+    block_cluster: BlockTradeCluster
+    fragmentation: LiquidityFragmentationProfile
+    # None unless the caller holds a research-only entitlement (DECISION 1(b)).
+    short_activity: Optional[ShortActivityProfile] = None
+    composite_stealth_liquidity_score: float
+    primary_liquidity_concern: str
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class DataEntitlementGate(BaseModel):
+    """
+    Machine-readable licensing gate carried on every Phase 32 feed so that
+    downstream consumers can enforce the commercial posture without re-deriving it.
+    """
+
+    short_metrics_license_class: Literal["RESEARCH_ONLY_NON_COMMERCIAL"] = "RESEARCH_ONLY_NON_COMMERCIAL"
+    short_metrics_commercial_redistribution_permitted: Literal[False] = False
+    short_metrics_source: str
+    ats_share_excluded_from_scoring: Literal[True] = True
+    ats_share_exclusion_reason: str
+    attribution: List[str]
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class DarkPoolIntelligenceFeed(BaseModel):
+    as_of_date: str
+    generated_at: str
+    universe_count: int
+    aggregate_us_off_exchange_share_pct: float
+    aggregate_ca_off_exchange_share_pct: float
+    aggregate_block_trade_intensity_pct: float
+    dossiers: Dict[str, DarkPoolLiquidityDossier]
+    entitlement_gate: DataEntitlementGate
+    disclaimers: List[str]
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()

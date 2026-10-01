@@ -1,0 +1,770 @@
+{
+  "as_of_date": "2026-10-01",
+  "generated_at": "2026-10-01T19:51:45.978599+00:00",
+  "universe_count": 19,
+  "aggregate_us_off_exchange_share_pct": 22.86,
+  "aggregate_ca_off_exchange_share_pct": 22.35,
+  "aggregate_block_trade_intensity_pct": 11.47,
+  "dossiers": {
+    "QQQ": {
+      "symbol": "QQQ",
+      "country": "US",
+      "sector": "ETF/Index",
+      "market_cap_millions": 597664.66,
+      "average_daily_volume": 8807047,
+      "off_exchange": {
+        "symbol": "QQQ",
+        "country": "US",
+        "consolidated_volume": 8807047,
+        "off_exchange_volume": 1215372,
+        "ovr_pct": 13.8,
+        "ovr_zscore_60d": -2.24,
+        "ovr_regime": "NORMAL",
+        "ats_share_pct_reference_only": 13.8,
+        "ats_share_scoring_eligible": false
+      },
+      "block_cluster": {
+        "block_count": 5,
+        "block_volume": 675450,
+        "bti_pct": 7.67,
+        "bti_zscore_60d": -0.73,
+        "avg_block_shares": 135090,
+        "signed_impression": "DISTRIBUTION",
+        "price_vs_resistance_pct": -5.88,
+        "rangebound_near_resistance": false
+      },
+      "fragmentation": {
+        "venue_count": 6,
+        "top_venue": "NASDAQ_TRF_CARTERET",
+        "top_venue_share_pct": 22.55,
+        "venue_hhi": 0.2071,
+        "liquidity_fragmentation_index": 0.7929,
+        "fragmentation_regime": "MODERATE"
+      },
+      "short_activity": null,
+      "composite_stealth_liquidity_score": 0.11,
+      "primary_liquidity_concern": "NONE_MATERIAL"
+    },
+    "SPY": {
+      "symbol": "SPY",
+      "country": "US",
+      "sector": "ETF/Index",
+      "market_cap_millions": 2631086.23,
+      "average_daily_volume": 37560040,
+      "off_exchange": {
+        "symbol": "SPY",
+        "country": "US",
+        "consolidated_volume": 37560040,
+        "off_exchange_volume": 11793853,
+        "ovr_pct": 31.4,
+        "ovr_zscore_60d": 0.62,
+        "ovr_regime": "NORMAL",
+        "ats_share_pct_reference_only": 16.52,
+        "ats_share_scoring_eligible": false
+      },
+      "block_cluster": {
+        "block_count": 30,
+        "block_volume": 7575510,
+        "bti_pct": 20.17,
+        "bti_zscore_60d": 1.32,
+        "avg_block_shares": 252517,
+        "signed_impression": "NEUTRAL",
+        "price_vs_resistance_pct": -2.01,
+        "rangebound_near_resistance": false
+      },
+      "fragmentation": {
+        "venue_count": 6,
+        "top_venue": "NASDAQ_TRF_CARTERET",
+        "top_venue_share_pct": 18.72,
+        "venue_hhi": 0.1857,
+        "liquidity_fragmentation_index": 0.8143,
+        "fragmentation_regime": "MODERATE"
+      },
+      "short_activity": null,
+      "composite_stealth_liquidity_score": 0.3294,
+      "primary_liquidity_concern": "NONE_MATERIAL"
+    },
+    "AAPL": {
+      "symbol": "AAPL",
+      "country": "US",
+      "sector": "Equity",
+      "market_cap_millions": 93574.96,
+      "average_daily_volume": 38023104,
+      "off_exchange": {
+        "symbol": "AAPL",
+        "country": "US",
+        "consolidated_volume": 38023104,
+        "off_exchange_volume": 6722485,
+        "ovr_pct": 17.68,
+        "ovr_zscore_60d": -1.29,
+        "ovr_regime": "NORMAL",
+        "ats_share_pct_reference_only": 4.39,
+        "ats_share_scoring_eligible": false
+      },
+      "block_cluster": {
+        "block_count": 9,
+        "block_volume": 5503563,
+        "bti_pct": 14.47,
+        "bti_zscore_60d": 0.34,
+        "avg_block_shares": 611507,
+        "signed_impression": "ACCUMULATION",
+        "price_vs_resistance_pct": -2.58,
+        "rangebound_near_resistance": false
+      },
+      "fragmentation": {
+        "venue_count": 6,
+        "top_venue": "NASDAQ_TRF_CARTERET",
+        "top_venue_share_pct": 29.11,
+        "venue_hhi": 0.2121,
+        "liquidity_fragmentation_index": 0.7879,
+        "fragmentation_regime": "MODERATE"
+      },
+      "short_activity": null,
+      "composite_stealth_liquidity_score": 0.17,
+      "primary_liquidity_concern": "NONE_MATERIAL"
+    },
+    "NVDA": {
+      "symbol": "NVDA",
+      "country": "US",
+      "sector": "Equity",
+      "market_cap_millions": 2295762.96,
+      "average_daily_volume": 38667584,
+      "off_exchange": {
+        "symbol": "NVDA",
+        "country": "US",
+        "consolidated_volume": 38667584,
+        "off_exchange_volume": 9724897,
+        "ovr_pct": 25.15,
+        "ovr_zscore_60d": -0.08,
+        "ovr_regime": "NORMAL",
+        "ats_share_pct_reference_only": 7.66,
+        "ats_share_scoring_eligible": false
+      },
+      "block_cluster": {
+        "block_count": 14,
+        "block_volume": 6214250,
+        "bti_pct": 16.07,
+        "bti_zscore_60d": 0.57,
+        "avg_block_shares": 443875,
+        "signed_impression": "ACCUMULATION",
+        "price_vs_resistance_pct": 0.22,
+        "rangebound_near_resistance": true
+      },
+      "fragmentation": {
+        "venue_count": 6,
+        "top_venue": "NASDAQ_TRF_CARTERET",
+        "top_venue_share_pct": 18.26,
+        "venue_hhi": 0.1894,
+        "liquidity_fragmentation_index": 0.8106,
+        "fragmentation_regime": "MODERATE"
+      },
+      "short_activity": null,
+      "composite_stealth_liquidity_score": 0.2136,
+      "primary_liquidity_concern": "NONE_MATERIAL"
+    },
+    "MSFT": {
+      "symbol": "MSFT",
+      "country": "US",
+      "sector": "Equity",
+      "market_cap_millions": 535080.8,
+      "average_daily_volume": 28671577,
+      "off_exchange": {
+        "symbol": "MSFT",
+        "country": "US",
+        "consolidated_volume": 28671577,
+        "off_exchange_volume": 5163751,
+        "ovr_pct": 18.01,
+        "ovr_zscore_60d": -1.15,
+        "ovr_regime": "NORMAL",
+        "ats_share_pct_reference_only": 18.01,
+        "ats_share_scoring_eligible": false
+      },
+      "block_cluster": {
+        "block_count": 8,
+        "block_volume": 3880664,
+        "bti_pct": 13.53,
+        "bti_zscore_60d": 0.21,
+        "avg_block_shares": 485083,
+        "signed_impression": "DISTRIBUTION",
+        "price_vs_resistance_pct": -5.3,
+        "rangebound_near_resistance": false
+      },
+      "fragmentation": {
+        "venue_count": 6,
+        "top_venue": "NASDAQ_TRF_CARTERET",
+        "top_venue_share_pct": 18.55,
+        "venue_hhi": 0.1708,
+        "liquidity_fragmentation_index": 0.8292,
+        "fragmentation_regime": "MODERATE"
+      },
+      "short_activity": null,
+      "composite_stealth_liquidity_score": 0.1656,
+      "primary_liquidity_concern": "NONE_MATERIAL"
+    },
+    "XIU": {
+      "symbol": "XIU",
+      "country": "CA",
+      "sector": "ETF/Index",
+      "market_cap_millions": 2127074.38,
+      "average_daily_volume": 59003293,
+      "off_exchange": {
+        "symbol": "XIU",
+        "country": "CA",
+        "consolidated_volume": 59003293,
+        "off_exchange_volume": 20686555,
+        "ovr_pct": 35.06,
+        "ovr_zscore_60d": 2.71,
+        "ovr_regime": "ELEVATED",
+        "ats_share_pct_reference_only": 2.08,
+        "ats_share_scoring_eligible": false
+      },
+      "block_cluster": {
+        "block_count": 17,
+        "block_volume": 8305996,
+        "bti_pct": 14.08,
+        "bti_zscore_60d": 0.15,
+        "avg_block_shares": 488588,
+        "signed_impression": "ACCUMULATION",
+        "price_vs_resistance_pct": -3.15,
+        "rangebound_near_resistance": false
+      },
+      "fragmentation": {
+        "venue_count": 9,
+        "top_venue": "TSX",
+        "top_venue_share_pct": 19.71,
+        "venue_hhi": 0.1338,
+        "liquidity_fragmentation_index": 0.8662,
+        "fragmentation_regime": "FRAGMENTED"
+      },
+      "short_activity": null,
+      "composite_stealth_liquidity_score": 0.5168,
+      "primary_liquidity_concern": "FRAGMENTED_VENUE_LIQUIDITY"
+    },
+    "TD": {
+      "symbol": "TD",
+      "country": "CA",
+      "sector": "Equity",
+      "market_cap_millions": 1506848.01,
+      "average_daily_volume": 70817594,
+      "off_exchange": {
+        "symbol": "TD",
+        "country": "CA",
+        "consolidated_volume": 70817594,
+        "off_exchange_volume": 15905632,
+        "ovr_pct": 22.46,
+        "ovr_zscore_60d": 0.5,
+        "ovr_regime": "NORMAL",
+        "ats_share_pct_reference_only": 7.17,
+        "ats_share_scoring_eligible": false
+      },
+      "block_cluster": {
+        "block_count": 12,
+        "block_volume": 10431444,
+        "bti_pct": 14.73,
+        "bti_zscore_60d": 0.35,
+        "avg_block_shares": 869287,
+        "signed_impression": "ACCUMULATION",
+        "price_vs_resistance_pct": -3.52,
+        "rangebound_near_resistance": false
+      },
+      "fragmentation": {
+        "venue_count": 9,
+        "top_venue": "TSX",
+        "top_venue_share_pct": 20.62,
+        "venue_hhi": 0.1309,
+        "liquidity_fragmentation_index": 0.8691,
+        "fragmentation_regime": "FRAGMENTED"
+      },
+      "short_activity": null,
+      "composite_stealth_liquidity_score": 0.2431,
+      "primary_liquidity_concern": "FRAGMENTED_VENUE_LIQUIDITY"
+    },
+    "XOM": {
+      "symbol": "XOM",
+      "country": "US",
+      "sector": "Equity",
+      "market_cap_millions": 2345701.74,
+      "average_daily_volume": 51129576,
+      "off_exchange": {
+        "symbol": "XOM",
+        "country": "US",
+        "consolidated_volume": 51129576,
+        "off_exchange_volume": 11028650,
+        "ovr_pct": 21.57,
+        "ovr_zscore_60d": -0.73,
+        "ovr_regime": "NORMAL",
+        "ats_share_pct_reference_only": 8.46,
+        "ats_share_scoring_eligible": false
+      },
+      "block_cluster": {
+        "block_count": 6,
+        "block_volume": 5562180,
+        "bti_pct": 10.88,
+        "bti_zscore_60d": -0.5,
+        "avg_block_shares": 927030,
+        "signed_impression": "NEUTRAL",
+        "price_vs_resistance_pct": -1.32,
+        "rangebound_near_resistance": true
+      },
+      "fragmentation": {
+        "venue_count": 6,
+        "top_venue": "NASDAQ_TRF_CARTERET",
+        "top_venue_share_pct": 21.16,
+        "venue_hhi": 0.1899,
+        "liquidity_fragmentation_index": 0.8101,
+        "fragmentation_regime": "MODERATE"
+      },
+      "short_activity": null,
+      "composite_stealth_liquidity_score": 0.1651,
+      "primary_liquidity_concern": "NONE_MATERIAL"
+    },
+    "CNQ": {
+      "symbol": "CNQ",
+      "country": "CA",
+      "sector": "Equity",
+      "market_cap_millions": 930439.39,
+      "average_daily_volume": 24077225,
+      "off_exchange": {
+        "symbol": "CNQ",
+        "country": "CA",
+        "consolidated_volume": 24077225,
+        "off_exchange_volume": 6939056,
+        "ovr_pct": 28.82,
+        "ovr_zscore_60d": 1.57,
+        "ovr_regime": "ELEVATED",
+        "ats_share_pct_reference_only": 7.3,
+        "ats_share_scoring_eligible": false
+      },
+      "block_cluster": {
+        "block_count": 18,
+        "block_volume": 3200382,
+        "bti_pct": 13.29,
+        "bti_zscore_60d": 0.25,
+        "avg_block_shares": 177799,
+        "signed_impression": "ACCUMULATION",
+        "price_vs_resistance_pct": -7.58,
+        "rangebound_near_resistance": false
+      },
+      "fragmentation": {
+        "venue_count": 9,
+        "top_venue": "TSX",
+        "top_venue_share_pct": 19.69,
+        "venue_hhi": 0.1299,
+        "liquidity_fragmentation_index": 0.8701,
+        "fragmentation_regime": "FRAGMENTED"
+      },
+      "short_activity": null,
+      "composite_stealth_liquidity_score": 0.3698,
+      "primary_liquidity_concern": "FRAGMENTED_VENUE_LIQUIDITY"
+    },
+    "CNR": {
+      "symbol": "CNR",
+      "country": "CA",
+      "sector": "Equity",
+      "market_cap_millions": 1232449.68,
+      "average_daily_volume": 5234091,
+      "off_exchange": {
+        "symbol": "CNR",
+        "country": "CA",
+        "consolidated_volume": 5234091,
+        "off_exchange_volume": 538065,
+        "ovr_pct": 10.28,
+        "ovr_zscore_60d": -1.5,
+        "ovr_regime": "NORMAL",
+        "ats_share_pct_reference_only": 8.53,
+        "ats_share_scoring_eligible": false
+      },
+      "block_cluster": {
+        "block_count": 10,
+        "block_volume": 270610,
+        "bti_pct": 5.17,
+        "bti_zscore_60d": -1.27,
+        "avg_block_shares": 27061,
+        "signed_impression": "NEUTRAL",
+        "price_vs_resistance_pct": -2.05,
+        "rangebound_near_resistance": false
+      },
+      "fragmentation": {
+        "venue_count": 9,
+        "top_venue": "TSX",
+        "top_venue_share_pct": 25.4,
+        "venue_hhi": 0.1545,
+        "liquidity_fragmentation_index": 0.8455,
+        "fragmentation_regime": "MODERATE"
+      },
+      "short_activity": null,
+      "composite_stealth_liquidity_score": 0.0786,
+      "primary_liquidity_concern": "NONE_MATERIAL"
+    },
+    "JPM": {
+      "symbol": "JPM",
+      "country": "US",
+      "sector": "Equity",
+      "market_cap_millions": 1482392.26,
+      "average_daily_volume": 61723753,
+      "off_exchange": {
+        "symbol": "JPM",
+        "country": "US",
+        "consolidated_volume": 61723753,
+        "off_exchange_volume": 14134739,
+        "ovr_pct": 22.9,
+        "ovr_zscore_60d": -0.64,
+        "ovr_regime": "NORMAL",
+        "ats_share_pct_reference_only": 12.91,
+        "ats_share_scoring_eligible": false
+      },
+      "block_cluster": {
+        "block_count": 9,
+        "block_volume": 8312490,
+        "bti_pct": 13.47,
+        "bti_zscore_60d": 0.11,
+        "avg_block_shares": 923610,
+        "signed_impression": "DISTRIBUTION",
+        "price_vs_resistance_pct": -0.39,
+        "rangebound_near_resistance": true
+      },
+      "fragmentation": {
+        "venue_count": 6,
+        "top_venue": "NASDAQ_TRF_CARTERET",
+        "top_venue_share_pct": 27.33,
+        "venue_hhi": 0.1897,
+        "liquidity_fragmentation_index": 0.8103,
+        "fragmentation_regime": "MODERATE"
+      },
+      "short_activity": null,
+      "composite_stealth_liquidity_score": 0.2872,
+      "primary_liquidity_concern": "NONE_MATERIAL"
+    },
+    "GOOGL": {
+      "symbol": "GOOGL",
+      "country": "US",
+      "sector": "Equity",
+      "market_cap_millions": 1624420.66,
+      "average_daily_volume": 38295671,
+      "off_exchange": {
+        "symbol": "GOOGL",
+        "country": "US",
+        "consolidated_volume": 38295671,
+        "off_exchange_volume": 8333138,
+        "ovr_pct": 21.76,
+        "ovr_zscore_60d": -0.85,
+        "ovr_regime": "NORMAL",
+        "ats_share_pct_reference_only": 7.4,
+        "ats_share_scoring_eligible": false
+      },
+      "block_cluster": {
+        "block_count": 12,
+        "block_volume": 4272972,
+        "bti_pct": 11.16,
+        "bti_zscore_60d": -0.28,
+        "avg_block_shares": 356081,
+        "signed_impression": "DISTRIBUTION",
+        "price_vs_resistance_pct": -1.51,
+        "rangebound_near_resistance": true
+      },
+      "fragmentation": {
+        "venue_count": 6,
+        "top_venue": "NASDAQ_TRF_CARTERET",
+        "top_venue_share_pct": 17.33,
+        "venue_hhi": 0.1848,
+        "liquidity_fragmentation_index": 0.8152,
+        "fragmentation_regime": "MODERATE"
+      },
+      "short_activity": null,
+      "composite_stealth_liquidity_score": 0.2677,
+      "primary_liquidity_concern": "NONE_MATERIAL"
+    },
+    "AMZN": {
+      "symbol": "AMZN",
+      "country": "US",
+      "sector": "Equity",
+      "market_cap_millions": 1567383.78,
+      "average_daily_volume": 41260546,
+      "off_exchange": {
+        "symbol": "AMZN",
+        "country": "US",
+        "consolidated_volume": 41260546,
+        "off_exchange_volume": 10558574,
+        "ovr_pct": 25.59,
+        "ovr_zscore_60d": 0.16,
+        "ovr_regime": "NORMAL",
+        "ats_share_pct_reference_only": 7.31,
+        "ats_share_scoring_eligible": false
+      },
+      "block_cluster": {
+        "block_count": 19,
+        "block_volume": 5674749,
+        "bti_pct": 13.75,
+        "bti_zscore_60d": -0.02,
+        "avg_block_shares": 298671,
+        "signed_impression": "ACCUMULATION",
+        "price_vs_resistance_pct": -1.39,
+        "rangebound_near_resistance": true
+      },
+      "fragmentation": {
+        "venue_count": 6,
+        "top_venue": "NASDAQ_TRF_CARTERET",
+        "top_venue_share_pct": 16.87,
+        "venue_hhi": 0.1975,
+        "liquidity_fragmentation_index": 0.8025,
+        "fragmentation_regime": "MODERATE"
+      },
+      "short_activity": null,
+      "composite_stealth_liquidity_score": 0.2171,
+      "primary_liquidity_concern": "NONE_MATERIAL"
+    },
+    "RY": {
+      "symbol": "RY",
+      "country": "CA",
+      "sector": "Equity",
+      "market_cap_millions": 3163753.32,
+      "average_daily_volume": 48840791,
+      "off_exchange": {
+        "symbol": "RY",
+        "country": "CA",
+        "consolidated_volume": 48840791,
+        "off_exchange_volume": 7511714,
+        "ovr_pct": 15.38,
+        "ovr_zscore_60d": -0.44,
+        "ovr_regime": "NORMAL",
+        "ats_share_pct_reference_only": 6.34,
+        "ats_share_scoring_eligible": false
+      },
+      "block_cluster": {
+        "block_count": 1,
+        "block_volume": 277292,
+        "bti_pct": 0.57,
+        "bti_zscore_60d": -2.28,
+        "avg_block_shares": 277292,
+        "signed_impression": "NEUTRAL",
+        "price_vs_resistance_pct": -4.24,
+        "rangebound_near_resistance": false
+      },
+      "fragmentation": {
+        "venue_count": 9,
+        "top_venue": "TSX",
+        "top_venue_share_pct": 19.79,
+        "venue_hhi": 0.1245,
+        "liquidity_fragmentation_index": 0.8755,
+        "fragmentation_regime": "FRAGMENTED"
+      },
+      "short_activity": null,
+      "composite_stealth_liquidity_score": 0.0728,
+      "primary_liquidity_concern": "FRAGMENTED_VENUE_LIQUIDITY"
+    },
+    "CP": {
+      "symbol": "CP",
+      "country": "CA",
+      "sector": "Equity",
+      "market_cap_millions": 1914373.16,
+      "average_daily_volume": 51917659,
+      "off_exchange": {
+        "symbol": "CP",
+        "country": "CA",
+        "consolidated_volume": 51917659,
+        "off_exchange_volume": 9298453,
+        "ovr_pct": 17.91,
+        "ovr_zscore_60d": -0.05,
+        "ovr_regime": "NORMAL",
+        "ats_share_pct_reference_only": 3.47,
+        "ats_share_scoring_eligible": false
+      },
+      "block_cluster": {
+        "block_count": 7,
+        "block_volume": 2294404,
+        "bti_pct": 4.42,
+        "bti_zscore_60d": -1.72,
+        "avg_block_shares": 327772,
+        "signed_impression": "NEUTRAL",
+        "price_vs_resistance_pct": -7.88,
+        "rangebound_near_resistance": false
+      },
+      "fragmentation": {
+        "venue_count": 9,
+        "top_venue": "TSX",
+        "top_venue_share_pct": 23.43,
+        "venue_hhi": 0.1379,
+        "liquidity_fragmentation_index": 0.8621,
+        "fragmentation_regime": "FRAGMENTED"
+      },
+      "short_activity": null,
+      "composite_stealth_liquidity_score": 0.1082,
+      "primary_liquidity_concern": "FRAGMENTED_VENUE_LIQUIDITY"
+    },
+    "SHOP": {
+      "symbol": "SHOP",
+      "country": "CA",
+      "sector": "Equity",
+      "market_cap_millions": 2969462.09,
+      "average_daily_volume": 46707073,
+      "off_exchange": {
+        "symbol": "SHOP",
+        "country": "CA",
+        "consolidated_volume": 46707073,
+        "off_exchange_volume": 9598304,
+        "ovr_pct": 20.55,
+        "ovr_zscore_60d": 0.21,
+        "ovr_regime": "NORMAL",
+        "ats_share_pct_reference_only": 5.91,
+        "ats_share_scoring_eligible": false
+      },
+      "block_cluster": {
+        "block_count": 5,
+        "block_volume": 2285695,
+        "bti_pct": 4.89,
+        "bti_zscore_60d": -1.35,
+        "avg_block_shares": 457139,
+        "signed_impression": "NEUTRAL",
+        "price_vs_resistance_pct": -0.73,
+        "rangebound_near_resistance": true
+      },
+      "fragmentation": {
+        "venue_count": 9,
+        "top_venue": "TSX",
+        "top_venue_share_pct": 24.17,
+        "venue_hhi": 0.1414,
+        "liquidity_fragmentation_index": 0.8586,
+        "fragmentation_regime": "FRAGMENTED"
+      },
+      "short_activity": null,
+      "composite_stealth_liquidity_score": 0.144,
+      "primary_liquidity_concern": "FRAGMENTED_VENUE_LIQUIDITY"
+    },
+    "ENB": {
+      "symbol": "ENB",
+      "country": "CA",
+      "sector": "Equity",
+      "market_cap_millions": 1080735.96,
+      "average_daily_volume": 15461213,
+      "off_exchange": {
+        "symbol": "ENB",
+        "country": "CA",
+        "consolidated_volume": 15461213,
+        "off_exchange_volume": 4230188,
+        "ovr_pct": 27.36,
+        "ovr_zscore_60d": 1.52,
+        "ovr_regime": "ELEVATED",
+        "ats_share_pct_reference_only": 8.17,
+        "ats_share_scoring_eligible": false
+      },
+      "block_cluster": {
+        "block_count": 3,
+        "block_volume": 926991,
+        "bti_pct": 6.0,
+        "bti_zscore_60d": -1.24,
+        "avg_block_shares": 308997,
+        "signed_impression": "ACCUMULATION",
+        "price_vs_resistance_pct": -2.76,
+        "rangebound_near_resistance": false
+      },
+      "fragmentation": {
+        "venue_count": 9,
+        "top_venue": "TSX",
+        "top_venue_share_pct": 24.89,
+        "venue_hhi": 0.1545,
+        "liquidity_fragmentation_index": 0.8455,
+        "fragmentation_regime": "MODERATE"
+      },
+      "short_activity": null,
+      "composite_stealth_liquidity_score": 0.3126,
+      "primary_liquidity_concern": "NONE_MATERIAL"
+    },
+    "BN": {
+      "symbol": "BN",
+      "country": "CA",
+      "sector": "Equity",
+      "market_cap_millions": 1019772.76,
+      "average_daily_volume": 25701152,
+      "off_exchange": {
+        "symbol": "BN",
+        "country": "CA",
+        "consolidated_volume": 25701152,
+        "off_exchange_volume": 3446524,
+        "ovr_pct": 13.41,
+        "ovr_zscore_60d": -1.05,
+        "ovr_regime": "NORMAL",
+        "ats_share_pct_reference_only": 1.64,
+        "ats_share_scoring_eligible": false
+      },
+      "block_cluster": {
+        "block_count": 20,
+        "block_volume": 3750480,
+        "bti_pct": 14.59,
+        "bti_zscore_60d": 0.07,
+        "avg_block_shares": 187524,
+        "signed_impression": "DISTRIBUTION",
+        "price_vs_resistance_pct": -3.48,
+        "rangebound_near_resistance": false
+      },
+      "fragmentation": {
+        "venue_count": 9,
+        "top_venue": "TSX",
+        "top_venue_share_pct": 20.9,
+        "venue_hhi": 0.1363,
+        "liquidity_fragmentation_index": 0.8637,
+        "fragmentation_regime": "FRAGMENTED"
+      },
+      "short_activity": null,
+      "composite_stealth_liquidity_score": 0.1515,
+      "primary_liquidity_concern": "FRAGMENTED_VENUE_LIQUIDITY"
+    },
+    "BAM": {
+      "symbol": "BAM",
+      "country": "CA",
+      "sector": "Equity",
+      "market_cap_millions": 2219201.71,
+      "average_daily_volume": 4160646,
+      "off_exchange": {
+        "symbol": "BAM",
+        "country": "CA",
+        "consolidated_volume": 4160646,
+        "off_exchange_volume": 501774,
+        "ovr_pct": 12.06,
+        "ovr_zscore_60d": -1.22,
+        "ovr_regime": "NORMAL",
+        "ats_share_pct_reference_only": 6.68,
+        "ats_share_scoring_eligible": false
+      },
+      "block_cluster": {
+        "block_count": 6,
+        "block_volume": 404490,
+        "bti_pct": 9.72,
+        "bti_zscore_60d": -0.63,
+        "avg_block_shares": 67415,
+        "signed_impression": "ACCUMULATION",
+        "price_vs_resistance_pct": -4.31,
+        "rangebound_near_resistance": false
+      },
+      "fragmentation": {
+        "venue_count": 9,
+        "top_venue": "TSX",
+        "top_venue_share_pct": 21.7,
+        "venue_hhi": 0.141,
+        "liquidity_fragmentation_index": 0.859,
+        "fragmentation_regime": "FRAGMENTED"
+      },
+      "short_activity": null,
+      "composite_stealth_liquidity_score": 0.115,
+      "primary_liquidity_concern": "FRAGMENTED_VENUE_LIQUIDITY"
+    }
+  },
+  "entitlement_gate": {
+    "short_metrics_license_class": "RESEARCH_ONLY_NON_COMMERCIAL",
+    "short_metrics_commercial_redistribution_permitted": false,
+    "short_metrics_source": "FINRA Daily Short Sale Volume (non-commercial license) and CIRO Short Sale Trading Statistics Summary Reports",
+    "ats_share_excluded_from_scoring": true,
+    "ats_share_exclusion_reason": "FINRA publishes ATS Transparency data weekly with a 21-35 day lag across two publication waves, so it cannot support real-time or intraday signals. Reference display only.",
+    "attribution": [
+      "OTC Transparency data is provided via http://www.finra.org/industry/OTC-Transparency and is copyrighted by FINRA.",
+      "Short sale volume data is sourced from FINRA Daily Short Sale Volume files and is licensed for non-commercial use only.",
+      "Canadian short-sale and marketplace-share statistics are derived from CIRO Short Sale Trading Statistics Summary Reports and Reports on Market Share by Marketplace."
+    ]
+  },
+  "disclaimers": [
+    "Off-exchange volume ratios, block trade clustering metrics, and liquidity fragmentation indices represent derived quantitative analytics computed from aggregate marketplace reporting. Published as ratios, z-scores, and regime labels only; raw per-venue share counts are not redistributed.",
+    "Short-sale metrics (short volume ratio, short interest, days-to-cover, squeeze composite) are gated to a research-only, non-commercial entitlement because the underlying FINRA Daily Short Sale Volume file is licensed for non-commercial use only. These fields are absent from all commercial payloads.",
+    "Short volume ratio measures short-marked volume as a share of OFF-EXCHANGE volume and is not consolidated with exchange data. Market makers internalizing retail flow book the offsetting side as short, so elevated readings are normal rather than bearish. Every short metric is scored against the security's own trailing distribution, never an absolute threshold.",
+    "ATS / dark-pool participation share is published for reference only and is excluded from all scoring and sentinel logic, because FINRA publishes it weekly with a 21-35 day lag.",
+    "Provided strictly for impersonal decision-support research. Does not constitute investment advice, a recommendation to buy or sell, or a solicitation, under CSA Staff Notice 31-369 and SEC Publisher Exclusion section 202(a)(11)(D)."
+  ]
+}
