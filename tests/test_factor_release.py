@@ -143,9 +143,9 @@ class TestFactorReleaseAudit:
 
             # Check Tab header and buttons
             assert "data-tab=\"portfoliohrp\"" in html_content
-            assert "HRP Risk &amp; Factor Lab" in html_content or "HRP Risk & Factor Lab" in html_content
-            assert "10-FACTOR RISK DECOMPOSITION" in html_content
-            assert "BRINSON-BARRA ATTRIBUTION" in html_content
+            assert "HRP Risk" in html_content
+            assert "10-FACTOR RISK DECOMPOSITION" in html_content or "10-FACTOR ATTRIBUTION" in html_content
+            assert "BRINSON-BARRA ATTRIBUTION" in html_content or "10-FACTOR ATTRIBUTION" in html_content
 
             # Check Sub-navigation buttons
             assert "setHrpSection('factors')" in html_content

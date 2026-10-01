@@ -1505,6 +1505,81 @@ class PortfolioFactorAttributionResult(BaseModel):
         return self.model_dump()
 
 
+# =============================================================================
+# PHASE 28: BLACK-LITTERMAN BAYESIAN REBALANCER SCHEMAS
+# =============================================================================
+
+class BlackLittermanView(BaseModel):
+    view_id: str
+    symbol: str
+    direction: Literal["BULLISH", "BEARISH", "OUTPERFORM", "UNDERPERFORM"]
+    view_type: Literal["ABSOLUTE", "RELATIVE"]
+    relative_symbol: Optional[str] = None
+    view_return_pct: float
+    confidence_pct: float
+    implied_prior_return_pct: float
+    posterior_expected_return_pct: float
+    attribution_source: str
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class BayesianAssetAllocation(BaseModel):
+    symbol: str
+    market: Literal["US", "CA"]
+    prior_weight: float
+    unconstrained_weight: float
+    constrained_weight: float
+    target_capital: float
+    prior_expected_return_pct: float
+    posterior_expected_return_pct: float
+    delta_weight_pct: float
+    turnover_contribution_pct: float
+    marginal_utility: float
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class TurnoverFrontierPoint(BaseModel):
+    turnover_limit_pct: float
+    portfolio_expected_return_pct: float
+    portfolio_volatility_pct: float
+    sharpe_ratio: float
+    one_way_turnover_pct: float
+    estimated_transaction_cost_bps: float
+    active_share_pct: float
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class PortfolioBayesianResult(BaseModel):
+    as_of_date: str
+    generated_at: str
+    total_capital: float
+    risk_aversion: float
+    tau: float
+    views_count: int
+    views: List[BlackLittermanView]
+    allocations: Dict[str, BayesianAssetAllocation]
+    prior_portfolio_return_pct: float
+    posterior_portfolio_return_pct: float
+    prior_portfolio_volatility_pct: float
+    posterior_portfolio_volatility_pct: float
+    total_one_way_turnover_pct: float
+    total_transaction_cost_bps: float
+    total_transaction_cost_dollars: float
+    estimation_error_trace_ratio: float
+    turnover_frontier: List[TurnoverFrontierPoint]
+    disclaimers: List[str]
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+
 
 
 

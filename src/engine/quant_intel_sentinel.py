@@ -290,6 +290,7 @@ class QuantIntelSentinel:
         avg_pairwise_corr: float = 0.45,
         factor_risk_metrics: Optional[Dict[str, Any]] = None,
         factor_attribution_metrics: Optional[Dict[str, Any]] = None,
+        bayesian_metrics: Optional[Dict[str, Any]] = None,
     ) -> List[InvalidationAlert]:
         """
         Evaluates portfolio-level risk invariants:
@@ -299,6 +300,8 @@ class QuantIntelSentinel:
         - Factor crowding limits (Predicate 13)
         - FX / Commodity overexposure (Predicate 14)
         - Specific alpha erosion (Predicate 15)
+        - Excessive turnover limits (Predicate 16)
+        - Bayesian estimation error spike (Predicate 17)
         """
         alerts = []
         now_str = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -484,6 +487,52 @@ class QuantIntelSentinel:
                     )
                 )
 
+        # 16. PREDICATE: EXCESSIVE_TURNOVER_BREACH (One-way rebalancing turnover > 25.0%)
+        if bayesian_metrics:
+            turnover_pct = bayesian_metrics.get("total_one_way_turnover_pct", 0.0) if isinstance(bayesian_metrics, dict) else getattr(bayesian_metrics, "total_one_way_turnover_pct", 0.0)
+            if turnover_pct > 25.0:
+                headline = f"Excessive Portfolio Rebalancing Turnover ({turnover_pct:.1f}%)"
+                body = (
+                    f"One-way portfolio turnover of {turnover_pct:.1f}% exceeds the 25.0% institutional friction threshold. "
+                    f"Transaction cost drag elevated."
+                )
+                alerts.append(
+                    InvalidationAlert(
+                        symbol="PORTFOLIO",
+                        predicate_type="EXCESSIVE_TURNOVER_BREACH",
+                        severity="WARNING",
+                        trigger_level=25.0,
+                        current_price=round(turnover_pct, 2),
+                        headline=headline,
+                        body=body,
+                        action_required="THROTTLE_PORTFOLIO_TURNOVER",
+                        timestamp=now_str,
+                    )
+                )
+
+        # 17. PREDICATE: ESTIMATION_ERROR_SPIKE (Posterior variance trace ratio > 1.40x)
+        if bayesian_metrics:
+            trace_ratio = bayesian_metrics.get("estimation_error_trace_ratio", 1.0) if isinstance(bayesian_metrics, dict) else getattr(bayesian_metrics, "estimation_error_trace_ratio", 1.0)
+            if trace_ratio > 1.40:
+                headline = f"Bayesian Estimation Error Uncertainty Spike ({trace_ratio:.2f}x Trace Inflation)"
+                body = (
+                    f"Posterior covariance trace ratio inflated to {trace_ratio:.2f}x prior trace, exceeding the 1.40x stability limit. "
+                    f"View uncertainty amplification detected."
+                )
+                alerts.append(
+                    InvalidationAlert(
+                        symbol="PORTFOLIO",
+                        predicate_type="ESTIMATION_ERROR_SPIKE",
+                        severity="WARNING",
+                        trigger_level=1.40,
+                        current_price=round(trace_ratio, 3),
+                        headline=headline,
+                        body=body,
+                        action_required="INCREASE_PRIOR_SHRINKAGE",
+                        timestamp=now_str,
+                    )
+                )
+
         return alerts
 
     def evaluate_universe_sentinels(self, quant_intel_dossiers: Dict[str, Any]) -> List[InvalidationAlert]:
@@ -522,7 +571,7 @@ class QuantIntelSentinel:
                 taxonomy = "CATALYST_MATERIALITY"
             elif "LIQUIDITY" in inv.predicate_type:
                 taxonomy = "TECHNICAL_BREAKOUT"
-            elif "CONCENTRATION" in inv.predicate_type or "CORRELATION" in inv.predicate_type or "CVAR" in inv.predicate_type or "FACTOR" in inv.predicate_type or "COMMODITY" in inv.predicate_type or "ALPHA" in inv.predicate_type:
+            elif "CONCENTRATION" in inv.predicate_type or "CORRELATION" in inv.predicate_type or "CVAR" in inv.predicate_type or "FACTOR" in inv.predicate_type or "COMMODITY" in inv.predicate_type or "ALPHA" in inv.predicate_type or "TURNOVER" in inv.predicate_type or "ESTIMATION" in inv.predicate_type:
                 taxonomy = "PORTFOLIO_CIRCUIT_BREAKER"
             else:
                 taxonomy = "TECHNICAL_BREAKOUT"

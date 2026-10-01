@@ -32,6 +32,7 @@ from src.engine.portfolio_hrp import hrp_portfolio_engine
 from src.engine.portfolio_stress import portfolio_stress_engine
 from src.engine.factor_risk import factor_risk_engine
 from src.engine.factor_attribution import factor_attribution_engine
+from src.engine.portfolio_bayesian import portfolio_bayesian_engine
 from src.engine.quant_intel import quant_intel_engine
 from src.engine.quant_intel_sentinel import quant_intel_sentinel
 from src.models.schemas import (
@@ -196,6 +197,7 @@ class PortfolioOrchestratorEngine:
 
         factor_risk_res = factor_risk_engine.evaluate_factor_risk(total_capital=total_capital)
         factor_attrib_res = factor_attribution_engine.evaluate_attribution(total_capital=total_capital)
+        bayesian_res = portfolio_bayesian_engine.evaluate_bayesian_portfolio(total_capital=total_capital)
 
         portfolio_alerts = quant_intel_sentinel.evaluate_portfolio_level_sentinels(
             positions=positions,  # type: ignore
@@ -203,6 +205,7 @@ class PortfolioOrchestratorEngine:
             avg_pairwise_corr=avg_pairwise_corr,
             factor_risk_metrics=factor_risk_res.model_dump(),
             factor_attribution_metrics=factor_attrib_res.model_dump(),
+            bayesian_metrics=bayesian_res.model_dump(),
         )
 
         now = datetime.now(timezone.utc)
