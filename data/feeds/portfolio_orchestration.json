@@ -1,6 +1,6 @@
 {
   "as_of_date": "2026-10-01",
-  "generated_at": "2026-10-01T06:56:28.642981+00:00",
+  "generated_at": "2026-10-01T18:30:43.023651+00:00",
   "total_capital": 100000.0,
   "active_positions_count": 17,
   "deployed_capital": 58400.0,
@@ -20,8 +20,8 @@
       "dollar_allocation": 3460.0,
       "target_shares": 10,
       "arrival_price": 334.3,
-      "effective_execution_price": 338.4,
-      "expected_slippage_bps": 0.0,
+      "effective_execution_price": 338.41,
+      "expected_slippage_bps": 0.3,
       "execution_strategy": "DIRECT_MARKET"
     },
     "AMZN": {
@@ -49,7 +49,7 @@
       "target_shares": 17,
       "arrival_price": 63.72,
       "effective_execution_price": 62.95,
-      "expected_slippage_bps": 1.68,
+      "expected_slippage_bps": 1.67,
       "execution_strategy": "TWAP"
     },
     "BN": {
@@ -105,7 +105,7 @@
       "target_shares": 93,
       "arrival_price": 67.54,
       "effective_execution_price": 66.59,
-      "expected_slippage_bps": 1.6,
+      "expected_slippage_bps": 1.58,
       "execution_strategy": "TWAP"
     },
     "GOOGL": {
@@ -146,8 +146,8 @@
       "dollar_allocation": 1390.0,
       "target_shares": 6,
       "arrival_price": 220.22,
-      "effective_execution_price": 228.88,
-      "expected_slippage_bps": 0.87,
+      "effective_execution_price": 228.87,
+      "expected_slippage_bps": 0.44,
       "execution_strategy": "DIRECT_MARKET"
     },
     "QQQ": {
@@ -174,7 +174,7 @@
       "dollar_allocation": 5340.0,
       "target_shares": 18,
       "arrival_price": 286.05,
-      "effective_execution_price": 285.09,
+      "effective_execution_price": 285.1,
       "expected_slippage_bps": 0.7,
       "execution_strategy": "DIRECT_MARKET"
     },
@@ -244,8 +244,8 @@
       "dollar_allocation": 1735.0,
       "target_shares": 10,
       "arrival_price": 161.94,
-      "effective_execution_price": 162.54,
-      "expected_slippage_bps": 1.23,
+      "effective_execution_price": 162.53,
+      "expected_slippage_bps": 0.62,
       "execution_strategy": "DIRECT_MARKET"
     }
   },

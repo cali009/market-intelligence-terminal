@@ -1728,6 +1728,74 @@ class OptionsIntelligenceFeed(BaseModel):
         return self.model_dump()
 
 
+# =========================================================================
+# PHASE 31: SOVEREIGN YIELD CURVE & TERM PREMIUM DECOMPOSITION SCHEMAS
+# =========================================================================
+
+class SovereignYieldPoint(BaseModel):
+    tenor: Literal["1M", "3M", "6M", "1Y", "2Y", "3Y", "5Y", "7Y", "10Y", "20Y", "30Y"]
+    maturity_years: float
+    ust_yield_pct: float
+    goc_yield_pct: float
+    spread_bps: float
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class NelsonSiegelParameters(BaseModel):
+    beta0_level: float
+    beta1_slope: float
+    beta2_curvature: float
+    tau: float
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class TermPremiumDecomposition(BaseModel):
+    tenor: Literal["2Y", "5Y", "10Y", "30Y"]
+    maturity_years: float
+    nominal_yield_pct: float
+    risk_neutral_rate_path_pct: float
+    term_premium_pct: float
+    term_premium_bps: float
+    ten_day_change_bps: float
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class SovereignCurveProfile(BaseModel):
+    jurisdiction: Literal["US", "CA"]
+    currency: Literal["USD", "CAD"]
+    slope_2y10y_bps: float
+    slope_3m10y_bps: float
+    slope_5y30y_bps: float
+    curve_regime: Literal["BEAR_STEEPENER", "BULL_STEEPENER", "BEAR_FLATTENER", "BULL_FLATTENER", "INVERTED", "NORMAL"]
+    nss_params: NelsonSiegelParameters
+    term_premium_decompositions: List[TermPremiumDecomposition]
+    yield_points: List[SovereignYieldPoint]
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class SovereignYieldFeed(BaseModel):
+    as_of_date: str
+    generated_at: str
+    us_profile: SovereignCurveProfile
+    ca_profile: SovereignCurveProfile
+    cross_border_yield_curve: List[SovereignYieldPoint]
+    ten_year_spread_bps: float
+    two_year_spread_bps: float
+    disclaimers: List[str]
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+
 
 
 

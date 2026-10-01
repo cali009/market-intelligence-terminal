@@ -1,0 +1,352 @@
+{
+  "as_of_date": "2026-10-01",
+  "generated_at": "2026-10-01T18:26:34.091166+00:00",
+  "us_profile": {
+    "jurisdiction": "US",
+    "currency": "USD",
+    "slope_2y10y_bps": 13.0,
+    "slope_3m10y_bps": -64.0,
+    "slope_5y30y_bps": 52.0,
+    "curve_regime": "BEAR_STEEPENER",
+    "nss_params": {
+      "beta0_level": 4.6405,
+      "beta1_slope": 0.3515,
+      "beta2_curvature": -2.9683,
+      "tau": 1.9004
+    },
+    "term_premium_decompositions": [
+      {
+        "tenor": "2Y",
+        "maturity_years": 2.0,
+        "nominal_yield_pct": 4.05,
+        "risk_neutral_rate_path_pct": 4.22,
+        "term_premium_pct": -0.17,
+        "term_premium_bps": -17.0,
+        "ten_day_change_bps": 1.5
+      },
+      {
+        "tenor": "5Y",
+        "maturity_years": 5.0,
+        "nominal_yield_pct": 3.9,
+        "risk_neutral_rate_path_pct": 3.98,
+        "term_premium_pct": -0.08,
+        "term_premium_bps": -8.0,
+        "ten_day_change_bps": 4.2
+      },
+      {
+        "tenor": "10Y",
+        "maturity_years": 10.0,
+        "nominal_yield_pct": 4.18,
+        "risk_neutral_rate_path_pct": 3.72,
+        "term_premium_pct": 0.46,
+        "term_premium_bps": 46.0,
+        "ten_day_change_bps": 8.5
+      },
+      {
+        "tenor": "30Y",
+        "maturity_years": 30.0,
+        "nominal_yield_pct": 4.42,
+        "risk_neutral_rate_path_pct": 3.65,
+        "term_premium_pct": 0.77,
+        "term_premium_bps": 77.0,
+        "ten_day_change_bps": 11.0
+      }
+    ],
+    "yield_points": [
+      {
+        "tenor": "1M",
+        "maturity_years": 0.0833,
+        "ust_yield_pct": 4.88,
+        "goc_yield_pct": 4.22,
+        "spread_bps": -66.0
+      },
+      {
+        "tenor": "3M",
+        "maturity_years": 0.25,
+        "ust_yield_pct": 4.82,
+        "goc_yield_pct": 4.15,
+        "spread_bps": -67.0
+      },
+      {
+        "tenor": "6M",
+        "maturity_years": 0.5,
+        "ust_yield_pct": 4.65,
+        "goc_yield_pct": 3.98,
+        "spread_bps": -67.0
+      },
+      {
+        "tenor": "1Y",
+        "maturity_years": 1.0,
+        "ust_yield_pct": 4.35,
+        "goc_yield_pct": 3.65,
+        "spread_bps": -70.0
+      },
+      {
+        "tenor": "2Y",
+        "maturity_years": 2.0,
+        "ust_yield_pct": 4.05,
+        "goc_yield_pct": 3.28,
+        "spread_bps": -77.0
+      },
+      {
+        "tenor": "3Y",
+        "maturity_years": 3.0,
+        "ust_yield_pct": 3.95,
+        "goc_yield_pct": 3.2,
+        "spread_bps": -75.0
+      },
+      {
+        "tenor": "5Y",
+        "maturity_years": 5.0,
+        "ust_yield_pct": 3.9,
+        "goc_yield_pct": 3.18,
+        "spread_bps": -72.0
+      },
+      {
+        "tenor": "7Y",
+        "maturity_years": 7.0,
+        "ust_yield_pct": 4.02,
+        "goc_yield_pct": 3.32,
+        "spread_bps": -70.0
+      },
+      {
+        "tenor": "10Y",
+        "maturity_years": 10.0,
+        "ust_yield_pct": 4.18,
+        "goc_yield_pct": 3.45,
+        "spread_bps": -73.0
+      },
+      {
+        "tenor": "20Y",
+        "maturity_years": 20.0,
+        "ust_yield_pct": 4.45,
+        "goc_yield_pct": 3.75,
+        "spread_bps": -70.0
+      },
+      {
+        "tenor": "30Y",
+        "maturity_years": 30.0,
+        "ust_yield_pct": 4.42,
+        "goc_yield_pct": 3.72,
+        "spread_bps": -70.0
+      }
+    ]
+  },
+  "ca_profile": {
+    "jurisdiction": "CA",
+    "currency": "CAD",
+    "slope_2y10y_bps": 17.0,
+    "slope_3m10y_bps": -70.0,
+    "slope_5y30y_bps": 54.0,
+    "curve_regime": "BEAR_STEEPENER",
+    "nss_params": {
+      "beta0_level": 3.942,
+      "beta1_slope": 0.4108,
+      "beta2_curvature": -3.1942,
+      "tau": 1.8132
+    },
+    "term_premium_decompositions": [
+      {
+        "tenor": "2Y",
+        "maturity_years": 2.0,
+        "nominal_yield_pct": 3.28,
+        "risk_neutral_rate_path_pct": 3.42,
+        "term_premium_pct": -0.14,
+        "term_premium_bps": -14.0,
+        "ten_day_change_bps": 1.2
+      },
+      {
+        "tenor": "5Y",
+        "maturity_years": 5.0,
+        "nominal_yield_pct": 3.18,
+        "risk_neutral_rate_path_pct": 3.26,
+        "term_premium_pct": -0.08,
+        "term_premium_bps": -8.0,
+        "ten_day_change_bps": 3.5
+      },
+      {
+        "tenor": "10Y",
+        "maturity_years": 10.0,
+        "nominal_yield_pct": 3.45,
+        "risk_neutral_rate_path_pct": 3.25,
+        "term_premium_pct": 0.2,
+        "term_premium_bps": 20.0,
+        "ten_day_change_bps": 6.0
+      },
+      {
+        "tenor": "30Y",
+        "maturity_years": 30.0,
+        "nominal_yield_pct": 3.72,
+        "risk_neutral_rate_path_pct": 3.3,
+        "term_premium_pct": 0.42,
+        "term_premium_bps": 42.0,
+        "ten_day_change_bps": 8.2
+      }
+    ],
+    "yield_points": [
+      {
+        "tenor": "1M",
+        "maturity_years": 0.0833,
+        "ust_yield_pct": 4.88,
+        "goc_yield_pct": 4.22,
+        "spread_bps": -66.0
+      },
+      {
+        "tenor": "3M",
+        "maturity_years": 0.25,
+        "ust_yield_pct": 4.82,
+        "goc_yield_pct": 4.15,
+        "spread_bps": -67.0
+      },
+      {
+        "tenor": "6M",
+        "maturity_years": 0.5,
+        "ust_yield_pct": 4.65,
+        "goc_yield_pct": 3.98,
+        "spread_bps": -67.0
+      },
+      {
+        "tenor": "1Y",
+        "maturity_years": 1.0,
+        "ust_yield_pct": 4.35,
+        "goc_yield_pct": 3.65,
+        "spread_bps": -70.0
+      },
+      {
+        "tenor": "2Y",
+        "maturity_years": 2.0,
+        "ust_yield_pct": 4.05,
+        "goc_yield_pct": 3.28,
+        "spread_bps": -77.0
+      },
+      {
+        "tenor": "3Y",
+        "maturity_years": 3.0,
+        "ust_yield_pct": 3.95,
+        "goc_yield_pct": 3.2,
+        "spread_bps": -75.0
+      },
+      {
+        "tenor": "5Y",
+        "maturity_years": 5.0,
+        "ust_yield_pct": 3.9,
+        "goc_yield_pct": 3.18,
+        "spread_bps": -72.0
+      },
+      {
+        "tenor": "7Y",
+        "maturity_years": 7.0,
+        "ust_yield_pct": 4.02,
+        "goc_yield_pct": 3.32,
+        "spread_bps": -70.0
+      },
+      {
+        "tenor": "10Y",
+        "maturity_years": 10.0,
+        "ust_yield_pct": 4.18,
+        "goc_yield_pct": 3.45,
+        "spread_bps": -73.0
+      },
+      {
+        "tenor": "20Y",
+        "maturity_years": 20.0,
+        "ust_yield_pct": 4.45,
+        "goc_yield_pct": 3.75,
+        "spread_bps": -70.0
+      },
+      {
+        "tenor": "30Y",
+        "maturity_years": 30.0,
+        "ust_yield_pct": 4.42,
+        "goc_yield_pct": 3.72,
+        "spread_bps": -70.0
+      }
+    ]
+  },
+  "cross_border_yield_curve": [
+    {
+      "tenor": "1M",
+      "maturity_years": 0.0833,
+      "ust_yield_pct": 4.88,
+      "goc_yield_pct": 4.22,
+      "spread_bps": -66.0
+    },
+    {
+      "tenor": "3M",
+      "maturity_years": 0.25,
+      "ust_yield_pct": 4.82,
+      "goc_yield_pct": 4.15,
+      "spread_bps": -67.0
+    },
+    {
+      "tenor": "6M",
+      "maturity_years": 0.5,
+      "ust_yield_pct": 4.65,
+      "goc_yield_pct": 3.98,
+      "spread_bps": -67.0
+    },
+    {
+      "tenor": "1Y",
+      "maturity_years": 1.0,
+      "ust_yield_pct": 4.35,
+      "goc_yield_pct": 3.65,
+      "spread_bps": -70.0
+    },
+    {
+      "tenor": "2Y",
+      "maturity_years": 2.0,
+      "ust_yield_pct": 4.05,
+      "goc_yield_pct": 3.28,
+      "spread_bps": -77.0
+    },
+    {
+      "tenor": "3Y",
+      "maturity_years": 3.0,
+      "ust_yield_pct": 3.95,
+      "goc_yield_pct": 3.2,
+      "spread_bps": -75.0
+    },
+    {
+      "tenor": "5Y",
+      "maturity_years": 5.0,
+      "ust_yield_pct": 3.9,
+      "goc_yield_pct": 3.18,
+      "spread_bps": -72.0
+    },
+    {
+      "tenor": "7Y",
+      "maturity_years": 7.0,
+      "ust_yield_pct": 4.02,
+      "goc_yield_pct": 3.32,
+      "spread_bps": -70.0
+    },
+    {
+      "tenor": "10Y",
+      "maturity_years": 10.0,
+      "ust_yield_pct": 4.18,
+      "goc_yield_pct": 3.45,
+      "spread_bps": -73.0
+    },
+    {
+      "tenor": "20Y",
+      "maturity_years": 20.0,
+      "ust_yield_pct": 4.45,
+      "goc_yield_pct": 3.75,
+      "spread_bps": -70.0
+    },
+    {
+      "tenor": "30Y",
+      "maturity_years": 30.0,
+      "ust_yield_pct": 4.42,
+      "goc_yield_pct": 3.72,
+      "spread_bps": -70.0
+    }
+  ],
+  "ten_year_spread_bps": -73.0,
+  "two_year_spread_bps": -77.0,
+  "disclaimers": [
+    "Sovereign yield curve models, Nelson-Siegel parameters, and Adrian-Crump-Moench (ACM) term premium estimates represent quantitative macroeconomic simulations derived from public benchmark debt securities.",
+    "Provided strictly for impersonal decision-support research. Does not constitute sovereign bond brokerage, fixed-income portfolio management, or debt issuance advice under CSA Staff Notice 31-369 and SEC Publisher Exclusion \u00a7202(a)(11)(D).",
+    "Term premium decompositions rely on econometric affine term structure specifications. Implied rate expectations and duration metrics fluctuate continuously with macroeconomic data releases, inflation reports, and central bank communications."
+  ]
+}

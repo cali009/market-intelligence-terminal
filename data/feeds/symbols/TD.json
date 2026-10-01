@@ -5,7 +5,7 @@
   "currency": "CAD",
   "name": "Toronto-Dominion Bank",
   "as_of_date": "2026-10-01",
-  "generated_at": "2026-10-01T06:55:50.898351+00:00",
+  "generated_at": "2026-10-01T18:30:15.654713+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-28",
     "open": 170.66000366210938,
@@ -358,7 +358,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 14,
     "gjr_garch_gamma": 0.24,
-    "last_updated": "2026-10-01T06:55:56.397330+00:00"
+    "last_updated": "2026-10-01T18:30:19.607524+00:00"
   },
   "conformal_bounds": {
     "symbol": "TD",
@@ -375,7 +375,7 @@
     "adapted_alpha": 0.105,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-10-01T06:55:56.413573+00:00"
+    "calibrated_at": "2026-10-01T18:30:19.618224+00:00"
   },
   "cross_border_parity": {
     "tsx_symbol": "TD",
@@ -402,21 +402,21 @@
   },
   "shap_attribution": {
     "symbol": "TD",
-    "base_value": 51.11,
-    "model_score": 59.2,
+    "base_value": 50.95,
+    "model_score": 59.1,
     "top_drivers": [
       {
         "feature_name": "proximity_52w",
         "feature_label": "Proximity to 52W High",
         "feature_value": -0.033,
-        "shap_contribution": 5.19,
+        "shap_contribution": 4.85,
         "direction": "POSITIVE"
       },
       {
         "feature_name": "mtf_confluence",
         "feature_label": "Multi-Timeframe Confluence",
         "feature_value": 85.0,
-        "shap_contribution": 3.27,
+        "shap_contribution": 2.93,
         "direction": "POSITIVE"
       },
       {
@@ -429,45 +429,45 @@
     ],
     "top_detractors": [
       {
-        "feature_name": "conformal_rr",
-        "feature_label": "Certified Conformal R:R",
-        "feature_value": 1.45,
-        "shap_contribution": -0.69,
+        "feature_name": "fractional_d",
+        "feature_label": "Fractional Memory Order d*",
+        "feature_value": 0.56,
+        "shap_contribution": -0.46,
         "direction": "NEGATIVE"
       },
       {
         "feature_name": "trend_sma200_ratio",
         "feature_label": "Trend vs 200DMA",
         "feature_value": 1.14,
-        "shap_contribution": -0.46,
+        "shap_contribution": -0.32,
         "direction": "NEGATIVE"
       },
       {
-        "feature_name": "fractional_d",
-        "feature_label": "Fractional Memory Order d*",
-        "feature_value": 0.56,
-        "shap_contribution": -0.32,
+        "feature_name": "conformal_rr",
+        "feature_label": "Certified Conformal R:R",
+        "feature_value": 1.45,
+        "shap_contribution": -0.13,
         "direction": "NEGATIVE"
       }
     ],
     "all_attributions": {
-      "trend_sma200_ratio": -0.46,
-      "momentum_rsi": -0.23,
-      "proximity_52w": 5.19,
-      "mtf_confluence": 3.27,
+      "trend_sma200_ratio": -0.32,
+      "momentum_rsi": -0.02,
+      "proximity_52w": 4.85,
+      "mtf_confluence": 2.93,
       "roic_pct": 0.0,
       "pe_multiple": 0.0,
       "hurst_persistence": 1.13,
-      "fractional_d": -0.32,
+      "fractional_d": -0.46,
       "amihud_illiquidity": 0.0,
-      "conformal_rr": -0.69,
+      "conformal_rr": -0.13,
       "dual_basis_bps": 0.18
     }
   },
   "idiosyncratic_risk": {
     "symbol": "TD",
-    "risk_posture": "ELEVATED_CAUTION",
-    "position_size_multiplier": 0.75,
+    "risk_posture": "NORMAL_EQUILIBRIUM",
+    "position_size_multiplier": 1.0,
     "hurst_flip_alert": false,
     "hurst_exponent": 0.5,
     "conformal_stop_price": 104.7,
@@ -477,9 +477,9 @@
     "cross_border_parity_stretch": false,
     "basis_spread_bps": 1.8,
     "basis_zscore": -0.14,
-    "shap_detractor_drag_pts": -1.47,
-    "primary_risk_driver": "Minor Detractor Drag",
-    "actionable_mitigation": "Minor basis disparity or factor detractor identified; 25% exposure haircut recommended under risk rules.",
+    "shap_detractor_drag_pts": -0.91,
+    "primary_risk_driver": "Stable Quantitative Fingerprint",
+    "actionable_mitigation": "All idiosyncratic bounds intact; nominal position sizing permitted under risk framework.",
     "as_of_date": "2026-09-25"
   },
   "score_record": {
@@ -1613,7 +1613,7 @@
     "country": "CA",
     "currency": "CAD",
     "as_of_date": "2026-10-01",
-    "generated_at": "2026-10-01T06:55:56.784101+00:00",
+    "generated_at": "2026-10-01T18:30:19.752180+00:00",
     "conviction_grade": "C",
     "aligned_layers_count": 3,
     "formatted_card": "TICKER: TD\nREGIME: WEAK_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 9.4%)\nPATTERN TYPE: Archetype C: Chartered Banks (Regulated Yield-Drift) \u2014 Institutional Accumulation\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BULLISH \u2014 Stacked MAs (Bullish Stack), RSI 51.7 equilibrium, price structure holding above key support.\n  Fundamental:  6.0/10 \u2014 Stable financial quality (Score 6.0/10); P/E 70.49x balanced by operational cash flow.\n  Sentiment:    0.00 (NEUTRAL) \u2014 Routine regulatory reporting schedule; no material catalyst in last 30 days.\n  Historical:   61.5% Win Rate (10 sample size, E[R]: +0.58R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $169.77 \u2013 $172.32\n  Entry trigger:  Volume POC reclaim ($170.10) with Chaikin Money Flow sustaining above +0.08.\n  Stop loss:      $165.80 (2.3% below entry)\n  Target 1 (T1):  $174.53 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $186.56 | Est. 24 days | Take 40%\n  Target 3 (T3):  $186.47 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 3.01\n  Position size:  125 shares on $100,000 portfolio risking 1% ($496.25)\n  Execution TCA:  DIRECT_MARKET (1 slice) | Est. Fill: $169.62 | Slippage: +1.2 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: C-Grade\nTRADE THESIS: TD exhibits high structural confluence with Institutional Accumulation aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 9.4%), measured support at $166.28 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $165.80 or two consecutive closes back below $166.28 immediately invalidates the trade.",
@@ -1742,21 +1742,21 @@
       "action": "GATED_EXCLUDE",
       "size_multiplier": 0.0,
       "primary_driver": "mom_12_1m (+0.53, impact -)",
-      "calibrated_at": "2026-10-01T06:55:57.079959+00:00"
+      "calibrated_at": "2026-10-01T18:30:20.031340+00:00"
     },
     "microstructure_metrics": {
       "symbol": "TD",
-      "timestamp": "2026-10-01T06:55:57.081786+00:00",
-      "cvd_total": 4329,
-      "cvd_1m_delta": 4115,
-      "cvd_5m_delta": 4329,
-      "order_book_imbalance": -0.0408,
-      "kyle_lambda": 0.0377,
-      "rvol_1m": 1.82,
+      "timestamp": "2026-10-01T18:30:20.033166+00:00",
+      "cvd_total": 3102,
+      "cvd_1m_delta": 2722,
+      "cvd_5m_delta": 3102,
+      "order_book_imbalance": 0.0445,
+      "kyle_lambda": 0.018,
+      "rvol_1m": 1.54,
       "absorption_signal": "NONE",
       "liquidity_state": "NORMAL",
-      "buyer_volume_pct": 75.4,
-      "seller_volume_pct": 24.6
+      "buyer_volume_pct": 66.1,
+      "seller_volume_pct": 33.9
     }
   },
   "disclaimers": {

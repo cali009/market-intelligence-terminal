@@ -5,7 +5,7 @@
   "currency": "CAD",
   "name": "Canadian Natural Resources",
   "as_of_date": "2026-10-01",
-  "generated_at": "2026-10-01T06:55:50.898351+00:00",
+  "generated_at": "2026-10-01T18:26:05.728790+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-28",
     "open": 68.01000213623047,
@@ -358,7 +358,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 14,
     "gjr_garch_gamma": 0.22,
-    "last_updated": "2026-10-01T06:55:59.499894+00:00"
+    "last_updated": "2026-10-01T18:26:12.429039+00:00"
   },
   "conformal_bounds": {
     "symbol": "CNQ",
@@ -375,7 +375,7 @@
     "adapted_alpha": 0.105,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-10-01T06:55:59.515826+00:00"
+    "calibrated_at": "2026-10-01T18:26:12.439634+00:00"
   },
   "cross_border_parity": {
     "tsx_symbol": "CNQ",
@@ -402,28 +402,28 @@
   },
   "shap_attribution": {
     "symbol": "CNQ",
-    "base_value": 51.11,
+    "base_value": 50.95,
     "model_score": 55.0,
     "top_drivers": [
       {
         "feature_name": "proximity_52w",
         "feature_label": "Proximity to 52W High",
         "feature_value": -0.069,
-        "shap_contribution": 6.1,
+        "shap_contribution": 5.79,
         "direction": "POSITIVE"
       },
       {
         "feature_name": "fractional_d",
         "feature_label": "Fractional Memory Order d*",
         "feature_value": 0.48,
-        "shap_contribution": 0.63,
+        "shap_contribution": 0.77,
         "direction": "POSITIVE"
       },
       {
         "feature_name": "conformal_rr",
         "feature_label": "Certified Conformal R:R",
         "feature_value": 1.12,
-        "shap_contribution": 0.18,
+        "shap_contribution": 0.23,
         "direction": "POSITIVE"
       }
     ],
@@ -432,35 +432,35 @@
         "feature_name": "mtf_confluence",
         "feature_label": "Multi-Timeframe Confluence",
         "feature_value": 60.0,
-        "shap_contribution": -2.0,
+        "shap_contribution": -1.75,
         "direction": "NEGATIVE"
       },
       {
         "feature_name": "hurst_persistence",
         "feature_label": "Lo HAC Hurst Exponent",
         "feature_value": 0.48,
-        "shap_contribution": -0.89,
+        "shap_contribution": -0.91,
         "direction": "NEGATIVE"
       },
       {
-        "feature_name": "momentum_rsi",
-        "feature_label": "14-Day RSI Momentum",
-        "feature_value": 45.2,
-        "shap_contribution": -0.3,
+        "feature_name": "trend_sma200_ratio",
+        "feature_label": "Trend vs 200DMA",
+        "feature_value": 1.114,
+        "shap_contribution": -0.13,
         "direction": "NEGATIVE"
       }
     ],
     "all_attributions": {
-      "trend_sma200_ratio": 0.0,
-      "momentum_rsi": -0.3,
-      "proximity_52w": 6.1,
-      "mtf_confluence": -2.0,
+      "trend_sma200_ratio": -0.13,
+      "momentum_rsi": -0.1,
+      "proximity_52w": 5.79,
+      "mtf_confluence": -1.75,
       "roic_pct": 0.0,
       "pe_multiple": 0.0,
-      "hurst_persistence": -0.89,
-      "fractional_d": 0.63,
+      "hurst_persistence": -0.91,
+      "fractional_d": 0.77,
       "amihud_illiquidity": 0.0,
-      "conformal_rr": 0.18,
+      "conformal_rr": 0.23,
       "dual_basis_bps": 0.18
     }
   },
@@ -477,8 +477,8 @@
     "cross_border_parity_stretch": false,
     "basis_spread_bps": 16.2,
     "basis_zscore": 1.09,
-    "shap_detractor_drag_pts": -3.19,
-    "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-3.19 pts)",
+    "shap_detractor_drag_pts": -2.79,
+    "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-2.79 pts)",
     "actionable_mitigation": "Minor basis disparity or factor detractor identified; 25% exposure haircut recommended under risk rules.",
     "as_of_date": "2026-09-25"
   },
@@ -1783,7 +1783,7 @@
     "country": "CA",
     "currency": "CAD",
     "as_of_date": "2026-10-01",
-    "generated_at": "2026-10-01T06:55:59.858098+00:00",
+    "generated_at": "2026-10-01T18:26:12.718803+00:00",
     "conviction_grade": "C",
     "aligned_layers_count": 4,
     "formatted_card": "TICKER: CNQ\nREGIME: WEAK_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 9.4%)\nPATTERN TYPE: Archetype B: Natural Resources & Energy (Cycle Mean-Reversion) \u2014 Earnings-Driven\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BEARISH \u2014 Breakdown below moving average cluster; negative CMF (-0.31) and deteriorating price structure.\n  Fundamental:  9.5/10 \u2014 ROIC 17.7%, Debt/Equity 0.37, operating margin 34.2%; robust institutional quality balance sheet.\n  Sentiment:    +0.50 (BULLISH) \u2014 CNQ Form 6-K Cross-Border Continuous Disclosure\n  Historical:   58.2% Win Rate (10 sample size, E[R]: +0.48R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $67.51 \u2013 $68.52\n  Entry trigger:  Price holds structural pivot ($66.24) followed by volume-backed expansion above $67.51.\n  Stop loss:      $64.87 (3.9% below entry)\n  Target 1 (T1):  $70.68 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $74.11 | Est. 24 days | Take 40%\n  Target 3 (T3):  $78.60 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.32\n  Position size:  189 shares on $100,000 portfolio risking 1% ($498.96)\n  Execution TCA:  TWAP (5 slices) | Est. Fill: $67.39 | Slippage: +1.6 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: C-Grade\nTRADE THESIS: CNQ exhibits high structural confluence with Earnings-Driven aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 9.4%), measured support at $66.24 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $64.87 or two consecutive closes back below $66.24 immediately invalidates the trade.",
@@ -1912,21 +1912,21 @@
       "action": "MODERATE_PROCEED",
       "size_multiplier": 0.85,
       "primary_driver": "mom_12_1m (+0.52, impact -)",
-      "calibrated_at": "2026-10-01T06:56:00.167883+00:00"
+      "calibrated_at": "2026-10-01T18:26:12.961656+00:00"
     },
     "microstructure_metrics": {
       "symbol": "CNQ",
-      "timestamp": "2026-10-01T06:56:00.169879+00:00",
-      "cvd_total": -5825,
-      "cvd_1m_delta": -5629,
-      "cvd_5m_delta": -5825,
-      "order_book_imbalance": 0.036,
-      "kyle_lambda": 0.0151,
-      "rvol_1m": 2.13,
+      "timestamp": "2026-10-01T18:26:12.963342+00:00",
+      "cvd_total": -11193,
+      "cvd_1m_delta": -11015,
+      "cvd_5m_delta": -11193,
+      "order_book_imbalance": -0.0418,
+      "kyle_lambda": 0.0036,
+      "rvol_1m": 3.2,
       "absorption_signal": "NONE",
       "liquidity_state": "NORMAL",
-      "buyer_volume_pct": 26.2,
-      "seller_volume_pct": 73.8
+      "buyer_volume_pct": 15.3,
+      "seller_volume_pct": 84.7
     }
   },
   "disclaimers": {

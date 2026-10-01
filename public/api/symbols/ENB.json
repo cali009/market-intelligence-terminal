@@ -5,7 +5,7 @@
   "currency": "CAD",
   "name": "Enbridge Inc.",
   "as_of_date": "2026-10-01",
-  "generated_at": "2026-10-01T06:55:50.898351+00:00",
+  "generated_at": "2026-10-01T18:26:05.728790+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-28",
     "open": 66.63999938964844,
@@ -355,7 +355,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 16,
     "gjr_garch_gamma": 0.22,
-    "last_updated": "2026-10-01T06:55:57.939167+00:00"
+    "last_updated": "2026-10-01T18:26:11.024650+00:00"
   },
   "conformal_bounds": {
     "symbol": "ENB",
@@ -372,7 +372,7 @@
     "adapted_alpha": 0.235,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-10-01T06:55:57.960323+00:00"
+    "calibrated_at": "2026-10-01T18:26:11.034343+00:00"
   },
   "cross_border_parity": {
     "tsx_symbol": "ENB",
@@ -399,21 +399,21 @@
   },
   "shap_attribution": {
     "symbol": "ENB",
-    "base_value": 51.11,
-    "model_score": 31.0,
+    "base_value": 50.95,
+    "model_score": 30.1,
     "top_drivers": [
       {
         "feature_name": "hurst_persistence",
         "feature_label": "Lo HAC Hurst Exponent",
         "feature_value": 0.408,
-        "shap_contribution": 1.86,
+        "shap_contribution": 1.3,
         "direction": "POSITIVE"
       },
       {
         "feature_name": "dual_basis_bps",
         "feature_label": "Cross-Border Basis Spread",
         "feature_value": 2.5,
-        "shap_contribution": 1.24,
+        "shap_contribution": 1.1,
         "direction": "POSITIVE"
       }
     ],
@@ -422,36 +422,36 @@
         "feature_name": "proximity_52w",
         "feature_label": "Proximity to 52W High",
         "feature_value": -0.174,
-        "shap_contribution": -14.73,
+        "shap_contribution": -14.97,
         "direction": "NEGATIVE"
       },
       {
         "feature_name": "trend_sma200_ratio",
         "feature_label": "Trend vs 200DMA",
         "feature_value": 0.921,
-        "shap_contribution": -3.02,
+        "shap_contribution": -3.29,
         "direction": "NEGATIVE"
       },
       {
         "feature_name": "momentum_rsi",
         "feature_label": "14-Day RSI Momentum",
         "feature_value": 34.7,
-        "shap_contribution": -2.85,
+        "shap_contribution": -2.46,
         "direction": "NEGATIVE"
       }
     ],
     "all_attributions": {
-      "trend_sma200_ratio": -3.02,
-      "momentum_rsi": -2.85,
-      "proximity_52w": -14.73,
-      "mtf_confluence": -2.27,
+      "trend_sma200_ratio": -3.29,
+      "momentum_rsi": -2.46,
+      "proximity_52w": -14.97,
+      "mtf_confluence": -2.25,
       "roic_pct": 0.0,
       "pe_multiple": 0.0,
-      "hurst_persistence": 1.86,
-      "fractional_d": -0.21,
+      "hurst_persistence": 1.3,
+      "fractional_d": 0.0,
       "amihud_illiquidity": 0.0,
-      "conformal_rr": -0.16,
-      "dual_basis_bps": 1.24
+      "conformal_rr": -0.27,
+      "dual_basis_bps": 1.1
     }
   },
   "idiosyncratic_risk": {
@@ -467,7 +467,7 @@
     "cross_border_parity_stretch": false,
     "basis_spread_bps": 2.5,
     "basis_zscore": -0.13,
-    "shap_detractor_drag_pts": -20.6,
+    "shap_detractor_drag_pts": -20.72,
     "primary_risk_driver": "Hurst Memory Flip (H=0.408)",
     "actionable_mitigation": "Idiosyncratic memory flip or volatility expansion active; 50% exposure haircut recommended by systematic risk budget.",
     "as_of_date": "2026-09-25"
@@ -1679,7 +1679,7 @@
     "country": "CA",
     "currency": "CAD",
     "as_of_date": "2026-10-01",
-    "generated_at": "2026-10-01T06:55:58.292737+00:00",
+    "generated_at": "2026-10-01T18:26:11.302489+00:00",
     "conviction_grade": "C",
     "aligned_layers_count": 3,
     "formatted_card": "TICKER: ENB\nREGIME: WEAK_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 9.4%)\nPATTERN TYPE: Archetype B: Natural Resources & Energy (Cycle Mean-Reversion) \u2014 Mean-Reversion\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BEARISH \u2014 Breakdown below moving average cluster; negative CMF (-0.15) and deteriorating price structure.\n  Fundamental:  7.0/10 \u2014 ROIC 2.3%, Debt/Equity 0.01, operating margin 44.1%; robust institutional quality balance sheet.\n  Sentiment:    +1.00 (BULLISH) \u2014 ENB SEC Form 8-K Filing \u2014 Other Events of Substantial Importance\n  Historical:   50.8% Win Rate (10 sample size, E[R]: +0.28R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $67.54 \u2013 $68.55\n  Entry trigger:  Bullish rejection hammer wick at lower support ($66.06) with RSI recovering above 35.\n  Stop loss:      $65.64 (2.8% below entry)\n  Target 1 (T1):  $69.82 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $72.29 | Est. 24 days | Take 40%\n  Target 3 (T3):  $75.52 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.32\n  Position size:  263 shares on $100,000 portfolio risking 1% ($499.70)\n  Execution TCA:  TWAP (5 slices) | Est. Fill: $66.59 | Slippage: +1.6 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: C-Grade\nTRADE THESIS: ENB exhibits high structural confluence with Mean-Reversion aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 9.4%), measured support at $66.06 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $65.64 or two consecutive closes back below $66.06 immediately invalidates the trade.",
@@ -1798,7 +1798,7 @@
       "invalidation_rule": "A daily closing price below $65.64 or two consecutive closes back below $66.06 immediately invalidates the trade.",
       "trade_thesis": "ENB exhibits high structural confluence with Mean-Reversion aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 9.4%), measured support at $66.06 offers asymmetric risk/reward into upper channel resistance.",
       "tca_execution_strategy": "TWAP",
-      "tca_expected_slippage_bps": 1.6,
+      "tca_expected_slippage_bps": 1.58,
       "tca_effective_fill_price": 66.59,
       "tca_optimal_slices": 5
     },
@@ -1808,21 +1808,21 @@
       "action": "HIGH_CONVICTION_PROCEED",
       "size_multiplier": 1.0,
       "primary_driver": "mom_3m (-0.17, impact -)",
-      "calibrated_at": "2026-10-01T06:55:58.597899+00:00"
+      "calibrated_at": "2026-10-01T18:26:11.570308+00:00"
     },
     "microstructure_metrics": {
       "symbol": "ENB",
-      "timestamp": "2026-10-01T06:55:58.599808+00:00",
-      "cvd_total": -1114,
-      "cvd_1m_delta": -735,
-      "cvd_5m_delta": -1114,
-      "order_book_imbalance": 0.0904,
-      "kyle_lambda": 0.063,
-      "rvol_1m": 1.15,
+      "timestamp": "2026-10-01T18:26:11.571865+00:00",
+      "cvd_total": 2922,
+      "cvd_1m_delta": 2739,
+      "cvd_5m_delta": 2922,
+      "order_book_imbalance": -0.0846,
+      "kyle_lambda": 0.0229,
+      "rvol_1m": 1.55,
       "absorption_signal": "NONE",
       "liquidity_state": "NORMAL",
-      "buyer_volume_pct": 41.9,
-      "seller_volume_pct": 58.1
+      "buyer_volume_pct": 65.1,
+      "seller_volume_pct": 34.9
     }
   },
   "disclaimers": {

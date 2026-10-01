@@ -53,6 +53,7 @@ from src.engine.factor_risk import factor_risk_engine
 from src.engine.factor_attribution import factor_attribution_engine
 from src.engine.portfolio_bayesian import portfolio_bayesian_engine
 from src.engine.cross_border_fx import cross_border_fx_engine
+from src.engine.sovereign_yield_curve import sovereign_yield_curve_engine
 from src.engine.options_surface_gex import cross_border_options_engine
 
 FEEDS_DIR = DATA_DIR / "feeds"
@@ -696,6 +697,9 @@ class EdgeExporter:
 
             # Phase 30: Options Volatility Surface & GEX Intelligence Feed
             cross_border_options_engine.export_feed(d_dir / "options_intelligence.json")
+
+            # Phase 31: Sovereign Yield Curve & Term Premium Decomposition Feed
+            sovereign_yield_curve_engine.export_feed(d_dir / "sovereign_yield_curve.json")
 
         return {
             "dist_files": 30,

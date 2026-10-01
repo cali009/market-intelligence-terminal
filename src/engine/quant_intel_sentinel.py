@@ -293,6 +293,7 @@ class QuantIntelSentinel:
         bayesian_metrics: Optional[Dict[str, Any]] = None,
         cross_border_fx_metrics: Optional[Dict[str, Any]] = None,
         options_intelligence_metrics: Optional[Dict[str, Any]] = None,
+        sovereign_yield_metrics: Optional[Dict[str, Any]] = None,
     ) -> List[InvalidationAlert]:
         """
         Evaluates portfolio-level risk invariants:
@@ -648,6 +649,67 @@ class QuantIntelSentinel:
                             timestamp=now_str,
                         )
                     )
+
+        # 22. PREDICATE: SOVEREIGN_YIELD_CURVE_INVERSION (2Y10Y < -50 bps or 3M10Y < -75 bps)
+        if sovereign_yield_metrics:
+            for key, label in (("us_profile", "US"), ("ca_profile", "CA")):
+                prof = sovereign_yield_metrics.get(key)
+                if not prof:
+                    continue
+                slope_2y10y = prof.get("slope_2y10y_bps", 0.0) if isinstance(prof, dict) else getattr(prof, "slope_2y10y_bps", 0.0)
+                slope_3m10y = prof.get("slope_3m10y_bps", 0.0) if isinstance(prof, dict) else getattr(prof, "slope_3m10y_bps", 0.0)
+                if slope_2y10y < -50.0 or slope_3m10y < -75.0:
+                    headline = f"Sovereign Yield Curve Inversion Warning: {label} ({slope_2y10y:.1f} bps)"
+                    body = (
+                        f"{label} sovereign yield curve inverted with 2Y10Y slope reaching {slope_2y10y:.1f} bps "
+                        f"and 3M10Y slope at {slope_3m10y:.1f} bps, breaching the -50.0/-75.0 bps hazard boundaries. "
+                        "Late-cycle economic tightening and elevated recession risk indicated."
+                    )
+                    alerts.append(
+                        InvalidationAlert(
+                            symbol=f"{label}_SOVEREIGN",
+                            predicate_type="SOVEREIGN_YIELD_CURVE_INVERSION",
+                            severity="WARNING",
+                            trigger_level=-50.0,
+                            current_price=round(slope_2y10y, 1),
+                            headline=headline,
+                            body=body,
+                            action_required="DEFENSIVE_DURATION_BIAS",
+                            timestamp=now_str,
+                        )
+                    )
+
+            # 23. PREDICATE: TERM_PREMIUM_SHOCK (10Y ACM term premium +35 bps over 10 sessions)
+            for key, label in (("us_profile", "US"), ("ca_profile", "CA")):
+                prof = sovereign_yield_metrics.get(key)
+                if not prof:
+                    continue
+                tps = prof.get("term_premium_decompositions", []) if isinstance(prof, dict) else getattr(prof, "term_premium_decompositions", [])
+                for tp in tps:
+                    tenor = tp.get("tenor") if isinstance(tp, dict) else getattr(tp, "tenor", "")
+                    if tenor != "10Y":
+                        continue
+                    chg = tp.get("ten_day_change_bps", 0.0) if isinstance(tp, dict) else getattr(tp, "ten_day_change_bps", 0.0)
+                    if chg > 35.0:
+                        headline = f"Term Premium Expansion Shock: {label} 10Y (+{chg:.1f} bps)"
+                        body = (
+                            f"10-year {label} sovereign term premium expanded by +{chg:.1f} bps over 10 sessions, "
+                            "exceeding the +35.0 bps shock threshold. Upward discount rate pressure and equity "
+                            "valuation multiple compression indicated."
+                        )
+                        alerts.append(
+                            InvalidationAlert(
+                                symbol=f"{label}_SOVEREIGN",
+                                predicate_type="TERM_PREMIUM_SHOCK",
+                                severity="WARNING",
+                                trigger_level=35.0,
+                                current_price=round(chg, 1),
+                                headline=headline,
+                                body=body,
+                                action_required="COMPRESS_EQUITY_VALUATION_MULTIPLES",
+                                timestamp=now_str,
+                            )
+                        )
 
         return alerts
 

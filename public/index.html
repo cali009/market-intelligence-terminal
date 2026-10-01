@@ -1010,6 +1010,7 @@
             <button class="tab-btn" data-tab="portfoliohrp" onclick="switchTab('portfoliohrp', event)">⚖️ HRP Risk &amp; Bayesian Lab</button>
             <button class="tab-btn" data-tab="crossborderfx" onclick="switchTab('crossborderfx', event)">💱 Cross-Border FX &amp; Arbitrage</button>
             <button class="tab-btn" data-tab="optionssurface" onclick="switchTab('optionssurface', event)">📊 Options &amp; Volatility Surface Lab</button>
+            <button class="tab-btn" data-tab="sovereigncurve" onclick="switchTab('sovereigncurve', event)">📈 Sovereign Curve &amp; Term Premium</button>
             <button class="tab-btn" data-tab="scanners" onclick="switchTab('scanners', event)">TAC-15 Market Scanners</button>
             <button class="tab-btn" data-tab="signals" onclick="switchTab('signals', event)">Research Signal Plans</button>
             <button class="tab-btn" data-tab="backtest" onclick="switchTab('backtest', event)">Backtest Lab & Strategy Performance</button>
@@ -1314,6 +1315,43 @@
             <!-- Dynamic Workstation Container -->
             <div id="optionsSurfaceContainer">
                 <div style="text-align: center; padding: 40px; color: var(--text-muted);"><div class="spinner" style="margin-right: 8px;"></div> Loading Volatility Surfaces, Net Gamma Profiles, and Skew Analytics...</div>
+            </div>
+        </div>
+
+        <!-- Tab: Sovereign Yield Curve & Term Premium Decomposition (Phase 31) -->
+        <div id="tab-sovereigncurve" style="display: none;">
+            <div class="scanners-header" style="margin-bottom: 20px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+                    <div>
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px; flex-wrap: wrap;">
+                            <h2 style="font-size: 18px; font-weight: 800; color: var(--text-primary);">📈 Sovereign Yield Curve &amp; Term Premium Lab</h2>
+                            <span class="exchange-tag" style="background: rgba(59, 130, 246, 0.15); color: var(--accent-blue); border-color: rgba(59, 130, 246, 0.3); font-weight: 700;">NELSON-SIEGEL FIT</span>
+                            <span class="exchange-tag" style="background: rgba(139, 92, 246, 0.15); color: var(--accent-purple); border-color: rgba(139, 92, 246, 0.3); font-weight: 700;">ACM TERM PREMIUM</span>
+                            <span class="exchange-tag" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b; border-color: rgba(245, 158, 11, 0.3); font-weight: 700;">SLOPE REGIMES</span>
+                            <span class="exchange-tag" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-green); border-color: rgba(16, 185, 129, 0.3); font-weight: 700;">UST vs GOC</span>
+                        </div>
+                        <p style="font-size: 12px; color: var(--text-muted);">
+                            Nelson-Siegel-Svensson parametric curve fitting across 11 maturities · Adrian-Crump-Moench (ACM) term premium &amp; rate-path decomposition · 2Y10Y / 3M10Y / 5Y30Y slope regime classification · GoC vs US Treasury cross-border spread term structure
+                        </p>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px; background: var(--bg-card); padding: 6px 12px; border-radius: 8px; border: 1px solid var(--border-color); flex-wrap: wrap;">
+                        <span style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Jurisdiction:</span>
+                        <div style="display: flex; gap: 4px;">
+                            <button class="filter-btn active" id="btnYieldJurUS" onclick="setYieldJurisdiction('US')">🇺🇸 US Treasuries</button>
+                            <button class="filter-btn" id="btnYieldJurCA" onclick="setYieldJurisdiction('CA')">🇨🇦 GoC Bonds</button>
+                        </div>
+                        <span style="font-size: 11px; font-weight: 700; color: var(--accent-green); display: flex; align-items: center; gap: 6px;" id="sovereignSentinelBadge">
+                            <span style="display: inline-block; width: 8px; height: 8px; background: var(--accent-green); border-radius: 50%; box-shadow: 0 0 8px var(--accent-green);"></span>
+                            CURVE NOMINAL
+                        </span>
+                        <button class="filter-btn" onclick="refreshSovereignData()" style="padding: 2px 8px; font-size: 11px;">🔄 Refresh</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dynamic Workstation Container -->
+            <div id="sovereignCurveContainer">
+                <div style="text-align: center; padding: 40px; color: var(--text-muted);"><div class="spinner" style="margin-right: 8px;"></div> Loading Nelson-Siegel curves, ACM term premium decompositions, and slope regimes...</div>
             </div>
         </div>
 
@@ -10209,6 +10247,241 @@
             `;
         }
 
+        // =========================================================================
+        // PHASE 31: SOVEREIGN YIELD CURVE & TERM PREMIUM DECOMPOSITION LAB
+        // =========================================================================
+        let sovereignBundle = null;
+        let activeYieldJurisdiction = 'US'; // 'US' | 'CA'
+
+        async function loadSovereignCurveAndRender() {
+            try {
+                const res = await fetch('/api/sovereign_yield_curve.json');
+                if (!res.ok) throw new Error('HTTP ' + res.status);
+                sovereignBundle = await res.json();
+            } catch (err) {
+                console.warn('Direct fetch /api/sovereign_yield_curve.json failed, trying extensionless route:', err);
+                try {
+                    const res2 = await fetch('/api/sovereign_yield_curve');
+                    if (!res2.ok) throw new Error('HTTP ' + res2.status);
+                    sovereignBundle = await res2.json();
+                } catch (err2) {
+                    console.error('All fetches for sovereign_yield_curve failed:', err2);
+                    const container = document.getElementById('sovereignCurveContainer');
+                    if (container) {
+                        container.innerHTML = '<div style="padding: 24px; color: var(--accent-red);">Failed to load Sovereign Yield Curve feed. Please ensure the data service is operational.</div>';
+                    }
+                    return;
+                }
+            }
+            renderSovereignCurveView();
+        }
+
+        function refreshSovereignData() {
+            sovereignBundle = null;
+            const container = document.getElementById('sovereignCurveContainer');
+            if (container) {
+                container.innerHTML = '<div style="text-align: center; padding: 40px; color: var(--text-muted);"><div class="spinner" style="margin-right: 8px;"></div> Refreshing Nelson-Siegel curves, ACM term premium decompositions, and slope regimes...</div>';
+            }
+            loadSovereignCurveAndRender();
+        }
+
+        function setYieldJurisdiction(jur) {
+            activeYieldJurisdiction = jur;
+            const usBtn = document.getElementById('btnYieldJurUS');
+            const caBtn = document.getElementById('btnYieldJurCA');
+            if (usBtn) usBtn.classList.toggle('active', jur === 'US');
+            if (caBtn) caBtn.classList.toggle('active', jur === 'CA');
+            renderSovereignCurveView();
+        }
+
+        const YIELD_REGIME_META = {
+            'BEAR_STEEPENER': { label: 'BEAR STEEPENER', color: '#f59e0b', desc: 'Long rates rising faster than short rates — fiscal supply and term premium pressure' },
+            'BULL_STEEPENER': { label: 'BULL STEEPENER', color: 'var(--accent-green)', desc: 'Short rates falling faster than long rates — easing cycle and early recovery' },
+            'BEAR_FLATTENER': { label: 'BEAR FLATTENER', color: 'var(--accent-red)', desc: 'Short rates rising faster than long rates — late-cycle tightening' },
+            'BULL_FLATTENER': { label: 'BULL FLATTENER', color: 'var(--accent-blue)', desc: 'Long rates falling faster than short rates — flight to quality and recession pricing' },
+            'INVERTED':       { label: 'INVERTED',       color: 'var(--accent-red)', desc: 'Short rates above long rates — classic late-cycle recession warning' },
+            'NORMAL':         { label: 'NORMAL',         color: 'var(--accent-cyan)', desc: 'Conventionally upward-sloping term structure' }
+        };
+
+        function buildYieldCurveSvg(points, highlight) {
+            const W = 920, H = 300, padL = 56, padR = 22, padT = 20, padB = 36;
+            const xs = points.map(p => p.maturity_years);
+            const ust = points.map(p => p.ust_yield_pct);
+            const goc = points.map(p => p.goc_yield_pct);
+            const allY = ust.concat(goc);
+            const yMin = Math.min.apply(null, allY) - 0.15;
+            const yMax = Math.max.apply(null, allY) + 0.15;
+            const lxMin = Math.log10(Math.min.apply(null, xs));
+            const lxMax = Math.log10(Math.max.apply(null, xs));
+            const sx = m => padL + (W - padL - padR) * (Math.log10(m) - lxMin) / (lxMax - lxMin);
+            const sy = y => padT + (H - padT - padB) * (1 - (y - yMin) / (yMax - yMin));
+
+            let grid = '';
+            const yTicks = [];
+            for (let t = Math.ceil(yMin * 4) / 4; t <= yMax; t += 0.25) yTicks.push(Math.round(t * 100) / 100);
+            yTicks.forEach(t => {
+                grid += `<line x1="${padL}" y1="${sy(t).toFixed(1)}" x2="${W - padR}" y2="${sy(t).toFixed(1)}" stroke="rgba(148,163,184,0.14)" stroke-width="1"/>`;
+                grid += `<text x="${padL - 8}" y="${(sy(t) + 3.5).toFixed(1)}" text-anchor="end" font-size="10" fill="#94a3b8">${t.toFixed(2)}%</text>`;
+            });
+
+            let xLabels = '';
+            points.forEach(p => {
+                const x = sx(p.maturity_years);
+                xLabels += `<line x1="${x.toFixed(1)}" y1="${H - padB}" x2="${x.toFixed(1)}" y2="${(H - padB + 4).toFixed(1)}" stroke="rgba(148,163,184,0.35)" stroke-width="1"/>`;
+                xLabels += `<text x="${x.toFixed(1)}" y="${H - padB + 17}" text-anchor="middle" font-size="10" fill="#94a3b8">${p.tenor}</text>`;
+            });
+
+            const line = (vals) => vals.map((v, i) => `${i === 0 ? 'M' : 'L'} ${sx(points[i].maturity_years).toFixed(1)} ${sy(v).toFixed(1)}`).join(' ');
+            const dots = (vals, color) => vals.map((v, i) =>
+                `<circle cx="${sx(points[i].maturity_years).toFixed(1)}" cy="${sy(v).toFixed(1)}" r="${highlight === 'UST' && color === 'ust' ? 4 : 3}" fill="${color === 'ust' ? '#60a5fa' : '#f87171'}" stroke="#0f172a" stroke-width="1"/>`
+            ).join('');
+
+            return `
+            <svg viewBox="0 0 ${W} ${H}" style="width: 100%; height: auto; max-width: 920px; display: block;">
+                ${grid}
+                <line x1="${padL}" y1="${H - padB}" x2="${W - padR}" y2="${H - padB}" stroke="rgba(148,163,184,0.4)" stroke-width="1"/>
+                ${xLabels}
+                <path d="${line(ust)}" fill="none" stroke="#60a5fa" stroke-width="2.5"/>
+                <path d="${line(goc)}" fill="none" stroke="#f87171" stroke-width="2.5" stroke-dasharray="6 3"/>
+                ${dots(ust, 'ust')}
+                ${dots(goc, 'goc')}
+                <text x="${padL + 6}" y="${padT + 4}" font-size="11" fill="#60a5fa" font-weight="700">— US Treasuries (USD)</text>
+                <text x="${padL + 170}" y="${padT + 4}" font-size="11" fill="#f87171" font-weight="700">- - Government of Canada (CAD)</text>
+            </svg>`;
+        }
+
+        function buildTermPremiumBars(decomps) {
+            const maxNominal = Math.max.apply(null, decomps.map(d => d.nominal_yield_pct)) || 1;
+            return decomps.map(d => {
+                const wPath = (d.risk_neutral_rate_path_pct / maxNominal) * 100;
+                const wTp = (d.term_premium_pct / maxNominal) * 100;
+                const tpColor = d.term_premium_bps >= 0 ? 'var(--accent-purple)' : 'var(--accent-cyan)';
+                const chgColor = d.ten_day_change_bps > 35 ? 'var(--accent-red)' : (d.ten_day_change_bps > 0 ? '#f59e0b' : 'var(--accent-green)');
+                return `
+                <div style="margin-bottom: 14px;">
+                    <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 5px;">
+                        <span style="font-size: 12px; font-weight: 700; color: var(--text-primary);">${d.tenor} Sovereign · Nominal ${d.nominal_yield_pct.toFixed(2)}%</span>
+                        <span style="font-size: 11px; color: var(--text-muted);">10D TP change: <span style="color: ${chgColor}; font-weight: 700;">${d.ten_day_change_bps > 0 ? '+' : ''}${d.ten_day_change_bps.toFixed(1)} bps</span></span>
+                    </div>
+                    <div style="display: flex; height: 22px; border-radius: 4px; overflow: hidden; border: 1px solid var(--border-color); background: var(--bg-primary);">
+                        <div style="width: ${wPath.toFixed(1)}%; background: var(--accent-blue); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: #0f172a; white-space: nowrap;">Rate Path ${d.risk_neutral_rate_path_pct.toFixed(2)}%</div>
+                        <div style="width: ${Math.max(wTp, 0).toFixed(1)}%; background: ${tpColor}; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: #0f172a; white-space: nowrap;">TP ${d.term_premium_bps.toFixed(0)} bps</div>
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        function renderSovereignCurveView() {
+            if (!sovereignBundle) return;
+            const container = document.getElementById('sovereignCurveContainer');
+            if (!container) return;
+
+            const b = sovereignBundle;
+            const prof = activeYieldJurisdiction === 'US' ? b.us_profile : b.ca_profile;
+            const meta = YIELD_REGIME_META[prof.curve_regime] || YIELD_REGIME_META['NORMAL'];
+            const jurLabel = activeYieldJurisdiction === 'US' ? '🇺🇸 US Treasuries (USD)' : '🇨🇦 Government of Canada (CAD)';
+
+            // Sentinel badge state
+            const badge = document.getElementById('sovereignSentinelBadge');
+            if (badge) {
+                const inverted = (b.us_profile.slope_2y10y_bps < -50 || b.us_profile.slope_3m10y_bps < -75 ||
+                                  b.ca_profile.slope_2y10y_bps < -50 || b.ca_profile.slope_3m10y_bps < -75);
+                const tp10us = (b.us_profile.term_premium_decompositions.find(d => d.tenor === '10Y') || {}).ten_day_change_bps || 0;
+                const tp10ca = (b.ca_profile.term_premium_decompositions.find(d => d.tenor === '10Y') || {}).ten_day_change_bps || 0;
+                const tpShock = (tp10us > 35 || tp10ca > 35);
+                if (inverted || tpShock) {
+                    badge.style.color = 'var(--accent-red)';
+                    badge.innerHTML = `<span style="display: inline-block; width: 8px; height: 8px; background: var(--accent-red); border-radius: 50%; box-shadow: 0 0 8px var(--accent-red);"></span> SENTINEL TRIGGERED (P22/P23)`;
+                } else {
+                    badge.style.color = 'var(--accent-green)';
+                    badge.innerHTML = `<span style="display: inline-block; width: 8px; height: 8px; background: var(--accent-green); border-radius: 50%; box-shadow: 0 0 8px var(--accent-green);"></span> CURVE NOMINAL`;
+                }
+            }
+
+            const slopeCard = (label, value, hazard) => {
+                const breached = hazard === 'inv' ? (value < -50) : (hazard === 'inv3' ? (value < -75) : (value > 35));
+                const c = breached ? 'var(--accent-red)' : (value > 0 ? 'var(--accent-green)' : 'var(--accent-cyan)');
+                return `
+                <div style="flex: 1 1 150px; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 12px;">
+                    <div style="font-size: 10px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; letter-spacing: 0.5px;">${label}</div>
+                    <div style="font-size: 22px; font-weight: 800; color: ${c}; margin-top: 4px;">${value > 0 ? '+' : ''}${value.toFixed(1)} <span style="font-size: 12px; font-weight: 600;">bps</span></div>
+                </div>`;
+            };
+
+            const kpiHtml = `
+            <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px;">
+                ${slopeCard('2Y10Y Slope', prof.slope_2y10y_bps, 'inv')}
+                ${slopeCard('3M10Y Slope', prof.slope_3m10y_bps, 'inv3')}
+                ${slopeCard('5Y30Y Slope', prof.slope_5y30y_bps, 'none')}
+                <div style="flex: 1 1 150px; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 12px;">
+                    <div style="font-size: 10px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; letter-spacing: 0.5px;">Curve Regime</div>
+                    <div style="font-size: 15px; font-weight: 800; color: ${meta.color}; margin-top: 8px;">${meta.label}</div>
+                </div>
+                <div style="flex: 1 1 150px; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 12px;">
+                    <div style="font-size: 10px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; letter-spacing: 0.5px;">10Y GoC − UST Spread</div>
+                    <div style="font-size: 22px; font-weight: 800; color: var(--accent-cyan); margin-top: 4px;">${b.ten_year_spread_bps > 0 ? '+' : ''}${b.ten_year_spread_bps.toFixed(1)} <span style="font-size: 12px; font-weight: 600;">bps</span></div>
+                </div>
+                <div style="flex: 1 1 150px; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 12px;">
+                    <div style="font-size: 10px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; letter-spacing: 0.5px;">NSS Level β₀</div>
+                    <div style="font-size: 22px; font-weight: 800; color: var(--accent-purple); margin-top: 4px;">${prof.nss_params.beta0_level.toFixed(3)}%</div>
+                </div>
+            </div>
+            <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-left: 3px solid ${meta.color}; border-radius: 8px; padding: 12px 14px; margin-bottom: 18px;">
+                <div style="font-size: 12px; color: var(--text-secondary);"><strong style="color: ${meta.color};">${meta.label}</strong> — ${meta.desc}. Jurisdiction: ${jurLabel}.</div>
+            </div>`;
+
+            const curveHtml = `
+            <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 18px;">
+                <div style="flex: 2 1 520px; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px;">
+                    <h3 style="font-size: 13px; font-weight: 800; color: var(--text-primary); margin-bottom: 10px;">📉 Cross-Border Sovereign Yield Curve — Nelson-Siegel Fitted (log maturity axis)</h3>
+                    ${buildYieldCurveSvg(b.cross_border_yield_curve, activeYieldJurisdiction)}
+                    <div style="font-size: 10px; color: var(--text-muted); margin-top: 8px;">NSS parameters (${prof.jurisdiction}): β₀ = ${prof.nss_params.beta0_level.toFixed(4)}, β₁ = ${prof.nss_params.beta1_slope.toFixed(4)}, β₂ = ${prof.nss_params.beta2_curvature.toFixed(4)}, τ = ${prof.nss_params.tau.toFixed(4)}</div>
+                </div>
+                <div style="flex: 1 1 320px; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px;">
+                    <h3 style="font-size: 13px; font-weight: 800; color: var(--text-primary); margin-bottom: 12px;">🧮 ACM Term Premium Decomposition — ${prof.jurisdiction}</h3>
+                    ${buildTermPremiumBars(prof.term_premium_decompositions)}
+                    <div style="font-size: 10px; color: var(--text-muted); margin-top: 6px;">Nominal yield = risk-neutral expected policy-rate path + term premium (Adrian-Crump-Moench affine decomposition).</div>
+                </div>
+            </div>`;
+
+            const rows = b.cross_border_yield_curve.map(p => {
+                const c = p.spread_bps < 0 ? 'var(--accent-red)' : 'var(--accent-green)';
+                return `<tr>
+                    <td style="padding: 6px 10px; font-weight: 700; color: var(--text-primary);">${p.tenor}</td>
+                    <td style="padding: 6px 10px; color: var(--text-muted);">${p.maturity_years.toFixed(2)}y</td>
+                    <td style="padding: 6px 10px; text-align: right; color: #60a5fa; font-weight: 600;">${p.ust_yield_pct.toFixed(2)}%</td>
+                    <td style="padding: 6px 10px; text-align: right; color: #f87171; font-weight: 600;">${p.goc_yield_pct.toFixed(2)}%</td>
+                    <td style="padding: 6px 10px; text-align: right; color: ${c}; font-weight: 700;">${p.spread_bps > 0 ? '+' : ''}${p.spread_bps.toFixed(1)} bps</td>
+                </tr>`;
+            }).join('');
+
+            const tableHtml = `
+            <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px; margin-bottom: 18px; overflow-x: auto;">
+                <h3 style="font-size: 13px; font-weight: 800; color: var(--text-primary); margin-bottom: 10px;">🌎 Cross-Border Sovereign Spread Term Structure (GoC − UST)</h3>
+                <table style="width: 100%; border-collapse: collapse; font-size: 12px;">
+                    <thead><tr style="border-bottom: 1px solid var(--border-color);">
+                        <th style="padding: 6px 10px; text-align: left; color: var(--text-muted); font-weight: 700;">Tenor</th>
+                        <th style="padding: 6px 10px; text-align: left; color: var(--text-muted); font-weight: 700;">Maturity</th>
+                        <th style="padding: 6px 10px; text-align: right; color: var(--text-muted); font-weight: 700;">UST Yield</th>
+                        <th style="padding: 6px 10px; text-align: right; color: var(--text-muted); font-weight: 700;">GoC Yield</th>
+                        <th style="padding: 6px 10px; text-align: right; color: var(--text-muted); font-weight: 700;">Spread</th>
+                    </tr></thead>
+                    <tbody>${rows}</tbody>
+                </table>
+            </div>`;
+
+            const statutoryHtml = `
+            <div style="background: rgba(245, 158, 11, 0.06); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: 8px; padding: 12px 14px;">
+                <div style="font-size: 11px; font-weight: 800; color: #f59e0b; margin-bottom: 6px;">⚖️ STATUTORY RESEARCH NOTICE</div>
+                <ul style="margin: 0; padding-left: 18px; font-size: 11px; color: var(--text-muted); line-height: 1.6;">
+                    ${(b.disclaimers || []).map(d => `<li>${d}</li>`).join('')}
+                </ul>
+                <div style="font-size: 10px; color: var(--text-muted); margin-top: 8px;">Feed generated: ${b.generated_at} · As of ${b.as_of_date}</div>
+            </div>`;
+
+            container.innerHTML = `${kpiHtml}${curveHtml}${tableHtml}${statutoryHtml}`;
+        }
+
         function switchTab(tabId, ev) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             if (ev && ev.currentTarget) {
@@ -10219,7 +10492,7 @@
             }
 
             const tabIds = [
-                'leaderboard', 'quantintel', 'macroregime', 'microstructure', 'portfoliohrp', 'crossborderfx', 'optionssurface', 'scanners', 'signals', 'backtest', 'paper',
+                'leaderboard', 'quantintel', 'macroregime', 'microstructure', 'portfoliohrp', 'crossborderfx', 'optionssurface', 'sovereigncurve', 'scanners', 'signals', 'backtest', 'paper',
                 'portfolio', 'alerts', 'deepread', 'production', 'catalysts', 'journal'
             ];
             tabIds.forEach(id => {
@@ -10268,6 +10541,12 @@
                     loadOptionsAndRender();
                 } else {
                     renderOptionsView();
+                }
+            } else if (tabId === 'sovereigncurve') {
+                if (!sovereignBundle) {
+                    loadSovereignCurveAndRender();
+                } else {
+                    renderSovereignCurveView();
                 }
             } else if (tabId === 'backtest') {
                 if (!backtestBundle) {

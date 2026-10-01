@@ -107,6 +107,8 @@ def build_firebase_bundle():
         ("cross_border_fx.json", "cross_border_fx"),
         ("options_intelligence.json", "options_intelligence.json"),
         ("options_intelligence.json", "options_intelligence"),
+        ("sovereign_yield_curve.json", "sovereign_yield_curve.json"),
+        ("sovereign_yield_curve.json", "sovereign_yield_curve"),
     ]
 
     for src_name, dest_name in core_feeds:
