@@ -1,6 +1,6 @@
 {
-  "as_of_date": "2026-09-29",
-  "generated_at": "2026-09-29T07:19:53.404298+00:00",
+  "as_of_date": "2026-10-01",
+  "generated_at": "2026-10-01T06:56:28.642981+00:00",
   "total_capital": 100000.0,
   "active_positions_count": 17,
   "deployed_capital": 58400.0,
@@ -49,7 +49,7 @@
       "target_shares": 17,
       "arrival_price": 63.72,
       "effective_execution_price": 62.95,
-      "expected_slippage_bps": 1.67,
+      "expected_slippage_bps": 1.68,
       "execution_strategy": "TWAP"
     },
     "BN": {
@@ -90,9 +90,9 @@
       "dollar_allocation": 2870.0,
       "target_shares": 16,
       "arrival_price": 172.85,
-      "effective_execution_price": 171.62,
-      "expected_slippage_bps": 0.82,
-      "execution_strategy": "TWAP"
+      "effective_execution_price": 171.63,
+      "expected_slippage_bps": 0.58,
+      "execution_strategy": "DIRECT_MARKET"
     },
     "ENB": {
       "symbol": "ENB",
@@ -104,8 +104,8 @@
       "dollar_allocation": 6235.0,
       "target_shares": 93,
       "arrival_price": 67.54,
-      "effective_execution_price": 66.61,
-      "expected_slippage_bps": 2.64,
+      "effective_execution_price": 66.59,
+      "expected_slippage_bps": 1.6,
       "execution_strategy": "TWAP"
     },
     "GOOGL": {
@@ -118,9 +118,9 @@
       "dollar_allocation": 1555.0,
       "target_shares": 4,
       "arrival_price": 344.42,
-      "effective_execution_price": 342.76,
-      "expected_slippage_bps": 0.2,
-      "execution_strategy": "TWAP"
+      "effective_execution_price": 342.77,
+      "expected_slippage_bps": 0.58,
+      "execution_strategy": "DIRECT_MARKET"
     },
     "MSFT": {
       "symbol": "MSFT",
@@ -161,7 +161,7 @@
       "target_shares": 7,
       "arrival_price": 733.35,
       "effective_execution_price": 736.54,
-      "expected_slippage_bps": 0.0,
+      "expected_slippage_bps": 0.14,
       "execution_strategy": "DIRECT_MARKET"
     },
     "RY": {
@@ -175,7 +175,7 @@
       "target_shares": 18,
       "arrival_price": 286.05,
       "effective_execution_price": 285.09,
-      "expected_slippage_bps": 0.35,
+      "expected_slippage_bps": 0.7,
       "execution_strategy": "DIRECT_MARKET"
     },
     "SHOP": {
@@ -216,9 +216,9 @@
       "dollar_allocation": 6675.0,
       "target_shares": 39,
       "arrival_price": 169.77,
-      "effective_execution_price": 169.61,
-      "expected_slippage_bps": 0.62,
-      "execution_strategy": "TWAP"
+      "effective_execution_price": 169.62,
+      "expected_slippage_bps": 1.18,
+      "execution_strategy": "DIRECT_MARKET"
     },
     "XIU": {
       "symbol": "XIU",
@@ -231,7 +231,7 @@
       "target_shares": 82,
       "arrival_price": 52.88,
       "effective_execution_price": 52.76,
-      "expected_slippage_bps": 0.68,
+      "expected_slippage_bps": 0.67,
       "execution_strategy": "TWAP"
     },
     "XOM": {
@@ -244,8 +244,8 @@
       "dollar_allocation": 1735.0,
       "target_shares": 10,
       "arrival_price": 161.94,
-      "effective_execution_price": 162.53,
-      "expected_slippage_bps": 0.62,
+      "effective_execution_price": 162.54,
+      "expected_slippage_bps": 1.23,
       "execution_strategy": "DIRECT_MARKET"
     }
   },

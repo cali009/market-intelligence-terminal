@@ -103,6 +103,8 @@ def build_firebase_bundle():
         ("factor_attribution.json", "factor_attribution"),
         ("portfolio_bayesian.json", "portfolio_bayesian.json"),
         ("portfolio_bayesian.json", "portfolio_bayesian"),
+        ("cross_border_fx.json", "cross_border_fx.json"),
+        ("cross_border_fx.json", "cross_border_fx"),
     ]
 
     for src_name, dest_name in core_feeds:

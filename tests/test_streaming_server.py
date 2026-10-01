@@ -6,7 +6,8 @@ US + Canada Market Intelligence Platform
 import asyncio
 import json
 import pytest
-import websockets
+
+websockets = pytest.importorskip("websockets")
 
 from src.engine.streaming_server import MicrostructureStreamingServer
 

@@ -1579,6 +1579,78 @@ class PortfolioBayesianResult(BaseModel):
         return self.model_dump()
 
 
+# =============================================================================
+# PHASE 29: CROSS-BORDER DUAL-CURRENCY & OPTIMAL FX HEDGING SCHEMAS
+# =============================================================================
+
+class CipForwardPoint(BaseModel):
+    tenor: Literal["1M", "3M", "6M", "12M"]
+    days: int
+    boc_rate_pct: float
+    fed_rate_pct: float
+    interest_diff_bps: float
+    spot_fx: float
+    forward_fx: float
+    forward_points_pips: float
+    cip_basis_bps: float
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class OptimalHedgeRatioSummary(BaseModel):
+    portfolio_base_currency: Literal["CAD", "USD"]
+    unhedged_portfolio_volatility_pct: float
+    fully_hedged_portfolio_volatility_pct: float
+    optimal_hedge_ratio: float
+    optimal_hedged_portfolio_volatility_pct: float
+    risk_reduction_pct: float
+    cross_asset_fx_correlation: float
+    hedging_drag_bps: float
+    hedging_posture: Literal["PARTIAL_NATURAL_HEDGE", "FULL_HEDGE_RECOMMENDED", "UNHEDGED_OPTIMAL"]
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class DualListedArbitrageOpportunity(BaseModel):
+    symbol: str
+    us_symbol: str
+    name: str
+    tsx_price_cad: float
+    nyse_price_usd: float
+    fx_rate: float
+    implied_parity_cad: float
+    basis_spread_bps: float
+    round_trip_friction_bps: float
+    net_arbitrage_bps: float
+    routing_recommendation: Literal["EXECUTE_TSX", "EXECUTE_NYSE", "PARITY_EFFICIENT"]
+    liquidity_center: Literal["TSX_DOMINANT", "US_DOMINANT", "BALANCED"]
+    volume_ratio_tsx_us: float
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+class CrossBorderFxFeed(BaseModel):
+    as_of_date: str
+    generated_at: str
+    spot_cad_usd: float
+    spot_usd_cad: float
+    boc_policy_rate_pct: float
+    fed_funds_rate_pct: float
+    policy_rate_differential_bps: float
+    forward_curve: List[CipForwardPoint]
+    cad_base_hedging: OptimalHedgeRatioSummary
+    usd_base_hedging: OptimalHedgeRatioSummary
+    dual_listed_arbitrage: List[DualListedArbitrageOpportunity]
+    disclaimers: List[str]
+
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump()
+
+
+
 
 
 

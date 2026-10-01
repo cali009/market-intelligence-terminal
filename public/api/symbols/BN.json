@@ -4,8 +4,8 @@
   "country": "CA",
   "currency": "CAD",
   "name": "Brookfield Corporation",
-  "as_of_date": "2026-09-29",
-  "generated_at": "2026-09-29T03:21:50.461698+00:00",
+  "as_of_date": "2026-10-01",
+  "generated_at": "2026-10-01T06:55:50.898351+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-28",
     "open": 51.939998626708984,
@@ -304,7 +304,7 @@
   },
   "fundamental_dossier": {
     "symbol": "BN",
-    "as_of_date": "2026-09-29",
+    "as_of_date": "2026-10-01",
     "filing_date": "2026-03-18",
     "currency": "CAD",
     "fiscal_period": "FY",
@@ -356,7 +356,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 14,
     "gjr_garch_gamma": 0.16,
-    "last_updated": "2026-09-29T03:22:01.878431+00:00"
+    "last_updated": "2026-10-01T06:56:00.266422+00:00"
   },
   "conformal_bounds": {
     "symbol": "BN",
@@ -373,7 +373,7 @@
     "adapted_alpha": 0.055,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-09-29T03:22:01.897569+00:00"
+    "calibrated_at": "2026-10-01T06:56:00.281627+00:00"
   },
   "cross_border_parity": {
     "tsx_symbol": "BN",
@@ -475,7 +475,7 @@
       "technical_score": 18,
       "fundamental_score": 53,
       "regime_multiplier": 1.0,
-      "news_contribution": 1.4,
+      "news_contribution": 1.2,
       "sector_contribution": 0.0,
       "risk_penalty": 8.0,
       "key_metrics": {
@@ -531,7 +531,7 @@
         "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
       ],
       "hard_gate_triggered": false,
-      "score_impact_pts": 0.5
+      "score_impact_pts": 0.4
     },
     {
       "id": "d637910769e7",
@@ -568,7 +568,7 @@
         "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
       ],
       "hard_gate_triggered": false,
-      "score_impact_pts": 0.5
+      "score_impact_pts": 0.4
     },
     {
       "id": "919f1ab8d8d7",
@@ -1649,11 +1649,11 @@
     "exchange": "TSX",
     "country": "CA",
     "currency": "CAD",
-    "as_of_date": "2026-09-29",
-    "generated_at": "2026-09-29T03:22:02.053572+00:00",
+    "as_of_date": "2026-10-01",
+    "generated_at": "2026-10-01T06:56:00.650393+00:00",
     "conviction_grade": "C",
     "aligned_layers_count": 3,
-    "formatted_card": "TICKER: BN\nREGIME: WEAK_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 9.4%)\nPATTERN TYPE: Archetype E: Defensive Yield & Sovereign Benchmark \u2014 Earnings-Driven\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BEARISH \u2014 Breakdown below moving average cluster; negative CMF (-0.24) and deteriorating price structure.\n  Fundamental:  6.0/10 \u2014 Stable financial quality (Score 6.0/10); P/E 35.69x balanced by operational cash flow.\n  Sentiment:    +2.40 (BULLISH) \u2014 BN Form 6-K Cross-Border Continuous Disclosure\n  Historical:   58.2% Win Rate (10 sample size, E[R]: +0.48R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $51.96 \u2013 $52.74\n  Entry trigger:  Price holds structural pivot ($48.81) followed by volume-backed expansion above $51.96.\n  Stop loss:      $48.57 (6.5% below entry)\n  Target 1 (T1):  $56.03 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $60.44 | Est. 24 days | Take 40%\n  Target 3 (T3):  $66.20 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.32\n  Position size:  147 shares on $100,000 portfolio risking 1% ($498.33)\n  Execution TCA:  TWAP (5 slices) | Est. Fill: $51.39 | Slippage: +2.1 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: C-Grade\nTRADE THESIS: BN exhibits high structural confluence with Earnings-Driven aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 9.4%), measured support at $48.81 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $48.57 or two consecutive closes back below $48.81 immediately invalidates the trade.",
+    "formatted_card": "TICKER: BN\nREGIME: WEAK_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 9.4%)\nPATTERN TYPE: Archetype E: Defensive Yield & Sovereign Benchmark \u2014 Earnings-Driven\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BEARISH \u2014 Breakdown below moving average cluster; negative CMF (-0.24) and deteriorating price structure.\n  Fundamental:  6.0/10 \u2014 Stable financial quality (Score 6.0/10); P/E 35.69x balanced by operational cash flow.\n  Sentiment:    +1.50 (BULLISH) \u2014 BN Form 6-K Cross-Border Continuous Disclosure\n  Historical:   58.2% Win Rate (10 sample size, E[R]: +0.48R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $51.96 \u2013 $52.74\n  Entry trigger:  Price holds structural pivot ($48.81) followed by volume-backed expansion above $51.96.\n  Stop loss:      $48.57 (6.5% below entry)\n  Target 1 (T1):  $56.03 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $60.44 | Est. 24 days | Take 40%\n  Target 3 (T3):  $66.20 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.32\n  Position size:  147 shares on $100,000 portfolio risking 1% ($498.33)\n  Execution TCA:  TWAP (5 slices) | Est. Fill: $51.39 | Slippage: +2.0 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: C-Grade\nTRADE THESIS: BN exhibits high structural confluence with Earnings-Driven aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 9.4%), measured support at $48.81 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $48.57 or two consecutive closes back below $48.81 immediately invalidates the trade.",
     "layer_1_regime": {
       "trend_type": "Bull",
       "volatility_regime": "Medium (15\u201325)",
@@ -1718,17 +1718,17 @@
       "technical_gate_required": false
     },
     "layer_5_sentiment": {
-      "net_sentiment_score": 2.4,
+      "net_sentiment_score": 1.5,
       "status": "BULLISH",
       "key_headline": "BN Form 6-K Cross-Border Continuous Disclosure",
       "catalyst_count": 5,
       "risk_count": 0,
-      "weighted_catalysts": 2.4,
+      "weighted_catalysts": 1.5,
       "weighted_risks": 0.0,
       "recency_breakdown": {
         "24h": 0,
-        "7d": 3,
-        "30d": 2,
+        "7d": 0,
+        "30d": 5,
         "older": 0
       },
       "skip_triggered": false
@@ -1769,7 +1769,7 @@
       "invalidation_rule": "A daily closing price below $48.57 or two consecutive closes back below $48.81 immediately invalidates the trade.",
       "trade_thesis": "BN exhibits high structural confluence with Earnings-Driven aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 9.4%), measured support at $48.81 offers asymmetric risk/reward into upper channel resistance.",
       "tca_execution_strategy": "TWAP",
-      "tca_expected_slippage_bps": 2.06,
+      "tca_expected_slippage_bps": 2.05,
       "tca_effective_fill_price": 51.39,
       "tca_optimal_slices": 5
     },
@@ -1779,21 +1779,21 @@
       "action": "MODERATE_PROCEED",
       "size_multiplier": 0.85,
       "primary_driver": "mom_1m (-0.11, impact +)",
-      "calibrated_at": "2026-09-29T03:22:02.398249+00:00"
+      "calibrated_at": "2026-10-01T06:56:00.970403+00:00"
     },
     "microstructure_metrics": {
       "symbol": "BN",
-      "timestamp": "2026-09-29T03:22:02.400336+00:00",
-      "cvd_total": -527,
-      "cvd_1m_delta": -327,
-      "cvd_5m_delta": -527,
-      "order_book_imbalance": -0.0715,
-      "kyle_lambda": 0.0558,
-      "rvol_1m": 1.07,
+      "timestamp": "2026-10-01T06:56:00.972450+00:00",
+      "cvd_total": 5322,
+      "cvd_1m_delta": 5210,
+      "cvd_5m_delta": 5322,
+      "order_book_imbalance": 0.0227,
+      "kyle_lambda": 0.0174,
+      "rvol_1m": 2.04,
       "absorption_signal": "NONE",
       "liquidity_state": "NORMAL",
-      "buyer_volume_pct": 46.2,
-      "seller_volume_pct": 53.8
+      "buyer_volume_pct": 70.6,
+      "seller_volume_pct": 29.4
     }
   },
   "disclaimers": {

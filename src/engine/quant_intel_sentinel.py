@@ -291,6 +291,7 @@ class QuantIntelSentinel:
         factor_risk_metrics: Optional[Dict[str, Any]] = None,
         factor_attribution_metrics: Optional[Dict[str, Any]] = None,
         bayesian_metrics: Optional[Dict[str, Any]] = None,
+        cross_border_fx_metrics: Optional[Dict[str, Any]] = None,
     ) -> List[InvalidationAlert]:
         """
         Evaluates portfolio-level risk invariants:
@@ -302,6 +303,8 @@ class QuantIntelSentinel:
         - Specific alpha erosion (Predicate 15)
         - Excessive turnover limits (Predicate 16)
         - Bayesian estimation error spike (Predicate 17)
+        - Dual-listed parity dislocations (Predicate 18)
+        - Unhedged currency volatility drag (Predicate 19)
         """
         alerts = []
         now_str = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -533,6 +536,58 @@ class QuantIntelSentinel:
                     )
                 )
 
+        # 18. PREDICATE: CROSS_BORDER_PARITY_DISLOCATION (Dual-listed basis spread > 45.0 bps)
+        if cross_border_fx_metrics:
+            arb_opps = cross_border_fx_metrics.get("dual_listed_arbitrage", [])
+            for arb in arb_opps:
+                spread = arb.get("basis_spread_bps", 0.0) if isinstance(arb, dict) else getattr(arb, "basis_spread_bps", 0.0)
+                sym = arb.get("symbol", "UNKNOWN") if isinstance(arb, dict) else getattr(arb, "symbol", "UNKNOWN")
+                if abs(spread) > 45.0:
+                    headline = f"Cross-Border Dual-Listed Parity Dislocation: {sym} ({spread:+.1f} bps)"
+                    body = (
+                        f"Dual-listed basis spread between TSX and NYSE for {sym} reached {spread:+.1f} bps, "
+                        f"exceeding the 45.0 bps threshold. Intermarket liquidity dislocation observed."
+                    )
+                    alerts.append(
+                        InvalidationAlert(
+                            symbol=sym,
+                            predicate_type="CROSS_BORDER_PARITY_DISLOCATION",
+                            severity="WARNING",
+                            trigger_level=45.0,
+                            current_price=round(abs(spread), 1),
+                            headline=headline,
+                            body=body,
+                            action_required="INVESTIGATE_VENUE_ARBITRAGE",
+                            timestamp=now_str,
+                        )
+                    )
+
+        # 19. PREDICATE: UNHEDGED_CURRENCY_DRAG (Unhedged vol exceeds hedged vol by > 2.0%)
+        if cross_border_fx_metrics:
+            cad_h = cross_border_fx_metrics.get("cad_base_hedging", {})
+            unhedged_vol = cad_h.get("unhedged_portfolio_volatility_pct", 0.0) if isinstance(cad_h, dict) else getattr(cad_h, "unhedged_portfolio_volatility_pct", 0.0)
+            hedged_vol = cad_h.get("fully_hedged_portfolio_volatility_pct", 0.0) if isinstance(cad_h, dict) else getattr(cad_h, "fully_hedged_portfolio_volatility_pct", 0.0)
+            drag = unhedged_vol - hedged_vol
+            if drag > 2.0:
+                headline = f"Unhedged Currency Volatility Drag (+{drag:.2f}% Risk Elevation)"
+                body = (
+                    f"Unhedged foreign currency exchange rate fluctuations elevated portfolio annualized volatility "
+                    f"by +{drag:.2f}% over hedged baseline. Currency risk hedging indicated."
+                )
+                alerts.append(
+                    InvalidationAlert(
+                        symbol="PORTFOLIO",
+                        predicate_type="UNHEDGED_CURRENCY_DRAG",
+                        severity="WARNING",
+                        trigger_level=2.0,
+                        current_price=round(drag, 2),
+                        headline=headline,
+                        body=body,
+                        action_required="IMPLEMENT_CURRENCY_HEDGE",
+                        timestamp=now_str,
+                    )
+                )
+
         return alerts
 
     def evaluate_universe_sentinels(self, quant_intel_dossiers: Dict[str, Any]) -> List[InvalidationAlert]:
@@ -571,7 +626,7 @@ class QuantIntelSentinel:
                 taxonomy = "CATALYST_MATERIALITY"
             elif "LIQUIDITY" in inv.predicate_type:
                 taxonomy = "TECHNICAL_BREAKOUT"
-            elif "CONCENTRATION" in inv.predicate_type or "CORRELATION" in inv.predicate_type or "CVAR" in inv.predicate_type or "FACTOR" in inv.predicate_type or "COMMODITY" in inv.predicate_type or "ALPHA" in inv.predicate_type or "TURNOVER" in inv.predicate_type or "ESTIMATION" in inv.predicate_type:
+            elif "CONCENTRATION" in inv.predicate_type or "CORRELATION" in inv.predicate_type or "CVAR" in inv.predicate_type or "FACTOR" in inv.predicate_type or "COMMODITY" in inv.predicate_type or "ALPHA" in inv.predicate_type or "TURNOVER" in inv.predicate_type or "ESTIMATION" in inv.predicate_type or "PARITY" in inv.predicate_type or "CURRENCY" in inv.predicate_type:
                 taxonomy = "PORTFOLIO_CIRCUIT_BREAKER"
             else:
                 taxonomy = "TECHNICAL_BREAKOUT"
