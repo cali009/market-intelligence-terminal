@@ -4,8 +4,8 @@
   "country": "US",
   "currency": "USD",
   "name": "Apple Inc.",
-  "as_of_date": "2026-10-01",
-  "generated_at": "2026-10-01T21:30:16.649531+00:00",
+  "as_of_date": "2026-10-03",
+  "generated_at": "2026-10-03T00:02:04.274784+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-28",
     "open": 340.3699951171875,
@@ -306,7 +306,7 @@
   },
   "fundamental_dossier": {
     "symbol": "AAPL",
-    "as_of_date": "2026-10-01",
+    "as_of_date": "2026-10-03",
     "filing_date": "2026-07-31",
     "currency": "USD",
     "fiscal_period": "Q3",
@@ -355,7 +355,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 26,
     "gjr_garch_gamma": 0.08,
-    "last_updated": "2026-10-01T21:30:17.227092+00:00"
+    "last_updated": "2026-10-03T00:02:04.735446+00:00"
   },
   "conformal_bounds": {
     "symbol": "AAPL",
@@ -372,7 +372,7 @@
     "adapted_alpha": 0.085,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-10-01T21:30:17.250918+00:00"
+    "calibrated_at": "2026-10-03T00:02:04.752788+00:00"
   },
   "cross_border_parity": null,
   "shap_attribution": {
@@ -1770,8 +1770,8 @@
     "exchange": "NASDAQ",
     "country": "US",
     "currency": "USD",
-    "as_of_date": "2026-10-01",
-    "generated_at": "2026-10-01T21:30:17.280078+00:00",
+    "as_of_date": "2026-10-03",
+    "generated_at": "2026-10-03T00:02:04.777895+00:00",
     "conviction_grade": "B",
     "aligned_layers_count": 5,
     "formatted_card": "TICKER: AAPL\nREGIME: STRONG_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 7.8%)\nPATTERN TYPE: Archetype A: Mega-Cap Tech (Gamma-Momentum) \u2014 Momentum (Trend Breakout)\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BULLISH \u2014 Stacked MAs (Bullish Stack), RSI 61.8 equilibrium, price structure holding above key support.\n  Fundamental:  7.2/10 \u2014 ROIC 16.6%, Debt/Equity 0.66, operating margin 32.6%; robust institutional quality balance sheet.\n  Sentiment:    +0.40 (BULLISH) \u2014 AAPL Form 10-Q Quarterly Report \u2014 Q/E 2026-06-27\n  Historical:   56.9% Win Rate (25 sample size, E[R]: +0.46R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $334.30 \u2013 $339.31\n  Entry trigger:  Confirmed daily close above swing resistance ($344.96) on RVOL > 1.5x with CMF > 0.05.\n  Stop loss:      $324.18 (3.0% below entry)\n  Target 1 (T1):  $344.96 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $372.24 | Est. 24 days | Take 40%\n  Target 3 (T3):  $376.82 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.76\n  Position size:  98 shares on $100,000 portfolio risking 1% ($991.76)\n  Execution TCA:  DIRECT_MARKET (1 slice) | Est. Fill: $338.40 | Slippage: +0.0 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: B-Grade\nTRADE THESIS: AAPL exhibits high structural confluence with Momentum (Trend Breakout) aligning above ascending moving averages. In the current STRONG_BULL macro context (20d adverse hazard: 7.8%), measured support at $334.30 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $324.18 or two consecutive closes back below $334.30 immediately invalidates the trade.",
@@ -1900,21 +1900,21 @@
       "action": "GATED_EXCLUDE",
       "size_multiplier": 0.0,
       "primary_driver": "bb_bandwidth (+5.00, impact +)",
-      "calibrated_at": "2026-10-01T21:30:17.633818+00:00"
+      "calibrated_at": "2026-10-03T00:02:05.106986+00:00"
     },
     "microstructure_metrics": {
       "symbol": "AAPL",
-      "timestamp": "2026-10-01T21:30:17.636003+00:00",
-      "cvd_total": -6597,
-      "cvd_1m_delta": -6700,
-      "cvd_5m_delta": -6597,
-      "order_book_imbalance": 0.0114,
-      "kyle_lambda": 0.0021,
-      "rvol_1m": 2.34,
+      "timestamp": "2026-10-03T00:02:05.109018+00:00",
+      "cvd_total": 1146,
+      "cvd_1m_delta": 1457,
+      "cvd_5m_delta": 1146,
+      "order_book_imbalance": -0.019,
+      "kyle_lambda": 0.0078,
+      "rvol_1m": 1.29,
       "absorption_signal": "NONE",
       "liquidity_state": "NORMAL",
-      "buyer_volume_pct": 29.6,
-      "seller_volume_pct": 70.4
+      "buyer_volume_pct": 56.9,
+      "seller_volume_pct": 43.1
     }
   },
   "disclaimers": {

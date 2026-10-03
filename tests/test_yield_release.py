@@ -61,21 +61,30 @@ class TestSovereignYieldReleaseAudit:
     def test_staged_feed_matches_source_feed(self):
         """The staged public feed must carry the same sovereign data as the engine-generated source feed.
 
-        Comparison ignores the volatile `generated_at` wall-clock stamp: other suites
-        (e.g. test_edge_exporter -> export_all()) legitimately regenerate the source feed
-        mid-run, so a byte-for-byte check would be order-dependent. Content staleness is
+        Comparison ignores BOTH wall-clock stamps, `generated_at` and `as_of_date`:
+        other suites (e.g. test_edge_exporter -> export_all()) legitimately regenerate the
+        source feed mid-run, and `as_of_date` additionally rolls at UTC midnight, so a
+        byte-for-byte check would be order- and time-dependent. Sovereign curve content is
         the property that actually matters.
         """
         source = json.loads((self.data_dir / "sovereign_yield_curve.json").read_text(encoding="utf-8"))
         staged = json.loads((self.public_api_dir / "sovereign_yield_curve.json").read_text(encoding="utf-8"))
 
+        src_as_of = source.get("as_of_date")
+        stg_as_of = staged.get("as_of_date")
         for payload in (source, staged):
             payload.pop("generated_at", None)
+            payload.pop("as_of_date", None)
 
         assert source == staged, "Staged feed content drifted from source feed"
 
-        # Same trading day must be stamped on both copies
-        assert self.sovereign_feed["as_of_date"] == staged["as_of_date"]
+        # The staged copy may legitimately trail by a UTC-midnight roll, but must not be
+        # stale. A bound catches a genuinely abandoned deploy without failing at midnight.
+        from datetime import date as _date
+        gap = (_date.fromisoformat(src_as_of) - _date.fromisoformat(stg_as_of)).days
+        assert 0 <= gap <= 1, (
+            f"Staged sovereign feed is stale: source as_of {src_as_of} vs staged {stg_as_of}"
+        )
 
     # ------------------------------------------------------------------
     # 2. Mathematical invariants

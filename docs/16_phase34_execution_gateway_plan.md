@@ -373,7 +373,7 @@ All tables are append-only in practice; no `UPDATE` deletes history, and
 
 ### Phase 34.1 — Order Model, State Machine & Audit Ledger
 **Objective:** represent an order honestly before executing one.
-**Features:** normalized `OrderRequest`; the 9-state machine; terminal-state immutability;
+**Features:** normalized `OrderRequest`; the 11-state machine (5 non-terminal, 6 terminal); terminal-state immutability;
 append-only transition ledger; deterministic `client_order_id` generation.
 **Architecture:** `src/execution/order_model.py`, `src/execution/state_machine.py`.
 **DB:** `execution_order`, `execution_state_transition`.
