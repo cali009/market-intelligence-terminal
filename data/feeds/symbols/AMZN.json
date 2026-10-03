@@ -5,7 +5,7 @@
   "currency": "USD",
   "name": "Amazon.com Inc.",
   "as_of_date": "2026-10-03",
-  "generated_at": "2026-10-03T00:20:24.262488+00:00",
+  "generated_at": "2026-10-03T02:18:01.187938+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-28",
     "open": 246.6300048828125,
@@ -360,7 +360,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 16,
     "gjr_garch_gamma": 0.08,
-    "last_updated": "2026-10-03T00:20:25.617883+00:00"
+    "last_updated": "2026-10-03T02:18:03.031888+00:00"
   },
   "conformal_bounds": {
     "symbol": "AMZN",
@@ -377,7 +377,7 @@
     "adapted_alpha": 0.185,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-10-03T00:20:25.629837+00:00"
+    "calibrated_at": "2026-10-03T02:18:03.048879+00:00"
   },
   "cross_border_parity": null,
   "shap_attribution": {
@@ -1662,10 +1662,10 @@
     "country": "US",
     "currency": "USD",
     "as_of_date": "2026-10-03",
-    "generated_at": "2026-10-03T00:20:25.646641+00:00",
+    "generated_at": "2026-10-03T02:18:03.072226+00:00",
     "conviction_grade": "C",
     "aligned_layers_count": 3,
-    "formatted_card": "TICKER: AMZN\nREGIME: STRONG_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 7.8%)\nPATTERN TYPE: Archetype A: Mega-Cap Tech (Gamma-Momentum) \u2014 Momentum (Pullback Continuation)\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    NEUTRAL \u2014 Consolidation near moving averages; RSI 41.2 with RVOL at 0.93x awaiting directional catalyst.\n  Fundamental:  6.0/10 \u2014 Stable financial quality (Score 6.0/10); P/E 42.84x balanced by operational cash flow.\n  Sentiment:    +0.60 (BULLISH) \u2014 AMZN SEC Form 8-K Filing \u2014 Other Events of Substantial Importance\n  Historical:   55.4% Win Rate (25 sample size, E[R]: +0.44R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $247.72 \u2013 $251.44\n  Entry trigger:  Price stabilizes above support zone ($243.90) with 15m candle close above $247.72 and volume > 1.2x 20d average.\n  Stop loss:      $239.60 (3.3% below entry)\n  Target 1 (T1):  $257.46 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $268.02 | Est. 24 days | Take 40%\n  Target 3 (T3):  $281.82 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.32\n  Position size:  61 shares on $100,000 portfolio risking 1% ($495.32)\n  Execution TCA:  DIRECT_MARKET (1 slice) | Est. Fill: $246.16 | Slippage: +0.8 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: C-Grade\nTRADE THESIS: AMZN exhibits high structural confluence with Momentum (Pullback Continuation) aligning above ascending moving averages. In the current STRONG_BULL macro context (20d adverse hazard: 7.8%), measured support at $243.90 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $239.60 or two consecutive closes back below $243.90 immediately invalidates the trade.",
+    "formatted_card": "TICKER: AMZN\nREGIME: STRONG_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 7.8%)\nPATTERN TYPE: Archetype A: Mega-Cap Tech (Gamma-Momentum) \u2014 Momentum (Pullback Continuation)\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    NEUTRAL \u2014 Consolidation near moving averages; RSI 41.2 with RVOL at 0.93x awaiting directional catalyst.\n  Fundamental:  6.0/10 \u2014 Stable financial quality (Score 6.0/10); P/E 42.84x balanced by operational cash flow.\n  Sentiment:    +0.60 (BULLISH) \u2014 AMZN SEC Form 8-K Filing \u2014 Other Events of Substantial Importance\n  Historical:   55.4% Win Rate (25 sample size, E[R]: +0.44R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $247.72 \u2013 $251.44\n  Entry trigger:  Price stabilizes above support zone ($243.90) with 15m candle close above $247.72 and volume > 1.2x 20d average.\n  Stop loss:      $239.60 (3.3% below entry)\n  Target 1 (T1):  $257.46 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $268.02 | Est. 24 days | Take 40%\n  Target 3 (T3):  $281.82 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.32\n  Position size:  61 shares on $100,000 portfolio risking 1% ($495.32)\n  Execution TCA:  DIRECT_MARKET (1 slice) | Est. Fill: $246.17 | Slippage: +0.8 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: C-Grade\nTRADE THESIS: AMZN exhibits high structural confluence with Momentum (Pullback Continuation) aligning above ascending moving averages. In the current STRONG_BULL macro context (20d adverse hazard: 7.8%), measured support at $243.90 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $239.60 or two consecutive closes back below $243.90 immediately invalidates the trade.",
     "layer_1_regime": {
       "trend_type": "Bull",
       "volatility_regime": "Medium (15\u201325)",
@@ -1782,7 +1782,7 @@
       "trade_thesis": "AMZN exhibits high structural confluence with Momentum (Pullback Continuation) aligning above ascending moving averages. In the current STRONG_BULL macro context (20d adverse hazard: 7.8%), measured support at $243.90 offers asymmetric risk/reward into upper channel resistance.",
       "tca_execution_strategy": "DIRECT_MARKET",
       "tca_expected_slippage_bps": 0.81,
-      "tca_effective_fill_price": 246.16,
+      "tca_effective_fill_price": 246.17,
       "tca_optimal_slices": 1
     },
     "meta_label_verdict": {
@@ -1791,21 +1791,21 @@
       "action": "CAUTION_THROTTLE",
       "size_multiplier": 0.5,
       "primary_driver": "bb_bandwidth (+5.00, impact +)",
-      "calibrated_at": "2026-10-03T00:20:25.881334+00:00"
+      "calibrated_at": "2026-10-03T02:18:03.380896+00:00"
     },
     "microstructure_metrics": {
       "symbol": "AMZN",
-      "timestamp": "2026-10-03T00:20:25.882909+00:00",
-      "cvd_total": 4134,
-      "cvd_1m_delta": 3881,
-      "cvd_5m_delta": 4134,
-      "order_book_imbalance": 0.0794,
-      "kyle_lambda": 0.0242,
-      "rvol_1m": 1.78,
+      "timestamp": "2026-10-03T02:18:03.383484+00:00",
+      "cvd_total": 273,
+      "cvd_1m_delta": 2189,
+      "cvd_5m_delta": 273,
+      "order_book_imbalance": 0.036,
+      "kyle_lambda": 0.026,
+      "rvol_1m": 1.44,
       "absorption_signal": "NONE",
-      "liquidity_state": "NORMAL",
-      "buyer_volume_pct": 69.7,
-      "seller_volume_pct": 30.3
+      "liquidity_state": "SPREAD_EXPANSION",
+      "buyer_volume_pct": 51.1,
+      "seller_volume_pct": 48.9
     }
   },
   "disclaimers": {

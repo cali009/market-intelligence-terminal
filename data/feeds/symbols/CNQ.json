@@ -5,7 +5,7 @@
   "currency": "CAD",
   "name": "Canadian Natural Resources",
   "as_of_date": "2026-10-03",
-  "generated_at": "2026-10-03T00:20:24.262488+00:00",
+  "generated_at": "2026-10-03T02:18:01.187938+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-28",
     "open": 68.01000213623047,
@@ -358,7 +358,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 14,
     "gjr_garch_gamma": 0.22,
-    "last_updated": "2026-10-03T00:20:29.899048+00:00"
+    "last_updated": "2026-10-03T02:18:08.914793+00:00"
   },
   "conformal_bounds": {
     "symbol": "CNQ",
@@ -375,7 +375,7 @@
     "adapted_alpha": 0.105,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-10-03T00:20:29.910647+00:00"
+    "calibrated_at": "2026-10-03T02:18:08.932249+00:00"
   },
   "cross_border_parity": {
     "tsx_symbol": "CNQ",
@@ -1783,7 +1783,7 @@
     "country": "CA",
     "currency": "CAD",
     "as_of_date": "2026-10-03",
-    "generated_at": "2026-10-03T00:20:30.051356+00:00",
+    "generated_at": "2026-10-03T02:18:09.118827+00:00",
     "conviction_grade": "C",
     "aligned_layers_count": 4,
     "formatted_card": "TICKER: CNQ\nREGIME: WEAK_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 9.4%)\nPATTERN TYPE: Archetype B: Natural Resources & Energy (Cycle Mean-Reversion) \u2014 Earnings-Driven\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BEARISH \u2014 Breakdown below moving average cluster; negative CMF (-0.31) and deteriorating price structure.\n  Fundamental:  9.5/10 \u2014 ROIC 17.7%, Debt/Equity 0.37, operating margin 34.2%; robust institutional quality balance sheet.\n  Sentiment:    +0.50 (BULLISH) \u2014 CNQ Form 6-K Cross-Border Continuous Disclosure\n  Historical:   58.2% Win Rate (10 sample size, E[R]: +0.48R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $67.51 \u2013 $68.52\n  Entry trigger:  Price holds structural pivot ($66.24) followed by volume-backed expansion above $67.51.\n  Stop loss:      $64.87 (3.9% below entry)\n  Target 1 (T1):  $70.68 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $74.11 | Est. 24 days | Take 40%\n  Target 3 (T3):  $78.60 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.32\n  Position size:  189 shares on $100,000 portfolio risking 1% ($498.96)\n  Execution TCA:  TWAP (5 slices) | Est. Fill: $67.39 | Slippage: +1.6 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: C-Grade\nTRADE THESIS: CNQ exhibits high structural confluence with Earnings-Driven aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 9.4%), measured support at $66.24 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $64.87 or two consecutive closes back below $66.24 immediately invalidates the trade.",
@@ -1902,7 +1902,7 @@
       "invalidation_rule": "A daily closing price below $64.87 or two consecutive closes back below $66.24 immediately invalidates the trade.",
       "trade_thesis": "CNQ exhibits high structural confluence with Earnings-Driven aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 9.4%), measured support at $66.24 offers asymmetric risk/reward into upper channel resistance.",
       "tca_execution_strategy": "TWAP",
-      "tca_expected_slippage_bps": 1.57,
+      "tca_expected_slippage_bps": 1.56,
       "tca_effective_fill_price": 67.39,
       "tca_optimal_slices": 5
     },
@@ -1912,21 +1912,21 @@
       "action": "MODERATE_PROCEED",
       "size_multiplier": 0.85,
       "primary_driver": "mom_12_1m (+0.52, impact -)",
-      "calibrated_at": "2026-10-03T00:20:30.278286+00:00"
+      "calibrated_at": "2026-10-03T02:18:09.415644+00:00"
     },
     "microstructure_metrics": {
       "symbol": "CNQ",
-      "timestamp": "2026-10-03T00:20:30.279784+00:00",
-      "cvd_total": -2901,
-      "cvd_1m_delta": -2795,
-      "cvd_5m_delta": -2901,
-      "order_book_imbalance": 0.1446,
-      "kyle_lambda": 0.0695,
-      "rvol_1m": 1.56,
+      "timestamp": "2026-10-03T02:18:09.417517+00:00",
+      "cvd_total": -9523,
+      "cvd_1m_delta": -9435,
+      "cvd_5m_delta": -9523,
+      "order_book_imbalance": -0.012,
+      "kyle_lambda": 0.0102,
+      "rvol_1m": 2.89,
       "absorption_signal": "NONE",
       "liquidity_state": "NORMAL",
-      "buyer_volume_pct": 32.1,
-      "seller_volume_pct": 67.9
+      "buyer_volume_pct": 21.6,
+      "seller_volume_pct": 78.4
     }
   },
   "disclaimers": {

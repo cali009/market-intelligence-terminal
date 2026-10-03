@@ -5,7 +5,7 @@
   "currency": "USD",
   "name": "Invesco QQQ Trust",
   "as_of_date": "2026-10-03",
-  "generated_at": "2026-10-03T00:16:03.056592+00:00",
+  "generated_at": "2026-10-03T02:18:01.187938+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-28",
     "open": 740.4600219726562,
@@ -353,7 +353,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 14,
     "gjr_garch_gamma": 0.08,
-    "last_updated": "2026-10-03T00:16:06.513480+00:00"
+    "last_updated": "2026-10-03T02:18:05.274095+00:00"
   },
   "conformal_bounds": {
     "symbol": "QQQ",
@@ -370,7 +370,7 @@
     "adapted_alpha": 0.17,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-10-03T00:16:06.525406+00:00"
+    "calibrated_at": "2026-10-03T02:18:05.291254+00:00"
   },
   "cross_border_parity": null,
   "shap_attribution": {
@@ -1563,10 +1563,10 @@
     "country": "US",
     "currency": "USD",
     "as_of_date": "2026-10-03",
-    "generated_at": "2026-10-03T00:16:06.542326+00:00",
+    "generated_at": "2026-10-03T02:18:05.318988+00:00",
     "conviction_grade": "B",
     "aligned_layers_count": 4,
-    "formatted_card": "TICKER: QQQ\nREGIME: STRONG_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 7.8%)\nPATTERN TYPE: Archetype A: Mega-Cap Tech (Gamma-Momentum) \u2014 Institutional Accumulation\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BULLISH \u2014 Stacked MAs (Bullish Stack), RSI 58.5 equilibrium, price structure holding above key support.\n  Fundamental:  8.5/10 \u2014 Broad-market benchmark index ETF; diversified institutional liquidity and systemic solvency.\n  Sentiment:    0.00 (NEUTRAL) \u2014 Routine regulatory reporting schedule; no material catalyst in last 30 days.\n  Historical:   63.0% Win Rate (25 sample size, E[R]: +0.59R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $733.35 \u2013 $744.35\n  Entry trigger:  Volume POC reclaim ($715.65) with Chaikin Money Flow sustaining above +0.08.\n  Stop loss:      $718.39 (2.0% below entry)\n  Target 1 (T1):  $773.36 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $810.18 | Est. 24 days | Take 40%\n  Target 3 (T3):  $805.37 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 4.09\n  Position size:  66 shares on $100,000 portfolio risking 1% ($987.36)\n  Execution TCA:  DIRECT_MARKET (1 slice) | Est. Fill: $736.54 | Slippage: +0.0 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: B-Grade\nTRADE THESIS: QQQ exhibits high structural confluence with Institutional Accumulation aligning above ascending moving averages. In the current STRONG_BULL macro context (20d adverse hazard: 7.8%), measured support at $733.35 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $718.39 or two consecutive closes back below $733.35 immediately invalidates the trade.",
+    "formatted_card": "TICKER: QQQ\nREGIME: STRONG_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 7.8%)\nPATTERN TYPE: Archetype A: Mega-Cap Tech (Gamma-Momentum) \u2014 Institutional Accumulation\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BULLISH \u2014 Stacked MAs (Bullish Stack), RSI 58.5 equilibrium, price structure holding above key support.\n  Fundamental:  8.5/10 \u2014 Broad-market benchmark index ETF; diversified institutional liquidity and systemic solvency.\n  Sentiment:    0.00 (NEUTRAL) \u2014 Routine regulatory reporting schedule; no material catalyst in last 30 days.\n  Historical:   63.0% Win Rate (25 sample size, E[R]: +0.59R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $733.35 \u2013 $744.35\n  Entry trigger:  Volume POC reclaim ($715.65) with Chaikin Money Flow sustaining above +0.08.\n  Stop loss:      $718.39 (2.0% below entry)\n  Target 1 (T1):  $773.36 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $810.18 | Est. 24 days | Take 40%\n  Target 3 (T3):  $805.37 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 4.09\n  Position size:  66 shares on $100,000 portfolio risking 1% ($987.36)\n  Execution TCA:  DIRECT_MARKET (1 slice) | Est. Fill: $736.54 | Slippage: +0.1 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: B-Grade\nTRADE THESIS: QQQ exhibits high structural confluence with Institutional Accumulation aligning above ascending moving averages. In the current STRONG_BULL macro context (20d adverse hazard: 7.8%), measured support at $733.35 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $718.39 or two consecutive closes back below $733.35 immediately invalidates the trade.",
     "layer_1_regime": {
       "trend_type": "Bull",
       "volatility_regime": "Medium (15\u201325)",
@@ -1682,7 +1682,7 @@
       "invalidation_rule": "A daily closing price below $718.39 or two consecutive closes back below $733.35 immediately invalidates the trade.",
       "trade_thesis": "QQQ exhibits high structural confluence with Institutional Accumulation aligning above ascending moving averages. In the current STRONG_BULL macro context (20d adverse hazard: 7.8%), measured support at $733.35 offers asymmetric risk/reward into upper channel resistance.",
       "tca_execution_strategy": "DIRECT_MARKET",
-      "tca_expected_slippage_bps": 0.0,
+      "tca_expected_slippage_bps": 0.14,
       "tca_effective_fill_price": 736.54,
       "tca_optimal_slices": 1
     },
@@ -1692,21 +1692,21 @@
       "action": "CAUTION_THROTTLE",
       "size_multiplier": 0.5,
       "primary_driver": "bb_bandwidth (+5.00, impact +)",
-      "calibrated_at": "2026-10-03T00:16:06.787138+00:00"
+      "calibrated_at": "2026-10-03T02:18:05.750335+00:00"
     },
     "microstructure_metrics": {
       "symbol": "QQQ",
-      "timestamp": "2026-10-03T00:16:06.788990+00:00",
-      "cvd_total": 6949,
-      "cvd_1m_delta": 6662,
-      "cvd_5m_delta": 6949,
-      "order_book_imbalance": 0.0744,
-      "kyle_lambda": 0.0104,
-      "rvol_1m": 2.33,
+      "timestamp": "2026-10-03T02:18:05.753078+00:00",
+      "cvd_total": 1409,
+      "cvd_1m_delta": 1559,
+      "cvd_5m_delta": 1409,
+      "order_book_imbalance": -0.0378,
+      "kyle_lambda": 0.0135,
+      "rvol_1m": 1.31,
       "absorption_signal": "NONE",
       "liquidity_state": "NORMAL",
-      "buyer_volume_pct": 83.6,
-      "seller_volume_pct": 16.4
+      "buyer_volume_pct": 57.8,
+      "seller_volume_pct": 42.2
     }
   },
   "disclaimers": {

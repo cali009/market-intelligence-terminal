@@ -5,7 +5,7 @@
   "currency": "CAD",
   "name": "Brookfield Asset Management",
   "as_of_date": "2026-10-03",
-  "generated_at": "2026-10-03T00:16:03.056592+00:00",
+  "generated_at": "2026-10-03T02:18:01.187938+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-28",
     "open": 62.58000183105469,
@@ -358,7 +358,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 14,
     "gjr_garch_gamma": 0.16,
-    "last_updated": "2026-10-03T00:16:10.284169+00:00"
+    "last_updated": "2026-10-03T02:18:10.128561+00:00"
   },
   "conformal_bounds": {
     "symbol": "BAM",
@@ -375,7 +375,7 @@
     "adapted_alpha": 0.14,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-10-03T00:16:10.296034+00:00"
+    "calibrated_at": "2026-10-03T02:18:10.145449+00:00"
   },
   "cross_border_parity": {
     "tsx_symbol": "BAM",
@@ -461,7 +461,7 @@
     "as_of_date": "2026-09-25"
   },
   "score_record": {
-    "composite_score": 19,
+    "composite_score": 20,
     "confidence_tier": "C",
     "technical_score": 15,
     "fundamental_score": 61,
@@ -477,7 +477,7 @@
       "technical_score": 15,
       "fundamental_score": 61,
       "regime_multiplier": 1.0,
-      "news_contribution": 0.5,
+      "news_contribution": 2.0,
       "sector_contribution": 0.0,
       "risk_penalty": 8.0,
       "key_metrics": {
@@ -492,12 +492,126 @@
   "signal_plan": null,
   "ai_explanation": {
     "FACT": "BAM (TSX - Brookfield Asset Management) closed at $62.94 CAD. Trading within -24.2% of its 52-week high with a 14-day ATR of 2.3%. The primary exchange session traded on volume of 1,447,805 shares.",
-    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 19/100 (Confidence Tier C). Technical Factor sub-score: 15/100 (14-day RSI: 32.5, 20-day RVOL: 0.78x), Fundamental Score: 61/100. Risk penalty applied: -8.0 points. Modulated by the WEAK_BULL macro regime.",
+    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 20/100 (Confidence Tier C). Technical Factor sub-score: 15/100 (14-day RSI: 32.5, 20-day RVOL: 0.78x), Fundamental Score: 61/100. Risk penalty applied: -8.0 points. Modulated by the WEAK_BULL macro regime.",
     "INFERENCE": "Securities trading below declining 200-day moving averages with elevated risk penalties have historically underperformed the broader index by 3.8% over forward 20-session windows.",
     "UNCERTAINTY": "Risks include broader market sentiment deterioration in the WEAK_BULL environment. A daily close below technical support at $67.36 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
   },
   "active_scanner_matches": [],
   "catalysts_and_filings": [
+    {
+      "id": "34bedb5bae50",
+      "symbol": "BAM",
+      "company_name": "Brookfield Asset Management Ltd.",
+      "market": "CA",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1937926/000117184326006323/f8k_100126.htm",
+      "headline": "BAM SEC Form 8-K Filing \u2014 Other Events of Substantial Importance",
+      "summary": "Brookfield Asset Management Ltd. filed Form 8-K with the SEC on 2026-10-01. Document: f8k_100126.htm. Accession: 0001171843-26-006323. Primary reporting date: 2026-10-01.",
+      "filing_date": "2026-10-01",
+      "published_at": "2026-10-01T16:05:00Z",
+      "event_category": "OTHER_MATERIAL_EVENT",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "SEC Form 8-K (8.01, 9.01): Other Events of Substantial Importance",
+      "sentiment_score": 0.1,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PARTIAL",
+      "reaction_1d_pct": null,
+      "reaction_3d_pct": null,
+      "rvol_at_event": null,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001937926 with accession number 0001171843-26-006323",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-10-01",
+        "Document reference: f8k_100126.htm (8-K classification)",
+        "Reported disclosure items: 8.01,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.6
+    },
+    {
+      "id": "88daade71b31",
+      "symbol": "BAM",
+      "company_name": "Brookfield Asset Management Ltd.",
+      "market": "CA",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1937926/000117184326006315/f8k_093026.htm",
+      "headline": "BAM SEC Form 8-K Filing \u2014 Other Events of Substantial Importance",
+      "summary": "Brookfield Asset Management Ltd. filed Form 8-K with the SEC on 2026-10-01. Document: f8k_093026.htm. Accession: 0001171843-26-006315. Primary reporting date: 2026-09-30.",
+      "filing_date": "2026-10-01",
+      "published_at": "2026-10-01T16:05:00Z",
+      "event_category": "OTHER_MATERIAL_EVENT",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "SEC Form 8-K (8.01, 9.01): Other Events of Substantial Importance",
+      "sentiment_score": 0.1,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PARTIAL",
+      "reaction_1d_pct": null,
+      "reaction_3d_pct": null,
+      "rvol_at_event": null,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001937926 with accession number 0001171843-26-006315",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-10-01",
+        "Document reference: f8k_093026.htm (8-K classification)",
+        "Reported disclosure items: 8.01,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.6
+    },
+    {
+      "id": "ab7d36ec9ee8",
+      "symbol": "BAM",
+      "company_name": "Brookfield Asset Management Ltd.",
+      "market": "CA",
+      "source": "SEC_EDGAR_8K",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1937926/000110465926111209/tm2626124d1_8k.htm",
+      "headline": "BAM SEC Form 8-K Filing \u2014 Regulation FD Disclosure (Investor Presentation / Update)",
+      "summary": "Brookfield Asset Management Ltd. filed Form 8-K with the SEC on 2026-09-28. Document: tm2626124d1_8k.htm. Accession: 0001104659-26-111209. Primary reporting date: 2026-09-28.",
+      "filing_date": "2026-09-28",
+      "published_at": "2026-09-28T16:05:00Z",
+      "event_category": "REGULATION_FD",
+      "materiality_level": "MEDIUM",
+      "materiality_score": 3,
+      "materiality_rationale": "SEC Form 8-K (7.01, 9.01): Regulation FD Disclosure (Investor Presentation / Update)",
+      "sentiment_score": 0.15,
+      "sentiment_label": "LEAN_BULLISH",
+      "sentiment_drivers": [
+        "Standard factual disclosure under regulatory reporting schedule"
+      ],
+      "horizon": "SHORT_TERM",
+      "priced_in_status": "PRICED_IN",
+      "reaction_1d_pct": -0.22,
+      "reaction_3d_pct": null,
+      "rvol_at_event": 1.0,
+      "factual_claims": [
+        "Official SEC filing under CIK 0001937926 with accession number 0001104659-26-111209",
+        "Filing accepted and recorded on official SEC EDGAR registry for 2026-09-28",
+        "Document reference: tm2626124d1_8k.htm (8-K classification)",
+        "Reported disclosure items: 7.01,9.01"
+      ],
+      "invalidation_risks": [
+        "Post-announcement drift may reverse if broad market regime deteriorates",
+        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
+      ],
+      "hard_gate_triggered": false,
+      "score_impact_pts": 0.8
+    },
     {
       "id": "149aa93e11a0",
       "symbol": "BAM",
@@ -573,119 +687,6 @@
       ],
       "hard_gate_triggered": false,
       "score_impact_pts": 0.2
-    },
-    {
-      "id": "1aae0ccba3ee",
-      "symbol": "BAM",
-      "company_name": "Brookfield Asset Management Ltd.",
-      "market": "CA",
-      "source": "SEC_EDGAR_8K",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1937926/000117184326005900/f8k_090826.htm",
-      "headline": "BAM SEC Form 8-K Filing \u2014 Other Events of Substantial Importance",
-      "summary": "Brookfield Asset Management Ltd. filed Form 8-K with the SEC on 2026-09-08. Document: f8k_090826.htm. Accession: 0001171843-26-005900. Primary reporting date: 2026-09-08.",
-      "filing_date": "2026-09-08",
-      "published_at": "2026-09-08T16:05:00Z",
-      "event_category": "OTHER_MATERIAL_EVENT",
-      "materiality_level": "MEDIUM",
-      "materiality_score": 3,
-      "materiality_rationale": "SEC Form 8-K (8.01, 9.01): Other Events of Substantial Importance",
-      "sentiment_score": 0.1,
-      "sentiment_label": "LEAN_BULLISH",
-      "sentiment_drivers": [
-        "Standard factual disclosure under regulatory reporting schedule"
-      ],
-      "horizon": "SHORT_TERM",
-      "priced_in_status": "PRICED_IN",
-      "reaction_1d_pct": -3.69,
-      "reaction_3d_pct": -6.59,
-      "rvol_at_event": 1.0,
-      "factual_claims": [
-        "Official SEC filing under CIK 0001937926 with accession number 0001171843-26-005900",
-        "Filing accepted and recorded on official SEC EDGAR registry for 2026-09-08",
-        "Document reference: f8k_090826.htm (8-K classification)",
-        "Reported disclosure items: 8.01,9.01"
-      ],
-      "invalidation_risks": [
-        "Post-announcement drift may reverse if broad market regime deteriorates",
-        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
-      ],
-      "hard_gate_triggered": false,
-      "score_impact_pts": 0.1
-    },
-    {
-      "id": "7958fe2d9ada",
-      "symbol": "BAM",
-      "company_name": "Brookfield Asset Management Ltd.",
-      "market": "CA",
-      "source": "SEC_EDGAR_8K",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1937926/000110465926097349/tm2623210d1_8k.htm",
-      "headline": "BAM SEC Form 8-K Filing \u2014 Regulation FD Disclosure (Investor Presentation / Update)",
-      "summary": "Brookfield Asset Management Ltd. filed Form 8-K with the SEC on 2026-08-14. Document: tm2623210d1_8k.htm. Accession: 0001104659-26-097349. Primary reporting date: 2026-08-14.",
-      "filing_date": "2026-08-14",
-      "published_at": "2026-08-14T16:05:00Z",
-      "event_category": "REGULATION_FD",
-      "materiality_level": "MEDIUM",
-      "materiality_score": 3,
-      "materiality_rationale": "SEC Form 8-K (7.01): Regulation FD Disclosure (Investor Presentation / Update)",
-      "sentiment_score": 0.15,
-      "sentiment_label": "LEAN_BULLISH",
-      "sentiment_drivers": [
-        "Standard factual disclosure under regulatory reporting schedule"
-      ],
-      "horizon": "SHORT_TERM",
-      "priced_in_status": "PRICED_IN",
-      "reaction_1d_pct": -3.12,
-      "reaction_3d_pct": -7.87,
-      "rvol_at_event": 1.0,
-      "factual_claims": [
-        "Official SEC filing under CIK 0001937926 with accession number 0001104659-26-097349",
-        "Filing accepted and recorded on official SEC EDGAR registry for 2026-08-14",
-        "Document reference: tm2623210d1_8k.htm (8-K classification)",
-        "Reported disclosure items: 7.01"
-      ],
-      "invalidation_risks": [
-        "Post-announcement drift may reverse if broad market regime deteriorates",
-        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
-      ],
-      "hard_gate_triggered": false,
-      "score_impact_pts": 0.0
-    },
-    {
-      "id": "025583da53f7",
-      "symbol": "BAM",
-      "company_name": "Brookfield Asset Management Ltd.",
-      "market": "CA",
-      "source": "SEC_EDGAR_10Q",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1937926/000162828026054933/bam-20260630.htm",
-      "headline": "BAM Form 10-Q Quarterly Report \u2014 Q/E 2026-06-30",
-      "summary": "Brookfield Asset Management Ltd. filed Form 10-Q with the SEC on 2026-08-10. Document: bam-20260630.htm. Accession: 0001628280-26-054933. Primary reporting date: 2026-06-30.",
-      "filing_date": "2026-08-10",
-      "published_at": "2026-08-10T16:05:00Z",
-      "event_category": "QUARTERLY_REPORT",
-      "materiality_level": "HIGH",
-      "materiality_score": 4,
-      "materiality_rationale": "Quarterly Financial Report for period ending 2026-06-30 (Form 10-Q)",
-      "sentiment_score": 0.2,
-      "sentiment_label": "LEAN_BULLISH",
-      "sentiment_drivers": [
-        "Standard factual disclosure under regulatory reporting schedule"
-      ],
-      "horizon": "MEDIUM_TERM",
-      "priced_in_status": "PRICED_IN",
-      "reaction_1d_pct": 0.64,
-      "reaction_3d_pct": 3.74,
-      "rvol_at_event": 1.0,
-      "factual_claims": [
-        "Official SEC filing under CIK 0001937926 with accession number 0001628280-26-054933",
-        "Filing accepted and recorded on official SEC EDGAR registry for 2026-08-10",
-        "Document reference: bam-20260630.htm (10-Q classification)"
-      ],
-      "invalidation_risks": [
-        "Post-announcement drift may reverse if broad market regime deteriorates",
-        "Subsequent 10-Q/10-K disclosures may modify non-GAAP preliminary figures"
-      ],
-      "hard_gate_triggered": false,
-      "score_impact_pts": 0.0
     }
   ],
   "chart_bars": [
@@ -1656,10 +1657,10 @@
     "country": "CA",
     "currency": "CAD",
     "as_of_date": "2026-10-03",
-    "generated_at": "2026-10-03T00:16:10.457064+00:00",
+    "generated_at": "2026-10-03T02:18:10.296371+00:00",
     "conviction_grade": "C",
     "aligned_layers_count": 4,
-    "formatted_card": "TICKER: BAM\nREGIME: WEAK_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 9.4%)\nPATTERN TYPE: Archetype E: Defensive Yield & Sovereign Benchmark \u2014 Momentum (Pullback Continuation)\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BEARISH \u2014 Breakdown below moving average cluster; negative CMF (-0.10) and deteriorating price structure.\n  Fundamental:  8.0/10 \u2014 ROIC 13.8%, Debt/Equity 0.00, operating margin 111.9%; robust institutional quality balance sheet.\n  Sentiment:    +1.10 (BULLISH) \u2014 BAM SEC Form 8-K Filing \u2014 Other Events of Substantial Importance\n  Historical:   55.4% Win Rate (10 sample size, E[R]: +0.44R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $63.72 \u2013 $64.68\n  Entry trigger:  Price stabilizes above support zone ($62.46) with 15m candle close above $63.72 and volume > 1.2x 20d average.\n  Stop loss:      $61.53 (3.4% below entry)\n  Target 1 (T1):  $66.35 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $69.19 | Est. 24 days | Take 40%\n  Target 3 (T3):  $72.92 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.32\n  Position size:  228 shares on $100,000 portfolio risking 1% ($499.32)\n  Execution TCA:  TWAP (5 slices) | Est. Fill: $62.95 | Slippage: +1.7 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: C-Grade\nTRADE THESIS: BAM exhibits high structural confluence with Momentum (Pullback Continuation) aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 9.4%), measured support at $62.46 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $61.53 or two consecutive closes back below $62.46 immediately invalidates the trade.",
+    "formatted_card": "TICKER: BAM\nREGIME: WEAK_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 9.4%)\nPATTERN TYPE: Archetype E: Defensive Yield & Sovereign Benchmark \u2014 Momentum (Pullback Continuation)\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BEARISH \u2014 Breakdown below moving average cluster; negative CMF (-0.10) and deteriorating price structure.\n  Fundamental:  8.0/10 \u2014 ROIC 13.8%, Debt/Equity 0.00, operating margin 111.9%; robust institutional quality balance sheet.\n  Sentiment:    +2.40 (BULLISH) \u2014 BAM SEC Form 8-K Filing \u2014 Other Events of Substantial Importance\n  Historical:   55.4% Win Rate (10 sample size, E[R]: +0.44R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $63.72 \u2013 $64.68\n  Entry trigger:  Price stabilizes above support zone ($62.46) with 15m candle close above $63.72 and volume > 1.2x 20d average.\n  Stop loss:      $61.53 (3.4% below entry)\n  Target 1 (T1):  $66.35 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $69.19 | Est. 24 days | Take 40%\n  Target 3 (T3):  $72.92 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.32\n  Position size:  228 shares on $100,000 portfolio risking 1% ($499.32)\n  Execution TCA:  TWAP (5 slices) | Est. Fill: $62.95 | Slippage: +1.7 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: C-Grade\nTRADE THESIS: BAM exhibits high structural confluence with Momentum (Pullback Continuation) aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 9.4%), measured support at $62.46 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $61.53 or two consecutive closes back below $62.46 immediately invalidates the trade.",
     "layer_1_regime": {
       "trend_type": "Bull",
       "volatility_regime": "Medium (15\u201325)",
@@ -1724,18 +1725,18 @@
       "technical_gate_required": false
     },
     "layer_5_sentiment": {
-      "net_sentiment_score": 1.1,
+      "net_sentiment_score": 2.4,
       "status": "BULLISH",
       "key_headline": "BAM SEC Form 8-K Filing \u2014 Other Events of Substantial Importance",
       "catalyst_count": 5,
       "risk_count": 0,
-      "weighted_catalysts": 1.1,
+      "weighted_catalysts": 2.4,
       "weighted_risks": 0.0,
       "recency_breakdown": {
         "24h": 0,
-        "7d": 0,
-        "30d": 3,
-        "older": 2
+        "7d": 3,
+        "30d": 2,
+        "older": 0
       },
       "skip_triggered": false
     },
@@ -1785,21 +1786,21 @@
       "action": "MODERATE_PROCEED",
       "size_multiplier": 0.85,
       "primary_driver": "mom_1m (-0.13, impact +)",
-      "calibrated_at": "2026-10-03T00:16:10.697758+00:00"
+      "calibrated_at": "2026-10-03T02:18:10.609383+00:00"
     },
     "microstructure_metrics": {
       "symbol": "BAM",
-      "timestamp": "2026-10-03T00:16:10.699748+00:00",
-      "cvd_total": 5621,
-      "cvd_1m_delta": 5501,
-      "cvd_5m_delta": 5621,
-      "order_book_imbalance": -0.0781,
-      "kyle_lambda": 0.0127,
-      "rvol_1m": 2.1,
+      "timestamp": "2026-10-03T02:18:10.611039+00:00",
+      "cvd_total": -2070,
+      "cvd_1m_delta": -2353,
+      "cvd_5m_delta": -2070,
+      "order_book_imbalance": -0.0291,
+      "kyle_lambda": 0.0115,
+      "rvol_1m": 1.47,
       "absorption_signal": "NONE",
       "liquidity_state": "NORMAL",
-      "buyer_volume_pct": 71.4,
-      "seller_volume_pct": 28.6
+      "buyer_volume_pct": 43.0,
+      "seller_volume_pct": 57.0
     }
   },
   "disclaimers": {
