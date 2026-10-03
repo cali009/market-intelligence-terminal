@@ -638,3 +638,97 @@ taken from a *different bar* than the fill.
   build their own adapter via a `big_book()` helper.
 
 Both were test bugs; the adapter behaved correctly in all 7 initial failures.
+
+---
+
+## 13. Phase 34.4 — SHIPPED
+
+**Files:** `src/execution/router.py` (`KillSwitch`, `AdapterRegistry`, `AdapterRouter`,
+`RoutingDecision`), `src/execution/gateway.py` (router wired into the submission path).
+**Tests:** `tests/test_execution_router.py` — 93 tests.
+
+### 13.1 Correction to this plan: there is no `KILLED` state
+
+§5 of this plan said a killed order lands in `OrderState.KILLED`. **That state does not
+exist.** The enum has 11 members and `KILLED` is not among them; `REJECTED` is reachable
+only from `SUBMITTED` and `ACKED`, so a kill-switch halt — which stops an order still in
+`NEW` — could not have used it anyway.
+
+The correct landing states, both legal edges from `NEW`:
+
+| Cause | State | Reason code | Actor |
+|---|---|---|---|
+| Kill switch halt | `CANCELLED` | `KILL_SWITCH_ACTIVE` | `KILL_SWITCH` |
+| Routing failure (firewall, license, capability, no adapter) | `INVALID` | the specific code | `SYSTEM` |
+
+The distinction is deliberate and worth preserving: `CANCELLED` means the order was
+serviceable and the system stopped it; `INVALID` means this order cannot be served as
+written. Collapsing them would make the audit trail unable to answer "was this our fault
+or the order's?"
+
+### 13.2 The three gates are not equivalent
+
+| Gate | Nature | Reversible | Falls through |
+|---|---|---|---|
+| Canadian firewall | Regulatory — CIRO DMR 3200 A.1.(b)(i), NI 23-103 §1.2(1) | No | No |
+| License gate | Commercial — data terms not cleared | By clearing terms | Yes (automatic only) |
+| Kill switch | Operational | Yes | Yes, for `EXTERNAL_ONLY` |
+
+`EXTERNAL_ONLY` falls through to the internal simulator on purpose. An operator engaging it
+means "stop using the broker", not "stop working"; failing closed to nothing would turn a
+routine operational action into an outage.
+
+### 13.3 Gate order, and why it is that order
+
+Kill switch → market support → **Canadian firewall** → license → configured → capability.
+
+The kill switch is first because an operator's explicit stop must never be masked by a
+downstream diagnostic. The firewall precedes the license gate because a regulatory block is
+more fundamental than a commercial one and is the more useful thing to report — an adapter
+that is both external and unlicensed is reported as a CIRO block for a Canadian symbol.
+
+### 13.4 Two design decisions worth recording
+
+**The router is authoritative about the route, and the governor is told.** After routing,
+the gateway writes the resolved adapter into `GovernorContext.target_adapter_id` /
+`target_adapter_is_external`. A caller that asserts an adapter is internal when the router
+resolved an external one does not get that assertion believed, so C12 cannot be talked out
+of firing by a mislabelled context. Routing runs *before* order creation so the order row
+records the resolved adapter — and for a blocked order, the adapter that was refused, which
+is what an operator needs to see.
+
+**Nothing is silently substituted.** An unsupported order type returns
+`CAPABILITY_UNSUPPORTED` rather than being downgraded to a market order, and an explicitly
+named adapter is never rerouted behind the caller's back. Automatic selection *does* skip a
+broken adapter, because there the caller expressed no preference — the asymmetry is
+intentional.
+
+### 13.5 `adapter_hint` was a dead field; it is now honoured
+
+`OrderRequest.adapter_hint` was declared in Phase 34.1 and read by nothing. Rather than
+leave it inert, the router now honours it with a defined precedence: explicit `route()`
+argument → `request.adapter_hint` → automatic selection. It is a *preference, not a
+permission*: a Canadian symbol hinted at an external adapter is refused exactly as if the
+caller had demanded it explicitly (tested).
+
+### 13.6 Defect found by the test suite
+
+`KillSwitch.blocks()` read `request.strategy`. **`OrderRequest` has no such attribute** — the
+field is `strategy_id`. Any `STRATEGY:<x>` kill switch would have raised `AttributeError` at
+routing time, i.e. the halt would fail loudly in production instead of halting.
+
+It survived the smoke test because that test exercised `ALL`, `SYMBOL:` and `EXTERNAL_ONLY`
+but not `STRATEGY:`. The parametrised test caught it immediately.
+
+Lesson recorded: a smoke test that covers "the scopes I thought of" is not coverage. Each
+branch of a dispatcher needs its own case, and the branch that reads a field off a model
+should be checked against the model's actual field list.
+
+### 13.7 State derived from an event log
+
+The kill switch holds no in-memory flag. `active_scopes()` replays the append-only
+`kill_switch_event` table, so the active set cannot drift from the audit record of who
+stopped what and when, and a fresh `KillSwitch` instance over the same database sees the
+same state. Scopes are reported in a fixed precedence (`ALL`, `EXTERNAL_ONLY`, `SYMBOL:`,
+`STRATEGY:`) rather than set-iteration order, so the same active set always explains itself
+identically.
