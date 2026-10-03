@@ -1,0 +1,103 @@
+{
+  "as_of_date": "2026-10-03",
+  "generated_at": "2026-10-03T18:24:10.706163+00:00",
+  "session": {
+    "session": "2026-10-03",
+    "evaluations": 206,
+    "orders": 12,
+    "hard_rejections": 51,
+    "soft_limits": 25,
+    "approvals": 130,
+    "submitted_notional_usd": 286725.0,
+    "rejected_notional_usd": 65970.0,
+    "rejected_share": 0.230081,
+    "breached_controls": {
+      "C1": 25,
+      "C12": 26,
+      "C9": 25
+    },
+    "top_rejected_symbols": [
+      {
+        "symbol": "AAPL",
+        "rejected_notional_usd": 37500.0
+      },
+      {
+        "symbol": "SHOP",
+        "rejected_notional_usd": 28470.0
+      }
+    ],
+    "generated_at": "2026-10-03T18:24:10.706163+00:00"
+  },
+  "predicate_28": {
+    "predicate_type": "PRE_TRADE_RISK_BREACH",
+    "fired": true,
+    "severity": "CRITICAL",
+    "action_required": "REVIEW_POSITION_SIZING",
+    "headline": "Pre-Trade Risk Breach: 51 hard rejections this session (CRITICAL)",
+    "body": "The pre-trade risk governor hard-rejected 51 of 206 order evaluations in session 2026-10-03, with $65,970 of $286,725 submitted notional refused. Triggered by: 51 hard rejections against a boundary of 3. Controls breached: C1 (25), C12 (26), C9 (25). Repeated pre-trade rejections indicate the signals being generated are larger or more concentrated than the declared risk envelope permits. This is a strategy/risk alignment finding and requires review of position sizing assumptions; it is not a statement about expected returns.",
+    "thresholds": {
+      "hard_rejection_trigger": 3,
+      "critical_rejections": 10,
+      "rejected_notional_share": 0.25,
+      "boundary_exclusive": true
+    }
+  },
+  "adapters": [
+    {
+      "adapter_id": "INTERNAL_SIMULATOR",
+      "is_external": false,
+      "license_cleared": true,
+      "configured": true,
+      "markets": [
+        "CA",
+        "US"
+      ],
+      "order_types": [
+        "LIMIT",
+        "MARKET",
+        "POV",
+        "STOP",
+        "STOP_LIMIT",
+        "TWAP",
+        "VWAP"
+      ]
+    }
+  ],
+  "external_adapters_registered": 0,
+  "canadian_routing": {
+    "external_routing_permitted": false,
+    "basis": "CIRO / IIROC Dealer Member Rule 3200 A.1.(b)(i) and NI 23-103 s.1.2(1): an order-execution-only dealer may not let a client generate orders through its own automated order system."
+  },
+  "kill_switch": {
+    "active_scopes": [],
+    "halted": false,
+    "events_recorded": 12
+  },
+  "aos_attestation": {
+    "year": 2026,
+    "attested_at": "2026-10-03T18:19:15.324563+00:00",
+    "code_version": "5c52593faddcbf136a4ad63b059aa53fecf2c354",
+    "controls_registered": 12,
+    "controls_with_tests": 12,
+    "controls_without_tests": [],
+    "routing_gates_checked": 5,
+    "state_machine_edges": 23,
+    "kill_switch_verified": true,
+    "tests_passed": 402,
+    "tests_failed": 0,
+    "suites_run": 6,
+    "passed": true,
+    "artifact_path": "/home/user/data/attestations/aos_2026.json",
+    "scope_note": "Attests pre-trade control coverage, routing gates, state-machine integrity and kill-switch operation only. Does not attest profitability, fill-quality realism, or the suitability of any signal. Unregistered impersonal research; no external broker adapter ships and no order routes to a live venue.",
+    "days_until_expiry": 365,
+    "expired": false,
+    "artifact_sha256": "059f602965345cf8ed1cf1cd1e74d9b3f9696e3500b73d47a1b3c934c5152094"
+  },
+  "disclaimers": [
+    "Decision-support and research only. Not investment advice and not a recommendation to buy or sell any security.",
+    "No profitability claim is made. Execution telemetry describes the alignment between generated signals and the declared risk envelope, not expected returns.",
+    "Paper simulation only. No order in this system routes to a live venue.",
+    "No external broker adapter is registered. The internal simulator is the only execution venue.",
+    "Canadian symbols never route to an external adapter. This is a regulatory constraint, not a configuration preference."
+  ]
+}

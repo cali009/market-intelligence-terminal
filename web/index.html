@@ -1013,6 +1013,7 @@
             <button class="tab-btn" data-tab="sovereigncurve" onclick="switchTab('sovereigncurve', event)">📈 Sovereign Curve &amp; Term Premium</button>
             <button class="tab-btn" data-tab="darkpool" onclick="switchTab('darkpool', event)">🕶️ Dark Pool &amp; Short Activity</button>
             <button class="tab-btn" data-tab="volatilityvrp" onclick="switchTab('volatilityvrp', event)">📉 Volatility Forecast &amp; VRP</button>
+            <button class="tab-btn" data-tab="execution" onclick="switchTab('execution', event)">🛡️ Execution Gateway</button>
             <button class="tab-btn" data-tab="scanners" onclick="switchTab('scanners', event)">TAC-15 Market Scanners</button>
             <button class="tab-btn" data-tab="signals" onclick="switchTab('signals', event)">Research Signal Plans</button>
             <button class="tab-btn" data-tab="backtest" onclick="switchTab('backtest', event)">Backtest Lab & Strategy Performance</button>
@@ -1449,6 +1450,47 @@
 
             <div id="volVrpContainer">
                 <div style="text-align: center; padding: 40px; color: var(--text-muted);"><div class="spinner" style="margin-right: 8px;"></div> Loading realized volatility estimators, GARCH-family MLE fits, HAR-RV forecasts, and VRP analytics...</div>
+            </div>
+        </div>
+
+        <!-- Phase 34.5: Execution Gateway, Pre-Trade Risk & AOS Attestation -->
+        <div id="tab-execution" style="display: none;">
+            <div class="scanners-header" style="margin-bottom: 20px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+                    <div>
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px; flex-wrap: wrap;">
+                            <h2 style="font-size: 18px; font-weight: 800; color: var(--text-primary);">🛡️ Execution Gateway &amp; Pre-Trade Risk</h2>
+                            <span class="exchange-tag" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-green); border-color: rgba(16, 185, 129, 0.3); font-weight: 700;">12 PRE-TRADE CONTROLS</span>
+                            <span class="exchange-tag" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b; border-color: rgba(245, 158, 11, 0.3); font-weight: 700;">UMIR 7.1 / POLICY 7.1</span>
+                            <span class="exchange-tag" style="background: rgba(239, 68, 68, 0.15); color: var(--accent-red); border-color: rgba(239, 68, 68, 0.3); font-weight: 700;">PAPER SIMULATION ONLY</span>
+                            <span class="exchange-tag" id="execAosBadge" style="background: rgba(100,116,139,0.15); color: var(--text-muted); border-color: rgba(100,116,139,0.3); font-weight: 700;">AOS: LOADING</span>
+                        </div>
+                        <p style="font-size: 12px; color: var(--text-muted);">
+                            Pre-trade risk governor telemetry &middot; Predicate 28 (PRE_TRADE_RISK_BREACH) &middot; adapter inventory and licensing posture &middot; kill-switch state &middot; annual automated-order-system attestation
+                        </p>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px; background: var(--bg-card); padding: 6px 12px; border-radius: 8px; border: 1px solid var(--border-color); flex-wrap: wrap;">
+                        <span id="execPredicateBadge" style="font-size: 11px; font-weight: 700; color: var(--accent-green); display: flex; align-items: center; gap: 6px;">
+                            <span style="display: inline-block; width: 8px; height: 8px; background: var(--accent-green); border-radius: 50%;"></span>
+                            LOADING
+                        </span>
+                        <button class="filter-btn" onclick="refreshExecutionData()" style="padding: 2px 8px; font-size: 11px;">🔄 Refresh</button>
+                    </div>
+                </div>
+            </div>
+
+            <div style="background: rgba(245, 158, 11, 0.07); border: 1px solid rgba(245, 158, 11, 0.28); border-radius: 8px; padding: 10px 14px; margin-bottom: 16px;">
+                <div style="font-size: 11px; font-weight: 800; color: #f59e0b; margin-bottom: 4px;">⚖️ SCOPE &amp; REGULATORY NOTICE</div>
+                <div style="font-size: 11px; color: var(--text-muted); line-height: 1.6;">
+                    This panel reports <strong>execution telemetry only</strong>. It makes <strong>no profitability claim</strong> and does not describe expected returns.
+                    All orders are simulated on the platform&rsquo;s own historical bars &mdash; <strong>nothing routes to a live venue</strong>.
+                    <strong>No external broker adapter is registered</strong>, and <strong>Canadian symbols are never routed to an external adapter</strong>
+                    (CIRO / IIROC Dealer Member Rule 3200 A.1.(b)(i); NI 23-103 &sect;1.2(1)) &mdash; a regulatory constraint, not a configuration preference.
+                </div>
+            </div>
+
+            <div id="execContainer">
+                <div style="padding: 24px; color: var(--text-muted);">Loading execution gateway telemetry&hellip;</div>
             </div>
         </div>
 
@@ -11016,6 +11058,207 @@
             container.innerHTML = `${kpiHtml}${chartHtml}${tableHtml}${statutoryHtml}`;
         }
 
+
+        // =========================================================================
+        // PHASE 34.5: EXECUTION GATEWAY, PRE-TRADE RISK & AOS ATTESTATION
+        //
+        // Reports execution telemetry only. Makes no profitability claim.
+        // The kill switch is displayed READ-ONLY: this is a static Firebase-hosted
+        // front end with no backend, so a control here could not actually engage the
+        // switch. Presenting one that appeared to work would be fabrication, so the
+        // operator command is shown instead.
+        // =========================================================================
+        let execBundle = null;
+
+        async function loadExecutionAndRender() {
+            let data = null;
+            for (const url of ['/api/execution_gateway.json', '/api/execution_gateway']) {
+                try {
+                    const res = await fetch(url);
+                    if (res.ok) { data = await res.json(); break; }
+                } catch (err) { /* try the next route */ }
+            }
+            if (!data) {
+                execBundle = null;
+                const c = document.getElementById('execContainer');
+                if (c) c.innerHTML = '<div style="padding: 24px; color: var(--accent-red);">Failed to load the execution gateway feed. Ensure the data service is operational.</div>';
+                const b = document.getElementById('execAosBadge');
+                if (b) b.textContent = 'AOS: FEED UNAVAILABLE';
+                return;
+            }
+            execBundle = data;
+            renderExecutionView();
+        }
+
+        function refreshExecutionData() { execBundle = null; loadExecutionAndRender(); }
+
+        function execStat(label, value, color) {
+            const col = color || 'var(--text-primary)';
+            return '<div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 12px 14px;">'
+                 + '<div style="font-size: 10px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; letter-spacing: 0.5px;">' + label + '</div>'
+                 + '<div style="font-size: 20px; font-weight: 800; color: ' + col + '; margin-top: 4px;">' + value + '</div></div>';
+        }
+
+        function renderExecutionView() {
+            if (!execBundle) { loadExecutionAndRender(); return; }
+            const d = execBundle;
+            const sess = d.session || {};
+            const p28 = d.predicate_28 || {};
+            const ks = d.kill_switch || {};
+            const aos = d.aos_attestation;
+            const out = [];
+
+            // ---- AOS badge in the header -------------------------------------
+            const badge = document.getElementById('execAosBadge');
+            if (badge) {
+                if (!aos) {
+                    badge.textContent = 'AOS: NEVER ATTESTED';
+                    badge.style.color = 'var(--accent-red)';
+                    badge.style.borderColor = 'rgba(239,68,68,0.3)';
+                    badge.style.background = 'rgba(239,68,68,0.15)';
+                } else if (aos.expired) {
+                    badge.textContent = 'AOS: EXPIRED ' + Math.abs(aos.days_until_expiry) + 'd AGO';
+                    badge.style.color = 'var(--accent-red)';
+                    badge.style.borderColor = 'rgba(239,68,68,0.3)';
+                    badge.style.background = 'rgba(239,68,68,0.15)';
+                } else {
+                    badge.textContent = 'AOS: CURRENT · ' + aos.days_until_expiry + 'd TO RE-TEST';
+                    badge.style.color = aos.passed ? 'var(--accent-green)' : '#f59e0b';
+                    badge.style.borderColor = aos.passed ? 'rgba(16,185,129,0.3)' : 'rgba(245,158,11,0.3)';
+                    badge.style.background = aos.passed ? 'rgba(16,185,129,0.15)' : 'rgba(245,158,11,0.15)';
+                }
+            }
+
+            // ---- Predicate 28 badge in the header ----------------------------
+            const pb = document.getElementById('execPredicateBadge');
+            if (pb) {
+                const sev = p28.severity;
+                const col = !p28.fired ? 'var(--accent-green)' : (sev === 'CRITICAL' ? 'var(--accent-red)' : '#f59e0b');
+                const txt = !p28.fired ? 'P28 NOMINAL' : ('P28 ' + sev);
+                pb.style.color = col;
+                pb.innerHTML = '<span style="display:inline-block;width:8px;height:8px;background:' + col
+                             + ';border-radius:50%;"></span> ' + txt;
+            }
+
+            // ---- Session telemetry -------------------------------------------
+            out.push('<div style="font-size: 12px; font-weight: 800; color: var(--text-primary); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">Session Telemetry &mdash; ' + (sess.session || 'n/a') + ' UTC</div>');
+            out.push('<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-bottom: 20px;">');
+            out.push(execStat('Evaluations', sess.evaluations || 0));
+            out.push(execStat('Distinct Orders', sess.orders || 0));
+            out.push(execStat('Hard Rejections', sess.hard_rejections || 0, (sess.hard_rejections || 0) > 3 ? 'var(--accent-red)' : 'var(--text-primary)'));
+            out.push(execStat('Soft Limits', sess.soft_limits || 0, (sess.soft_limits || 0) > 0 ? '#f59e0b' : 'var(--text-primary)'));
+            out.push(execStat('Approved', sess.approvals || 0, 'var(--accent-green)'));
+            out.push(execStat('Submitted Notional', '$' + Math.round(sess.submitted_notional_usd || 0).toLocaleString()));
+            out.push(execStat('Rejected Notional', '$' + Math.round(sess.rejected_notional_usd || 0).toLocaleString(), (sess.rejected_notional_usd || 0) > 0 ? 'var(--accent-red)' : 'var(--text-primary)'));
+            out.push(execStat('Rejected Share', ((sess.rejected_share || 0) * 100).toFixed(1) + '%', (sess.rejected_share || 0) > 0.25 ? 'var(--accent-red)' : 'var(--text-primary)'));
+            out.push('</div>');
+
+            const controls = sess.breached_controls || {};
+            const controlKeys = Object.keys(controls);
+            out.push('<div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 12px 14px; margin-bottom: 20px;">');
+            out.push('<div style="font-size: 11px; font-weight: 800; color: var(--text-primary); margin-bottom: 6px;">CONTROLS THAT BREACHED THIS SESSION</div>');
+            if (!controlKeys.length) {
+                out.push('<div style="font-size: 11px; color: var(--accent-green);">No control breached. Every evaluated order cleared all twelve pre-trade controls.</div>');
+            } else {
+                out.push('<div style="display: flex; gap: 6px; flex-wrap: wrap;">');
+                controlKeys.forEach(function (k) {
+                    out.push('<span class="exchange-tag" style="background: rgba(239,68,68,0.12); color: var(--accent-red); border-color: rgba(239,68,68,0.3); font-weight: 700;">' + k + ' &times;' + controls[k] + '</span>');
+                });
+                out.push('</div>');
+            }
+            out.push('</div>');
+
+            // ---- Predicate 28 ------------------------------------------------
+            const th = p28.thresholds || {};
+            out.push('<div style="border: 1px solid ' + (p28.fired ? (p28.severity === 'CRITICAL' ? 'rgba(239,68,68,0.4)' : 'rgba(245,158,11,0.4)') : 'var(--border-color)') + '; background: var(--bg-card); border-radius: 8px; padding: 14px; margin-bottom: 20px;">');
+            out.push('<div style="display:flex; justify-content: space-between; align-items:center; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;">');
+            out.push('<div style="font-size: 12px; font-weight: 800; color: var(--text-primary);">PREDICATE 28 &mdash; PRE_TRADE_RISK_BREACH</div>');
+            out.push('<span class="exchange-tag" style="font-weight:700; background:' + (p28.fired ? 'rgba(239,68,68,0.15)' : 'rgba(16,185,129,0.15)') + '; color:' + (p28.fired ? 'var(--accent-red)' : 'var(--accent-green)') + '; border-color:' + (p28.fired ? 'rgba(239,68,68,0.3)' : 'rgba(16,185,129,0.3)') + ';">' + (p28.fired ? 'FIRED · ' + p28.severity : 'NOT FIRED') + '</span>');
+            out.push('</div>');
+            out.push('<div style="font-size: 11px; color: var(--text-muted); line-height: 1.6; margin-bottom: 8px;">Fires when the risk governor is repeatedly refusing what the signal engine generates &mdash; a strategy/risk <em>alignment</em> finding. Thresholds: more than <strong>' + th.hard_rejection_trigger + '</strong> hard rejections, <strong>or</strong> rejected notional above <strong>' + Math.round((th.rejected_notional_share || 0) * 100) + '%</strong> of submitted; escalates to CRITICAL above <strong>' + th.critical_rejections + '</strong> rejections. Boundaries are <strong>exclusive</strong> &mdash; sitting exactly on one does not fire.</div>');
+            if (p28.fired) {
+                out.push('<div style="background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.25); border-radius: 6px; padding: 10px 12px; font-size: 11px; color: var(--text-muted); line-height: 1.6;"><strong style="color: var(--accent-red);">' + (p28.headline || '') + '</strong><br>' + (p28.body || '') + '</div>');
+                out.push('<div style="margin-top: 8px; font-size: 11px; font-weight: 700; color: #f59e0b;">ACTION REQUIRED: ' + (p28.action_required || '') + '</div>');
+            }
+            out.push('</div>');
+
+            // ---- Kill switch (read-only) -------------------------------------
+            const scopes = ks.active_scopes || [];
+            out.push('<div style="border: 1px solid ' + (ks.halted ? 'rgba(239,68,68,0.45)' : 'var(--border-color)') + '; background: var(--bg-card); border-radius: 8px; padding: 14px; margin-bottom: 20px;">');
+            out.push('<div style="display:flex; justify-content: space-between; align-items:center; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;">');
+            out.push('<div style="font-size: 12px; font-weight: 800; color: var(--text-primary);">KILL SWITCH</div>');
+            out.push('<span class="exchange-tag" style="font-weight:700; background:' + (ks.halted ? 'rgba(239,68,68,0.15)' : 'rgba(16,185,129,0.15)') + '; color:' + (ks.halted ? 'var(--accent-red)' : 'var(--accent-green)') + '; border-color:' + (ks.halted ? 'rgba(239,68,68,0.3)' : 'rgba(16,185,129,0.3)') + ';">' + (ks.halted ? 'HALTED' : 'ROUTING ENABLED') + '</span>');
+            out.push('</div>');
+            if (scopes.length) {
+                out.push('<div style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom:8px;">');
+                scopes.forEach(function (sc) { out.push('<span class="exchange-tag" style="background: rgba(239,68,68,0.12); color: var(--accent-red); border-color: rgba(239,68,68,0.3); font-weight:700;">' + sc + '</span>'); });
+                out.push('</div>');
+            } else {
+                out.push('<div style="font-size: 11px; color: var(--text-muted); margin-bottom: 8px;">No scope engaged. ' + (ks.events_recorded || 0) + ' event(s) on the audit log.</div>');
+            }
+            out.push('<div style="font-size: 11px; color: var(--text-muted); line-height: 1.6; background: rgba(100,116,139,0.08); border: 1px solid var(--border-color); border-radius: 6px; padding: 8px 10px;">Read-only by design. This is a static front end with no backend, so no control here could actually engage the switch. Operators engage it from the platform host: <code style="color: var(--accent-cyan);">KillSwitch().engage("ALL", reason="...")</code> &mdash; scopes <code>ALL</code>, <code>EXTERNAL_ONLY</code>, <code>SYMBOL:&lt;x&gt;</code>, <code>STRATEGY:&lt;y&gt;</code>. <code>EXTERNAL_ONLY</code> falls through to the internal simulator rather than halting.</div>');
+            out.push('</div>');
+
+            // ---- Adapter inventory -------------------------------------------
+            const adapters = d.adapters || [];
+            out.push('<div style="font-size: 12px; font-weight: 800; color: var(--text-primary); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">Adapter Inventory</div>');
+            out.push('<div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; overflow-x: auto; margin-bottom: 12px;"><table style="width:100%; border-collapse: collapse; font-size: 11px;">');
+            out.push('<thead><tr style="border-bottom: 1px solid var(--border-color); color: var(--text-muted); text-transform: uppercase; font-size: 10px; letter-spacing: 0.5px;">'
+                   + '<th style="text-align:left; padding: 8px 12px;">Adapter</th><th style="text-align:left; padding: 8px 12px;">External</th>'
+                   + '<th style="text-align:left; padding: 8px 12px;">Licence</th><th style="text-align:left; padding: 8px 12px;">Configured</th>'
+                   + '<th style="text-align:left; padding: 8px 12px;">Markets</th><th style="text-align:left; padding: 8px 12px;">Order Types</th></tr></thead><tbody>');
+            adapters.forEach(function (a) {
+                const ext = a.is_external ? '<span style="color: var(--accent-red); font-weight:700;">YES</span>' : '<span style="color: var(--accent-green); font-weight:700;">NO</span>';
+                const lic = a.license_cleared ? '<span style="color: var(--accent-green); font-weight:700;">CLEARED</span>' : '<span style="color: var(--accent-red); font-weight:700;">NOT CLEARED</span>';
+                const cfg = a.configured ? '<span style="color: var(--accent-green);">yes</span>' : '<span style="color: var(--accent-red);">no</span>';
+                out.push('<tr style="border-bottom: 1px solid var(--border-color);">'
+                       + '<td style="padding: 8px 12px; font-weight:700; color: var(--text-primary);">' + a.adapter_id + '</td>'
+                       + '<td style="padding: 8px 12px;">' + ext + '</td>'
+                       + '<td style="padding: 8px 12px;">' + lic + '</td>'
+                       + '<td style="padding: 8px 12px;">' + cfg + '</td>'
+                       + '<td style="padding: 8px 12px; color: var(--text-muted);">' + (a.markets || []).join(', ') + '</td>'
+                       + '<td style="padding: 8px 12px; color: var(--text-muted);">' + (a.order_types || []).join(', ') + '</td></tr>');
+            });
+            out.push('</tbody></table></div>');
+            out.push('<div style="font-size: 11px; color: var(--accent-green); font-weight: 700; margin-bottom: 20px;">External adapters registered: ' + (d.external_adapters_registered || 0) + ' &middot; Canadian external routing permitted: <span style="color: var(--accent-red);">NO</span></div>');
+
+            // ---- AOS attestation ---------------------------------------------
+            out.push('<div style="font-size: 12px; font-weight: 800; color: var(--text-primary); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">Annual AOS Attestation &mdash; CIRO Policy 7.1 Part 8</div>');
+            if (!aos) {
+                out.push('<div style="background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.3); border-radius: 8px; padding: 14px; font-size: 11px; color: var(--accent-red); margin-bottom: 20px;">No attestation on record. Policy 7.1 Part 8 requires the automated order system to be tested at least annually with a written record.</div>');
+            } else {
+                const col = aos.expired ? 'var(--accent-red)' : (aos.passed ? 'var(--accent-green)' : '#f59e0b');
+                const state = aos.expired ? 'EXPIRED' : (aos.passed ? 'CURRENT · PASSED' : 'CURRENT · FAILED');
+                out.push('<div style="border: 1px solid ' + (aos.expired ? 'rgba(239,68,68,0.4)' : 'var(--border-color)') + '; background: var(--bg-card); border-radius: 8px; padding: 14px; margin-bottom: 20px;">');
+                out.push('<div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:10px;">');
+                out.push('<span class="exchange-tag" style="font-weight:700; background: rgba(100,116,139,0.12); color:' + col + '; border-color: var(--border-color);">' + state + '</span>');
+                out.push('<span style="font-size:11px; color: var(--text-muted);">' + aos.days_until_expiry + ' day(s) until re-test due</span>');
+                out.push('</div>');
+                out.push('<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; margin-bottom: 10px;">');
+                out.push(execStat('Attested', String(aos.attested_at || '').slice(0, 10)));
+                out.push(execStat('Controls Covered', aos.controls_with_tests + '/' + aos.controls_registered, aos.controls_with_tests === aos.controls_registered ? 'var(--accent-green)' : 'var(--accent-red)'));
+                out.push(execStat('Kill Switch Verified', aos.kill_switch_verified ? 'YES' : 'NO', aos.kill_switch_verified ? 'var(--accent-green)' : 'var(--accent-red)'));
+                out.push(execStat('Tests Passed', aos.tests_passed, 'var(--accent-green)'));
+                out.push(execStat('Tests Failed', aos.tests_failed, aos.tests_failed === 0 ? 'var(--accent-green)' : 'var(--accent-red)'));
+                out.push(execStat('Code Version', String(aos.code_version || '').slice(0, 10)));
+                out.push('</div>');
+                out.push('<div style="font-size: 11px; color: var(--text-muted); line-height: 1.6; background: rgba(100,116,139,0.08); border: 1px solid var(--border-color); border-radius: 6px; padding: 8px 10px;">' + (aos.scope_note || '') + '</div>');
+                out.push('</div>');
+            }
+
+            // ---- Disclaimers --------------------------------------------------
+            const dis = d.disclaimers || [];
+            if (dis.length) {
+                out.push('<div style="background: rgba(100,116,139,0.07); border: 1px solid var(--border-color); border-radius: 8px; padding: 12px 14px;"><div style="font-size: 11px; font-weight: 800; color: var(--text-muted); margin-bottom: 6px;">DISCLOSURES</div><ul style="margin:0; padding-left: 18px; font-size: 11px; color: var(--text-muted); line-height: 1.7;">');
+                dis.forEach(function (t) { out.push('<li>' + t + '</li>'); });
+                out.push('</ul></div>');
+            }
+            out.push('<div style="font-size: 10px; color: var(--text-muted); margin-top: 12px; text-align: right;">Feed generated ' + (d.generated_at || 'n/a') + ' &middot; session ' + (d.as_of_date || 'n/a') + '</div>');
+
+            const c = document.getElementById('execContainer');
+            if (c) c.innerHTML = out.join('');
+        }
+
         function switchTab(tabId, ev) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             if (ev && ev.currentTarget) {
@@ -11026,7 +11269,7 @@
             }
 
             const tabIds = [
-                'leaderboard', 'quantintel', 'macroregime', 'microstructure', 'portfoliohrp', 'crossborderfx', 'optionssurface', 'sovereigncurve', 'darkpool', 'volatilityvrp', 'scanners', 'signals', 'backtest', 'paper',
+                'leaderboard', 'quantintel', 'macroregime', 'microstructure', 'portfoliohrp', 'crossborderfx', 'optionssurface', 'sovereigncurve', 'darkpool', 'volatilityvrp', 'execution', 'scanners', 'signals', 'backtest', 'paper',
                 'portfolio', 'alerts', 'deepread', 'production', 'catalysts', 'journal'
             ];
             tabIds.forEach(id => {
@@ -11087,6 +11330,12 @@
                     loadDarkPoolAndRender();
                 } else {
                     renderDarkPoolView();
+                }
+            } else if (tabId === 'execution') {
+                if (!execBundle) {
+                    loadExecutionAndRender();
+                } else {
+                    renderExecutionView();
                 }
             } else if (tabId === 'volatilityvrp') {
                 if (!volVrpBundle) {

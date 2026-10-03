@@ -5,6 +5,7 @@ orchestrator allocation conservation, terminal workstation UI synchronization,
 and statutory regulatory compliance (CSA Staff Notice 31-369 / SEC Publisher Exclusion).
 """
 
+import itertools
 import json
 from pathlib import Path
 import pytest
@@ -148,6 +149,16 @@ class TestPortfolioReleaseAudit:
         "ESTIMATION_ERROR_SPIKE",
         "UNHEDGED_CURRENCY_DRAG",
     }
+    # Execution/operational telemetry. Deliberately a THIRD family rather than being folded
+    # into one of the two above:
+    #   - not ALLOCATION, because that family carries the invariant "a nominal allocation
+    #     must never breach a construction limit", and Predicate 28 fires on governor
+    #     rejection history, which a nominal allocation says nothing about;
+    #   - not MARKET, because it is not a market condition at all -- it describes the
+    #     alignment between generated signals and the declared risk envelope.
+    EXECUTION_PREDICATES = {
+        "PRE_TRADE_RISK_BREACH",
+    }
     MARKET_PREDICATES = {
         "CROSS_BORDER_PARITY_DISLOCATION",
         "GAMMA_FLIP_REGIME_TRANSITION",
@@ -175,13 +186,17 @@ class TestPortfolioReleaseAudit:
         )
 
         # 2. Every alert must be a known predicate -- no orphaned or malformed type.
+        all_families = (self.ALLOCATION_PREDICATES | self.MARKET_PREDICATES
+                        | self.EXECUTION_PREDICATES)
         unknown = [a["predicate_type"] for a in alerts
-                   if a["predicate_type"] not in self.ALLOCATION_PREDICATES | self.MARKET_PREDICATES]
+                   if a["predicate_type"] not in all_families]
         assert unknown == [], f"Unknown predicate types emitted: {unknown}"
 
         # 3. Any alert that does fire must be well-formed and risk-framed, not advisory.
+        #    Market and execution predicates may both fire; allocation predicates may not
+        #    (asserted above), so the well-formedness check spans the families that can fire.
         for a in alerts:
-            assert a["predicate_type"] in self.MARKET_PREDICATES
+            assert a["predicate_type"] in (self.MARKET_PREDICATES | self.EXECUTION_PREDICATES)
             assert a["severity"] in ("CRITICAL", "WARNING", "NOTICE")
             assert a["symbol"] and a["headline"] and a["body"] and a["action_required"]
             assert isinstance(a["trigger_level"], (int, float))
@@ -208,10 +223,16 @@ class TestPortfolioReleaseAudit:
         emitted = set(re.findall(r'predicate_type="([A-Z_0-9]+)"', src[start:end]))
         assert emitted, "no predicates found -- parsing assumption broke"
 
-        overlap = self.ALLOCATION_PREDICATES & self.MARKET_PREDICATES
-        assert not overlap, f"Predicate in both families: {overlap}"
+        families = {
+            "ALLOCATION": self.ALLOCATION_PREDICATES,
+            "MARKET": self.MARKET_PREDICATES,
+            "EXECUTION": self.EXECUTION_PREDICATES,
+        }
+        for a, b in itertools.combinations(families, 2):
+            overlap = families[a] & families[b]
+            assert not overlap, f"Predicate in both {a} and {b}: {overlap}"
 
-        unclassified = emitted - self.ALLOCATION_PREDICATES - self.MARKET_PREDICATES
+        unclassified = emitted - set().union(*families.values())
         assert not unclassified, (
             f"New predicate(s) not classified into a family: {sorted(unclassified)}"
         )

@@ -56,6 +56,7 @@ from src.engine.cross_border_fx import cross_border_fx_engine
 from src.engine.sovereign_yield_curve import sovereign_yield_curve_engine
 from src.engine.dark_pool_liquidity import dark_pool_liquidity_engine
 from src.engine.volatility_forecast_vrp import volatility_forecast_vrp_engine
+from src.execution.execution_telemetry import export_execution_gateway_feed
 from src.engine.options_surface_gex import cross_border_options_engine
 
 FEEDS_DIR = DATA_DIR / "feeds"
@@ -709,6 +710,12 @@ class EdgeExporter:
 
             # Phase 33: Multi-Horizon Volatility Forecast & Variance Risk Premium Feed
             volatility_forecast_vrp_engine.export_feed(d_dir / "volatility_vrp.json")
+
+            # Phase 34.5: Execution gateway telemetry, Predicate 28, adapter inventory,
+            # kill-switch state and the annual AOS attestation. Publishes the routing
+            # posture (no external adapter registered, Canadian external routing barred)
+            # so it is verifiable from the artifact rather than asserted.
+            export_execution_gateway_feed(output_path=str(d_dir / "execution_gateway.json"))
 
         return {
             "dist_files": 30,

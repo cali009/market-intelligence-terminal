@@ -732,3 +732,133 @@ stopped what and when, and a fresh `KillSwitch` instance over the same database 
 same state. Scopes are reported in a fixed precedence (`ALL`, `EXTERNAL_ONLY`, `SYMBOL:`,
 `STRATEGY:`) rather than set-iteration order, so the same active set always explains itself
 identically.
+
+---
+
+## 14. Phase 34.5 — SHIPPED (Phase 34 complete)
+
+**Files:** `src/execution/execution_telemetry.py` (telemetry + feed),
+`src/execution/aos_attestation.py` (Policy 7.1 Part 8 record),
+`scripts/aos_annual_attestation.py` (CLI), `src/engine/quant_intel_sentinel.py`
+(Predicate 28), `web/index.html` (Execution Gateway tab), `src/data/edge_exporter.py`
+and `scripts/build_firebase_public.py` (feed wiring).
+**Tests:** `tests/test_execution_telemetry.py` (48), `tests/test_execution_aos_feed.py` (36).
+
+### 14.1 Predicate 28 needed a third predicate family
+
+The release suites classify every predicate into `ALLOCATION_PREDICATES` or
+`MARKET_PREDICATES`, and the family guard fails the build on any unclassified type.
+Predicate 28 fits **neither**:
+
+- It cannot be `ALLOCATION`. That family carries the invariant *"a nominal allocation must
+  never breach a construction limit"* and the test asserts it is empty. Predicate 28 fires
+  on the governor's rejection history, which a nominal allocation says nothing about —
+  forcing it in would break a real invariant.
+- It cannot be `MARKET`. It is not a market condition; it describes alignment between the
+  signals being generated and the declared risk envelope.
+
+So `EXECUTION_PREDICATES` was added as a third family, and the guard now checks all three
+are pairwise disjoint. This also required correcting a second, independent assertion
+(`test_factor_sentinels_integrity_in_orchestrator` asserted *zero* CRITICAL alerts) whose
+premise — "nominal baseline conditions" — is a statement about market state, not about
+operational telemetry. That test now excludes execution predicates **and** asserts any such
+alert is well-formed and attributed to `PORTFOLIO`, so the exclusion is a classification
+rather than a loosening.
+
+This is the third instance of the hazard recorded in §10: a release test whose "no alerts"
+premise silently assumes which predicates can fire.
+
+### 14.2 Telemetry counts evaluations, not rows
+
+`risk_governor_decision` stores **one row per control** — twelve per governor run — so
+counting rows overstates everything 12×. One evaluation is identified by the pair
+`(order_id, decided_at)`, and an evaluation's verdict is the **max severity across its
+twelve rows**, not any single row.
+
+The same `order_id` can also be evaluated several times, because `order_id` derives
+deterministically from `client_order_id`. The gateway's Phase 34.1 duplicate guard blocks
+that path in normal operation (a resubmitted request raises `DuplicateOrderError`), but the
+ledger can still hold several evaluations per order and historical data does. Telemetry
+therefore counts per evaluation, with per-order figures exposed alongside.
+
+### 14.3 Resolved contradiction in §6: the boundary is exclusive
+
+§6 describes the trigger as "hard-rejections … **≥ 3**" and then says "**Boundary:
+exclusive**, consistent with Predicates 26 and 27." Those contradict. The exclusive
+convention wins, because it is the stated rule and the one P26/P27 actually implement: the
+count trigger is strictly greater than 3, so a 4th rejection fires and the 3rd does not.
+The thresholds are module constants (`P28_HARD_REJECTION_TRIGGER`, `P28_CRITICAL_REJECTIONS`,
+`P28_REJECTED_NOTIONAL_SHARE`) and the feed publishes `boundary_exclusive: true` so a
+consumer cannot misread it. One-line change if the inclusive reading was intended.
+
+### 14.4 Defects found while building
+
+1. **An unreadable attestation date read as valid.** `days_until_expiry` returned `0` on a
+   parse failure and `expired` was `days < 0`, so a malformed record reported *not expired*.
+   A compliance artifact whose date cannot be parsed cannot be shown to be current; it now
+   returns `-1` and fails closed.
+2. **The feed exporter did not create its parent directory**, unlike every other
+   `export_feed`. First run against a clean checkout, or any redirected output directory,
+   raised `FileNotFoundError`.
+3. **A test clobbered the shipped feed.** `test_the_default_output_path_…` wrote to the real
+   `DATA_DIR/feeds` using a temp database, replacing the production artifact with a stub
+   that had no attestation. Now monkeypatches `DATA_DIR`, and a second test asserts the
+   shipped feed's mtime is untouched.
+
+### 14.5 The AOS attestation is evidence, not assertion
+
+`run_attestation()` **executes** the five Phase 34 suites (358 tests at time of writing),
+verifies all twelve controls have test coverage, and *live-tests the kill switch* — engages
+it, confirms routing halts, disengages, confirms routing resumes. `passed` is True only when
+coverage is complete, the kill switch verified, and zero tests failed. With `--no-tests` no
+evidence is gathered, so it records a **failure** rather than passing vacuously.
+
+Recorded in both `data/attestations/aos_YYYY.json` and the `aos_attestation` table, with a
+SHA-256 of the artifact. The scope note is part of the record and states what is **not**
+attested: profitability, fill-quality realism, signal suitability.
+
+`scripts/aos_annual_attestation.py` exits 0 on pass, 1 on fail, 2 on error, so CI can gate
+on it; `--check` reports status without running anything.
+
+### 14.6 The kill-switch control in the UI is read-only, deliberately
+
+The plan called for a "kill-switch control" in the terminal. The terminal is a static
+Firebase-hosted front end with no backend, so **no control there could actually engage the
+switch**. Shipping a button that appeared to work would be fabrication, so the panel
+displays live state from the feed (active scopes, halted flag, audit-log count) and the
+operator command instead. Engaging a scope is a host-side action:
+`KillSwitch().engage("ALL" | "EXTERNAL_ONLY" | "SYMBOL:<x>" | "STRATEGY:<y>", reason=…)`.
+
+### 14.7 What is not verified
+
+- **Predicate 28's thresholds are uncalibrated.** The boundaries came from this plan, not
+  from analysis of a rejection distribution. They are named constants and the feed
+  publishes them, so they can be revisited against real telemetry.
+- **The attestation's control-coverage check is a proxy.** It verifies each control id
+  appears in the governor test suite's code — necessary but not sufficient evidence that
+  the control is correctly exercised. Recorded as such in the module docstring.
+- **Telemetry for today's session is dominated by test activity**, not real paper trading.
+  The 17 hard rejections currently in the ledger came from running the suite, so the live
+  CRITICAL is genuine telemetry with an artificial cause.
+
+### 14.8 Two further defects, found by checking the attestation's own numbers
+
+1. **The attestation did not cover its own test suite.** It reported 363 tests passed; the
+   six execution suites actually hold 403. `EXECUTION_TEST_SUITES` omitted
+   `test_execution_aos_feed.py`, so the module that produces the compliance record was
+   outside its own evidence set. Caught only by comparing the reported count against the sum
+   of the suites — the attestation looked entirely healthy at 363.
+
+2. **Adding that suite required a reentrancy guard.** The suite contains a test that calls
+   `run_attestation(run_tests=True)`, and the attestation now runs that suite, so it would
+   have recursed until the process died. `_run_test_suites` now sets
+   `AOS_ATTESTATION_IN_PROGRESS=1` in the child environment and the recursive test skips on
+   it. Verified: the full attestation runs 6 suites / 402 tests, and a guarded run of the
+   suite skips exactly the recursive test.
+
+**Anti-pattern recorded.** The first version of the guard test verified the mechanism by
+launching a nested `pytest` subprocess. It took two minutes, contended for the SQLite lock
+against its own parent process, and hung. Checking that an environment variable is set does
+not require running a test suite to find out: the test now intercepts `subprocess.run` and
+asserts the env dict, which takes milliseconds. A subprocess-spawning test is the wrong
+instrument for verifying an environment variable.

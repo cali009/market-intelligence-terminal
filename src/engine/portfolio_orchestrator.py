@@ -40,6 +40,21 @@ from src.engine.dark_pool_liquidity import dark_pool_liquidity_engine
 from src.engine.volatility_forecast_vrp import volatility_forecast_vrp_engine
 from src.engine.quant_intel import quant_intel_engine
 from src.engine.quant_intel_sentinel import quant_intel_sentinel
+from src.execution.execution_telemetry import compute_execution_telemetry
+
+
+def _safe_execution_telemetry():
+    """
+    Session telemetry for Predicate 28, or None if it cannot be computed.
+
+    Returns None rather than raising: execution telemetry is advisory, and a missing or
+    partially migrated ledger must not prevent portfolio orchestration from running.
+    """
+    try:
+        return compute_execution_telemetry()
+    except Exception as exc:  # pragma: no cover - defensive
+        print(f"Warning: execution telemetry unavailable, skipping Predicate 28: {exc}")
+        return None
 from src.models.schemas import (
     OrchestratedPosition,
     PortfolioOrchestrationResult,
@@ -223,6 +238,9 @@ class PortfolioOrchestratorEngine:
             sovereign_yield_metrics=sovereign_res.model_dump(),
             dark_pool_metrics=dark_pool_liquidity_engine.compute_sentinel_metrics(dark_pool_res),
             volatility_vrp_metrics=volatility_forecast_vrp_engine.compute_sentinel_metrics(volatility_res),
+            # Phase 34.5: governor rejection telemetry drives Predicate 28. Wrapped so a
+            # platform that has never run the governor cannot take down orchestration.
+            execution_telemetry=_safe_execution_telemetry(),
         )
 
         now = datetime.now(timezone.utc)

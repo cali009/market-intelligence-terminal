@@ -5,7 +5,7 @@
   "currency": "USD",
   "name": "JPMorgan Chase & Co.",
   "as_of_date": "2026-10-03",
-  "generated_at": "2026-10-03T02:18:01.187938+00:00",
+  "generated_at": "2026-10-03T18:20:26.211844+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-28",
     "open": 341.8299865722656,
@@ -360,7 +360,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 14,
     "gjr_garch_gamma": 0.24,
-    "last_updated": "2026-10-03T02:18:03.924105+00:00"
+    "last_updated": "2026-10-03T18:20:28.716697+00:00"
   },
   "conformal_bounds": {
     "symbol": "JPM",
@@ -377,33 +377,33 @@
     "adapted_alpha": 0.235,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-10-03T02:18:03.941220+00:00"
+    "calibrated_at": "2026-10-03T18:20:28.730522+00:00"
   },
   "cross_border_parity": null,
   "shap_attribution": {
     "symbol": "JPM",
-    "base_value": 50.95,
+    "base_value": 51.05,
     "model_score": 48.4,
     "top_drivers": [
+      {
+        "feature_name": "momentum_rsi",
+        "feature_label": "14-Day RSI Momentum",
+        "feature_value": 36.0,
+        "shap_contribution": 2.32,
+        "direction": "POSITIVE"
+      },
       {
         "feature_name": "trend_sma200_ratio",
         "feature_label": "Trend vs 200DMA",
         "feature_value": 1.047,
-        "shap_contribution": 2.64,
+        "shap_contribution": 1.86,
         "direction": "POSITIVE"
       },
       {
         "feature_name": "hurst_persistence",
         "feature_label": "Lo HAC Hurst Exponent",
         "feature_value": 0.505,
-        "shap_contribution": 2.3,
-        "direction": "POSITIVE"
-      },
-      {
-        "feature_name": "momentum_rsi",
-        "feature_label": "14-Day RSI Momentum",
-        "feature_value": 36.0,
-        "shap_contribution": 1.99,
+        "shap_contribution": 1.74,
         "direction": "POSITIVE"
       }
     ],
@@ -412,29 +412,29 @@
         "feature_name": "proximity_52w",
         "feature_label": "Proximity to 52W High",
         "feature_value": -0.082,
-        "shap_contribution": -9.53,
+        "shap_contribution": -7.66,
         "direction": "NEGATIVE"
       },
       {
         "feature_name": "mtf_confluence",
         "feature_label": "Multi-Timeframe Confluence",
         "feature_value": 40.0,
-        "shap_contribution": -0.44,
+        "shap_contribution": -1.55,
         "direction": "NEGATIVE"
       }
     ],
     "all_attributions": {
-      "trend_sma200_ratio": 2.64,
-      "momentum_rsi": 1.99,
-      "proximity_52w": -9.53,
-      "mtf_confluence": -0.44,
+      "trend_sma200_ratio": 1.86,
+      "momentum_rsi": 2.32,
+      "proximity_52w": -7.66,
+      "mtf_confluence": -1.55,
       "roic_pct": 0.0,
       "pe_multiple": 0.0,
-      "hurst_persistence": 2.3,
-      "fractional_d": 0.16,
+      "hurst_persistence": 1.74,
+      "fractional_d": 0.34,
       "amihud_illiquidity": 0.0,
       "conformal_rr": 0.0,
-      "dual_basis_bps": 0.3
+      "dual_basis_bps": 0.29
     }
   },
   "idiosyncratic_risk": {
@@ -450,8 +450,8 @@
     "cross_border_parity_stretch": false,
     "basis_spread_bps": null,
     "basis_zscore": null,
-    "shap_detractor_drag_pts": -9.97,
-    "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-9.97 pts)",
+    "shap_detractor_drag_pts": -9.21,
+    "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-9.21 pts)",
     "actionable_mitigation": "Minor basis disparity or factor detractor identified; 25% exposure haircut recommended under risk rules.",
     "as_of_date": "2026-09-25"
   },
@@ -1482,10 +1482,10 @@
     "country": "US",
     "currency": "USD",
     "as_of_date": "2026-10-03",
-    "generated_at": "2026-10-03T02:18:03.965676+00:00",
+    "generated_at": "2026-10-03T18:20:28.749777+00:00",
     "conviction_grade": "SKIP",
     "aligned_layers_count": 2,
-    "formatted_card": "TICKER: JPM\nREGIME: STRONG_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 7.8%)\nPATTERN TYPE: Archetype C: Chartered Banks (Regulated Yield-Drift) \u2014 Earnings-Driven\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    NEUTRAL \u2014 Consolidation near moving averages; RSI 36.0 with RVOL at 1.22x awaiting directional catalyst.\n  Fundamental:  6.0/10 \u2014 Stable financial quality (Score 6.0/10); P/E 42.87x balanced by operational cash flow.\n  Sentiment:    0.00 (NEUTRAL) \u2014 Routine regulatory reporting schedule; no material catalyst in last 30 days.\n  Historical:   58.2% Win Rate (25 sample size, E[R]: +0.48R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $336.68 \u2013 $341.73\n  Entry trigger:  Price holds structural pivot ($330.24) followed by volume-backed expansion above $336.68.\n  Stop loss:      $325.81 (3.2% below entry)\n  Target 1 (T1):  $349.72 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $363.86 | Est. 24 days | Take 40%\n  Target 3 (T3):  $382.36 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.32\n  Position size:  0 shares on $100,000 portfolio risking 1% ($0.00)\n  Execution TCA:  TWAP (5 slices) | Est. Fill: $336.60 | Slippage: +0.2 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: SKIP-Grade\nTRADE THESIS: JPM exhibits high structural confluence with Earnings-Driven aligning above ascending moving averages. In the current STRONG_BULL macro context (20d adverse hazard: 7.8%), measured support at $330.24 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $325.81 or two consecutive closes back below $330.24 immediately invalidates the trade.",
+    "formatted_card": "TICKER: JPM\nREGIME: STRONG_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 7.8%)\nPATTERN TYPE: Archetype C: Chartered Banks (Regulated Yield-Drift) \u2014 Earnings-Driven\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    NEUTRAL \u2014 Consolidation near moving averages; RSI 36.0 with RVOL at 1.22x awaiting directional catalyst.\n  Fundamental:  6.0/10 \u2014 Stable financial quality (Score 6.0/10); P/E 42.87x balanced by operational cash flow.\n  Sentiment:    0.00 (NEUTRAL) \u2014 Routine regulatory reporting schedule; no material catalyst in last 30 days.\n  Historical:   58.2% Win Rate (25 sample size, E[R]: +0.48R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $336.68 \u2013 $341.73\n  Entry trigger:  Price holds structural pivot ($330.24) followed by volume-backed expansion above $336.68.\n  Stop loss:      $325.81 (3.2% below entry)\n  Target 1 (T1):  $349.72 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $363.86 | Est. 24 days | Take 40%\n  Target 3 (T3):  $382.36 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.32\n  Position size:  0 shares on $100,000 portfolio risking 1% ($0.00)\n  Execution TCA:  DIRECT_MARKET (1 slice) | Est. Fill: $336.60 | Slippage: +0.3 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: SKIP-Grade\nTRADE THESIS: JPM exhibits high structural confluence with Earnings-Driven aligning above ascending moving averages. In the current STRONG_BULL macro context (20d adverse hazard: 7.8%), measured support at $330.24 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $325.81 or two consecutive closes back below $330.24 immediately invalidates the trade.",
     "layer_1_regime": {
       "trend_type": "Bull",
       "volatility_regime": "Medium (15\u201325)",
@@ -1600,10 +1600,10 @@
       "portfolio_risk_pct": 0.0,
       "invalidation_rule": "A daily closing price below $325.81 or two consecutive closes back below $330.24 immediately invalidates the trade.",
       "trade_thesis": "JPM exhibits high structural confluence with Earnings-Driven aligning above ascending moving averages. In the current STRONG_BULL macro context (20d adverse hazard: 7.8%), measured support at $330.24 offers asymmetric risk/reward into upper channel resistance.",
-      "tca_execution_strategy": "TWAP",
-      "tca_expected_slippage_bps": 0.21,
+      "tca_execution_strategy": "DIRECT_MARKET",
+      "tca_expected_slippage_bps": 0.3,
       "tca_effective_fill_price": 336.6,
-      "tca_optimal_slices": 5
+      "tca_optimal_slices": 1
     },
     "meta_label_verdict": {
       "symbol": "JPM",
@@ -1611,21 +1611,21 @@
       "action": "CAUTION_THROTTLE",
       "size_multiplier": 0.5,
       "primary_driver": "bb_bandwidth (+5.00, impact +)",
-      "calibrated_at": "2026-10-03T02:18:04.267331+00:00"
+      "calibrated_at": "2026-10-03T18:20:29.018569+00:00"
     },
     "microstructure_metrics": {
       "symbol": "JPM",
-      "timestamp": "2026-10-03T02:18:04.269089+00:00",
-      "cvd_total": 4191,
-      "cvd_1m_delta": 4395,
-      "cvd_5m_delta": 4191,
-      "order_book_imbalance": 0.1362,
-      "kyle_lambda": 0.0179,
-      "rvol_1m": 1.88,
+      "timestamp": "2026-10-03T18:20:29.020401+00:00",
+      "cvd_total": 162,
+      "cvd_1m_delta": -69,
+      "cvd_5m_delta": 162,
+      "order_book_imbalance": -0.065,
+      "kyle_lambda": 0.0115,
+      "rvol_1m": 1.01,
       "absorption_signal": "NONE",
       "liquidity_state": "NORMAL",
-      "buyer_volume_pct": 68.1,
-      "seller_volume_pct": 31.9
+      "buyer_volume_pct": 50.9,
+      "seller_volume_pct": 49.1
     }
   },
   "disclaimers": {

@@ -21,6 +21,23 @@ from src.compliance.linter import linter
 from src.models.schemas import AlertRecord
 from src.engine.quant_intel_memory import quant_intel_memory_ledger
 
+# --------------------------------------------------------------------------------------
+# Predicate 28 -- PRE_TRADE_RISK_BREACH thresholds (Phase 34.5)
+#
+# Boundaries are EXCLUSIVE: a session sitting exactly on one of these values does not fire,
+# matching Predicates 26 and 27.
+#
+# NOTE ON A PLAN INCONSISTENCY: docs/16 §6 describes the trigger as "hard-rejections ...
+# >= 3" but then specifies "Boundary: exclusive, consistent with Predicates 26 and 27".
+# Those contradict each other. The exclusive convention wins here because it is the stated
+# rule and the one the neighbouring predicates actually implement, so the count trigger is
+# strictly greater than 3 (a 4th rejection fires, the 3rd does not). Changing it is a
+# one-line edit if the inclusive reading was intended.
+# --------------------------------------------------------------------------------------
+P28_HARD_REJECTION_TRIGGER = 3      # fires when hard rejections EXCEED this
+P28_CRITICAL_REJECTIONS = 10        # escalates WARNING -> CRITICAL when exceeded
+P28_REJECTED_NOTIONAL_SHARE = 0.25  # fires when rejected/submitted EXCEEDS this
+
 
 @dataclass
 class InvalidationAlert:
@@ -296,6 +313,7 @@ class QuantIntelSentinel:
         sovereign_yield_metrics: Optional[Dict[str, Any]] = None,
         dark_pool_metrics: Optional[Dict[str, Any]] = None,
         volatility_vrp_metrics: Optional[Dict[str, Any]] = None,
+        execution_telemetry: Optional[Any] = None,
     ) -> List[InvalidationAlert]:
         """
         Evaluates portfolio-level risk invariants:
@@ -309,6 +327,7 @@ class QuantIntelSentinel:
         - Bayesian estimation error spike (Predicate 17)
         - Dual-listed parity dislocations (Predicate 18)
         - Unhedged currency volatility drag (Predicate 19)
+        - Pre-trade risk governor rejection rate (Predicate 28)
         - Gamma flip dealer regime transitions (Predicate 20)
         - Volatility skew tail inversion (Predicate 21)
         - Sovereign yield curve inversion & term premium shock (Predicates 22-23)
@@ -853,6 +872,99 @@ class QuantIntelSentinel:
                         )
                     )
 
+        # 28. PREDICATE: PRE_TRADE_RISK_BREACH
+        #     Session-level, so it is evaluated once here rather than per symbol. Delegates
+        #     to evaluate_execution_sentinel so the thresholds and phrasing live in one
+        #     place whether this is reached through the orchestrator or directly.
+        if execution_telemetry is not None:
+            alerts.extend(self.evaluate_execution_sentinel(execution_telemetry))
+
+        return alerts
+
+    def evaluate_execution_sentinel(
+        self,
+        telemetry: Any,
+    ) -> List[InvalidationAlert]:
+        """
+        28. PREDICATE: PRE_TRADE_RISK_BREACH
+
+        Fires when the pre-trade risk governor is repeatedly refusing what the signal engine
+        generates: hard-rejections in the session exceed the trigger count, OR rejected
+        notional exceeds its share of submitted notional.
+
+        This is decision-support, not an execution error. Repeated hard rejections mean the
+        systematic signals are producing orders the declared risk envelope cannot absorb --
+        a genuine finding about strategy/risk alignment, which is what this platform exists
+        to surface. It is NOT a statement about expected returns.
+
+        Boundaries are EXCLUSIVE, consistent with Predicates 26 and 27: sitting exactly on
+        a threshold does not fire.
+
+        `telemetry` may be an ExecutionTelemetry instance or anything exposing the same
+        attributes, which keeps this testable without a populated ledger.
+        """
+        alerts: List[InvalidationAlert] = []
+        now_str = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+        hard_rejections = int(getattr(telemetry, "hard_rejections", 0))
+        evaluations = int(getattr(telemetry, "evaluations", 0))
+        share = float(getattr(telemetry, "rejected_share", 0.0) or 0.0)
+        submitted = float(getattr(telemetry, "submitted_notional_usd", 0.0) or 0.0)
+        rejected = float(getattr(telemetry, "rejected_notional_usd", 0.0) or 0.0)
+
+        count_breach = hard_rejections > P28_HARD_REJECTION_TRIGGER
+        share_breach = share > P28_REJECTED_NOTIONAL_SHARE
+        if not (count_breach or share_breach):
+            return alerts
+
+        severity = "CRITICAL" if hard_rejections > P28_CRITICAL_REJECTIONS else "WARNING"
+
+        fired = []
+        if count_breach:
+            fired.append(
+                f"{hard_rejections} hard rejections against a boundary of "
+                f"{P28_HARD_REJECTION_TRIGGER}"
+            )
+        if share_breach:
+            fired.append(
+                f"rejected notional at {share * 100:.1f}% of submitted against a boundary "
+                f"of {P28_REJECTED_NOTIONAL_SHARE * 100:.0f}%"
+            )
+
+        controls = getattr(telemetry, "breached_controls", {}) or {}
+        control_txt = ""
+        if controls:
+            top = ", ".join(f"{k} ({v})" for k, v in sorted(controls.items())[:4])
+            control_txt = f" Controls breached: {top}."
+
+        headline = (
+            f"Pre-Trade Risk Breach: {hard_rejections} hard rejections this session "
+            f"({severity})"
+        )
+        body = (
+            f"The pre-trade risk governor hard-rejected {hard_rejections} of {evaluations} "
+            f"order evaluations in session {getattr(telemetry, 'session', 'n/a')}, with "
+            f"${rejected:,.0f} of ${submitted:,.0f} submitted notional refused. Triggered "
+            f"by: {'; '.join(fired)}.{control_txt} Repeated pre-trade rejections indicate "
+            "the signals being generated are larger or more concentrated than the declared "
+            "risk envelope permits. This is a strategy/risk alignment finding and requires "
+            "review of position sizing assumptions; it is not a statement about expected "
+            "returns."
+        )
+
+        alerts.append(
+            InvalidationAlert(
+                symbol="PORTFOLIO",
+                predicate_type="PRE_TRADE_RISK_BREACH",
+                severity=severity,
+                trigger_level=float(P28_HARD_REJECTION_TRIGGER),
+                current_price=float(hard_rejections),
+                headline=headline,
+                body=body,
+                action_required="REVIEW_POSITION_SIZING",
+                timestamp=now_str,
+            )
+        )
         return alerts
 
     def evaluate_universe_sentinels(self, quant_intel_dossiers: Dict[str, Any]) -> List[InvalidationAlert]:
@@ -883,7 +995,12 @@ class QuantIntelSentinel:
             elif inv.severity == "WARNING":
                 channels = ["IN_APP", "EMAIL", "WEB_PUSH"]
 
-            if "STOP" in inv.predicate_type or "BREAKOUT_FAILURE" in inv.predicate_type or "SWEEP" in inv.predicate_type:
+            # Explicit, ahead of the substring chain: PRE_TRADE_RISK_BREACH matches none of
+            # the patterns below and would otherwise fall through to TECHNICAL_BREAKOUT,
+            # which misdescribes a portfolio-level risk-envelope finding.
+            if inv.predicate_type == "PRE_TRADE_RISK_BREACH":
+                taxonomy = "PORTFOLIO_CIRCUIT_BREAKER"
+            elif "STOP" in inv.predicate_type or "BREAKOUT_FAILURE" in inv.predicate_type or "SWEEP" in inv.predicate_type:
                 taxonomy = "EXIT_TRIGGER_ESCALATION"
             elif "GAMMA" in inv.predicate_type:
                 taxonomy = "REGIME_SHIFT"

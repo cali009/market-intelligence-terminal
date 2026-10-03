@@ -5,7 +5,7 @@
   "currency": "USD",
   "name": "SPDR S&P 500 ETF Trust",
   "as_of_date": "2026-10-03",
-  "generated_at": "2026-10-03T02:18:01.187938+00:00",
+  "generated_at": "2026-10-03T18:20:26.211844+00:00",
   "latest_metrics": {
     "trading_date": "2026-09-28",
     "open": 768.3499755859375,
@@ -352,7 +352,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 14,
     "gjr_garch_gamma": 0.16,
-    "last_updated": "2026-10-03T02:18:04.838367+00:00"
+    "last_updated": "2026-10-03T18:20:29.497446+00:00"
   },
   "conformal_bounds": {
     "symbol": "SPY",
@@ -369,33 +369,33 @@
     "adapted_alpha": 0.235,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-10-03T02:18:04.855099+00:00"
+    "calibrated_at": "2026-10-03T18:20:29.511073+00:00"
   },
   "cross_border_parity": null,
   "shap_attribution": {
     "symbol": "SPY",
-    "base_value": 50.95,
-    "model_score": 73.8,
+    "base_value": 51.05,
+    "model_score": 73.9,
     "top_drivers": [
       {
         "feature_name": "proximity_52w",
         "feature_label": "Proximity to 52W High",
         "feature_value": -0.018,
-        "shap_contribution": 17.57,
+        "shap_contribution": 16.16,
         "direction": "POSITIVE"
       },
       {
         "feature_name": "mtf_confluence",
         "feature_label": "Multi-Timeframe Confluence",
         "feature_value": 85.0,
-        "shap_contribution": 3.09,
+        "shap_contribution": 3.26,
         "direction": "POSITIVE"
       },
       {
-        "feature_name": "momentum_rsi",
-        "feature_label": "14-Day RSI Momentum",
-        "feature_value": 50.5,
-        "shap_contribution": 1.22,
+        "feature_name": "conformal_rr",
+        "feature_label": "Certified Conformal R:R",
+        "feature_value": 0.79,
+        "shap_contribution": 2.06,
         "direction": "POSITIVE"
       }
     ],
@@ -404,21 +404,28 @@
         "feature_name": "hurst_persistence",
         "feature_label": "Lo HAC Hurst Exponent",
         "feature_value": 0.471,
-        "shap_contribution": -0.7,
+        "shap_contribution": -0.79,
+        "direction": "NEGATIVE"
+      },
+      {
+        "feature_name": "fractional_d",
+        "feature_label": "Fractional Memory Order d*",
+        "feature_value": 0.51,
+        "shap_contribution": -0.17,
         "direction": "NEGATIVE"
       }
     ],
     "all_attributions": {
-      "trend_sma200_ratio": 0.38,
-      "momentum_rsi": 1.22,
-      "proximity_52w": 17.57,
-      "mtf_confluence": 3.09,
+      "trend_sma200_ratio": 0.99,
+      "momentum_rsi": 1.31,
+      "proximity_52w": 16.16,
+      "mtf_confluence": 3.26,
       "roic_pct": 0.0,
       "pe_multiple": 0.0,
-      "hurst_persistence": -0.7,
-      "fractional_d": 0.15,
+      "hurst_persistence": -0.79,
+      "fractional_d": -0.17,
       "amihud_illiquidity": 0.0,
-      "conformal_rr": 1.14,
+      "conformal_rr": 2.06,
       "dual_basis_bps": 0.0
     }
   },
@@ -435,7 +442,7 @@
     "cross_border_parity_stretch": false,
     "basis_spread_bps": null,
     "basis_zscore": null,
-    "shap_detractor_drag_pts": -0.7,
+    "shap_detractor_drag_pts": -0.96,
     "primary_risk_driver": "Stable Quantitative Fingerprint",
     "actionable_mitigation": "All idiosyncratic bounds intact; nominal position sizing permitted under risk framework.",
     "as_of_date": "2026-09-25"
@@ -1570,10 +1577,10 @@
     "country": "US",
     "currency": "USD",
     "as_of_date": "2026-10-03",
-    "generated_at": "2026-10-03T02:18:04.878292+00:00",
+    "generated_at": "2026-10-03T18:20:29.530777+00:00",
     "conviction_grade": "B",
     "aligned_layers_count": 4,
-    "formatted_card": "TICKER: SPY\nREGIME: STRONG_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 7.8%)\nPATTERN TYPE: Archetype E: Defensive Yield & Sovereign Benchmark \u2014 Earnings-Driven\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BULLISH \u2014 Stacked MAs (Bullish Stack), RSI 50.5 equilibrium, price structure holding above key support.\n  Fundamental:  8.5/10 \u2014 Broad-market benchmark index ETF; diversified institutional liquidity and systemic solvency.\n  Sentiment:    0.00 (NEUTRAL) \u2014 Routine regulatory reporting schedule; no material catalyst in last 30 days.\n  Historical:   59.7% Win Rate (25 sample size, E[R]: +0.49R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $768.06 \u2013 $779.58\n  Entry trigger:  Price holds structural pivot ($763.18) followed by volume-backed expansion above $768.06.\n  Stop loss:      $757.50 (1.4% below entry)\n  Target 1 (T1):  $803.89 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $842.17 | Est. 24 days | Take 40%\n  Target 3 (T3):  $841.34 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 5.55\n  Position size:  94 shares on $100,000 portfolio risking 1% ($992.64)\n  Execution TCA:  DIRECT_MARKET (1 slice) | Est. Fill: $765.62 | Slippage: +0.1 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: B-Grade\nTRADE THESIS: SPY exhibits high structural confluence with Earnings-Driven aligning above ascending moving averages. In the current STRONG_BULL macro context (20d adverse hazard: 7.8%), measured support at $763.18 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $757.50 or two consecutive closes back below $763.18 immediately invalidates the trade.",
+    "formatted_card": "TICKER: SPY\nREGIME: STRONG_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 7.8%)\nPATTERN TYPE: Archetype E: Defensive Yield & Sovereign Benchmark \u2014 Earnings-Driven\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BULLISH \u2014 Stacked MAs (Bullish Stack), RSI 50.5 equilibrium, price structure holding above key support.\n  Fundamental:  8.5/10 \u2014 Broad-market benchmark index ETF; diversified institutional liquidity and systemic solvency.\n  Sentiment:    0.00 (NEUTRAL) \u2014 Routine regulatory reporting schedule; no material catalyst in last 30 days.\n  Historical:   59.7% Win Rate (25 sample size, E[R]: +0.49R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $768.06 \u2013 $779.58\n  Entry trigger:  Price holds structural pivot ($763.18) followed by volume-backed expansion above $768.06.\n  Stop loss:      $757.50 (1.4% below entry)\n  Target 1 (T1):  $803.89 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $842.17 | Est. 24 days | Take 40%\n  Target 3 (T3):  $841.34 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 5.55\n  Position size:  94 shares on $100,000 portfolio risking 1% ($992.64)\n  Execution TCA:  DIRECT_MARKET (1 slice) | Est. Fill: $765.61 | Slippage: +0.1 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: B-Grade\nTRADE THESIS: SPY exhibits high structural confluence with Earnings-Driven aligning above ascending moving averages. In the current STRONG_BULL macro context (20d adverse hazard: 7.8%), measured support at $763.18 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $757.50 or two consecutive closes back below $763.18 immediately invalidates the trade.",
     "layer_1_regime": {
       "trend_type": "Bull",
       "volatility_regime": "Medium (15\u201325)",
@@ -1690,7 +1697,7 @@
       "trade_thesis": "SPY exhibits high structural confluence with Earnings-Driven aligning above ascending moving averages. In the current STRONG_BULL macro context (20d adverse hazard: 7.8%), measured support at $763.18 offers asymmetric risk/reward into upper channel resistance.",
       "tca_execution_strategy": "DIRECT_MARKET",
       "tca_expected_slippage_bps": 0.13,
-      "tca_effective_fill_price": 765.62,
+      "tca_effective_fill_price": 765.61,
       "tca_optimal_slices": 1
     },
     "meta_label_verdict": {
@@ -1699,21 +1706,21 @@
       "action": "MODERATE_PROCEED",
       "size_multiplier": 0.85,
       "primary_driver": "bb_bandwidth (+5.00, impact +)",
-      "calibrated_at": "2026-10-03T02:18:05.175505+00:00"
+      "calibrated_at": "2026-10-03T18:20:29.794207+00:00"
     },
     "microstructure_metrics": {
       "symbol": "SPY",
-      "timestamp": "2026-10-03T02:18:05.177384+00:00",
-      "cvd_total": -3955,
-      "cvd_1m_delta": -5274,
-      "cvd_5m_delta": -3955,
-      "order_book_imbalance": -0.0251,
-      "kyle_lambda": 0.0109,
-      "rvol_1m": 2.05,
+      "timestamp": "2026-10-03T18:20:29.796238+00:00",
+      "cvd_total": -1159,
+      "cvd_1m_delta": -888,
+      "cvd_5m_delta": -1159,
+      "order_book_imbalance": -0.0712,
+      "kyle_lambda": 0.0037,
+      "rvol_1m": 1.18,
       "absorption_signal": "NONE",
       "liquidity_state": "NORMAL",
-      "buyer_volume_pct": 33.3,
-      "seller_volume_pct": 66.7
+      "buyer_volume_pct": 45.9,
+      "seller_volume_pct": 54.1
     }
   },
   "disclaimers": {

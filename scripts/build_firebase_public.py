@@ -113,6 +113,9 @@ def build_firebase_bundle():
         ("dark_pool_liquidity.json", "dark_pool_liquidity"),
         ("volatility_vrp.json", "volatility_vrp.json"),
         ("volatility_vrp.json", "volatility_vrp"),
+        # Phase 34.5: execution gateway telemetry, Predicate 28, AOS attestation
+        ("execution_gateway.json", "execution_gateway.json"),
+        ("execution_gateway.json", "execution_gateway"),
     ]
 
     for src_name, dest_name in core_feeds:
