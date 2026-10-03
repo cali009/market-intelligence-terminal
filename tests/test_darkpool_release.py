@@ -60,12 +60,31 @@ class TestDarkPoolReleaseAudit:
                (self.public_api_dir / "dark_pool_liquidity").read_bytes()
 
     def test_staged_feed_matches_source_feed_content(self):
-        """Staged and source feeds must agree semantically, ignoring the volatile timestamp."""
+        """
+        Staged and source feeds must agree semantically, ignoring BOTH wall-clock stamps.
+
+        `generated_at` changes on every export and `as_of_date` rolls at UTC midnight,
+        while other suites (test_edge_exporter -> export_all()) legitimately regenerate
+        the source feed mid-run. Comparing them raw makes this test time-dependent.
+        Dark-pool content is the property that actually matters.
+        """
         source = json.loads((self.data_dir / "dark_pool_liquidity.json").read_text(encoding="utf-8"))
         staged = json.loads((self.public_api_dir / "dark_pool_liquidity.json").read_text(encoding="utf-8"))
-        for p in (source, staged):
-            p.pop("generated_at", None)
+
+        src_as_of = source.get("as_of_date")
+        stg_as_of = staged.get("as_of_date")
+        for payload in (source, staged):
+            payload.pop("generated_at", None)
+            payload.pop("as_of_date", None)
+
         assert source == staged, "Staged feed content drifted from source feed"
+
+        # Tolerate a UTC-midnight roll; reject a genuinely stale deploy.
+        from datetime import date as _date
+        gap = (_date.fromisoformat(src_as_of) - _date.fromisoformat(stg_as_of)).days
+        assert 0 <= gap <= 1, (
+            f"Staged dark-pool feed is stale: source as_of {src_as_of} vs staged {stg_as_of}"
+        )
 
     # ------------------------------------------------------------------
     # 2. DECISION 1(b): short metrics gated out of commercial artifacts

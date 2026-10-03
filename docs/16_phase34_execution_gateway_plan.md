@@ -301,6 +301,14 @@ would appear to support an order type it cannot route.
 | C11 | **Restricted-list / stale-data guard** | platform | data age > 1 session | HARD_REJECT |
 | C12 | **Canadian external-routing firewall** | CIRO DMR 3200 | never external | HARD_REJECT |
 
+> **Ambiguity resolved (2026-10-02).** The approval option text named only C1, C6, C10 and
+> C12 as "always block," while this table marks eight controls HARD_REJECT. The table
+> governs, because the split is principled rather than arbitrary: the four SOFT_LIMIT
+> controls (C5, C7, C8, C9) are all *portfolio-shape* concerns where an informed override
+> is legitimate, whereas the eight HARD_REJECT controls are capital, regulatory, or
+> data-integrity constraints where an override would be meaningless or unlawful. An
+> override can therefore downgrade a SOFT_LIMIT but **can never bypass a HARD_REJECT**.
+
 `SOFT_LIMIT` records the breach, flags the order, and **requires explicit override**
 rather than silently resizing. This directly serves your standing requirement that
 choosing "Aggressive" must never silently mean larger positions without explaining the
@@ -535,3 +543,28 @@ machine, or audit ledger.
 
 This preserves the architectural intent of your decision 1 — a real adapter boundary with
 capability negotiation — while not shipping an integration the licence does not permit.
+
+---
+
+## 10. RECURRING TEST HAZARD — STAGED-VS-SOURCE FEED COMPARISONS
+
+Found three times while building Phase 34, in three separate phases' release suites
+(`test_yield_release.py` Phase 31, `test_darkpool_release.py` Phase 32,
+`test_volatility_release.py` Phase 33). Recorded here so Phase 35 does not reintroduce it.
+
+`tests/test_edge_exporter.py` calls `export_all()`, which regenerates **every** feed in
+`data/feeds/` mid-suite with fresh stamps. Meanwhile `public/api/` holds whatever the last
+`scripts/build_firebase_public.py` run staged. A release test that compares the two must
+therefore treat **both** wall-clock stamps as volatile:
+
+- `generated_at` — changes on every export;
+- `as_of_date` — **rolls at UTC midnight**, independently of any export.
+
+Popping only `generated_at` produces a test that passes all day and fails after 00:00 UTC.
+That is precisely what happened: UTC crossed into 2026-10-03 during a Phase 34 test run and
+broke the third instance.
+
+**Convention for every future release test:** pop both stamps for the content comparison,
+then assert a staleness bound (`0 <= gap <= 1` days) rather than equality. The bound keeps
+the check meaningful — verified that a 1-day gap passes and a 7-day gap fails — while
+removing the time dependence.
