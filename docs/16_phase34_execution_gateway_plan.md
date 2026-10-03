@@ -568,3 +568,73 @@ broke the third instance.
 then assert a staleness bound (`0 <= gap <= 1` days) rather than equality. The bound keeps
 the check meaningful — verified that a 1-day gap passes and a 7-day gap fails — while
 removing the time dependence.
+
+---
+
+## 12. Phase 34.3 — SHIPPED
+
+**Files:** `src/execution/adapters/base.py` (`BrokerAdapter` ABC, `AdapterCapabilities`,
+`AdapterAck`, `Fill`, `AccountSnapshot`), `src/execution/adapters/internal_simulator.py`
+(`InternalSimulatorAdapter`, `UnacceptedOrderError`).
+**Tests:** `tests/test_execution_internal_simulator.py` — 55 tests.
+
+### 12.1 Scope deviation from the plan
+
+The `BrokerAdapter` ABC was scheduled for 34.4 but had to be written now, because the
+simulator has to conform to something. **34.4 therefore retains only the router, capability
+negotiation, and the Canadian routing firewall.**
+
+No external adapter ships. The Alpaca review in §1.4 returned `LICENSE_CLEARED = False`
+("solely for your own personal and non-commercial purposes"; "Content ... exclusively for
+personal and noncommercial access"; US residents only; terminable at will). The internal
+simulator is the only shipping venue.
+
+### 12.2 Properties enforced, each with a test
+
+| Property | Mechanism | Test |
+|---|---|---|
+| **No look-ahead** | `WHERE b.trading_date > ?` — strict inequality; only bars after the signal date are read | every fill asserted `bar_date > signal_date` across US and CA symbols |
+| **Book cannot be over-drawn** | capital reserved at submit, settled exactly at fill, fill-time affordability guard | cash conservation to the cent across 6 symbols; `cash_free >= 0` |
+| **Fees come from the existing table** | `execution_algo_engine.get_exchange_fee`, reused not reimplemented | fee equality asserted for US and CA at four sizes |
+| **Determinism** | no RNG anywhere in the fill path | repeated runs produce identical fill vectors |
+| **Canadian routing works** | `is_external = False` is what the 34.4 firewall reads | XIU fills on the internal adapter |
+
+### 12.3 Defects found during smoke testing, before the suite existed
+
+Writing the smoke test first, against real bars, caught four bugs that the design review had
+missed. All were in code written this session.
+
+1. **`fill_order` would fill an order the adapter never accepted.** An over-sized order was
+   correctly *rejected* at submission, then filled anyway — spending \$100,685 against a
+   \$100,000 book. This is exactly the `paper_trading.py:293` defect 34.3 exists to close,
+   reintroduced in the fix. Now `UnacceptedOrderError` is raised. It is raised rather than
+   recorded as a venue rejection because `RISK_APPROVED → REJECTED` is not a legal edge, and
+   this is a caller bug rather than a market event.
+
+2. **The fee was tallied but never deducted.** `spent_total` included it; `cash_free` did not.
+   Every fill overstated available capital by the fee. Cash conservation was off by exactly
+   `fee_usd`.
+
+3. **A fill costing more than its reservation silently created cash.** The reservation is an
+   *estimate* from the last close; the fill uses the next bar's open plus friction. For XIU
+   the reservation was \$7,744.10 but the fill cost \$7,786.91, and `max(0.0, ...)` floored the
+   \$42.81 shortfall away — inventing money. The excess is now drawn from free cash, and an
+   unaffordable excess is refused outright.
+
+4. **A residual reservation was never released.** After a complete fill, \$51.47 stayed
+   permanently reserved. Cash would leak with every order.
+
+Lesson recorded: the reservation-vs-fill mismatch is structural, not a rounding nit. Any
+estimate-then-settle design must reconcile the difference explicitly, because the estimate is
+taken from a *different bar* than the fill.
+
+### 12.4 Test-authoring traps hit
+
+- **A fake symbol must respect `OrderRequest`'s 12-character limit.** `NOTAREALTICKER` raised
+  a pydantic validation error, not the `UNKNOWN_SYMBOL` rejection the test wanted.
+- **Tests exercising the participation cap need a large book.** AAPL trades ~35M shares/day,
+  so a 10% cap is 3.5M shares ≈ \$1.2B. Against a \$100k book the simulator correctly rejects
+  those orders at submission — so 5 tests that assumed submission always succeeds had to
+  build their own adapter via a `big_book()` helper.
+
+Both were test bugs; the adapter behaved correctly in all 7 initial failures.
