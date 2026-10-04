@@ -1,11 +1,11 @@
 {
-  "as_of_date": "2026-10-03",
-  "generated_at": "2026-10-03T18:20:41.118359+00:00",
+  "as_of_date": "2026-10-04",
+  "generated_at": "2026-10-04T02:56:58.062286+00:00",
   "active_alerts_count": 14,
   "alerts": [
     {
-      "alert_id": "ALT_2026-10-03_NVDA_01",
-      "timestamp": "2026-10-03T18:20:35Z",
+      "alert_id": "ALT_2026-10-04_NVDA_01",
+      "timestamp": "2026-10-04T02:56:51Z",
       "symbol": "NVDA",
       "taxonomy": "TECHNICAL_BREAKOUT",
       "severity": "WARNING",
@@ -16,7 +16,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "NVDA:BREAKOUT:2026-10-03",
+      "dedupe_key": "NVDA:BREAKOUT:2026-10-04",
       "data_payload": {
         "score": 86,
         "rvol": 2.45,
@@ -26,8 +26,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-10-03_TD_02",
-      "timestamp": "2026-10-03T18:20:35Z",
+      "alert_id": "ALT_2026-10-04_TD_02",
+      "timestamp": "2026-10-04T02:56:51Z",
       "symbol": "TD",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "CRITICAL",
@@ -38,7 +38,7 @@
         "EMAIL",
         "SMS"
       ],
-      "dedupe_key": "TD:STOP_BREACH:2026-10-03",
+      "dedupe_key": "TD:STOP_BREACH:2026-10-04",
       "data_payload": {
         "stop_price": 81.2,
         "action": "REDUCE",
@@ -48,8 +48,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-10-03_BOC_03",
-      "timestamp": "2026-10-03T18:20:35Z",
+      "alert_id": "ALT_2026-10-04_BOC_03",
+      "timestamp": "2026-10-04T02:56:51Z",
       "symbol": null,
       "taxonomy": "CATALYST_MATERIALITY",
       "severity": "WARNING",
@@ -60,7 +60,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "BOC:RATE_CUT:2026-10-03",
+      "dedupe_key": "BOC:RATE_CUT:2026-10-04",
       "data_payload": {
         "rate": 4.25,
         "cut_bps": 25,
@@ -70,8 +70,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-10-03_REG_04",
-      "timestamp": "2026-10-03T18:20:35Z",
+      "alert_id": "ALT_2026-10-04_REG_04",
+      "timestamp": "2026-10-04T02:56:51Z",
       "symbol": null,
       "taxonomy": "REGIME_SHIFT",
       "severity": "NOTICE",
@@ -81,7 +81,7 @@
         "IN_APP",
         "EMAIL"
       ],
-      "dedupe_key": "MACRO:REGIME:2026-10-03",
+      "dedupe_key": "MACRO:REGIME:2026-10-04",
       "data_payload": {
         "vix": 21.4,
         "regime": "ELEVATED_VOLATILITY"
@@ -90,8 +90,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-10-03_PORT_05",
-      "timestamp": "2026-10-03T18:20:35Z",
+      "alert_id": "ALT_2026-10-04_PORT_05",
+      "timestamp": "2026-10-04T02:56:51Z",
       "symbol": null,
       "taxonomy": "PORTFOLIO_CIRCUIT_BREAKER",
       "severity": "CRITICAL",
@@ -102,7 +102,7 @@
         "EMAIL",
         "SMS"
       ],
-      "dedupe_key": "PORTFOLIO:CIRCUIT:2026-10-03",
+      "dedupe_key": "PORTFOLIO:CIRCUIT:2026-10-04",
       "data_payload": {
         "drawdown_pct": -4.3,
         "threshold_pct": -6.0
@@ -111,8 +111,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-10-03_SHOP_06",
-      "timestamp": "2026-10-03T18:20:35Z",
+      "alert_id": "ALT_2026-10-04_SHOP_06",
+      "timestamp": "2026-10-04T02:56:51Z",
       "symbol": "SHOP",
       "taxonomy": "PRICE_VOLUME_SPIKE",
       "severity": "NOTICE",
@@ -122,7 +122,7 @@
         "IN_APP",
         "WEB_PUSH"
       ],
-      "dedupe_key": "SHOP:VOL_SPIKE:2026-10-03",
+      "dedupe_key": "SHOP:VOL_SPIKE:2026-10-04",
       "data_payload": {
         "rvol": 2.8,
         "score": 79
@@ -131,8 +131,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-10-03_NVDA_TARGET_1_H",
-      "timestamp": "2026-10-03T18:20:41Z",
+      "alert_id": "ALT_2026-10-04_NVDA_TARGET_1_H",
+      "timestamp": "2026-10-04T02:56:58Z",
       "symbol": "NVDA",
       "taxonomy": "TECHNICAL_BREAKOUT",
       "severity": "NOTICE",
@@ -141,7 +141,7 @@
       "channels": [
         "IN_APP"
       ],
-      "dedupe_key": "NVDA:TARGET_1_HIT_RATCHET:2026-10-03",
+      "dedupe_key": "NVDA:TARGET_1_HIT_RATCHET:2026-10-04",
       "data_payload": {
         "predicate": "TARGET_1_HIT_RATCHET",
         "action": "TIGHTEN_STOP_TO_BREAKEVEN",
@@ -152,8 +152,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-10-03_GOOGL_BREAKOUT_F",
-      "timestamp": "2026-10-03T18:20:41Z",
+      "alert_id": "ALT_2026-10-04_GOOGL_BREAKOUT_F",
+      "timestamp": "2026-10-04T02:56:58Z",
       "symbol": "GOOGL",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
@@ -164,7 +164,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "GOOGL:BREAKOUT_FAILURE:2026-10-03",
+      "dedupe_key": "GOOGL:BREAKOUT_FAILURE:2026-10-04",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
@@ -175,8 +175,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-10-03_RY_BREAKOUT_F",
-      "timestamp": "2026-10-03T18:20:41Z",
+      "alert_id": "ALT_2026-10-04_RY_BREAKOUT_F",
+      "timestamp": "2026-10-04T02:56:58Z",
       "symbol": "RY",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
@@ -187,7 +187,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "RY:BREAKOUT_FAILURE:2026-10-03",
+      "dedupe_key": "RY:BREAKOUT_FAILURE:2026-10-04",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
@@ -198,8 +198,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-10-03_ENB_BREAKOUT_F",
-      "timestamp": "2026-10-03T18:20:41Z",
+      "alert_id": "ALT_2026-10-04_ENB_BREAKOUT_F",
+      "timestamp": "2026-10-04T02:56:58Z",
       "symbol": "ENB",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
@@ -210,7 +210,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "ENB:BREAKOUT_FAILURE:2026-10-03",
+      "dedupe_key": "ENB:BREAKOUT_FAILURE:2026-10-04",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
@@ -221,8 +221,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-10-03_CNR_BREAKOUT_F",
-      "timestamp": "2026-10-03T18:20:41Z",
+      "alert_id": "ALT_2026-10-04_CNR_BREAKOUT_F",
+      "timestamp": "2026-10-04T02:56:58Z",
       "symbol": "CNR",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
@@ -233,7 +233,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "CNR:BREAKOUT_FAILURE:2026-10-03",
+      "dedupe_key": "CNR:BREAKOUT_FAILURE:2026-10-04",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
@@ -244,8 +244,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-10-03_CNQ_BREAKOUT_F",
-      "timestamp": "2026-10-03T18:20:41Z",
+      "alert_id": "ALT_2026-10-04_CNQ_BREAKOUT_F",
+      "timestamp": "2026-10-04T02:56:58Z",
       "symbol": "CNQ",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
@@ -256,7 +256,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "CNQ:BREAKOUT_FAILURE:2026-10-03",
+      "dedupe_key": "CNQ:BREAKOUT_FAILURE:2026-10-04",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
@@ -267,8 +267,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-10-03_BAM_BREAKOUT_F",
-      "timestamp": "2026-10-03T18:20:41Z",
+      "alert_id": "ALT_2026-10-04_BAM_BREAKOUT_F",
+      "timestamp": "2026-10-04T02:56:58Z",
       "symbol": "BAM",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
@@ -279,7 +279,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "BAM:BREAKOUT_FAILURE:2026-10-03",
+      "dedupe_key": "BAM:BREAKOUT_FAILURE:2026-10-04",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
@@ -290,8 +290,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-10-03_CP_BREAKOUT_F",
-      "timestamp": "2026-10-03T18:20:41Z",
+      "alert_id": "ALT_2026-10-04_CP_BREAKOUT_F",
+      "timestamp": "2026-10-04T02:56:58Z",
       "symbol": "CP",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
@@ -302,7 +302,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "CP:BREAKOUT_FAILURE:2026-10-03",
+      "dedupe_key": "CP:BREAKOUT_FAILURE:2026-10-04",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
@@ -333,6 +333,84 @@
     "cooldown_minutes_per_symbol": 120
   },
   "consent_ledger_audit": [
+    {
+      "consent_id": 274,
+      "user_id": "cooldown_user@example.com",
+      "channel": "EMAIL",
+      "consent_type": "EXPRESS_OPT_IN",
+      "ip_address": "198.51.100.42",
+      "granted_at": "2026-10-04T02:55:47.646107+00:00",
+      "revoked_at": null,
+      "is_active": true,
+      "jurisdiction": "CA",
+      "double_opt_in": false,
+      "evidence_snippet": "I expressly consent to receive electronic research alerts from NorthIntel. ..."
+    },
+    {
+      "consent_id": 273,
+      "user_id": "+16045558888",
+      "channel": "SMS",
+      "consent_type": "DOUBLE_OPT_IN_SMS",
+      "ip_address": "198.51.100.42",
+      "granted_at": "2026-10-04T02:55:47.629781+00:00",
+      "revoked_at": null,
+      "is_active": true,
+      "jurisdiction": "CA",
+      "double_opt_in": true,
+      "evidence_snippet": "I expressly consent to receive electronic research alerts from NorthIntel. ..."
+    },
+    {
+      "consent_id": 272,
+      "user_id": "quiet_user@example.com",
+      "channel": "EMAIL",
+      "consent_type": "EXPRESS_OPT_IN",
+      "ip_address": "198.51.100.42",
+      "granted_at": "2026-10-04T02:55:47.613693+00:00",
+      "revoked_at": null,
+      "is_active": true,
+      "jurisdiction": "CA",
+      "double_opt_in": false,
+      "evidence_snippet": "I expressly consent to receive electronic research alerts from NorthIntel. ..."
+    },
+    {
+      "consent_id": 271,
+      "user_id": "opt_out_test@example.com",
+      "channel": "EMAIL",
+      "consent_type": "EXPRESS_OPT_IN",
+      "ip_address": "198.51.100.42",
+      "granted_at": "2026-10-04T02:55:47.602650+00:00",
+      "revoked_at": "2026-10-04T02:55:47.605943+00:00",
+      "is_active": false,
+      "jurisdiction": "CA",
+      "double_opt_in": false,
+      "evidence_snippet": "I expressly consent to receive electronic research alerts from NorthIntel. ..."
+    },
+    {
+      "consent_id": 270,
+      "user_id": "+16045550999",
+      "channel": "SMS",
+      "consent_type": "DOUBLE_OPT_IN_SMS",
+      "ip_address": "198.51.100.42",
+      "granted_at": "2026-10-04T02:55:47.593899+00:00",
+      "revoked_at": null,
+      "is_active": true,
+      "jurisdiction": "CA",
+      "double_opt_in": true,
+      "evidence_snippet": "I expressly consent to receive electronic research alerts from NorthIntel. ..."
+    },
+    {
+      "consent_id": 269,
+      "user_id": "test_ca_user@example.ca",
+      "channel": "EMAIL",
+      "consent_type": "EXPRESS_OPT_IN",
+      "ip_address": "198.51.100.77",
+      "granted_at": "2026-10-04T02:55:47.586510+00:00",
+      "revoked_at": null,
+      "is_active": true,
+      "jurisdiction": "CA",
+      "double_opt_in": false,
+      "evidence_snippet": "I expressly consent to receive electronic research alerts from NorthIntel. ..."
+    },
     {
       "consent_id": 268,
       "user_id": "cooldown_user@example.com",
@@ -509,84 +587,6 @@
       "consent_type": "DOUBLE_OPT_IN_SMS",
       "ip_address": "198.51.100.42",
       "granted_at": "2026-10-03T17:30:18.688148+00:00",
-      "revoked_at": null,
-      "is_active": true,
-      "jurisdiction": "CA",
-      "double_opt_in": true,
-      "evidence_snippet": "I expressly consent to receive electronic research alerts from NorthIntel. ..."
-    },
-    {
-      "consent_id": 254,
-      "user_id": "quiet_user@example.com",
-      "channel": "EMAIL",
-      "consent_type": "EXPRESS_OPT_IN",
-      "ip_address": "198.51.100.42",
-      "granted_at": "2026-10-03T17:30:18.669261+00:00",
-      "revoked_at": null,
-      "is_active": true,
-      "jurisdiction": "CA",
-      "double_opt_in": false,
-      "evidence_snippet": "I expressly consent to receive electronic research alerts from NorthIntel. ..."
-    },
-    {
-      "consent_id": 253,
-      "user_id": "opt_out_test@example.com",
-      "channel": "EMAIL",
-      "consent_type": "EXPRESS_OPT_IN",
-      "ip_address": "198.51.100.42",
-      "granted_at": "2026-10-03T17:30:18.659370+00:00",
-      "revoked_at": "2026-10-03T17:30:18.663440+00:00",
-      "is_active": false,
-      "jurisdiction": "CA",
-      "double_opt_in": false,
-      "evidence_snippet": "I expressly consent to receive electronic research alerts from NorthIntel. ..."
-    },
-    {
-      "consent_id": 252,
-      "user_id": "+16045550999",
-      "channel": "SMS",
-      "consent_type": "DOUBLE_OPT_IN_SMS",
-      "ip_address": "198.51.100.42",
-      "granted_at": "2026-10-03T17:30:18.650825+00:00",
-      "revoked_at": null,
-      "is_active": true,
-      "jurisdiction": "CA",
-      "double_opt_in": true,
-      "evidence_snippet": "I expressly consent to receive electronic research alerts from NorthIntel. ..."
-    },
-    {
-      "consent_id": 251,
-      "user_id": "test_ca_user@example.ca",
-      "channel": "EMAIL",
-      "consent_type": "EXPRESS_OPT_IN",
-      "ip_address": "198.51.100.77",
-      "granted_at": "2026-10-03T17:30:18.644790+00:00",
-      "revoked_at": null,
-      "is_active": true,
-      "jurisdiction": "CA",
-      "double_opt_in": false,
-      "evidence_snippet": "I expressly consent to receive electronic research alerts from NorthIntel. ..."
-    },
-    {
-      "consent_id": 250,
-      "user_id": "cooldown_user@example.com",
-      "channel": "EMAIL",
-      "consent_type": "EXPRESS_OPT_IN",
-      "ip_address": "198.51.100.42",
-      "granted_at": "2026-10-03T03:25:03.211348+00:00",
-      "revoked_at": null,
-      "is_active": true,
-      "jurisdiction": "CA",
-      "double_opt_in": false,
-      "evidence_snippet": "I expressly consent to receive electronic research alerts from NorthIntel. ..."
-    },
-    {
-      "consent_id": 249,
-      "user_id": "+16045558888",
-      "channel": "SMS",
-      "consent_type": "DOUBLE_OPT_IN_SMS",
-      "ip_address": "198.51.100.42",
-      "granted_at": "2026-10-03T03:25:03.185080+00:00",
       "revoked_at": null,
       "is_active": true,
       "jurisdiction": "CA",

@@ -1,6 +1,6 @@
 {
-  "as_of_date": "2026-10-03",
-  "generated_at": "2026-10-03T18:20:26.211844+00:00",
+  "as_of_date": "2026-10-04",
+  "generated_at": "2026-10-04T02:56:38.765834+00:00",
   "total_tickers": 19,
   "a_grade_count": 0,
   "b_grade_count": 5,
@@ -12,8 +12,8 @@
       "exchange": "NASDAQ",
       "country": "US",
       "currency": "USD",
-      "as_of_date": "2026-10-03",
-      "generated_at": "2026-10-03T18:20:26.699849+00:00",
+      "as_of_date": "2026-10-04",
+      "generated_at": "2026-10-04T02:56:39.361311+00:00",
       "conviction_grade": "B",
       "aligned_layers_count": 5,
       "formatted_card": "TICKER: AAPL\nREGIME: STRONG_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 7.8%)\nPATTERN TYPE: Archetype A: Mega-Cap Tech (Gamma-Momentum) \u2014 Momentum (Trend Breakout)\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BULLISH \u2014 Stacked MAs (Bullish Stack), RSI 61.8 equilibrium, price structure holding above key support.\n  Fundamental:  7.2/10 \u2014 ROIC 16.6%, Debt/Equity 0.66, operating margin 32.6%; robust institutional quality balance sheet.\n  Sentiment:    +0.40 (BULLISH) \u2014 AAPL Form 10-Q Quarterly Report \u2014 Q/E 2026-06-27\n  Historical:   56.9% Win Rate (25 sample size, E[R]: +0.46R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $334.30 \u2013 $339.31\n  Entry trigger:  Confirmed daily close above swing resistance ($344.96) on RVOL > 1.5x with CMF > 0.05.\n  Stop loss:      $324.18 (3.0% below entry)\n  Target 1 (T1):  $344.96 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $372.24 | Est. 24 days | Take 40%\n  Target 3 (T3):  $376.82 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.76\n  Position size:  98 shares on $100,000 portfolio risking 1% ($991.76)\n  Execution TCA:  DIRECT_MARKET (1 slice) | Est. Fill: $338.40 | Slippage: +0.0 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: B-Grade\nTRADE THESIS: AAPL exhibits high structural confluence with Momentum (Trend Breakout) aligning above ascending moving averages. In the current STRONG_BULL macro context (20d adverse hazard: 7.8%), measured support at $334.30 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $324.18 or two consecutive closes back below $334.30 immediately invalidates the trade.",
@@ -142,21 +142,21 @@
         "action": "GATED_EXCLUDE",
         "size_multiplier": 0.0,
         "primary_driver": "bb_bandwidth (+5.00, impact +)",
-        "calibrated_at": "2026-10-03T18:20:26.979309+00:00"
+        "calibrated_at": "2026-10-04T02:56:39.684023+00:00"
       },
       "microstructure_metrics": {
         "symbol": "AAPL",
-        "timestamp": "2026-10-03T18:20:26.981377+00:00",
-        "cvd_total": -5299,
-        "cvd_1m_delta": -5488,
-        "cvd_5m_delta": -5299,
-        "order_book_imbalance": 0.1241,
-        "kyle_lambda": 0.0013,
-        "rvol_1m": 2.1,
+        "timestamp": "2026-10-04T02:56:39.687415+00:00",
+        "cvd_total": 6814,
+        "cvd_1m_delta": 5159,
+        "cvd_5m_delta": 6814,
+        "order_book_imbalance": -0.0527,
+        "kyle_lambda": 0.0086,
+        "rvol_1m": 2.03,
         "absorption_signal": "NONE",
         "liquidity_state": "NORMAL",
-        "buyer_volume_pct": 25.5,
-        "seller_volume_pct": 74.5
+        "buyer_volume_pct": 77.0,
+        "seller_volume_pct": 23.0
       }
     },
     "MSFT": {
@@ -164,11 +164,11 @@
       "exchange": "NASDAQ",
       "country": "US",
       "currency": "USD",
-      "as_of_date": "2026-10-03",
-      "generated_at": "2026-10-03T18:20:27.124540+00:00",
+      "as_of_date": "2026-10-04",
+      "generated_at": "2026-10-04T02:56:39.835359+00:00",
       "conviction_grade": "B",
       "aligned_layers_count": 4,
-      "formatted_card": "TICKER: MSFT\nREGIME: STRONG_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 7.8%)\nPATTERN TYPE: Archetype A: Mega-Cap Tech (Gamma-Momentum) \u2014 Momentum (Pullback Continuation)\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BULLISH \u2014 Stacked MAs (Bullish Stack), RSI 58.6 equilibrium, price structure holding above key support.\n  Fundamental:  10.0/10 \u2014 ROIC 28.2%, Debt/Equity 0.07, operating margin 46.8%; robust institutional quality balance sheet.\n  Sentiment:    +0.30 (BULLISH) \u2014 MSFT SEC Form 8-K Filing \u2014 Regulation FD Disclosure (Investor Presentation / Update)\n  Historical:   51.3% Win Rate (119 sample size, E[R]: +0.44R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $493.84 \u2013 $501.25\n  Entry trigger:  Price stabilizes above support zone ($489.96) with 15m candle close above $493.84 and volume > 1.2x 20d average.\n  Stop loss:      $474.42 (3.9% below entry)\n  Target 1 (T1):  $514.28 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $560.14 | Est. 24 days | Take 40%\n  Target 3 (T3):  $575.40 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.62\n  Position size:  51 shares on $100,000 portfolio risking 1% ($990.42)\n  Execution TCA:  DIRECT_MARKET (1 slice) | Est. Fill: $509.23 | Slippage: +0.2 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: B-Grade\nTRADE THESIS: MSFT exhibits high structural confluence with Momentum (Pullback Continuation) aligning above ascending moving averages. In the current STRONG_BULL macro context (20d adverse hazard: 7.8%), measured support at $489.96 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $474.42 or two consecutive closes back below $489.96 immediately invalidates the trade.",
+      "formatted_card": "TICKER: MSFT\nREGIME: STRONG_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 7.8%)\nPATTERN TYPE: Archetype A: Mega-Cap Tech (Gamma-Momentum) \u2014 Momentum (Pullback Continuation)\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BULLISH \u2014 Stacked MAs (Bullish Stack), RSI 58.6 equilibrium, price structure holding above key support.\n  Fundamental:  10.0/10 \u2014 ROIC 28.2%, Debt/Equity 0.07, operating margin 46.8%; robust institutional quality balance sheet.\n  Sentiment:    +0.30 (BULLISH) \u2014 MSFT SEC Form 8-K Filing \u2014 Regulation FD Disclosure (Investor Presentation / Update)\n  Historical:   51.2% Win Rate (121 sample size, E[R]: +0.44R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $493.84 \u2013 $501.25\n  Entry trigger:  Price stabilizes above support zone ($489.96) with 15m candle close above $493.84 and volume > 1.2x 20d average.\n  Stop loss:      $474.42 (3.9% below entry)\n  Target 1 (T1):  $514.28 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $560.14 | Est. 24 days | Take 40%\n  Target 3 (T3):  $575.40 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.62\n  Position size:  51 shares on $100,000 portfolio risking 1% ($990.42)\n  Execution TCA:  DIRECT_MARKET (1 slice) | Est. Fill: $509.23 | Slippage: +0.2 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: B-Grade\nTRADE THESIS: MSFT exhibits high structural confluence with Momentum (Pullback Continuation) aligning above ascending moving averages. In the current STRONG_BULL macro context (20d adverse hazard: 7.8%), measured support at $489.96 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $474.42 or two consecutive closes back below $489.96 immediately invalidates the trade.",
       "layer_1_regime": {
         "trend_type": "Bull",
         "volatility_regime": "Medium (15\u201325)",
@@ -249,10 +249,10 @@
         "skip_triggered": false
       },
       "layer_6_memory": {
-        "win_rate_pct": 51.3,
-        "sample_size": 119,
+        "win_rate_pct": 51.2,
+        "sample_size": 121,
         "avg_move_pct": 4.8,
-        "false_breakout_rate_pct": 42.9,
+        "false_breakout_rate_pct": 43.0,
         "median_bars_to_target": 8,
         "expectancy_r": 0.44,
         "status": "NEUTRAL",
@@ -294,21 +294,21 @@
         "action": "MODERATE_PROCEED",
         "size_multiplier": 0.85,
         "primary_driver": "mom_3m (+0.38, impact +)",
-        "calibrated_at": "2026-10-03T18:20:27.415400+00:00"
+        "calibrated_at": "2026-10-04T02:56:40.182710+00:00"
       },
       "microstructure_metrics": {
         "symbol": "MSFT",
-        "timestamp": "2026-10-03T18:20:27.417559+00:00",
-        "cvd_total": -639,
-        "cvd_1m_delta": -492,
-        "cvd_5m_delta": -639,
-        "order_book_imbalance": -0.0123,
-        "kyle_lambda": 0.0145,
-        "rvol_1m": 1.1,
+        "timestamp": "2026-10-04T02:56:40.186434+00:00",
+        "cvd_total": 3991,
+        "cvd_1m_delta": 3699,
+        "cvd_5m_delta": 3991,
+        "order_book_imbalance": 0.0668,
+        "kyle_lambda": 0.0095,
+        "rvol_1m": 1.74,
         "absorption_signal": "NONE",
         "liquidity_state": "NORMAL",
-        "buyer_volume_pct": 46.1,
-        "seller_volume_pct": 53.9
+        "buyer_volume_pct": 72.5,
+        "seller_volume_pct": 27.5
       }
     },
     "NVDA": {
@@ -316,8 +316,8 @@
       "exchange": "NASDAQ",
       "country": "US",
       "currency": "USD",
-      "as_of_date": "2026-10-03",
-      "generated_at": "2026-10-03T18:20:27.553954+00:00",
+      "as_of_date": "2026-10-04",
+      "generated_at": "2026-10-04T02:56:40.379271+00:00",
       "conviction_grade": "B",
       "aligned_layers_count": 5,
       "formatted_card": "TICKER: NVDA\nREGIME: STRONG_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 7.8%)\nPATTERN TYPE: Archetype A: Mega-Cap Tech (Gamma-Momentum) \u2014 Momentum (Pullback Continuation)\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BULLISH \u2014 Stacked MAs (Bullish Stack), RSI 58.6 equilibrium, price structure holding above key support.\n  Fundamental:  7.5/10 \u2014 ROIC 22.8%, Debt/Equity 0.14, operating margin 66.2%; robust institutional quality balance sheet.\n  Sentiment:    +0.40 (BULLISH) \u2014 NVDA SEC Form 8-K Filing \u2014 Other Events of Substantial Importance\n  Historical:   57.7% Win Rate (26 sample size, E[R]: +0.62R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $220.22 \u2013 $223.52\n  Entry trigger:  Price stabilizes above support zone ($217.58) with 15m candle close above $220.22 and volume > 1.2x 20d average.\n  Stop loss:      $212.47 (3.5% below entry)\n  Target 1 (T1):  $230.51 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $251.75 | Est. 24 days | Take 40%\n  Target 3 (T3):  $252.79 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 3.00\n  Position size:  129 shares on $100,000 portfolio risking 1% ($999.75)\n  Execution TCA:  DIRECT_MARKET (1 slice) | Est. Fill: $228.87 | Slippage: +0.4 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: B-Grade\nTRADE THESIS: NVDA exhibits high structural confluence with Momentum (Pullback Continuation) aligning above ascending moving averages. In the current STRONG_BULL macro context (20d adverse hazard: 7.8%), measured support at $217.58 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $212.47 or two consecutive closes back below $217.58 immediately invalidates the trade.",
@@ -446,21 +446,21 @@
         "action": "MODERATE_PROCEED",
         "size_multiplier": 0.85,
         "primary_driver": "mom_12_1m (+0.28, impact -)",
-        "calibrated_at": "2026-10-03T18:20:27.840509+00:00"
+        "calibrated_at": "2026-10-04T02:56:40.711904+00:00"
       },
       "microstructure_metrics": {
         "symbol": "NVDA",
-        "timestamp": "2026-10-03T18:20:27.842705+00:00",
-        "cvd_total": 1935,
-        "cvd_1m_delta": 2227,
-        "cvd_5m_delta": 1935,
-        "order_book_imbalance": -0.0158,
-        "kyle_lambda": 0.0199,
-        "rvol_1m": 1.45,
+        "timestamp": "2026-10-04T02:56:40.714233+00:00",
+        "cvd_total": 542,
+        "cvd_1m_delta": 436,
+        "cvd_5m_delta": 542,
+        "order_book_imbalance": -0.0024,
+        "kyle_lambda": 0.0053,
+        "rvol_1m": 1.09,
         "absorption_signal": "NONE",
         "liquidity_state": "NORMAL",
-        "buyer_volume_pct": 62.3,
-        "seller_volume_pct": 37.7
+        "buyer_volume_pct": 52.1,
+        "seller_volume_pct": 47.9
       }
     },
     "AMZN": {
@@ -468,11 +468,11 @@
       "exchange": "NASDAQ",
       "country": "US",
       "currency": "USD",
-      "as_of_date": "2026-10-03",
-      "generated_at": "2026-10-03T18:20:27.964334+00:00",
+      "as_of_date": "2026-10-04",
+      "generated_at": "2026-10-04T02:56:40.873012+00:00",
       "conviction_grade": "C",
       "aligned_layers_count": 3,
-      "formatted_card": "TICKER: AMZN\nREGIME: STRONG_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 7.8%)\nPATTERN TYPE: Archetype A: Mega-Cap Tech (Gamma-Momentum) \u2014 Momentum (Pullback Continuation)\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    NEUTRAL \u2014 Consolidation near moving averages; RSI 41.2 with RVOL at 0.93x awaiting directional catalyst.\n  Fundamental:  6.0/10 \u2014 Stable financial quality (Score 6.0/10); P/E 42.84x balanced by operational cash flow.\n  Sentiment:    +0.60 (BULLISH) \u2014 AMZN SEC Form 8-K Filing \u2014 Other Events of Substantial Importance\n  Historical:   55.4% Win Rate (25 sample size, E[R]: +0.44R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $247.72 \u2013 $251.44\n  Entry trigger:  Price stabilizes above support zone ($243.90) with 15m candle close above $247.72 and volume > 1.2x 20d average.\n  Stop loss:      $239.60 (3.3% below entry)\n  Target 1 (T1):  $257.46 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $268.02 | Est. 24 days | Take 40%\n  Target 3 (T3):  $281.82 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.32\n  Position size:  61 shares on $100,000 portfolio risking 1% ($495.32)\n  Execution TCA:  DIRECT_MARKET (1 slice) | Est. Fill: $246.16 | Slippage: +0.4 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: C-Grade\nTRADE THESIS: AMZN exhibits high structural confluence with Momentum (Pullback Continuation) aligning above ascending moving averages. In the current STRONG_BULL macro context (20d adverse hazard: 7.8%), measured support at $243.90 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $239.60 or two consecutive closes back below $243.90 immediately invalidates the trade.",
+      "formatted_card": "TICKER: AMZN\nREGIME: STRONG_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 7.8%)\nPATTERN TYPE: Archetype A: Mega-Cap Tech (Gamma-Momentum) \u2014 Momentum (Pullback Continuation)\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    NEUTRAL \u2014 Consolidation near moving averages; RSI 41.2 with RVOL at 0.93x awaiting directional catalyst.\n  Fundamental:  6.0/10 \u2014 Stable financial quality (Score 6.0/10); P/E 42.84x balanced by operational cash flow.\n  Sentiment:    +0.60 (BULLISH) \u2014 AMZN SEC Form 8-K Filing \u2014 Other Events of Substantial Importance\n  Historical:   55.4% Win Rate (25 sample size, E[R]: +0.44R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $247.72 \u2013 $251.44\n  Entry trigger:  Price stabilizes above support zone ($243.90) with 15m candle close above $247.72 and volume > 1.2x 20d average.\n  Stop loss:      $239.60 (3.3% below entry)\n  Target 1 (T1):  $257.46 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $268.02 | Est. 24 days | Take 40%\n  Target 3 (T3):  $281.82 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.32\n  Position size:  61 shares on $100,000 portfolio risking 1% ($495.32)\n  Execution TCA:  DIRECT_MARKET (1 slice) | Est. Fill: $246.17 | Slippage: +0.8 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: C-Grade\nTRADE THESIS: AMZN exhibits high structural confluence with Momentum (Pullback Continuation) aligning above ascending moving averages. In the current STRONG_BULL macro context (20d adverse hazard: 7.8%), measured support at $243.90 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $239.60 or two consecutive closes back below $243.90 immediately invalidates the trade.",
       "layer_1_regime": {
         "trend_type": "Bull",
         "volatility_regime": "Medium (15\u201325)",
@@ -588,8 +588,8 @@
         "invalidation_rule": "A daily closing price below $239.60 or two consecutive closes back below $243.90 immediately invalidates the trade.",
         "trade_thesis": "AMZN exhibits high structural confluence with Momentum (Pullback Continuation) aligning above ascending moving averages. In the current STRONG_BULL macro context (20d adverse hazard: 7.8%), measured support at $243.90 offers asymmetric risk/reward into upper channel resistance.",
         "tca_execution_strategy": "DIRECT_MARKET",
-        "tca_expected_slippage_bps": 0.41,
-        "tca_effective_fill_price": 246.16,
+        "tca_expected_slippage_bps": 0.81,
+        "tca_effective_fill_price": 246.17,
         "tca_optimal_slices": 1
       },
       "meta_label_verdict": {
@@ -598,21 +598,21 @@
         "action": "CAUTION_THROTTLE",
         "size_multiplier": 0.5,
         "primary_driver": "bb_bandwidth (+5.00, impact +)",
-        "calibrated_at": "2026-10-03T18:20:28.239852+00:00"
+        "calibrated_at": "2026-10-04T02:56:41.299863+00:00"
       },
       "microstructure_metrics": {
         "symbol": "AMZN",
-        "timestamp": "2026-10-03T18:20:28.241898+00:00",
-        "cvd_total": -7408,
-        "cvd_1m_delta": -7537,
-        "cvd_5m_delta": -7408,
-        "order_book_imbalance": 0.0364,
-        "kyle_lambda": 0.0077,
-        "rvol_1m": 2.51,
+        "timestamp": "2026-10-04T02:56:41.302727+00:00",
+        "cvd_total": 4286,
+        "cvd_1m_delta": 3908,
+        "cvd_5m_delta": 4286,
+        "order_book_imbalance": 0.0152,
+        "kyle_lambda": 0.044,
+        "rvol_1m": 1.78,
         "absorption_signal": "NONE",
-        "liquidity_state": "NORMAL",
-        "buyer_volume_pct": 20.7,
-        "seller_volume_pct": 79.3
+        "liquidity_state": "SPREAD_EXPANSION",
+        "buyer_volume_pct": 75.6,
+        "seller_volume_pct": 24.4
       }
     },
     "GOOGL": {
@@ -620,8 +620,8 @@
       "exchange": "NASDAQ",
       "country": "US",
       "currency": "USD",
-      "as_of_date": "2026-10-03",
-      "generated_at": "2026-10-03T18:20:28.360577+00:00",
+      "as_of_date": "2026-10-04",
+      "generated_at": "2026-10-04T02:56:41.561231+00:00",
       "conviction_grade": "C",
       "aligned_layers_count": 4,
       "formatted_card": "TICKER: GOOGL\nREGIME: STRONG_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 7.8%)\nPATTERN TYPE: Archetype A: Mega-Cap Tech (Gamma-Momentum) \u2014 Momentum (Pullback Continuation)\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    NEUTRAL \u2014 Consolidation near moving averages; RSI 48.8 with RVOL at 0.73x awaiting directional catalyst.\n  Fundamental:  8.5/10 \u2014 ROIC 15.2%, Debt/Equity 0.15, operating margin 45.2%; robust institutional quality balance sheet.\n  Sentiment:    +0.30 (BULLISH) \u2014 GOOGL SEC Form 8-K Filing \u2014 Other Events of Substantial Importance\n  Historical:   55.4% Win Rate (25 sample size, E[R]: +0.44R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $344.42 \u2013 $349.59\n  Entry trigger:  Price stabilizes above support zone ($339.01) with 15m candle close above $344.42 and volume > 1.2x 20d average.\n  Stop loss:      $331.09 (3.9% below entry)\n  Target 1 (T1):  $360.42 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $377.75 | Est. 24 days | Take 40%\n  Target 3 (T3):  $400.43 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.32\n  Position size:  37 shares on $100,000 portfolio risking 1% ($493.21)\n  Execution TCA:  DIRECT_MARKET (1 slice) | Est. Fill: $342.76 | Slippage: +0.3 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: C-Grade\nTRADE THESIS: GOOGL exhibits high structural confluence with Momentum (Pullback Continuation) aligning above ascending moving averages. In the current STRONG_BULL macro context (20d adverse hazard: 7.8%), measured support at $339.01 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $331.09 or two consecutive closes back below $339.01 immediately invalidates the trade.",
@@ -750,21 +750,21 @@
         "action": "GATED_EXCLUDE",
         "size_multiplier": 0.0,
         "primary_driver": "mom_12_1m (+0.39, impact -)",
-        "calibrated_at": "2026-10-03T18:20:28.630766+00:00"
+        "calibrated_at": "2026-10-04T02:56:42.054330+00:00"
       },
       "microstructure_metrics": {
         "symbol": "GOOGL",
-        "timestamp": "2026-10-03T18:20:28.632886+00:00",
-        "cvd_total": 6043,
-        "cvd_1m_delta": 5738,
-        "cvd_5m_delta": 6043,
-        "order_book_imbalance": -0.0601,
-        "kyle_lambda": 0.0114,
-        "rvol_1m": 2.15,
+        "timestamp": "2026-10-04T02:56:42.057009+00:00",
+        "cvd_total": 7707,
+        "cvd_1m_delta": 6607,
+        "cvd_5m_delta": 7707,
+        "order_book_imbalance": -0.0459,
+        "kyle_lambda": 0.0165,
+        "rvol_1m": 2.32,
         "absorption_signal": "NONE",
         "liquidity_state": "NORMAL",
-        "buyer_volume_pct": 71.6,
-        "seller_volume_pct": 28.4
+        "buyer_volume_pct": 81.7,
+        "seller_volume_pct": 18.3
       }
     },
     "JPM": {
@@ -772,8 +772,8 @@
       "exchange": "NYSE",
       "country": "US",
       "currency": "USD",
-      "as_of_date": "2026-10-03",
-      "generated_at": "2026-10-03T18:20:28.749777+00:00",
+      "as_of_date": "2026-10-04",
+      "generated_at": "2026-10-04T02:56:42.268848+00:00",
       "conviction_grade": "SKIP",
       "aligned_layers_count": 2,
       "formatted_card": "TICKER: JPM\nREGIME: STRONG_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 7.8%)\nPATTERN TYPE: Archetype C: Chartered Banks (Regulated Yield-Drift) \u2014 Earnings-Driven\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    NEUTRAL \u2014 Consolidation near moving averages; RSI 36.0 with RVOL at 1.22x awaiting directional catalyst.\n  Fundamental:  6.0/10 \u2014 Stable financial quality (Score 6.0/10); P/E 42.87x balanced by operational cash flow.\n  Sentiment:    0.00 (NEUTRAL) \u2014 Routine regulatory reporting schedule; no material catalyst in last 30 days.\n  Historical:   58.2% Win Rate (25 sample size, E[R]: +0.48R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $336.68 \u2013 $341.73\n  Entry trigger:  Price holds structural pivot ($330.24) followed by volume-backed expansion above $336.68.\n  Stop loss:      $325.81 (3.2% below entry)\n  Target 1 (T1):  $349.72 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $363.86 | Est. 24 days | Take 40%\n  Target 3 (T3):  $382.36 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.32\n  Position size:  0 shares on $100,000 portfolio risking 1% ($0.00)\n  Execution TCA:  DIRECT_MARKET (1 slice) | Est. Fill: $336.60 | Slippage: +0.3 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: SKIP-Grade\nTRADE THESIS: JPM exhibits high structural confluence with Earnings-Driven aligning above ascending moving averages. In the current STRONG_BULL macro context (20d adverse hazard: 7.8%), measured support at $330.24 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $325.81 or two consecutive closes back below $330.24 immediately invalidates the trade.",
@@ -902,21 +902,21 @@
         "action": "CAUTION_THROTTLE",
         "size_multiplier": 0.5,
         "primary_driver": "bb_bandwidth (+5.00, impact +)",
-        "calibrated_at": "2026-10-03T18:20:29.018569+00:00"
+        "calibrated_at": "2026-10-04T02:56:42.702513+00:00"
       },
       "microstructure_metrics": {
         "symbol": "JPM",
-        "timestamp": "2026-10-03T18:20:29.020401+00:00",
-        "cvd_total": 162,
-        "cvd_1m_delta": -69,
-        "cvd_5m_delta": 162,
-        "order_book_imbalance": -0.065,
-        "kyle_lambda": 0.0115,
-        "rvol_1m": 1.01,
+        "timestamp": "2026-10-04T02:56:42.705074+00:00",
+        "cvd_total": -577,
+        "cvd_1m_delta": -958,
+        "cvd_5m_delta": -577,
+        "order_book_imbalance": 0.0113,
+        "kyle_lambda": 0.0015,
+        "rvol_1m": 1.19,
         "absorption_signal": "NONE",
         "liquidity_state": "NORMAL",
-        "buyer_volume_pct": 50.9,
-        "seller_volume_pct": 49.1
+        "buyer_volume_pct": 47.5,
+        "seller_volume_pct": 52.5
       }
     },
     "XOM": {
@@ -924,8 +924,8 @@
       "exchange": "NYSE",
       "country": "US",
       "currency": "USD",
-      "as_of_date": "2026-10-03",
-      "generated_at": "2026-10-03T18:20:29.138600+00:00",
+      "as_of_date": "2026-10-04",
+      "generated_at": "2026-10-04T02:56:42.855276+00:00",
       "conviction_grade": "C",
       "aligned_layers_count": 3,
       "formatted_card": "TICKER: XOM\nREGIME: STRONG_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 7.8%)\nPATTERN TYPE: Archetype B: Natural Resources & Energy (Cycle Mean-Reversion) \u2014 Mean-Reversion\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BULLISH \u2014 Stacked MAs (Mixed Alignment), RSI 52.3 equilibrium, price structure holding above key support.\n  Fundamental:  5.0/10 \u2014 Stable financial quality (Score 5.0/10); P/E 161.04x balanced by operational cash flow.\n  Sentiment:    +0.70 (BULLISH) \u2014 XOM SEC Form 8-K Filing \u2014 Other Events of Substantial Importance\n  Historical:   50.8% Win Rate (25 sample size, E[R]: +0.28R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $161.94 \u2013 $164.37\n  Entry trigger:  Bullish rejection hammer wick at lower support ($158.89) with RSI recovering above 35.\n  Stop loss:      $155.20 (4.2% below entry)\n  Target 1 (T1):  $170.03 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $178.79 | Est. 24 days | Take 40%\n  Target 3 (T3):  $190.25 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.32\n  Position size:  74 shares on $100,000 portfolio risking 1% ($498.76)\n  Execution TCA:  DIRECT_MARKET (1 slice) | Est. Fill: $162.53 | Slippage: +0.6 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: C-Grade\nTRADE THESIS: XOM exhibits high structural confluence with Mean-Reversion aligning above ascending moving averages. In the current STRONG_BULL macro context (20d adverse hazard: 7.8%), measured support at $158.89 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $155.20 or two consecutive closes back below $158.89 immediately invalidates the trade.",
@@ -1054,21 +1054,21 @@
         "action": "CAUTION_THROTTLE",
         "size_multiplier": 0.5,
         "primary_driver": "mom_12_1m (+0.35, impact -)",
-        "calibrated_at": "2026-10-03T18:20:29.411305+00:00"
+        "calibrated_at": "2026-10-04T02:56:43.203052+00:00"
       },
       "microstructure_metrics": {
         "symbol": "XOM",
-        "timestamp": "2026-10-03T18:20:29.413282+00:00",
-        "cvd_total": 4097,
-        "cvd_1m_delta": 4172,
-        "cvd_5m_delta": 4097,
-        "order_book_imbalance": -0.0331,
-        "kyle_lambda": 0.0125,
-        "rvol_1m": 1.83,
+        "timestamp": "2026-10-04T02:56:43.205667+00:00",
+        "cvd_total": -6305,
+        "cvd_1m_delta": -6620,
+        "cvd_5m_delta": -6305,
+        "order_book_imbalance": 0.086,
+        "kyle_lambda": 0.009,
+        "rvol_1m": 2.32,
         "absorption_signal": "NONE",
         "liquidity_state": "NORMAL",
-        "buyer_volume_pct": 75.7,
-        "seller_volume_pct": 24.3
+        "buyer_volume_pct": 31.3,
+        "seller_volume_pct": 68.7
       }
     },
     "SPY": {
@@ -1076,8 +1076,8 @@
       "exchange": "AMEX",
       "country": "US",
       "currency": "USD",
-      "as_of_date": "2026-10-03",
-      "generated_at": "2026-10-03T18:20:29.530777+00:00",
+      "as_of_date": "2026-10-04",
+      "generated_at": "2026-10-04T02:56:43.371382+00:00",
       "conviction_grade": "B",
       "aligned_layers_count": 4,
       "formatted_card": "TICKER: SPY\nREGIME: STRONG_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 7.8%)\nPATTERN TYPE: Archetype E: Defensive Yield & Sovereign Benchmark \u2014 Earnings-Driven\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BULLISH \u2014 Stacked MAs (Bullish Stack), RSI 50.5 equilibrium, price structure holding above key support.\n  Fundamental:  8.5/10 \u2014 Broad-market benchmark index ETF; diversified institutional liquidity and systemic solvency.\n  Sentiment:    0.00 (NEUTRAL) \u2014 Routine regulatory reporting schedule; no material catalyst in last 30 days.\n  Historical:   59.7% Win Rate (25 sample size, E[R]: +0.49R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $768.06 \u2013 $779.58\n  Entry trigger:  Price holds structural pivot ($763.18) followed by volume-backed expansion above $768.06.\n  Stop loss:      $757.50 (1.4% below entry)\n  Target 1 (T1):  $803.89 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $842.17 | Est. 24 days | Take 40%\n  Target 3 (T3):  $841.34 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 5.55\n  Position size:  94 shares on $100,000 portfolio risking 1% ($992.64)\n  Execution TCA:  DIRECT_MARKET (1 slice) | Est. Fill: $765.61 | Slippage: +0.1 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: B-Grade\nTRADE THESIS: SPY exhibits high structural confluence with Earnings-Driven aligning above ascending moving averages. In the current STRONG_BULL macro context (20d adverse hazard: 7.8%), measured support at $763.18 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $757.50 or two consecutive closes back below $763.18 immediately invalidates the trade.",
@@ -1206,21 +1206,21 @@
         "action": "MODERATE_PROCEED",
         "size_multiplier": 0.85,
         "primary_driver": "bb_bandwidth (+5.00, impact +)",
-        "calibrated_at": "2026-10-03T18:20:29.794207+00:00"
+        "calibrated_at": "2026-10-04T02:56:43.714036+00:00"
       },
       "microstructure_metrics": {
         "symbol": "SPY",
-        "timestamp": "2026-10-03T18:20:29.796238+00:00",
-        "cvd_total": -1159,
-        "cvd_1m_delta": -888,
-        "cvd_5m_delta": -1159,
-        "order_book_imbalance": -0.0712,
-        "kyle_lambda": 0.0037,
-        "rvol_1m": 1.18,
+        "timestamp": "2026-10-04T02:56:43.716755+00:00",
+        "cvd_total": 2073,
+        "cvd_1m_delta": 2231,
+        "cvd_5m_delta": 2073,
+        "order_book_imbalance": -0.0896,
+        "kyle_lambda": 0.004,
+        "rvol_1m": 1.45,
         "absorption_signal": "NONE",
         "liquidity_state": "NORMAL",
-        "buyer_volume_pct": 45.9,
-        "seller_volume_pct": 54.1
+        "buyer_volume_pct": 57.8,
+        "seller_volume_pct": 42.2
       }
     },
     "QQQ": {
@@ -1228,11 +1228,11 @@
       "exchange": "NASDAQ",
       "country": "US",
       "currency": "USD",
-      "as_of_date": "2026-10-03",
-      "generated_at": "2026-10-03T18:20:29.918400+00:00",
+      "as_of_date": "2026-10-04",
+      "generated_at": "2026-10-04T02:56:43.867703+00:00",
       "conviction_grade": "B",
       "aligned_layers_count": 4,
-      "formatted_card": "TICKER: QQQ\nREGIME: STRONG_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 7.8%)\nPATTERN TYPE: Archetype A: Mega-Cap Tech (Gamma-Momentum) \u2014 Institutional Accumulation\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BULLISH \u2014 Stacked MAs (Bullish Stack), RSI 58.5 equilibrium, price structure holding above key support.\n  Fundamental:  8.5/10 \u2014 Broad-market benchmark index ETF; diversified institutional liquidity and systemic solvency.\n  Sentiment:    0.00 (NEUTRAL) \u2014 Routine regulatory reporting schedule; no material catalyst in last 30 days.\n  Historical:   63.0% Win Rate (25 sample size, E[R]: +0.59R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $733.35 \u2013 $744.35\n  Entry trigger:  Volume POC reclaim ($715.65) with Chaikin Money Flow sustaining above +0.08.\n  Stop loss:      $718.39 (2.0% below entry)\n  Target 1 (T1):  $773.36 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $810.18 | Est. 24 days | Take 40%\n  Target 3 (T3):  $805.37 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 4.09\n  Position size:  66 shares on $100,000 portfolio risking 1% ($987.36)\n  Execution TCA:  DIRECT_MARKET (1 slice) | Est. Fill: $736.54 | Slippage: +0.0 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: B-Grade\nTRADE THESIS: QQQ exhibits high structural confluence with Institutional Accumulation aligning above ascending moving averages. In the current STRONG_BULL macro context (20d adverse hazard: 7.8%), measured support at $733.35 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $718.39 or two consecutive closes back below $733.35 immediately invalidates the trade.",
+      "formatted_card": "TICKER: QQQ\nREGIME: STRONG_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 7.8%)\nPATTERN TYPE: Archetype A: Mega-Cap Tech (Gamma-Momentum) \u2014 Institutional Accumulation\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BULLISH \u2014 Stacked MAs (Bullish Stack), RSI 58.5 equilibrium, price structure holding above key support.\n  Fundamental:  8.5/10 \u2014 Broad-market benchmark index ETF; diversified institutional liquidity and systemic solvency.\n  Sentiment:    0.00 (NEUTRAL) \u2014 Routine regulatory reporting schedule; no material catalyst in last 30 days.\n  Historical:   63.0% Win Rate (25 sample size, E[R]: +0.59R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $733.35 \u2013 $744.35\n  Entry trigger:  Volume POC reclaim ($715.65) with Chaikin Money Flow sustaining above +0.08.\n  Stop loss:      $718.39 (2.0% below entry)\n  Target 1 (T1):  $773.36 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $810.18 | Est. 24 days | Take 40%\n  Target 3 (T3):  $805.37 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 4.09\n  Position size:  66 shares on $100,000 portfolio risking 1% ($987.36)\n  Execution TCA:  DIRECT_MARKET (1 slice) | Est. Fill: $736.54 | Slippage: +0.1 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: B-Grade\nTRADE THESIS: QQQ exhibits high structural confluence with Institutional Accumulation aligning above ascending moving averages. In the current STRONG_BULL macro context (20d adverse hazard: 7.8%), measured support at $733.35 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $718.39 or two consecutive closes back below $733.35 immediately invalidates the trade.",
       "layer_1_regime": {
         "trend_type": "Bull",
         "volatility_regime": "Medium (15\u201325)",
@@ -1348,7 +1348,7 @@
         "invalidation_rule": "A daily closing price below $718.39 or two consecutive closes back below $733.35 immediately invalidates the trade.",
         "trade_thesis": "QQQ exhibits high structural confluence with Institutional Accumulation aligning above ascending moving averages. In the current STRONG_BULL macro context (20d adverse hazard: 7.8%), measured support at $733.35 offers asymmetric risk/reward into upper channel resistance.",
         "tca_execution_strategy": "DIRECT_MARKET",
-        "tca_expected_slippage_bps": 0.0,
+        "tca_expected_slippage_bps": 0.14,
         "tca_effective_fill_price": 736.54,
         "tca_optimal_slices": 1
       },
@@ -1358,21 +1358,21 @@
         "action": "CAUTION_THROTTLE",
         "size_multiplier": 0.5,
         "primary_driver": "bb_bandwidth (+5.00, impact +)",
-        "calibrated_at": "2026-10-03T18:20:30.188114+00:00"
+        "calibrated_at": "2026-10-04T02:56:44.199977+00:00"
       },
       "microstructure_metrics": {
         "symbol": "QQQ",
-        "timestamp": "2026-10-03T18:20:30.190161+00:00",
-        "cvd_total": -7268,
-        "cvd_1m_delta": -6893,
-        "cvd_5m_delta": -7268,
-        "order_book_imbalance": -0.0949,
-        "kyle_lambda": 0.0056,
-        "rvol_1m": 2.38,
+        "timestamp": "2026-10-04T02:56:44.203023+00:00",
+        "cvd_total": 2917,
+        "cvd_1m_delta": 2702,
+        "cvd_5m_delta": 2917,
+        "order_book_imbalance": -0.0034,
+        "kyle_lambda": 0.0059,
+        "rvol_1m": 1.54,
         "absorption_signal": "NONE",
         "liquidity_state": "NORMAL",
-        "buyer_volume_pct": 28.9,
-        "seller_volume_pct": 71.1
+        "buyer_volume_pct": 61.5,
+        "seller_volume_pct": 38.5
       }
     },
     "RY": {
@@ -1380,11 +1380,11 @@
       "exchange": "TSX",
       "country": "CA",
       "currency": "CAD",
-      "as_of_date": "2026-10-03",
-      "generated_at": "2026-10-03T18:20:30.453491+00:00",
+      "as_of_date": "2026-10-04",
+      "generated_at": "2026-10-04T02:56:44.523898+00:00",
       "conviction_grade": "C",
       "aligned_layers_count": 3,
-      "formatted_card": "TICKER: RY\nREGIME: WEAK_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 9.4%)\nPATTERN TYPE: Archetype C: Chartered Banks (Regulated Yield-Drift) \u2014 Institutional Accumulation\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    NEUTRAL \u2014 Consolidation near moving averages; RSI 47.5 with RVOL at 1.20x awaiting directional catalyst.\n  Fundamental:  8.0/10 \u2014 ROIC 4.1%, Debt/Equity 0.00, operating margin 41.2%; robust institutional quality balance sheet.\n  Sentiment:    0.00 (NEUTRAL) \u2014 Routine regulatory reporting schedule; no material catalyst in last 30 days.\n  Historical:   61.5% Win Rate (10 sample size, E[R]: +0.58R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $286.05 \u2013 $290.34\n  Entry trigger:  Volume POC reclaim ($295.55) with Chaikin Money Flow sustaining above +0.08.\n  Stop loss:      $278.69 (2.6% below entry)\n  Target 1 (T1):  $294.88 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $304.45 | Est. 24 days | Take 40%\n  Target 3 (T3):  $316.96 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.32\n  Position size:  67 shares on $100,000 portfolio risking 1% ($493.12)\n  Execution TCA:  TWAP (5 slices) | Est. Fill: $285.09 | Slippage: +0.4 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: C-Grade\nTRADE THESIS: RY exhibits high structural confluence with Institutional Accumulation aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 9.4%), measured support at $279.74 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $278.69 or two consecutive closes back below $279.74 immediately invalidates the trade.",
+      "formatted_card": "TICKER: RY\nREGIME: WEAK_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 9.4%)\nPATTERN TYPE: Archetype C: Chartered Banks (Regulated Yield-Drift) \u2014 Institutional Accumulation\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    NEUTRAL \u2014 Consolidation near moving averages; RSI 47.5 with RVOL at 1.20x awaiting directional catalyst.\n  Fundamental:  8.0/10 \u2014 ROIC 4.1%, Debt/Equity 0.00, operating margin 41.2%; robust institutional quality balance sheet.\n  Sentiment:    0.00 (NEUTRAL) \u2014 Routine regulatory reporting schedule; no material catalyst in last 30 days.\n  Historical:   61.5% Win Rate (10 sample size, E[R]: +0.58R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $286.05 \u2013 $290.34\n  Entry trigger:  Volume POC reclaim ($295.55) with Chaikin Money Flow sustaining above +0.08.\n  Stop loss:      $278.69 (2.6% below entry)\n  Target 1 (T1):  $294.88 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $304.45 | Est. 24 days | Take 40%\n  Target 3 (T3):  $316.96 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.32\n  Position size:  67 shares on $100,000 portfolio risking 1% ($493.12)\n  Execution TCA:  DIRECT_MARKET (1 slice) | Est. Fill: $285.09 | Slippage: +0.3 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: C-Grade\nTRADE THESIS: RY exhibits high structural confluence with Institutional Accumulation aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 9.4%), measured support at $279.74 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $278.69 or two consecutive closes back below $279.74 immediately invalidates the trade.",
       "layer_1_regime": {
         "trend_type": "Bull",
         "volatility_regime": "Medium (15\u201325)",
@@ -1499,10 +1499,10 @@
         "portfolio_risk_pct": 0.49,
         "invalidation_rule": "A daily closing price below $278.69 or two consecutive closes back below $279.74 immediately invalidates the trade.",
         "trade_thesis": "RY exhibits high structural confluence with Institutional Accumulation aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 9.4%), measured support at $279.74 offers asymmetric risk/reward into upper channel resistance.",
-        "tca_execution_strategy": "TWAP",
-        "tca_expected_slippage_bps": 0.37,
+        "tca_execution_strategy": "DIRECT_MARKET",
+        "tca_expected_slippage_bps": 0.35,
         "tca_effective_fill_price": 285.09,
-        "tca_optimal_slices": 5
+        "tca_optimal_slices": 1
       },
       "meta_label_verdict": {
         "symbol": "RY",
@@ -1510,21 +1510,21 @@
         "action": "GATED_EXCLUDE",
         "size_multiplier": 0.0,
         "primary_driver": "mom_12_1m (+0.39, impact -)",
-        "calibrated_at": "2026-10-03T18:20:30.741704+00:00"
+        "calibrated_at": "2026-10-04T02:56:44.860360+00:00"
       },
       "microstructure_metrics": {
         "symbol": "RY",
-        "timestamp": "2026-10-03T18:20:30.743685+00:00",
-        "cvd_total": -287,
-        "cvd_1m_delta": -105,
-        "cvd_5m_delta": -287,
-        "order_book_imbalance": 0.0625,
-        "kyle_lambda": 0.0165,
-        "rvol_1m": 1.02,
+        "timestamp": "2026-10-04T02:56:44.862938+00:00",
+        "cvd_total": 3906,
+        "cvd_1m_delta": 4227,
+        "cvd_5m_delta": 3906,
+        "order_book_imbalance": -0.0322,
+        "kyle_lambda": 0.0121,
+        "rvol_1m": 1.85,
         "absorption_signal": "NONE",
         "liquidity_state": "NORMAL",
-        "buyer_volume_pct": 49.1,
-        "seller_volume_pct": 50.9
+        "buyer_volume_pct": 66.8,
+        "seller_volume_pct": 33.2
       }
     },
     "TD": {
@@ -1532,11 +1532,11 @@
       "exchange": "TSX",
       "country": "CA",
       "currency": "CAD",
-      "as_of_date": "2026-10-03",
-      "generated_at": "2026-10-03T18:20:31.026259+00:00",
+      "as_of_date": "2026-10-04",
+      "generated_at": "2026-10-04T02:56:45.132060+00:00",
       "conviction_grade": "C",
       "aligned_layers_count": 3,
-      "formatted_card": "TICKER: TD\nREGIME: WEAK_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 9.4%)\nPATTERN TYPE: Archetype C: Chartered Banks (Regulated Yield-Drift) \u2014 Institutional Accumulation\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BULLISH \u2014 Stacked MAs (Bullish Stack), RSI 51.7 equilibrium, price structure holding above key support.\n  Fundamental:  6.0/10 \u2014 Stable financial quality (Score 6.0/10); P/E 70.49x balanced by operational cash flow.\n  Sentiment:    0.00 (NEUTRAL) \u2014 Routine regulatory reporting schedule; no material catalyst in last 30 days.\n  Historical:   61.5% Win Rate (10 sample size, E[R]: +0.58R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $169.77 \u2013 $172.32\n  Entry trigger:  Volume POC reclaim ($170.10) with Chaikin Money Flow sustaining above +0.08.\n  Stop loss:      $165.80 (2.3% below entry)\n  Target 1 (T1):  $174.53 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $186.56 | Est. 24 days | Take 40%\n  Target 3 (T3):  $186.47 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 3.01\n  Position size:  125 shares on $100,000 portfolio risking 1% ($496.25)\n  Execution TCA:  DIRECT_MARKET (1 slice) | Est. Fill: $169.62 | Slippage: +1.2 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: C-Grade\nTRADE THESIS: TD exhibits high structural confluence with Institutional Accumulation aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 9.4%), measured support at $166.28 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $165.80 or two consecutive closes back below $166.28 immediately invalidates the trade.",
+      "formatted_card": "TICKER: TD\nREGIME: WEAK_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 9.4%)\nPATTERN TYPE: Archetype C: Chartered Banks (Regulated Yield-Drift) \u2014 Institutional Accumulation\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BULLISH \u2014 Stacked MAs (Bullish Stack), RSI 51.7 equilibrium, price structure holding above key support.\n  Fundamental:  6.0/10 \u2014 Stable financial quality (Score 6.0/10); P/E 70.49x balanced by operational cash flow.\n  Sentiment:    0.00 (NEUTRAL) \u2014 Routine regulatory reporting schedule; no material catalyst in last 30 days.\n  Historical:   61.5% Win Rate (10 sample size, E[R]: +0.58R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $169.77 \u2013 $172.32\n  Entry trigger:  Volume POC reclaim ($170.10) with Chaikin Money Flow sustaining above +0.08.\n  Stop loss:      $165.80 (2.3% below entry)\n  Target 1 (T1):  $174.53 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $186.56 | Est. 24 days | Take 40%\n  Target 3 (T3):  $186.47 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 3.01\n  Position size:  125 shares on $100,000 portfolio risking 1% ($496.25)\n  Execution TCA:  TWAP (5 slices) | Est. Fill: $169.61 | Slippage: +0.8 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: C-Grade\nTRADE THESIS: TD exhibits high structural confluence with Institutional Accumulation aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 9.4%), measured support at $166.28 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $165.80 or two consecutive closes back below $166.28 immediately invalidates the trade.",
       "layer_1_regime": {
         "trend_type": "Bull",
         "volatility_regime": "Medium (15\u201325)",
@@ -1651,10 +1651,10 @@
         "portfolio_risk_pct": 0.5,
         "invalidation_rule": "A daily closing price below $165.80 or two consecutive closes back below $166.28 immediately invalidates the trade.",
         "trade_thesis": "TD exhibits high structural confluence with Institutional Accumulation aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 9.4%), measured support at $166.28 offers asymmetric risk/reward into upper channel resistance.",
-        "tca_execution_strategy": "DIRECT_MARKET",
-        "tca_expected_slippage_bps": 1.18,
-        "tca_effective_fill_price": 169.62,
-        "tca_optimal_slices": 1
+        "tca_execution_strategy": "TWAP",
+        "tca_expected_slippage_bps": 0.83,
+        "tca_effective_fill_price": 169.61,
+        "tca_optimal_slices": 5
       },
       "meta_label_verdict": {
         "symbol": "TD",
@@ -1662,21 +1662,21 @@
         "action": "GATED_EXCLUDE",
         "size_multiplier": 0.0,
         "primary_driver": "mom_12_1m (+0.53, impact -)",
-        "calibrated_at": "2026-10-03T18:20:31.324824+00:00"
+        "calibrated_at": "2026-10-04T02:56:45.502369+00:00"
       },
       "microstructure_metrics": {
         "symbol": "TD",
-        "timestamp": "2026-10-03T18:20:31.326899+00:00",
-        "cvd_total": -736,
-        "cvd_1m_delta": -579,
-        "cvd_5m_delta": -736,
-        "order_book_imbalance": -0.1462,
-        "kyle_lambda": 0.0109,
-        "rvol_1m": 1.12,
+        "timestamp": "2026-10-04T02:56:45.505029+00:00",
+        "cvd_total": 2572,
+        "cvd_1m_delta": 2758,
+        "cvd_5m_delta": 2572,
+        "order_book_imbalance": 0.1523,
+        "kyle_lambda": 0.0069,
+        "rvol_1m": 1.55,
         "absorption_signal": "NONE",
-        "liquidity_state": "NORMAL",
-        "buyer_volume_pct": 47.5,
-        "seller_volume_pct": 52.5
+        "liquidity_state": "SPREAD_EXPANSION",
+        "buyer_volume_pct": 57.5,
+        "seller_volume_pct": 42.5
       }
     },
     "SHOP": {
@@ -1684,8 +1684,8 @@
       "exchange": "TSX",
       "country": "CA",
       "currency": "CAD",
-      "as_of_date": "2026-10-03",
-      "generated_at": "2026-10-03T18:20:31.598650+00:00",
+      "as_of_date": "2026-10-04",
+      "generated_at": "2026-10-04T02:56:45.879268+00:00",
       "conviction_grade": "C",
       "aligned_layers_count": 4,
       "formatted_card": "TICKER: SHOP\nREGIME: WEAK_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 9.4%)\nPATTERN TYPE: Archetype D: Dual-Listed Cross-Border Growth \u2014 News-Reactive\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BULLISH \u2014 Stacked MAs (Bullish Stack), RSI 56.8 equilibrium, price structure holding above key support.\n  Fundamental:  5.5/10 \u2014 Stable financial quality (Score 5.5/10); P/E 176.46x balanced by operational cash flow.\n  Sentiment:    +0.40 (BULLISH) \u2014 SHOP Form 10-Q Quarterly Report \u2014 Q/E 2026-06-30\n  Historical:   58.2% Win Rate (10 sample size, E[R]: +0.48R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $198.57 \u2013 $201.55\n  Entry trigger:  Price holds structural pivot ($198.57) followed by volume-backed expansion above $198.57.\n  Stop loss:      $183.56 (7.6% below entry)\n  Target 1 (T1):  $216.58 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $236.09 | Est. 24 days | Take 40%\n  Target 3 (T3):  $261.63 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.32\n  Position size:  33 shares on $100,000 portfolio risking 1% ($495.33)\n  Execution TCA:  DIRECT_MARKET (1 slice) | Est. Fill: $204.21 | Slippage: +0.5 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: C-Grade\nTRADE THESIS: SHOP exhibits high structural confluence with News-Reactive aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 9.4%), measured support at $198.57 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $183.56 or two consecutive closes back below $198.57 immediately invalidates the trade.",
@@ -1814,21 +1814,21 @@
         "action": "CAUTION_THROTTLE",
         "size_multiplier": 0.5,
         "primary_driver": "bb_bandwidth (+5.00, impact +)",
-        "calibrated_at": "2026-10-03T18:20:31.880048+00:00"
+        "calibrated_at": "2026-10-04T02:56:46.242383+00:00"
       },
       "microstructure_metrics": {
         "symbol": "SHOP",
-        "timestamp": "2026-10-03T18:20:31.882128+00:00",
-        "cvd_total": 41,
-        "cvd_1m_delta": 257,
-        "cvd_5m_delta": 41,
-        "order_book_imbalance": -0.0069,
-        "kyle_lambda": 0.0704,
-        "rvol_1m": 1.05,
+        "timestamp": "2026-10-04T02:56:46.249007+00:00",
+        "cvd_total": -5162,
+        "cvd_1m_delta": -5358,
+        "cvd_5m_delta": -5162,
+        "order_book_imbalance": -0.0234,
+        "kyle_lambda": 0.0199,
+        "rvol_1m": 2.07,
         "absorption_signal": "NONE",
         "liquidity_state": "NORMAL",
-        "buyer_volume_pct": 50.3,
-        "seller_volume_pct": 49.7
+        "buyer_volume_pct": 25.7,
+        "seller_volume_pct": 74.3
       }
     },
     "ENB": {
@@ -1836,11 +1836,11 @@
       "exchange": "TSX",
       "country": "CA",
       "currency": "CAD",
-      "as_of_date": "2026-10-03",
-      "generated_at": "2026-10-03T18:20:32.147278+00:00",
+      "as_of_date": "2026-10-04",
+      "generated_at": "2026-10-04T02:56:46.665436+00:00",
       "conviction_grade": "C",
       "aligned_layers_count": 3,
-      "formatted_card": "TICKER: ENB\nREGIME: WEAK_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 9.4%)\nPATTERN TYPE: Archetype B: Natural Resources & Energy (Cycle Mean-Reversion) \u2014 Mean-Reversion\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BEARISH \u2014 Breakdown below moving average cluster; negative CMF (-0.15) and deteriorating price structure.\n  Fundamental:  7.0/10 \u2014 ROIC 2.3%, Debt/Equity 0.01, operating margin 44.1%; robust institutional quality balance sheet.\n  Sentiment:    +1.00 (BULLISH) \u2014 ENB SEC Form 8-K Filing \u2014 Other Events of Substantial Importance\n  Historical:   50.8% Win Rate (10 sample size, E[R]: +0.28R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $67.54 \u2013 $68.55\n  Entry trigger:  Bullish rejection hammer wick at lower support ($66.06) with RSI recovering above 35.\n  Stop loss:      $65.64 (2.8% below entry)\n  Target 1 (T1):  $69.82 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $72.29 | Est. 24 days | Take 40%\n  Target 3 (T3):  $75.52 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.32\n  Position size:  263 shares on $100,000 portfolio risking 1% ($499.70)\n  Execution TCA:  TWAP (5 slices) | Est. Fill: $66.59 | Slippage: +2.1 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: C-Grade\nTRADE THESIS: ENB exhibits high structural confluence with Mean-Reversion aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 9.4%), measured support at $66.06 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $65.64 or two consecutive closes back below $66.06 immediately invalidates the trade.",
+      "formatted_card": "TICKER: ENB\nREGIME: WEAK_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 9.4%)\nPATTERN TYPE: Archetype B: Natural Resources & Energy (Cycle Mean-Reversion) \u2014 Mean-Reversion\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BEARISH \u2014 Breakdown below moving average cluster; negative CMF (-0.15) and deteriorating price structure.\n  Fundamental:  7.0/10 \u2014 ROIC 2.3%, Debt/Equity 0.01, operating margin 44.1%; robust institutional quality balance sheet.\n  Sentiment:    +1.00 (BULLISH) \u2014 ENB SEC Form 8-K Filing \u2014 Other Events of Substantial Importance\n  Historical:   50.8% Win Rate (10 sample size, E[R]: +0.28R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $67.54 \u2013 $68.55\n  Entry trigger:  Bullish rejection hammer wick at lower support ($66.06) with RSI recovering above 35.\n  Stop loss:      $65.64 (2.8% below entry)\n  Target 1 (T1):  $69.82 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $72.29 | Est. 24 days | Take 40%\n  Target 3 (T3):  $75.52 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.32\n  Position size:  263 shares on $100,000 portfolio risking 1% ($499.70)\n  Execution TCA:  TWAP (5 slices) | Est. Fill: $66.59 | Slippage: +1.6 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: C-Grade\nTRADE THESIS: ENB exhibits high structural confluence with Mean-Reversion aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 9.4%), measured support at $66.06 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $65.64 or two consecutive closes back below $66.06 immediately invalidates the trade.",
       "layer_1_regime": {
         "trend_type": "Bull",
         "volatility_regime": "Medium (15\u201325)",
@@ -1956,7 +1956,7 @@
         "invalidation_rule": "A daily closing price below $65.64 or two consecutive closes back below $66.06 immediately invalidates the trade.",
         "trade_thesis": "ENB exhibits high structural confluence with Mean-Reversion aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 9.4%), measured support at $66.06 offers asymmetric risk/reward into upper channel resistance.",
         "tca_execution_strategy": "TWAP",
-        "tca_expected_slippage_bps": 2.11,
+        "tca_expected_slippage_bps": 1.59,
         "tca_effective_fill_price": 66.59,
         "tca_optimal_slices": 5
       },
@@ -1966,21 +1966,21 @@
         "action": "HIGH_CONVICTION_PROCEED",
         "size_multiplier": 1.0,
         "primary_driver": "mom_3m (-0.17, impact -)",
-        "calibrated_at": "2026-10-03T18:20:32.410182+00:00"
+        "calibrated_at": "2026-10-04T02:56:47.092874+00:00"
       },
       "microstructure_metrics": {
         "symbol": "ENB",
-        "timestamp": "2026-10-03T18:20:32.412224+00:00",
-        "cvd_total": -2002,
-        "cvd_1m_delta": -1793,
-        "cvd_5m_delta": -2002,
-        "order_book_imbalance": -0.1182,
-        "kyle_lambda": 0.0287,
-        "rvol_1m": 1.36,
+        "timestamp": "2026-10-04T02:56:47.095800+00:00",
+        "cvd_total": 1915,
+        "cvd_1m_delta": 2077,
+        "cvd_5m_delta": 1915,
+        "order_book_imbalance": -0.1363,
+        "kyle_lambda": 0.0322,
+        "rvol_1m": 1.42,
         "absorption_signal": "NONE",
-        "liquidity_state": "SPREAD_EXPANSION",
-        "buyer_volume_pct": 41.1,
-        "seller_volume_pct": 58.9
+        "liquidity_state": "NORMAL",
+        "buyer_volume_pct": 61.4,
+        "seller_volume_pct": 38.6
       }
     },
     "CNR": {
@@ -1988,11 +1988,11 @@
       "exchange": "TSX",
       "country": "CA",
       "currency": "CAD",
-      "as_of_date": "2026-10-03",
-      "generated_at": "2026-10-03T18:20:32.688492+00:00",
+      "as_of_date": "2026-10-04",
+      "generated_at": "2026-10-04T02:56:47.448832+00:00",
       "conviction_grade": "C",
       "aligned_layers_count": 3,
-      "formatted_card": "TICKER: CNR\nREGIME: WEAK_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 9.4%)\nPATTERN TYPE: Archetype E: Defensive Yield & Sovereign Benchmark \u2014 Mean-Reversion\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    NEUTRAL \u2014 Consolidation near moving averages; RSI 53.0 with RVOL at 0.65x awaiting directional catalyst.\n  Fundamental:  8.0/10 \u2014 ROIC 3.1%, Debt/Equity 0.09, operating margin 13.7%; robust institutional quality balance sheet.\n  Sentiment:    +0.30 (BULLISH) \u2014 CNR SEC Form 8-K Filing \u2014 Departure or Appointment of Principal Executive Officers / Directors\n  Historical:   50.8% Win Rate (10 sample size, E[R]: +0.28R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $172.85 \u2013 $175.44\n  Entry trigger:  Bullish rejection hammer wick at lower support ($170.20) with RSI recovering above 35.\n  Stop loss:      $168.11 (2.7% below entry)\n  Target 1 (T1):  $178.54 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $184.70 | Est. 24 days | Take 40%\n  Target 3 (T3):  $192.76 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.32\n  Position size:  105 shares on $100,000 portfolio risking 1% ($497.70)\n  Execution TCA:  TWAP (5 slices) | Est. Fill: $171.63 | Slippage: +0.6 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: C-Grade\nTRADE THESIS: CNR exhibits high structural confluence with Mean-Reversion aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 9.4%), measured support at $170.20 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $168.11 or two consecutive closes back below $170.20 immediately invalidates the trade.",
+      "formatted_card": "TICKER: CNR\nREGIME: WEAK_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 9.4%)\nPATTERN TYPE: Archetype E: Defensive Yield & Sovereign Benchmark \u2014 Mean-Reversion\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    NEUTRAL \u2014 Consolidation near moving averages; RSI 53.0 with RVOL at 0.65x awaiting directional catalyst.\n  Fundamental:  8.0/10 \u2014 ROIC 3.1%, Debt/Equity 0.09, operating margin 13.7%; robust institutional quality balance sheet.\n  Sentiment:    +0.30 (BULLISH) \u2014 CNR SEC Form 8-K Filing \u2014 Departure or Appointment of Principal Executive Officers / Directors\n  Historical:   50.8% Win Rate (10 sample size, E[R]: +0.28R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $172.85 \u2013 $175.44\n  Entry trigger:  Bullish rejection hammer wick at lower support ($170.20) with RSI recovering above 35.\n  Stop loss:      $168.11 (2.7% below entry)\n  Target 1 (T1):  $178.54 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $184.70 | Est. 24 days | Take 40%\n  Target 3 (T3):  $192.76 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.32\n  Position size:  105 shares on $100,000 portfolio risking 1% ($497.70)\n  Execution TCA:  DIRECT_MARKET (1 slice) | Est. Fill: $171.63 | Slippage: +0.6 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: C-Grade\nTRADE THESIS: CNR exhibits high structural confluence with Mean-Reversion aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 9.4%), measured support at $170.20 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $168.11 or two consecutive closes back below $170.20 immediately invalidates the trade.",
       "layer_1_regime": {
         "trend_type": "Bull",
         "volatility_regime": "Medium (15\u201325)",
@@ -2107,10 +2107,10 @@
         "portfolio_risk_pct": 0.5,
         "invalidation_rule": "A daily closing price below $168.11 or two consecutive closes back below $170.20 immediately invalidates the trade.",
         "trade_thesis": "CNR exhibits high structural confluence with Mean-Reversion aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 9.4%), measured support at $170.20 offers asymmetric risk/reward into upper channel resistance.",
-        "tca_execution_strategy": "TWAP",
-        "tca_expected_slippage_bps": 0.61,
+        "tca_execution_strategy": "DIRECT_MARKET",
+        "tca_expected_slippage_bps": 0.58,
         "tca_effective_fill_price": 171.63,
-        "tca_optimal_slices": 5
+        "tca_optimal_slices": 1
       },
       "meta_label_verdict": {
         "symbol": "CNR",
@@ -2118,21 +2118,21 @@
         "action": "GATED_EXCLUDE",
         "size_multiplier": 0.0,
         "primary_driver": "mom_12_1m (+0.36, impact -)",
-        "calibrated_at": "2026-10-03T18:20:32.963239+00:00"
+        "calibrated_at": "2026-10-04T02:56:47.885689+00:00"
       },
       "microstructure_metrics": {
         "symbol": "CNR",
-        "timestamp": "2026-10-03T18:20:32.965264+00:00",
-        "cvd_total": 3108,
-        "cvd_1m_delta": 117,
-        "cvd_5m_delta": 3108,
-        "order_book_imbalance": 0.1434,
-        "kyle_lambda": 0.0076,
-        "rvol_1m": 1.02,
+        "timestamp": "2026-10-04T02:56:47.888550+00:00",
+        "cvd_total": -6090,
+        "cvd_1m_delta": -4321,
+        "cvd_5m_delta": -6090,
+        "order_book_imbalance": -0.069,
+        "kyle_lambda": 0.021,
+        "rvol_1m": 1.86,
         "absorption_signal": "NONE",
         "liquidity_state": "NORMAL",
-        "buyer_volume_pct": 60.5,
-        "seller_volume_pct": 39.5
+        "buyer_volume_pct": 26.5,
+        "seller_volume_pct": 73.5
       }
     },
     "CNQ": {
@@ -2140,8 +2140,8 @@
       "exchange": "TSX",
       "country": "CA",
       "currency": "CAD",
-      "as_of_date": "2026-10-03",
-      "generated_at": "2026-10-03T18:20:33.208015+00:00",
+      "as_of_date": "2026-10-04",
+      "generated_at": "2026-10-04T02:56:48.284608+00:00",
       "conviction_grade": "C",
       "aligned_layers_count": 4,
       "formatted_card": "TICKER: CNQ\nREGIME: WEAK_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 9.4%)\nPATTERN TYPE: Archetype B: Natural Resources & Energy (Cycle Mean-Reversion) \u2014 Earnings-Driven\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BEARISH \u2014 Breakdown below moving average cluster; negative CMF (-0.31) and deteriorating price structure.\n  Fundamental:  9.5/10 \u2014 ROIC 17.7%, Debt/Equity 0.37, operating margin 34.2%; robust institutional quality balance sheet.\n  Sentiment:    +0.50 (BULLISH) \u2014 CNQ Form 6-K Cross-Border Continuous Disclosure\n  Historical:   58.2% Win Rate (10 sample size, E[R]: +0.48R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $67.51 \u2013 $68.52\n  Entry trigger:  Price holds structural pivot ($66.24) followed by volume-backed expansion above $67.51.\n  Stop loss:      $64.87 (3.9% below entry)\n  Target 1 (T1):  $70.68 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $74.11 | Est. 24 days | Take 40%\n  Target 3 (T3):  $78.60 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.32\n  Position size:  189 shares on $100,000 portfolio risking 1% ($498.96)\n  Execution TCA:  TWAP (5 slices) | Est. Fill: $67.40 | Slippage: +2.6 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: C-Grade\nTRADE THESIS: CNQ exhibits high structural confluence with Earnings-Driven aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 9.4%), measured support at $66.24 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $64.87 or two consecutive closes back below $66.24 immediately invalidates the trade.",
@@ -2260,7 +2260,7 @@
         "invalidation_rule": "A daily closing price below $64.87 or two consecutive closes back below $66.24 immediately invalidates the trade.",
         "trade_thesis": "CNQ exhibits high structural confluence with Earnings-Driven aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 9.4%), measured support at $66.24 offers asymmetric risk/reward into upper channel resistance.",
         "tca_execution_strategy": "TWAP",
-        "tca_expected_slippage_bps": 2.6,
+        "tca_expected_slippage_bps": 2.61,
         "tca_effective_fill_price": 67.4,
         "tca_optimal_slices": 5
       },
@@ -2270,21 +2270,21 @@
         "action": "MODERATE_PROCEED",
         "size_multiplier": 0.85,
         "primary_driver": "mom_12_1m (+0.52, impact -)",
-        "calibrated_at": "2026-10-03T18:20:33.477907+00:00"
+        "calibrated_at": "2026-10-04T02:56:48.637203+00:00"
       },
       "microstructure_metrics": {
         "symbol": "CNQ",
-        "timestamp": "2026-10-03T18:20:33.479948+00:00",
-        "cvd_total": -977,
-        "cvd_1m_delta": -884,
-        "cvd_5m_delta": -977,
-        "order_book_imbalance": -0.025,
-        "kyle_lambda": 0.0243,
-        "rvol_1m": 1.18,
+        "timestamp": "2026-10-04T02:56:48.639942+00:00",
+        "cvd_total": 3493,
+        "cvd_1m_delta": 3336,
+        "cvd_5m_delta": 3493,
+        "order_book_imbalance": 0.0522,
+        "kyle_lambda": 0.0575,
+        "rvol_1m": 1.67,
         "absorption_signal": "NONE",
         "liquidity_state": "SPREAD_EXPANSION",
-        "buyer_volume_pct": 46.3,
-        "seller_volume_pct": 53.7
+        "buyer_volume_pct": 68.3,
+        "seller_volume_pct": 31.7
       }
     },
     "BN": {
@@ -2292,8 +2292,8 @@
       "exchange": "TSX",
       "country": "CA",
       "currency": "CAD",
-      "as_of_date": "2026-10-03",
-      "generated_at": "2026-10-03T18:20:33.710968+00:00",
+      "as_of_date": "2026-10-04",
+      "generated_at": "2026-10-04T02:56:48.942772+00:00",
       "conviction_grade": "C",
       "aligned_layers_count": 3,
       "formatted_card": "TICKER: BN\nREGIME: WEAK_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 9.4%)\nPATTERN TYPE: Archetype E: Defensive Yield & Sovereign Benchmark \u2014 Earnings-Driven\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BEARISH \u2014 Breakdown below moving average cluster; negative CMF (-0.24) and deteriorating price structure.\n  Fundamental:  6.0/10 \u2014 Stable financial quality (Score 6.0/10); P/E 35.69x balanced by operational cash flow.\n  Sentiment:    +1.50 (BULLISH) \u2014 BN Form 6-K Cross-Border Continuous Disclosure\n  Historical:   58.2% Win Rate (10 sample size, E[R]: +0.48R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $51.96 \u2013 $52.74\n  Entry trigger:  Price holds structural pivot ($48.81) followed by volume-backed expansion above $51.96.\n  Stop loss:      $48.57 (6.5% below entry)\n  Target 1 (T1):  $56.03 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $60.44 | Est. 24 days | Take 40%\n  Target 3 (T3):  $66.20 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.32\n  Position size:  147 shares on $100,000 portfolio risking 1% ($498.33)\n  Execution TCA:  TWAP (5 slices) | Est. Fill: $51.39 | Slippage: +2.0 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: C-Grade\nTRADE THESIS: BN exhibits high structural confluence with Earnings-Driven aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 9.4%), measured support at $48.81 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $48.57 or two consecutive closes back below $48.81 immediately invalidates the trade.",
@@ -2422,21 +2422,21 @@
         "action": "MODERATE_PROCEED",
         "size_multiplier": 0.85,
         "primary_driver": "mom_1m (-0.11, impact +)",
-        "calibrated_at": "2026-10-03T18:20:33.986305+00:00"
+        "calibrated_at": "2026-10-04T02:56:49.325344+00:00"
       },
       "microstructure_metrics": {
         "symbol": "BN",
-        "timestamp": "2026-10-03T18:20:33.988195+00:00",
-        "cvd_total": -5043,
-        "cvd_1m_delta": -4670,
-        "cvd_5m_delta": -5043,
-        "order_book_imbalance": -0.1025,
-        "kyle_lambda": 0.0209,
-        "rvol_1m": 1.93,
+        "timestamp": "2026-10-04T02:56:49.327716+00:00",
+        "cvd_total": -320,
+        "cvd_1m_delta": -676,
+        "cvd_5m_delta": -320,
+        "order_book_imbalance": 0.0741,
+        "kyle_lambda": 0.0263,
+        "rvol_1m": 1.14,
         "absorption_signal": "NONE",
         "liquidity_state": "NORMAL",
-        "buyer_volume_pct": 27.3,
-        "seller_volume_pct": 72.7
+        "buyer_volume_pct": 48.4,
+        "seller_volume_pct": 51.6
       }
     },
     "BAM": {
@@ -2444,11 +2444,11 @@
       "exchange": "TSX",
       "country": "CA",
       "currency": "CAD",
-      "as_of_date": "2026-10-03",
-      "generated_at": "2026-10-03T18:20:34.273645+00:00",
+      "as_of_date": "2026-10-04",
+      "generated_at": "2026-10-04T02:56:49.616814+00:00",
       "conviction_grade": "C",
       "aligned_layers_count": 4,
-      "formatted_card": "TICKER: BAM\nREGIME: WEAK_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 9.4%)\nPATTERN TYPE: Archetype E: Defensive Yield & Sovereign Benchmark \u2014 Momentum (Pullback Continuation)\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BEARISH \u2014 Breakdown below moving average cluster; negative CMF (-0.10) and deteriorating price structure.\n  Fundamental:  8.0/10 \u2014 ROIC 13.8%, Debt/Equity 0.00, operating margin 111.9%; robust institutional quality balance sheet.\n  Sentiment:    +2.40 (BULLISH) \u2014 BAM SEC Form 8-K Filing \u2014 Other Events of Substantial Importance\n  Historical:   55.4% Win Rate (10 sample size, E[R]: +0.44R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $63.72 \u2013 $64.68\n  Entry trigger:  Price stabilizes above support zone ($62.46) with 15m candle close above $63.72 and volume > 1.2x 20d average.\n  Stop loss:      $61.53 (3.4% below entry)\n  Target 1 (T1):  $66.35 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $69.19 | Est. 24 days | Take 40%\n  Target 3 (T3):  $72.92 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.32\n  Position size:  228 shares on $100,000 portfolio risking 1% ($499.32)\n  Execution TCA:  TWAP (5 slices) | Est. Fill: $62.95 | Slippage: +2.2 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: C-Grade\nTRADE THESIS: BAM exhibits high structural confluence with Momentum (Pullback Continuation) aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 9.4%), measured support at $62.46 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $61.53 or two consecutive closes back below $62.46 immediately invalidates the trade.",
+      "formatted_card": "TICKER: BAM\nREGIME: WEAK_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 9.4%)\nPATTERN TYPE: Archetype E: Defensive Yield & Sovereign Benchmark \u2014 Momentum (Pullback Continuation)\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BEARISH \u2014 Breakdown below moving average cluster; negative CMF (-0.10) and deteriorating price structure.\n  Fundamental:  8.0/10 \u2014 ROIC 13.8%, Debt/Equity 0.00, operating margin 111.9%; robust institutional quality balance sheet.\n  Sentiment:    +2.40 (BULLISH) \u2014 BAM SEC Form 8-K Filing \u2014 Other Events of Substantial Importance\n  Historical:   55.4% Win Rate (10 sample size, E[R]: +0.44R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $63.72 \u2013 $64.68\n  Entry trigger:  Price stabilizes above support zone ($62.46) with 15m candle close above $63.72 and volume > 1.2x 20d average.\n  Stop loss:      $61.53 (3.4% below entry)\n  Target 1 (T1):  $66.35 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $69.19 | Est. 24 days | Take 40%\n  Target 3 (T3):  $72.92 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.32\n  Position size:  228 shares on $100,000 portfolio risking 1% ($499.32)\n  Execution TCA:  TWAP (5 slices) | Est. Fill: $62.95 | Slippage: +1.7 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: C-Grade\nTRADE THESIS: BAM exhibits high structural confluence with Momentum (Pullback Continuation) aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 9.4%), measured support at $62.46 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $61.53 or two consecutive closes back below $62.46 immediately invalidates the trade.",
       "layer_1_regime": {
         "trend_type": "Bull",
         "volatility_regime": "Medium (15\u201325)",
@@ -2564,7 +2564,7 @@
         "invalidation_rule": "A daily closing price below $61.53 or two consecutive closes back below $62.46 immediately invalidates the trade.",
         "trade_thesis": "BAM exhibits high structural confluence with Momentum (Pullback Continuation) aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 9.4%), measured support at $62.46 offers asymmetric risk/reward into upper channel resistance.",
         "tca_execution_strategy": "TWAP",
-        "tca_expected_slippage_bps": 2.23,
+        "tca_expected_slippage_bps": 1.67,
         "tca_effective_fill_price": 62.95,
         "tca_optimal_slices": 5
       },
@@ -2574,21 +2574,21 @@
         "action": "MODERATE_PROCEED",
         "size_multiplier": 0.85,
         "primary_driver": "mom_1m (-0.13, impact +)",
-        "calibrated_at": "2026-10-03T18:20:34.543898+00:00"
+        "calibrated_at": "2026-10-04T02:56:49.995837+00:00"
       },
       "microstructure_metrics": {
         "symbol": "BAM",
-        "timestamp": "2026-10-03T18:20:34.545802+00:00",
-        "cvd_total": 722,
-        "cvd_1m_delta": 973,
-        "cvd_5m_delta": 722,
-        "order_book_imbalance": -0.0561,
-        "kyle_lambda": 0.0298,
-        "rvol_1m": 1.19,
+        "timestamp": "2026-10-04T02:56:49.998276+00:00",
+        "cvd_total": -1436,
+        "cvd_1m_delta": -1646,
+        "cvd_5m_delta": -1436,
+        "order_book_imbalance": 0.1126,
+        "kyle_lambda": 0.013,
+        "rvol_1m": 1.33,
         "absorption_signal": "NONE",
-        "liquidity_state": "SPREAD_EXPANSION",
-        "buyer_volume_pct": 53.6,
-        "seller_volume_pct": 46.4
+        "liquidity_state": "NORMAL",
+        "buyer_volume_pct": 42.2,
+        "seller_volume_pct": 57.8
       }
     },
     "CP": {
@@ -2596,8 +2596,8 @@
       "exchange": "TSX",
       "country": "CA",
       "currency": "CAD",
-      "as_of_date": "2026-10-03",
-      "generated_at": "2026-10-03T18:20:34.788081+00:00",
+      "as_of_date": "2026-10-04",
+      "generated_at": "2026-10-04T02:56:50.357305+00:00",
       "conviction_grade": "SKIP",
       "aligned_layers_count": 3,
       "formatted_card": "TICKER: CP\nREGIME: WEAK_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 9.4%)\nPATTERN TYPE: Archetype E: Defensive Yield & Sovereign Benchmark \u2014 Earnings-Driven\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BEARISH \u2014 Breakdown below moving average cluster; negative CMF (-0.18) and deteriorating price structure.\n  Fundamental:  4.5/10 \u2014 Fundamental score 4.5/10 requires strict technical confirmation gate before entry.\n  Sentiment:    +0.90 (BULLISH) \u2014 CP SEC Form 8-K Filing \u2014 Other Events of Substantial Importance\n  Historical:   58.2% Win Rate (10 sample size, E[R]: +0.48R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $123.82 \u2013 $125.68\n  Entry trigger:  Price holds structural pivot ($121.71) followed by volume-backed expansion above $123.82.\n  Stop loss:      $120.76 (2.5% below entry)\n  Target 1 (T1):  $126.63 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $131.47 | Est. 24 days | Take 40%\n  Target 3 (T3):  $136.67 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.21\n  Position size:  0 shares on $100,000 portfolio risking 1% ($0.00)\n  Execution TCA:  DIRECT_MARKET (1 slice) | Est. Fill: $122.63 | Slippage: +0.8 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: SKIP-Grade\nTRADE THESIS: CP exhibits high structural confluence with Earnings-Driven aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 9.4%), measured support at $121.71 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $120.76 or two consecutive closes back below $121.71 immediately invalidates the trade.",
@@ -2726,21 +2726,21 @@
         "action": "GATED_EXCLUDE",
         "size_multiplier": 0.0,
         "primary_driver": "mom_1m (-0.06, impact +)",
-        "calibrated_at": "2026-10-03T18:20:35.057658+00:00"
+        "calibrated_at": "2026-10-04T02:56:50.768564+00:00"
       },
       "microstructure_metrics": {
         "symbol": "CP",
-        "timestamp": "2026-10-03T18:20:35.059560+00:00",
-        "cvd_total": 86,
-        "cvd_1m_delta": -224,
-        "cvd_5m_delta": 86,
-        "order_book_imbalance": -0.0854,
-        "kyle_lambda": 0.051,
-        "rvol_1m": 1.04,
+        "timestamp": "2026-10-04T02:56:50.770804+00:00",
+        "cvd_total": 7833,
+        "cvd_1m_delta": 7470,
+        "cvd_5m_delta": 7833,
+        "order_book_imbalance": 0.0289,
+        "kyle_lambda": 0.013,
+        "rvol_1m": 2.49,
         "absorption_signal": "NONE",
         "liquidity_state": "NORMAL",
-        "buyer_volume_pct": 50.6,
-        "seller_volume_pct": 49.4
+        "buyer_volume_pct": 80.8,
+        "seller_volume_pct": 19.2
       }
     },
     "XIU": {
@@ -2748,11 +2748,11 @@
       "exchange": "TSX",
       "country": "CA",
       "currency": "CAD",
-      "as_of_date": "2026-10-03",
-      "generated_at": "2026-10-03T18:20:35.177996+00:00",
+      "as_of_date": "2026-10-04",
+      "generated_at": "2026-10-04T02:56:50.929058+00:00",
       "conviction_grade": "C",
       "aligned_layers_count": 3,
-      "formatted_card": "TICKER: XIU\nREGIME: WEAK_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 9.4%)\nPATTERN TYPE: Archetype E: Defensive Yield & Sovereign Benchmark \u2014 Earnings-Driven\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BEARISH \u2014 Breakdown below moving average cluster; negative CMF (-0.04) and deteriorating price structure.\n  Fundamental:  8.5/10 \u2014 Broad-market benchmark index ETF; diversified institutional liquidity and systemic solvency.\n  Sentiment:    0.00 (NEUTRAL) \u2014 Routine regulatory reporting schedule; no material catalyst in last 30 days.\n  Historical:   58.2% Win Rate (10 sample size, E[R]: +0.48R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $52.88 \u2013 $53.67\n  Entry trigger:  Price holds structural pivot ($52.17) followed by volume-backed expansion above $52.88.\n  Stop loss:      $52.12 (1.4% below entry)\n  Target 1 (T1):  $53.83 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $58.04 | Est. 24 days | Take 40%\n  Target 3 (T3):  $56.09 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 4.06\n  Position size:  657 shares on $100,000 portfolio risking 1% ($499.32)\n  Execution TCA:  TWAP (5 slices) | Est. Fill: $52.76 | Slippage: +0.7 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: C-Grade\nTRADE THESIS: XIU exhibits high structural confluence with Earnings-Driven aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 9.4%), measured support at $52.17 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $52.12 or two consecutive closes back below $52.17 immediately invalidates the trade.",
+      "formatted_card": "TICKER: XIU\nREGIME: WEAK_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 9.4%)\nPATTERN TYPE: Archetype E: Defensive Yield & Sovereign Benchmark \u2014 Earnings-Driven\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BEARISH \u2014 Breakdown below moving average cluster; negative CMF (-0.04) and deteriorating price structure.\n  Fundamental:  8.5/10 \u2014 Broad-market benchmark index ETF; diversified institutional liquidity and systemic solvency.\n  Sentiment:    0.00 (NEUTRAL) \u2014 Routine regulatory reporting schedule; no material catalyst in last 30 days.\n  Historical:   58.2% Win Rate (10 sample size, E[R]: +0.48R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $52.88 \u2013 $53.67\n  Entry trigger:  Price holds structural pivot ($52.17) followed by volume-backed expansion above $52.88.\n  Stop loss:      $52.12 (1.4% below entry)\n  Target 1 (T1):  $53.83 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $58.04 | Est. 24 days | Take 40%\n  Target 3 (T3):  $56.09 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 4.06\n  Position size:  657 shares on $100,000 portfolio risking 1% ($499.32)\n  Execution TCA:  TWAP (5 slices) | Est. Fill: $52.77 | Slippage: +2.0 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: C-Grade\nTRADE THESIS: XIU exhibits high structural confluence with Earnings-Driven aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 9.4%), measured support at $52.17 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $52.12 or two consecutive closes back below $52.17 immediately invalidates the trade.",
       "layer_1_regime": {
         "trend_type": "Bull",
         "volatility_regime": "Medium (15\u201325)",
@@ -2868,8 +2868,8 @@
         "invalidation_rule": "A daily closing price below $52.12 or two consecutive closes back below $52.17 immediately invalidates the trade.",
         "trade_thesis": "XIU exhibits high structural confluence with Earnings-Driven aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 9.4%), measured support at $52.17 offers asymmetric risk/reward into upper channel resistance.",
         "tca_execution_strategy": "TWAP",
-        "tca_expected_slippage_bps": 0.67,
-        "tca_effective_fill_price": 52.76,
+        "tca_expected_slippage_bps": 2.01,
+        "tca_effective_fill_price": 52.77,
         "tca_optimal_slices": 5
       },
       "meta_label_verdict": {
@@ -2878,21 +2878,21 @@
         "action": "CAUTION_THROTTLE",
         "size_multiplier": 0.5,
         "primary_driver": "bb_bandwidth (+5.00, impact +)",
-        "calibrated_at": "2026-10-03T18:20:35.452887+00:00"
+        "calibrated_at": "2026-10-04T02:56:51.277160+00:00"
       },
       "microstructure_metrics": {
         "symbol": "XIU",
-        "timestamp": "2026-10-03T18:20:35.454946+00:00",
-        "cvd_total": -1454,
-        "cvd_1m_delta": -1664,
-        "cvd_5m_delta": -1454,
-        "order_book_imbalance": 0.0982,
-        "kyle_lambda": 0.0095,
-        "rvol_1m": 1.33,
+        "timestamp": "2026-10-04T02:56:51.279516+00:00",
+        "cvd_total": -2311,
+        "cvd_1m_delta": -1964,
+        "cvd_5m_delta": -2311,
+        "order_book_imbalance": -0.0538,
+        "kyle_lambda": 0.0209,
+        "rvol_1m": 1.39,
         "absorption_signal": "NONE",
         "liquidity_state": "NORMAL",
-        "buyer_volume_pct": 43.2,
-        "seller_volume_pct": 56.8
+        "buyer_volume_pct": 39.2,
+        "seller_volume_pct": 60.8
       }
     }
   }

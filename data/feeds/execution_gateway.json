@@ -1,40 +1,27 @@
 {
-  "as_of_date": "2026-10-03",
-  "generated_at": "2026-10-03T18:24:10.706163+00:00",
+  "as_of_date": "2026-10-04",
+  "generated_at": "2026-10-04T02:57:43.373612+00:00",
   "session": {
-    "session": "2026-10-03",
-    "evaluations": 206,
-    "orders": 12,
-    "hard_rejections": 51,
-    "soft_limits": 25,
-    "approvals": 130,
-    "submitted_notional_usd": 286725.0,
-    "rejected_notional_usd": 65970.0,
-    "rejected_share": 0.230081,
-    "breached_controls": {
-      "C1": 25,
-      "C12": 26,
-      "C9": 25
-    },
-    "top_rejected_symbols": [
-      {
-        "symbol": "AAPL",
-        "rejected_notional_usd": 37500.0
-      },
-      {
-        "symbol": "SHOP",
-        "rejected_notional_usd": 28470.0
-      }
-    ],
-    "generated_at": "2026-10-03T18:24:10.706163+00:00"
+    "session": "2026-10-04",
+    "evaluations": 0,
+    "orders": 0,
+    "hard_rejections": 0,
+    "soft_limits": 0,
+    "approvals": 0,
+    "submitted_notional_usd": 0.0,
+    "rejected_notional_usd": 0.0,
+    "rejected_share": 0.0,
+    "breached_controls": {},
+    "top_rejected_symbols": [],
+    "generated_at": "2026-10-04T02:57:43.373612+00:00"
   },
   "predicate_28": {
     "predicate_type": "PRE_TRADE_RISK_BREACH",
-    "fired": true,
-    "severity": "CRITICAL",
-    "action_required": "REVIEW_POSITION_SIZING",
-    "headline": "Pre-Trade Risk Breach: 51 hard rejections this session (CRITICAL)",
-    "body": "The pre-trade risk governor hard-rejected 51 of 206 order evaluations in session 2026-10-03, with $65,970 of $286,725 submitted notional refused. Triggered by: 51 hard rejections against a boundary of 3. Controls breached: C1 (25), C12 (26), C9 (25). Repeated pre-trade rejections indicate the signals being generated are larger or more concentrated than the declared risk envelope permits. This is a strategy/risk alignment finding and requires review of position sizing assumptions; it is not a statement about expected returns.",
+    "fired": false,
+    "severity": null,
+    "action_required": null,
+    "headline": null,
+    "body": null,
     "thresholds": {
       "hard_rejection_trigger": 3,
       "critical_rejections": 10,
