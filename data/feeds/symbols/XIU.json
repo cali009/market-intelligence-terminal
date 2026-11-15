@@ -5,7 +5,7 @@
   "currency": "CAD",
   "name": "iShares S&P/TSX 60 Index ETF",
   "as_of_date": "2026-11-15",
-  "generated_at": "2026-11-15T23:14:58.668999+00:00",
+  "generated_at": "2026-11-15T23:34:23.904866+00:00",
   "latest_metrics": {
     "trading_date": "2026-11-13",
     "open": 54.63999938964844,
@@ -353,7 +353,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 14,
     "gjr_garch_gamma": 0.16,
-    "last_updated": "2026-11-15T23:15:05.887725+00:00"
+    "last_updated": "2026-11-15T23:34:32.166511+00:00"
   },
   "conformal_bounds": {
     "symbol": "XIU",
@@ -370,48 +370,48 @@
     "adapted_alpha": 0.08,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-11-15T23:15:05.897796+00:00"
+    "calibrated_at": "2026-11-15T23:34:32.176698+00:00"
   },
   "cross_border_parity": null,
   "shap_attribution": {
     "symbol": "XIU",
-    "base_value": 50.63,
-    "model_score": 80.0,
+    "base_value": 49.37,
+    "model_score": 76.3,
     "top_drivers": [
       {
         "feature_name": "proximity_52w",
         "feature_label": "Proximity to 52W High",
         "feature_value": -0.008,
-        "shap_contribution": 27.52,
+        "shap_contribution": 25.8,
         "direction": "POSITIVE"
       },
       {
-        "feature_name": "conformal_rr",
-        "feature_label": "Certified Conformal R:R",
-        "feature_value": 1.15,
-        "shap_contribution": 0.98,
+        "feature_name": "momentum_rsi",
+        "feature_label": "14-Day RSI Momentum",
+        "feature_value": 54.1,
+        "shap_contribution": 0.63,
         "direction": "POSITIVE"
       },
       {
         "feature_name": "trend_sma200_ratio",
         "feature_label": "Trend vs 200DMA",
         "feature_value": 1.065,
-        "shap_contribution": 0.49,
+        "shap_contribution": 0.5,
         "direction": "POSITIVE"
       }
     ],
     "top_detractors": [],
     "all_attributions": {
-      "trend_sma200_ratio": 0.49,
-      "momentum_rsi": 0.36,
-      "proximity_52w": 27.52,
+      "trend_sma200_ratio": 0.5,
+      "momentum_rsi": 0.63,
+      "proximity_52w": 25.8,
       "mtf_confluence": 0.0,
       "roic_pct": 0.0,
       "pe_multiple": 0.0,
       "hurst_persistence": 0.0,
       "fractional_d": 0.0,
       "amihud_illiquidity": 0.0,
-      "conformal_rr": 0.98,
+      "conformal_rr": 0.0,
       "dual_basis_bps": 0.0
     }
   },
@@ -434,7 +434,7 @@
     "as_of_date": "2026-09-25"
   },
   "score_record": {
-    "composite_score": 85,
+    "composite_score": 81,
     "confidence_tier": "A",
     "technical_score": 61,
     "fundamental_score": null,
@@ -449,7 +449,7 @@
       "volatility_fit_score": 3.0,
       "technical_score": 61,
       "fundamental_score": null,
-      "regime_multiplier": 1.05,
+      "regime_multiplier": 1.0,
       "news_contribution": 0,
       "sector_contribution": 0.0,
       "risk_penalty": 0.0,
@@ -530,7 +530,7 @@
     "risk_notes": [
       "Volatility Sizing: 14-day ATR is 1.3%; position sizing must calibrate to $1.60/share risk.",
       "Structural Risk: Stop loss is positioned 2.9% below preferred entry price.",
-      "Macro Regime Context: Operating in STRONG_BULL regime with regime multiplier applied."
+      "Macro Regime Context: Operating in WEAK_BULL regime with regime multiplier applied."
     ],
     "rationale": {
       "technical": [
@@ -545,13 +545,13 @@
         "Recent verified disclosures: 0 continuous filing events recorded."
       ],
       "macro": [
-        "Operating within STRONG_BULL regime context."
+        "Operating within WEAK_BULL regime context."
       ],
       "sector": [
         "Sector alignment within Index ETF."
       ],
       "regime": [
-        "Positive forward expectancy across empirical walk-forward historical analogues in STRONG_BULL regime."
+        "Positive forward expectancy across empirical walk-forward historical analogues in WEAK_BULL regime."
       ]
     },
     "data_lineage": {
@@ -563,9 +563,9 @@
   },
   "ai_explanation": {
     "FACT": "XIU (TSX - iShares S&P/TSX 60 Index ETF) closed at $54.55 CAD. Trading within -0.8% of its 52-week high with a 14-day ATR of 1.3%. The primary exchange session traded on volume of 3,368,700 shares.",
-    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 85/100 (Confidence Tier A). Technical Factor sub-score: 61/100 (14-day RSI: 54.1, 20-day RVOL: 0.77x) (Index ETF Fundamental Bypass). Risk penalty applied: -0.0 points. Modulated by the STRONG_BULL macro regime.",
-    "INFERENCE": "Historical setups exhibiting stacked moving averages and low-bandwidth consolidation during a STRONG_BULL regime showed positive forward expectancy across 64% of walk-forward folds. Relative strength ranks in the upper quartile of the current dual-market universe.",
-    "UNCERTAINTY": "Risks include broader market sentiment deterioration in the STRONG_BULL environment. A daily close below technical support at $51.24 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
+    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 81/100 (Confidence Tier A). Technical Factor sub-score: 61/100 (14-day RSI: 54.1, 20-day RVOL: 0.77x) (Index ETF Fundamental Bypass). Risk penalty applied: -0.0 points. Modulated by the WEAK_BULL macro regime.",
+    "INFERENCE": "Historical setups exhibiting stacked moving averages and low-bandwidth consolidation during a WEAK_BULL regime showed positive forward expectancy across 64% of walk-forward folds. Relative strength ranks in the upper quartile of the current dual-market universe.",
+    "UNCERTAINTY": "Risks include broader market sentiment deterioration in the WEAK_BULL environment. A daily close below technical support at $51.24 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
   },
   "active_scanner_matches": [
     {
@@ -1563,27 +1563,26 @@
     "country": "CA",
     "currency": "CAD",
     "as_of_date": "2026-11-15",
-    "generated_at": "2026-11-15T23:15:05.912322+00:00",
+    "generated_at": "2026-11-15T23:34:32.192305+00:00",
     "conviction_grade": "B",
     "aligned_layers_count": 4,
-    "formatted_card": "TICKER: XIU\nREGIME: STRONG_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 6.4%)\nPATTERN TYPE: Archetype E: Defensive Yield & Sovereign Benchmark \u2014 Earnings-Driven\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BULLISH \u2014 Stacked MAs (Bullish Stack), RSI 54.1 equilibrium, price structure holding above key support.\n  Fundamental:  8.5/10 \u2014 Broad-market benchmark index ETF; diversified institutional liquidity and systemic solvency.\n  Sentiment:    0.00 (NEUTRAL) \u2014 Routine regulatory reporting schedule; no material catalyst in last 30 days.\n  Historical:   58.2% Win Rate (25 sample size, E[R]: +0.48R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $54.42 \u2013 $55.24\n  Entry trigger:  Price holds structural pivot ($53.71) followed by volume-backed expansion above $54.42.\n  Stop loss:      $53.33 (2.0% below entry)\n  Target 1 (T1):  $57.28 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $60.00 | Est. 24 days | Take 40%\n  Target 3 (T3):  $60.85 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 4.28\n  Position size:  917 shares on $100,000 portfolio risking 1% ($999.53)\n  Execution TCA:  TWAP (5 slices) | Est. Fill: $54.56 | Slippage: +1.3 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: B-Grade\nTRADE THESIS: XIU exhibits high structural confluence with Earnings-Driven aligning above ascending moving averages. In the current STRONG_BULL macro context (20d adverse hazard: 6.4%), measured support at $53.71 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $53.33 or two consecutive closes back below $53.71 immediately invalidates the trade.",
+    "formatted_card": "TICKER: XIU\nREGIME: WEAK_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 9.8%)\nPATTERN TYPE: Archetype E: Defensive Yield & Sovereign Benchmark \u2014 Earnings-Driven\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BULLISH \u2014 Stacked MAs (Bullish Stack), RSI 54.1 equilibrium, price structure holding above key support.\n  Fundamental:  8.5/10 \u2014 Broad-market benchmark index ETF; diversified institutional liquidity and systemic solvency.\n  Sentiment:    0.00 (NEUTRAL) \u2014 Routine regulatory reporting schedule; no material catalyst in last 30 days.\n  Historical:   58.2% Win Rate (10 sample size, E[R]: +0.48R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $54.42 \u2013 $55.24\n  Entry trigger:  Price holds structural pivot ($53.71) followed by volume-backed expansion above $54.42.\n  Stop loss:      $53.33 (2.0% below entry)\n  Target 1 (T1):  $57.28 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $60.00 | Est. 24 days | Take 40%\n  Target 3 (T3):  $60.85 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 4.28\n  Position size:  917 shares on $100,000 portfolio risking 1% ($999.53)\n  Execution TCA:  TWAP (5 slices) | Est. Fill: $54.54 | Slippage: +0.7 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: B-Grade\nTRADE THESIS: XIU exhibits high structural confluence with Earnings-Driven aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 9.8%), measured support at $53.71 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $53.33 or two consecutive closes back below $53.71 immediately invalidates the trade.",
     "layer_1_regime": {
       "trend_type": "Bull",
       "volatility_regime": "Medium (15\u201325)",
       "liquidity_env": "Risk-ON",
       "rate_context": "Paused",
-      "regime_state": "STRONG_BULL",
+      "regime_state": "WEAK_BULL",
       "regime_fit": "YES",
       "status": "BULLISH",
-      "conviction_weight": 1.05,
+      "conviction_weight": 1.0,
       "top_drivers": [
         "Index trading above rising 200-day moving average (bullish trend structure)",
-        "VIX at 16.0 indicates low implied volatility / calm conditions",
         "Yield curve positively sloped (+55 bps 10Y-2Y spread)"
       ],
-      "adverse_hazard_rate_5d": 0.0187,
-      "adverse_hazard_rate_20d": 0.0638,
-      "expected_regime_duration_days": 20.2,
+      "adverse_hazard_rate_5d": 0.0999,
+      "adverse_hazard_rate_20d": 0.0981,
+      "expected_regime_duration_days": 3.4,
       "hazard_tier": "LOW_HAZARD",
       "cross_border_macro_divergence_posture": "SYNCHRONIZED_EXPANSION"
     },
@@ -1648,7 +1647,7 @@
     },
     "layer_6_memory": {
       "win_rate_pct": 58.2,
-      "sample_size": 25,
+      "sample_size": 10,
       "avg_move_pct": 7.4,
       "false_breakout_rate_pct": 18.5,
       "median_bars_to_target": 22,
@@ -1680,33 +1679,33 @@
       "position_value": 49903.14,
       "portfolio_risk_pct": 1.0,
       "invalidation_rule": "A daily closing price below $53.33 or two consecutive closes back below $53.71 immediately invalidates the trade.",
-      "trade_thesis": "XIU exhibits high structural confluence with Earnings-Driven aligning above ascending moving averages. In the current STRONG_BULL macro context (20d adverse hazard: 6.4%), measured support at $53.71 offers asymmetric risk/reward into upper channel resistance.",
+      "trade_thesis": "XIU exhibits high structural confluence with Earnings-Driven aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 9.8%), measured support at $53.71 offers asymmetric risk/reward into upper channel resistance.",
       "tca_execution_strategy": "TWAP",
-      "tca_expected_slippage_bps": 1.31,
-      "tca_effective_fill_price": 54.56,
+      "tca_expected_slippage_bps": 0.66,
+      "tca_effective_fill_price": 54.54,
       "tca_optimal_slices": 5
     },
     "meta_label_verdict": {
       "symbol": "XIU",
-      "meta_probability": 0.47,
+      "meta_probability": 0.4703,
       "action": "CAUTION_THROTTLE",
       "size_multiplier": 0.5,
       "primary_driver": "dist_sma200 (+0.00, impact +)",
-      "calibrated_at": "2026-11-15T23:15:06.133604+00:00"
+      "calibrated_at": "2026-11-15T23:34:32.454710+00:00"
     },
     "microstructure_metrics": {
       "symbol": "XIU",
-      "timestamp": "2026-11-15T23:15:06.135343+00:00",
-      "cvd_total": -2098,
-      "cvd_1m_delta": -1935,
-      "cvd_5m_delta": -2098,
-      "order_book_imbalance": -0.1385,
-      "kyle_lambda": 0.0173,
-      "rvol_1m": 1.39,
+      "timestamp": "2026-11-15T23:34:32.456573+00:00",
+      "cvd_total": -538,
+      "cvd_1m_delta": -800,
+      "cvd_5m_delta": -538,
+      "order_book_imbalance": 0.0323,
+      "kyle_lambda": 0.0149,
+      "rvol_1m": 1.16,
       "absorption_signal": "NONE",
       "liquidity_state": "NORMAL",
-      "buyer_volume_pct": 41.0,
-      "seller_volume_pct": 59.0
+      "buyer_volume_pct": 46.3,
+      "seller_volume_pct": 53.7
     }
   },
   "disclaimers": {

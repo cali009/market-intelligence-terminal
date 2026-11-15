@@ -81,6 +81,33 @@ class EdgeExporter:
         as_of_date = date.today().isoformat()
         generated_at = datetime.now(timezone.utc).isoformat()
 
+        # HONESTY OVERHAUL (Phase 3): one measured ^VIX close for the whole run.
+        # Previously the regime classifier fell back to an invented 16.0 and the
+        # alerts engine separately hard-coded 21.4, so the platform carried two
+        # contradictory volatility figures and neither was observed.
+        from src.data.vix_ingestion import volatility_index_engine
+        _vix_row = volatility_index_engine.latest()
+        if not _vix_row:
+            raise RuntimeError(
+                "No ^VIX close is stored; run the daily pipeline to sync the "
+                "volatility index before exporting feeds."
+            )
+        vix_close = float(_vix_row["close"])
+        vix_meta = {
+            "index": "^VIX",
+            "source": "CBOE Volatility Index via the unofficial chart API "
+                      "(query1.finance.yahoo.com), end-of-day",
+            "close": vix_close,
+            "as_of_date": _vix_row["trading_date"],
+            "age_hours": volatility_index_engine.age_hours(),
+            "canadian_index": None,
+            "canadian_note": (
+                "^VIXC is not available from this data source (HTTP 404, verified "
+                "2026-09-24). Canadian regimes are therefore classified against the "
+                "US index, which is a proxy and not a Canadian volatility measure."
+            ),
+        }
+
         # 1. Macro Regimes
         regimes_data = {}
         for sym, exch, ctry, label in [("SPY", "AMEX", "US", "US Equities"), ("XIU", "TSX", "CA", "Canadian Equities")]:
@@ -102,6 +129,10 @@ class EdgeExporter:
                 index_sma50=m["sma_50"] or m["close"],
                 index_sma200=m["sma_200"] or m["close"],
                 index_sma200_slope=m["sma_200_slope_20d"] or 0.0,
+                # HONESTY OVERHAUL (Phase 3): was omitted, so it inherited the
+                # classifier's invented 16.0 default. Now the real stored ^VIX
+                # close. For Canada this is the US index as a labelled proxy.
+                vix_level=vix_close,
                 yield_spread_10y_2y=0.45 if ctry == "US" else 0.55,
             )
             regimes_data[ctry] = {
@@ -460,6 +491,11 @@ class EdgeExporter:
                         "as_of_date": as_of_date,
                         "generated_at": generated_at,
                         "regimes": regimes_data,
+                        # HONESTY OVERHAUL (Phase 3): the single authoritative
+                        # volatility level for the whole bundle, with its source
+                        # and staleness attached. Every consumer reads this rather
+                        # than carrying its own number.
+                        "volatility_index": vix_meta,
                         "market_leaders": leaderboard_items[:5],
                         "total_securities_analyzed": len(leaderboard_items),
                         "news_intelligence_summary": news_summary,

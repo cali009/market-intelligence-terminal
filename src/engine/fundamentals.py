@@ -158,60 +158,188 @@ class FundamentalAnalysisEngine:
             "debt_to_equity": debt_to_equity,
         }
 
+    # ------------------------------------------------------------------
+    # HONESTY OVERHAUL (Phase 3): trailing-twelve-month earnings and FX.
+    #
+    # The P/E published by this engine was roughly 4x too high. The cause: the
+    # `facts` dict is keyed on the most recent observation of each concept, so
+    # `NetIncomeLoss` was usually the newest *quarter*. Dividing a full market
+    # capitalisation by one quarter of earnings inflates the ratio by about four.
+    # Verified against the stored facts — RY's newest NetIncomeLoss is FY2026 Q1
+    # at 5,785,000,000 against a FY2025 annual figure of 20,369,000,000, a factor
+    # of 3.5; TD's is 4,043,000,000 against 20,538,000,000, a factor of 5.1.
+    #
+    # Earnings are now taken over a trailing twelve months, and the basis is
+    # reported alongside the ratio so a reader can see what it was computed from.
+    # ------------------------------------------------------------------
+    @classmethod
+    def get_ttm_earnings(
+        cls,
+        security_id: int,
+        as_of_date: str,
+    ) -> Tuple[Optional[float], Optional[str], Optional[str]]:
+        """Trailing-twelve-month net income.
+
+        Returns (value, basis, period_end). Prefers the most recent annual (FY)
+        figure, which is a genuine twelve-month total. Failing that, sums the four
+        most recent distinct quarters. Returns (None, None, None) when neither is
+        available rather than substituting an estimate.
+        """
+        rows = db.execute_query(
+            """
+            SELECT value, period_end, fiscal_year, fiscal_period, filing_date, currency
+            FROM fundamental_fact
+            WHERE security_id = ? AND concept = 'NetIncomeLoss' AND filing_date <= ?
+            ORDER BY period_end DESC, filing_date DESC;
+            """,
+            (security_id, as_of_date),
+        )
+        if not rows:
+            return None, None, None
+
+        # The table holds the same period_end under more than one fiscal_year
+        # label, so dedupe on (period_end, fiscal_period) keeping the first.
+        seen: Dict[Tuple[str, str], Dict[str, Any]] = {}
+        for r in rows:
+            key = (str(r["period_end"]), str(r["fiscal_period"]))
+            seen.setdefault(key, r)
+        obs = list(seen.values())
+
+        for r in obs:
+            if str(r["fiscal_period"]).upper() == "FY":
+                return float(r["value"]), "ANNUAL_FY", str(r["period_end"])
+
+        quarters = [r for r in obs if str(r["fiscal_period"]).upper().startswith("Q")]
+        if len(quarters) >= 4:
+            total = sum(float(r["value"]) for r in quarters[:4])
+            return total, "SUM_OF_4_QUARTERS", str(quarters[0]["period_end"])
+
+        return None, None, None
+
+    @staticmethod
+    def _fact_currency(security_id: int, as_of_date: str) -> Optional[str]:
+        """Reporting currency of the most recent fundamental fact for a security."""
+        rows = db.execute_query(
+            "SELECT currency FROM fundamental_fact "
+            "WHERE security_id = ? AND filing_date <= ? AND currency IS NOT NULL "
+            "ORDER BY period_end DESC, filing_date DESC LIMIT 1;",
+            (security_id, as_of_date),
+        )
+        return rows[0]["currency"] if rows else None
+
+    @staticmethod
+    def latest_usd_cad_rate() -> Optional[float]:
+        """Latest Bank of Canada USD/CAD fixing, or None."""
+        rows = db.execute_query(
+            "SELECT value FROM macro_observation WHERE series_id = 'FXUSDCAD' "
+            "ORDER BY observation_date DESC LIMIT 1;"
+        )
+        return float(rows[0]["value"]) if rows else None
+
     @classmethod
     def compute_valuation_multiples(
         cls,
         facts: Dict[str, float],
         current_price: float,
+        ttm_net_income: Optional[float] = None,
+        price_currency: Optional[str] = None,
+        fact_currency: Optional[str] = None,
+        fx_usd_cad: Optional[float] = None,
     ) -> Dict[str, Optional[float]]:
         """
         Compute P/E, P/S, P/B, FCF Yield, and Dividend Yield.
+
+        HONESTY OVERHAUL (Phase 3) — three fixes:
+
+        1. P/E is computed against trailing-twelve-month earnings when the caller
+           supplies them, not against whatever single period `facts` happened to
+           carry. The old code divided a full market capitalisation by one
+           quarter of earnings and so overstated the ratio by roughly 4x.
+
+        2. The `shares = 1_000_000_000.0` fallback is gone. When the diluted share
+           count is unknown, market-cap-dependent multiples are reported as None
+           instead of being computed against an invented share base.
+
+        3. Currency is reconciled. Several Canadian issuers (BAM, CNR, SHOP) file
+           in USD while their price is quoted in CAD. Facts are converted into the
+           price currency using the latest Bank of Canada fixing before any ratio
+           is formed. Without a rate the multiples are reported as None rather
+           than mixing currencies.
+
+        A P/E outside (0, 100] is flagged: negative means the company lost money
+        over the trailing year, and above 100 usually means the earnings figure is
+        not comparable to the price. Both are surfaced instead of being scored as
+        though they were ordinary valuations.
         """
         shares = facts.get("DilutedSharesOutstanding")
-        net_income = facts.get("NetIncomeLoss")
         revenues = facts.get("Revenues")
         equity = facts.get("StockholdersEquity")
         ocf = facts.get("OperatingCashFlow")
         dividends = facts.get("DividendsPaid")
 
-        if not shares or shares <= 0:
-            # Fallback estimation based on average core universe share base
-            shares = 1_000_000_000.0
+        # Currency reconciliation: express every fundamental in the price currency.
+        fx_factor = 1.0
+        currency_ok = True
+        if price_currency and fact_currency and price_currency != fact_currency:
+            if not fx_usd_cad:
+                currency_ok = False
+            elif fact_currency == "USD" and price_currency == "CAD":
+                fx_factor = fx_usd_cad
+            elif fact_currency == "CAD" and price_currency == "USD":
+                fx_factor = 1.0 / fx_usd_cad
+            else:
+                currency_ok = False
 
-        market_cap = current_price * shares
+        def _c(value: Optional[float]) -> Optional[float]:
+            """Convert a fundamental into the price currency."""
+            if value is None or not currency_ok:
+                return None
+            return value * fx_factor
 
-        # P/E Ratio
+        # HONESTY OVERHAUL (Phase 3): no invented share base. Without a real
+        # diluted share count there is no market capitalisation to report.
+        market_cap = current_price * shares if shares and shares > 0 else None
+
+        # P/E — trailing twelve months where available.
+        earnings = ttm_net_income if ttm_net_income is not None else facts.get("NetIncomeLoss")
+        earnings_c = _c(earnings)
         pe = None
-        if net_income and net_income > 0:
-            pe = round(market_cap / net_income, 2)
+        pe_flag = None
+        if market_cap and earnings_c is not None and earnings_c != 0:
+            pe = round(market_cap / earnings_c, 2)
+            if pe <= 0:
+                pe_flag = "NEGATIVE_EARNINGS"
+            elif pe > 100.0:
+                pe_flag = "OUT_OF_RANGE_ABOVE_100"
 
         # P/S Ratio
-        ps = None
-        if revenues and revenues > 0:
-            ps = round(market_cap / revenues, 2)
+        revenues_c = _c(revenues)
+        ps = round(market_cap / revenues_c, 2) if market_cap and revenues_c and revenues_c > 0 else None
 
         # P/B Ratio
-        pb = None
-        if equity and equity > 0:
-            pb = round(market_cap / equity, 2)
+        equity_c = _c(equity)
+        pb = round(market_cap / equity_c, 2) if market_cap and equity_c and equity_c > 0 else None
 
         # FCF Yield % (OCF / Market Cap)
-        fcf_yield = None
-        if ocf and market_cap > 0:
-            fcf_yield = round((ocf / market_cap) * 100.0, 2)
+        ocf_c = _c(ocf)
+        fcf_yield = round((ocf_c / market_cap) * 100.0, 2) if market_cap and ocf_c else None
 
         # Dividend Yield %
-        div_yield = None
-        if dividends and dividends > 0 and market_cap > 0:
-            div_yield = round((dividends / market_cap) * 100.0, 2)
+        dividends_c = _c(dividends)
+        div_yield = (round((dividends_c / market_cap) * 100.0, 2)
+                     if market_cap and dividends_c and dividends_c > 0 else None)
 
         return {
             "market_cap": market_cap,
             "pe_ratio": pe,
+            "pe_flag": pe_flag,
+            "pe_basis": None,
             "ps_ratio": ps,
             "pb_ratio": pb,
             "fcf_yield_pct": fcf_yield,
             "dividend_yield_pct": div_yield,
+            "currency_reconciled": bool(currency_ok),
+            "fx_usd_cad_applied": fx_factor if fx_factor != 1.0 else None,
         }
 
     @classmethod
@@ -236,7 +364,10 @@ class FundamentalAnalysisEngine:
                 "safety_tier": "N/A_NO_DIVIDEND",
             }
 
-        div_yield = round((dividends / market_cap) * 100.0, 2) if market_cap > 0 else 0.0
+        # HONESTY OVERHAUL (Phase 3): market_cap may now be None when the diluted
+        # share count is unknown, so guard the comparison rather than assume a
+        # number. Previously the caller substituted an invented 10,000,000,000.0.
+        div_yield = round((dividends / market_cap) * 100.0, 2) if market_cap and market_cap > 0 else 0.0
 
         # Payout ratio
         payout_pct = None
@@ -360,8 +491,26 @@ class FundamentalAnalysisEngine:
 
             # Ratios
             q_ratios = cls.compute_quality_ratios(facts, prior_facts)
-            v_multiples = cls.compute_valuation_multiples(facts, price)
-            m_cap = v_multiples.get("market_cap") or 10_000_000_000.0
+
+            # HONESTY OVERHAUL (Phase 3): trailing-twelve-month earnings, the
+            # fact's reporting currency, and the latest BoC fixing so the ratios
+            # are formed in one currency. See compute_valuation_multiples.
+            ttm_ni, pe_basis, _pe_period = cls.get_ttm_earnings(sec_id, as_of_date)
+            fact_ccy = cls._fact_currency(sec_id, as_of_date)
+            v_multiples = cls.compute_valuation_multiples(
+                facts,
+                price,
+                ttm_net_income=ttm_ni,
+                price_currency=curr,
+                fact_currency=fact_ccy,
+                fx_usd_cad=cls.latest_usd_cad_rate(),
+            )
+            v_multiples["pe_basis"] = pe_basis
+
+            # HONESTY OVERHAUL (Phase 3): this used to fall back to a typed-in
+            # 10,000,000,000.0 market cap whenever the real one was missing.
+            # Downstream consumers now receive None.
+            m_cap = v_multiples.get("market_cap")
             div_safety = cls.compute_dividend_safety(facts, m_cap)
 
             raw_records.append({

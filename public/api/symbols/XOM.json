@@ -5,7 +5,7 @@
   "currency": "USD",
   "name": "Exxon Mobil Corporation",
   "as_of_date": "2026-11-15",
-  "generated_at": "2026-11-15T23:13:13.315408+00:00",
+  "generated_at": "2026-11-15T23:26:38.588034+00:00",
   "latest_metrics": {
     "trading_date": "2026-11-13",
     "open": 171.42999267578125,
@@ -324,12 +324,12 @@
       "quality_score": 20
     },
     "valuation": {
-      "pe_ratio": 169.04,
+      "pe_ratio": 24.51,
       "ps_ratio": 8.75,
       "pb_ratio": 2.78,
       "fcf_yield_pct": 1.23,
       "dividend_yield_pct": 0.61,
-      "valuation_score": 42
+      "valuation_score": 53
     },
     "dividend_safety": {
       "dividend_yield_pct": 0.61,
@@ -338,7 +338,7 @@
       "safety_score": 40,
       "safety_tier": "AT_RISK"
     },
-    "composite_fundamental_score": 29,
+    "composite_fundamental_score": 33,
     "missing_fields": [
       "OperatingIncome"
     ],
@@ -359,7 +359,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 22,
     "gjr_garch_gamma": 0.22,
-    "last_updated": "2026-11-15T23:13:15.761609+00:00"
+    "last_updated": "2026-11-15T23:26:41.265548+00:00"
   },
   "conformal_bounds": {
     "symbol": "XOM",
@@ -376,7 +376,7 @@
     "adapted_alpha": 0.195,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-11-15T23:13:15.771694+00:00"
+    "calibrated_at": "2026-11-15T23:26:41.275717+00:00"
   },
   "cross_border_parity": null,
   "shap_attribution": {
@@ -448,10 +448,10 @@
     "as_of_date": "2026-09-25"
   },
   "score_record": {
-    "composite_score": 48,
+    "composite_score": 49,
     "confidence_tier": "C",
     "technical_score": 54,
-    "fundamental_score": 29,
+    "fundamental_score": 33,
     "risk_penalty": 0.0,
     "factor_attribution": {
       "horizon": "POSITION",
@@ -462,7 +462,7 @@
       "mtf_alignment_score": 2.5,
       "volatility_fit_score": 5.0,
       "technical_score": 54,
-      "fundamental_score": 29,
+      "fundamental_score": 33,
       "regime_multiplier": 1.0,
       "news_contribution": 0.0,
       "sector_contribution": 0.0,
@@ -479,7 +479,7 @@
   "signal_plan": null,
   "ai_explanation": {
     "FACT": "XOM (NYSE - Exxon Mobil Corporation) closed at $170.59 USD. Trading within -9.5% of its 52-week high with a 14-day ATR of 2.8%. The primary exchange session traded on volume of 11,474,700 shares.",
-    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 48/100 (Confidence Tier C). Technical Factor sub-score: 54/100 (14-day RSI: 49.2, 20-day RVOL: 0.81x), Fundamental Score: 29/100. Risk penalty applied: -0.0 points. Modulated by the WEAK_BULL macro regime.",
+    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 49/100 (Confidence Tier C). Technical Factor sub-score: 54/100 (14-day RSI: 49.2, 20-day RVOL: 0.81x), Fundamental Score: 33/100. Risk penalty applied: -0.0 points. Modulated by the WEAK_BULL macro regime.",
     "INFERENCE": "Current technical structure reflects neutral consolidation. Setup geometry indicates digestive trading range with no confirmed directional expansion.",
     "UNCERTAINTY": "Risks include broader market sentiment deterioration in the WEAK_BULL environment. A daily close below technical support at $154.58 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
   },
@@ -1654,10 +1654,10 @@
     "country": "US",
     "currency": "USD",
     "as_of_date": "2026-11-15",
-    "generated_at": "2026-11-15T23:13:15.786713+00:00",
+    "generated_at": "2026-11-15T23:26:41.291060+00:00",
     "conviction_grade": "C",
     "aligned_layers_count": 3,
-    "formatted_card": "TICKER: XOM\nREGIME: WEAK_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 11.1%)\nPATTERN TYPE: Archetype B: Natural Resources & Energy (Cycle Mean-Reversion) \u2014 Mean-Reversion\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BULLISH \u2014 Stacked MAs (Mixed Alignment), RSI 49.2 equilibrium, price structure holding above key support.\n  Fundamental:  5.0/10 \u2014 Stable financial quality (Score 5.0/10); P/E 169.04x balanced by operational cash flow.\n  Sentiment:    +0.50 (BULLISH) \u2014 XOM SEC Form 8-K Filing \u2014 Other Events of Substantial Importance\n  Historical:   50.8% Win Rate (10 sample size, E[R]: +0.28R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $169.14 \u2013 $171.68\n  Entry trigger:  Bullish rejection hammer wick at lower support ($169.14) with RSI recovering above 35.\n  Stop loss:      $160.89 (4.9% below entry)\n  Target 1 (T1):  $179.04 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $189.76 | Est. 24 days | Take 40%\n  Target 3 (T3):  $203.79 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.32\n  Position size:  60 shares on $100,000 portfolio risking 1% ($495.00)\n  Execution TCA:  TWAP (5 slices) | Est. Fill: $170.60 | Slippage: +0.4 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: C-Grade\nTRADE THESIS: XOM exhibits high structural confluence with Mean-Reversion aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 11.1%), measured support at $169.14 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $160.89 or two consecutive closes back below $169.14 immediately invalidates the trade.",
+    "formatted_card": "TICKER: XOM\nREGIME: WEAK_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 14.0%)\nPATTERN TYPE: Archetype B: Natural Resources & Energy (Cycle Mean-Reversion) \u2014 Mean-Reversion\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BULLISH \u2014 Stacked MAs (Mixed Alignment), RSI 49.2 equilibrium, price structure holding above key support.\n  Fundamental:  5.5/10 \u2014 Stable financial quality (Score 5.5/10); P/E 24.51x balanced by operational cash flow.\n  Sentiment:    +0.50 (BULLISH) \u2014 XOM SEC Form 8-K Filing \u2014 Other Events of Substantial Importance\n  Historical:   50.8% Win Rate (10 sample size, E[R]: +0.28R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $169.14 \u2013 $171.68\n  Entry trigger:  Bullish rejection hammer wick at lower support ($169.14) with RSI recovering above 35.\n  Stop loss:      $160.89 (4.9% below entry)\n  Target 1 (T1):  $179.04 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $189.76 | Est. 24 days | Take 40%\n  Target 3 (T3):  $203.79 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.32\n  Position size:  60 shares on $100,000 portfolio risking 1% ($495.00)\n  Execution TCA:  DIRECT_MARKET (1 slice) | Est. Fill: $170.60 | Slippage: +0.6 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: C-Grade\nTRADE THESIS: XOM exhibits high structural confluence with Mean-Reversion aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 14.0%), measured support at $169.14 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $160.89 or two consecutive closes back below $169.14 immediately invalidates the trade.",
     "layer_1_regime": {
       "trend_type": "Bull",
       "volatility_regime": "Medium (15\u201325)",
@@ -1669,12 +1669,11 @@
       "conviction_weight": 1.0,
       "top_drivers": [
         "Index trading above rising 200-day moving average (bullish trend structure)",
-        "VIX at 16.0 indicates low implied volatility / calm conditions",
         "Yield curve positively sloped (+45 bps 10Y-2Y spread)"
       ],
-      "adverse_hazard_rate_5d": 0.0809,
-      "adverse_hazard_rate_20d": 0.1106,
-      "expected_regime_duration_days": 3.7,
+      "adverse_hazard_rate_5d": 0.1134,
+      "adverse_hazard_rate_20d": 0.1404,
+      "expected_regime_duration_days": 3.1,
       "hazard_tier": "LOW_HAZARD",
       "cross_border_macro_divergence_posture": "SYNCHRONIZED_EXPANSION"
     },
@@ -1708,16 +1707,16 @@
       "volume_poc": 163.55
     },
     "layer_4_fundamental": {
-      "score": 5.0,
+      "score": 5.5,
       "status": "NEUTRAL",
-      "key_reason": "Stable financial quality (Score 5.0/10); P/E 169.04x balanced by operational cash flow.",
+      "key_reason": "Stable financial quality (Score 5.5/10); P/E 24.51x balanced by operational cash flow.",
       "quality_score": 20.0,
-      "valuation_score": 42.0,
+      "valuation_score": 53.0,
       "roic": 1.45,
       "operating_margin": 5.18,
       "margin_trend_bps": -2930.4,
       "debt_to_equity": 0.13,
-      "pe_ratio": 169.04,
+      "pe_ratio": 24.51,
       "fcf_yield_pct": 1.23,
       "technical_gate_required": false
     },
@@ -1771,33 +1770,33 @@
       "position_value": 10148.4,
       "portfolio_risk_pct": 0.5,
       "invalidation_rule": "A daily closing price below $160.89 or two consecutive closes back below $169.14 immediately invalidates the trade.",
-      "trade_thesis": "XOM exhibits high structural confluence with Mean-Reversion aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 11.1%), measured support at $169.14 offers asymmetric risk/reward into upper channel resistance.",
-      "tca_execution_strategy": "TWAP",
-      "tca_expected_slippage_bps": 0.41,
+      "trade_thesis": "XOM exhibits high structural confluence with Mean-Reversion aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 14.0%), measured support at $169.14 offers asymmetric risk/reward into upper channel resistance.",
+      "tca_execution_strategy": "DIRECT_MARKET",
+      "tca_expected_slippage_bps": 0.59,
       "tca_effective_fill_price": 170.6,
-      "tca_optimal_slices": 5
+      "tca_optimal_slices": 1
     },
     "meta_label_verdict": {
       "symbol": "XOM",
-      "meta_probability": 0.4075,
+      "meta_probability": 0.4047,
       "action": "GATED_EXCLUDE",
       "size_multiplier": 0.0,
       "primary_driver": "mom_12_1m (+0.52, impact -)",
-      "calibrated_at": "2026-11-15T23:13:16.007662+00:00"
+      "calibrated_at": "2026-11-15T23:26:41.559993+00:00"
     },
     "microstructure_metrics": {
       "symbol": "XOM",
-      "timestamp": "2026-11-15T23:13:16.009523+00:00",
-      "cvd_total": -2718,
-      "cvd_1m_delta": -3106,
-      "cvd_5m_delta": -2718,
-      "order_book_imbalance": 0.1074,
-      "kyle_lambda": 0.015,
-      "rvol_1m": 1.62,
+      "timestamp": "2026-11-15T23:26:41.562027+00:00",
+      "cvd_total": -597,
+      "cvd_1m_delta": -754,
+      "cvd_5m_delta": -597,
+      "order_book_imbalance": 0.1507,
+      "kyle_lambda": 0.045,
+      "rvol_1m": 1.15,
       "absorption_signal": "NONE",
       "liquidity_state": "NORMAL",
-      "buyer_volume_pct": 33.6,
-      "seller_volume_pct": 66.4
+      "buyer_volume_pct": 45.4,
+      "seller_volume_pct": 54.6
     }
   },
   "disclaimers": {

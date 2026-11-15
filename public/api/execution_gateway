@@ -1,40 +1,40 @@
 {
   "as_of_date": "2026-11-15",
-  "generated_at": "2026-11-15T23:13:54.085339+00:00",
+  "generated_at": "2026-11-15T23:27:21.702958+00:00",
   "session": {
     "session": "2026-11-15",
-    "evaluations": 80,
+    "evaluations": 96,
     "orders": 8,
-    "hard_rejections": 20,
-    "soft_limits": 10,
-    "approvals": 50,
-    "submitted_notional_usd": 111900.0,
-    "rejected_notional_usd": 25950.0,
+    "hard_rejections": 24,
+    "soft_limits": 12,
+    "approvals": 60,
+    "submitted_notional_usd": 134280.0,
+    "rejected_notional_usd": 31140.0,
     "rejected_share": 0.231903,
     "breached_controls": {
-      "C1": 10,
-      "C12": 10,
-      "C9": 10
+      "C1": 12,
+      "C12": 12,
+      "C9": 12
     },
     "top_rejected_symbols": [
       {
         "symbol": "AAPL",
-        "rejected_notional_usd": 15000.0
+        "rejected_notional_usd": 18000.0
       },
       {
         "symbol": "SHOP",
-        "rejected_notional_usd": 10950.0
+        "rejected_notional_usd": 13140.0
       }
     ],
-    "generated_at": "2026-11-15T23:13:54.085339+00:00"
+    "generated_at": "2026-11-15T23:27:21.702958+00:00"
   },
   "predicate_28": {
     "predicate_type": "PRE_TRADE_RISK_BREACH",
     "fired": true,
     "severity": "CRITICAL",
     "action_required": "REVIEW_POSITION_SIZING",
-    "headline": "Pre-Trade Risk Breach: 20 hard rejections this session (CRITICAL)",
-    "body": "The pre-trade risk governor hard-rejected 20 of 80 order evaluations in session 2026-11-15, with $25,950 of $111,900 submitted notional refused. Triggered by: 20 hard rejections against a boundary of 3. Controls breached: C1 (10), C12 (10), C9 (10). Repeated pre-trade rejections indicate the signals being generated are larger or more concentrated than the declared risk envelope permits. This is a strategy/risk alignment finding and requires review of position sizing assumptions; it is not a statement about expected returns.",
+    "headline": "Pre-Trade Risk Breach: 24 hard rejections this session (CRITICAL)",
+    "body": "The pre-trade risk governor hard-rejected 24 of 96 order evaluations in session 2026-11-15, with $31,140 of $134,280 submitted notional refused. Triggered by: 24 hard rejections against a boundary of 3. Controls breached: C1 (12), C12 (12), C9 (12). Repeated pre-trade rejections indicate the signals being generated are larger or more concentrated than the declared risk envelope permits. This is a strategy/risk alignment finding and requires review of position sizing assumptions; it is not a statement about expected returns.",
     "thresholds": {
       "hard_rejection_trigger": 3,
       "critical_rejections": 10,
@@ -91,7 +91,7 @@
     "scope_note": "Attests pre-trade control coverage, routing gates, state-machine integrity and kill-switch operation only. Does not attest profitability, fill-quality realism, or the suitability of any signal. Unregistered impersonal research; no external broker adapter ships and no order routes to a live venue.",
     "days_until_expiry": 322,
     "expired": false,
-    "artifact_sha256": "3bcbd68dc2764d356b25269606f14c8dd8b07bb3dd1c3bb52b33b945f34d75bb"
+    "artifact_sha256": "3731f069d841f99e4755b72b35e0611f745bb00407f572105d627653a81b167a"
   },
   "disclaimers": [
     "Decision-support and research only. Not investment advice and not a recommendation to buy or sell any security.",

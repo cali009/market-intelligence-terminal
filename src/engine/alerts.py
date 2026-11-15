@@ -35,7 +35,6 @@ from zoneinfo import ZoneInfo
 from typing import Dict, List, Any, Optional, Tuple, Literal
 
 from src.data.db import db
-from src.compliance.linter import linter
 from src.models.schemas import (
     AlertRecord,
     ConsentRecord,
@@ -635,108 +634,20 @@ class AlertEngine:
     def build_system_alerts(self) -> List[AlertRecord]:
         """Generate high-conviction alerts across the 6 platform taxonomies."""
         now_utc = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-        today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
-        disclaimer_text = (
-            "Impersonal decision-support research alert based on quantitative models. "
-            "Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
-        )
-        linter.assert_clean(disclaimer_text)
-
-        alert_defs = [
-            {
-                "id": f"ALT_{today}_NVDA_01",
-                "symbol": "NVDA",
-                "taxonomy": "TECHNICAL_BREAKOUT",
-                "severity": "WARNING",
-                "headline": "NVDA: Volatility Squeeze Expansion Triggered on NASDAQ",
-                "body": "Bollinger Bands expanded outside Keltner Channels with 20-day RVOL at 2.45x. Quantitative score: 86/100.",
-                "channels": ["IN_APP", "EMAIL", "WEB_PUSH"],
-                "dedupe_key": f"NVDA:BREAKOUT:{today}",
-                "is_quiet_hours_eligible": True,
-                "payload": {"score": 86, "rvol": 2.45, "pattern": "BB_KC_EXPANSION"},
-            },
-            {
-                "id": f"ALT_{today}_TD_02",
-                "symbol": "TD",
-                "taxonomy": "EXIT_TRIGGER_ESCALATION",
-                "severity": "CRITICAL",
-                "headline": "TD.TO: Exit Signal Triggered — Trailing Stop Breach on TSX",
-                "body": "Price closed below 20-day swing support (C$81.20). Systematic exit model transitioned verdict to REDUCE / EXIT.",
-                "channels": ["IN_APP", "EMAIL", "SMS"],
-                "dedupe_key": f"TD:STOP_BREACH:{today}",
-                "is_quiet_hours_eligible": False,  # Emergency stops can bypass quiet hours
-                "payload": {"stop_price": 81.20, "action": "REDUCE", "pnl_r": -1.0},
-            },
-            {
-                "id": f"ALT_{today}_BOC_03",
-                "symbol": None,
-                "taxonomy": "CATALYST_MATERIALITY",
-                "severity": "WARNING",
-                "headline": "Bank of Canada: Policy Rate Cut Announced (-25 bps)",
-                "body": "Overnight rate reduced to 4.25%. BoC Valet CAD/USD rate moved to 1.4136. Financials and TSX dividend sectors reacting.",
-                "channels": ["IN_APP", "EMAIL", "WEB_PUSH"],
-                "dedupe_key": f"BOC:RATE_CUT:{today}",
-                "is_quiet_hours_eligible": True,
-                "payload": {"rate": 4.25, "cut_bps": 25, "fx_usdcad": 1.4136},
-            },
-            {
-                "id": f"ALT_{today}_REG_04",
-                "symbol": None,
-                "taxonomy": "REGIME_SHIFT",
-                "severity": "NOTICE",
-                "headline": "Cross-Market Regime Transition: Elevated Volatility Neutral",
-                "body": "VIX climbed to 21.4 while CAD/USD yields flattened. Dual-market multi-input regime classifier shifted to ELEVATED_VOLATILITY.",
-                "channels": ["IN_APP", "EMAIL"],
-                "dedupe_key": f"MACRO:REGIME:{today}",
-                "is_quiet_hours_eligible": True,
-                "payload": {"vix": 21.4, "regime": "ELEVATED_VOLATILITY"},
-            },
-            {
-                "id": f"ALT_{today}_PORT_05",
-                "symbol": None,
-                "taxonomy": "PORTFOLIO_CIRCUIT_BREAKER",
-                "severity": "CRITICAL",
-                "headline": "Portfolio Intelligence: Drawdown Approaching Level 1 Caution (-4.3%)",
-                "body": "Aggressive profile allocation drawdown reached -4.3% vs. -6.0% Level 1 threshold. Trailing stop tightening recommended.",
-                "channels": ["IN_APP", "EMAIL", "SMS"],
-                "dedupe_key": f"PORTFOLIO:CIRCUIT:{today}",
-                "is_quiet_hours_eligible": False,
-                "payload": {"drawdown_pct": -4.3, "threshold_pct": -6.0},
-            },
-            {
-                "id": f"ALT_{today}_SHOP_06",
-                "symbol": "SHOP",
-                "taxonomy": "PRICE_VOLUME_SPIKE",
-                "severity": "NOTICE",
-                "headline": "SHOP.TO: Institutional Volume Inflow (RVOL 2.8x) on TSX",
-                "body": "Intraday volume surge detected with positive spread expansion. Opportunity score upgraded to 79/100.",
-                "channels": ["IN_APP", "WEB_PUSH"],
-                "dedupe_key": f"SHOP:VOL_SPIKE:{today}",
-                "is_quiet_hours_eligible": True,
-                "payload": {"rvol": 2.8, "score": 79},
-            },
-        ]
-
-        alerts = []
-        for ad in alert_defs:
-            linter.assert_clean(ad["headline"])
-            linter.assert_clean(ad["body"])
-            record = AlertRecord(
-                alert_id=ad["id"],
-                timestamp=now_utc,
-                symbol=ad["symbol"],
-                taxonomy=ad["taxonomy"],
-                severity=ad["severity"],
-                headline=ad["headline"],
-                body=ad["body"],
-                channels=ad["channels"],
-                dedupe_key=ad["dedupe_key"],
-                data_payload=ad["payload"],
-                is_quiet_hours_eligible=ad["is_quiet_hours_eligible"],
-                disclaimer=disclaimer_text,
-            )
-            alerts.append(record)
+        # HONESTY OVERHAUL (Phase 3): this function used to open with a list of six
+        # fully written alerts — an NVDA "volatility squeeze" at score 86 and RVOL
+        # 2.45x, a TD trailing-stop breach at C$81.20, a Bank of Canada rate cut to
+        # 4.25% at CAD/USD 1.4136, a regime shift on "VIX climbed to 21.4", a
+        # portfolio drawdown of -4.3% against a -6.0% threshold, and a SHOP volume
+        # spike at RVOL 2.8x. Every one of those figures was typed in. None was
+        # computed from any data source, and they were emitted unconditionally on
+        # every run regardless of what the market had done.
+        #
+        # They are gone. The only alerts this engine now emits are the ones the
+        # rule engines actually derive below. If those produce nothing, the feed is
+        # empty, which is an honest result.
+        alerts: List[AlertRecord] = []
 
         # Phase 22.5: QUANT INTEL Invalidation Sentinels & Execution Ratchets
         try:

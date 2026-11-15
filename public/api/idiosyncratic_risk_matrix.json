@@ -1,11 +1,11 @@
 {
   "as_of_date": "2026-09-25",
   "total_securities_monitored": 19,
-  "normal_equilibrium_count": 4,
-  "elevated_caution_count": 12,
+  "normal_equilibrium_count": 6,
+  "elevated_caution_count": 10,
   "defensive_de_risk_count": 3,
   "immediate_invalidation_count": 0,
-  "average_size_multiplier": 0.76,
+  "average_size_multiplier": 0.79,
   "profiles": [
     {
       "symbol": "AAPL",
@@ -20,15 +20,15 @@
       "cross_border_parity_stretch": false,
       "basis_spread_bps": null,
       "basis_zscore": null,
-      "shap_detractor_drag_pts": -0.98,
+      "shap_detractor_drag_pts": -0.37,
       "primary_risk_driver": "Stable Quantitative Fingerprint",
       "actionable_mitigation": "All idiosyncratic bounds intact; nominal position sizing permitted under risk framework.",
       "as_of_date": "2026-09-25"
     },
     {
       "symbol": "MSFT",
-      "risk_posture": "ELEVATED_CAUTION",
-      "position_size_multiplier": 0.75,
+      "risk_posture": "NORMAL_EQUILIBRIUM",
+      "position_size_multiplier": 1.0,
       "hurst_flip_alert": false,
       "hurst_exponent": 0.546,
       "conformal_stop_price": 489.87,
@@ -38,9 +38,9 @@
       "cross_border_parity_stretch": false,
       "basis_spread_bps": null,
       "basis_zscore": null,
-      "shap_detractor_drag_pts": -1.04,
-      "primary_risk_driver": "Minor Detractor Drag",
-      "actionable_mitigation": "Minor basis disparity or factor detractor identified; 25% exposure haircut recommended under risk rules.",
+      "shap_detractor_drag_pts": -0.58,
+      "primary_risk_driver": "Stable Quantitative Fingerprint",
+      "actionable_mitigation": "All idiosyncratic bounds intact; nominal position sizing permitted under risk framework.",
       "as_of_date": "2026-09-25"
     },
     {
@@ -56,8 +56,8 @@
       "cross_border_parity_stretch": false,
       "basis_spread_bps": null,
       "basis_zscore": null,
-      "shap_detractor_drag_pts": -27.53,
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-27.53 pts)",
+      "shap_detractor_drag_pts": -26.87,
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-26.87 pts)",
       "actionable_mitigation": "Minor basis disparity or factor detractor identified; 25% exposure haircut recommended under risk rules.",
       "as_of_date": "2026-09-25"
     },
@@ -74,8 +74,8 @@
       "cross_border_parity_stretch": false,
       "basis_spread_bps": null,
       "basis_zscore": null,
-      "shap_detractor_drag_pts": -3.59,
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-3.59 pts)",
+      "shap_detractor_drag_pts": -2.9,
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-2.9 pts)",
       "actionable_mitigation": "Minor basis disparity or factor detractor identified; 25% exposure haircut recommended under risk rules.",
       "as_of_date": "2026-09-25"
     },
@@ -92,8 +92,8 @@
       "cross_border_parity_stretch": false,
       "basis_spread_bps": null,
       "basis_zscore": null,
-      "shap_detractor_drag_pts": -28.58,
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-28.58 pts)",
+      "shap_detractor_drag_pts": -27.95,
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-27.95 pts)",
       "actionable_mitigation": "Minor basis disparity or factor detractor identified; 25% exposure haircut recommended under risk rules.",
       "as_of_date": "2026-09-25"
     },
@@ -110,8 +110,8 @@
       "cross_border_parity_stretch": false,
       "basis_spread_bps": null,
       "basis_zscore": null,
-      "shap_detractor_drag_pts": -2.84,
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-2.84 pts)",
+      "shap_detractor_drag_pts": -1.69,
+      "primary_risk_driver": "Minor Detractor Drag",
       "actionable_mitigation": "Minor basis disparity or factor detractor identified; 25% exposure haircut recommended under risk rules.",
       "as_of_date": "2026-09-25"
     },
@@ -128,15 +128,15 @@
       "cross_border_parity_stretch": false,
       "basis_spread_bps": null,
       "basis_zscore": null,
-      "shap_detractor_drag_pts": -3.59,
+      "shap_detractor_drag_pts": -1.81,
       "primary_risk_driver": "Hurst Memory Flip (H=0.444)",
       "actionable_mitigation": "Idiosyncratic memory flip or volatility expansion active; 50% exposure haircut recommended by systematic risk budget.",
       "as_of_date": "2026-09-25"
     },
     {
       "symbol": "SPY",
-      "risk_posture": "ELEVATED_CAUTION",
-      "position_size_multiplier": 0.75,
+      "risk_posture": "NORMAL_EQUILIBRIUM",
+      "position_size_multiplier": 1.0,
       "hurst_flip_alert": false,
       "hurst_exponent": 0.471,
       "conformal_stop_price": 644.81,
@@ -146,9 +146,9 @@
       "cross_border_parity_stretch": false,
       "basis_spread_bps": null,
       "basis_zscore": null,
-      "shap_detractor_drag_pts": -1.19,
-      "primary_risk_driver": "Minor Detractor Drag",
-      "actionable_mitigation": "Minor basis disparity or factor detractor identified; 25% exposure haircut recommended under risk rules.",
+      "shap_detractor_drag_pts": -0.24,
+      "primary_risk_driver": "Stable Quantitative Fingerprint",
+      "actionable_mitigation": "All idiosyncratic bounds intact; nominal position sizing permitted under risk framework.",
       "as_of_date": "2026-09-25"
     },
     {
@@ -164,8 +164,8 @@
       "cross_border_parity_stretch": false,
       "basis_spread_bps": null,
       "basis_zscore": null,
-      "shap_detractor_drag_pts": -3.59,
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-3.59 pts)",
+      "shap_detractor_drag_pts": -1.81,
+      "primary_risk_driver": "Minor Detractor Drag",
       "actionable_mitigation": "Minor basis disparity or factor detractor identified; 25% exposure haircut recommended under risk rules.",
       "as_of_date": "2026-09-25"
     },
@@ -182,8 +182,8 @@
       "cross_border_parity_stretch": false,
       "basis_spread_bps": -0.6,
       "basis_zscore": -0.24,
-      "shap_detractor_drag_pts": -20.98,
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-20.98 pts)",
+      "shap_detractor_drag_pts": -21.31,
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-21.31 pts)",
       "actionable_mitigation": "Minor basis disparity or factor detractor identified; 25% exposure haircut recommended under risk rules.",
       "as_of_date": "2026-09-25"
     },
@@ -200,7 +200,7 @@
       "cross_border_parity_stretch": false,
       "basis_spread_bps": -2.5,
       "basis_zscore": -0.55,
-      "shap_detractor_drag_pts": -1.49,
+      "shap_detractor_drag_pts": -1.06,
       "primary_risk_driver": "Minor Detractor Drag",
       "actionable_mitigation": "Minor basis disparity or factor detractor identified; 25% exposure haircut recommended under risk rules.",
       "as_of_date": "2026-09-25"
@@ -218,7 +218,7 @@
       "cross_border_parity_stretch": false,
       "basis_spread_bps": 1.8,
       "basis_zscore": -0.14,
-      "shap_detractor_drag_pts": -0.13,
+      "shap_detractor_drag_pts": -0.15,
       "primary_risk_driver": "Stable Quantitative Fingerprint",
       "actionable_mitigation": "All idiosyncratic bounds intact; nominal position sizing permitted under risk framework.",
       "as_of_date": "2026-09-25"
@@ -236,8 +236,8 @@
       "cross_border_parity_stretch": false,
       "basis_spread_bps": -0.5,
       "basis_zscore": -0.31,
-      "shap_detractor_drag_pts": -20.98,
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-20.98 pts)",
+      "shap_detractor_drag_pts": -21.43,
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-21.43 pts)",
       "actionable_mitigation": "Minor basis disparity or factor detractor identified; 25% exposure haircut recommended under risk rules.",
       "as_of_date": "2026-09-25"
     },
@@ -254,7 +254,7 @@
       "cross_border_parity_stretch": false,
       "basis_spread_bps": 1.2,
       "basis_zscore": 0.02,
-      "shap_detractor_drag_pts": -2.41,
+      "shap_detractor_drag_pts": -1.52,
       "primary_risk_driver": "Minor Detractor Drag",
       "actionable_mitigation": "Minor basis disparity or factor detractor identified; 25% exposure haircut recommended under risk rules.",
       "as_of_date": "2026-09-25"
@@ -272,7 +272,7 @@
       "cross_border_parity_stretch": false,
       "basis_spread_bps": 16.2,
       "basis_zscore": 1.09,
-      "shap_detractor_drag_pts": -0.85,
+      "shap_detractor_drag_pts": -0.37,
       "primary_risk_driver": "Stable Quantitative Fingerprint",
       "actionable_mitigation": "All idiosyncratic bounds intact; nominal position sizing permitted under risk framework.",
       "as_of_date": "2026-09-25"
@@ -290,7 +290,7 @@
       "cross_border_parity_stretch": false,
       "basis_spread_bps": 2.5,
       "basis_zscore": -0.13,
-      "shap_detractor_drag_pts": -19.49,
+      "shap_detractor_drag_pts": -19.98,
       "primary_risk_driver": "Hurst Memory Flip (H=0.408)",
       "actionable_mitigation": "Idiosyncratic memory flip or volatility expansion active; 50% exposure haircut recommended by systematic risk budget.",
       "as_of_date": "2026-09-25"
@@ -308,8 +308,8 @@
       "cross_border_parity_stretch": false,
       "basis_spread_bps": -2.8,
       "basis_zscore": -0.45,
-      "shap_detractor_drag_pts": -3.23,
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-3.23 pts)",
+      "shap_detractor_drag_pts": -2.71,
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-2.71 pts)",
       "actionable_mitigation": "Minor basis disparity or factor detractor identified; 25% exposure haircut recommended under risk rules.",
       "as_of_date": "2026-09-25"
     },
@@ -326,7 +326,7 @@
       "cross_border_parity_stretch": false,
       "basis_spread_bps": -9.1,
       "basis_zscore": -1.08,
-      "shap_detractor_drag_pts": -0.32,
+      "shap_detractor_drag_pts": 0.0,
       "primary_risk_driver": "Hurst Memory Flip (H=0.386)",
       "actionable_mitigation": "Idiosyncratic memory flip or volatility expansion active; 50% exposure haircut recommended by systematic risk budget.",
       "as_of_date": "2026-09-25"

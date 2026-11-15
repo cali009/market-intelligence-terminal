@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-15T23:15:06.235874+00:00",
+  "generated_at": "2026-11-15T23:34:32.595116+00:00",
   "as_of_date": "2026-11-15",
   "source_of_truth": "Computed by src/engine/strategy_validation.py from the walk-forward trade ledger in backtests.json and the FDR table in cpcv_validation.json. No figure on this panel is hard-coded.",
   "validation_criteria": {
@@ -511,7 +511,7 @@
           "name": "Deflated Sharpe ratio",
           "requirement": "DSR \u2265 0.95 counting all variants (N \u2265 12)",
           "passed": false,
-          "observed": "DSR 0.420, trials 8",
+          "observed": "DSR 0.464, trials 8",
           "detail": "DSR is below 0.95; trial count is below the 12 minimum.",
           "symbol": "\u274c"
         },
@@ -520,7 +520,7 @@
           "name": "Multiple-testing control",
           "requirement": "Passes Benjamini-Hochberg FDR at q = 0.05",
           "passed": false,
-          "observed": "p = 0.35344 vs critical 0.03125 \u2192 REJECTED_SELECTION_BIAS",
+          "observed": "p = 0.22235 vs critical 0.025 \u2192 REJECTED_SELECTION_BIAS",
           "detail": "Rejected for selection bias.",
           "symbol": "\u274c"
         },
@@ -538,7 +538,7 @@
           "name": "Beats the benchmark",
           "requirement": "Beats SPY (US) / XIU (CA) buy-and-hold after costs over the same window",
           "passed": false,
-          "observed": "strategy +3.68% vs SPY +0.00% / XIU +5.21%",
+          "observed": "strategy +3.41% vs SPY +0.00% / XIU +5.21%",
           "detail": "Over the OOS window: SPY beaten, XIU not beaten.",
           "symbol": "\u274c"
         },
@@ -547,7 +547,7 @@
           "name": "Drawdown limit",
           "requirement": "Max drawdown \u2264 35%",
           "passed": true,
-          "observed": "0.66% (OOS equity curve)",
+          "observed": "0.67% (OOS equity curve)",
           "detail": "Within the 35%% limit.",
           "symbol": "\u2705"
         },
@@ -608,7 +608,7 @@
           "name": "Multiple-testing control",
           "requirement": "Passes Benjamini-Hochberg FDR at q = 0.05",
           "passed": false,
-          "observed": "p = 0.3379 vs critical 0.025 \u2192 REJECTED_SELECTION_BIAS",
+          "observed": "p = 0.3379 vs critical 0.03125 \u2192 REJECTED_SELECTION_BIAS",
           "detail": "Rejected for selection bias.",
           "symbol": "\u274c"
         },

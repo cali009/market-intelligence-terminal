@@ -42,6 +42,16 @@ def run_pipeline():
     us_sec = db.execute_query("SELECT COUNT(*) as cnt FROM fundamental_fact;")[0]["cnt"]
     print(f"    Verified {us_sec} canonical point-in-time fundamental facts in database.")
 
+    # Step 2.5: Volatility Index Ingestion (^VIX)
+    # HONESTY OVERHAUL (Phase 3): there was previously no volatility data at all.
+    # The regime classifier used an invented 16.0 for every date in both markets
+    # and the alerts engine separately hard-coded 21.4. Both now read this series.
+    print("\n>>> STEP 2.5: Ingesting CBOE Volatility Index (^VIX)...")
+    from src.data.vix_ingestion import volatility_index_engine
+    vix_rows = volatility_index_engine.sync(period="2y")
+    vix_latest = volatility_index_engine.latest()
+    print(f"    Synced {vix_rows} ^VIX closes; latest {vix_latest['close']:.2f} on {vix_latest['trading_date']}.")
+
     # Step 3: Bar Ingestion & Data Quality Gate
     print("\n>>> STEP 3: Ingesting Daily OHLCV Price Bars (Dual-Market)...")
     securities = db.execute_query("SELECT security_id, symbol, exchange FROM security WHERE is_active = 1;")

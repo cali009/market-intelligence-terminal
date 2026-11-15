@@ -30,6 +30,25 @@ from src.engine.quant_intel_memory import quant_intel_memory_ledger
 from src.engine.macro_regime import macro_regime_engine
 
 
+def _latest_vix_level() -> float:
+    """The most recent stored ^VIX close.
+
+    HONESTY OVERHAUL (Phase 3): raises rather than returning a constant. The
+    regime classifier used to receive an invented 16.0 through its default
+    argument; failing loudly here is preferable to silently classifying against a
+    number that was never observed. Run scripts/run_daily_pipeline.py to populate
+    the series.
+    """
+    from src.data.vix_ingestion import volatility_index_engine
+    row = volatility_index_engine.latest()
+    if not row:
+        raise RuntimeError(
+            "No ^VIX close is stored. Run the daily pipeline to sync the "
+            "volatility index before classifying regimes."
+        )
+    return float(row["close"])
+
+
 @dataclass
 class Layer1Regime:
     trend_type: str           # "Bull", "Bear", "Sideways", "Volatile"
@@ -277,11 +296,17 @@ class QuantIntelEngine:
         )
         df = pd.DataFrame(bars)
         m = TechnicalAnalysisEngine.get_latest_feature_snapshot(df)
+        # HONESTY OVERHAUL (Phase 3): the volatility input was previously omitted,
+        # so classify_regime fell back to its 16.0 default. It is now read from the
+        # stored ^VIX series. For Canadian symbols this is the US index used as a
+        # proxy, because ^VIXC is not available from the data source.
+        vix_level = _latest_vix_level()
         reg_out = regime_classifier.classify_regime(
             index_close=m["close"],
             index_sma50=m["sma_50"] or m["close"],
             index_sma200=m["sma_200"] or m["close"],
             index_sma200_slope=m["sma_200_slope_20d"] or 0.0,
+            vix_level=vix_level,
             yield_spread_10y_2y=0.45 if country == "US" else 0.55,
         )
 

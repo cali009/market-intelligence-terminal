@@ -27,23 +27,47 @@ from src.compliance.linter import linter
 from src.models.schemas import AlertRecord, AlertPolicyConfig
 
 
+VALID_TAXONOMIES = {
+    "TECHNICAL_BREAKOUT", "EXIT_TRIGGER_ESCALATION", "REGIME_SHIFT",
+    "CATALYST_MATERIALITY", "PORTFOLIO_CIRCUIT_BREAKER", "PRICE_VOLUME_SPIKE",
+}
+
+
 def test_alert_taxonomies_and_severities():
-    """Verify that all 6 platform taxonomies and 4 severities are supported and generated."""
+    """Every emitted alert must be structurally valid and drawn from the taxonomy.
+
+    HONESTY OVERHAUL (Phase 3): this test used to require at least six alerts and
+    one from each of the six taxonomies, plus CRITICAL and WARNING severities.
+    That was only ever satisfiable because build_system_alerts opened with six
+    hard-coded alerts, one per taxonomy, carrying typed-in figures (an NVDA score
+    of 86, a TD stop at C$81.20, a BoC rate of 4.25%, "VIX climbed to 21.4", a
+    -4.3% portfolio drawdown, a SHOP RVOL of 2.8x) and emitted on every run
+    regardless of market conditions.
+
+    Those are gone. Alert count and taxonomy coverage now depend on what the rule
+    engines actually derive, so this asserts validity rather than a fabricated
+    minimum. An empty result is a legitimate outcome.
+    """
     alerts = alert_engine.build_system_alerts()
-    assert len(alerts) >= 6
+    assert isinstance(alerts, list)
 
-    taxonomies = {a.taxonomy for a in alerts}
-    assert "TECHNICAL_BREAKOUT" in taxonomies
-    assert "EXIT_TRIGGER_ESCALATION" in taxonomies
-    assert "REGIME_SHIFT" in taxonomies
-    assert "CATALYST_MATERIALITY" in taxonomies
-    assert "PORTFOLIO_CIRCUIT_BREAKER" in taxonomies
-    assert "PRICE_VOLUME_SPIKE" in taxonomies
+    for a in alerts:
+        assert isinstance(a, AlertRecord)
+        assert a.taxonomy in VALID_TAXONOMIES
+        assert a.severity in {"INFO", "NOTICE", "WARNING", "CRITICAL"}
+        assert a.headline and a.body
+        assert a.disclaimer
+        # The impersonal-advice linter must still pass on every emitted string.
+        linter.assert_clean(a.headline)
+        linter.assert_clean(a.body)
 
-    severities = {a.severity for a in alerts}
-    assert "CRITICAL" in severities
-    assert "WARNING" in severities
-    assert "NOTICE" in severities
+    # Whatever was emitted must not carry the retired fabricated figures.
+    for a in alerts:
+        payload = a.data_payload or {}
+        assert payload.get("vix") != 21.4
+        assert payload.get("rate") != 4.25
+        assert payload.get("fx_usdcad") != 1.4136
+        assert payload.get("drawdown_pct") != -4.3
 
 
 def test_consent_registration_casl_and_tcpa():
@@ -289,7 +313,10 @@ def test_alerts_feed_export_and_schema():
     with open("data/feeds/alerts.json", "r", encoding="utf-8") as f:
         data = json.load(f)
 
-    assert data["active_alerts_count"] >= 6
+    # HONESTY OVERHAUL (Phase 3): the floor of 6 was only reachable because six
+    # alerts were hard-coded. The count is now whatever the rule engines derive.
+    assert data["active_alerts_count"] == len(data["alerts"])
+    assert data["active_alerts_count"] >= 0
 
     # HONESTY OVERHAUL (Phase 2): this test used to require delivery_telemetry, a
     # compliance_attestation asserting CASL and TCPA compliance, and a non-empty

@@ -6,7 +6,7 @@
       "market": "US",
       "primary_source": "Yahoo Finance via the unofficial chart API (query1.finance.yahoo.com), end-of-day",
       "status": "HEALTHY",
-      "freshness_hours": 71.2,
+      "freshness_hours": 71.4,
       "staleness_badge": "STALE",
       "last_synced_at": "2026-11-13 (exchange close, end-of-day)",
       "records_count": 4725,
@@ -20,7 +20,7 @@
       "market": "CA",
       "primary_source": "Yahoo Finance via the unofficial chart API (query1.finance.yahoo.com), end-of-day",
       "status": "HEALTHY",
-      "freshness_hours": 71.2,
+      "freshness_hours": 71.4,
       "staleness_badge": "STALE",
       "last_synced_at": "2026-11-13 (exchange close, end-of-day)",
       "records_count": 5280,
@@ -34,9 +34,9 @@
       "market": "US",
       "primary_source": "SEC EDGAR (data.sec.gov submissions and companyfacts APIs), public XBRL",
       "status": "HEALTHY",
-      "freshness_hours": 1052.9,
+      "freshness_hours": 1053.1,
       "staleness_badge": "STALE",
-      "last_synced_at": "2026-11-15 23:13:21 EST",
+      "last_synced_at": "2026-11-15 23:26:47 EST",
       "records_count": 67,
       "coverage_pct": null,
       "notes": "Strict 10 req/s rate-limited ingestion with declared User-Agent."
@@ -47,7 +47,7 @@
       "market": "MACRO",
       "primary_source": "Bank of Canada Valet REST API (public, free)",
       "status": "HEALTHY",
-      "freshness_hours": 1271.2,
+      "freshness_hours": 1271.4,
       "staleness_badge": "STALE",
       "last_synced_at": "2026-09-24 16:35:00 EST",
       "records_count": 30,
@@ -96,5 +96,5 @@
       "resolution_notes": "Automated validation gate passed."
     }
   ],
-  "generated_at": "2026-11-15 23:13:21 EST"
+  "generated_at": "2026-11-15 23:26:47 EST"
 }

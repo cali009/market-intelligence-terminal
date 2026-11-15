@@ -30,10 +30,19 @@ class RegimeClassifier:
         index_sma50: float,
         index_sma200: float,
         index_sma200_slope: float,
-        vix_level: float = 16.0,
+        vix_level: float,
         yield_spread_10y_2y: float = 0.50, # In percentage points, e.g. +0.50%
         credit_spread_oas: float = 3.50,   # US High Yield OAS in %
     ) -> RegimeOutput:
+        """Classify the market regime.
+
+        HONESTY OVERHAUL (Phase 3): `vix_level` no longer has a default. It used
+        to default to 16.0, and two of the three call sites never passed it, so
+        they classified every regime in both markets against an invented constant
+        volatility. The parameter is now required, which makes it impossible to
+        classify a regime without supplying a measured value. Callers read the
+        real level from src/data/vix_ingestion.py.
+        """
         """
         Classifies current regime using standardized multi-factor thresholds:
         - Trend: Position relative to 50DMA, 200DMA, and 200DMA slope.

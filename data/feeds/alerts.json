@@ -1,138 +1,11 @@
 {
   "as_of_date": "2026-11-15",
-  "generated_at": "2026-11-15T23:15:10.671693+00:00",
-  "active_alerts_count": 10,
+  "generated_at": "2026-11-15T23:34:38.204653+00:00",
+  "active_alerts_count": 4,
   "alerts": [
     {
-      "alert_id": "ALT_2026-11-15_NVDA_01",
-      "timestamp": "2026-11-15T23:15:06Z",
-      "symbol": "NVDA",
-      "taxonomy": "TECHNICAL_BREAKOUT",
-      "severity": "WARNING",
-      "headline": "NVDA: Volatility Squeeze Expansion Triggered on NASDAQ",
-      "body": "Bollinger Bands expanded outside Keltner Channels with 20-day RVOL at 2.45x. Quantitative score: 86/100.",
-      "channels": [
-        "IN_APP",
-        "EMAIL",
-        "WEB_PUSH"
-      ],
-      "dedupe_key": "NVDA:BREAKOUT:2026-11-15",
-      "data_payload": {
-        "score": 86,
-        "rvol": 2.45,
-        "pattern": "BB_KC_EXPANSION"
-      },
-      "is_quiet_hours_eligible": true,
-      "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
-    },
-    {
-      "alert_id": "ALT_2026-11-15_TD_02",
-      "timestamp": "2026-11-15T23:15:06Z",
-      "symbol": "TD",
-      "taxonomy": "EXIT_TRIGGER_ESCALATION",
-      "severity": "CRITICAL",
-      "headline": "TD.TO: Exit Signal Triggered \u2014 Trailing Stop Breach on TSX",
-      "body": "Price closed below 20-day swing support (C$81.20). Systematic exit model transitioned verdict to REDUCE / EXIT.",
-      "channels": [
-        "IN_APP",
-        "EMAIL",
-        "SMS"
-      ],
-      "dedupe_key": "TD:STOP_BREACH:2026-11-15",
-      "data_payload": {
-        "stop_price": 81.2,
-        "action": "REDUCE",
-        "pnl_r": -1.0
-      },
-      "is_quiet_hours_eligible": false,
-      "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
-    },
-    {
-      "alert_id": "ALT_2026-11-15_BOC_03",
-      "timestamp": "2026-11-15T23:15:06Z",
-      "symbol": null,
-      "taxonomy": "CATALYST_MATERIALITY",
-      "severity": "WARNING",
-      "headline": "Bank of Canada: Policy Rate Cut Announced (-25 bps)",
-      "body": "Overnight rate reduced to 4.25%. BoC Valet CAD/USD rate moved to 1.4136. Financials and TSX dividend sectors reacting.",
-      "channels": [
-        "IN_APP",
-        "EMAIL",
-        "WEB_PUSH"
-      ],
-      "dedupe_key": "BOC:RATE_CUT:2026-11-15",
-      "data_payload": {
-        "rate": 4.25,
-        "cut_bps": 25,
-        "fx_usdcad": 1.4136
-      },
-      "is_quiet_hours_eligible": true,
-      "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
-    },
-    {
-      "alert_id": "ALT_2026-11-15_REG_04",
-      "timestamp": "2026-11-15T23:15:06Z",
-      "symbol": null,
-      "taxonomy": "REGIME_SHIFT",
-      "severity": "NOTICE",
-      "headline": "Cross-Market Regime Transition: Elevated Volatility Neutral",
-      "body": "VIX climbed to 21.4 while CAD/USD yields flattened. Dual-market multi-input regime classifier shifted to ELEVATED_VOLATILITY.",
-      "channels": [
-        "IN_APP",
-        "EMAIL"
-      ],
-      "dedupe_key": "MACRO:REGIME:2026-11-15",
-      "data_payload": {
-        "vix": 21.4,
-        "regime": "ELEVATED_VOLATILITY"
-      },
-      "is_quiet_hours_eligible": true,
-      "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
-    },
-    {
-      "alert_id": "ALT_2026-11-15_PORT_05",
-      "timestamp": "2026-11-15T23:15:06Z",
-      "symbol": null,
-      "taxonomy": "PORTFOLIO_CIRCUIT_BREAKER",
-      "severity": "CRITICAL",
-      "headline": "Portfolio Intelligence: Drawdown Approaching Level 1 Caution (-4.3%)",
-      "body": "Aggressive profile allocation drawdown reached -4.3% vs. -6.0% Level 1 threshold. Trailing stop tightening recommended.",
-      "channels": [
-        "IN_APP",
-        "EMAIL",
-        "SMS"
-      ],
-      "dedupe_key": "PORTFOLIO:CIRCUIT:2026-11-15",
-      "data_payload": {
-        "drawdown_pct": -4.3,
-        "threshold_pct": -6.0
-      },
-      "is_quiet_hours_eligible": false,
-      "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
-    },
-    {
-      "alert_id": "ALT_2026-11-15_SHOP_06",
-      "timestamp": "2026-11-15T23:15:06Z",
-      "symbol": "SHOP",
-      "taxonomy": "PRICE_VOLUME_SPIKE",
-      "severity": "NOTICE",
-      "headline": "SHOP.TO: Institutional Volume Inflow (RVOL 2.8x) on TSX",
-      "body": "Intraday volume surge detected with positive spread expansion. Opportunity score upgraded to 79/100.",
-      "channels": [
-        "IN_APP",
-        "WEB_PUSH"
-      ],
-      "dedupe_key": "SHOP:VOL_SPIKE:2026-11-15",
-      "data_payload": {
-        "rvol": 2.8,
-        "score": 79
-      },
-      "is_quiet_hours_eligible": true,
-      "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
-    },
-    {
       "alert_id": "ALT_2026-11-15_NVDA_BREAKOUT_F",
-      "timestamp": "2026-11-15T23:15:10Z",
+      "timestamp": "2026-11-15T23:34:38Z",
       "symbol": "NVDA",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
@@ -155,7 +28,7 @@
     },
     {
       "alert_id": "ALT_2026-11-15_JPM_BREAKOUT_F",
-      "timestamp": "2026-11-15T23:15:10Z",
+      "timestamp": "2026-11-15T23:34:38Z",
       "symbol": "JPM",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
@@ -178,7 +51,7 @@
     },
     {
       "alert_id": "ALT_2026-11-15_SPY_BREAKOUT_F",
-      "timestamp": "2026-11-15T23:15:10Z",
+      "timestamp": "2026-11-15T23:34:38Z",
       "symbol": "SPY",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
@@ -201,7 +74,7 @@
     },
     {
       "alert_id": "ALT_2026-11-15_SHOP_BREAKOUT_F",
-      "timestamp": "2026-11-15T23:15:10Z",
+      "timestamp": "2026-11-15T23:34:38Z",
       "symbol": "SHOP",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",

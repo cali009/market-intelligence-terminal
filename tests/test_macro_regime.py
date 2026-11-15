@@ -14,6 +14,23 @@ from src.engine.macro_regime import macro_regime_engine, DISCLAIMERS, REGIME_STA
 from src.models.schemas import MarkovTransitionMatrix, MacroRegimeFeed, ForwardRegimeProjection
 
 
+def _dates_with_bars_and_vix(benchmark_symbol):
+    """Benchmark trading dates that have both a bar and a stored ^VIX close."""
+    from src.data.db import db
+    from src.data.vix_ingestion import volatility_index_engine
+
+    bars = db.execute_query(
+        """
+        SELECT DISTINCT b.trading_date
+        FROM bar_1d b JOIN security s ON s.security_id = b.security_id
+        WHERE s.symbol = ?;
+        """,
+        (benchmark_symbol,),
+    )
+    vix_dates = set(volatility_index_engine.lookup())
+    return {str(r["trading_date"]) for r in bars} & vix_dates
+
+
 class TestMacroRegimeTransition:
     """Test suite covering Markov transition matrices, Dirichlet smoothing, hazard rates, and cross-border divergence."""
 
@@ -23,7 +40,16 @@ class TestMacroRegimeTransition:
             matrix = macro_regime_engine.build_markov_matrix(mkt)
             assert isinstance(matrix, MarkovTransitionMatrix)
             assert matrix.market == mkt
-            assert matrix.sample_sessions_count >= 500
+            # HONESTY OVERHAUL (Phase 3): this used to require >= 500 sessions,
+            # which held only because every bar date was classified against an
+            # invented VIX of 16.0. Regime history now needs a real ^VIX close for
+            # each date and skips the rest, so the honest invariant is that the
+            # session count equals the number of benchmark dates that actually have
+            # both a bar and a stored ^VIX level.
+            bench = "XIU" if mkt == "CA" else "SPY"
+            expected = len(_dates_with_bars_and_vix(bench))
+            assert matrix.sample_sessions_count == expected
+            assert matrix.sample_sessions_count > 0
             assert len(matrix.rows) == len(REGIME_STATES)
 
             for row in matrix.rows:

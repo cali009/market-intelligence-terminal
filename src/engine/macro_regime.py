@@ -88,11 +88,32 @@ class MacroRegimeTransitionEngine:
 
         regimes: List[Tuple[str, str, float]] = []
         is_canada = benchmark_symbol == "XIU"
-        default_vix = 16.0
         default_yield_spread = 0.40 if is_canada else 0.45
 
+        # HONESTY OVERHAUL (Phase 3): this used `default_vix = 16.0` for every
+        # date in the history, in both markets. Volatility is now read from the
+        # stored ^VIX series and joined by trading date, so each day is classified
+        # against the level that actually prevailed. Where ^VIX has no value for a
+        # date the day is skipped rather than classified against a guess.
+        #
+        # ^VIXC is not available from the data source (HTTP 404), so Canadian
+        # regimes are classified against the US index. That is a proxy and is
+        # labelled as one below; no Canadian volatility index is claimed.
+        from src.data.vix_ingestion import volatility_index_engine
+        vix_lookup = volatility_index_engine.lookup()
+
+        skipped_no_vix = 0
         for idx in range(len(df)):
             row = df.iloc[idx]
+            trading_date = str(row["trading_date"])
+
+            vix_level = vix_lookup.get(trading_date)
+            if vix_level is None:
+                # No measured volatility for this date. Skipping is honest;
+                # substituting a constant is what this replaced.
+                skipped_no_vix += 1
+                continue
+
             c = float(row["close"])
             ma50 = float(row.get("sma_50", c))
             ma200 = float(row.get("sma_200", c))
@@ -104,11 +125,13 @@ class MacroRegimeTransitionEngine:
                 index_sma50=ma50,
                 index_sma200=ma200,
                 index_sma200_slope=slope,
-                vix_level=default_vix,
+                vix_level=vix_level,
                 yield_spread_10y_2y=default_yield_spread,
             )
-            regimes.append((str(row["trading_date"]), res.regime_state, res.filtered_probability))
+            regimes.append((trading_date, res.regime_state, res.filtered_probability))
 
+        if skipped_no_vix:
+            print(f"    Regime history: {skipped_no_vix} date(s) skipped for want of a ^VIX close.")
         return regimes
 
     def build_markov_matrix(self, market: str = "US") -> MarkovTransitionMatrix:

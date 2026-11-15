@@ -5,7 +5,7 @@
   "currency": "CAD",
   "name": "Royal Bank of Canada",
   "as_of_date": "2026-11-15",
-  "generated_at": "2026-11-15T23:14:58.668999+00:00",
+  "generated_at": "2026-11-15T23:34:23.904866+00:00",
   "latest_metrics": {
     "trading_date": "2026-11-13",
     "open": 289.5,
@@ -321,12 +321,12 @@
       "quality_score": 52
     },
     "valuation": {
-      "pe_ratio": 69.72,
+      "pe_ratio": 19.8,
       "ps_ratio": 22.46,
       "pb_ratio": 2.88,
       "fcf_yield_pct": 9.4,
       "dividend_yield_pct": 0.57,
-      "valuation_score": 62
+      "valuation_score": 65
     },
     "dividend_safety": {
       "dividend_yield_pct": 0.57,
@@ -335,7 +335,7 @@
       "safety_score": 100,
       "safety_tier": "HIGH_SAFETY"
     },
-    "composite_fundamental_score": 56,
+    "composite_fundamental_score": 57,
     "missing_fields": [
       "TotalDebt"
     ],
@@ -356,7 +356,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 14,
     "gjr_garch_gamma": 0.24,
-    "last_updated": "2026-11-15T23:15:01.950336+00:00"
+    "last_updated": "2026-11-15T23:34:27.736196+00:00"
   },
   "conformal_bounds": {
     "symbol": "RY",
@@ -373,7 +373,7 @@
     "adapted_alpha": 0.09,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-11-15T23:15:01.960729+00:00"
+    "calibrated_at": "2026-11-15T23:34:27.746387+00:00"
   },
   "cross_border_parity": {
     "tsx_symbol": "RY",
@@ -400,28 +400,28 @@
   },
   "shap_attribution": {
     "symbol": "RY",
-    "base_value": 50.63,
-    "model_score": 57.9,
+    "base_value": 49.37,
+    "model_score": 55.3,
     "top_drivers": [
       {
         "feature_name": "proximity_52w",
         "feature_label": "Proximity to 52W High",
         "feature_value": -0.059,
-        "shap_contribution": 5.99,
-        "direction": "POSITIVE"
-      },
-      {
-        "feature_name": "fractional_d",
-        "feature_label": "Fractional Memory Order d*",
-        "feature_value": 0.57,
-        "shap_contribution": 1.36,
+        "shap_contribution": 5.6,
         "direction": "POSITIVE"
       },
       {
         "feature_name": "conformal_rr",
         "feature_label": "Certified Conformal R:R",
         "feature_value": 1.45,
-        "shap_contribution": 1.03,
+        "shap_contribution": 0.73,
+        "direction": "POSITIVE"
+      },
+      {
+        "feature_name": "fractional_d",
+        "feature_label": "Fractional Memory Order d*",
+        "feature_value": 0.57,
+        "shap_contribution": 0.59,
         "direction": "POSITIVE"
       }
     ],
@@ -430,7 +430,7 @@
         "feature_name": "trend_sma200_ratio",
         "feature_label": "Trend vs 200DMA",
         "feature_value": 1.094,
-        "shap_contribution": -1.43,
+        "shap_contribution": -1.0,
         "direction": "NEGATIVE"
       },
       {
@@ -442,16 +442,16 @@
       }
     ],
     "all_attributions": {
-      "trend_sma200_ratio": -1.43,
+      "trend_sma200_ratio": -1.0,
       "momentum_rsi": -0.06,
-      "proximity_52w": 5.99,
+      "proximity_52w": 5.6,
       "mtf_confluence": 0.0,
       "roic_pct": 0.0,
       "pe_multiple": 0.0,
-      "hurst_persistence": 0.4,
-      "fractional_d": 1.36,
+      "hurst_persistence": 0.07,
+      "fractional_d": 0.59,
       "amihud_illiquidity": 0.0,
-      "conformal_rr": 1.03,
+      "conformal_rr": 0.73,
       "dual_basis_bps": 0.0
     }
   },
@@ -468,16 +468,16 @@
     "cross_border_parity_stretch": false,
     "basis_spread_bps": -2.5,
     "basis_zscore": -0.55,
-    "shap_detractor_drag_pts": -1.49,
+    "shap_detractor_drag_pts": -1.06,
     "primary_risk_driver": "Minor Detractor Drag",
     "actionable_mitigation": "Minor basis disparity or factor detractor identified; 25% exposure haircut recommended under risk rules.",
     "as_of_date": "2026-09-25"
   },
   "score_record": {
-    "composite_score": 60,
+    "composite_score": 57,
     "confidence_tier": "B",
     "technical_score": 57,
-    "fundamental_score": 56,
+    "fundamental_score": 57,
     "risk_penalty": 0.0,
     "factor_attribution": {
       "horizon": "POSITION",
@@ -488,8 +488,8 @@
       "mtf_alignment_score": 5.0,
       "volatility_fit_score": 5.0,
       "technical_score": 57,
-      "fundamental_score": 56,
-      "regime_multiplier": 1.05,
+      "fundamental_score": 57,
+      "regime_multiplier": 1.0,
       "news_contribution": 0,
       "sector_contribution": 0.0,
       "risk_penalty": 0.0,
@@ -570,7 +570,7 @@
     "risk_notes": [
       "Volatility Sizing: 14-day ATR is 1.6%; position sizing must calibrate to $10.41/share risk.",
       "Structural Risk: Stop loss is positioned 3.6% below preferred entry price.",
-      "Macro Regime Context: Operating in STRONG_BULL regime with regime multiplier applied.",
+      "Macro Regime Context: Operating in WEAK_BULL regime with regime multiplier applied.",
       "Data Gap Note: Non-reported concepts: TotalDebt. Weights renormalized."
     ],
     "rationale": {
@@ -579,20 +579,20 @@
         "Volume participation: 20-day RVOL at 0.74x average daily volume."
       ],
       "fundamental": [
-        "Fundamental Quality Score: 52/100 with Valuation Score at 62/100.",
+        "Fundamental Quality Score: 52/100 with Valuation Score at 65/100.",
         "Point-in-Time status: PARTIAL."
       ],
       "news_catalysts": [
         "Recent verified disclosures: 0 continuous filing events recorded."
       ],
       "macro": [
-        "Operating within STRONG_BULL regime context."
+        "Operating within WEAK_BULL regime context."
       ],
       "sector": [
         "Sector alignment within Financials."
       ],
       "regime": [
-        "Positive forward expectancy across empirical walk-forward historical analogues in STRONG_BULL regime."
+        "Positive forward expectancy across empirical walk-forward historical analogues in WEAK_BULL regime."
       ]
     },
     "data_lineage": {
@@ -604,9 +604,9 @@
   },
   "ai_explanation": {
     "FACT": "RY (TSX - Royal Bank of Canada) closed at $288.37 CAD. Trading within -5.9% of its 52-week high with a 14-day ATR of 1.6%. The primary exchange session traded on volume of 2,716,500 shares.",
-    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 60/100 (Confidence Tier B). Technical Factor sub-score: 57/100 (14-day RSI: 53.6, 20-day RVOL: 0.74x), Fundamental Score: 56/100. Risk penalty applied: -0.0 points. Modulated by the STRONG_BULL macro regime.",
-    "INFERENCE": "Historical setups exhibiting stacked moving averages and low-bandwidth consolidation during a STRONG_BULL regime showed positive forward expectancy across 64% of walk-forward folds. Relative strength ranks in the upper quartile of the current dual-market universe.",
-    "UNCERTAINTY": "Risks include broader market sentiment deterioration in the STRONG_BULL environment. A daily close below technical support at $263.54 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
+    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 57/100 (Confidence Tier B). Technical Factor sub-score: 57/100 (14-day RSI: 53.6, 20-day RVOL: 0.74x), Fundamental Score: 57/100. Risk penalty applied: -0.0 points. Modulated by the WEAK_BULL macro regime.",
+    "INFERENCE": "Current technical structure reflects neutral consolidation. Setup geometry indicates digestive trading range with no confirmed directional expansion.",
+    "UNCERTAINTY": "Risks include broader market sentiment deterioration in the WEAK_BULL environment. A daily close below technical support at $263.54 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
   },
   "active_scanner_matches": [
     {
@@ -1599,27 +1599,26 @@
     "country": "CA",
     "currency": "CAD",
     "as_of_date": "2026-11-15",
-    "generated_at": "2026-11-15T23:15:02.091138+00:00",
+    "generated_at": "2026-11-15T23:34:27.907913+00:00",
     "conviction_grade": "B",
     "aligned_layers_count": 4,
-    "formatted_card": "TICKER: RY\nREGIME: STRONG_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 6.4%)\nPATTERN TYPE: Archetype C: Chartered Banks (Regulated Yield-Drift) \u2014 Earnings-Driven\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BULLISH \u2014 Stacked MAs (Bullish Stack), RSI 53.6 equilibrium, price structure holding above key support.\n  Fundamental:  8.0/10 \u2014 ROIC 4.1%, Debt/Equity 0.00, operating margin 41.2%; robust institutional quality balance sheet.\n  Sentiment:    0.00 (NEUTRAL) \u2014 Routine regulatory reporting schedule; no material catalyst in last 30 days.\n  Historical:   58.2% Win Rate (25 sample size, E[R]: +0.48R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $284.54 \u2013 $288.81\n  Entry trigger:  Price holds structural pivot ($283.82) followed by volume-backed expansion above $284.54.\n  Stop loss:      $277.44 (2.5% below entry)\n  Target 1 (T1):  $293.38 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $317.21 | Est. 24 days | Take 40%\n  Target 3 (T3):  $314.36 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 3.18\n  Position size:  140 shares on $100,000 portfolio risking 1% ($994.00)\n  Execution TCA:  TWAP (5 slices) | Est. Fill: $288.37 | Slippage: +0.4 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: B-Grade\nTRADE THESIS: RY exhibits high structural confluence with Earnings-Driven aligning above ascending moving averages. In the current STRONG_BULL macro context (20d adverse hazard: 6.4%), measured support at $283.82 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $277.44 or two consecutive closes back below $283.82 immediately invalidates the trade.",
+    "formatted_card": "TICKER: RY\nREGIME: WEAK_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 9.8%)\nPATTERN TYPE: Archetype C: Chartered Banks (Regulated Yield-Drift) \u2014 Earnings-Driven\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BULLISH \u2014 Stacked MAs (Bullish Stack), RSI 53.6 equilibrium, price structure holding above key support.\n  Fundamental:  8.0/10 \u2014 ROIC 4.1%, Debt/Equity 0.00, operating margin 41.2%; robust institutional quality balance sheet.\n  Sentiment:    0.00 (NEUTRAL) \u2014 Routine regulatory reporting schedule; no material catalyst in last 30 days.\n  Historical:   58.2% Win Rate (10 sample size, E[R]: +0.48R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $284.54 \u2013 $288.81\n  Entry trigger:  Price holds structural pivot ($283.82) followed by volume-backed expansion above $284.54.\n  Stop loss:      $277.44 (2.5% below entry)\n  Target 1 (T1):  $293.38 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $317.21 | Est. 24 days | Take 40%\n  Target 3 (T3):  $314.36 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 3.18\n  Position size:  140 shares on $100,000 portfolio risking 1% ($994.00)\n  Execution TCA:  TWAP (5 slices) | Est. Fill: $288.38 | Slippage: +0.5 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: B-Grade\nTRADE THESIS: RY exhibits high structural confluence with Earnings-Driven aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 9.8%), measured support at $283.82 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $277.44 or two consecutive closes back below $283.82 immediately invalidates the trade.",
     "layer_1_regime": {
       "trend_type": "Bull",
       "volatility_regime": "Medium (15\u201325)",
       "liquidity_env": "Risk-ON",
       "rate_context": "Paused",
-      "regime_state": "STRONG_BULL",
+      "regime_state": "WEAK_BULL",
       "regime_fit": "YES",
       "status": "BULLISH",
-      "conviction_weight": 1.05,
+      "conviction_weight": 1.0,
       "top_drivers": [
         "Index trading above rising 200-day moving average (bullish trend structure)",
-        "VIX at 16.0 indicates low implied volatility / calm conditions",
         "Yield curve positively sloped (+55 bps 10Y-2Y spread)"
       ],
-      "adverse_hazard_rate_5d": 0.0187,
-      "adverse_hazard_rate_20d": 0.0638,
-      "expected_regime_duration_days": 20.2,
+      "adverse_hazard_rate_5d": 0.0999,
+      "adverse_hazard_rate_20d": 0.0981,
+      "expected_regime_duration_days": 3.4,
       "hazard_tier": "LOW_HAZARD",
       "cross_border_macro_divergence_posture": "SYNCHRONIZED_EXPANSION"
     },
@@ -1657,12 +1656,12 @@
       "status": "BULLISH",
       "key_reason": "ROIC 4.1%, Debt/Equity 0.00, operating margin 41.2%; robust institutional quality balance sheet.",
       "quality_score": 52.0,
-      "valuation_score": 62.0,
+      "valuation_score": 65.0,
       "roic": 4.14,
       "operating_margin": 41.24,
       "margin_trend_bps": 272.8,
       "debt_to_equity": 0.0,
-      "pe_ratio": 69.72,
+      "pe_ratio": 19.8,
       "fcf_yield_pct": 9.4,
       "technical_gate_required": false
     },
@@ -1684,7 +1683,7 @@
     },
     "layer_6_memory": {
       "win_rate_pct": 58.2,
-      "sample_size": 25,
+      "sample_size": 10,
       "avg_move_pct": 7.4,
       "false_breakout_rate_pct": 18.5,
       "median_bars_to_target": 22,
@@ -1716,10 +1715,10 @@
       "position_value": 39835.6,
       "portfolio_risk_pct": 0.99,
       "invalidation_rule": "A daily closing price below $277.44 or two consecutive closes back below $283.82 immediately invalidates the trade.",
-      "trade_thesis": "RY exhibits high structural confluence with Earnings-Driven aligning above ascending moving averages. In the current STRONG_BULL macro context (20d adverse hazard: 6.4%), measured support at $283.82 offers asymmetric risk/reward into upper channel resistance.",
+      "trade_thesis": "RY exhibits high structural confluence with Earnings-Driven aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 9.8%), measured support at $283.82 offers asymmetric risk/reward into upper channel resistance.",
       "tca_execution_strategy": "TWAP",
-      "tca_expected_slippage_bps": 0.37,
-      "tca_effective_fill_price": 288.37,
+      "tca_expected_slippage_bps": 0.49,
+      "tca_effective_fill_price": 288.38,
       "tca_optimal_slices": 5
     },
     "meta_label_verdict": {
@@ -1728,21 +1727,21 @@
       "action": "GATED_EXCLUDE",
       "size_multiplier": 0.0,
       "primary_driver": "mom_12_1m (+0.37, impact -)",
-      "calibrated_at": "2026-11-15T23:15:02.314908+00:00"
+      "calibrated_at": "2026-11-15T23:34:28.162253+00:00"
     },
     "microstructure_metrics": {
       "symbol": "RY",
-      "timestamp": "2026-11-15T23:15:02.316684+00:00",
-      "cvd_total": 3001,
-      "cvd_1m_delta": 3240,
-      "cvd_5m_delta": 3001,
-      "order_book_imbalance": -0.0173,
-      "kyle_lambda": 0.0326,
-      "rvol_1m": 1.65,
+      "timestamp": "2026-11-15T23:34:28.164054+00:00",
+      "cvd_total": 1957,
+      "cvd_1m_delta": 2321,
+      "cvd_5m_delta": 1957,
+      "order_book_imbalance": 0.058,
+      "kyle_lambda": 0.0233,
+      "rvol_1m": 1.46,
       "absorption_signal": "NONE",
-      "liquidity_state": "NORMAL",
-      "buyer_volume_pct": 68.7,
-      "seller_volume_pct": 31.3
+      "liquidity_state": "SPREAD_EXPANSION",
+      "buyer_volume_pct": 56.7,
+      "seller_volume_pct": 43.3
     }
   },
   "disclaimers": {
