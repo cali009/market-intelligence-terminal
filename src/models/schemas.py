@@ -809,7 +809,21 @@ class CPCVValidationSummary(BaseModel):
     num_timeline_blocks: int
     embargo_days: int
     empirical_pbo: float
-    pbo_evaluation: Literal["LOW_OVERFITTING_RISK", "MODERATE_OVERFITTING_RISK", "HIGH_OVERFITTING_RISK"]
+    # HONESTY OVERHAUL (Phase 1): NOT_INFORMATIVE_NO_STRATEGY_PROFITABLE_OOS is
+    # emitted when no strategy is profitable out-of-sample. In that state a low
+    # PBO is an artefact of a uniformly losing trial set rather than evidence of
+    # sound research, so it must never be banded as LOW_OVERFITTING_RISK.
+    pbo_evaluation: Literal[
+        "LOW_OVERFITTING_RISK",
+        "MODERATE_OVERFITTING_RISK",
+        "HIGH_OVERFITTING_RISK",
+        "NOT_INFORMATIVE_NO_STRATEGY_PROFITABLE_OOS",
+    ]
+    #: False when no strategy is profitable out-of-sample, i.e. when the PBO
+    #: value above should not be read as a statement about overfitting risk.
+    pbo_informative: bool = True
+    profitable_strategies_oos: List[str] = []
+    credible_profitable_strategies_oos: List[str] = []
     target_fdr_q: float
     fdr_passed_count: int
     fdr_rejected_count: int

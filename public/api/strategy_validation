@@ -1,0 +1,756 @@
+{
+  "generated_at": "2026-11-15T01:45:15.686781+00:00",
+  "as_of_date": "2026-11-15",
+  "source_of_truth": "Computed by src/engine/strategy_validation.py from the walk-forward trade ledger in backtests.json and the FDR table in cpcv_validation.json. No figure on this panel is hard-coded.",
+  "validation_criteria": {
+    "min_t_stat": 2.0,
+    "min_dsr": 0.95,
+    "min_trial_count": 12,
+    "fdr_q": 0.05,
+    "min_oos_trades": 100,
+    "min_oos_months": 36,
+    "max_drawdown_pct": 35.0,
+    "dropped_best_trades": 5,
+    "min_forward_months": 3,
+    "max_forward_degradation_pct": 40.0
+  },
+  "summary": {
+    "strategies_evaluated": 8,
+    "passed_all_gates": 0,
+    "failed": 3,
+    "insufficient_sample": 5,
+    "not_validated": 0,
+    "promoted_to_live": 0,
+    "promotion_statement": "No strategy is promoted to live. 0 of 8 strategies pass all eight gates."
+  },
+  "pbo": {
+    "value": 0.133,
+    "informative": false,
+    "assessment": "not informative \u2014 no strategy profitable out-of-sample",
+    "reason": "3 strategies show a positive out-of-sample mean (PO3_LIQUIDITY_SWEEP, PO3_META_GATED, ADAPTIVE_DUAL_REGIME) but none on a sample large enough to mean anything \u2014 all fall short of the 100-trade / 36-month threshold. There is no credible profitable strategy whose ranking could be inverted, so a low PBO here would be an artefact and must not be read as reassurance about overfitting.",
+    "profitable_strategies": [
+      "PO3_LIQUIDITY_SWEEP",
+      "PO3_META_GATED",
+      "ADAPTIVE_DUAL_REGIME"
+    ],
+    "credible_profitable_strategies": []
+  },
+  "forward_record": {
+    "exists": false,
+    "entries": 0,
+    "timestamped_entries": 0,
+    "months_covered": 0,
+    "reason": "No forward log file exists. No strategy has any forward paper record."
+  },
+  "strategies": [
+    {
+      "strategy_id": "ENSEMBLE_8F",
+      "strategy_name": "8-Factor Composite Trend & Value Ensemble",
+      "verdict": "FAILED",
+      "verdict_reason": "Out-of-sample result is a statistically significant loss (mean -1.453%, t = -3.37). The sample is short but the direction is not in doubt.",
+      "oos_trades": 98,
+      "oos_months": 6,
+      "oos_mean_return_pct": -1.4534,
+      "oos_expectancy_r": -0.4422,
+      "oos_t_stat": -3.371,
+      "gates_passed": 2,
+      "gates_failed": 6,
+      "gates_unevaluable": 0,
+      "gates": [
+        {
+          "gate_id": 1,
+          "name": "Out-of-sample profitability",
+          "requirement": "OOS mean return after costs > 0 with t-statistic \u2265 2.0",
+          "passed": false,
+          "observed": "mean -1.453%, t = -3.37 (n=98)",
+          "detail": "Mean is not above zero; t-statistic is below the 2.0 threshold.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 2,
+          "name": "Deflated Sharpe ratio",
+          "requirement": "DSR \u2265 0.95 counting all variants (N \u2265 12)",
+          "passed": false,
+          "observed": "DSR 0.001, trials 8",
+          "detail": "DSR is below 0.95; trial count is below the 12 minimum.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 3,
+          "name": "Multiple-testing control",
+          "requirement": "Passes Benjamini-Hochberg FDR at q = 0.05",
+          "passed": true,
+          "observed": "p = 0.00267 vs critical 0.00625 \u2192 FDR_PASSED",
+          "detail": "Survives multiple-testing control.",
+          "symbol": "\u2705"
+        },
+        {
+          "gate_id": 4,
+          "name": "Sufficient out-of-sample evidence",
+          "requirement": "\u2265 100 OOS trades or \u2265 36 monthly periods",
+          "passed": false,
+          "observed": "98 trades, 6 month(s)",
+          "detail": "Below both thresholds \u2014 results are not statistically meaningful.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 5,
+          "name": "Beats the benchmark",
+          "requirement": "Beats SPY (US) / XIU (CA) buy-and-hold after costs over the same window",
+          "passed": false,
+          "observed": "strategy -17.90% vs SPY +0.00% / XIU +5.21%",
+          "detail": "Over the OOS window: SPY not beaten, XIU not beaten.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 6,
+          "name": "Drawdown limit",
+          "requirement": "Max drawdown \u2264 35%",
+          "passed": true,
+          "observed": "18.80% (OOS equity curve)",
+          "detail": "Within the 35%% limit.",
+          "symbol": "\u2705"
+        },
+        {
+          "gate_id": 7,
+          "name": "Not dependent on a few winners",
+          "requirement": "Still positive after removing the 5 best trades",
+          "passed": false,
+          "observed": "trimmed mean -0.591R (n=93)",
+          "detail": "Profitability depends on the top 5 trades.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 8,
+          "name": "Forward paper record",
+          "requirement": "\u2265 3 months of genuine timestamped forward paper record, degrading \u2264 40% vs backtest",
+          "passed": false,
+          "observed": "0 forward trades, 0 month(s)",
+          "detail": "No forward paper record exists for any strategy. No forward log file exists. No strategy has any forward paper record.",
+          "symbol": "\u274c"
+        }
+      ]
+    },
+    {
+      "strategy_id": "TAC01_PULLBACK",
+      "strategy_name": "TAC-01: Pullback to Key Support Swing",
+      "verdict": "INSUFFICIENT SAMPLE",
+      "verdict_reason": "Only 81 trades, 6 month(s) \u2014 too little out-of-sample evidence to reach a verdict. This is not a pass, and not yet a fail.",
+      "oos_trades": 81,
+      "oos_months": 6,
+      "oos_mean_return_pct": -0.3594,
+      "oos_expectancy_r": -0.187,
+      "oos_t_stat": -0.721,
+      "gates_passed": 1,
+      "gates_failed": 7,
+      "gates_unevaluable": 0,
+      "gates": [
+        {
+          "gate_id": 1,
+          "name": "Out-of-sample profitability",
+          "requirement": "OOS mean return after costs > 0 with t-statistic \u2265 2.0",
+          "passed": false,
+          "observed": "mean -0.359%, t = -0.72 (n=81)",
+          "detail": "Mean is not above zero; t-statistic is below the 2.0 threshold.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 2,
+          "name": "Deflated Sharpe ratio",
+          "requirement": "DSR \u2265 0.95 counting all variants (N \u2265 12)",
+          "passed": false,
+          "observed": "DSR 0.009, trials 8",
+          "detail": "DSR is below 0.95; trial count is below the 12 minimum.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 3,
+          "name": "Multiple-testing control",
+          "requirement": "Passes Benjamini-Hochberg FDR at q = 0.05",
+          "passed": false,
+          "observed": "p = 0.43333 vs critical 0.0375 \u2192 REJECTED_SELECTION_BIAS",
+          "detail": "Rejected for selection bias.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 4,
+          "name": "Sufficient out-of-sample evidence",
+          "requirement": "\u2265 100 OOS trades or \u2265 36 monthly periods",
+          "passed": false,
+          "observed": "81 trades, 6 month(s)",
+          "detail": "Below both thresholds \u2014 results are not statistically meaningful.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 5,
+          "name": "Beats the benchmark",
+          "requirement": "Beats SPY (US) / XIU (CA) buy-and-hold after costs over the same window",
+          "passed": false,
+          "observed": "strategy -8.07% vs SPY +0.00% / XIU +5.21%",
+          "detail": "Over the OOS window: SPY not beaten, XIU not beaten.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 6,
+          "name": "Drawdown limit",
+          "requirement": "Max drawdown \u2264 35%",
+          "passed": true,
+          "observed": "10.86% (OOS equity curve)",
+          "detail": "Within the 35%% limit.",
+          "symbol": "\u2705"
+        },
+        {
+          "gate_id": 7,
+          "name": "Not dependent on a few winners",
+          "requirement": "Still positive after removing the 5 best trades",
+          "passed": false,
+          "observed": "trimmed mean -0.365R (n=76)",
+          "detail": "Profitability depends on the top 5 trades.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 8,
+          "name": "Forward paper record",
+          "requirement": "\u2265 3 months of genuine timestamped forward paper record, degrading \u2264 40% vs backtest",
+          "passed": false,
+          "observed": "0 forward trades, 0 month(s)",
+          "detail": "No forward paper record exists for any strategy. No forward log file exists. No strategy has any forward paper record.",
+          "symbol": "\u274c"
+        }
+      ]
+    },
+    {
+      "strategy_id": "TAC02_SQUEEZE",
+      "strategy_name": "TAC-02: Volatility Squeeze Expansion",
+      "verdict": "INSUFFICIENT SAMPLE",
+      "verdict_reason": "Only 65 trades, 6 month(s) \u2014 too little out-of-sample evidence to reach a verdict. This is not a pass, and not yet a fail.",
+      "oos_trades": 65,
+      "oos_months": 6,
+      "oos_mean_return_pct": -0.6037,
+      "oos_expectancy_r": -0.3251,
+      "oos_t_stat": -1.39,
+      "gates_passed": 1,
+      "gates_failed": 7,
+      "gates_unevaluable": 0,
+      "gates": [
+        {
+          "gate_id": 1,
+          "name": "Out-of-sample profitability",
+          "requirement": "OOS mean return after costs > 0 with t-statistic \u2265 2.0",
+          "passed": false,
+          "observed": "mean -0.604%, t = -1.39 (n=65)",
+          "detail": "Mean is not above zero; t-statistic is below the 2.0 threshold.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 2,
+          "name": "Deflated Sharpe ratio",
+          "requirement": "DSR \u2265 0.95 counting all variants (N \u2265 12)",
+          "passed": false,
+          "observed": "DSR 0.113, trials 8",
+          "detail": "DSR is below 0.95; trial count is below the 12 minimum.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 3,
+          "name": "Multiple-testing control",
+          "requirement": "Passes Benjamini-Hochberg FDR at q = 0.05",
+          "passed": false,
+          "observed": "p = 0.54191 vs critical 0.04375 \u2192 REJECTED_SELECTION_BIAS",
+          "detail": "Rejected for selection bias.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 4,
+          "name": "Sufficient out-of-sample evidence",
+          "requirement": "\u2265 100 OOS trades or \u2265 36 monthly periods",
+          "passed": false,
+          "observed": "65 trades, 6 month(s)",
+          "detail": "Below both thresholds \u2014 results are not statistically meaningful.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 5,
+          "name": "Beats the benchmark",
+          "requirement": "Beats SPY (US) / XIU (CA) buy-and-hold after costs over the same window",
+          "passed": false,
+          "observed": "strategy -4.07% vs SPY +0.00% / XIU +5.21%",
+          "detail": "Over the OOS window: SPY not beaten, XIU not beaten.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 6,
+          "name": "Drawdown limit",
+          "requirement": "Max drawdown \u2264 35%",
+          "passed": true,
+          "observed": "9.01% (OOS equity curve)",
+          "detail": "Within the 35%% limit.",
+          "symbol": "\u2705"
+        },
+        {
+          "gate_id": 7,
+          "name": "Not dependent on a few winners",
+          "requirement": "Still positive after removing the 5 best trades",
+          "passed": false,
+          "observed": "trimmed mean -0.531R (n=60)",
+          "detail": "Profitability depends on the top 5 trades.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 8,
+          "name": "Forward paper record",
+          "requirement": "\u2265 3 months of genuine timestamped forward paper record, degrading \u2264 40% vs backtest",
+          "passed": false,
+          "observed": "0 forward trades, 0 month(s)",
+          "detail": "No forward paper record exists for any strategy. No forward log file exists. No strategy has any forward paper record.",
+          "symbol": "\u274c"
+        }
+      ]
+    },
+    {
+      "strategy_id": "TAC04_MOMENTUM",
+      "strategy_name": "TAC-04: Momentum Leader Breakout",
+      "verdict": "FAILED",
+      "verdict_reason": "Out-of-sample result is a statistically significant loss (mean -1.496%, t = -3.67). The sample is short but the direction is not in doubt.",
+      "oos_trades": 72,
+      "oos_months": 6,
+      "oos_mean_return_pct": -1.4963,
+      "oos_expectancy_r": -0.5003,
+      "oos_t_stat": -3.665,
+      "gates_passed": 1,
+      "gates_failed": 7,
+      "gates_unevaluable": 0,
+      "gates": [
+        {
+          "gate_id": 1,
+          "name": "Out-of-sample profitability",
+          "requirement": "OOS mean return after costs > 0 with t-statistic \u2265 2.0",
+          "passed": false,
+          "observed": "mean -1.496%, t = -3.67 (n=72)",
+          "detail": "Mean is not above zero; t-statistic is below the 2.0 threshold.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 2,
+          "name": "Deflated Sharpe ratio",
+          "requirement": "DSR \u2265 0.95 counting all variants (N \u2265 12)",
+          "passed": false,
+          "observed": "DSR 0.000, trials 8",
+          "detail": "DSR is below 0.95; trial count is below the 12 minimum.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 3,
+          "name": "Multiple-testing control",
+          "requirement": "Passes Benjamini-Hochberg FDR at q = 0.05",
+          "passed": false,
+          "observed": "p = 0.02596 vs critical 0.0125 \u2192 REJECTED_SELECTION_BIAS",
+          "detail": "Rejected for selection bias.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 4,
+          "name": "Sufficient out-of-sample evidence",
+          "requirement": "\u2265 100 OOS trades or \u2265 36 monthly periods",
+          "passed": false,
+          "observed": "72 trades, 6 month(s)",
+          "detail": "Below both thresholds \u2014 results are not statistically meaningful.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 5,
+          "name": "Beats the benchmark",
+          "requirement": "Beats SPY (US) / XIU (CA) buy-and-hold after costs over the same window",
+          "passed": false,
+          "observed": "strategy -19.64% vs SPY +0.00% / XIU +5.21%",
+          "detail": "Over the OOS window: SPY not beaten, XIU not beaten.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 6,
+          "name": "Drawdown limit",
+          "requirement": "Max drawdown \u2264 35%",
+          "passed": true,
+          "observed": "19.64% (OOS equity curve)",
+          "detail": "Within the 35%% limit.",
+          "symbol": "\u2705"
+        },
+        {
+          "gate_id": 7,
+          "name": "Not dependent on a few winners",
+          "requirement": "Still positive after removing the 5 best trades",
+          "passed": false,
+          "observed": "trimmed mean -0.653R (n=67)",
+          "detail": "Profitability depends on the top 5 trades.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 8,
+          "name": "Forward paper record",
+          "requirement": "\u2265 3 months of genuine timestamped forward paper record, degrading \u2264 40% vs backtest",
+          "passed": false,
+          "observed": "0 forward trades, 0 month(s)",
+          "detail": "No forward paper record exists for any strategy. No forward log file exists. No strategy has any forward paper record.",
+          "symbol": "\u274c"
+        }
+      ]
+    },
+    {
+      "strategy_id": "PO3_LIQUIDITY_SWEEP",
+      "strategy_name": "TAC-15: Power of Three (PO3) Liquidity Sweep & Manipulation Reversal",
+      "verdict": "INSUFFICIENT SAMPLE",
+      "verdict_reason": "Only 10 trades, 6 month(s) \u2014 too little out-of-sample evidence to reach a verdict. This is not a pass, and not yet a fail.",
+      "oos_trades": 10,
+      "oos_months": 6,
+      "oos_mean_return_pct": 1.507,
+      "oos_expectancy_r": 0.394,
+      "oos_t_stat": 0.965,
+      "gates_passed": 1,
+      "gates_failed": 7,
+      "gates_unevaluable": 0,
+      "gates": [
+        {
+          "gate_id": 1,
+          "name": "Out-of-sample profitability",
+          "requirement": "OOS mean return after costs > 0 with t-statistic \u2265 2.0",
+          "passed": false,
+          "observed": "mean 1.507%, t = 0.97 (n=10)",
+          "detail": "Mean is above zero; t-statistic is below the 2.0 threshold.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 2,
+          "name": "Deflated Sharpe ratio",
+          "requirement": "DSR \u2265 0.95 counting all variants (N \u2265 12)",
+          "passed": false,
+          "observed": "DSR 0.562, trials 8",
+          "detail": "DSR is below 0.95; trial count is below the 12 minimum.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 3,
+          "name": "Multiple-testing control",
+          "requirement": "Passes Benjamini-Hochberg FDR at q = 0.05",
+          "passed": false,
+          "observed": "p = 0.21926 vs critical 0.01875 \u2192 REJECTED_SELECTION_BIAS",
+          "detail": "Rejected for selection bias.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 4,
+          "name": "Sufficient out-of-sample evidence",
+          "requirement": "\u2265 100 OOS trades or \u2265 36 monthly periods",
+          "passed": false,
+          "observed": "10 trades, 6 month(s)",
+          "detail": "Below both thresholds \u2014 results are not statistically meaningful.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 5,
+          "name": "Beats the benchmark",
+          "requirement": "Beats SPY (US) / XIU (CA) buy-and-hold after costs over the same window",
+          "passed": false,
+          "observed": "strategy +4.71% vs SPY +0.00% / XIU +5.21%",
+          "detail": "Over the OOS window: SPY beaten, XIU not beaten.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 6,
+          "name": "Drawdown limit",
+          "requirement": "Max drawdown \u2264 35%",
+          "passed": true,
+          "observed": "0.97% (OOS equity curve)",
+          "detail": "Within the 35%% limit.",
+          "symbol": "\u2705"
+        },
+        {
+          "gate_id": 7,
+          "name": "Not dependent on a few winners",
+          "requirement": "Still positive after removing the 5 best trades",
+          "passed": false,
+          "observed": "trimmed mean -0.992R (n=5)",
+          "detail": "Profitability depends on the top 5 trades.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 8,
+          "name": "Forward paper record",
+          "requirement": "\u2265 3 months of genuine timestamped forward paper record, degrading \u2264 40% vs backtest",
+          "passed": false,
+          "observed": "0 forward trades, 0 month(s)",
+          "detail": "No forward paper record exists for any strategy. No forward log file exists. No strategy has any forward paper record.",
+          "symbol": "\u274c"
+        }
+      ]
+    },
+    {
+      "strategy_id": "PO3_META_GATED",
+      "strategy_name": "TAC-15-ML: PO3 Liquidity Sweep with ML Meta-Label Gating",
+      "verdict": "INSUFFICIENT SAMPLE",
+      "verdict_reason": "Only 8 trades, 4 month(s) \u2014 too little out-of-sample evidence to reach a verdict. This is not a pass, and not yet a fail.",
+      "oos_trades": 8,
+      "oos_months": 4,
+      "oos_mean_return_pct": 1.8563,
+      "oos_expectancy_r": 0.5625,
+      "oos_t_stat": 1.142,
+      "gates_passed": 1,
+      "gates_failed": 7,
+      "gates_unevaluable": 0,
+      "gates": [
+        {
+          "gate_id": 1,
+          "name": "Out-of-sample profitability",
+          "requirement": "OOS mean return after costs > 0 with t-statistic \u2265 2.0",
+          "passed": false,
+          "observed": "mean 1.856%, t = 1.14 (n=8)",
+          "detail": "Mean is above zero; t-statistic is below the 2.0 threshold.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 2,
+          "name": "Deflated Sharpe ratio",
+          "requirement": "DSR \u2265 0.95 counting all variants (N \u2265 12)",
+          "passed": false,
+          "observed": "DSR 0.420, trials 8",
+          "detail": "DSR is below 0.95; trial count is below the 12 minimum.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 3,
+          "name": "Multiple-testing control",
+          "requirement": "Passes Benjamini-Hochberg FDR at q = 0.05",
+          "passed": false,
+          "observed": "p = 0.35344 vs critical 0.03125 \u2192 REJECTED_SELECTION_BIAS",
+          "detail": "Rejected for selection bias.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 4,
+          "name": "Sufficient out-of-sample evidence",
+          "requirement": "\u2265 100 OOS trades or \u2265 36 monthly periods",
+          "passed": false,
+          "observed": "8 trades, 4 month(s)",
+          "detail": "Below both thresholds \u2014 results are not statistically meaningful.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 5,
+          "name": "Beats the benchmark",
+          "requirement": "Beats SPY (US) / XIU (CA) buy-and-hold after costs over the same window",
+          "passed": false,
+          "observed": "strategy +3.68% vs SPY +0.00% / XIU +5.21%",
+          "detail": "Over the OOS window: SPY beaten, XIU not beaten.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 6,
+          "name": "Drawdown limit",
+          "requirement": "Max drawdown \u2264 35%",
+          "passed": true,
+          "observed": "0.66% (OOS equity curve)",
+          "detail": "Within the 35%% limit.",
+          "symbol": "\u2705"
+        },
+        {
+          "gate_id": 7,
+          "name": "Not dependent on a few winners",
+          "requirement": "Still positive after removing the 5 best trades",
+          "passed": false,
+          "observed": "trimmed mean -1.060R (n=3)",
+          "detail": "Profitability depends on the top 5 trades.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 8,
+          "name": "Forward paper record",
+          "requirement": "\u2265 3 months of genuine timestamped forward paper record, degrading \u2264 40% vs backtest",
+          "passed": false,
+          "observed": "0 forward trades, 0 month(s)",
+          "detail": "No forward paper record exists for any strategy. No forward log file exists. No strategy has any forward paper record.",
+          "symbol": "\u274c"
+        }
+      ]
+    },
+    {
+      "strategy_id": "ADAPTIVE_DUAL_REGIME",
+      "strategy_name": "Dual-Regime Adaptive Ensemble (PO3 + Momentum/Pullback)",
+      "verdict": "INSUFFICIENT SAMPLE",
+      "verdict_reason": "Only 18 trades, 6 month(s) \u2014 too little out-of-sample evidence to reach a verdict. This is not a pass, and not yet a fail.",
+      "oos_trades": 18,
+      "oos_months": 6,
+      "oos_mean_return_pct": 0.8589,
+      "oos_expectancy_r": 0.1794,
+      "oos_t_stat": 0.84,
+      "gates_passed": 1,
+      "gates_failed": 7,
+      "gates_unevaluable": 0,
+      "gates": [
+        {
+          "gate_id": 1,
+          "name": "Out-of-sample profitability",
+          "requirement": "OOS mean return after costs > 0 with t-statistic \u2265 2.0",
+          "passed": false,
+          "observed": "mean 0.859%, t = 0.84 (n=18)",
+          "detail": "Mean is above zero; t-statistic is below the 2.0 threshold.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 2,
+          "name": "Deflated Sharpe ratio",
+          "requirement": "DSR \u2265 0.95 counting all variants (N \u2265 12)",
+          "passed": false,
+          "observed": "DSR 0.363, trials 8",
+          "detail": "DSR is below 0.95; trial count is below the 12 minimum.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 3,
+          "name": "Multiple-testing control",
+          "requirement": "Passes Benjamini-Hochberg FDR at q = 0.05",
+          "passed": false,
+          "observed": "p = 0.3379 vs critical 0.025 \u2192 REJECTED_SELECTION_BIAS",
+          "detail": "Rejected for selection bias.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 4,
+          "name": "Sufficient out-of-sample evidence",
+          "requirement": "\u2265 100 OOS trades or \u2265 36 monthly periods",
+          "passed": false,
+          "observed": "18 trades, 6 month(s)",
+          "detail": "Below both thresholds \u2014 results are not statistically meaningful.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 5,
+          "name": "Beats the benchmark",
+          "requirement": "Beats SPY (US) / XIU (CA) buy-and-hold after costs over the same window",
+          "passed": false,
+          "observed": "strategy +3.69% vs SPY +0.00% / XIU +5.21%",
+          "detail": "Over the OOS window: SPY beaten, XIU not beaten.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 6,
+          "name": "Drawdown limit",
+          "requirement": "Max drawdown \u2264 35%",
+          "passed": true,
+          "observed": "1.90% (OOS equity curve)",
+          "detail": "Within the 35%% limit.",
+          "symbol": "\u2705"
+        },
+        {
+          "gate_id": 7,
+          "name": "Not dependent on a few winners",
+          "requirement": "Still positive after removing the 5 best trades",
+          "passed": false,
+          "observed": "trimmed mean -0.384R (n=13)",
+          "detail": "Profitability depends on the top 5 trades.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 8,
+          "name": "Forward paper record",
+          "requirement": "\u2265 3 months of genuine timestamped forward paper record, degrading \u2264 40% vs backtest",
+          "passed": false,
+          "observed": "0 forward trades, 0 month(s)",
+          "detail": "No forward paper record exists for any strategy. No forward log file exists. No strategy has any forward paper record.",
+          "symbol": "\u274c"
+        }
+      ]
+    },
+    {
+      "strategy_id": "TAC03_BREAKOUT_CHASE",
+      "strategy_name": "TAC-03: Unconstrained Breakout Chase (RETIRED)",
+      "verdict": "FAILED",
+      "verdict_reason": "Out-of-sample result is a statistically significant loss (mean -3.236%, t = -2.74). The sample is short but the direction is not in doubt.",
+      "oos_trades": 7,
+      "oos_months": 4,
+      "oos_mean_return_pct": -3.2357,
+      "oos_expectancy_r": -0.7657,
+      "oos_t_stat": -2.736,
+      "gates_passed": 1,
+      "gates_failed": 7,
+      "gates_unevaluable": 0,
+      "gates": [
+        {
+          "gate_id": 1,
+          "name": "Out-of-sample profitability",
+          "requirement": "OOS mean return after costs > 0 with t-statistic \u2265 2.0",
+          "passed": false,
+          "observed": "mean -3.236%, t = -2.74 (n=7)",
+          "detail": "Mean is not above zero; t-statistic is below the 2.0 threshold.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 2,
+          "name": "Deflated Sharpe ratio",
+          "requirement": "DSR \u2265 0.95 counting all variants (N \u2265 12)",
+          "passed": false,
+          "observed": "DSR 0.087, trials 8",
+          "detail": "DSR is below 0.95; trial count is below the 12 minimum.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 3,
+          "name": "Multiple-testing control",
+          "requirement": "Passes Benjamini-Hochberg FDR at q = 0.05",
+          "passed": false,
+          "observed": "p = 0.66796 vs critical 0.05 \u2192 REJECTED_SELECTION_BIAS",
+          "detail": "Rejected for selection bias.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 4,
+          "name": "Sufficient out-of-sample evidence",
+          "requirement": "\u2265 100 OOS trades or \u2265 36 monthly periods",
+          "passed": false,
+          "observed": "7 trades, 4 month(s)",
+          "detail": "Below both thresholds \u2014 results are not statistically meaningful.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 5,
+          "name": "Beats the benchmark",
+          "requirement": "Beats SPY (US) / XIU (CA) buy-and-hold after costs over the same window",
+          "passed": false,
+          "observed": "strategy -1.85% vs SPY +0.00% / XIU +5.21%",
+          "detail": "Over the OOS window: SPY not beaten, XIU not beaten.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 6,
+          "name": "Drawdown limit",
+          "requirement": "Max drawdown \u2264 35%",
+          "passed": true,
+          "observed": "2.84% (OOS equity curve)",
+          "detail": "Within the 35%% limit.",
+          "symbol": "\u2705"
+        },
+        {
+          "gate_id": 7,
+          "name": "Not dependent on a few winners",
+          "requirement": "Still positive after removing the 5 best trades",
+          "passed": false,
+          "observed": "trimmed mean -1.085R (n=2)",
+          "detail": "Profitability depends on the top 5 trades.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 8,
+          "name": "Forward paper record",
+          "requirement": "\u2265 3 months of genuine timestamped forward paper record, degrading \u2264 40% vs backtest",
+          "passed": false,
+          "observed": "0 forward trades, 0 month(s)",
+          "detail": "No forward paper record exists for any strategy. No forward log file exists. No strategy has any forward paper record.",
+          "symbol": "\u274c"
+        }
+      ]
+    }
+  ],
+  "disclaimers": [
+    "No strategy shown here is validated, promoted or live.",
+    "This is research output, not investment advice or a trade recommendation.",
+    "Backtest results are historical simulations and do not predict future returns."
+  ]
+}

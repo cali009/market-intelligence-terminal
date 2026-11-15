@@ -62,8 +62,23 @@ def test_pbo_calculation_bounds():
     pbo = feed.summary.empirical_pbo
 
     assert 0.0 <= pbo <= 1.0
-    valid_evals = {"LOW_OVERFITTING_RISK", "MODERATE_OVERFITTING_RISK", "HIGH_OVERFITTING_RISK"}
+    valid_evals = {
+        "LOW_OVERFITTING_RISK",
+        "MODERATE_OVERFITTING_RISK",
+        "HIGH_OVERFITTING_RISK",
+        "NOT_INFORMATIVE_NO_STRATEGY_PROFITABLE_OOS",
+    }
     assert feed.summary.pbo_evaluation in valid_evals
+
+    # HONESTY OVERHAUL (Phase 1): a reassuring band may only be published when at
+    # least one strategy is profitable out-of-sample on an adequate sample.
+    # Otherwise a low PBO is an artefact of a uniformly losing trial set.
+    if not feed.summary.pbo_informative:
+        assert feed.summary.pbo_evaluation == "NOT_INFORMATIVE_NO_STRATEGY_PROFITABLE_OOS"
+        assert feed.summary.credible_profitable_strategies_oos == []
+    else:
+        assert feed.summary.pbo_evaluation != "NOT_INFORMATIVE_NO_STRATEGY_PROFITABLE_OOS"
+        assert len(feed.summary.credible_profitable_strategies_oos) > 0
 
 
 def test_retired_strategy_underperformance_in_cpcv():

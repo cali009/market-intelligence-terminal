@@ -1,27 +1,40 @@
 {
-  "as_of_date": "2026-10-04",
-  "generated_at": "2026-10-04T02:57:43.373612+00:00",
+  "as_of_date": "2026-11-15",
+  "generated_at": "2026-11-15T01:45:53.390224+00:00",
   "session": {
-    "session": "2026-10-04",
-    "evaluations": 0,
-    "orders": 0,
-    "hard_rejections": 0,
-    "soft_limits": 0,
-    "approvals": 0,
-    "submitted_notional_usd": 0.0,
-    "rejected_notional_usd": 0.0,
-    "rejected_share": 0.0,
-    "breached_controls": {},
-    "top_rejected_symbols": [],
-    "generated_at": "2026-10-04T02:57:43.373612+00:00"
+    "session": "2026-11-15",
+    "evaluations": 16,
+    "orders": 8,
+    "hard_rejections": 4,
+    "soft_limits": 2,
+    "approvals": 10,
+    "submitted_notional_usd": 22380.0,
+    "rejected_notional_usd": 5190.0,
+    "rejected_share": 0.231903,
+    "breached_controls": {
+      "C1": 2,
+      "C12": 2,
+      "C9": 2
+    },
+    "top_rejected_symbols": [
+      {
+        "symbol": "AAPL",
+        "rejected_notional_usd": 3000.0
+      },
+      {
+        "symbol": "SHOP",
+        "rejected_notional_usd": 2190.0
+      }
+    ],
+    "generated_at": "2026-11-15T01:45:53.390224+00:00"
   },
   "predicate_28": {
     "predicate_type": "PRE_TRADE_RISK_BREACH",
-    "fired": false,
-    "severity": null,
-    "action_required": null,
-    "headline": null,
-    "body": null,
+    "fired": true,
+    "severity": "WARNING",
+    "action_required": "REVIEW_POSITION_SIZING",
+    "headline": "Pre-Trade Risk Breach: 4 hard rejections this session (WARNING)",
+    "body": "The pre-trade risk governor hard-rejected 4 of 16 order evaluations in session 2026-11-15, with $5,190 of $22,380 submitted notional refused. Triggered by: 4 hard rejections against a boundary of 3. Controls breached: C1 (2), C12 (2), C9 (2). Repeated pre-trade rejections indicate the signals being generated are larger or more concentrated than the declared risk envelope permits. This is a strategy/risk alignment finding and requires review of position sizing assumptions; it is not a statement about expected returns.",
     "thresholds": {
       "hard_rejection_trigger": 3,
       "critical_rejections": 10,
@@ -76,9 +89,9 @@
     "passed": true,
     "artifact_path": "/home/user/data/attestations/aos_2026.json",
     "scope_note": "Attests pre-trade control coverage, routing gates, state-machine integrity and kill-switch operation only. Does not attest profitability, fill-quality realism, or the suitability of any signal. Unregistered impersonal research; no external broker adapter ships and no order routes to a live venue.",
-    "days_until_expiry": 365,
+    "days_until_expiry": 323,
     "expired": false,
-    "artifact_sha256": "059f602965345cf8ed1cf1cd1e74d9b3f9696e3500b73d47a1b3c934c5152094"
+    "artifact_sha256": "7276d6a6ba54afbcc14b46c1a56d8cefa8ba6f625adbcb6ca5c39f64f8aae120"
   },
   "disclaimers": [
     "Decision-support and research only. Not investment advice and not a recommendation to buy or sell any security.",

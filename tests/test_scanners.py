@@ -76,10 +76,13 @@ def test_all_14_definitions_exist():
         assert "name" in d
         assert "category" in d
         assert "rule_summary" in d
-        assert "historical_win_rate_pct" in d
-        assert d["historical_win_rate_pct"] > 40.0
-        assert "forward_5d_return_pct" in d
-        assert "expectancy_r" in d
+        # HONESTY OVERHAUL (Phase 1): these four were typed-in constants with no
+        # sample behind them. They must be absent, and the definition must say why.
+        for retired in ("historical_win_rate_pct", "forward_5d_return_pct",
+                        "expectancy_r", "sample_size"):
+            assert retired not in d, "%s must not be published" % retired
+        assert "not published" in d["stats_status"].lower() or "cannot be computed" \
+            in d["stats_status"].lower()
         assert d["regime_status"] in ("PASS", "GATED")
 
 

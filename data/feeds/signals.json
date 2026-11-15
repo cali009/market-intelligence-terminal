@@ -1,58 +1,58 @@
 {
-  "as_of_date": "2026-10-04",
-  "generated_at": "2026-10-04T02:56:38.765834+00:00",
-  "total_active_signals": 10,
+  "as_of_date": "2026-11-15",
+  "generated_at": "2026-11-15T01:45:06.709447+00:00",
+  "total_active_signals": 12,
   "signals": [
     {
       "symbol": "AAPL",
       "exchange": "NASDAQ",
       "name": "Apple Inc.",
       "currency": "USD",
-      "composite_score": 68,
+      "composite_score": 60,
       "confidence_tier": "B",
       "direction": "LONG",
       "stance": "POTENTIAL LONG SETUP",
-      "setup_type": "PULLBACK",
-      "preferred_entry": 338.4,
-      "alt_entry": 328.31,
+      "setup_type": "TREND_CONTINUATION",
+      "preferred_entry": 356.27,
+      "alt_entry": 346.15,
       "entry_zone": [
-        335.02,
-        339.75
+        352.49,
+        358.16
       ],
-      "structural_stop": 323.54,
-      "stop_distance_pct": 4.4,
+      "structural_stop": 335.47,
+      "stop_distance_pct": 5.8,
       "targets": [
         {
-          "target": 343.24,
-          "basis": "Trim candidate at nearest major resistance level ($344.96)",
-          "rr": 0.33
+          "target": 372.21,
+          "basis": "Trim candidate at nearest major resistance level ($374.08)",
+          "rr": 0.77
         },
         {
-          "target": 375.55,
-          "basis": "2.5R measured target (+11.0%)",
+          "target": 408.27,
+          "basis": "2.5R measured target (+14.6%)",
           "rr": 2.5
         },
         {
-          "target": 397.84,
-          "basis": "Structural extension / Trailing 2xATR chandelier (+17.6%)"
+          "target": 439.47,
+          "basis": "Structural extension / Trailing 2xATR chandelier (+23.4%)"
         }
       ],
       "risk_reward_ratio": 2.5,
-      "planned_rr_t1": 0.33,
+      "planned_rr_t1": 0.77,
       "planned_rr_t2": 2.5,
-      "realized_rr_t1": 0.29,
+      "realized_rr_t1": 0.68,
       "holding_period_desc": "POSITION \u2014 empirical winner distribution: 20\u201365 sessions (median 38)",
       "invalidation_predicates": [
         {
           "predicate": "DAILY_CLOSE_BELOW_LEVEL",
-          "level": 323.54,
-          "description": "Daily closing price finishes below structural stop loss of $323.54"
+          "level": 335.47,
+          "description": "Daily closing price finishes below structural stop loss of $335.47"
         },
         {
           "predicate": "BREAKOUT_FAILURE_CONSECUTIVE_CLOSES",
-          "level": 338.4,
+          "level": 356.27,
           "cycles": 2,
-          "description": "Two consecutive closes back below $338.40 on declining volume"
+          "description": "Two consecutive closes back below $356.27 on declining volume"
         },
         {
           "predicate": "RELATIVE_STRENGTH_COLLAPSE",
@@ -75,30 +75,30 @@
         }
       ],
       "risk_notes": [
-        "Volatility Sizing: 14-day ATR is 2.0%; position sizing must calibrate to $14.86/share risk.",
-        "Structural Risk: Stop loss is positioned 4.4% below preferred entry price.",
-        "Macro Regime Context: Operating in STRONG_BULL regime with regime multiplier applied."
+        "Volatility Sizing: 14-day ATR is 2.7%; position sizing must calibrate to $20.80/share risk.",
+        "Structural Risk: Stop loss is positioned 5.8% below preferred entry price.",
+        "Macro Regime Context: Operating in WEAK_BULL regime with regime multiplier applied."
       ],
       "rationale": {
         "technical": [
-          "Setup Type: PULLBACK verified with 14-day RSI at 61.8.",
-          "Volume participation: 20-day RVOL at 0.77x average daily volume."
+          "Setup Type: TREND CONTINUATION verified with 14-day RSI at 61.2.",
+          "Volume participation: 20-day RVOL at 0.85x average daily volume."
         ],
         "fundamental": [
-          "Fundamental Quality Score: 77/100 with Valuation Score at 26/100.",
+          "Fundamental Quality Score: 77/100 with Valuation Score at 21/100.",
           "Point-in-Time status: FULL."
         ],
         "news_catalysts": [
           "Recent verified disclosures: 5 continuous filing events recorded."
         ],
         "macro": [
-          "Operating within STRONG_BULL regime context."
+          "Operating within WEAK_BULL regime context."
         ],
         "sector": [
           "Sector alignment within Information Technology."
         ],
         "regime": [
-          "Positive forward expectancy across empirical walk-forward historical analogues in STRONG_BULL regime."
+          "Positive forward expectancy across empirical walk-forward historical analogues in WEAK_BULL regime."
         ]
       },
       "data_lineage": {
@@ -113,51 +113,51 @@
       "exchange": "NASDAQ",
       "name": "Microsoft Corporation",
       "currency": "USD",
-      "composite_score": 65,
+      "composite_score": 60,
       "confidence_tier": "B",
       "direction": "LONG",
       "stance": "POTENTIAL LONG SETUP",
       "setup_type": "PULLBACK",
-      "preferred_entry": 509.22,
-      "alt_entry": 496.45,
+      "preferred_entry": 523.88,
+      "alt_entry": 524.12,
       "entry_zone": [
-        503.59,
-        511.47
+        529.39,
+        527.39
       ],
-      "structural_stop": 484.33,
-      "stop_distance_pct": 4.9,
+      "structural_stop": 485.26,
+      "stop_distance_pct": 7.4,
       "targets": [
         {
-          "target": 511.71,
-          "basis": "Trim candidate at nearest major resistance level ($514.28)",
-          "rr": 0.1
+          "target": 540.8,
+          "basis": "Trim candidate at nearest major resistance level ($543.52)",
+          "rr": 0.44
         },
         {
-          "target": 571.45,
-          "basis": "2.5R measured target (+12.2%)",
+          "target": 620.43,
+          "basis": "2.5R measured target (+18.4%)",
           "rr": 2.5
         },
         {
-          "target": 608.78,
-          "basis": "Structural extension / Trailing 2xATR chandelier (+19.6%)"
+          "target": 678.36,
+          "basis": "Structural extension / Trailing 2xATR chandelier (+29.5%)"
         }
       ],
       "risk_reward_ratio": 2.5,
-      "planned_rr_t1": 0.1,
+      "planned_rr_t1": 0.44,
       "planned_rr_t2": 2.5,
-      "realized_rr_t1": 0.09,
+      "realized_rr_t1": 0.39,
       "holding_period_desc": "POSITION \u2014 empirical winner distribution: 20\u201365 sessions (median 38)",
       "invalidation_predicates": [
         {
           "predicate": "DAILY_CLOSE_BELOW_LEVEL",
-          "level": 484.33,
-          "description": "Daily closing price finishes below structural stop loss of $484.33"
+          "level": 485.26,
+          "description": "Daily closing price finishes below structural stop loss of $485.26"
         },
         {
           "predicate": "BREAKOUT_FAILURE_CONSECUTIVE_CLOSES",
-          "level": 509.22,
+          "level": 523.88,
           "cycles": 2,
-          "description": "Two consecutive closes back below $509.22 on declining volume"
+          "description": "Two consecutive closes back below $523.88 on declining volume"
         },
         {
           "predicate": "RELATIVE_STRENGTH_COLLAPSE",
@@ -180,14 +180,14 @@
         }
       ],
       "risk_notes": [
-        "Volatility Sizing: 14-day ATR is 2.2%; position sizing must calibrate to $24.89/share risk.",
-        "Structural Risk: Stop loss is positioned 4.9% below preferred entry price.",
-        "Macro Regime Context: Operating in STRONG_BULL regime with regime multiplier applied."
+        "Volatility Sizing: 14-day ATR is 3.4%; position sizing must calibrate to $38.62/share risk.",
+        "Structural Risk: Stop loss is positioned 7.4% below preferred entry price.",
+        "Macro Regime Context: Operating in WEAK_BULL regime with regime multiplier applied."
       ],
       "rationale": {
         "technical": [
-          "Setup Type: PULLBACK verified with 14-day RSI at 58.6.",
-          "Volume participation: 20-day RVOL at 0.92x average daily volume."
+          "Setup Type: PULLBACK verified with 14-day RSI at 50.3.",
+          "Volume participation: 20-day RVOL at 1.00x average daily volume."
         ],
         "fundamental": [
           "Fundamental Quality Score: 84/100 with Valuation Score at 69/100.",
@@ -197,13 +197,13 @@
           "Recent verified disclosures: 3 continuous filing events recorded."
         ],
         "macro": [
-          "Operating within STRONG_BULL regime context."
+          "Operating within WEAK_BULL regime context."
         ],
         "sector": [
           "Sector alignment within Information Technology."
         ],
         "regime": [
-          "Positive forward expectancy across empirical walk-forward historical analogues in STRONG_BULL regime."
+          "Positive forward expectancy across empirical walk-forward historical analogues in WEAK_BULL regime."
         ]
       },
       "data_lineage": {
@@ -214,266 +214,55 @@
       }
     },
     {
-      "symbol": "NVDA",
-      "exchange": "NASDAQ",
-      "name": "NVIDIA Corporation",
-      "currency": "USD",
-      "composite_score": 66,
-      "confidence_tier": "B",
-      "direction": "LONG",
-      "stance": "POTENTIAL LONG SETUP",
-      "setup_type": "BREAKOUT",
-      "preferred_entry": 228.86,
-      "alt_entry": 224.72,
-      "entry_zone": [
-        227.31,
-        230.93
-      ],
-      "structural_stop": 214.99,
-      "stop_distance_pct": 6.1,
-      "targets": [
-        {
-          "target": 229.36,
-          "basis": "Trim candidate at nearest major resistance level ($230.51)",
-          "rr": 0.04
-        },
-        {
-          "target": 263.54,
-          "basis": "2.5R measured target (+15.2%)",
-          "rr": 2.5
-        },
-        {
-          "target": 284.34,
-          "basis": "Structural extension / Trailing 2xATR chandelier (+24.2%)"
-        }
-      ],
-      "risk_reward_ratio": 2.5,
-      "planned_rr_t1": 0.04,
-      "planned_rr_t2": 2.5,
-      "realized_rr_t1": 0.04,
-      "holding_period_desc": "POSITION \u2014 empirical winner distribution: 20\u201365 sessions (median 38)",
-      "invalidation_predicates": [
-        {
-          "predicate": "DAILY_CLOSE_BELOW_LEVEL",
-          "level": 214.99,
-          "description": "Daily closing price finishes below structural stop loss of $214.99"
-        },
-        {
-          "predicate": "BREAKOUT_FAILURE_CONSECUTIVE_CLOSES",
-          "level": 228.86,
-          "cycles": 2,
-          "description": "Two consecutive closes back below $228.86 on declining volume"
-        },
-        {
-          "predicate": "RELATIVE_STRENGTH_COLLAPSE",
-          "threshold_percentile": 40,
-          "description": "Relative strength rank vs sector benchmark drops below the 40th percentile"
-        },
-        {
-          "predicate": "MATERIAL_ADVERSE_NEWS_EVENT",
-          "min_materiality": 4,
-          "description": "Unresolved Materiality 4+ regulatory, accounting, or going-concern disclosure"
-        },
-        {
-          "predicate": "REGIME_SHIFT_CRISIS",
-          "gated_regimes": [
-            "HIGH_VOLATILITY",
-            "BEARISH",
-            "CRISIS"
-          ],
-          "description": "Macro regime deterioration to High Volatility, Bearish, or Crisis state"
-        }
-      ],
-      "risk_notes": [
-        "Volatility Sizing: 14-day ATR is 2.3%; position sizing must calibrate to $13.87/share risk.",
-        "Structural Risk: Stop loss is positioned 6.1% below preferred entry price.",
-        "Macro Regime Context: Operating in STRONG_BULL regime with regime multiplier applied."
-      ],
-      "rationale": {
-        "technical": [
-          "Setup Type: BREAKOUT verified with 14-day RSI at 58.6.",
-          "Volume participation: 20-day RVOL at 1.25x average daily volume."
-        ],
-        "fundamental": [
-          "Fundamental Quality Score: 79/100 with Valuation Score at 23/100.",
-          "Point-in-Time status: FULL."
-        ],
-        "news_catalysts": [
-          "Recent verified disclosures: 5 continuous filing events recorded."
-        ],
-        "macro": [
-          "Operating within STRONG_BULL regime context."
-        ],
-        "sector": [
-          "Sector alignment within Information Technology."
-        ],
-        "regime": [
-          "Positive forward expectancy across empirical walk-forward historical analogues in STRONG_BULL regime."
-        ]
-      },
-      "data_lineage": {
-        "price_source": "PRIMARY_EXCHANGE_CANONICAL_EOD",
-        "fundamentals_source": "SEC_EDGAR_XBRL",
-        "news_source": "OFFICIAL_REGULATORY_FILINGS",
-        "point_in_time_verified": true
-      }
-    },
-    {
-      "symbol": "XOM",
+      "symbol": "JPM",
       "exchange": "NYSE",
-      "name": "Exxon Mobil Corporation",
+      "name": "JPMorgan Chase & Co.",
       "currency": "USD",
-      "composite_score": 55,
+      "composite_score": 54,
       "confidence_tier": "B",
-      "direction": "LONG",
-      "stance": "POTENTIAL LONG SETUP",
-      "setup_type": "TREND_CONTINUATION",
-      "preferred_entry": 162.52,
-      "alt_entry": 160.08,
-      "entry_zone": [
-        160.96,
-        163.3
-      ],
-      "structural_stop": 153.91,
-      "stop_distance_pct": 5.3,
-      "targets": [
-        {
-          "target": 163.16,
-          "basis": "Trim candidate at nearest major resistance level ($163.98)",
-          "rr": 0.07
-        },
-        {
-          "target": 184.05,
-          "basis": "2.5R measured target (+13.2%)",
-          "rr": 2.5
-        },
-        {
-          "target": 196.96,
-          "basis": "Structural extension / Trailing 2xATR chandelier (+21.2%)"
-        }
-      ],
-      "risk_reward_ratio": 2.5,
-      "planned_rr_t1": 0.07,
-      "planned_rr_t2": 2.5,
-      "realized_rr_t1": 0.06,
-      "holding_period_desc": "POSITION \u2014 empirical winner distribution: 20\u201365 sessions (median 38)",
-      "invalidation_predicates": [
-        {
-          "predicate": "DAILY_CLOSE_BELOW_LEVEL",
-          "level": 153.91,
-          "description": "Daily closing price finishes below structural stop loss of $153.91"
-        },
-        {
-          "predicate": "BREAKOUT_FAILURE_CONSECUTIVE_CLOSES",
-          "level": 162.52,
-          "cycles": 2,
-          "description": "Two consecutive closes back below $162.52 on declining volume"
-        },
-        {
-          "predicate": "RELATIVE_STRENGTH_COLLAPSE",
-          "threshold_percentile": 40,
-          "description": "Relative strength rank vs sector benchmark drops below the 40th percentile"
-        },
-        {
-          "predicate": "MATERIAL_ADVERSE_NEWS_EVENT",
-          "min_materiality": 4,
-          "description": "Unresolved Materiality 4+ regulatory, accounting, or going-concern disclosure"
-        },
-        {
-          "predicate": "REGIME_SHIFT_CRISIS",
-          "gated_regimes": [
-            "HIGH_VOLATILITY",
-            "BEARISH",
-            "CRISIS"
-          ],
-          "description": "Macro regime deterioration to High Volatility, Bearish, or Crisis state"
-        }
-      ],
-      "risk_notes": [
-        "Volatility Sizing: 14-day ATR is 2.4%; position sizing must calibrate to $8.61/share risk.",
-        "Structural Risk: Stop loss is positioned 5.3% below preferred entry price.",
-        "Macro Regime Context: Operating in STRONG_BULL regime with regime multiplier applied.",
-        "Data Gap Note: Non-reported concepts: OperatingIncome. Weights renormalized."
-      ],
-      "rationale": {
-        "technical": [
-          "Setup Type: TREND CONTINUATION verified with 14-day RSI at 52.3.",
-          "Volume participation: 20-day RVOL at 0.88x average daily volume."
-        ],
-        "fundamental": [
-          "Fundamental Quality Score: 20/100 with Valuation Score at 42/100.",
-          "Point-in-Time status: PARTIAL."
-        ],
-        "news_catalysts": [
-          "Recent verified disclosures: 5 continuous filing events recorded."
-        ],
-        "macro": [
-          "Operating within STRONG_BULL regime context."
-        ],
-        "sector": [
-          "Sector alignment within Energy."
-        ],
-        "regime": [
-          "Positive forward expectancy across empirical walk-forward historical analogues in STRONG_BULL regime."
-        ]
-      },
-      "data_lineage": {
-        "price_source": "PRIMARY_EXCHANGE_CANONICAL_EOD",
-        "fundamentals_source": "SEC_EDGAR_XBRL",
-        "news_source": "OFFICIAL_REGULATORY_FILINGS",
-        "point_in_time_verified": true
-      }
-    },
-    {
-      "symbol": "SPY",
-      "exchange": "AMEX",
-      "name": "SPDR S&P 500 ETF Trust",
-      "currency": "USD",
-      "composite_score": 77,
-      "confidence_tier": "A",
       "direction": "LONG",
       "stance": "POTENTIAL LONG SETUP",
       "setup_type": "PULLBACK",
-      "preferred_entry": 765.61,
-      "alt_entry": 763.05,
+      "preferred_entry": 346.19,
+      "alt_entry": 336.71,
       "entry_zone": [
-        765.16,
-        767.02
+        342.3,
+        347.75
       ],
-      "structural_stop": 750.11,
-      "stop_distance_pct": 2.0,
+      "structural_stop": 329.07,
+      "stop_distance_pct": 4.9,
       "targets": [
         {
-          "target": 788.86,
-          "basis": "1.5R initial trim target (+3.0%)",
-          "rr": 1.5
+          "target": 347.57,
+          "basis": "Trim candidate at nearest major resistance level ($349.32)",
+          "rr": 0.08
         },
         {
-          "target": 804.36,
-          "basis": "2.5R measured target (+5.1%)",
+          "target": 388.99,
+          "basis": "2.5R measured target (+12.4%)",
           "rr": 2.5
         },
         {
-          "target": 827.61,
-          "basis": "Structural extension / Trailing 2xATR chandelier (+8.1%)"
+          "target": 414.67,
+          "basis": "Structural extension / Trailing 2xATR chandelier (+19.8%)"
         }
       ],
       "risk_reward_ratio": 2.5,
-      "planned_rr_t1": 1.5,
+      "planned_rr_t1": 0.08,
       "planned_rr_t2": 2.5,
-      "realized_rr_t1": 1.32,
+      "realized_rr_t1": 0.07,
       "holding_period_desc": "POSITION \u2014 empirical winner distribution: 20\u201365 sessions (median 38)",
       "invalidation_predicates": [
         {
           "predicate": "DAILY_CLOSE_BELOW_LEVEL",
-          "level": 750.11,
-          "description": "Daily closing price finishes below structural stop loss of $750.11"
+          "level": 329.07,
+          "description": "Daily closing price finishes below structural stop loss of $329.07"
         },
         {
           "predicate": "BREAKOUT_FAILURE_CONSECUTIVE_CLOSES",
-          "level": 765.61,
+          "level": 346.19,
           "cycles": 2,
-          "description": "Two consecutive closes back below $765.61 on declining volume"
+          "description": "Two consecutive closes back below $346.19 on declining volume"
         },
         {
           "predicate": "RELATIVE_STRENGTH_COLLAPSE",
@@ -496,228 +285,18 @@
         }
       ],
       "risk_notes": [
-        "Volatility Sizing: 14-day ATR is 0.9%; position sizing must calibrate to $15.50/share risk.",
-        "Structural Risk: Stop loss is positioned 2.0% below preferred entry price.",
-        "Macro Regime Context: Operating in STRONG_BULL regime with regime multiplier applied."
-      ],
-      "rationale": {
-        "technical": [
-          "Setup Type: PULLBACK verified with 14-day RSI at 50.5.",
-          "Volume participation: 20-day RVOL at 0.96x average daily volume."
-        ],
-        "fundamental": [
-          "Fundamental Quality Score: 50/100 with Valuation Score at 50/100.",
-          "Point-in-Time status: INDEX_ETF_BYPASS."
-        ],
-        "news_catalysts": [
-          "Recent verified disclosures: 0 continuous filing events recorded."
-        ],
-        "macro": [
-          "Operating within STRONG_BULL regime context."
-        ],
-        "sector": [
-          "Sector alignment within Index ETF."
-        ],
-        "regime": [
-          "Positive forward expectancy across empirical walk-forward historical analogues in STRONG_BULL regime."
-        ]
-      },
-      "data_lineage": {
-        "price_source": "PRIMARY_EXCHANGE_CANONICAL_EOD",
-        "fundamentals_source": "SEC_EDGAR_XBRL",
-        "news_source": "OFFICIAL_REGULATORY_FILINGS",
-        "point_in_time_verified": true
-      }
-    },
-    {
-      "symbol": "QQQ",
-      "exchange": "NASDAQ",
-      "name": "Invesco QQQ Trust",
-      "currency": "USD",
-      "composite_score": 83,
-      "confidence_tier": "A",
-      "direction": "LONG",
-      "stance": "POTENTIAL LONG SETUP",
-      "setup_type": "BREAKOUT",
-      "preferred_entry": 736.53,
-      "alt_entry": 728.55,
-      "entry_zone": [
-        733.54,
-        740.52
-      ],
-      "structural_stop": 714.59,
-      "stop_distance_pct": 3.0,
-      "targets": [
-        {
-          "target": 769.44,
-          "basis": "1.5R initial trim target (+4.5%)",
-          "rr": 1.5
-        },
-        {
-          "target": 791.38,
-          "basis": "2.5R measured target (+7.4%)",
-          "rr": 2.5
-        },
-        {
-          "target": 824.29,
-          "basis": "Structural extension / Trailing 2xATR chandelier (+11.9%)"
-        }
-      ],
-      "risk_reward_ratio": 2.5,
-      "planned_rr_t1": 1.5,
-      "planned_rr_t2": 2.5,
-      "realized_rr_t1": 1.32,
-      "holding_period_desc": "POSITION \u2014 empirical winner distribution: 20\u201365 sessions (median 38)",
-      "invalidation_predicates": [
-        {
-          "predicate": "DAILY_CLOSE_BELOW_LEVEL",
-          "level": 714.59,
-          "description": "Daily closing price finishes below structural stop loss of $714.59"
-        },
-        {
-          "predicate": "BREAKOUT_FAILURE_CONSECUTIVE_CLOSES",
-          "level": 736.53,
-          "cycles": 2,
-          "description": "Two consecutive closes back below $736.53 on declining volume"
-        },
-        {
-          "predicate": "RELATIVE_STRENGTH_COLLAPSE",
-          "threshold_percentile": 40,
-          "description": "Relative strength rank vs sector benchmark drops below the 40th percentile"
-        },
-        {
-          "predicate": "MATERIAL_ADVERSE_NEWS_EVENT",
-          "min_materiality": 4,
-          "description": "Unresolved Materiality 4+ regulatory, accounting, or going-concern disclosure"
-        },
-        {
-          "predicate": "REGIME_SHIFT_CRISIS",
-          "gated_regimes": [
-            "HIGH_VOLATILITY",
-            "BEARISH",
-            "CRISIS"
-          ],
-          "description": "Macro regime deterioration to High Volatility, Bearish, or Crisis state"
-        }
-      ],
-      "risk_notes": [
-        "Volatility Sizing: 14-day ATR is 1.4%; position sizing must calibrate to $21.94/share risk.",
-        "Structural Risk: Stop loss is positioned 3.0% below preferred entry price.",
-        "Macro Regime Context: Operating in STRONG_BULL regime with regime multiplier applied."
-      ],
-      "rationale": {
-        "technical": [
-          "Setup Type: BREAKOUT verified with 14-day RSI at 58.5.",
-          "Volume participation: 20-day RVOL at 1.24x average daily volume."
-        ],
-        "fundamental": [
-          "Fundamental Quality Score: 50/100 with Valuation Score at 50/100.",
-          "Point-in-Time status: INDEX_ETF_BYPASS."
-        ],
-        "news_catalysts": [
-          "Recent verified disclosures: 0 continuous filing events recorded."
-        ],
-        "macro": [
-          "Operating within STRONG_BULL regime context."
-        ],
-        "sector": [
-          "Sector alignment within Index ETF."
-        ],
-        "regime": [
-          "Positive forward expectancy across empirical walk-forward historical analogues in STRONG_BULL regime."
-        ]
-      },
-      "data_lineage": {
-        "price_source": "PRIMARY_EXCHANGE_CANONICAL_EOD",
-        "fundamentals_source": "SEC_EDGAR_XBRL",
-        "news_source": "OFFICIAL_REGULATORY_FILINGS",
-        "point_in_time_verified": true
-      }
-    },
-    {
-      "symbol": "TD",
-      "exchange": "TSX",
-      "name": "Toronto-Dominion Bank",
-      "currency": "CAD",
-      "composite_score": 59,
-      "confidence_tier": "B",
-      "direction": "LONG",
-      "stance": "POTENTIAL LONG SETUP",
-      "setup_type": "BASE_BREAKOUT",
-      "preferred_entry": 169.6,
-      "alt_entry": 168.87,
-      "entry_zone": [
-        168.54,
-        170.13
-      ],
-      "structural_stop": 163.77,
-      "stop_distance_pct": 3.4,
-      "targets": [
-        {
-          "target": 171.24,
-          "basis": "Trim candidate at nearest major resistance level ($172.10)",
-          "rr": 0.28
-        },
-        {
-          "target": 184.17,
-          "basis": "2.5R measured target (+8.6%)",
-          "rr": 2.5
-        },
-        {
-          "target": 192.92,
-          "basis": "Structural extension / Trailing 2xATR chandelier (+13.7%)"
-        }
-      ],
-      "risk_reward_ratio": 2.5,
-      "planned_rr_t1": 0.28,
-      "planned_rr_t2": 2.5,
-      "realized_rr_t1": 0.25,
-      "holding_period_desc": "POSITION \u2014 empirical winner distribution: 20\u201365 sessions (median 38)",
-      "invalidation_predicates": [
-        {
-          "predicate": "DAILY_CLOSE_BELOW_LEVEL",
-          "level": 163.77,
-          "description": "Daily closing price finishes below structural stop loss of $163.77"
-        },
-        {
-          "predicate": "BREAKOUT_FAILURE_CONSECUTIVE_CLOSES",
-          "level": 169.6,
-          "cycles": 2,
-          "description": "Two consecutive closes back below $169.60 on declining volume"
-        },
-        {
-          "predicate": "RELATIVE_STRENGTH_COLLAPSE",
-          "threshold_percentile": 40,
-          "description": "Relative strength rank vs sector benchmark drops below the 40th percentile"
-        },
-        {
-          "predicate": "MATERIAL_ADVERSE_NEWS_EVENT",
-          "min_materiality": 4,
-          "description": "Unresolved Materiality 4+ regulatory, accounting, or going-concern disclosure"
-        },
-        {
-          "predicate": "REGIME_SHIFT_CRISIS",
-          "gated_regimes": [
-            "HIGH_VOLATILITY",
-            "BEARISH",
-            "CRISIS"
-          ],
-          "description": "Macro regime deterioration to High Volatility, Bearish, or Crisis state"
-        }
-      ],
-      "risk_notes": [
-        "Volatility Sizing: 14-day ATR is 1.6%; position sizing must calibrate to $5.83/share risk.",
-        "Structural Risk: Stop loss is positioned 3.4% below preferred entry price.",
+        "Volatility Sizing: 14-day ATR is 2.2%; position sizing must calibrate to $17.12/share risk.",
+        "Structural Risk: Stop loss is positioned 5.0% below preferred entry price.",
         "Macro Regime Context: Operating in WEAK_BULL regime with regime multiplier applied.",
         "Data Gap Note: Non-reported concepts: OperatingIncome, TotalDebt. Weights renormalized."
       ],
       "rationale": {
         "technical": [
-          "Setup Type: BASE BREAKOUT verified with 14-day RSI at 51.7.",
-          "Volume participation: 20-day RVOL at 1.12x average daily volume."
+          "Setup Type: PULLBACK verified with 14-day RSI at 54.3.",
+          "Volume participation: 20-day RVOL at 0.65x average daily volume."
         ],
         "fundamental": [
-          "Fundamental Quality Score: 31/100 with Valuation Score at 62/100.",
+          "Fundamental Quality Score: 43/100 with Valuation Score at 60/100.",
           "Point-in-Time status: PARTIAL."
         ],
         "news_catalysts": [
@@ -741,55 +320,55 @@
       }
     },
     {
-      "symbol": "CNR",
-      "exchange": "TSX",
-      "name": "Canadian National Railway",
-      "currency": "CAD",
-      "composite_score": 53,
+      "symbol": "SPY",
+      "exchange": "AMEX",
+      "name": "SPDR S&P 500 ETF Trust",
+      "currency": "USD",
+      "composite_score": 63,
       "confidence_tier": "B",
       "direction": "LONG",
       "stance": "POTENTIAL LONG SETUP",
       "setup_type": "TREND_CONTINUATION",
-      "preferred_entry": 171.61,
-      "alt_entry": 168.96,
+      "preferred_entry": 754.37,
+      "alt_entry": 743.05,
       "entry_zone": [
-        170.51,
-        172.16
+        749.26,
+        756.92
       ],
-      "structural_stop": 165.56,
-      "stop_distance_pct": 3.5,
+      "structural_stop": 726.28,
+      "stop_distance_pct": 3.7,
       "targets": [
         {
-          "target": 173.74,
-          "basis": "Trim candidate at nearest major resistance level ($174.61)",
-          "rr": 0.35
+          "target": 761.83,
+          "basis": "Trim candidate at nearest major resistance level ($765.66)",
+          "rr": 0.27
         },
         {
-          "target": 186.74,
-          "basis": "2.5R measured target (+8.8%)",
+          "target": 824.6,
+          "basis": "2.5R measured target (+9.3%)",
           "rr": 2.5
         },
         {
-          "target": 195.81,
-          "basis": "Structural extension / Trailing 2xATR chandelier (+14.1%)"
+          "target": 866.73,
+          "basis": "Structural extension / Trailing 2xATR chandelier (+14.9%)"
         }
       ],
       "risk_reward_ratio": 2.5,
-      "planned_rr_t1": 0.35,
+      "planned_rr_t1": 0.27,
       "planned_rr_t2": 2.5,
-      "realized_rr_t1": 0.31,
+      "realized_rr_t1": 0.24,
       "holding_period_desc": "POSITION \u2014 empirical winner distribution: 20\u201365 sessions (median 38)",
       "invalidation_predicates": [
         {
           "predicate": "DAILY_CLOSE_BELOW_LEVEL",
-          "level": 165.56,
-          "description": "Daily closing price finishes below structural stop loss of $165.56"
+          "level": 726.28,
+          "description": "Daily closing price finishes below structural stop loss of $726.28"
         },
         {
           "predicate": "BREAKOUT_FAILURE_CONSECUTIVE_CLOSES",
-          "level": 171.61,
+          "level": 754.37,
           "cycles": 2,
-          "description": "Two consecutive closes back below $171.61 on declining volume"
+          "description": "Two consecutive closes back below $754.37 on declining volume"
         },
         {
           "predicate": "RELATIVE_STRENGTH_COLLAPSE",
@@ -812,224 +391,14 @@
         }
       ],
       "risk_notes": [
-        "Volatility Sizing: 14-day ATR is 1.6%; position sizing must calibrate to $6.05/share risk.",
-        "Structural Risk: Stop loss is positioned 3.5% below preferred entry price.",
+        "Volatility Sizing: 14-day ATR is 1.7%; position sizing must calibrate to $28.09/share risk.",
+        "Structural Risk: Stop loss is positioned 3.7% below preferred entry price.",
         "Macro Regime Context: Operating in WEAK_BULL regime with regime multiplier applied."
       ],
       "rationale": {
         "technical": [
-          "Setup Type: TREND CONTINUATION verified with 14-day RSI at 53.0.",
-          "Volume participation: 20-day RVOL at 0.65x average daily volume."
-        ],
-        "fundamental": [
-          "Fundamental Quality Score: 54/100 with Valuation Score at 69/100.",
-          "Point-in-Time status: FULL."
-        ],
-        "news_catalysts": [
-          "Recent verified disclosures: 5 continuous filing events recorded."
-        ],
-        "macro": [
-          "Operating within WEAK_BULL regime context."
-        ],
-        "sector": [
-          "Sector alignment within Industrials."
-        ],
-        "regime": [
-          "Positive forward expectancy across empirical walk-forward historical analogues in WEAK_BULL regime."
-        ]
-      },
-      "data_lineage": {
-        "price_source": "PRIMARY_EXCHANGE_CANONICAL_EOD",
-        "fundamentals_source": "SEC_EDGAR_XBRL",
-        "news_source": "OFFICIAL_REGULATORY_FILINGS",
-        "point_in_time_verified": true
-      }
-    },
-    {
-      "symbol": "CNQ",
-      "exchange": "TSX",
-      "name": "Canadian Natural Resources",
-      "currency": "CAD",
-      "composite_score": 55,
-      "confidence_tier": "B",
-      "direction": "LONG",
-      "stance": "POTENTIAL LONG SETUP",
-      "setup_type": "TREND_CONTINUATION",
-      "preferred_entry": 67.38,
-      "alt_entry": 66.37,
-      "entry_zone": [
-        66.68,
-        67.73
-      ],
-      "structural_stop": 63.52,
-      "stop_distance_pct": 5.7,
-      "targets": [
-        {
-          "target": 68.01,
-          "basis": "Trim candidate at nearest major resistance level ($68.35)",
-          "rr": 0.16
-        },
-        {
-          "target": 77.03,
-          "basis": "2.5R measured target (+14.3%)",
-          "rr": 2.5
-        },
-        {
-          "target": 82.82,
-          "basis": "Structural extension / Trailing 2xATR chandelier (+22.9%)"
-        }
-      ],
-      "risk_reward_ratio": 2.5,
-      "planned_rr_t1": 0.16,
-      "planned_rr_t2": 2.5,
-      "realized_rr_t1": 0.14,
-      "holding_period_desc": "POSITION \u2014 empirical winner distribution: 20\u201365 sessions (median 38)",
-      "invalidation_predicates": [
-        {
-          "predicate": "DAILY_CLOSE_BELOW_LEVEL",
-          "level": 63.52,
-          "description": "Daily closing price finishes below structural stop loss of $63.52"
-        },
-        {
-          "predicate": "BREAKOUT_FAILURE_CONSECUTIVE_CLOSES",
-          "level": 67.38,
-          "cycles": 2,
-          "description": "Two consecutive closes back below $67.38 on declining volume"
-        },
-        {
-          "predicate": "RELATIVE_STRENGTH_COLLAPSE",
-          "threshold_percentile": 40,
-          "description": "Relative strength rank vs sector benchmark drops below the 40th percentile"
-        },
-        {
-          "predicate": "MATERIAL_ADVERSE_NEWS_EVENT",
-          "min_materiality": 4,
-          "description": "Unresolved Materiality 4+ regulatory, accounting, or going-concern disclosure"
-        },
-        {
-          "predicate": "REGIME_SHIFT_CRISIS",
-          "gated_regimes": [
-            "HIGH_VOLATILITY",
-            "BEARISH",
-            "CRISIS"
-          ],
-          "description": "Macro regime deterioration to High Volatility, Bearish, or Crisis state"
-        }
-      ],
-      "risk_notes": [
-        "Volatility Sizing: 14-day ATR is 2.6%; position sizing must calibrate to $3.86/share risk.",
-        "Structural Risk: Stop loss is positioned 5.7% below preferred entry price.",
-        "Macro Regime Context: Operating in WEAK_BULL regime with regime multiplier applied."
-      ],
-      "rationale": {
-        "technical": [
-          "Setup Type: TREND CONTINUATION verified with 14-day RSI at 45.2.",
-          "Volume participation: 20-day RVOL at 1.36x average daily volume."
-        ],
-        "fundamental": [
-          "Fundamental Quality Score: 86/100 with Valuation Score at 86/100.",
-          "Point-in-Time status: FULL."
-        ],
-        "news_catalysts": [
-          "Recent verified disclosures: 5 continuous filing events recorded."
-        ],
-        "macro": [
-          "Operating within WEAK_BULL regime context."
-        ],
-        "sector": [
-          "Sector alignment within Energy."
-        ],
-        "regime": [
-          "Positive forward expectancy across empirical walk-forward historical analogues in WEAK_BULL regime."
-        ]
-      },
-      "data_lineage": {
-        "price_source": "PRIMARY_EXCHANGE_CANONICAL_EOD",
-        "fundamentals_source": "SEC_EDGAR_XBRL",
-        "news_source": "OFFICIAL_REGULATORY_FILINGS",
-        "point_in_time_verified": true
-      }
-    },
-    {
-      "symbol": "XIU",
-      "exchange": "TSX",
-      "name": "iShares S&P/TSX 60 Index ETF",
-      "currency": "CAD",
-      "composite_score": 60,
-      "confidence_tier": "B",
-      "direction": "LONG",
-      "stance": "POTENTIAL LONG SETUP",
-      "setup_type": "TREND_CONTINUATION",
-      "preferred_entry": 52.76,
-      "alt_entry": 51.97,
-      "entry_zone": [
-        52.56,
-        52.86
-      ],
-      "structural_stop": 51.65,
-      "stop_distance_pct": 2.1,
-      "targets": [
-        {
-          "target": 53.56,
-          "basis": "Trim candidate at nearest major resistance level ($53.83)",
-          "rr": 0.72
-        },
-        {
-          "target": 55.53,
-          "basis": "2.5R measured target (+5.3%)",
-          "rr": 2.5
-        },
-        {
-          "target": 57.2,
-          "basis": "Structural extension / Trailing 2xATR chandelier (+8.4%)"
-        }
-      ],
-      "risk_reward_ratio": 2.5,
-      "planned_rr_t1": 0.72,
-      "planned_rr_t2": 2.5,
-      "realized_rr_t1": 0.63,
-      "holding_period_desc": "POSITION \u2014 empirical winner distribution: 20\u201365 sessions (median 38)",
-      "invalidation_predicates": [
-        {
-          "predicate": "DAILY_CLOSE_BELOW_LEVEL",
-          "level": 51.65,
-          "description": "Daily closing price finishes below structural stop loss of $51.65"
-        },
-        {
-          "predicate": "BREAKOUT_FAILURE_CONSECUTIVE_CLOSES",
-          "level": 52.76,
-          "cycles": 2,
-          "description": "Two consecutive closes back below $52.76 on declining volume"
-        },
-        {
-          "predicate": "RELATIVE_STRENGTH_COLLAPSE",
-          "threshold_percentile": 40,
-          "description": "Relative strength rank vs sector benchmark drops below the 40th percentile"
-        },
-        {
-          "predicate": "MATERIAL_ADVERSE_NEWS_EVENT",
-          "min_materiality": 4,
-          "description": "Unresolved Materiality 4+ regulatory, accounting, or going-concern disclosure"
-        },
-        {
-          "predicate": "REGIME_SHIFT_CRISIS",
-          "gated_regimes": [
-            "HIGH_VOLATILITY",
-            "BEARISH",
-            "CRISIS"
-          ],
-          "description": "Macro regime deterioration to High Volatility, Bearish, or Crisis state"
-        }
-      ],
-      "risk_notes": [
-        "Volatility Sizing: 14-day ATR is 1.0%; position sizing must calibrate to $1.11/share risk.",
-        "Structural Risk: Stop loss is positioned 2.1% below preferred entry price.",
-        "Macro Regime Context: Operating in WEAK_BULL regime with regime multiplier applied."
-      ],
-      "rationale": {
-        "technical": [
-          "Setup Type: TREND CONTINUATION verified with 14-day RSI at 43.1.",
-          "Volume participation: 20-day RVOL at 1.06x average daily volume."
+          "Setup Type: TREND CONTINUATION verified with 14-day RSI at 47.6.",
+          "Volume participation: 20-day RVOL at 0.82x average daily volume."
         ],
         "fundamental": [
           "Fundamental Quality Score: 50/100 with Valuation Score at 50/100.",
@@ -1046,6 +415,849 @@
         ],
         "regime": [
           "Positive forward expectancy across empirical walk-forward historical analogues in WEAK_BULL regime."
+        ]
+      },
+      "data_lineage": {
+        "price_source": "PRIMARY_EXCHANGE_CANONICAL_EOD",
+        "fundamentals_source": "SEC_EDGAR_XBRL",
+        "news_source": "OFFICIAL_REGULATORY_FILINGS",
+        "point_in_time_verified": true
+      }
+    },
+    {
+      "symbol": "QQQ",
+      "exchange": "NASDAQ",
+      "name": "Invesco QQQ Trust",
+      "currency": "USD",
+      "composite_score": 51,
+      "confidence_tier": "B",
+      "direction": "LONG",
+      "stance": "POTENTIAL LONG SETUP",
+      "setup_type": "TREND_CONTINUATION",
+      "preferred_entry": 679.89,
+      "alt_entry": 669.69,
+      "entry_zone": [
+        672.45,
+        683.61
+      ],
+      "structural_stop": 638.95,
+      "stop_distance_pct": 6.0,
+      "targets": [
+        {
+          "target": 697.53,
+          "basis": "Trim candidate at nearest major resistance level ($701.04)",
+          "rr": 0.43
+        },
+        {
+          "target": 782.24,
+          "basis": "2.5R measured target (+15.1%)",
+          "rr": 2.5
+        },
+        {
+          "target": 843.65,
+          "basis": "Structural extension / Trailing 2xATR chandelier (+24.1%)"
+        }
+      ],
+      "risk_reward_ratio": 2.5,
+      "planned_rr_t1": 0.43,
+      "planned_rr_t2": 2.5,
+      "realized_rr_t1": 0.38,
+      "holding_period_desc": "POSITION \u2014 empirical winner distribution: 20\u201365 sessions (median 38)",
+      "invalidation_predicates": [
+        {
+          "predicate": "DAILY_CLOSE_BELOW_LEVEL",
+          "level": 638.95,
+          "description": "Daily closing price finishes below structural stop loss of $638.95"
+        },
+        {
+          "predicate": "BREAKOUT_FAILURE_CONSECUTIVE_CLOSES",
+          "level": 679.89,
+          "cycles": 2,
+          "description": "Two consecutive closes back below $679.89 on declining volume"
+        },
+        {
+          "predicate": "RELATIVE_STRENGTH_COLLAPSE",
+          "threshold_percentile": 40,
+          "description": "Relative strength rank vs sector benchmark drops below the 40th percentile"
+        },
+        {
+          "predicate": "MATERIAL_ADVERSE_NEWS_EVENT",
+          "min_materiality": 4,
+          "description": "Unresolved Materiality 4+ regulatory, accounting, or going-concern disclosure"
+        },
+        {
+          "predicate": "REGIME_SHIFT_CRISIS",
+          "gated_regimes": [
+            "HIGH_VOLATILITY",
+            "BEARISH",
+            "CRISIS"
+          ],
+          "description": "Macro regime deterioration to High Volatility, Bearish, or Crisis state"
+        }
+      ],
+      "risk_notes": [
+        "Volatility Sizing: 14-day ATR is 2.7%; position sizing must calibrate to $40.94/share risk.",
+        "Structural Risk: Stop loss is positioned 6.0% below preferred entry price.",
+        "Macro Regime Context: Operating in WEAK_BULL regime with regime multiplier applied."
+      ],
+      "rationale": {
+        "technical": [
+          "Setup Type: TREND CONTINUATION verified with 14-day RSI at 43.8.",
+          "Volume participation: 20-day RVOL at 0.85x average daily volume."
+        ],
+        "fundamental": [
+          "Fundamental Quality Score: 50/100 with Valuation Score at 50/100.",
+          "Point-in-Time status: INDEX_ETF_BYPASS."
+        ],
+        "news_catalysts": [
+          "Recent verified disclosures: 0 continuous filing events recorded."
+        ],
+        "macro": [
+          "Operating within WEAK_BULL regime context."
+        ],
+        "sector": [
+          "Sector alignment within Index ETF."
+        ],
+        "regime": [
+          "Positive forward expectancy across empirical walk-forward historical analogues in WEAK_BULL regime."
+        ]
+      },
+      "data_lineage": {
+        "price_source": "PRIMARY_EXCHANGE_CANONICAL_EOD",
+        "fundamentals_source": "SEC_EDGAR_XBRL",
+        "news_source": "OFFICIAL_REGULATORY_FILINGS",
+        "point_in_time_verified": true
+      }
+    },
+    {
+      "symbol": "RY",
+      "exchange": "TSX",
+      "name": "Royal Bank of Canada",
+      "currency": "CAD",
+      "composite_score": 60,
+      "confidence_tier": "B",
+      "direction": "LONG",
+      "stance": "POTENTIAL LONG SETUP",
+      "setup_type": "PULLBACK",
+      "preferred_entry": 288.37,
+      "alt_entry": 284.18,
+      "entry_zone": [
+        286.0,
+        289.32
+      ],
+      "structural_stop": 277.96,
+      "stop_distance_pct": 3.6,
+      "targets": [
+        {
+          "target": 291.91,
+          "basis": "Trim candidate at nearest major resistance level ($293.38)",
+          "rr": 0.34
+        },
+        {
+          "target": 314.39,
+          "basis": "2.5R measured target (+9.0%)",
+          "rr": 2.5
+        },
+        {
+          "target": 330.01,
+          "basis": "Structural extension / Trailing 2xATR chandelier (+14.4%)"
+        }
+      ],
+      "risk_reward_ratio": 2.5,
+      "planned_rr_t1": 0.34,
+      "planned_rr_t2": 2.5,
+      "realized_rr_t1": 0.3,
+      "holding_period_desc": "POSITION \u2014 empirical winner distribution: 20\u201365 sessions (median 38)",
+      "invalidation_predicates": [
+        {
+          "predicate": "DAILY_CLOSE_BELOW_LEVEL",
+          "level": 277.96,
+          "description": "Daily closing price finishes below structural stop loss of $277.96"
+        },
+        {
+          "predicate": "BREAKOUT_FAILURE_CONSECUTIVE_CLOSES",
+          "level": 288.37,
+          "cycles": 2,
+          "description": "Two consecutive closes back below $288.37 on declining volume"
+        },
+        {
+          "predicate": "RELATIVE_STRENGTH_COLLAPSE",
+          "threshold_percentile": 40,
+          "description": "Relative strength rank vs sector benchmark drops below the 40th percentile"
+        },
+        {
+          "predicate": "MATERIAL_ADVERSE_NEWS_EVENT",
+          "min_materiality": 4,
+          "description": "Unresolved Materiality 4+ regulatory, accounting, or going-concern disclosure"
+        },
+        {
+          "predicate": "REGIME_SHIFT_CRISIS",
+          "gated_regimes": [
+            "HIGH_VOLATILITY",
+            "BEARISH",
+            "CRISIS"
+          ],
+          "description": "Macro regime deterioration to High Volatility, Bearish, or Crisis state"
+        }
+      ],
+      "risk_notes": [
+        "Volatility Sizing: 14-day ATR is 1.6%; position sizing must calibrate to $10.41/share risk.",
+        "Structural Risk: Stop loss is positioned 3.6% below preferred entry price.",
+        "Macro Regime Context: Operating in STRONG_BULL regime with regime multiplier applied.",
+        "Data Gap Note: Non-reported concepts: TotalDebt. Weights renormalized."
+      ],
+      "rationale": {
+        "technical": [
+          "Setup Type: PULLBACK verified with 14-day RSI at 53.6.",
+          "Volume participation: 20-day RVOL at 0.74x average daily volume."
+        ],
+        "fundamental": [
+          "Fundamental Quality Score: 52/100 with Valuation Score at 62/100.",
+          "Point-in-Time status: PARTIAL."
+        ],
+        "news_catalysts": [
+          "Recent verified disclosures: 0 continuous filing events recorded."
+        ],
+        "macro": [
+          "Operating within STRONG_BULL regime context."
+        ],
+        "sector": [
+          "Sector alignment within Financials."
+        ],
+        "regime": [
+          "Positive forward expectancy across empirical walk-forward historical analogues in STRONG_BULL regime."
+        ]
+      },
+      "data_lineage": {
+        "price_source": "PRIMARY_EXCHANGE_CANONICAL_EOD",
+        "fundamentals_source": "SEC_EDGAR_XBRL",
+        "news_source": "OFFICIAL_REGULATORY_FILINGS",
+        "point_in_time_verified": true
+      }
+    },
+    {
+      "symbol": "TD",
+      "exchange": "TSX",
+      "name": "Toronto-Dominion Bank",
+      "currency": "CAD",
+      "composite_score": 62,
+      "confidence_tier": "B",
+      "direction": "LONG",
+      "stance": "POTENTIAL LONG SETUP",
+      "setup_type": "PULLBACK",
+      "preferred_entry": 176.42,
+      "alt_entry": 174.27,
+      "entry_zone": [
+        175.16,
+        177.01
+      ],
+      "structural_stop": 169.93,
+      "stop_distance_pct": 3.7,
+      "targets": [
+        {
+          "target": 178.06,
+          "basis": "Trim candidate at nearest major resistance level ($178.95)",
+          "rr": 0.25
+        },
+        {
+          "target": 192.64,
+          "basis": "2.5R measured target (+9.2%)",
+          "rr": 2.5
+        },
+        {
+          "target": 202.38,
+          "basis": "Structural extension / Trailing 2xATR chandelier (+14.7%)"
+        }
+      ],
+      "risk_reward_ratio": 2.5,
+      "planned_rr_t1": 0.25,
+      "planned_rr_t2": 2.5,
+      "realized_rr_t1": 0.22,
+      "holding_period_desc": "POSITION \u2014 empirical winner distribution: 20\u201365 sessions (median 38)",
+      "invalidation_predicates": [
+        {
+          "predicate": "DAILY_CLOSE_BELOW_LEVEL",
+          "level": 169.93,
+          "description": "Daily closing price finishes below structural stop loss of $169.93"
+        },
+        {
+          "predicate": "BREAKOUT_FAILURE_CONSECUTIVE_CLOSES",
+          "level": 176.42,
+          "cycles": 2,
+          "description": "Two consecutive closes back below $176.42 on declining volume"
+        },
+        {
+          "predicate": "RELATIVE_STRENGTH_COLLAPSE",
+          "threshold_percentile": 40,
+          "description": "Relative strength rank vs sector benchmark drops below the 40th percentile"
+        },
+        {
+          "predicate": "MATERIAL_ADVERSE_NEWS_EVENT",
+          "min_materiality": 4,
+          "description": "Unresolved Materiality 4+ regulatory, accounting, or going-concern disclosure"
+        },
+        {
+          "predicate": "REGIME_SHIFT_CRISIS",
+          "gated_regimes": [
+            "HIGH_VOLATILITY",
+            "BEARISH",
+            "CRISIS"
+          ],
+          "description": "Macro regime deterioration to High Volatility, Bearish, or Crisis state"
+        }
+      ],
+      "risk_notes": [
+        "Volatility Sizing: 14-day ATR is 1.7%; position sizing must calibrate to $6.49/share risk.",
+        "Structural Risk: Stop loss is positioned 3.7% below preferred entry price.",
+        "Macro Regime Context: Operating in STRONG_BULL regime with regime multiplier applied.",
+        "Data Gap Note: Non-reported concepts: OperatingIncome, TotalDebt. Weights renormalized."
+      ],
+      "rationale": {
+        "technical": [
+          "Setup Type: PULLBACK verified with 14-day RSI at 56.1.",
+          "Volume participation: 20-day RVOL at 0.55x average daily volume."
+        ],
+        "fundamental": [
+          "Fundamental Quality Score: 31/100 with Valuation Score at 60/100.",
+          "Point-in-Time status: PARTIAL."
+        ],
+        "news_catalysts": [
+          "Recent verified disclosures: 0 continuous filing events recorded."
+        ],
+        "macro": [
+          "Operating within STRONG_BULL regime context."
+        ],
+        "sector": [
+          "Sector alignment within Financials."
+        ],
+        "regime": [
+          "Positive forward expectancy across empirical walk-forward historical analogues in STRONG_BULL regime."
+        ]
+      },
+      "data_lineage": {
+        "price_source": "PRIMARY_EXCHANGE_CANONICAL_EOD",
+        "fundamentals_source": "SEC_EDGAR_XBRL",
+        "news_source": "OFFICIAL_REGULATORY_FILINGS",
+        "point_in_time_verified": true
+      }
+    },
+    {
+      "symbol": "CNR",
+      "exchange": "TSX",
+      "name": "Canadian National Railway",
+      "currency": "CAD",
+      "composite_score": 66,
+      "confidence_tier": "B",
+      "direction": "LONG",
+      "stance": "POTENTIAL LONG SETUP",
+      "setup_type": "TREND_CONTINUATION",
+      "preferred_entry": 181.29,
+      "alt_entry": 176.03,
+      "entry_zone": [
+        179.72,
+        182.07
+      ],
+      "structural_stop": 172.67,
+      "stop_distance_pct": 4.8,
+      "targets": [
+        {
+          "target": 189.4,
+          "basis": "Trim candidate at nearest major resistance level ($190.35)",
+          "rr": 0.94
+        },
+        {
+          "target": 202.84,
+          "basis": "2.5R measured target (+11.9%)",
+          "rr": 2.5
+        },
+        {
+          "target": 215.77,
+          "basis": "Structural extension / Trailing 2xATR chandelier (+19.0%)"
+        }
+      ],
+      "risk_reward_ratio": 2.5,
+      "planned_rr_t1": 0.94,
+      "planned_rr_t2": 2.5,
+      "realized_rr_t1": 0.83,
+      "holding_period_desc": "POSITION \u2014 empirical winner distribution: 20\u201365 sessions (median 38)",
+      "invalidation_predicates": [
+        {
+          "predicate": "DAILY_CLOSE_BELOW_LEVEL",
+          "level": 172.67,
+          "description": "Daily closing price finishes below structural stop loss of $172.67"
+        },
+        {
+          "predicate": "BREAKOUT_FAILURE_CONSECUTIVE_CLOSES",
+          "level": 181.29,
+          "cycles": 2,
+          "description": "Two consecutive closes back below $181.29 on declining volume"
+        },
+        {
+          "predicate": "RELATIVE_STRENGTH_COLLAPSE",
+          "threshold_percentile": 40,
+          "description": "Relative strength rank vs sector benchmark drops below the 40th percentile"
+        },
+        {
+          "predicate": "MATERIAL_ADVERSE_NEWS_EVENT",
+          "min_materiality": 4,
+          "description": "Unresolved Materiality 4+ regulatory, accounting, or going-concern disclosure"
+        },
+        {
+          "predicate": "REGIME_SHIFT_CRISIS",
+          "gated_regimes": [
+            "HIGH_VOLATILITY",
+            "BEARISH",
+            "CRISIS"
+          ],
+          "description": "Macro regime deterioration to High Volatility, Bearish, or Crisis state"
+        }
+      ],
+      "risk_notes": [
+        "Volatility Sizing: 14-day ATR is 2.2%; position sizing must calibrate to $8.62/share risk.",
+        "Structural Risk: Stop loss is positioned 4.8% below preferred entry price.",
+        "Macro Regime Context: Operating in STRONG_BULL regime with regime multiplier applied."
+      ],
+      "rationale": {
+        "technical": [
+          "Setup Type: TREND CONTINUATION verified with 14-day RSI at 62.0.",
+          "Volume participation: 20-day RVOL at 1.02x average daily volume."
+        ],
+        "fundamental": [
+          "Fundamental Quality Score: 54/100 with Valuation Score at 65/100.",
+          "Point-in-Time status: FULL."
+        ],
+        "news_catalysts": [
+          "Recent verified disclosures: 5 continuous filing events recorded."
+        ],
+        "macro": [
+          "Operating within STRONG_BULL regime context."
+        ],
+        "sector": [
+          "Sector alignment within Industrials."
+        ],
+        "regime": [
+          "Positive forward expectancy across empirical walk-forward historical analogues in STRONG_BULL regime."
+        ]
+      },
+      "data_lineage": {
+        "price_source": "PRIMARY_EXCHANGE_CANONICAL_EOD",
+        "fundamentals_source": "SEC_EDGAR_XBRL",
+        "news_source": "OFFICIAL_REGULATORY_FILINGS",
+        "point_in_time_verified": true
+      }
+    },
+    {
+      "symbol": "CNQ",
+      "exchange": "TSX",
+      "name": "Canadian Natural Resources",
+      "currency": "CAD",
+      "composite_score": 62,
+      "confidence_tier": "B",
+      "direction": "LONG",
+      "stance": "POTENTIAL LONG SETUP",
+      "setup_type": "TREND_CONTINUATION",
+      "preferred_entry": 70.91,
+      "alt_entry": 69.85,
+      "entry_zone": [
+        70.11,
+        71.31
+      ],
+      "structural_stop": 66.51,
+      "stop_distance_pct": 6.2,
+      "targets": [
+        {
+          "target": 71.88,
+          "basis": "Trim candidate at nearest major resistance level ($72.24)",
+          "rr": 0.22
+        },
+        {
+          "target": 81.91,
+          "basis": "2.5R measured target (+15.5%)",
+          "rr": 2.5
+        },
+        {
+          "target": 88.51,
+          "basis": "Structural extension / Trailing 2xATR chandelier (+24.8%)"
+        }
+      ],
+      "risk_reward_ratio": 2.5,
+      "planned_rr_t1": 0.22,
+      "planned_rr_t2": 2.5,
+      "realized_rr_t1": 0.19,
+      "holding_period_desc": "POSITION \u2014 empirical winner distribution: 20\u201365 sessions (median 38)",
+      "invalidation_predicates": [
+        {
+          "predicate": "DAILY_CLOSE_BELOW_LEVEL",
+          "level": 66.51,
+          "description": "Daily closing price finishes below structural stop loss of $66.51"
+        },
+        {
+          "predicate": "BREAKOUT_FAILURE_CONSECUTIVE_CLOSES",
+          "level": 70.91,
+          "cycles": 2,
+          "description": "Two consecutive closes back below $70.91 on declining volume"
+        },
+        {
+          "predicate": "RELATIVE_STRENGTH_COLLAPSE",
+          "threshold_percentile": 40,
+          "description": "Relative strength rank vs sector benchmark drops below the 40th percentile"
+        },
+        {
+          "predicate": "MATERIAL_ADVERSE_NEWS_EVENT",
+          "min_materiality": 4,
+          "description": "Unresolved Materiality 4+ regulatory, accounting, or going-concern disclosure"
+        },
+        {
+          "predicate": "REGIME_SHIFT_CRISIS",
+          "gated_regimes": [
+            "HIGH_VOLATILITY",
+            "BEARISH",
+            "CRISIS"
+          ],
+          "description": "Macro regime deterioration to High Volatility, Bearish, or Crisis state"
+        }
+      ],
+      "risk_notes": [
+        "Volatility Sizing: 14-day ATR is 2.8%; position sizing must calibrate to $4.40/share risk.",
+        "Structural Risk: Stop loss is positioned 6.2% below preferred entry price.",
+        "Macro Regime Context: Operating in STRONG_BULL regime with regime multiplier applied."
+      ],
+      "rationale": {
+        "technical": [
+          "Setup Type: TREND CONTINUATION verified with 14-day RSI at 47.0.",
+          "Volume participation: 20-day RVOL at 2.40x average daily volume."
+        ],
+        "fundamental": [
+          "Fundamental Quality Score: 86/100 with Valuation Score at 87/100.",
+          "Point-in-Time status: FULL."
+        ],
+        "news_catalysts": [
+          "Recent verified disclosures: 5 continuous filing events recorded."
+        ],
+        "macro": [
+          "Operating within STRONG_BULL regime context."
+        ],
+        "sector": [
+          "Sector alignment within Energy."
+        ],
+        "regime": [
+          "Positive forward expectancy across empirical walk-forward historical analogues in STRONG_BULL regime."
+        ]
+      },
+      "data_lineage": {
+        "price_source": "PRIMARY_EXCHANGE_CANONICAL_EOD",
+        "fundamentals_source": "SEC_EDGAR_XBRL",
+        "news_source": "OFFICIAL_REGULATORY_FILINGS",
+        "point_in_time_verified": true
+      }
+    },
+    {
+      "symbol": "BAM",
+      "exchange": "TSX",
+      "name": "Brookfield Asset Management",
+      "currency": "CAD",
+      "composite_score": 55,
+      "confidence_tier": "B",
+      "direction": "LONG",
+      "stance": "POTENTIAL LONG SETUP",
+      "setup_type": "TREND_CONTINUATION",
+      "preferred_entry": 73.48,
+      "alt_entry": 70.01,
+      "entry_zone": [
+        72.48,
+        73.98
+      ],
+      "structural_stop": 67.98,
+      "stop_distance_pct": 7.5,
+      "targets": [
+        {
+          "target": 76.37,
+          "basis": "Trim candidate at nearest major resistance level ($76.75)",
+          "rr": 0.53
+        },
+        {
+          "target": 87.23,
+          "basis": "2.5R measured target (+18.7%)",
+          "rr": 2.5
+        },
+        {
+          "target": 95.48,
+          "basis": "Structural extension / Trailing 2xATR chandelier (+29.9%)"
+        }
+      ],
+      "risk_reward_ratio": 2.5,
+      "planned_rr_t1": 0.53,
+      "planned_rr_t2": 2.5,
+      "realized_rr_t1": 0.47,
+      "holding_period_desc": "POSITION \u2014 empirical winner distribution: 20\u201365 sessions (median 38)",
+      "invalidation_predicates": [
+        {
+          "predicate": "DAILY_CLOSE_BELOW_LEVEL",
+          "level": 67.98,
+          "description": "Daily closing price finishes below structural stop loss of $67.98"
+        },
+        {
+          "predicate": "BREAKOUT_FAILURE_CONSECUTIVE_CLOSES",
+          "level": 73.48,
+          "cycles": 2,
+          "description": "Two consecutive closes back below $73.48 on declining volume"
+        },
+        {
+          "predicate": "RELATIVE_STRENGTH_COLLAPSE",
+          "threshold_percentile": 40,
+          "description": "Relative strength rank vs sector benchmark drops below the 40th percentile"
+        },
+        {
+          "predicate": "MATERIAL_ADVERSE_NEWS_EVENT",
+          "min_materiality": 4,
+          "description": "Unresolved Materiality 4+ regulatory, accounting, or going-concern disclosure"
+        },
+        {
+          "predicate": "REGIME_SHIFT_CRISIS",
+          "gated_regimes": [
+            "HIGH_VOLATILITY",
+            "BEARISH",
+            "CRISIS"
+          ],
+          "description": "Macro regime deterioration to High Volatility, Bearish, or Crisis state"
+        }
+      ],
+      "risk_notes": [
+        "Volatility Sizing: 14-day ATR is 3.4%; position sizing must calibrate to $5.50/share risk.",
+        "Structural Risk: Stop loss is positioned 7.5% below preferred entry price.",
+        "Macro Regime Context: Operating in STRONG_BULL regime with regime multiplier applied.",
+        "Data Gap Note: Non-reported concepts: OperatingIncome, TotalDebt. Weights renormalized."
+      ],
+      "rationale": {
+        "technical": [
+          "Setup Type: TREND CONTINUATION verified with 14-day RSI at 60.2.",
+          "Volume participation: 20-day RVOL at 1.67x average daily volume."
+        ],
+        "fundamental": [
+          "Fundamental Quality Score: 62/100 with Valuation Score at 56/100.",
+          "Point-in-Time status: PARTIAL."
+        ],
+        "news_catalysts": [
+          "Recent verified disclosures: 5 continuous filing events recorded."
+        ],
+        "macro": [
+          "Operating within STRONG_BULL regime context."
+        ],
+        "sector": [
+          "Sector alignment within Financials."
+        ],
+        "regime": [
+          "Positive forward expectancy across empirical walk-forward historical analogues in STRONG_BULL regime."
+        ]
+      },
+      "data_lineage": {
+        "price_source": "PRIMARY_EXCHANGE_CANONICAL_EOD",
+        "fundamentals_source": "SEC_EDGAR_XBRL",
+        "news_source": "OFFICIAL_REGULATORY_FILINGS",
+        "point_in_time_verified": true
+      }
+    },
+    {
+      "symbol": "CP",
+      "exchange": "TSX",
+      "name": "Canadian Pacific Kansas City",
+      "currency": "CAD",
+      "composite_score": 55,
+      "confidence_tier": "B",
+      "direction": "LONG",
+      "stance": "POTENTIAL LONG SETUP",
+      "setup_type": "TREND_CONTINUATION",
+      "preferred_entry": 134.18,
+      "alt_entry": 128.32,
+      "entry_zone": [
+        133.02,
+        134.76
+      ],
+      "structural_stop": 127.81,
+      "stop_distance_pct": 4.7,
+      "targets": [
+        {
+          "target": 140.19,
+          "basis": "Trim candidate at nearest major resistance level ($140.89)",
+          "rr": 0.94
+        },
+        {
+          "target": 150.11,
+          "basis": "2.5R measured target (+11.9%)",
+          "rr": 2.5
+        },
+        {
+          "target": 159.66,
+          "basis": "Structural extension / Trailing 2xATR chandelier (+19.0%)"
+        }
+      ],
+      "risk_reward_ratio": 2.5,
+      "planned_rr_t1": 0.94,
+      "planned_rr_t2": 2.5,
+      "realized_rr_t1": 0.83,
+      "holding_period_desc": "POSITION \u2014 empirical winner distribution: 20\u201365 sessions (median 38)",
+      "invalidation_predicates": [
+        {
+          "predicate": "DAILY_CLOSE_BELOW_LEVEL",
+          "level": 127.81,
+          "description": "Daily closing price finishes below structural stop loss of $127.81"
+        },
+        {
+          "predicate": "BREAKOUT_FAILURE_CONSECUTIVE_CLOSES",
+          "level": 134.18,
+          "cycles": 2,
+          "description": "Two consecutive closes back below $134.18 on declining volume"
+        },
+        {
+          "predicate": "RELATIVE_STRENGTH_COLLAPSE",
+          "threshold_percentile": 40,
+          "description": "Relative strength rank vs sector benchmark drops below the 40th percentile"
+        },
+        {
+          "predicate": "MATERIAL_ADVERSE_NEWS_EVENT",
+          "min_materiality": 4,
+          "description": "Unresolved Materiality 4+ regulatory, accounting, or going-concern disclosure"
+        },
+        {
+          "predicate": "REGIME_SHIFT_CRISIS",
+          "gated_regimes": [
+            "HIGH_VOLATILITY",
+            "BEARISH",
+            "CRISIS"
+          ],
+          "description": "Macro regime deterioration to High Volatility, Bearish, or Crisis state"
+        }
+      ],
+      "risk_notes": [
+        "Volatility Sizing: 14-day ATR is 2.2%; position sizing must calibrate to $6.37/share risk.",
+        "Structural Risk: Stop loss is positioned 4.8% below preferred entry price.",
+        "Macro Regime Context: Operating in STRONG_BULL regime with regime multiplier applied."
+      ],
+      "rationale": {
+        "technical": [
+          "Setup Type: TREND CONTINUATION verified with 14-day RSI at 66.4.",
+          "Volume participation: 20-day RVOL at 1.04x average daily volume."
+        ],
+        "fundamental": [
+          "Fundamental Quality Score: 29/100 with Valuation Score at 35/100.",
+          "Point-in-Time status: FULL."
+        ],
+        "news_catalysts": [
+          "Recent verified disclosures: 5 continuous filing events recorded."
+        ],
+        "macro": [
+          "Operating within STRONG_BULL regime context."
+        ],
+        "sector": [
+          "Sector alignment within Industrials."
+        ],
+        "regime": [
+          "Positive forward expectancy across empirical walk-forward historical analogues in STRONG_BULL regime."
+        ]
+      },
+      "data_lineage": {
+        "price_source": "PRIMARY_EXCHANGE_CANONICAL_EOD",
+        "fundamentals_source": "SEC_EDGAR_XBRL",
+        "news_source": "OFFICIAL_REGULATORY_FILINGS",
+        "point_in_time_verified": true
+      }
+    },
+    {
+      "symbol": "XIU",
+      "exchange": "TSX",
+      "name": "iShares S&P/TSX 60 Index ETF",
+      "currency": "CAD",
+      "composite_score": 85,
+      "confidence_tier": "A",
+      "direction": "LONG",
+      "stance": "POTENTIAL LONG SETUP",
+      "setup_type": "PULLBACK",
+      "preferred_entry": 54.55,
+      "alt_entry": 54.0,
+      "entry_zone": [
+        54.22,
+        54.7
+      ],
+      "structural_stop": 52.95,
+      "stop_distance_pct": 2.9,
+      "targets": [
+        {
+          "target": 56.95,
+          "basis": "1.5R initial trim target (+4.4%)",
+          "rr": 1.5
+        },
+        {
+          "target": 58.55,
+          "basis": "2.5R measured target (+7.3%)",
+          "rr": 2.5
+        },
+        {
+          "target": 60.95,
+          "basis": "Structural extension / Trailing 2xATR chandelier (+11.7%)"
+        }
+      ],
+      "risk_reward_ratio": 2.5,
+      "planned_rr_t1": 1.5,
+      "planned_rr_t2": 2.5,
+      "realized_rr_t1": 1.32,
+      "holding_period_desc": "POSITION \u2014 empirical winner distribution: 20\u201365 sessions (median 38)",
+      "invalidation_predicates": [
+        {
+          "predicate": "DAILY_CLOSE_BELOW_LEVEL",
+          "level": 52.95,
+          "description": "Daily closing price finishes below structural stop loss of $52.95"
+        },
+        {
+          "predicate": "BREAKOUT_FAILURE_CONSECUTIVE_CLOSES",
+          "level": 54.55,
+          "cycles": 2,
+          "description": "Two consecutive closes back below $54.55 on declining volume"
+        },
+        {
+          "predicate": "RELATIVE_STRENGTH_COLLAPSE",
+          "threshold_percentile": 40,
+          "description": "Relative strength rank vs sector benchmark drops below the 40th percentile"
+        },
+        {
+          "predicate": "MATERIAL_ADVERSE_NEWS_EVENT",
+          "min_materiality": 4,
+          "description": "Unresolved Materiality 4+ regulatory, accounting, or going-concern disclosure"
+        },
+        {
+          "predicate": "REGIME_SHIFT_CRISIS",
+          "gated_regimes": [
+            "HIGH_VOLATILITY",
+            "BEARISH",
+            "CRISIS"
+          ],
+          "description": "Macro regime deterioration to High Volatility, Bearish, or Crisis state"
+        }
+      ],
+      "risk_notes": [
+        "Volatility Sizing: 14-day ATR is 1.3%; position sizing must calibrate to $1.60/share risk.",
+        "Structural Risk: Stop loss is positioned 2.9% below preferred entry price.",
+        "Macro Regime Context: Operating in STRONG_BULL regime with regime multiplier applied."
+      ],
+      "rationale": {
+        "technical": [
+          "Setup Type: PULLBACK verified with 14-day RSI at 54.1.",
+          "Volume participation: 20-day RVOL at 0.77x average daily volume."
+        ],
+        "fundamental": [
+          "Fundamental Quality Score: 50/100 with Valuation Score at 50/100.",
+          "Point-in-Time status: INDEX_ETF_BYPASS."
+        ],
+        "news_catalysts": [
+          "Recent verified disclosures: 0 continuous filing events recorded."
+        ],
+        "macro": [
+          "Operating within STRONG_BULL regime context."
+        ],
+        "sector": [
+          "Sector alignment within Index ETF."
+        ],
+        "regime": [
+          "Positive forward expectancy across empirical walk-forward historical analogues in STRONG_BULL regime."
         ]
       },
       "data_lineage": {

@@ -1057,7 +1057,14 @@ class BacktestEngine:
 
         z_dsr = (sharpe_ratio - sr_star) / max(1e-4, se_sr)
         dsr_val = round(normal_cdf(z_dsr), 3)
-        pbo_val = round(max(0.02, min(0.98, 1.0 - dsr_val)), 3)
+        # HONESTY OVERHAUL (Phase 1): a `pbo_val` used to be derived here as
+        #     pbo_val = clamp(1.0 - dsr_val, 0.02, 0.98)
+        # That is a relabelled Deflated Sharpe ratio, not a Probability of
+        # Backtest Overfitting. It emitted values like 0.98 that read as a
+        # measured result while carrying no information about overfitting.
+        # PBO is a property of a TRIAL SET, not of a single strategy, so it is
+        # now computed once — empirically, from CPCV rank inversions — by
+        # cpcv_engine and surfaced through strategy_validation.json.
 
         # 9. Annualized Turnover & Exposure
         total_traded_notional_usd = sum(t.entry_price_usd_net * t.shares * 2.0 for t in closed_trades)
@@ -1150,8 +1157,9 @@ class BacktestEngine:
             "exposure_pct": exposure_pct,
             "capacity_estimate_usd": capacity_estimate_usd,
             "deflated_sharpe_ratio": dsr_val,
-            "probability_backtest_overfitting": pbo_val,
-            "pbo": pbo_val,
+            # `probability_backtest_overfitting` and `pbo` were removed from the
+            # per-strategy metrics: see the note above. One PBO is published for
+            # the whole trial set in strategy_validation.json.
             "skewness": round(skewness, 2),
             "kurtosis": round(kurtosis, 2),
             "num_trials_tested": num_trials,

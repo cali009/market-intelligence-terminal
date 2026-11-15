@@ -238,9 +238,11 @@ def test_tac15_scanner_match_and_expectancy():
     assert "PO3_LIQUIDITY_SWEEP" in market_scanners.definitions
     defn = market_scanners.definitions["PO3_LIQUIDITY_SWEEP"]
     
-    assert defn["historical_win_rate_pct"] > 50.0
-    assert defn["forward_5d_return_pct"] > 0.0
-    assert defn["expectancy_r"] > 0.0
+    # HONESTY OVERHAUL (Phase 1): the win rate / forward return / expectancy
+    # assertions were removed along with the constants they read. No per-rule
+    # performance statistic is published for any scanner.
+    for retired in ("historical_win_rate_pct", "forward_5d_return_pct", "expectancy_r"):
+        assert retired not in defn
     assert "CONSOLIDATION" in defn["regime_compatibility"]
     assert "STRONG_BULL" in defn["regime_compatibility"]
     

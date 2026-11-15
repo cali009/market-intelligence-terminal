@@ -256,17 +256,54 @@ class CPCVEngine:
         inverted_count = sum(1 for p in cpcv_paths if p.is_rank_inverted)
         empirical_pbo = round(inverted_count / max(1, len(cpcv_paths)), 3)
 
-        if empirical_pbo < 0.25:
+        # 4. Compute Benjamini-Hochberg FDR Gating (needed by the PBO guard below)
+        fdr_table = self.evaluate_fdr_gating(strategy_ids, fdr_q=fdr_q)
+        fdr_passed_count = sum(1 for r in fdr_table if r.fdr_verdict == "FDR_PASSED")
+        fdr_rejected_count = len(fdr_table) - fdr_passed_count
+
+        # HONESTY OVERHAUL (Phase 1): PBO measures rank inversion — whether the
+        # strategy that looked best in-sample turns out worst out-of-sample. When
+        # no strategy is profitable out-of-sample there is no meaningful "best" to
+        # invert, so a low PBO is an artefact of a uniformly losing trial set, not
+        # evidence of sound research. Banding it as LOW_OVERFITTING_RISK in that
+        # state is exactly the misleading reassurance this guard prevents.
+        # Profitability must be judged on the OUT-OF-SAMPLE partition. The FDR
+        # table's mean_trade_return_pct spans the whole backtest including the
+        # training window, so using it would count strategies whose in-sample
+        # gains mask an out-of-sample loss and wrongly unlock a reassuring band.
+        # These thresholds mirror src/engine/strategy_validation.py gate 4. They
+        # must stay in step: the terminal publishes ONE PBO, so both engines have
+        # to agree on when that PBO means anything.
+        MIN_OOS_TRADES = 100
+        MIN_OOS_MONTHS = 36
+
+        profitable, credible = [], []
+        for sid in strategy_ids:
+            res = self._get_or_run_backtest(sid)
+            trades = res.get("all_trades", []) or []
+            cutoff = (res.get("config") or {}).get("val_cutoff")
+            oos = [t for t in trades if (t.get("entry_date") or "") > cutoff] if cutoff else []
+            rets = [t.get("return_pct") for t in oos if t.get("return_pct") is not None]
+            if not rets or (sum(rets) / len(rets)) <= 0:
+                continue
+            profitable.append(sid)
+            months = len({(t.get("exit_date") or "")[:7] for t in oos} - {""})
+            if len(oos) >= MIN_OOS_TRADES or months >= MIN_OOS_MONTHS:
+                credible.append(sid)
+
+        # A positive mean on a handful of trades is noise, not a profitable
+        # strategy. Without this, a few lucky trades would unlock a reassuring
+        # band — the precise misuse this guard exists to prevent.
+        pbo_informative = len(credible) > 0
+
+        if not pbo_informative:
+            pbo_eval = "NOT_INFORMATIVE_NO_STRATEGY_PROFITABLE_OOS"
+        elif empirical_pbo < 0.25:
             pbo_eval = "LOW_OVERFITTING_RISK"
         elif empirical_pbo <= 0.50:
             pbo_eval = "MODERATE_OVERFITTING_RISK"
         else:
             pbo_eval = "HIGH_OVERFITTING_RISK"
-
-        # 4. Compute Benjamini-Hochberg FDR Gating
-        fdr_table = self.evaluate_fdr_gating(strategy_ids, fdr_q=fdr_q)
-        fdr_passed_count = sum(1 for r in fdr_table if r.fdr_verdict == "FDR_PASSED")
-        fdr_rejected_count = len(fdr_table) - fdr_passed_count
 
         summary = CPCVValidationSummary(
             total_strategies_evaluated=len(strategy_ids),
@@ -275,6 +312,9 @@ class CPCVEngine:
             embargo_days=embargo_days,
             empirical_pbo=empirical_pbo,
             pbo_evaluation=pbo_eval,
+            pbo_informative=pbo_informative,
+            profitable_strategies_oos=profitable,
+            credible_profitable_strategies_oos=credible,
             target_fdr_q=fdr_q,
             fdr_passed_count=fdr_passed_count,
             fdr_rejected_count=fdr_rejected_count,

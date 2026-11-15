@@ -1,7 +1,7 @@
 {
-  "as_of_date": "2026-10-04",
-  "generated_at": "2026-10-04T02:56:38.765834+00:00",
-  "active_regime": "STRONG_BULL",
+  "as_of_date": "2026-11-15",
+  "generated_at": "2026-11-15T01:45:06.709447+00:00",
+  "active_regime": "WEAK_BULL",
   "total_matches": 54,
   "scanner_definitions": [
     {
@@ -15,13 +15,10 @@
         "WEAK_BULL",
         "CONSOLIDATION"
       ],
-      "historical_win_rate_pct": 59.2,
-      "forward_5d_return_pct": 1.85,
-      "expectancy_r": 0.52,
-      "sample_size": 142,
+      "stats_status": "No per-rule performance statistics are published. The scanner rules are not wired into the walk-forward backtest engine, so win rate, forward return, expectancy and sample size cannot be computed for them. Publishing an estimate would be fabrication.",
       "regime_status": "PASS",
       "regime_badge_color": "green",
-      "active_market_regime": "STRONG_BULL"
+      "active_market_regime": "WEAK_BULL"
     },
     {
       "scanner_id": "PULLBACK_UPTREND",
@@ -34,13 +31,10 @@
         "WEAK_BULL",
         "CONSOLIDATION"
       ],
-      "historical_win_rate_pct": 62.5,
-      "forward_5d_return_pct": 2.1,
-      "expectancy_r": 0.64,
-      "sample_size": 118,
+      "stats_status": "No per-rule performance statistics are published. The scanner rules are not wired into the walk-forward backtest engine, so win rate, forward return, expectancy and sample size cannot be computed for them. Publishing an estimate would be fabrication.",
       "regime_status": "PASS",
       "regime_badge_color": "green",
-      "active_market_regime": "STRONG_BULL"
+      "active_market_regime": "WEAK_BULL"
     },
     {
       "scanner_id": "BREAKOUT_52W_HIGH",
@@ -52,13 +46,10 @@
         "STRONG_BULL",
         "WEAK_BULL"
       ],
-      "historical_win_rate_pct": 54.8,
-      "forward_5d_return_pct": 2.45,
-      "expectancy_r": 0.58,
-      "sample_size": 95,
+      "stats_status": "No per-rule performance statistics are published. The scanner rules are not wired into the walk-forward backtest engine, so win rate, forward return, expectancy and sample size cannot be computed for them. Publishing an estimate would be fabrication.",
       "regime_status": "PASS",
       "regime_badge_color": "green",
-      "active_market_regime": "STRONG_BULL"
+      "active_market_regime": "WEAK_BULL"
     },
     {
       "scanner_id": "VOLATILITY_SQUEEZE",
@@ -72,13 +63,10 @@
         "CONSOLIDATION",
         "HIGH_VOLATILITY"
       ],
-      "historical_win_rate_pct": 56.0,
-      "forward_5d_return_pct": 1.7,
-      "expectancy_r": 0.45,
-      "sample_size": 130,
+      "stats_status": "No per-rule performance statistics are published. The scanner rules are not wired into the walk-forward backtest engine, so win rate, forward return, expectancy and sample size cannot be computed for them. Publishing an estimate would be fabrication.",
       "regime_status": "PASS",
       "regime_badge_color": "green",
-      "active_market_regime": "STRONG_BULL"
+      "active_market_regime": "WEAK_BULL"
     },
     {
       "scanner_id": "INSTITUTIONAL_ACCUMULATION",
@@ -91,13 +79,10 @@
         "WEAK_BULL",
         "CONSOLIDATION"
       ],
-      "historical_win_rate_pct": 60.4,
-      "forward_5d_return_pct": 1.92,
-      "expectancy_r": 0.55,
-      "sample_size": 124,
+      "stats_status": "No per-rule performance statistics are published. The scanner rules are not wired into the walk-forward backtest engine, so win rate, forward return, expectancy and sample size cannot be computed for them. Publishing an estimate would be fabrication.",
       "regime_status": "PASS",
       "regime_badge_color": "green",
-      "active_market_regime": "STRONG_BULL"
+      "active_market_regime": "WEAK_BULL"
     },
     {
       "scanner_id": "MEAN_REVERSION_OVERSOLD",
@@ -110,13 +95,10 @@
         "HIGH_VOLATILITY",
         "BEAR"
       ],
-      "historical_win_rate_pct": 55.2,
-      "forward_5d_return_pct": 2.25,
-      "expectancy_r": 0.49,
-      "sample_size": 88,
+      "stats_status": "No per-rule performance statistics are published. The scanner rules are not wired into the walk-forward backtest engine, so win rate, forward return, expectancy and sample size cannot be computed for them. Publishing an estimate would be fabrication.",
       "regime_status": "GATED",
       "regime_badge_color": "amber",
-      "active_market_regime": "STRONG_BULL"
+      "active_market_regime": "WEAK_BULL"
     },
     {
       "scanner_id": "STACKED_MOVING_AVERAGES",
@@ -128,13 +110,10 @@
         "STRONG_BULL",
         "WEAK_BULL"
       ],
-      "historical_win_rate_pct": 61.8,
-      "forward_5d_return_pct": 1.75,
-      "expectancy_r": 0.58,
-      "sample_size": 160,
+      "stats_status": "No per-rule performance statistics are published. The scanner rules are not wired into the walk-forward backtest engine, so win rate, forward return, expectancy and sample size cannot be computed for them. Publishing an estimate would be fabrication.",
       "regime_status": "PASS",
       "regime_badge_color": "green",
-      "active_market_regime": "STRONG_BULL"
+      "active_market_regime": "WEAK_BULL"
     },
     {
       "scanner_id": "LOW_BETA_QUALITY",
@@ -148,13 +127,10 @@
         "CONSOLIDATION",
         "HIGH_VOLATILITY"
       ],
-      "historical_win_rate_pct": 64.0,
-      "forward_5d_return_pct": 1.15,
-      "expectancy_r": 0.42,
-      "sample_size": 150,
+      "stats_status": "No per-rule performance statistics are published. The scanner rules are not wired into the walk-forward backtest engine, so win rate, forward return, expectancy and sample size cannot be computed for them. Publishing an estimate would be fabrication.",
       "regime_status": "PASS",
       "regime_badge_color": "green",
-      "active_market_regime": "STRONG_BULL"
+      "active_market_regime": "WEAK_BULL"
     },
     {
       "scanner_id": "MTF_ALIGNMENT",
@@ -167,13 +143,10 @@
         "WEAK_BULL",
         "CONSOLIDATION"
       ],
-      "historical_win_rate_pct": 58.0,
-      "forward_5d_return_pct": 1.65,
-      "expectancy_r": 0.47,
-      "sample_size": 135,
+      "stats_status": "No per-rule performance statistics are published. The scanner rules are not wired into the walk-forward backtest engine, so win rate, forward return, expectancy and sample size cannot be computed for them. Publishing an estimate would be fabrication.",
       "regime_status": "PASS",
       "regime_badge_color": "green",
-      "active_market_regime": "STRONG_BULL"
+      "active_market_regime": "WEAK_BULL"
     },
     {
       "scanner_id": "HIGH_RVOL_SURGE",
@@ -187,13 +160,10 @@
         "CONSOLIDATION",
         "HIGH_VOLATILITY"
       ],
-      "historical_win_rate_pct": 52.5,
-      "forward_5d_return_pct": 2.15,
-      "expectancy_r": 0.41,
-      "sample_size": 110,
+      "stats_status": "No per-rule performance statistics are published. The scanner rules are not wired into the walk-forward backtest engine, so win rate, forward return, expectancy and sample size cannot be computed for them. Publishing an estimate would be fabrication.",
       "regime_status": "PASS",
       "regime_badge_color": "green",
-      "active_market_regime": "STRONG_BULL"
+      "active_market_regime": "WEAK_BULL"
     },
     {
       "scanner_id": "BASE_TIGHTENING",
@@ -206,13 +176,10 @@
         "WEAK_BULL",
         "CONSOLIDATION"
       ],
-      "historical_win_rate_pct": 57.5,
-      "forward_5d_return_pct": 1.8,
-      "expectancy_r": 0.5,
-      "sample_size": 120,
+      "stats_status": "No per-rule performance statistics are published. The scanner rules are not wired into the walk-forward backtest engine, so win rate, forward return, expectancy and sample size cannot be computed for them. Publishing an estimate would be fabrication.",
       "regime_status": "PASS",
       "regime_badge_color": "green",
-      "active_market_regime": "STRONG_BULL"
+      "active_market_regime": "WEAK_BULL"
     },
     {
       "scanner_id": "ATR_EXPANSION",
@@ -225,13 +192,10 @@
         "WEAK_BULL",
         "HIGH_VOLATILITY"
       ],
-      "historical_win_rate_pct": 53.8,
-      "forward_5d_return_pct": 1.95,
-      "expectancy_r": 0.44,
-      "sample_size": 105,
+      "stats_status": "No per-rule performance statistics are published. The scanner rules are not wired into the walk-forward backtest engine, so win rate, forward return, expectancy and sample size cannot be computed for them. Publishing an estimate would be fabrication.",
       "regime_status": "PASS",
       "regime_badge_color": "green",
-      "active_market_regime": "STRONG_BULL"
+      "active_market_regime": "WEAK_BULL"
     },
     {
       "scanner_id": "SUPPORT_BOUNCE_50DMA",
@@ -244,13 +208,10 @@
         "WEAK_BULL",
         "CONSOLIDATION"
       ],
-      "historical_win_rate_pct": 59.0,
-      "forward_5d_return_pct": 1.88,
-      "expectancy_r": 0.53,
-      "sample_size": 98,
+      "stats_status": "No per-rule performance statistics are published. The scanner rules are not wired into the walk-forward backtest engine, so win rate, forward return, expectancy and sample size cannot be computed for them. Publishing an estimate would be fabrication.",
       "regime_status": "PASS",
       "regime_badge_color": "green",
-      "active_market_regime": "STRONG_BULL"
+      "active_market_regime": "WEAK_BULL"
     },
     {
       "scanner_id": "CROSS_BORDER_LEADER",
@@ -263,13 +224,10 @@
         "WEAK_BULL",
         "CONSOLIDATION"
       ],
-      "historical_win_rate_pct": 60.8,
-      "forward_5d_return_pct": 1.62,
-      "expectancy_r": 0.51,
-      "sample_size": 92,
+      "stats_status": "No per-rule performance statistics are published. The scanner rules are not wired into the walk-forward backtest engine, so win rate, forward return, expectancy and sample size cannot be computed for them. Publishing an estimate would be fabrication.",
       "regime_status": "PASS",
       "regime_badge_color": "green",
-      "active_market_regime": "STRONG_BULL"
+      "active_market_regime": "WEAK_BULL"
     },
     {
       "scanner_id": "PO3_LIQUIDITY_SWEEP",
@@ -283,40 +241,36 @@
         "CONSOLIDATION",
         "HIGH_VOLATILITY"
       ],
-      "historical_win_rate_pct": 58.5,
-      "forward_5d_return_pct": 2.25,
-      "expectancy_r": 0.59,
-      "sample_size": 135,
+      "stats_status": "No per-rule performance statistics are published. The scanner rules are not wired into the walk-forward backtest engine, so win rate, forward return, expectancy and sample size cannot be computed for them. Publishing an estimate would be fabrication.",
       "regime_status": "PASS",
       "regime_badge_color": "green",
-      "active_market_regime": "STRONG_BULL"
+      "active_market_regime": "WEAK_BULL"
     }
   ],
   "matches": [
     {
-      "scanner_id": "STACKED_MOVING_AVERAGES",
-      "scanner_name": "Stacked Moving Average Alignment",
+      "scanner_id": "BASE_TIGHTENING",
+      "scanner_name": "Consolidation Base Tightening",
       "symbol": "AAPL",
       "exchange": "NASDAQ",
-      "price": 338.3999938964844,
-      "why_matched": "Perfect bullish alignment: Price > 20DMA > 50DMA > 200DMA with positive 200DMA slope.",
+      "price": 356.2699890136719,
+      "why_matched": "Price consolidating in a tight band (6.9%) within 1.3% of yearly high.",
       "key_metrics": {
-        "close": 338.3999938964844,
-        "sma_20": 330.33099975585935,
-        "sma_50": 321.9251995849609,
-        "sma_200": 288.0724493408203
+        "bandwidth": 0.0689147527390497,
+        "prox_52w": -0.01263752384304817
       },
       "regime_gated": false,
-      "regime_state": "STRONG_BULL",
-      "idiosyncratic_risk_multiplier": 0.75,
-      "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-3.23 pts)",
-      "conviction_score": 86.0,
+      "regime_state": "WEAK_BULL",
+      "idiosyncratic_risk_multiplier": 1.0,
+      "risk_posture": "NORMAL_EQUILIBRIUM",
+      "primary_risk_driver": "Stable Quantitative Fingerprint",
+      "conviction_score": 65.0,
       "conviction_tier": "HIGH",
       "conviction_breakdown": {
-        "technical_quality": 32.0,
-        "macro_risk_alignment": 24.0,
-        "empirical_expectancy": 30.0
+        "technical_quality": 35.0,
+        "macro_risk_alignment": 30.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
       }
     },
     {
@@ -324,423 +278,336 @@
       "scanner_name": "Momentum Leaders",
       "symbol": "AAPL",
       "exchange": "NASDAQ",
-      "price": 338.3999938964844,
-      "why_matched": "Strong trend: close > 50DMA > 200DMA with +20.1% 3m return and -2.0% from 52w high.",
+      "price": 356.2699890136719,
+      "why_matched": "Strong trend: close > 50DMA > 200DMA with +15.3% 3m return and -1.3% from 52w high.",
       "key_metrics": {
-        "ret_3m": 0.20110742395843362,
-        "prox_52w": -0.020096144422889095,
-        "rsi": 61.79235997096968
+        "ret_3m": 0.1533132135253399,
+        "prox_52w": -0.01263752384304817,
+        "rsi": 61.19125069160353
       },
       "regime_gated": false,
-      "regime_state": "STRONG_BULL",
-      "idiosyncratic_risk_multiplier": 0.75,
-      "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-3.23 pts)",
-      "conviction_score": 82.0,
+      "regime_state": "WEAK_BULL",
+      "idiosyncratic_risk_multiplier": 1.0,
+      "risk_posture": "NORMAL_EQUILIBRIUM",
+      "primary_risk_driver": "Stable Quantitative Fingerprint",
+      "conviction_score": 62.0,
       "conviction_tier": "HIGH",
       "conviction_breakdown": {
         "technical_quality": 32.0,
-        "macro_risk_alignment": 24.0,
-        "empirical_expectancy": 26.0
-      }
-    },
-    {
-      "scanner_id": "MTF_ALIGNMENT",
-      "scanner_name": "Fast & Medium MTF Alignment",
-      "symbol": "AAPL",
-      "exchange": "NASDAQ",
-      "price": 338.3999938964844,
-      "why_matched": "Fast 8EMA > 21EMA above 50DMA with established trend strength (ADX 27.6).",
-      "key_metrics": {
-        "ema_8": 336.95867975091056,
-        "ema_21": 330.70692685514905,
-        "adx": 27.62362690571692
-      },
-      "regime_gated": false,
-      "regime_state": "STRONG_BULL",
-      "idiosyncratic_risk_multiplier": 0.75,
-      "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-3.23 pts)",
-      "conviction_score": 82.0,
-      "conviction_tier": "HIGH",
-      "conviction_breakdown": {
-        "technical_quality": 32.0,
-        "macro_risk_alignment": 24.0,
-        "empirical_expectancy": 26.0
-      }
-    },
-    {
-      "scanner_id": "LOW_BETA_QUALITY",
-      "scanner_name": "Low-Volatility Trend Quality",
-      "symbol": "AAPL",
-      "exchange": "NASDAQ",
-      "price": 338.3999938964844,
-      "why_matched": "Low ATR volatility (2.0%) paired with rising 200DMA and positive quarterly return.",
-      "key_metrics": {
-        "atr_pct": 1.9955253767747958,
-        "slope_200": 24.389686364439388,
-        "ret_3m": 0.20110742395843362
-      },
-      "regime_gated": false,
-      "regime_state": "STRONG_BULL",
-      "idiosyncratic_risk_multiplier": 0.75,
-      "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-3.23 pts)",
-      "conviction_score": 78.0,
-      "conviction_tier": "MODERATE",
-      "conviction_breakdown": {
-        "technical_quality": 32.0,
-        "macro_risk_alignment": 24.0,
-        "empirical_expectancy": 22.0
+        "macro_risk_alignment": 30.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
       }
     },
     {
       "scanner_id": "STACKED_MOVING_AVERAGES",
       "scanner_name": "Stacked Moving Average Alignment",
-      "symbol": "MSFT",
+      "symbol": "AAPL",
       "exchange": "NASDAQ",
-      "price": 509.2200012207031,
+      "price": 356.2699890136719,
       "why_matched": "Perfect bullish alignment: Price > 20DMA > 50DMA > 200DMA with positive 200DMA slope.",
       "key_metrics": {
-        "close": 509.2200012207031,
-        "sma_20": 499.8249984741211,
-        "sma_50": 478.1195989990234,
-        "sma_200": 432.14689926147463
+        "close": 356.2699890136719,
+        "sma_20": 346.15050201416017,
+        "sma_50": 334.9334002685547,
+        "sma_200": 296.7724998474121
       },
       "regime_gated": false,
-      "regime_state": "STRONG_BULL",
+      "regime_state": "WEAK_BULL",
       "idiosyncratic_risk_multiplier": 1.0,
       "risk_posture": "NORMAL_EQUILIBRIUM",
       "primary_risk_driver": "Stable Quantitative Fingerprint",
-      "conviction_score": 92.0,
+      "conviction_score": 62.0,
       "conviction_tier": "HIGH",
       "conviction_breakdown": {
         "technical_quality": 32.0,
         "macro_risk_alignment": 30.0,
-        "empirical_expectancy": 30.0
-      }
-    },
-    {
-      "scanner_id": "MTF_ALIGNMENT",
-      "scanner_name": "Fast & Medium MTF Alignment",
-      "symbol": "MSFT",
-      "exchange": "NASDAQ",
-      "price": 509.2200012207031,
-      "why_matched": "Fast 8EMA > 21EMA above 50DMA with established trend strength (ADX 23.8).",
-      "key_metrics": {
-        "ema_8": 503.6885027892079,
-        "ema_21": 497.9038619306873,
-        "adx": 23.84236884836247
-      },
-      "regime_gated": false,
-      "regime_state": "STRONG_BULL",
-      "idiosyncratic_risk_multiplier": 1.0,
-      "risk_posture": "NORMAL_EQUILIBRIUM",
-      "primary_risk_driver": "Stable Quantitative Fingerprint",
-      "conviction_score": 88.0,
-      "conviction_tier": "HIGH",
-      "conviction_breakdown": {
-        "technical_quality": 32.0,
-        "macro_risk_alignment": 30.0,
-        "empirical_expectancy": 26.0
-      }
-    },
-    {
-      "scanner_id": "PO3_LIQUIDITY_SWEEP",
-      "scanner_name": "TAC-15: PO3 Liquidity Sweep & Manipulation Reversal",
-      "symbol": "MSFT",
-      "exchange": "NASDAQ",
-      "price": 509.2200012207031,
-      "why_matched": "Institutional liquidity sweep: Low ($502.22) swept support with 29.3% lower rejection wick and close in upper 63.0% of daily range.",
-      "key_metrics": {
-        "low": 502.2200012207031,
-        "close": 509.2200012207031,
-        "wick_ratio": 0.29,
-        "rsi": 58.6,
-        "rvol": 0.92
-      },
-      "regime_gated": false,
-      "regime_state": "STRONG_BULL",
-      "idiosyncratic_risk_multiplier": 1.0,
-      "risk_posture": "NORMAL_EQUILIBRIUM",
-      "primary_risk_driver": "Stable Quantitative Fingerprint",
-      "conviction_score": 86.0,
-      "conviction_tier": "HIGH",
-      "conviction_breakdown": {
-        "technical_quality": 26.0,
-        "macro_risk_alignment": 30.0,
-        "empirical_expectancy": 30.0
-      }
-    },
-    {
-      "scanner_id": "VOLATILITY_SQUEEZE",
-      "scanner_name": "Volatility Squeeze (Bandwidth)",
-      "symbol": "MSFT",
-      "exchange": "NASDAQ",
-      "price": 509.2200012207031,
-      "why_matched": "Bollinger Bandwidth compressed to 5.5% with low ATR% of 2.2%, indicating impending expansion.",
-      "key_metrics": {
-        "bandwidth": 0.05452145328263829,
-        "atr_pct": 2.2112252109745234
-      },
-      "regime_gated": false,
-      "regime_state": "STRONG_BULL",
-      "idiosyncratic_risk_multiplier": 1.0,
-      "risk_posture": "NORMAL_EQUILIBRIUM",
-      "primary_risk_driver": "Stable Quantitative Fingerprint",
-      "conviction_score": 81.0,
-      "conviction_tier": "HIGH",
-      "conviction_breakdown": {
-        "technical_quality": 29.0,
-        "macro_risk_alignment": 30.0,
-        "empirical_expectancy": 22.0
-      }
-    },
-    {
-      "scanner_id": "BASE_TIGHTENING",
-      "scanner_name": "Consolidation Base Tightening",
-      "symbol": "MSFT",
-      "exchange": "NASDAQ",
-      "price": 509.2200012207031,
-      "why_matched": "Price consolidating in a tight band (5.5%) within 8.0% of yearly high.",
-      "key_metrics": {
-        "bandwidth": 0.05452145328263829,
-        "prox_52w": -0.08036547684186812
-      },
-      "regime_gated": false,
-      "regime_state": "STRONG_BULL",
-      "idiosyncratic_risk_multiplier": 1.0,
-      "risk_posture": "NORMAL_EQUILIBRIUM",
-      "primary_risk_driver": "Stable Quantitative Fingerprint",
-      "conviction_score": 81.0,
-      "conviction_tier": "HIGH",
-      "conviction_breakdown": {
-        "technical_quality": 29.0,
-        "macro_risk_alignment": 30.0,
-        "empirical_expectancy": 22.0
-      }
-    },
-    {
-      "scanner_id": "STACKED_MOVING_AVERAGES",
-      "scanner_name": "Stacked Moving Average Alignment",
-      "symbol": "NVDA",
-      "exchange": "NASDAQ",
-      "price": 228.86000061035156,
-      "why_matched": "Perfect bullish alignment: Price > 20DMA > 50DMA > 200DMA with positive 200DMA slope.",
-      "key_metrics": {
-        "close": 228.86000061035156,
-        "sma_20": 222.31999969482422,
-        "sma_50": 216.4979995727539,
-        "sma_200": 199.69269996643067
-      },
-      "regime_gated": false,
-      "regime_state": "STRONG_BULL",
-      "idiosyncratic_risk_multiplier": 0.75,
-      "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-2.61 pts)",
-      "conviction_score": 86.0,
-      "conviction_tier": "HIGH",
-      "conviction_breakdown": {
-        "technical_quality": 32.0,
-        "macro_risk_alignment": 24.0,
-        "empirical_expectancy": 30.0
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
       }
     },
     {
       "scanner_id": "MOMENTUM_LEADERS",
       "scanner_name": "Momentum Leaders",
-      "symbol": "NVDA",
+      "symbol": "MSFT",
       "exchange": "NASDAQ",
-      "price": 228.86000061035156,
-      "why_matched": "Strong trend: close > 50DMA > 200DMA with +17.4% 3m return and -3.2% from 52w high.",
+      "price": 523.8800048828125,
+      "why_matched": "Strong trend: close > 50DMA > 200DMA with +12.7% 3m return and -6.3% from 52w high.",
       "key_metrics": {
-        "ret_3m": 0.17382160936279356,
-        "prox_52w": -0.03246805146599918,
-        "rsi": 58.64897007306472
+        "ret_3m": 0.12730246924322364,
+        "prox_52w": -0.0630779182531731,
+        "rsi": 50.328742163687494
       },
       "regime_gated": false,
-      "regime_state": "STRONG_BULL",
+      "regime_state": "WEAK_BULL",
       "idiosyncratic_risk_multiplier": 0.75,
       "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-2.61 pts)",
-      "conviction_score": 82.0,
-      "conviction_tier": "HIGH",
-      "conviction_breakdown": {
-        "technical_quality": 32.0,
-        "macro_risk_alignment": 24.0,
-        "empirical_expectancy": 26.0
-      }
-    },
-    {
-      "scanner_id": "VOLATILITY_SQUEEZE",
-      "scanner_name": "Volatility Squeeze (Bandwidth)",
-      "symbol": "AMZN",
-      "exchange": "NASDAQ",
-      "price": 246.14999389648438,
-      "why_matched": "Bollinger Bandwidth compressed to 6.7% with low ATR% of 2.2%, indicating impending expansion.",
-      "key_metrics": {
-        "bandwidth": 0.06698111241464236,
-        "atr_pct": 2.197264793914642
-      },
-      "regime_gated": false,
-      "regime_state": "STRONG_BULL",
-      "idiosyncratic_risk_multiplier": 0.75,
-      "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-9.32 pts)",
-      "conviction_score": 75.0,
-      "conviction_tier": "MODERATE",
-      "conviction_breakdown": {
-        "technical_quality": 29.0,
-        "macro_risk_alignment": 24.0,
-        "empirical_expectancy": 22.0
-      }
-    },
-    {
-      "scanner_id": "LOW_BETA_QUALITY",
-      "scanner_name": "Low-Volatility Trend Quality",
-      "symbol": "AMZN",
-      "exchange": "NASDAQ",
-      "price": 246.14999389648438,
-      "why_matched": "Low ATR volatility (2.2%) paired with rising 200DMA and positive quarterly return.",
-      "key_metrics": {
-        "atr_pct": 2.197264793914642,
-        "slope_200": 11.927203985068475,
-        "ret_3m": 0.025027044732702786
-      },
-      "regime_gated": false,
-      "regime_state": "STRONG_BULL",
-      "idiosyncratic_risk_multiplier": 0.75,
-      "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-9.32 pts)",
-      "conviction_score": 75.0,
-      "conviction_tier": "MODERATE",
-      "conviction_breakdown": {
-        "technical_quality": 29.0,
-        "macro_risk_alignment": 24.0,
-        "empirical_expectancy": 22.0
-      }
-    },
-    {
-      "scanner_id": "PULLBACK_UPTREND",
-      "scanner_name": "Pullback to Key Support",
-      "symbol": "GOOGL",
-      "exchange": "NASDAQ",
-      "price": 342.75,
-      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 48.8 shows controlled digestion.",
-      "key_metrics": {
-        "dist_sma20": 0.0022457345569033274,
-        "dist_sma50": 0.0042415914026667405,
-        "rsi": 48.811944910491
-      },
-      "regime_gated": false,
-      "regime_state": "STRONG_BULL",
-      "idiosyncratic_risk_multiplier": 0.75,
-      "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-9.32 pts)",
-      "conviction_score": 86.0,
-      "conviction_tier": "HIGH",
-      "conviction_breakdown": {
-        "technical_quality": 32.0,
-        "macro_risk_alignment": 24.0,
-        "empirical_expectancy": 30.0
-      }
-    },
-    {
-      "scanner_id": "VOLATILITY_SQUEEZE",
-      "scanner_name": "Volatility Squeeze (Bandwidth)",
-      "symbol": "JPM",
-      "exchange": "NYSE",
-      "price": 336.5899963378906,
-      "why_matched": "Bollinger Bandwidth compressed to 8.4% with low ATR% of 2.2%, indicating impending expansion.",
-      "key_metrics": {
-        "bandwidth": 0.08414170864558627,
-        "atr_pct": 2.154168294407715
-      },
-      "regime_gated": false,
-      "regime_state": "STRONG_BULL",
-      "idiosyncratic_risk_multiplier": 0.75,
-      "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-9.21 pts)",
-      "conviction_score": 75.0,
-      "conviction_tier": "MODERATE",
-      "conviction_breakdown": {
-        "technical_quality": 29.0,
-        "macro_risk_alignment": 24.0,
-        "empirical_expectancy": 22.0
-      }
-    },
-    {
-      "scanner_id": "LOW_BETA_QUALITY",
-      "scanner_name": "Low-Volatility Trend Quality",
-      "symbol": "JPM",
-      "exchange": "NYSE",
-      "price": 336.5899963378906,
-      "why_matched": "Low ATR volatility (2.2%) paired with rising 200DMA and positive quarterly return.",
-      "key_metrics": {
-        "atr_pct": 2.154168294407715,
-        "slope_200": 17.04606514594452,
-        "ret_3m": 0.021858530523876984
-      },
-      "regime_gated": false,
-      "regime_state": "STRONG_BULL",
-      "idiosyncratic_risk_multiplier": 0.75,
-      "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-9.21 pts)",
-      "conviction_score": 75.0,
-      "conviction_tier": "MODERATE",
-      "conviction_breakdown": {
-        "technical_quality": 29.0,
-        "macro_risk_alignment": 24.0,
-        "empirical_expectancy": 22.0
-      }
-    },
-    {
-      "scanner_id": "BASE_TIGHTENING",
-      "scanner_name": "Consolidation Base Tightening",
-      "symbol": "JPM",
-      "exchange": "NYSE",
-      "price": 336.5899963378906,
-      "why_matched": "Price consolidating in a tight band (8.4%) within 8.2% of yearly high.",
-      "key_metrics": {
-        "bandwidth": 0.08414170864558627,
-        "prox_52w": -0.08160983263877042
-      },
-      "regime_gated": false,
-      "regime_state": "STRONG_BULL",
-      "idiosyncratic_risk_multiplier": 0.75,
-      "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-9.21 pts)",
-      "conviction_score": 75.0,
-      "conviction_tier": "MODERATE",
-      "conviction_breakdown": {
-        "technical_quality": 29.0,
-        "macro_risk_alignment": 24.0,
-        "empirical_expectancy": 22.0
-      }
-    },
-    {
-      "scanner_id": "MEAN_REVERSION_OVERSOLD",
-      "scanner_name": "Mean Reversion (Oversold Bounce)",
-      "symbol": "JPM",
-      "exchange": "NYSE",
-      "price": 336.5899963378906,
-      "why_matched": "Oversold conditions: RSI at 36.0 interacting with lower Bollinger Band.",
-      "key_metrics": {
-        "rsi": 35.97071835454227,
-        "close": 336.5899963378906,
-        "bb_lower": 335.47636815397203
-      },
-      "regime_gated": true,
-      "regime_state": "STRONG_BULL",
-      "idiosyncratic_risk_multiplier": 0.75,
-      "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-9.21 pts)",
+      "primary_risk_driver": "Minor Detractor Drag",
       "conviction_score": 56.0,
-      "conviction_tier": "WATCHLIST",
+      "conviction_tier": "HIGH",
       "conviction_breakdown": {
-        "technical_quality": 25.0,
-        "macro_risk_alignment": 9.0,
-        "empirical_expectancy": 22.0
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
+      }
+    },
+    {
+      "scanner_id": "PULLBACK_UPTREND",
+      "scanner_name": "Pullback to Key Support",
+      "symbol": "MSFT",
+      "exchange": "NASDAQ",
+      "price": 523.8800048828125,
+      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 50.3 shows controlled digestion.",
+      "key_metrics": {
+        "dist_sma20": 0.010400716429182354,
+        "dist_sma50": 0.02141685488715946,
+        "rsi": 50.328742163687494
+      },
+      "regime_gated": false,
+      "regime_state": "WEAK_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "Minor Detractor Drag",
+      "conviction_score": 56.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
+      }
+    },
+    {
+      "scanner_id": "BASE_TIGHTENING",
+      "scanner_name": "Consolidation Base Tightening",
+      "symbol": "MSFT",
+      "exchange": "NASDAQ",
+      "price": 523.8800048828125,
+      "why_matched": "Price consolidating in a tight band (7.6%) within 6.3% of yearly high.",
+      "key_metrics": {
+        "bandwidth": 0.07582071509361404,
+        "prox_52w": -0.0630779182531731
+      },
+      "regime_gated": false,
+      "regime_state": "WEAK_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "Minor Detractor Drag",
+      "conviction_score": 56.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
+      }
+    },
+    {
+      "scanner_id": "PO3_LIQUIDITY_SWEEP",
+      "scanner_name": "TAC-15: PO3 Liquidity Sweep & Manipulation Reversal",
+      "symbol": "MSFT",
+      "exchange": "NASDAQ",
+      "price": 523.8800048828125,
+      "why_matched": "Institutional liquidity sweep: Low ($513.82) swept support with 47.1% lower rejection wick and close in upper 79.8% of daily range.",
+      "key_metrics": {
+        "low": 513.8200073242188,
+        "close": 523.8800048828125,
+        "wick_ratio": 0.47,
+        "rsi": 50.3,
+        "rvol": 1.0
+      },
+      "regime_gated": false,
+      "regime_state": "WEAK_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "Minor Detractor Drag",
+      "conviction_score": 56.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
+      }
+    },
+    {
+      "scanner_id": "HIGH_RVOL_SURGE",
+      "scanner_name": "High Relative Volume Surge",
+      "symbol": "NVDA",
+      "exchange": "NASDAQ",
+      "price": 162.85000610351562,
+      "why_matched": "Elevated trading activity: Relative Volume is 1.74x above the 20-day average.",
+      "key_metrics": {
+        "rvol": 1.7428846801210909
+      },
+      "regime_gated": false,
+      "regime_state": "WEAK_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-27.53 pts)",
+      "conviction_score": 61.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 37.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
+      }
+    },
+    {
+      "scanner_id": "STACKED_MOVING_AVERAGES",
+      "scanner_name": "Stacked Moving Average Alignment",
+      "symbol": "AMZN",
+      "exchange": "NASDAQ",
+      "price": 266.6600036621094,
+      "why_matched": "Perfect bullish alignment: Price > 20DMA > 50DMA > 200DMA with positive 200DMA slope.",
+      "key_metrics": {
+        "close": 266.6600036621094,
+        "sma_20": 257.3345008850098,
+        "sma_50": 255.92420013427736,
+        "sma_200": 243.69459999084472
+      },
+      "regime_gated": false,
+      "regime_state": "WEAK_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-3.59 pts)",
+      "conviction_score": 56.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
+      }
+    },
+    {
+      "scanner_id": "PULLBACK_UPTREND",
+      "scanner_name": "Pullback to Key Support",
+      "symbol": "JPM",
+      "exchange": "NYSE",
+      "price": 346.19000244140625,
+      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 54.3 shows controlled digestion.",
+      "key_metrics": {
+        "dist_sma20": 0.021073906864909536,
+        "dist_sma50": 0.0016967473045767394,
+        "rsi": 54.275148316537035
+      },
+      "regime_gated": false,
+      "regime_state": "WEAK_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-2.84 pts)",
+      "conviction_score": 56.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
+      }
+    },
+    {
+      "scanner_id": "MTF_ALIGNMENT",
+      "scanner_name": "Fast & Medium MTF Alignment",
+      "symbol": "JPM",
+      "exchange": "NYSE",
+      "price": 346.19000244140625,
+      "why_matched": "Fast 8EMA > 21EMA above 50DMA with established trend strength (ADX 22.5).",
+      "key_metrics": {
+        "ema_8": 342.45898379076493,
+        "ema_21": 341.38441956546325,
+        "adx": 22.53384879671243
+      },
+      "regime_gated": false,
+      "regime_state": "WEAK_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-2.84 pts)",
+      "conviction_score": 56.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
+      }
+    },
+    {
+      "scanner_id": "BASE_TIGHTENING",
+      "scanner_name": "Consolidation Base Tightening",
+      "symbol": "JPM",
+      "exchange": "NYSE",
+      "price": 346.19000244140625,
+      "why_matched": "Price consolidating in a tight band (5.9%) within 5.5% of yearly high.",
+      "key_metrics": {
+        "bandwidth": 0.05943966224146857,
+        "prox_52w": -0.055416091565058
+      },
+      "regime_gated": false,
+      "regime_state": "WEAK_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-2.84 pts)",
+      "conviction_score": 56.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
+      }
+    },
+    {
+      "scanner_id": "SUPPORT_BOUNCE_50DMA",
+      "scanner_name": "50-Day Moving Average Support Bounce",
+      "symbol": "JPM",
+      "exchange": "NYSE",
+      "price": 346.19000244140625,
+      "why_matched": "Session low tested the 50DMA (345.60), with buyers closing the price firmly above support.",
+      "key_metrics": {
+        "low": 342.7900085449219,
+        "close": 346.19000244140625,
+        "sma_50": 345.60360046386717
+      },
+      "regime_gated": false,
+      "regime_state": "WEAK_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-2.84 pts)",
+      "conviction_score": 56.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
+      }
+    },
+    {
+      "scanner_id": "VOLATILITY_SQUEEZE",
+      "scanner_name": "Volatility Squeeze (Bandwidth)",
+      "symbol": "JPM",
+      "exchange": "NYSE",
+      "price": 346.19000244140625,
+      "why_matched": "Bollinger Bandwidth compressed to 5.9% with low ATR% of 2.2%, indicating impending expansion.",
+      "key_metrics": {
+        "bandwidth": 0.05943966224146857,
+        "atr_pct": 2.2475269960670556
+      },
+      "regime_gated": false,
+      "regime_state": "WEAK_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-2.84 pts)",
+      "conviction_score": 53.0,
+      "conviction_tier": "MODERATE",
+      "conviction_breakdown": {
+        "technical_quality": 29.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
       }
     },
     {
@@ -748,24 +615,25 @@
       "scanner_name": "Pullback to Key Support",
       "symbol": "XOM",
       "exchange": "NYSE",
-      "price": 162.52000427246094,
-      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 52.3 shows controlled digestion.",
+      "price": 170.58999633789062,
+      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 49.2 shows controlled digestion.",
       "key_metrics": {
-        "dist_sma20": 0.001554292324060404,
-        "dist_sma50": 0.017474640085280272,
-        "rsi": 52.260139489755765
+        "dist_sma20": 0.02701533198189152,
+        "dist_sma50": 0.013010742881926475,
+        "rsi": 49.22888543884256
       },
       "regime_gated": false,
-      "regime_state": "STRONG_BULL",
+      "regime_state": "WEAK_BULL",
       "idiosyncratic_risk_multiplier": 0.5,
       "risk_posture": "DEFENSIVE_DE_RISK",
       "primary_risk_driver": "Hurst Memory Flip (H=0.444)",
-      "conviction_score": 80.0,
-      "conviction_tier": "HIGH",
+      "conviction_score": 50.0,
+      "conviction_tier": "MODERATE",
       "conviction_breakdown": {
         "technical_quality": 32.0,
         "macro_risk_alignment": 18.0,
-        "empirical_expectancy": 30.0
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
       }
     },
     {
@@ -773,99 +641,77 @@
       "scanner_name": "TAC-15: PO3 Liquidity Sweep & Manipulation Reversal",
       "symbol": "XOM",
       "exchange": "NYSE",
-      "price": 162.52000427246094,
-      "why_matched": "Institutional liquidity sweep: Low ($161.05) swept support with 59.0% lower rejection wick and close in upper 59.0% of daily range.",
+      "price": 170.58999633789062,
+      "why_matched": "Institutional liquidity sweep: Low ($169.21) swept support with 55.2% lower rejection wick and close in upper 55.2% of daily range.",
       "key_metrics": {
-        "low": 161.0500030517578,
-        "close": 162.52000427246094,
-        "wick_ratio": 0.59,
-        "rsi": 52.3,
-        "rvol": 0.88
+        "low": 169.2100067138672,
+        "close": 170.58999633789062,
+        "wick_ratio": 0.55,
+        "rsi": 49.2,
+        "rvol": 0.81
       },
       "regime_gated": false,
-      "regime_state": "STRONG_BULL",
+      "regime_state": "WEAK_BULL",
       "idiosyncratic_risk_multiplier": 0.5,
       "risk_posture": "DEFENSIVE_DE_RISK",
       "primary_risk_driver": "Hurst Memory Flip (H=0.444)",
-      "conviction_score": 77.0,
+      "conviction_score": 47.0,
       "conviction_tier": "MODERATE",
       "conviction_breakdown": {
         "technical_quality": 29.0,
         "macro_risk_alignment": 18.0,
-        "empirical_expectancy": 30.0
-      }
-    },
-    {
-      "scanner_id": "MOMENTUM_LEADERS",
-      "scanner_name": "Momentum Leaders",
-      "symbol": "XOM",
-      "exchange": "NYSE",
-      "price": 162.52000427246094,
-      "why_matched": "Strong trend: close > 50DMA > 200DMA with +19.4% 3m return and -7.9% from 52w high.",
-      "key_metrics": {
-        "ret_3m": 0.19447307944035708,
-        "prox_52w": -0.07873702795365811,
-        "rsi": 52.260139489755765
-      },
-      "regime_gated": false,
-      "regime_state": "STRONG_BULL",
-      "idiosyncratic_risk_multiplier": 0.5,
-      "risk_posture": "DEFENSIVE_DE_RISK",
-      "primary_risk_driver": "Hurst Memory Flip (H=0.444)",
-      "conviction_score": 76.0,
-      "conviction_tier": "MODERATE",
-      "conviction_breakdown": {
-        "technical_quality": 32.0,
-        "macro_risk_alignment": 18.0,
-        "empirical_expectancy": 26.0
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
       }
     },
     {
       "scanner_id": "BASE_TIGHTENING",
       "scanner_name": "Consolidation Base Tightening",
-      "symbol": "XOM",
-      "exchange": "NYSE",
-      "price": 162.52000427246094,
-      "why_matched": "Price consolidating in a tight band (6.6%) within 7.9% of yearly high.",
+      "symbol": "SPY",
+      "exchange": "AMEX",
+      "price": 754.3699951171875,
+      "why_matched": "Price consolidating in a tight band (5.9%) within 3.2% of yearly high.",
       "key_metrics": {
-        "bandwidth": 0.06575200299147527,
-        "prox_52w": -0.07873702795365811
+        "bandwidth": 0.058568349943678384,
+        "prox_52w": -0.03207719075230875
       },
       "regime_gated": false,
-      "regime_state": "STRONG_BULL",
-      "idiosyncratic_risk_multiplier": 0.5,
-      "risk_posture": "DEFENSIVE_DE_RISK",
-      "primary_risk_driver": "Hurst Memory Flip (H=0.444)",
-      "conviction_score": 72.0,
-      "conviction_tier": "MODERATE",
+      "regime_state": "WEAK_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "Minor Detractor Drag",
+      "conviction_score": 59.0,
+      "conviction_tier": "HIGH",
       "conviction_breakdown": {
-        "technical_quality": 32.0,
-        "macro_risk_alignment": 18.0,
-        "empirical_expectancy": 22.0
+        "technical_quality": 35.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
       }
     },
     {
       "scanner_id": "VOLATILITY_SQUEEZE",
       "scanner_name": "Volatility Squeeze (Bandwidth)",
-      "symbol": "XOM",
-      "exchange": "NYSE",
-      "price": 162.52000427246094,
-      "why_matched": "Bollinger Bandwidth compressed to 6.6% with low ATR% of 2.4%, indicating impending expansion.",
+      "symbol": "SPY",
+      "exchange": "AMEX",
+      "price": 754.3699951171875,
+      "why_matched": "Bollinger Bandwidth compressed to 5.9% with low ATR% of 1.7%, indicating impending expansion.",
       "key_metrics": {
-        "bandwidth": 0.06575200299147527,
-        "atr_pct": 2.4071750428538126
+        "bandwidth": 0.058568349943678384,
+        "atr_pct": 1.6923308162149424
       },
       "regime_gated": false,
-      "regime_state": "STRONG_BULL",
-      "idiosyncratic_risk_multiplier": 0.5,
-      "risk_posture": "DEFENSIVE_DE_RISK",
-      "primary_risk_driver": "Hurst Memory Flip (H=0.444)",
-      "conviction_score": 69.0,
-      "conviction_tier": "MODERATE",
+      "regime_state": "WEAK_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "Minor Detractor Drag",
+      "conviction_score": 56.0,
+      "conviction_tier": "HIGH",
       "conviction_breakdown": {
-        "technical_quality": 29.0,
-        "macro_risk_alignment": 18.0,
-        "empirical_expectancy": 22.0
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
       }
     },
     {
@@ -873,566 +719,362 @@
       "scanner_name": "Pullback to Key Support",
       "symbol": "SPY",
       "exchange": "AMEX",
-      "price": 765.6099853515625,
-      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 50.5 shows controlled digestion.",
+      "price": 754.3699951171875,
+      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 47.6 shows controlled digestion.",
       "key_metrics": {
-        "dist_sma20": 0.0005835189838102946,
-        "dist_sma50": 0.004721429489424325,
-        "rsi": 50.49970025716319
+        "dist_sma20": 0.006128278869147203,
+        "dist_sma50": 0.011377210735640866,
+        "rsi": 47.634212665942236
       },
       "regime_gated": false,
-      "regime_state": "STRONG_BULL",
-      "idiosyncratic_risk_multiplier": 1.0,
-      "risk_posture": "NORMAL_EQUILIBRIUM",
-      "primary_risk_driver": "Stable Quantitative Fingerprint",
-      "conviction_score": 92.0,
-      "conviction_tier": "HIGH",
+      "regime_state": "WEAK_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "Minor Detractor Drag",
+      "conviction_score": 53.0,
+      "conviction_tier": "MODERATE",
       "conviction_breakdown": {
-        "technical_quality": 32.0,
-        "macro_risk_alignment": 30.0,
-        "empirical_expectancy": 30.0
+        "technical_quality": 29.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
       }
     },
     {
-      "scanner_id": "STACKED_MOVING_AVERAGES",
-      "scanner_name": "Stacked Moving Average Alignment",
-      "symbol": "SPY",
-      "exchange": "AMEX",
-      "price": 765.6099853515625,
-      "why_matched": "Perfect bullish alignment: Price > 20DMA > 50DMA > 200DMA with positive 200DMA slope.",
+      "scanner_id": "PULLBACK_UPTREND",
+      "scanner_name": "Pullback to Key Support",
+      "symbol": "QQQ",
+      "exchange": "NASDAQ",
+      "price": 679.8900146484375,
+      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 43.8 shows controlled digestion.",
       "key_metrics": {
-        "close": 765.6099853515625,
-        "sma_20": 765.1634979248047,
-        "sma_50": 762.0121984863281,
-        "sma_200": 718.8648495483399
+        "dist_sma20": 0.022371874988549575,
+        "dist_sma50": 0.04250633565673747,
+        "rsi": 43.781623855092654
       },
       "regime_gated": false,
-      "regime_state": "STRONG_BULL",
-      "idiosyncratic_risk_multiplier": 1.0,
-      "risk_posture": "NORMAL_EQUILIBRIUM",
-      "primary_risk_driver": "Stable Quantitative Fingerprint",
-      "conviction_score": 92.0,
-      "conviction_tier": "HIGH",
+      "regime_state": "WEAK_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-3.59 pts)",
+      "conviction_score": 53.0,
+      "conviction_tier": "MODERATE",
       "conviction_breakdown": {
-        "technical_quality": 32.0,
-        "macro_risk_alignment": 30.0,
-        "empirical_expectancy": 30.0
+        "technical_quality": 29.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
       }
     },
     {
-      "scanner_id": "BASE_TIGHTENING",
-      "scanner_name": "Consolidation Base Tightening",
-      "symbol": "SPY",
-      "exchange": "AMEX",
-      "price": 765.6099853515625,
-      "why_matched": "Price consolidating in a tight band (2.9%) within 1.8% of yearly high.",
+      "scanner_id": "PULLBACK_UPTREND",
+      "scanner_name": "Pullback to Key Support",
+      "symbol": "RY",
+      "exchange": "TSX",
+      "price": 288.3699951171875,
+      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 53.6 shows controlled digestion.",
       "key_metrics": {
-        "bandwidth": 0.028749850845231437,
-        "prox_52w": -0.01765529832022339
+        "dist_sma20": 0.009702395885634704,
+        "dist_sma50": 0.012060332758275288,
+        "rsi": 53.55707295129851
       },
       "regime_gated": false,
       "regime_state": "STRONG_BULL",
-      "idiosyncratic_risk_multiplier": 1.0,
-      "risk_posture": "NORMAL_EQUILIBRIUM",
-      "primary_risk_driver": "Stable Quantitative Fingerprint",
-      "conviction_score": 87.0,
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "Minor Detractor Drag",
+      "conviction_score": 56.0,
       "conviction_tier": "HIGH",
       "conviction_breakdown": {
-        "technical_quality": 35.0,
-        "macro_risk_alignment": 30.0,
-        "empirical_expectancy": 22.0
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
       }
     },
     {
       "scanner_id": "VOLATILITY_SQUEEZE",
       "scanner_name": "Volatility Squeeze (Bandwidth)",
-      "symbol": "SPY",
-      "exchange": "AMEX",
-      "price": 765.6099853515625,
-      "why_matched": "Bollinger Bandwidth compressed to 2.9% with low ATR% of 0.9%, indicating impending expansion.",
+      "symbol": "RY",
+      "exchange": "TSX",
+      "price": 288.3699951171875,
+      "why_matched": "Bollinger Bandwidth compressed to 4.9% with low ATR% of 1.6%, indicating impending expansion.",
       "key_metrics": {
-        "bandwidth": 0.028749850845231437,
-        "atr_pct": 0.9199957205793416
+        "bandwidth": 0.04949769936685373,
+        "atr_pct": 1.6414913285562438
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "Minor Detractor Drag",
+      "conviction_score": 56.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
+      }
+    },
+    {
+      "scanner_id": "STACKED_MOVING_AVERAGES",
+      "scanner_name": "Stacked Moving Average Alignment",
+      "symbol": "RY",
+      "exchange": "TSX",
+      "price": 288.3699951171875,
+      "why_matched": "Perfect bullish alignment: Price > 20DMA > 50DMA > 200DMA with positive 200DMA slope.",
+      "key_metrics": {
+        "close": 288.3699951171875,
+        "sma_20": 285.59900054931643,
+        "sma_50": 284.93360107421876,
+        "sma_200": 263.5430503845215
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "Minor Detractor Drag",
+      "conviction_score": 56.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
+      }
+    },
+    {
+      "scanner_id": "BASE_TIGHTENING",
+      "scanner_name": "Consolidation Base Tightening",
+      "symbol": "RY",
+      "exchange": "TSX",
+      "price": 288.3699951171875,
+      "why_matched": "Price consolidating in a tight band (4.9%) within 5.9% of yearly high.",
+      "key_metrics": {
+        "bandwidth": 0.04949769936685373,
+        "prox_52w": -0.05878324132971291
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "Minor Detractor Drag",
+      "conviction_score": 56.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
+      }
+    },
+    {
+      "scanner_id": "BASE_TIGHTENING",
+      "scanner_name": "Consolidation Base Tightening",
+      "symbol": "TD",
+      "exchange": "TSX",
+      "price": 176.4199981689453,
+      "why_matched": "Price consolidating in a tight band (5.1%) within 1.9% of yearly high.",
+      "key_metrics": {
+        "bandwidth": 0.050528109262869776,
+        "prox_52w": -0.018798692021376184
       },
       "regime_gated": false,
       "regime_state": "STRONG_BULL",
       "idiosyncratic_risk_multiplier": 1.0,
       "risk_posture": "NORMAL_EQUILIBRIUM",
       "primary_risk_driver": "Stable Quantitative Fingerprint",
-      "conviction_score": 84.0,
+      "conviction_score": 65.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 35.0,
+        "macro_risk_alignment": 30.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
+      }
+    },
+    {
+      "scanner_id": "PULLBACK_UPTREND",
+      "scanner_name": "Pullback to Key Support",
+      "symbol": "TD",
+      "exchange": "TSX",
+      "price": 176.4199981689453,
+      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 56.1 shows controlled digestion.",
+      "key_metrics": {
+        "dist_sma20": 0.007207789996550139,
+        "dist_sma50": 0.0321944885058253,
+        "rsi": 56.12762441182659
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 1.0,
+      "risk_posture": "NORMAL_EQUILIBRIUM",
+      "primary_risk_driver": "Stable Quantitative Fingerprint",
+      "conviction_score": 62.0,
       "conviction_tier": "HIGH",
       "conviction_breakdown": {
         "technical_quality": 32.0,
         "macro_risk_alignment": 30.0,
-        "empirical_expectancy": 22.0
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
+      }
+    },
+    {
+      "scanner_id": "VOLATILITY_SQUEEZE",
+      "scanner_name": "Volatility Squeeze (Bandwidth)",
+      "symbol": "TD",
+      "exchange": "TSX",
+      "price": 176.4199981689453,
+      "why_matched": "Bollinger Bandwidth compressed to 5.1% with low ATR% of 1.7%, indicating impending expansion.",
+      "key_metrics": {
+        "bandwidth": 0.050528109262869776,
+        "atr_pct": 1.6721467738998568
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 1.0,
+      "risk_posture": "NORMAL_EQUILIBRIUM",
+      "primary_risk_driver": "Stable Quantitative Fingerprint",
+      "conviction_score": 62.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 30.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
+      }
+    },
+    {
+      "scanner_id": "STACKED_MOVING_AVERAGES",
+      "scanner_name": "Stacked Moving Average Alignment",
+      "symbol": "TD",
+      "exchange": "TSX",
+      "price": 176.4199981689453,
+      "why_matched": "Perfect bullish alignment: Price > 20DMA > 50DMA > 200DMA with positive 200DMA slope.",
+      "key_metrics": {
+        "close": 176.4199981689453,
+        "sma_20": 175.15749969482422,
+        "sma_50": 170.91739990234376,
+        "sma_200": 154.20309978485108
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 1.0,
+      "risk_posture": "NORMAL_EQUILIBRIUM",
+      "primary_risk_driver": "Stable Quantitative Fingerprint",
+      "conviction_score": 62.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 30.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
       }
     },
     {
       "scanner_id": "LOW_BETA_QUALITY",
       "scanner_name": "Low-Volatility Trend Quality",
-      "symbol": "SPY",
-      "exchange": "AMEX",
-      "price": 765.6099853515625,
-      "why_matched": "Low ATR volatility (0.9%) paired with rising 200DMA and positive quarterly return.",
-      "key_metrics": {
-        "atr_pct": 0.9199957205793416,
-        "slope_200": 16.008304673725206,
-        "ret_3m": 0.033211856074983226
-      },
-      "regime_gated": false,
-      "regime_state": "STRONG_BULL",
-      "idiosyncratic_risk_multiplier": 1.0,
-      "risk_posture": "NORMAL_EQUILIBRIUM",
-      "primary_risk_driver": "Stable Quantitative Fingerprint",
-      "conviction_score": 84.0,
-      "conviction_tier": "HIGH",
-      "conviction_breakdown": {
-        "technical_quality": 32.0,
-        "macro_risk_alignment": 30.0,
-        "empirical_expectancy": 22.0
-      }
-    },
-    {
-      "scanner_id": "INSTITUTIONAL_ACCUMULATION",
-      "scanner_name": "Institutional Accumulation (CMF+OBV)",
-      "symbol": "QQQ",
-      "exchange": "NASDAQ",
-      "price": 736.530029296875,
-      "why_matched": "Positive Chaikin Money Flow (+0.24) accompanied by rising 20-day OBV slope.",
-      "key_metrics": {
-        "cmf": 0.2364131594052622,
-        "obv_slope": 95748700.0,
-        "rvol": 1.2438144633437118
-      },
-      "regime_gated": false,
-      "regime_state": "STRONG_BULL",
-      "idiosyncratic_risk_multiplier": 1.0,
-      "risk_posture": "NORMAL_EQUILIBRIUM",
-      "primary_risk_driver": "Stable Quantitative Fingerprint",
-      "conviction_score": 95.0,
-      "conviction_tier": "HIGH",
-      "conviction_breakdown": {
-        "technical_quality": 35.0,
-        "macro_risk_alignment": 30.0,
-        "empirical_expectancy": 30.0
-      }
-    },
-    {
-      "scanner_id": "STACKED_MOVING_AVERAGES",
-      "scanner_name": "Stacked Moving Average Alignment",
-      "symbol": "QQQ",
-      "exchange": "NASDAQ",
-      "price": 736.530029296875,
-      "why_matched": "Perfect bullish alignment: Price > 20DMA > 50DMA > 200DMA with positive 200DMA slope.",
-      "key_metrics": {
-        "close": 736.530029296875,
-        "sma_20": 721.8794982910156,
-        "sma_50": 713.47759765625,
-        "sma_200": 666.1442492675782
-      },
-      "regime_gated": false,
-      "regime_state": "STRONG_BULL",
-      "idiosyncratic_risk_multiplier": 1.0,
-      "risk_posture": "NORMAL_EQUILIBRIUM",
-      "primary_risk_driver": "Stable Quantitative Fingerprint",
-      "conviction_score": 92.0,
-      "conviction_tier": "HIGH",
-      "conviction_breakdown": {
-        "technical_quality": 32.0,
-        "macro_risk_alignment": 30.0,
-        "empirical_expectancy": 30.0
-      }
-    },
-    {
-      "scanner_id": "BREAKOUT_52W_HIGH",
-      "scanner_name": "52-Week High Breakout",
-      "symbol": "QQQ",
-      "exchange": "NASDAQ",
-      "price": 736.530029296875,
-      "why_matched": "Trading within 1.6% of 52-week high with elevated RVOL of 1.24x.",
-      "key_metrics": {
-        "prox_52w": -0.016189133402718214,
-        "rvol": 1.2438144633437118
-      },
-      "regime_gated": false,
-      "regime_state": "STRONG_BULL",
-      "idiosyncratic_risk_multiplier": 1.0,
-      "risk_posture": "NORMAL_EQUILIBRIUM",
-      "primary_risk_driver": "Stable Quantitative Fingerprint",
-      "conviction_score": 90.0,
-      "conviction_tier": "HIGH",
-      "conviction_breakdown": {
-        "technical_quality": 38.0,
-        "macro_risk_alignment": 30.0,
-        "empirical_expectancy": 22.0
-      }
-    },
-    {
-      "scanner_id": "BASE_TIGHTENING",
-      "scanner_name": "Consolidation Base Tightening",
-      "symbol": "QQQ",
-      "exchange": "NASDAQ",
-      "price": 736.530029296875,
-      "why_matched": "Price consolidating in a tight band (8.0%) within 1.6% of yearly high.",
-      "key_metrics": {
-        "bandwidth": 0.08009726772265492,
-        "prox_52w": -0.016189133402718214
-      },
-      "regime_gated": false,
-      "regime_state": "STRONG_BULL",
-      "idiosyncratic_risk_multiplier": 1.0,
-      "risk_posture": "NORMAL_EQUILIBRIUM",
-      "primary_risk_driver": "Stable Quantitative Fingerprint",
-      "conviction_score": 87.0,
-      "conviction_tier": "HIGH",
-      "conviction_breakdown": {
-        "technical_quality": 35.0,
-        "macro_risk_alignment": 30.0,
-        "empirical_expectancy": 22.0
-      }
-    },
-    {
-      "scanner_id": "VOLATILITY_SQUEEZE",
-      "scanner_name": "Volatility Squeeze (Bandwidth)",
-      "symbol": "QQQ",
-      "exchange": "NASDAQ",
-      "price": 736.530029296875,
-      "why_matched": "Bollinger Bandwidth compressed to 8.0% with low ATR% of 1.4%, indicating impending expansion.",
-      "key_metrics": {
-        "bandwidth": 0.08009726772265492,
-        "atr_pct": 1.3538378710006052
-      },
-      "regime_gated": false,
-      "regime_state": "STRONG_BULL",
-      "idiosyncratic_risk_multiplier": 1.0,
-      "risk_posture": "NORMAL_EQUILIBRIUM",
-      "primary_risk_driver": "Stable Quantitative Fingerprint",
-      "conviction_score": 84.0,
-      "conviction_tier": "HIGH",
-      "conviction_breakdown": {
-        "technical_quality": 32.0,
-        "macro_risk_alignment": 30.0,
-        "empirical_expectancy": 22.0
-      }
-    },
-    {
-      "scanner_id": "PULLBACK_UPTREND",
-      "scanner_name": "Pullback to Key Support",
-      "symbol": "RY",
+      "symbol": "TD",
       "exchange": "TSX",
-      "price": 285.07000732421875,
-      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 47.5 shows controlled digestion.",
+      "price": 176.4199981689453,
+      "why_matched": "Low ATR volatility (1.7%) paired with rising 200DMA and positive quarterly return.",
       "key_metrics": {
-        "dist_sma20": 0.0023866661449256045,
-        "dist_sma50": 0.017704521429330943,
-        "rsi": 47.49817709732487
+        "atr_pct": 1.6721467738998568,
+        "slope_200": 38.469544649499284,
+        "ret_3m": 0.049869109840675385
       },
       "regime_gated": false,
-      "regime_state": "WEAK_BULL",
-      "idiosyncratic_risk_multiplier": 0.75,
-      "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-7.73 pts)",
-      "conviction_score": 83.0,
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 1.0,
+      "risk_posture": "NORMAL_EQUILIBRIUM",
+      "primary_risk_driver": "Stable Quantitative Fingerprint",
+      "conviction_score": 62.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 30.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
+      }
+    },
+    {
+      "scanner_id": "PO3_LIQUIDITY_SWEEP",
+      "scanner_name": "TAC-15: PO3 Liquidity Sweep & Manipulation Reversal",
+      "symbol": "TD",
+      "exchange": "TSX",
+      "price": 176.4199981689453,
+      "why_matched": "Institutional liquidity sweep: Low ($175.31) swept support with 60.0% lower rejection wick and close in upper 60.0% of daily range.",
+      "key_metrics": {
+        "low": 175.30999755859375,
+        "close": 176.4199981689453,
+        "wick_ratio": 0.6,
+        "rsi": 56.1,
+        "rvol": 0.55
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 1.0,
+      "risk_posture": "NORMAL_EQUILIBRIUM",
+      "primary_risk_driver": "Stable Quantitative Fingerprint",
+      "conviction_score": 59.0,
       "conviction_tier": "HIGH",
       "conviction_breakdown": {
         "technical_quality": 29.0,
-        "macro_risk_alignment": 24.0,
-        "empirical_expectancy": 30.0
-      }
-    },
-    {
-      "scanner_id": "VOLATILITY_SQUEEZE",
-      "scanner_name": "Volatility Squeeze (Bandwidth)",
-      "symbol": "RY",
-      "exchange": "TSX",
-      "price": 285.07000732421875,
-      "why_matched": "Bollinger Bandwidth compressed to 4.1% with low ATR% of 1.5%, indicating impending expansion.",
-      "key_metrics": {
-        "bandwidth": 0.04102808505062383,
-        "atr_pct": 1.4730727177792182
-      },
-      "regime_gated": false,
-      "regime_state": "WEAK_BULL",
-      "idiosyncratic_risk_multiplier": 0.75,
-      "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-7.73 pts)",
-      "conviction_score": 78.0,
-      "conviction_tier": "MODERATE",
-      "conviction_breakdown": {
-        "technical_quality": 32.0,
-        "macro_risk_alignment": 24.0,
-        "empirical_expectancy": 22.0
-      }
-    },
-    {
-      "scanner_id": "BASE_TIGHTENING",
-      "scanner_name": "Consolidation Base Tightening",
-      "symbol": "RY",
-      "exchange": "TSX",
-      "price": 285.07000732421875,
-      "why_matched": "Price consolidating in a tight band (4.1%) within 7.0% of yearly high.",
-      "key_metrics": {
-        "bandwidth": 0.04102808505062383,
-        "prox_52w": -0.06955413936606147
-      },
-      "regime_gated": false,
-      "regime_state": "WEAK_BULL",
-      "idiosyncratic_risk_multiplier": 0.75,
-      "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-7.73 pts)",
-      "conviction_score": 78.0,
-      "conviction_tier": "MODERATE",
-      "conviction_breakdown": {
-        "technical_quality": 32.0,
-        "macro_risk_alignment": 24.0,
-        "empirical_expectancy": 22.0
-      }
-    },
-    {
-      "scanner_id": "PULLBACK_UPTREND",
-      "scanner_name": "Pullback to Key Support",
-      "symbol": "TD",
-      "exchange": "TSX",
-      "price": 169.60000610351562,
-      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 51.7 shows controlled digestion.",
-      "key_metrics": {
-        "dist_sma20": 0.004349652392684682,
-        "dist_sma50": 0.006576017186722277,
-        "rsi": 51.66769267064673
-      },
-      "regime_gated": false,
-      "regime_state": "WEAK_BULL",
-      "idiosyncratic_risk_multiplier": 0.75,
-      "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "Minor Detractor Drag",
-      "conviction_score": 86.0,
-      "conviction_tier": "HIGH",
-      "conviction_breakdown": {
-        "technical_quality": 32.0,
-        "macro_risk_alignment": 24.0,
-        "empirical_expectancy": 30.0
+        "macro_risk_alignment": 30.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
       }
     },
     {
       "scanner_id": "INSTITUTIONAL_ACCUMULATION",
       "scanner_name": "Institutional Accumulation (CMF+OBV)",
-      "symbol": "TD",
-      "exchange": "TSX",
-      "price": 169.60000610351562,
-      "why_matched": "Positive Chaikin Money Flow (+0.23) accompanied by rising 20-day OBV slope.",
-      "key_metrics": {
-        "cmf": 0.23313774535339918,
-        "obv_slope": 12565648.0,
-        "rvol": 1.1228767802014916
-      },
-      "regime_gated": false,
-      "regime_state": "WEAK_BULL",
-      "idiosyncratic_risk_multiplier": 0.75,
-      "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "Minor Detractor Drag",
-      "conviction_score": 86.0,
-      "conviction_tier": "HIGH",
-      "conviction_breakdown": {
-        "technical_quality": 32.0,
-        "macro_risk_alignment": 24.0,
-        "empirical_expectancy": 30.0
-      }
-    },
-    {
-      "scanner_id": "STACKED_MOVING_AVERAGES",
-      "scanner_name": "Stacked Moving Average Alignment",
-      "symbol": "TD",
-      "exchange": "TSX",
-      "price": 169.60000610351562,
-      "why_matched": "Perfect bullish alignment: Price > 20DMA > 50DMA > 200DMA with positive 200DMA slope.",
-      "key_metrics": {
-        "close": 169.60000610351562,
-        "sma_20": 168.8654998779297,
-        "sma_50": 168.49199981689452,
-        "sma_200": 148.7804497528076
-      },
-      "regime_gated": false,
-      "regime_state": "WEAK_BULL",
-      "idiosyncratic_risk_multiplier": 0.75,
-      "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "Minor Detractor Drag",
-      "conviction_score": 86.0,
-      "conviction_tier": "HIGH",
-      "conviction_breakdown": {
-        "technical_quality": 32.0,
-        "macro_risk_alignment": 24.0,
-        "empirical_expectancy": 30.0
-      }
-    },
-    {
-      "scanner_id": "BASE_TIGHTENING",
-      "scanner_name": "Consolidation Base Tightening",
-      "symbol": "TD",
-      "exchange": "TSX",
-      "price": 169.60000610351562,
-      "why_matched": "Price consolidating in a tight band (5.4%) within 3.3% of yearly high.",
-      "key_metrics": {
-        "bandwidth": 0.053906795678131426,
-        "prox_52w": -0.032681204971756084
-      },
-      "regime_gated": false,
-      "regime_state": "WEAK_BULL",
-      "idiosyncratic_risk_multiplier": 0.75,
-      "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "Minor Detractor Drag",
-      "conviction_score": 81.0,
-      "conviction_tier": "HIGH",
-      "conviction_breakdown": {
-        "technical_quality": 35.0,
-        "macro_risk_alignment": 24.0,
-        "empirical_expectancy": 22.0
-      }
-    },
-    {
-      "scanner_id": "VOLATILITY_SQUEEZE",
-      "scanner_name": "Volatility Squeeze (Bandwidth)",
-      "symbol": "TD",
-      "exchange": "TSX",
-      "price": 169.60000610351562,
-      "why_matched": "Bollinger Bandwidth compressed to 5.4% with low ATR% of 1.6%, indicating impending expansion.",
-      "key_metrics": {
-        "bandwidth": 0.053906795678131426,
-        "atr_pct": 1.562918557938579
-      },
-      "regime_gated": false,
-      "regime_state": "WEAK_BULL",
-      "idiosyncratic_risk_multiplier": 0.75,
-      "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "Minor Detractor Drag",
-      "conviction_score": 78.0,
-      "conviction_tier": "MODERATE",
-      "conviction_breakdown": {
-        "technical_quality": 32.0,
-        "macro_risk_alignment": 24.0,
-        "empirical_expectancy": 22.0
-      }
-    },
-    {
-      "scanner_id": "MTF_ALIGNMENT",
-      "scanner_name": "Fast & Medium MTF Alignment",
-      "symbol": "SHOP",
-      "exchange": "TSX",
-      "price": 204.1999969482422,
-      "why_matched": "Fast 8EMA > 21EMA above 50DMA with established trend strength (ADX 23.4).",
-      "key_metrics": {
-        "ema_8": 198.2647330891883,
-        "ema_21": 194.93386160788316,
-        "adx": 23.414120961758222
-      },
-      "regime_gated": false,
-      "regime_state": "WEAK_BULL",
-      "idiosyncratic_risk_multiplier": 0.75,
-      "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-17.42 pts)",
-      "conviction_score": 82.0,
-      "conviction_tier": "HIGH",
-      "conviction_breakdown": {
-        "technical_quality": 32.0,
-        "macro_risk_alignment": 24.0,
-        "empirical_expectancy": 26.0
-      }
-    },
-    {
-      "scanner_id": "VOLATILITY_SQUEEZE",
-      "scanner_name": "Volatility Squeeze (Bandwidth)",
       "symbol": "ENB",
       "exchange": "TSX",
-      "price": 66.58000183105469,
-      "why_matched": "Bollinger Bandwidth compressed to 8.1% with low ATR% of 1.7%, indicating impending expansion.",
+      "price": 67.95999908447266,
+      "why_matched": "Positive Chaikin Money Flow (+0.11) accompanied by rising 20-day OBV slope.",
       "key_metrics": {
-        "bandwidth": 0.08140963763122622,
-        "atr_pct": 1.6542923781784327
+        "cmf": 0.10612602498659514,
+        "obv_slope": 12679900.0,
+        "rvol": 1.2647483440742693
       },
       "regime_gated": false,
-      "regime_state": "WEAK_BULL",
+      "regime_state": "STRONG_BULL",
       "idiosyncratic_risk_multiplier": 0.5,
       "risk_posture": "DEFENSIVE_DE_RISK",
       "primary_risk_driver": "Hurst Memory Flip (H=0.408)",
-      "conviction_score": 72.0,
+      "conviction_score": 53.0,
       "conviction_tier": "MODERATE",
       "conviction_breakdown": {
-        "technical_quality": 32.0,
+        "technical_quality": 35.0,
         "macro_risk_alignment": 18.0,
-        "empirical_expectancy": 22.0
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
       }
     },
     {
-      "scanner_id": "MEAN_REVERSION_OVERSOLD",
-      "scanner_name": "Mean Reversion (Oversold Bounce)",
+      "scanner_id": "VOLATILITY_SQUEEZE",
+      "scanner_name": "Volatility Squeeze (Bandwidth)",
       "symbol": "ENB",
       "exchange": "TSX",
-      "price": 66.58000183105469,
-      "why_matched": "Oversold conditions: RSI at 34.7 interacting with lower Bollinger Band.",
+      "price": 67.95999908447266,
+      "why_matched": "Bollinger Bandwidth compressed to 4.6% with low ATR% of 1.6%, indicating impending expansion.",
       "key_metrics": {
-        "rsi": 34.66120108591109,
-        "close": 66.58000183105469,
-        "bb_lower": 65.33759464409177
+        "bandwidth": 0.04635267607787961,
+        "atr_pct": 1.6312129100031818
       },
-      "regime_gated": true,
-      "regime_state": "WEAK_BULL",
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL",
       "idiosyncratic_risk_multiplier": 0.5,
       "risk_posture": "DEFENSIVE_DE_RISK",
       "primary_risk_driver": "Hurst Memory Flip (H=0.408)",
       "conviction_score": 50.0,
-      "conviction_tier": "WATCHLIST",
-      "conviction_breakdown": {
-        "technical_quality": 25.0,
-        "macro_risk_alignment": 3.0,
-        "empirical_expectancy": 22.0
-      }
-    },
-    {
-      "scanner_id": "PULLBACK_UPTREND",
-      "scanner_name": "Pullback to Key Support",
-      "symbol": "CNR",
-      "exchange": "TSX",
-      "price": 171.61000061035156,
-      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 53.0 shows controlled digestion.",
-      "key_metrics": {
-        "dist_sma20": 0.0156992151600335,
-        "dist_sma50": 0.01632146067625072,
-        "rsi": 52.97165685210502
-      },
-      "regime_gated": false,
-      "regime_state": "WEAK_BULL",
-      "idiosyncratic_risk_multiplier": 0.5,
-      "risk_posture": "DEFENSIVE_DE_RISK",
-      "primary_risk_driver": "Hurst Memory Flip (H=0.386)",
-      "conviction_score": 80.0,
-      "conviction_tier": "HIGH",
-      "conviction_breakdown": {
-        "technical_quality": 32.0,
-        "macro_risk_alignment": 18.0,
-        "empirical_expectancy": 30.0
-      }
-    },
-    {
-      "scanner_id": "VOLATILITY_SQUEEZE",
-      "scanner_name": "Volatility Squeeze (Bandwidth)",
-      "symbol": "CNR",
-      "exchange": "TSX",
-      "price": 171.61000061035156,
-      "why_matched": "Bollinger Bandwidth compressed to 4.3% with low ATR% of 1.6%, indicating impending expansion.",
-      "key_metrics": {
-        "bandwidth": 0.04328367165788928,
-        "atr_pct": 1.601222720232294
-      },
-      "regime_gated": false,
-      "regime_state": "WEAK_BULL",
-      "idiosyncratic_risk_multiplier": 0.5,
-      "risk_posture": "DEFENSIVE_DE_RISK",
-      "primary_risk_driver": "Hurst Memory Flip (H=0.386)",
-      "conviction_score": 72.0,
       "conviction_tier": "MODERATE",
       "conviction_breakdown": {
         "technical_quality": 32.0,
         "macro_risk_alignment": 18.0,
-        "empirical_expectancy": 22.0
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
       }
     },
     {
@@ -1440,23 +1082,127 @@
       "scanner_name": "Consolidation Base Tightening",
       "symbol": "CNR",
       "exchange": "TSX",
-      "price": 171.61000061035156,
-      "why_matched": "Price consolidating in a tight band (4.3%) within 7.4% of yearly high.",
+      "price": 181.2899932861328,
+      "why_matched": "Price consolidating in a tight band (8.7%) within 2.1% of yearly high.",
       "key_metrics": {
-        "bandwidth": 0.04328367165788928,
-        "prox_52w": -0.07363022612495784
+        "bandwidth": 0.08687840411469183,
+        "prox_52w": -0.02137655446082154
       },
       "regime_gated": false,
-      "regime_state": "WEAK_BULL",
+      "regime_state": "STRONG_BULL",
       "idiosyncratic_risk_multiplier": 0.5,
       "risk_posture": "DEFENSIVE_DE_RISK",
       "primary_risk_driver": "Hurst Memory Flip (H=0.386)",
-      "conviction_score": 72.0,
+      "conviction_score": 53.0,
+      "conviction_tier": "MODERATE",
+      "conviction_breakdown": {
+        "technical_quality": 35.0,
+        "macro_risk_alignment": 18.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
+      }
+    },
+    {
+      "scanner_id": "INSTITUTIONAL_ACCUMULATION",
+      "scanner_name": "Institutional Accumulation (CMF+OBV)",
+      "symbol": "CNR",
+      "exchange": "TSX",
+      "price": 181.2899932861328,
+      "why_matched": "Positive Chaikin Money Flow (+0.12) accompanied by rising 20-day OBV slope.",
+      "key_metrics": {
+        "cmf": 0.12246504138358025,
+        "obv_slope": 3689100.0,
+        "rvol": 1.0246127794369768
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 0.5,
+      "risk_posture": "DEFENSIVE_DE_RISK",
+      "primary_risk_driver": "Hurst Memory Flip (H=0.386)",
+      "conviction_score": 50.0,
       "conviction_tier": "MODERATE",
       "conviction_breakdown": {
         "technical_quality": 32.0,
         "macro_risk_alignment": 18.0,
-        "empirical_expectancy": 22.0
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
+      }
+    },
+    {
+      "scanner_id": "STACKED_MOVING_AVERAGES",
+      "scanner_name": "Stacked Moving Average Alignment",
+      "symbol": "CNR",
+      "exchange": "TSX",
+      "price": 181.2899932861328,
+      "why_matched": "Perfect bullish alignment: Price > 20DMA > 50DMA > 200DMA with positive 200DMA slope.",
+      "key_metrics": {
+        "close": 181.2899932861328,
+        "sma_20": 176.02949981689454,
+        "sma_50": 172.83739990234375,
+        "sma_200": 160.941199798584
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 0.5,
+      "risk_posture": "DEFENSIVE_DE_RISK",
+      "primary_risk_driver": "Hurst Memory Flip (H=0.386)",
+      "conviction_score": 50.0,
+      "conviction_tier": "MODERATE",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 18.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
+      }
+    },
+    {
+      "scanner_id": "MTF_ALIGNMENT",
+      "scanner_name": "Fast & Medium MTF Alignment",
+      "symbol": "CNR",
+      "exchange": "TSX",
+      "price": 181.2899932861328,
+      "why_matched": "Fast 8EMA > 21EMA above 50DMA with established trend strength (ADX 31.2).",
+      "key_metrics": {
+        "ema_8": 179.6556991341247,
+        "ema_21": 176.69835878670114,
+        "adx": 31.154739748886108
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 0.5,
+      "risk_posture": "DEFENSIVE_DE_RISK",
+      "primary_risk_driver": "Hurst Memory Flip (H=0.386)",
+      "conviction_score": 50.0,
+      "conviction_tier": "MODERATE",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 18.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
+      }
+    },
+    {
+      "scanner_id": "HIGH_RVOL_SURGE",
+      "scanner_name": "High Relative Volume Surge",
+      "symbol": "CNQ",
+      "exchange": "TSX",
+      "price": 70.91000366210938,
+      "why_matched": "Elevated trading activity: Relative Volume is 2.40x above the 20-day average.",
+      "key_metrics": {
+        "rvol": 2.402328817707455
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 1.0,
+      "risk_posture": "NORMAL_EQUILIBRIUM",
+      "primary_risk_driver": "Stable Quantitative Fingerprint",
+      "conviction_score": 67.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 37.0,
+        "macro_risk_alignment": 30.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
       }
     },
     {
@@ -1464,96 +1210,333 @@
       "scanner_name": "Pullback to Key Support",
       "symbol": "CNQ",
       "exchange": "TSX",
-      "price": 67.37999725341797,
-      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 45.2 shows controlled digestion.",
+      "price": 70.91000366210938,
+      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 47.0 shows controlled digestion.",
       "key_metrics": {
-        "dist_sma20": 0.030998598872077773,
-        "dist_sma50": 0.0020587195555699096,
-        "rsi": 45.19026124565263
+        "dist_sma20": 0.03530368002578075,
+        "dist_sma50": 0.008124075527885036,
+        "rsi": 47.04663793828978
       },
       "regime_gated": false,
-      "regime_state": "WEAK_BULL",
-      "idiosyncratic_risk_multiplier": 0.75,
-      "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "Minor Detractor Drag",
-      "conviction_score": 83.0,
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 1.0,
+      "risk_posture": "NORMAL_EQUILIBRIUM",
+      "primary_risk_driver": "Stable Quantitative Fingerprint",
+      "conviction_score": 59.0,
       "conviction_tier": "HIGH",
       "conviction_breakdown": {
         "technical_quality": 29.0,
-        "macro_risk_alignment": 24.0,
-        "empirical_expectancy": 30.0
+        "macro_risk_alignment": 30.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
       }
     },
     {
-      "scanner_id": "BASE_TIGHTENING",
-      "scanner_name": "Consolidation Base Tightening",
-      "symbol": "CNQ",
+      "scanner_id": "MTF_ALIGNMENT",
+      "scanner_name": "Fast & Medium MTF Alignment",
+      "symbol": "BN",
       "exchange": "TSX",
-      "price": 67.37999725341797,
-      "why_matched": "Price consolidating in a tight band (9.2%) within 6.9% of yearly high.",
+      "price": 58.41999816894531,
+      "why_matched": "Fast 8EMA > 21EMA above 50DMA with established trend strength (ADX 69.9).",
       "key_metrics": {
-        "bandwidth": 0.09208426035862538,
-        "prox_52w": -0.06869386766443186
+        "ema_8": 58.78660949653828,
+        "ema_21": 56.94638524452725,
+        "adx": 69.90720563717852
       },
       "regime_gated": false,
-      "regime_state": "WEAK_BULL",
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-20.98 pts)",
+      "conviction_score": 56.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
+      }
+    },
+    {
+      "scanner_id": "INSTITUTIONAL_ACCUMULATION",
+      "scanner_name": "Institutional Accumulation (CMF+OBV)",
+      "symbol": "BAM",
+      "exchange": "TSX",
+      "price": 73.4800033569336,
+      "why_matched": "Positive Chaikin Money Flow (+0.18) accompanied by rising 20-day OBV slope.",
+      "key_metrics": {
+        "cmf": 0.1828575988969304,
+        "obv_slope": 6526800.0,
+        "rvol": 1.667447155521824
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL",
       "idiosyncratic_risk_multiplier": 0.75,
       "risk_posture": "ELEVATED_CAUTION",
       "primary_risk_driver": "Minor Detractor Drag",
-      "conviction_score": 78.0,
-      "conviction_tier": "MODERATE",
+      "conviction_score": 61.0,
+      "conviction_tier": "HIGH",
       "conviction_breakdown": {
-        "technical_quality": 32.0,
+        "technical_quality": 37.0,
         "macro_risk_alignment": 24.0,
-        "empirical_expectancy": 22.0
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
       }
     },
     {
-      "scanner_id": "VOLATILITY_SQUEEZE",
-      "scanner_name": "Volatility Squeeze (Bandwidth)",
-      "symbol": "CP",
+      "scanner_id": "HIGH_RVOL_SURGE",
+      "scanner_name": "High Relative Volume Surge",
+      "symbol": "BAM",
       "exchange": "TSX",
-      "price": 122.61000061035156,
-      "why_matched": "Bollinger Bandwidth compressed to 5.1% with low ATR% of 1.7%, indicating impending expansion.",
+      "price": 73.4800033569336,
+      "why_matched": "Elevated trading activity: Relative Volume is 1.67x above the 20-day average.",
       "key_metrics": {
-        "bandwidth": 0.05064365421548308,
-        "atr_pct": 1.6614811697775531
+        "rvol": 1.667447155521824
       },
       "regime_gated": false,
-      "regime_state": "WEAK_BULL",
+      "regime_state": "STRONG_BULL",
       "idiosyncratic_risk_multiplier": 0.75,
       "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-10.96 pts)",
-      "conviction_score": 78.0,
-      "conviction_tier": "MODERATE",
+      "primary_risk_driver": "Minor Detractor Drag",
+      "conviction_score": 61.0,
+      "conviction_tier": "HIGH",
       "conviction_breakdown": {
-        "technical_quality": 32.0,
+        "technical_quality": 37.0,
         "macro_risk_alignment": 24.0,
-        "empirical_expectancy": 22.0
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
       }
     },
     {
-      "scanner_id": "BASE_TIGHTENING",
-      "scanner_name": "Consolidation Base Tightening",
-      "symbol": "CP",
+      "scanner_id": "MTF_ALIGNMENT",
+      "scanner_name": "Fast & Medium MTF Alignment",
+      "symbol": "BAM",
       "exchange": "TSX",
-      "price": 122.61000061035156,
-      "why_matched": "Price consolidating in a tight band (5.1%) within 8.1% of yearly high.",
+      "price": 73.4800033569336,
+      "why_matched": "Fast 8EMA > 21EMA above 50DMA with established trend strength (ADX 68.8).",
       "key_metrics": {
-        "bandwidth": 0.05064365421548308,
-        "prox_52w": -0.08074676771772082
+        "ema_8": 73.62570247185246,
+        "ema_21": 71.00316398730804,
+        "adx": 68.8003506817255
       },
       "regime_gated": false,
-      "regime_state": "WEAK_BULL",
+      "regime_state": "STRONG_BULL",
       "idiosyncratic_risk_multiplier": 0.75,
       "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-10.96 pts)",
-      "conviction_score": 75.0,
+      "primary_risk_driver": "Minor Detractor Drag",
+      "conviction_score": 56.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
+      }
+    },
+    {
+      "scanner_id": "CROSS_BORDER_LEADER",
+      "scanner_name": "Canadian Market Leader",
+      "symbol": "BAM",
+      "exchange": "TSX",
+      "price": 73.4800033569336,
+      "why_matched": "Top-tier Canadian equity outperforming TSX index benchmark with -5.8% from 52w high.",
+      "key_metrics": {
+        "prox_52w": -0.057827857807021044,
+        "ret_3m": 0.08361607436190321
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "Minor Detractor Drag",
+      "conviction_score": 56.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
+      }
+    },
+    {
+      "scanner_id": "MOMENTUM_LEADERS",
+      "scanner_name": "Momentum Leaders",
+      "symbol": "BAM",
+      "exchange": "TSX",
+      "price": 73.4800033569336,
+      "why_matched": "Strong trend: close > 50DMA > 200DMA with +8.4% 3m return and -5.8% from 52w high.",
+      "key_metrics": {
+        "ret_3m": 0.08361607436190321,
+        "prox_52w": -0.057827857807021044,
+        "rsi": 60.15352191504913
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "Minor Detractor Drag",
+      "conviction_score": 53.0,
       "conviction_tier": "MODERATE",
       "conviction_breakdown": {
         "technical_quality": 29.0,
         "macro_risk_alignment": 24.0,
-        "empirical_expectancy": 22.0
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
+      }
+    },
+    {
+      "scanner_id": "CROSS_BORDER_LEADER",
+      "scanner_name": "Canadian Market Leader",
+      "symbol": "CP",
+      "exchange": "TSX",
+      "price": 134.17999267578125,
+      "why_matched": "Top-tier Canadian equity outperforming TSX index benchmark with -1.2% from 52w high.",
+      "key_metrics": {
+        "prox_52w": -0.01185654827273619,
+        "ret_3m": 0.07757786936346456
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-3.23 pts)",
+      "conviction_score": 59.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 35.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
+      }
+    },
+    {
+      "scanner_id": "INSTITUTIONAL_ACCUMULATION",
+      "scanner_name": "Institutional Accumulation (CMF+OBV)",
+      "symbol": "CP",
+      "exchange": "TSX",
+      "price": 134.17999267578125,
+      "why_matched": "Positive Chaikin Money Flow (+0.16) accompanied by rising 20-day OBV slope.",
+      "key_metrics": {
+        "cmf": 0.1630913275131813,
+        "obv_slope": 4768900.0,
+        "rvol": 1.0423724778505006
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-3.23 pts)",
+      "conviction_score": 56.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
+      }
+    },
+    {
+      "scanner_id": "STACKED_MOVING_AVERAGES",
+      "scanner_name": "Stacked Moving Average Alignment",
+      "symbol": "CP",
+      "exchange": "TSX",
+      "price": 134.17999267578125,
+      "why_matched": "Perfect bullish alignment: Price > 20DMA > 50DMA > 200DMA with positive 200DMA slope.",
+      "key_metrics": {
+        "close": 134.17999267578125,
+        "sma_20": 128.32299880981446,
+        "sma_50": 126.56439910888672,
+        "sma_200": 120.01374938964844
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-3.23 pts)",
+      "conviction_score": 56.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
+      }
+    },
+    {
+      "scanner_id": "MTF_ALIGNMENT",
+      "scanner_name": "Fast & Medium MTF Alignment",
+      "symbol": "CP",
+      "exchange": "TSX",
+      "price": 134.17999267578125,
+      "why_matched": "Fast 8EMA > 21EMA above 50DMA with established trend strength (ADX 34.1).",
+      "key_metrics": {
+        "ema_8": 132.37670656232174,
+        "ema_21": 129.34972804085947,
+        "adx": 34.11719749315132
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-3.23 pts)",
+      "conviction_score": 56.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
+      }
+    },
+    {
+      "scanner_id": "LOW_BETA_QUALITY",
+      "scanner_name": "Low-Volatility Trend Quality",
+      "symbol": "CP",
+      "exchange": "TSX",
+      "price": 134.17999267578125,
+      "why_matched": "Low ATR volatility (2.2%) paired with rising 200DMA and positive quarterly return.",
+      "key_metrics": {
+        "atr_pct": 2.1591445193869454,
+        "slope_200": 29.463002197422135,
+        "ret_3m": 0.07757786936346456
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 0.75,
+      "risk_posture": "ELEVATED_CAUTION",
+      "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-3.23 pts)",
+      "conviction_score": 53.0,
+      "conviction_tier": "MODERATE",
+      "conviction_breakdown": {
+        "technical_quality": 29.0,
+        "macro_risk_alignment": 24.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
+      }
+    },
+    {
+      "scanner_id": "BASE_TIGHTENING",
+      "scanner_name": "Consolidation Base Tightening",
+      "symbol": "XIU",
+      "exchange": "TSX",
+      "price": 54.54999923706055,
+      "why_matched": "Price consolidating in a tight band (2.9%) within 0.8% of yearly high.",
+      "key_metrics": {
+        "bandwidth": 0.029299943590838318,
+        "prox_52w": -0.008181832053444582
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 1.0,
+      "risk_posture": "NORMAL_EQUILIBRIUM",
+      "primary_risk_driver": "Stable Quantitative Fingerprint",
+      "conviction_score": 65.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 35.0,
+        "macro_risk_alignment": 30.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
       }
     },
     {
@@ -1561,24 +1544,25 @@
       "scanner_name": "Pullback to Key Support",
       "symbol": "XIU",
       "exchange": "TSX",
-      "price": 52.7599983215332,
-      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 43.1 shows controlled digestion.",
+      "price": 54.54999923706055,
+      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 54.1 shows controlled digestion.",
       "key_metrics": {
-        "dist_sma20": 0.008755155191439136,
-        "dist_sma50": 0.014859302761340539,
-        "rsi": 43.14586354731619
+        "dist_sma20": 0.006086299526046784,
+        "dist_sma50": 0.013654118472418528,
+        "rsi": 54.11304496302561
       },
       "regime_gated": false,
-      "regime_state": "WEAK_BULL",
-      "idiosyncratic_risk_multiplier": 0.75,
-      "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "Minor Detractor Drag",
-      "conviction_score": 83.0,
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 1.0,
+      "risk_posture": "NORMAL_EQUILIBRIUM",
+      "primary_risk_driver": "Stable Quantitative Fingerprint",
+      "conviction_score": 62.0,
       "conviction_tier": "HIGH",
       "conviction_breakdown": {
-        "technical_quality": 29.0,
-        "macro_risk_alignment": 24.0,
-        "empirical_expectancy": 30.0
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 30.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
       }
     },
     {
@@ -1586,47 +1570,77 @@
       "scanner_name": "Volatility Squeeze (Bandwidth)",
       "symbol": "XIU",
       "exchange": "TSX",
-      "price": 52.7599983215332,
-      "why_matched": "Bollinger Bandwidth compressed to 3.4% with low ATR% of 1.0%, indicating impending expansion.",
+      "price": 54.54999923706055,
+      "why_matched": "Bollinger Bandwidth compressed to 2.9% with low ATR% of 1.3%, indicating impending expansion.",
       "key_metrics": {
-        "bandwidth": 0.034139047635637916,
-        "atr_pct": 0.9598717322980643
+        "bandwidth": 0.029299943590838318,
+        "atr_pct": 1.3329837151835193
       },
       "regime_gated": false,
-      "regime_state": "WEAK_BULL",
-      "idiosyncratic_risk_multiplier": 0.75,
-      "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "Minor Detractor Drag",
-      "conviction_score": 78.0,
-      "conviction_tier": "MODERATE",
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 1.0,
+      "risk_posture": "NORMAL_EQUILIBRIUM",
+      "primary_risk_driver": "Stable Quantitative Fingerprint",
+      "conviction_score": 62.0,
+      "conviction_tier": "HIGH",
       "conviction_breakdown": {
         "technical_quality": 32.0,
-        "macro_risk_alignment": 24.0,
-        "empirical_expectancy": 22.0
+        "macro_risk_alignment": 30.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
       }
     },
     {
-      "scanner_id": "BASE_TIGHTENING",
-      "scanner_name": "Consolidation Base Tightening",
+      "scanner_id": "STACKED_MOVING_AVERAGES",
+      "scanner_name": "Stacked Moving Average Alignment",
       "symbol": "XIU",
       "exchange": "TSX",
-      "price": 52.7599983215332,
-      "why_matched": "Price consolidating in a tight band (3.4%) within 4.0% of yearly high.",
+      "price": 54.54999923706055,
+      "why_matched": "Perfect bullish alignment: Price > 20DMA > 50DMA > 200DMA with positive 200DMA slope.",
       "key_metrics": {
-        "bandwidth": 0.034139047635637916,
-        "prox_52w": -0.040029126630043876
+        "close": 54.54999923706055,
+        "sma_20": 54.22000007629394,
+        "sma_50": 53.815200119018556,
+        "sma_200": 51.238450050354004
       },
       "regime_gated": false,
-      "regime_state": "WEAK_BULL",
-      "idiosyncratic_risk_multiplier": 0.75,
-      "risk_posture": "ELEVATED_CAUTION",
-      "primary_risk_driver": "Minor Detractor Drag",
-      "conviction_score": 78.0,
-      "conviction_tier": "MODERATE",
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 1.0,
+      "risk_posture": "NORMAL_EQUILIBRIUM",
+      "primary_risk_driver": "Stable Quantitative Fingerprint",
+      "conviction_score": 62.0,
+      "conviction_tier": "HIGH",
       "conviction_breakdown": {
         "technical_quality": 32.0,
-        "macro_risk_alignment": 24.0,
-        "empirical_expectancy": 22.0
+        "macro_risk_alignment": 30.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
+      }
+    },
+    {
+      "scanner_id": "LOW_BETA_QUALITY",
+      "scanner_name": "Low-Volatility Trend Quality",
+      "symbol": "XIU",
+      "exchange": "TSX",
+      "price": 54.54999923706055,
+      "why_matched": "Low ATR volatility (1.3%) paired with rising 200DMA and positive quarterly return.",
+      "key_metrics": {
+        "atr_pct": 1.3329837151835193,
+        "slope_200": 16.6727438682786,
+        "ret_3m": 0.03392723602109715
+      },
+      "regime_gated": false,
+      "regime_state": "STRONG_BULL",
+      "idiosyncratic_risk_multiplier": 1.0,
+      "risk_posture": "NORMAL_EQUILIBRIUM",
+      "primary_risk_driver": "Stable Quantitative Fingerprint",
+      "conviction_score": 62.0,
+      "conviction_tier": "HIGH",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 30.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
       }
     }
   ]

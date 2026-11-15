@@ -28,7 +28,7 @@ from src.engine.explanations import explanation_engine
 from src.engine.news_engine import news_engine
 from src.engine.journal import journal_engine
 from src.engine.fundamentals import FundamentalAnalysisEngine
-from src.engine.paper_trading import paper_trading_engine
+from src.engine.strategy_validation import strategy_validation_engine
 from src.engine.portfolio import portfolio_engine
 from src.engine.alerts import alert_engine
 from src.engine.filing_deep_read import filing_deep_read_engine
@@ -590,10 +590,16 @@ class EdgeExporter:
             with open(d_dir / "fundamentals_coverage.json", "w") as f:
                 json.dump(coverage_report, f, indent=2)
 
-            # Phase 8: Systematic Paper Trading Scoreboard & Resolution Ledger
-            paper_payload = paper_trading_engine.generate_paper_trading_ledger()
-            with open(d_dir / "paper_trading.json", "w") as f:
-                json.dump(paper_payload, f, indent=2)
+            # Honesty Overhaul Phase 1: the Phase 8 synthetic paper-trading
+            # scoreboard is retired. It published four identical scorecards
+            # labelled LIVE_QUALIFIED, with a Sharpe computed as expectancy x 2.8
+            # and a drawdown from a formula floored at 4.2%, all compared against
+            # backtest figures typed into a dictionary. It is replaced by a feed
+            # computed from the walk-forward ledger, evaluated against the eight
+            # validation gates.
+            validation_payload = strategy_validation_engine.generate_feed(d_dir)
+            with open(d_dir / "strategy_validation.json", "w") as f:
+                json.dump(validation_payload, f, indent=2)
 
             # Phase 9: Portfolio Intelligence & Risk Allocation Engine
             portfolio_payload = portfolio_engine.get_default_portfolios()

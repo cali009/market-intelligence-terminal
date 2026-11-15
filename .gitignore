@@ -14,3 +14,12 @@ uploads/
 *.tar.gz
 *.db
 .config/
+
+# Node tooling installed only for the page-load self-check harness
+.npm/
+node_modules/
+package-lock.json
+
+# Audit scratch: downloaded copy of the deployed site, used to reconcile the
+# workspace generators against production. Not source.
+live_snapshot/

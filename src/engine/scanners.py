@@ -29,6 +29,20 @@ class ScannerMatch:
     conviction_breakdown: Dict[str, float] = field(default_factory=dict)
 
 
+# HONESTY OVERHAUL (Phase 1): each definition used to carry
+# `historical_win_rate_pct`, `forward_5d_return_pct`, `expectancy_r` and
+# `sample_size` as typed-in constants (59.2 / 1.85 / 0.52 / 142, and so on for
+# all 15 rules). Nothing in the codebase computes them: these rules have no
+# evaluable predicate in the backtest engine, so there is no sample behind any
+# of those figures. They are removed rather than recomputed, because a number
+# that cannot be computed must not be published.
+SCANNER_STATS_STATUS = (
+    "No per-rule performance statistics are published. The scanner rules are not "
+    "wired into the walk-forward backtest engine, so win rate, forward return, "
+    "expectancy and sample size cannot be computed for them. Publishing an "
+    "estimate would be fabrication."
+)
+
 SCANNER_DEFINITIONS: Dict[str, Dict[str, Any]] = {
     "MOMENTUM_LEADERS": {
         "scanner_id": "MOMENTUM_LEADERS",
@@ -37,10 +51,6 @@ SCANNER_DEFINITIONS: Dict[str, Dict[str, Any]] = {
         "description": "Identifies top-decile equities in strong multi-month uptrends trading above rising 50-day and 200-day moving averages.",
         "rule_summary": "Close > SMA50 > SMA200 AND 3M Return > 8% AND Within 8% of 52W High",
         "regime_compatibility": ["STRONG_BULL", "WEAK_BULL", "CONSOLIDATION"],
-        "historical_win_rate_pct": 59.2,
-        "forward_5d_return_pct": 1.85,
-        "expectancy_r": 0.52,
-        "sample_size": 142,
     },
     "PULLBACK_UPTREND": {
         "scanner_id": "PULLBACK_UPTREND",
@@ -49,10 +59,6 @@ SCANNER_DEFINITIONS: Dict[str, Dict[str, Any]] = {
         "description": "Catches controlled pullbacks into rising 20-day or 50-day moving average support while long-term trend remains upward sloping.",
         "rule_summary": "Close > SMA200 AND Slope200 > 0 AND Distance to SMA20/50 <= 2.5% AND RSI 42-58",
         "regime_compatibility": ["STRONG_BULL", "WEAK_BULL", "CONSOLIDATION"],
-        "historical_win_rate_pct": 62.5,
-        "forward_5d_return_pct": 2.10,
-        "expectancy_r": 0.64,
-        "sample_size": 118,
     },
     "BREAKOUT_52W_HIGH": {
         "scanner_id": "BREAKOUT_52W_HIGH",
@@ -61,10 +67,6 @@ SCANNER_DEFINITIONS: Dict[str, Dict[str, Any]] = {
         "description": "Securities testing or exceeding 52-week highs on abnormal institutional trading volume.",
         "rule_summary": "Close within 2.5% of 52W High AND RVOL >= 1.15x AND Close > SMA20",
         "regime_compatibility": ["STRONG_BULL", "WEAK_BULL"],
-        "historical_win_rate_pct": 54.8,
-        "forward_5d_return_pct": 2.45,
-        "expectancy_r": 0.58,
-        "sample_size": 95,
     },
     "VOLATILITY_SQUEEZE": {
         "scanner_id": "VOLATILITY_SQUEEZE",
@@ -73,10 +75,6 @@ SCANNER_DEFINITIONS: Dict[str, Dict[str, Any]] = {
         "description": "Bollinger bandwidth compression inside historical low ranges indicating an imminent directional breakout.",
         "rule_summary": "BB Bandwidth <= 8.5% AND ATR% <= 2.5%",
         "regime_compatibility": ["STRONG_BULL", "WEAK_BULL", "CONSOLIDATION", "HIGH_VOLATILITY"],
-        "historical_win_rate_pct": 56.0,
-        "forward_5d_return_pct": 1.70,
-        "expectancy_r": 0.45,
-        "sample_size": 130,
     },
     "INSTITUTIONAL_ACCUMULATION": {
         "scanner_id": "INSTITUTIONAL_ACCUMULATION",
@@ -85,10 +83,6 @@ SCANNER_DEFINITIONS: Dict[str, Dict[str, Any]] = {
         "description": "Detects persistent smart-money accumulation through positive Chaikin Money Flow and rising On-Balance Volume.",
         "rule_summary": "CMF(20) >= 0.07 AND OBV Slope > 0 AND RVOL >= 1.0x",
         "regime_compatibility": ["STRONG_BULL", "WEAK_BULL", "CONSOLIDATION"],
-        "historical_win_rate_pct": 60.4,
-        "forward_5d_return_pct": 1.92,
-        "expectancy_r": 0.55,
-        "sample_size": 124,
     },
     "MEAN_REVERSION_OVERSOLD": {
         "scanner_id": "MEAN_REVERSION_OVERSOLD",
@@ -97,10 +91,6 @@ SCANNER_DEFINITIONS: Dict[str, Dict[str, Any]] = {
         "description": "Extreme short-term oversold condition where price pierces lower Bollinger Band with RSI < 36.",
         "rule_summary": "RSI(14) < 36.0 AND Close <= Lower Band * 1.02",
         "regime_compatibility": ["CONSOLIDATION", "HIGH_VOLATILITY", "BEAR"],
-        "historical_win_rate_pct": 55.2,
-        "forward_5d_return_pct": 2.25,
-        "expectancy_r": 0.49,
-        "sample_size": 88,
     },
     "STACKED_MOVING_AVERAGES": {
         "scanner_id": "STACKED_MOVING_AVERAGES",
@@ -109,10 +99,6 @@ SCANNER_DEFINITIONS: Dict[str, Dict[str, Any]] = {
         "description": "Textbook bullish alignment where Price > 20EMA > 50SMA > 200SMA with positive long-term slope.",
         "rule_summary": "Close > SMA20 > SMA50 > SMA200 AND Slope200 > 0",
         "regime_compatibility": ["STRONG_BULL", "WEAK_BULL"],
-        "historical_win_rate_pct": 61.8,
-        "forward_5d_return_pct": 1.75,
-        "expectancy_r": 0.58,
-        "sample_size": 160,
     },
     "LOW_BETA_QUALITY": {
         "scanner_id": "LOW_BETA_QUALITY",
@@ -121,10 +107,6 @@ SCANNER_DEFINITIONS: Dict[str, Dict[str, Any]] = {
         "description": "Defensive low-volatility trend leaders with controlled ATR drag and steady compounding trajectory.",
         "rule_summary": "ATR% <= 2.2% AND Slope200 > 0 AND 3M Return >= 2.0%",
         "regime_compatibility": ["STRONG_BULL", "WEAK_BULL", "CONSOLIDATION", "HIGH_VOLATILITY"],
-        "historical_win_rate_pct": 64.0,
-        "forward_5d_return_pct": 1.15,
-        "expectancy_r": 0.42,
-        "sample_size": 150,
     },
     "MTF_ALIGNMENT": {
         "scanner_id": "MTF_ALIGNMENT",
@@ -133,10 +115,6 @@ SCANNER_DEFINITIONS: Dict[str, Dict[str, Any]] = {
         "description": "Fast 8EMA leading 21EMA above intermediate 50SMA supported by established trend strength (ADX > 22).",
         "rule_summary": "EMA8 > EMA21 AND Close > SMA50 AND ADX(14) >= 22.0",
         "regime_compatibility": ["STRONG_BULL", "WEAK_BULL", "CONSOLIDATION"],
-        "historical_win_rate_pct": 58.0,
-        "forward_5d_return_pct": 1.65,
-        "expectancy_r": 0.47,
-        "sample_size": 135,
     },
     "HIGH_RVOL_SURGE": {
         "scanner_id": "HIGH_RVOL_SURGE",
@@ -145,10 +123,6 @@ SCANNER_DEFINITIONS: Dict[str, Dict[str, Any]] = {
         "description": "Unusual volume expansion greater than 1.6x the 20-day baseline, indicating institutional catalyst.",
         "rule_summary": "RVOL(20) >= 1.60x",
         "regime_compatibility": ["STRONG_BULL", "WEAK_BULL", "CONSOLIDATION", "HIGH_VOLATILITY"],
-        "historical_win_rate_pct": 52.5,
-        "forward_5d_return_pct": 2.15,
-        "expectancy_r": 0.41,
-        "sample_size": 110,
     },
     "BASE_TIGHTENING": {
         "scanner_id": "BASE_TIGHTENING",
@@ -157,10 +131,6 @@ SCANNER_DEFINITIONS: Dict[str, Dict[str, Any]] = {
         "description": "Price consolidates tightly near 52-week highs with declining volatility, building energy for continuation.",
         "rule_summary": "BB Bandwidth < 10.0% AND Within 12% of 52W High",
         "regime_compatibility": ["STRONG_BULL", "WEAK_BULL", "CONSOLIDATION"],
-        "historical_win_rate_pct": 57.5,
-        "forward_5d_return_pct": 1.80,
-        "expectancy_r": 0.50,
-        "sample_size": 120,
     },
     "ATR_EXPANSION": {
         "scanner_id": "ATR_EXPANSION",
@@ -169,10 +139,6 @@ SCANNER_DEFINITIONS: Dict[str, Dict[str, Any]] = {
         "description": "Wide-range expansion bar exceeding 1.4x the 14-day ATR while closing above 20-day moving average.",
         "rule_summary": "(High - Low) > 1.4 * ATR(14) AND Close > SMA20",
         "regime_compatibility": ["STRONG_BULL", "WEAK_BULL", "HIGH_VOLATILITY"],
-        "historical_win_rate_pct": 53.8,
-        "forward_5d_return_pct": 1.95,
-        "expectancy_r": 0.44,
-        "sample_size": 105,
     },
     "SUPPORT_BOUNCE_50DMA": {
         "scanner_id": "SUPPORT_BOUNCE_50DMA",
@@ -181,10 +147,6 @@ SCANNER_DEFINITIONS: Dict[str, Dict[str, Any]] = {
         "description": "Intraday low tests institutional 50-day moving average with closing buyers defending key support.",
         "rule_summary": "Low <= SMA50 AND Close > SMA50 AND Close > Low",
         "regime_compatibility": ["STRONG_BULL", "WEAK_BULL", "CONSOLIDATION"],
-        "historical_win_rate_pct": 59.0,
-        "forward_5d_return_pct": 1.88,
-        "expectancy_r": 0.53,
-        "sample_size": 98,
     },
     "CROSS_BORDER_LEADER": {
         "scanner_id": "CROSS_BORDER_LEADER",
@@ -193,10 +155,6 @@ SCANNER_DEFINITIONS: Dict[str, Dict[str, Any]] = {
         "description": "Premier Canadian equities on the TSX outperforming broader indices with strong quarterly momentum.",
         "rule_summary": "Country == CA AND Within 6% of 52W High AND 3M Return > 5%",
         "regime_compatibility": ["STRONG_BULL", "WEAK_BULL", "CONSOLIDATION"],
-        "historical_win_rate_pct": 60.8,
-        "forward_5d_return_pct": 1.62,
-        "expectancy_r": 0.51,
-        "sample_size": 92,
     },
     "PO3_LIQUIDITY_SWEEP": {
         "scanner_id": "PO3_LIQUIDITY_SWEEP",
@@ -205,10 +163,6 @@ SCANNER_DEFINITIONS: Dict[str, Dict[str, Any]] = {
         "description": "Detects institutional accumulation sweeps where intraday manipulation undercuts prior swing low or key moving average support to trap sellers before closing strongly back inside the range.",
         "rule_summary": "Golden Cross Alignment (SMA20 > SMA50 > SMA200) AND Low <= SMA20/50/LowerBB AND Lower Wick >= 25% AND Close in Upper 50% AND RSI 40-66",
         "regime_compatibility": ["STRONG_BULL", "WEAK_BULL", "CONSOLIDATION", "HIGH_VOLATILITY"],
-        "historical_win_rate_pct": 58.5,
-        "forward_5d_return_pct": 2.25,
-        "expectancy_r": 0.59,
-        "sample_size": 135,
     },
 }
 
@@ -604,51 +558,78 @@ class MarketScanners:
         else: s_risk = 3.0
         macro_score = s_regime + s_risk
 
-        # 3. Empirical Expectancy (30 pts max)
-        wr = float(defn.get("historical_win_rate_pct", 52.0))
-        if wr >= 58.0: s_wr = 15.0
-        elif wr >= 55.0: s_wr = 11.0
-        elif wr >= 52.0: s_wr = 7.0
-        else: s_wr = 3.0
-
-        exp_r = float(defn.get("expectancy_r", 0.35))
-        if exp_r >= 0.55: s_exp = 15.0
-        elif exp_r >= 0.45: s_exp = 11.0
-        elif exp_r >= 0.30: s_exp = 7.0
-        else: s_exp = 3.0
-        exp_score = s_wr + s_exp
-
-        total = round(tech_score + macro_score + exp_score, 1)
-        tier = "HIGH" if total >= 80.0 else ("MODERATE" if total >= 65.0 else "WATCHLIST")
+        # HONESTY OVERHAUL (Phase 1): this score used to carry a third component,
+        # "Empirical Expectancy" (30 pts), driven by `historical_win_rate_pct` and
+        # `expectancy_r`. Those were typed-in constants with no sample behind
+        # them, and once removed the `.get(..., default)` fallbacks would have
+        # silently awarded every scanner the same 14 points — the same
+        # fabrication wearing a different hat. The component is therefore gone,
+        # not defaulted.
+        #
+        # The score is now technical quality (40) + macro/risk alignment (30) =
+        # 70 achievable points. Tier thresholds are the SAME percentages as
+        # before (80% / 65%), applied to the achievable maximum, so a scanner is
+        # not promoted or demoted merely because an invented component vanished.
+        total = round(tech_score + macro_score, 1)
+        tier = "HIGH" if total >= 56.0 else ("MODERATE" if total >= 45.5 else "WATCHLIST")
         breakdown = {
             "technical_quality": tech_score,
             "macro_risk_alignment": macro_score,
-            "empirical_expectancy": exp_score,
+            "empirical_expectancy": None,
+            "empirical_expectancy_note": (
+                "Not scored. No per-rule win rate or expectancy has been computed, "
+                "because the scanner rules are not wired into the backtest engine."
+            ),
         }
         return total, tier, breakdown
 
+    #: Columns removed by the Phase 1 honesty overhaul. See SCANNER_STATS_STATUS.
+    _RETIRED_STAT_COLUMNS = (
+        "historical_win_rate_pct",
+        "forward_5d_return_pct",
+        "expectancy_r",
+        "sample_size",
+    )
+
+    def _drop_retired_stat_columns(self) -> List[str]:
+        """Idempotent migration: remove the retired statistic columns.
+
+        They carried NOT NULL constraints, so leaving them in place would force
+        every writer to supply a value — which is exactly how the invented
+        figures got there in the first place. SQLite has no DROP COLUMN IF
+        EXISTS, so presence is checked against pragma_table_info.
+        """
+        rows = db.execute_query(
+            "SELECT name FROM pragma_table_info('scanner_definition')"
+        )
+        present = {r["name"] for r in rows} if rows else set()
+        dropped: List[str] = []
+        for col in self._RETIRED_STAT_COLUMNS:
+            if col in present:
+                db.execute_write(
+                    "ALTER TABLE scanner_definition DROP COLUMN %s" % col
+                )
+                dropped.append(col)
+        return dropped
+
     def init_scanner_definitions_in_db(self) -> int:
         """
-        Seeds/updates all 14 scanner definitions into the SQLite database.
+        Seeds/updates all scanner definitions into the SQLite database.
         """
+        self._drop_retired_stat_columns()
         inserted = 0
         for s_id, defn in self.definitions.items():
             db.execute_write("""
                 INSERT INTO scanner_definition (
                     scanner_id, name, category, description, rule_summary,
-                    regime_compatibility, historical_win_rate_pct, forward_5d_return_pct,
-                    expectancy_r, sample_size
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    regime_compatibility
+                ) VALUES (?, ?, ?, ?, ?, ?)
                 ON CONFLICT(scanner_id) DO UPDATE SET
                     name=excluded.name,
                     category=excluded.category,
                     description=excluded.description,
                     rule_summary=excluded.rule_summary,
-                    regime_compatibility=excluded.regime_compatibility,
-                    historical_win_rate_pct=excluded.historical_win_rate_pct,
-                    forward_5d_return_pct=excluded.forward_5d_return_pct,
-                    expectancy_r=excluded.expectancy_r,
-                    sample_size=excluded.sample_size;
+                    regime_compatibility=excluded.regime_compatibility;
             """, (
                 defn["scanner_id"],
                 defn["name"],
@@ -656,10 +637,6 @@ class MarketScanners:
                 defn["description"],
                 defn["rule_summary"],
                 ",".join(defn["regime_compatibility"]),
-                defn["historical_win_rate_pct"],
-                defn["forward_5d_return_pct"],
-                defn["expectancy_r"],
-                defn["sample_size"],
             ))
             inserted += 1
         return inserted
@@ -717,10 +694,8 @@ class MarketScanners:
                 "description": defn["description"],
                 "rule_summary": defn["rule_summary"],
                 "regime_compatibility": defn["regime_compatibility"],
-                "historical_win_rate_pct": defn["historical_win_rate_pct"],
-                "forward_5d_return_pct": defn["forward_5d_return_pct"],
-                "expectancy_r": defn["expectancy_r"],
-                "sample_size": defn["sample_size"],
+                # Performance statistics deliberately omitted — see SCANNER_STATS_STATUS.
+                "stats_status": SCANNER_STATS_STATUS,
                 "regime_status": "PASS" if is_compat else "GATED",
                 "regime_badge_color": "green" if is_compat else "amber",
                 "active_market_regime": active_regime

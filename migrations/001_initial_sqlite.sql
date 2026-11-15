@@ -258,10 +258,9 @@ CREATE TABLE IF NOT EXISTS scanner_definition (
     description TEXT NOT NULL,
     rule_summary TEXT NOT NULL,
     regime_compatibility TEXT NOT NULL,      -- Comma-separated compatible regimes
-    historical_win_rate_pct REAL NOT NULL,
-    forward_5d_return_pct REAL NOT NULL,
-    expectancy_r REAL NOT NULL,
-    sample_size INTEGER NOT NULL DEFAULT 0,
+    -- HONESTY OVERHAUL (Phase 1): historical_win_rate_pct, forward_5d_return_pct,
+    -- expectancy_r and sample_size were removed. They were populated from typed-in
+    -- constants and no code path ever computed them. See migrations/002.
     created_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
 

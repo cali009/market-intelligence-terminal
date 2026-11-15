@@ -56,14 +56,32 @@ def test_anti_lookahead_execution():
 
 
 def test_deflated_sharpe_ratio_and_pbo():
-    """Verify that Deflated Sharpe Ratio (DSR) and PBO are computed accounting for multiple trials."""
+    """Verify DSR is computed, and that no per-strategy PBO is published.
+
+    HONESTY OVERHAUL (Phase 1): these metrics used to include
+    `probability_backtest_overfitting` and `pbo`, both set to
+    clamp(1 - deflated_sharpe_ratio, 0.02, 0.98). That is a relabelled DSR, not
+    an overfitting probability, and it emitted values like 0.98 that read as a
+    measured result. PBO is a property of a trial set, so it is now computed once
+    by the CPCV engine and surfaced through strategy_validation.json.
+    """
     res = backtest_engine.run_strategy_backtest("TAC04_MOMENTUM")
     m = res["metrics"]
     assert "deflated_sharpe_ratio" in m
-    assert "probability_backtest_overfitting" in m
     assert 0.0 <= m["deflated_sharpe_ratio"] <= 1.0
-    assert 0.0 <= m["probability_backtest_overfitting"] <= 1.0
     assert m["num_trials_tested"] == 12
+
+    for retired in ("probability_backtest_overfitting", "pbo"):
+        assert retired not in m, (
+            "%s must not be published per strategy; one PBO lives in "
+            "strategy_validation.json" % retired
+        )
+    # Guard against the fabrication returning under the same formula.
+    dsr = m["deflated_sharpe_ratio"]
+    fake = round(max(0.02, min(0.98, 1.0 - dsr)), 3)
+    for v in m.values():
+        if isinstance(v, float):
+            assert round(v, 3) != fake or v == dsr
 
 
 def test_cost_sensitivity_and_breakeven():

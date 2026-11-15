@@ -47,7 +47,7 @@ def run_all_backtests():
         elapsed_s = time.monotonic() - s_start
         status_tag = f"[{res.get('status', 'ACTIVE')}]"
         print(f"    ✓ {status_tag} {res['strategy_name']} ({elapsed_s:.2f}s):")
-        print(f"      Trades: {m['total_trades']} | Win Rate: {m['win_rate_pct']}% | Net Return: {m['total_net_return_pct']}% | Sharpe: {m['sharpe_ratio']} | DSR: {m.get('deflated_sharpe_ratio')} | PBO: {m.get('probability_backtest_overfitting')}")
+        print(f"      Trades: {m['total_trades']} | Win Rate: {m['win_rate_pct']}% | Net Return: {m['total_net_return_pct']}% | Sharpe: {m['sharpe_ratio']} | DSR: {m.get('deflated_sharpe_ratio')}")
         results[strat_id] = res
 
     bundle = {
