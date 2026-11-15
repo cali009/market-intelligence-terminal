@@ -32,7 +32,7 @@ from src.engine.strategy_validation import strategy_validation_engine
 from src.engine.portfolio import portfolio_engine
 from src.engine.alerts import alert_engine
 from src.engine.filing_deep_read import filing_deep_read_engine
-from src.engine.production_scale import production_scale_engine
+from src.engine.system_status import system_status_engine
 from src.engine.asset_fingerprint import asset_fingerprint_engine
 from src.engine.conformal_bounds import adaptive_conformal_engine
 from src.engine.cross_border_parity import cross_border_parity_engine, DUAL_LISTED_PAIRS
@@ -45,7 +45,6 @@ from src.engine.meta_label_dataset import meta_label_dataset_engine
 from src.engine.meta_label_classifier import meta_label_classifier
 from src.engine.backtester import backtest_engine
 from src.engine.macro_regime import macro_regime_engine
-from src.engine.microstructure import microstructure_engine
 from src.engine.portfolio_hrp import hrp_portfolio_engine
 from src.engine.portfolio_stress import portfolio_stress_engine
 from src.engine.portfolio_orchestrator import portfolio_orchestrator_engine
@@ -54,10 +53,8 @@ from src.engine.factor_attribution import factor_attribution_engine
 from src.engine.portfolio_bayesian import portfolio_bayesian_engine
 from src.engine.cross_border_fx import cross_border_fx_engine
 from src.engine.sovereign_yield_curve import sovereign_yield_curve_engine
-from src.engine.dark_pool_liquidity import dark_pool_liquidity_engine
 from src.engine.volatility_forecast_vrp import volatility_forecast_vrp_engine
 from src.execution.execution_telemetry import export_execution_gateway_feed
-from src.engine.options_surface_gex import cross_border_options_engine
 
 FEEDS_DIR = DATA_DIR / "feeds"
 DIST_DIR = DATA_DIR / "dist"
@@ -616,10 +613,16 @@ class EdgeExporter:
             with open(d_dir / "ai_deep_read.json", "w") as f:
                 json.dump(ai_deep_read_payload, f, indent=2)
 
-            # Phase 12: Production Scaling, Exchange Entitlements & DR Health
-            production_payload = production_scale_engine.generate_production_health_feed()
-            with open(d_dir / "production_health.json", "w") as f:
-                json.dump(production_payload, f, indent=2)
+            # Honesty Overhaul Phase 2: the Phase 12 production health bundle is
+            # retired. It published 99.98% uptime against a 99.90% SLA, eight
+            # "OPERATIONAL" components with latency figures, resolved incidents, a
+            # SOC 2 control matrix, DR drills, per-tier unit economics, five
+            # licensed subscribers and exchange declarations reading "We certify
+            # under penalty of contract termination". None of it was measured, and
+            # this is a static site with no backend, no subscribers and no audit.
+            status_payload = system_status_engine.generate_feed(d_dir)
+            with open(d_dir / "system_status.json", "w") as f:
+                json.dump(status_payload, f, indent=2)
 
             # Phase 13: Idiosyncratic Asset Fingerprints Feed
             fingerprints_payload = asset_fingerprint_engine.generate_asset_fingerprints_feed()
@@ -680,8 +683,13 @@ class EdgeExporter:
             # Phase 24: Cross-Asset Macro Regime Transition Matrix Feed
             macro_regime_engine.export_feed(d_dir)
 
-            # Phase 25: Real-Time Microstructure & Tick Snapshot Feed
-            microstructure_engine.export_feed(d_dir)
+            # HONESTY OVERHAUL (Phase 2): microstructure_snapshot.json is no longer
+            # written. Its own disclaimer already conceded the point — "Order book
+            # depth and tick microstructure analytics represent quantitative
+            # simulation and statistical order flow estimation" — and the feed
+            # claimed 42.5 ms sub-second latency and 1250 ticks/second on a static
+            # site that streams nothing. CVD and OBI were estimates, not
+            # observations, because no tick data is ingested anywhere.
 
             # Phase 26: Hierarchical Risk Parity (HRP) Portfolio Allocation Feed
             hrp_portfolio_engine.export_feed(d_dir)
@@ -704,15 +712,24 @@ class EdgeExporter:
             # Phase 29: Cross-Border Dual-Currency & Dual-Listed Arbitrage Feed
             cross_border_fx_engine.export_feed(d_dir / "cross_border_fx.json")
 
-            # Phase 30: Options Volatility Surface & GEX Intelligence Feed
-            cross_border_options_engine.export_feed(d_dir / "options_intelligence.json")
+            # HONESTY OVERHAUL (Phase 2): options_intelligence.json is no longer
+            # written. The implied-volatility surface it published came from a
+            # hard-coded tenor table in options_surface_gex.py — tenor_specs tuples
+            # of hand-typed skew and slope constants — with no option chain ever
+            # read. Dealer GEX and max pain were derived from those invented
+            # inputs. The engine is still imported by the portfolio orchestrator
+            # for internal use; its output is simply no longer published.
 
             # Phase 31: Sovereign Yield Curve & Term Premium Decomposition Feed
             sovereign_yield_curve_engine.export_feed(d_dir / "sovereign_yield_curve.json")
 
-            # Phase 32: Dark Pool & Off-Exchange Liquidity Feed
-            # DECISION 1(b): commercial build; research-only short metrics are omitted.
-            dark_pool_liquidity_engine.export_feed(d_dir / "dark_pool_liquidity.json")
+            # HONESTY OVERHAUL (Phase 2): dark_pool_liquidity.json is no longer
+            # written. Every figure in it was generated by
+            # np.random.default_rng(_symbol_seed(...)) — short interest as
+            # adv * rng.uniform(0.3, 9.0), market cap as rng.uniform(800,
+            # 3_200_000) — and presented as measured marketplace data. The
+            # "commercial build" comment above it described a licensing posture
+            # for data that was never sourced from anywhere.
 
             # Phase 33: Multi-Horizon Volatility Forecast & Variance Risk Premium Feed
             volatility_forecast_vrp_engine.export_feed(d_dir / "volatility_vrp.json")

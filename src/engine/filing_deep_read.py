@@ -451,31 +451,45 @@ class FilingDeepReadEngine:
             {"id": "SMP_06", "claim": "BAM fee-bearing capital reached $510 billion", "source": "BAM_10Q_2026_Q2", "target_num": 510, "found_in_doc": True},
         ]
 
-        verified_count = 0
-        hallucinated_count = 0
+        # HONESTY OVERHAUL (Phase 2): this method used to run the loop below, then
+        # discard the result and return hard-coded constants — total_audited = 200,
+        # hallucinated_total = 0, hallucination_rate = 0.00,
+        # citation_resolution_rate = 100.0 — along with the claim "PASSED (0
+        # hallucinated numerals across 200 gold-standard audit samples)". Six
+        # samples were checked; two hundred were reported.
+        #
+        # It now reports exactly what it checks, at the size it actually checks,
+        # and says plainly that this is not a hallucination measurement.
+        checked = []
+        for sample in audit_samples:
+            doc_text = self.corpus.get(sample["source"], "")
+            num_str = str(sample["target_num"])
+            checked.append({
+                "id": sample["id"],
+                "claim": sample["claim"],
+                "source": sample["source"],
+                "target_number": sample["target_num"],
+                "number_found_in_source": num_str in doc_text,
+                "source_document_loaded": bool(doc_text),
+            })
 
-        for s in audit_samples:
-            doc_text = self.corpus.get(s["source"], "")
-            num_str = str(s["target_num"])
-            if num_str in doc_text:
-                verified_count += 1
-            else:
-                hallucinated_count += 1
-
-        # Scale sample audit to standard 200-sample statistical baseline
-        total_audited = 200
-        hallucinated_total = 0
-        hallucination_rate = 0.00
-        citation_resolution_rate = 100.0  # 100% verified citations
+        found = sum(1 for c in checked if c["number_found_in_source"])
+        loaded = sum(1 for c in checked if c["source_document_loaded"])
 
         return {
-            "total_audit_sample_size": total_audited,
-            "hallucinated_facts_count": hallucinated_total,
-            "verified_grounded_facts_count": total_audited,
-            "hallucination_rate_pct": hallucination_rate,
-            "citation_resolution_pct": citation_resolution_rate,
-            "numeric_verification_status": "PASSED (0 hallucinated numerals across 200 gold-standard audit samples)",
-            "causal_claims_verification": "PASSED (No ungrounded causal connectors identified in output copy)",
+            "check_name": "Numeric spot-check against loaded source text",
+            "samples_checked": len(checked),
+            "numbers_found_in_source": found,
+            "numbers_not_found": len(checked) - found,
+            "source_documents_loaded": loaded,
+            "details": checked,
+            "not_a_hallucination_measurement": True,
+            "limitation": (
+                "This is a %d-sample spot-check that a target numeral appears "
+                "somewhere in the loaded source text. It is not a hallucination "
+                "rate, not a citation-resolution rate, and not an audit. No "
+                "external audit of this system has been performed." % len(checked)
+            ),
         }
 
     def get_published_model_cards(self) -> List[ModelCard]:
@@ -491,8 +505,10 @@ class FilingDeepReadEngine:
                 task="Comparative structural section diffs & risk factor delta detection on SEC/SEDAR+ filings",
                 architecture="Fine-tuned hybrid transformer with strict character-offset quotation extraction",
                 context_window=32768,
-                citation_resolution_pct=100.0,
-                hallucination_rate_pct=0.00,
+                # HONESTY OVERHAUL (Phase 2): these were published as measured
+                # results. No measurement exists, so they are reported as unknown.
+                citation_resolution_pct=None,
+                hallucination_rate_pct=None,
                 cost_per_query_usd=0.0065,
                 intended_use="Impersonal decision-support research summarization of 10-K, 10-Q, 8-K, and Canadian MD&A filings.",
                 out_of_scope="Personalized investment recommendations, price forecasting, automated order generation.",
@@ -509,8 +525,10 @@ class FilingDeepReadEngine:
                 task="18-way financial event taxonomy categorization and materiality scoring (1-5)",
                 architecture="Distilled financial domain transformer (FinBERT-derived local ONNX runtime)",
                 context_window=4096,
-                citation_resolution_pct=100.0,
-                hallucination_rate_pct=0.00,
+                # HONESTY OVERHAUL (Phase 2): these were published as measured
+                # results. No measurement exists, so they are reported as unknown.
+                citation_resolution_pct=None,
+                hallucination_rate_pct=None,
                 cost_per_query_usd=0.0008,
                 intended_use="Fast classification of SEC EDGAR disclosures and Bank of Canada macro updates.",
                 out_of_scope="Speculative social media sentiment aggregation or chat forum parsing.",
@@ -526,8 +544,10 @@ class FilingDeepReadEngine:
                 task="Retrieval-augmented interactive Q&A over verified filing corpora with citation highlighting",
                 architecture="Orchestrated RAG agent with deterministic numeric verification and tool-use bounds",
                 context_window=65536,
-                citation_resolution_pct=100.0,
-                hallucination_rate_pct=0.00,
+                # HONESTY OVERHAUL (Phase 2): these were published as measured
+                # results. No measurement exists, so they are reported as unknown.
+                citation_resolution_pct=None,
+                hallucination_rate_pct=None,
                 cost_per_query_usd=0.0120,
                 intended_use="User-directed filing deep exploration with mandatory verbatim source quotes.",
                 out_of_scope="Unverifiable causal claims, subjective qualitative stock picking, individual portfolio management.",
@@ -555,8 +575,8 @@ class FilingDeepReadEngine:
                 "guidance_targets_count": len(guidance),
                 "management_changes_count": len(mgmt),
                 "model_cards_count": len(model_cards),
-                "citation_resolution_pct": audit["citation_resolution_pct"],
-                "hallucination_rate_pct": audit["hallucination_rate_pct"],
+                # HONESTY OVERHAUL (Phase 2): these were published as summary
+                # headline metrics. They do not exist, so they are not published.
             },
             "section_diffs": [d.to_dict() for d in diffs],
             "guidance_targets": [g.to_dict() for g in guidance],
@@ -565,7 +585,7 @@ class FilingDeepReadEngine:
             "model_cards": [c.to_dict() for c in model_cards],
             "disclaimers": [
                 "IMPERSONAL REGULATORY RESEARCH ONLY: All outputs derived from public SEC EDGAR and SEDAR+ filings. Does not constitute personalized investment recommendations or suitability determinations under CSA Staff Notice 31-369 or SEC Rule 206(4)-1.",
-                "STRICT GROUNDING GUARANTEE: 100% of factual extractions are validated against verbatim source character offsets. Citations are displayed side-by-side with source accession references.",
+                "GROUNDING: extractions carry character offsets into the source document. The %d-sample numeric spot-check described in hallucination_audit is the only verification performed; no independent audit has been carried out." % audit["samples_checked"],
             ],
         }
 

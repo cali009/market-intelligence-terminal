@@ -61,10 +61,29 @@ def test_feed_health_status():
     assert "sec_edgar_xbrl" in feed_ids
     assert "boc_valet_macro" in feed_ids
 
+    # HONESTY OVERHAUL (Phase 2): these assertions used to pin coverage at
+    # >= 90.0 for every feed and a WARNING badge that the code never emitted.
+    # Coverage is now measured as bars / (symbols x trading days) for the two
+    # equity feeds and is None for EDGAR and Valet, where no universe exists to
+    # be complete against. The badge vocabulary is what staleness_badge emits.
     for feed in health["feeds"]:
         assert feed["status"] in ("HEALTHY", "DEGRADED", "STALE", "DOWN")
-        assert feed["staleness_badge"] in ("FRESH", "WARNING", "STALE")
-        assert feed["coverage_pct"] >= 90.0
+        assert feed["staleness_badge"] in ("FRESH", "AGING", "STALE", "UNKNOWN")
+        cov = feed["coverage_pct"]
+        assert cov is None or 0.0 <= cov <= 100.0
+
+    # The equity feeds have a real denominator, so their coverage must be measured.
+    by_id = {f["feed_id"]: f for f in health["feeds"]}
+    for feed_id in ("us_equities_eod", "ca_equities_eod"):
+        assert by_id[feed_id]["coverage_pct"] is not None
+        assert by_id[feed_id]["coverage_pct"] >= 90.0
+
+    # The universe is 19 currently listed symbols and every feed must say so.
+    for feed_id in ("us_equities_eod", "ca_equities_eod"):
+        assert by_id[feed_id]["survivorship_biased"] is True
+    assert "survivorship" in health["universe_note"].lower()
+    # system_health is derived from the per-feed badges, never hard-coded.
+    assert health["system_health"] in ("OPTIMAL", "DEGRADED", "STALE", "DOWN")
 
     assert "data_quality_events" in health
     assert len(health["data_quality_events"]) >= 1

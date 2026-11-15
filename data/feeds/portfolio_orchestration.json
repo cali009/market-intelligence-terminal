@@ -1,6 +1,6 @@
 {
   "as_of_date": "2026-11-15",
-  "generated_at": "2026-11-15T01:45:53.375347+00:00",
+  "generated_at": "2026-11-15T23:15:38.650020+00:00",
   "total_capital": 100000.0,
   "active_positions_count": 18,
   "deployed_capital": 61900.0,
@@ -49,7 +49,7 @@
       "target_shares": 15,
       "arrival_price": 73.08,
       "effective_execution_price": 73.49,
-      "expected_slippage_bps": 1.91,
+      "expected_slippage_bps": 1.43,
       "execution_strategy": "TWAP"
     },
     "BN": {
@@ -63,7 +63,7 @@
       "target_shares": 13,
       "arrival_price": 57.58,
       "effective_execution_price": 58.43,
-      "expected_slippage_bps": 1.81,
+      "expected_slippage_bps": 1.8,
       "execution_strategy": "TWAP"
     },
     "CNQ": {
@@ -77,7 +77,7 @@
       "target_shares": 16,
       "arrival_price": 70.79,
       "effective_execution_price": 70.93,
-      "expected_slippage_bps": 1.48,
+      "expected_slippage_bps": 2.48,
       "execution_strategy": "TWAP"
     },
     "CNR": {
@@ -91,7 +91,7 @@
       "target_shares": 31,
       "arrival_price": 176.32,
       "effective_execution_price": 181.3,
-      "expected_slippage_bps": 0.77,
+      "expected_slippage_bps": 0.97,
       "execution_strategy": "TWAP"
     },
     "ENB": {
@@ -146,8 +146,8 @@
       "dollar_allocation": 2400.0,
       "target_shares": 4,
       "arrival_price": 515.7,
-      "effective_execution_price": 523.89,
-      "expected_slippage_bps": 0.19,
+      "effective_execution_price": 523.9,
+      "expected_slippage_bps": 0.38,
       "execution_strategy": "DIRECT_MARKET"
     },
     "NVDA": {
@@ -161,7 +161,7 @@
       "target_shares": 4,
       "arrival_price": 176.08,
       "effective_execution_price": 162.86,
-      "expected_slippage_bps": 0.0,
+      "expected_slippage_bps": 0.61,
       "execution_strategy": "DIRECT_MARKET"
     },
     "QQQ": {
@@ -175,7 +175,7 @@
       "target_shares": 4,
       "arrival_price": 685.08,
       "effective_execution_price": 679.9,
-      "expected_slippage_bps": 0.15,
+      "expected_slippage_bps": 0.0,
       "execution_strategy": "DIRECT_MARKET"
     },
     "RY": {
@@ -189,7 +189,7 @@
       "target_shares": 37,
       "arrival_price": 284.54,
       "effective_execution_price": 288.37,
-      "expected_slippage_bps": 0.36,
+      "expected_slippage_bps": 0.37,
       "execution_strategy": "TWAP"
     },
     "SHOP": {
@@ -244,8 +244,8 @@
       "dollar_allocation": 8670.0,
       "target_shares": 158,
       "arrival_price": 54.42,
-      "effective_execution_price": 54.55,
-      "expected_slippage_bps": 1.97,
+      "effective_execution_price": 54.56,
+      "expected_slippage_bps": 1.31,
       "execution_strategy": "TWAP"
     },
     "XOM": {
@@ -258,7 +258,7 @@
       "dollar_allocation": 1695.0,
       "target_shares": 9,
       "arrival_price": 169.14,
-      "effective_execution_price": 170.6,
+      "effective_execution_price": 170.61,
       "expected_slippage_bps": 1.17,
       "execution_strategy": "DIRECT_MARKET"
     }
@@ -273,7 +273,7 @@
       "headline": "Cross-Border Dual-Listed Parity Dislocation: CNR (-88.3 bps)",
       "body": "Dual-listed basis spread between TSX and NYSE for CNR reached -88.3 bps, exceeding the 45.0 bps threshold. Intermarket liquidity dislocation observed.",
       "action_required": "INVESTIGATE_VENUE_ARBITRAGE",
-      "timestamp": "2026-11-15T01:45:53Z"
+      "timestamp": "2026-11-15T23:15:38Z"
     },
     {
       "symbol": "CP",
@@ -284,7 +284,7 @@
       "headline": "Cross-Border Dual-Listed Parity Dislocation: CP (-82.0 bps)",
       "body": "Dual-listed basis spread between TSX and NYSE for CP reached -82.0 bps, exceeding the 45.0 bps threshold. Intermarket liquidity dislocation observed.",
       "action_required": "INVESTIGATE_VENUE_ARBITRAGE",
-      "timestamp": "2026-11-15T01:45:53Z"
+      "timestamp": "2026-11-15T23:15:38Z"
     },
     {
       "symbol": "RY",
@@ -295,7 +295,7 @@
       "headline": "Cross-Border Dual-Listed Parity Dislocation: RY (-81.7 bps)",
       "body": "Dual-listed basis spread between TSX and NYSE for RY reached -81.7 bps, exceeding the 45.0 bps threshold. Intermarket liquidity dislocation observed.",
       "action_required": "INVESTIGATE_VENUE_ARBITRAGE",
-      "timestamp": "2026-11-15T01:45:53Z"
+      "timestamp": "2026-11-15T23:15:38Z"
     },
     {
       "symbol": "SHOP",
@@ -306,7 +306,7 @@
       "headline": "Cross-Border Dual-Listed Parity Dislocation: SHOP (-79.8 bps)",
       "body": "Dual-listed basis spread between TSX and NYSE for SHOP reached -79.8 bps, exceeding the 45.0 bps threshold. Intermarket liquidity dislocation observed.",
       "action_required": "INVESTIGATE_VENUE_ARBITRAGE",
-      "timestamp": "2026-11-15T01:45:53Z"
+      "timestamp": "2026-11-15T23:15:38Z"
     },
     {
       "symbol": "BN",
@@ -317,7 +317,7 @@
       "headline": "Cross-Border Dual-Listed Parity Dislocation: BN (-79.7 bps)",
       "body": "Dual-listed basis spread between TSX and NYSE for BN reached -79.7 bps, exceeding the 45.0 bps threshold. Intermarket liquidity dislocation observed.",
       "action_required": "INVESTIGATE_VENUE_ARBITRAGE",
-      "timestamp": "2026-11-15T01:45:53Z"
+      "timestamp": "2026-11-15T23:15:38Z"
     },
     {
       "symbol": "BAM",
@@ -328,7 +328,7 @@
       "headline": "Cross-Border Dual-Listed Parity Dislocation: BAM (-78.0 bps)",
       "body": "Dual-listed basis spread between TSX and NYSE for BAM reached -78.0 bps, exceeding the 45.0 bps threshold. Intermarket liquidity dislocation observed.",
       "action_required": "INVESTIGATE_VENUE_ARBITRAGE",
-      "timestamp": "2026-11-15T01:45:53Z"
+      "timestamp": "2026-11-15T23:15:38Z"
     },
     {
       "symbol": "TD",
@@ -339,7 +339,7 @@
       "headline": "Cross-Border Dual-Listed Parity Dislocation: TD (-77.4 bps)",
       "body": "Dual-listed basis spread between TSX and NYSE for TD reached -77.4 bps, exceeding the 45.0 bps threshold. Intermarket liquidity dislocation observed.",
       "action_required": "INVESTIGATE_VENUE_ARBITRAGE",
-      "timestamp": "2026-11-15T01:45:53Z"
+      "timestamp": "2026-11-15T23:15:38Z"
     },
     {
       "symbol": "ENB",
@@ -350,7 +350,7 @@
       "headline": "Cross-Border Dual-Listed Parity Dislocation: ENB (-76.7 bps)",
       "body": "Dual-listed basis spread between TSX and NYSE for ENB reached -76.7 bps, exceeding the 45.0 bps threshold. Intermarket liquidity dislocation observed.",
       "action_required": "INVESTIGATE_VENUE_ARBITRAGE",
-      "timestamp": "2026-11-15T01:45:53Z"
+      "timestamp": "2026-11-15T23:15:38Z"
     },
     {
       "symbol": "CNQ",
@@ -361,29 +361,18 @@
       "headline": "Cross-Border Dual-Listed Parity Dislocation: CNQ (-62.9 bps)",
       "body": "Dual-listed basis spread between TSX and NYSE for CNQ reached -62.9 bps, exceeding the 45.0 bps threshold. Intermarket liquidity dislocation observed.",
       "action_required": "INVESTIGATE_VENUE_ARBITRAGE",
-      "timestamp": "2026-11-15T01:45:53Z"
-    },
-    {
-      "symbol": "SHOP",
-      "predicate_type": "VARIANCE_RISK_PREMIUM_COLLAPSE",
-      "severity": "WARNING",
-      "trigger_level": -100.0,
-      "current_price": -958.93,
-      "headline": "Variance Risk Premium Collapse Warning: SHOP (-959 variance points)",
-      "body": "SHOP Variance Risk Premium reached -959 annualized variance points, below the -100.0 point hazard boundary. Implied volatility 33.5% against realized 45.6%. Realized volatility is exceeding implied volatility, so short-volatility structures carry uncompensated tail risk.",
-      "action_required": "AVOID_SHORT_VOLATILITY",
-      "timestamp": "2026-11-15T01:45:53Z"
+      "timestamp": "2026-11-15T23:15:38Z"
     },
     {
       "symbol": "PORTFOLIO",
       "predicate_type": "PRE_TRADE_RISK_BREACH",
-      "severity": "WARNING",
+      "severity": "CRITICAL",
       "trigger_level": 3.0,
-      "current_price": 4.0,
-      "headline": "Pre-Trade Risk Breach: 4 hard rejections this session (WARNING)",
-      "body": "The pre-trade risk governor hard-rejected 4 of 16 order evaluations in session 2026-11-15, with $5,190 of $22,380 submitted notional refused. Triggered by: 4 hard rejections against a boundary of 3. Controls breached: C1 (2), C12 (2), C9 (2). Repeated pre-trade rejections indicate the signals being generated are larger or more concentrated than the declared risk envelope permits. This is a strategy/risk alignment finding and requires review of position sizing assumptions; it is not a statement about expected returns.",
+      "current_price": 20.0,
+      "headline": "Pre-Trade Risk Breach: 20 hard rejections this session (CRITICAL)",
+      "body": "The pre-trade risk governor hard-rejected 20 of 80 order evaluations in session 2026-11-15, with $25,950 of $111,900 submitted notional refused. Triggered by: 20 hard rejections against a boundary of 3. Controls breached: C1 (10), C12 (10), C9 (10). Repeated pre-trade rejections indicate the signals being generated are larger or more concentrated than the declared risk envelope permits. This is a strategy/risk alignment finding and requires review of position sizing assumptions; it is not a statement about expected returns.",
       "action_required": "REVIEW_POSITION_SIZING",
-      "timestamp": "2026-11-15T01:45:53Z"
+      "timestamp": "2026-11-15T23:15:38Z"
     }
   ],
   "disclaimers": [

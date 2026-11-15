@@ -290,8 +290,13 @@ def test_alerts_feed_export_and_schema():
         data = json.load(f)
 
     assert data["active_alerts_count"] >= 6
-    assert "delivery_telemetry" in data
-    assert "compliance_attestation" in data
-    assert "casl_compliance" in data["compliance_attestation"]
-    assert "tcpa_compliance" in data["compliance_attestation"]
-    assert len(data["consent_ledger_audit"]) > 0
+
+    # HONESTY OVERHAUL (Phase 2): this test used to require delivery_telemetry, a
+    # compliance_attestation asserting CASL and TCPA compliance, and a non-empty
+    # consent_ledger_audit. There are no recipients and no delivery channel, so
+    # none of that exists any more. The feed must say so instead.
+    assert "delivery_telemetry" not in data
+    assert "compliance_attestation" not in data
+    assert "consent_ledger_audit" not in data
+    assert "delivery_note" in data
+    assert "no email or SMS channel" in data["delivery_note"]

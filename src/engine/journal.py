@@ -5,7 +5,7 @@ US + Canada Quantitative Market Intelligence Platform
 Impersonal self-directed decision support (CSA Staff Notice 31-369 & SEC Publisher Exclusion).
 """
 
-from datetime import datetime, date
+from datetime import datetime, date, timezone
 from typing import Dict, List, Any, Optional
 import json
 
@@ -430,64 +430,196 @@ class JournalEngine:
                 ORDER BY event_id DESC LIMIT 10;
             """)
 
+        # HONESTY OVERHAUL (Phase 2): per-market counts and freshness are measured
+        # here rather than typed in. The previous version reported the same
+        # hard-coded 4.5h freshness, 100.0% coverage and the whole-database bar
+        # count for both the US and the CA feed, so neither figure described
+        # anything.
+        def _market_stats(market_exchanges):
+            row = db.execute_query(
+                """
+                SELECT COUNT(*) AS bars,
+                       COUNT(DISTINCT b.security_id) AS syms,
+                       COUNT(DISTINCT b.trading_date) AS days,
+                       MAX(b.trading_date) AS mx
+                FROM bar_1d b
+                JOIN security s ON s.security_id = b.security_id
+                WHERE s.exchange IN (%s);
+                """ % ",".join("?" for _ in market_exchanges),
+                tuple(market_exchanges),
+            )[0]
+            return row
+
+        def _freshness_hours(max_date: Optional[str]) -> Optional[float]:
+            """Hours between the newest bar's date and now. None if unknown."""
+            if not max_date:
+                return None
+            try:
+                last = datetime.strptime(str(max_date)[:10], "%Y-%m-%d")
+            except ValueError:
+                return None
+            return round((datetime.now() - last).total_seconds() / 3600.0, 1)
+
+        def staleness_badge(hours: Optional[float]) -> str:
+            # One trading day of slack, then it is stale. Never "FRESH" by default.
+            if hours is None:
+                return "UNKNOWN"
+            if hours <= 24.0:
+                return "FRESH"
+            if hours <= 48.0:
+                return "AGING"
+            return "STALE"
+
+        us_row = _market_stats(["NYSE", "NASDAQ", "AMEX"])
+        ca_row = _market_stats(["TSX", "TSXV"])
+        us_bars = us_row["bars"] or 0
+        ca_bars = ca_row["bars"] or 0
+        us_symbols = us_row["syms"] or 0
+        ca_symbols = ca_row["syms"] or 0
+        us_freshness_hours = _freshness_hours(us_row["mx"])
+        ca_freshness_hours = _freshness_hours(ca_row["mx"])
+        # The news/macro feeds stamp a timestamp rather than a date, so freshness
+        # is measured from that directly.
+        def _freshness_from_dt(value: Optional[str]) -> Optional[float]:
+            """Hours since an ISO-8601 or 'YYYY-MM-DD HH:MM:SS' stamp.
+
+            The database stores knowledge_at as ISO-8601 with a 'T' separator and
+            a UTC offset (e.g. 2026-10-03T02:18:01.313657+00:00), so a fixed
+            strptime format silently fails and reports the feed as UNKNOWN
+            instead of measuring it.
+            """
+            if not value:
+                return None
+            text = str(value).strip().replace("Z", "+00:00")
+            dt = None
+            try:
+                dt = datetime.fromisoformat(text)
+            except ValueError:
+                try:
+                    dt = datetime.strptime(text[:19], "%Y-%m-%d %H:%M:%S")
+                except ValueError:
+                    return None
+            # Compare like with like: normalise both to naive UTC.
+            if dt.tzinfo is not None:
+                dt = dt.astimezone(timezone.utc).replace(tzinfo=None)
+                now = datetime.utcnow()
+            else:
+                now = datetime.now()
+            return round((now - dt).total_seconds() / 3600.0, 1)
+
+        news_freshness_hours = _freshness_from_dt(news_stat.get("max_dt"))
+        macro_freshness_hours = _freshness_hours(max_macro_date)
+        # Coverage = observed bars against the bars a complete daily history for
+        # these symbols over the ingested window would contain, i.e.
+        # symbols x distinct trading days. (An earlier version of this code
+        # divided one market's bars by all bars, which reports that market's
+        # share of the universe, not its coverage.)
+        us_expected = us_symbols * (us_row["days"] or 0)
+        ca_expected = ca_symbols * (ca_row["days"] or 0)
+        us_coverage_pct = round((us_bars / us_expected) * 100.0, 1) if us_expected else None
+        ca_coverage_pct = round((ca_bars / ca_expected) * 100.0, 1) if ca_expected else None
+
         feeds = [
             {
                 "feed_id": "us_equities_eod",
-                "name": "US Equities Daily Bar Pipeline (NYSE / NASDAQ)",
+                "name": "US Equities Daily Bar Pipeline (NYSE / NASDAQ / AMEX)",
                 "market": "US",
-                "primary_source": "Official EOD Exchange Consolidation / EDGAR",
+                # HONESTY OVERHAUL (Phase 2): this used to claim "Official EOD
+                # Exchange Consolidation". Every bar in bar_1d is recorded with
+                # source=DIRECT_CHART_API, i.e. Yahoo Finance's public chart
+                # endpoint. There is no exchange agreement and no consolidated
+                # tape subscription.
+                "primary_source": "Yahoo Finance via the unofficial chart API "
+                                  "(query1.finance.yahoo.com), end-of-day",
                 "status": "HEALTHY",
-                "freshness_hours": 4.5,
-                "staleness_badge": "FRESH",
-                "last_synced_at": f"{max_bar_date} 16:30:00 EST",
-                "records_count": total_bars,
-                "coverage_pct": 100.0,
-                "notes": "Full survivorship-bias-free universe with bitemporal lineage."
+                "freshness_hours": us_freshness_hours,
+                "staleness_badge": staleness_badge(us_freshness_hours),
+                "last_synced_at": f"{max_bar_date} (exchange close, end-of-day)",
+                "records_count": us_bars,
+                "coverage_pct": us_coverage_pct,
+                # The universe is 19 hand-picked current large caps. That IS
+                # survivorship-biased: delisted and acquired names are absent, so
+                # any backtest over this universe is optimistically biased.
+                "survivorship_biased": True,
+                "notes": "%d US symbols, all currently listed large caps. The universe is "
+                         "survivorship-biased: delisted and acquired constituents are not "
+                         "present, so results computed over it are optimistically biased."
+                         % us_symbols
             },
             {
                 "feed_id": "ca_equities_eod",
-                "name": "Canadian Equities Daily Bar Pipeline (TSX / TSXV)",
+                "name": "Canadian Equities Daily Bar Pipeline (TSX)",
                 "market": "CA",
-                "primary_source": "TMX Datalinx Certified Reseller EOD",
+                # HONESTY OVERHAUL (Phase 2): "TMX Datalinx Certified Reseller EOD"
+                # was not true. Same source as the US pipeline.
+                "primary_source": "Yahoo Finance via the unofficial chart API "
+                                  "(query1.finance.yahoo.com), end-of-day",
                 "status": "HEALTHY",
-                "freshness_hours": 4.5,
-                "staleness_badge": "FRESH",
-                "last_synced_at": f"{max_bar_date} 16:30:00 EST",
-                "records_count": total_bars,
-                "coverage_pct": 100.0,
-                "notes": "CAD denominated pricing; dividend split adjustments verified."
+                "freshness_hours": ca_freshness_hours,
+                "staleness_badge": staleness_badge(ca_freshness_hours),
+                "last_synced_at": f"{max_bar_date} (exchange close, end-of-day)",
+                "records_count": ca_bars,
+                "coverage_pct": ca_coverage_pct,
+                "survivorship_biased": True,
+                "notes": "%d TSX symbols, CAD denominated, all currently listed. Also "
+                         "survivorship-biased for the same reason as the US universe. "
+                         "No TMX Datalinx subscription; this platform is not a certified "
+                         "reseller of TMX data."
+                         % ca_symbols
             },
             {
                 "feed_id": "sec_edgar_xbrl",
                 "name": "SEC EDGAR Continuous Regulatory Filings",
                 "market": "US",
-                "primary_source": "data.sec.gov Submissions & CompanyFacts API",
+                "primary_source": "SEC EDGAR (data.sec.gov submissions and "
+                                  "companyfacts APIs), public XBRL",
                 "status": "HEALTHY",
-                "freshness_hours": 1.2,
-                "staleness_badge": "FRESH",
+                "freshness_hours": news_freshness_hours,
+                "staleness_badge": staleness_badge(news_freshness_hours),
                 "last_synced_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S EST"),
                 "records_count": total_news,
-                "coverage_pct": 100.0,
+                # No defined universe to be complete against, so coverage is not
+                # a meaningful number here. It was previously hard-coded to 100.0.
+                "coverage_pct": None,
                 "notes": "Strict 10 req/s rate-limited ingestion with declared User-Agent."
             },
             {
                 "feed_id": "boc_valet_macro",
                 "name": "Bank of Canada Valet & FRED Macro Feed",
                 "market": "MACRO",
-                "primary_source": "Official Bank of Canada Valet REST API",
+                "primary_source": "Bank of Canada Valet REST API (public, free)",
                 "status": "HEALTHY",
-                "freshness_hours": 2.0,
-                "staleness_badge": "FRESH",
+                "freshness_hours": macro_freshness_hours,
+                "staleness_badge": staleness_badge(macro_freshness_hours),
                 "last_synced_at": f"{max_macro_date} 16:35:00 EST",
                 "records_count": total_macro,
-                "coverage_pct": 100.0,
+                "coverage_pct": None,
                 "notes": "Overnight policy rate, GoC benchmark bond yields, and CAD/USD exchange rate."
             }
         ]
 
+        # HONESTY OVERHAUL (Phase 2): "OPTIMAL" was a constant. Health is now
+        # derived from the freshness actually measured above.
+        measured = [h for h in (us_freshness_hours, ca_freshness_hours,
+                                news_freshness_hours, macro_freshness_hours) if h is not None]
+        if not measured:
+            derived_health = "UNKNOWN"
+        elif max(measured) <= 24.0:
+            derived_health = "HEALTHY"
+        elif max(measured) <= 48.0:
+            derived_health = "AGING"
+        else:
+            derived_health = "STALE"
+
         return {
             "feeds": feeds,
-            "system_health": "OPTIMAL",
+            "system_health": derived_health,
+            "universe_note": (
+                "The universe is %d currently listed large-cap symbols. It is "
+                "survivorship-biased: delisted and acquired constituents are absent, "
+                "so any statistic computed across it is optimistically biased."
+                % sec_cnt
+            ),
             "active_securities_count": sec_cnt,
             "data_quality_events": dq_rows,
             "generated_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S EST")

@@ -113,16 +113,33 @@ def test_management_changes_item_502():
         assert m.citation is not None
 
 
-def test_hallucination_audit_rate_zero():
-    """DoD: Verify that the automated hallucination audit yields 0.00% hallucinated facts."""
+def test_numeric_spot_check_reports_what_it_actually_checks():
+    """HONESTY OVERHAUL (Phase 2).
+
+    This was test_hallucination_audit_rate_zero, which required a 200-sample
+    audit, 0.00% hallucination and >= 99.5% citation resolution. The
+    implementation checked six samples, discarded the result, and returned
+    hard-coded constants that claimed two hundred. Those keys no longer exist;
+    the method now reports the size it really checks and states plainly that it
+    is not a hallucination measurement.
+    """
     audit = filing_deep_read_engine.audit_hallucination_rate()
 
-    assert audit["total_audit_sample_size"] >= 200
-    assert audit["hallucinated_facts_count"] == 0
-    assert audit["hallucination_rate_pct"] == 0.00
-    assert audit["citation_resolution_pct"] >= 99.5
-    assert "PASSED" in audit["numeric_verification_status"]
-    assert "PASSED" in audit["causal_claims_verification"]
+    # The fabricated keys are gone.
+    for gone in ("total_audit_sample_size", "hallucinated_facts_count",
+                 "hallucination_rate_pct", "citation_resolution_pct",
+                 "numeric_verification_status", "causal_claims_verification"):
+        assert gone not in audit
+
+    # What is published is the real check, at its real size.
+    assert audit["samples_checked"] == len(audit["details"])
+    assert audit["numbers_found_in_source"] + audit["numbers_not_found"] == audit["samples_checked"]
+    assert audit["not_a_hallucination_measurement"] is True
+    assert "not a hallucination rate" in audit["limitation"]
+    # Every detail row must carry the fields a reader needs to judge it.
+    for row in audit["details"]:
+        assert isinstance(row["number_found_in_source"], bool)
+        assert "source_document_loaded" in row
 
 
 def test_published_model_cards_specifications():
@@ -137,8 +154,11 @@ def test_published_model_cards_specifications():
 
     for c in cards:
         assert c.context_window >= 4096
-        assert c.citation_resolution_pct >= 99.5
-        assert c.hallucination_rate_pct == 0.00
+        # HONESTY OVERHAUL (Phase 2): these were required to be >= 99.5 and == 0.00,
+        # which forced every card to publish a measurement that was never taken.
+        # They are now None, meaning no measurement exists.
+        assert c.citation_resolution_pct is None
+        assert c.hallucination_rate_pct is None
         assert c.cost_per_query_usd < 0.05
         assert len(c.intended_use) > 10
         assert len(c.out_of_scope) > 10
@@ -173,8 +193,11 @@ def test_feed_file_export_and_schema():
 
     assert "summary" in data
     assert data["summary"]["section_diffs_count"] >= 3
-    assert data["summary"]["citation_resolution_pct"] >= 99.5
-    assert data["summary"]["hallucination_rate_pct"] == 0.00
+    # HONESTY OVERHAUL (Phase 2): the summary no longer carries these two
+    # headline metrics, because no measurement behind them exists.
+    assert "citation_resolution_pct" not in data["summary"]
+    assert "hallucination_rate_pct" not in data["summary"]
+    assert data["hallucination_audit"]["not_a_hallucination_measurement"] is True
     assert len(data["section_diffs"]) >= 3
     assert len(data["guidance_targets"]) >= 3
     assert len(data["model_cards"]) >= 3

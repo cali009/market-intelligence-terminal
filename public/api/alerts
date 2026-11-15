@@ -1,11 +1,11 @@
 {
   "as_of_date": "2026-11-15",
-  "generated_at": "2026-11-15T01:45:20.704530+00:00",
+  "generated_at": "2026-11-15T23:13:25.938739+00:00",
   "active_alerts_count": 10,
   "alerts": [
     {
       "alert_id": "ALT_2026-11-15_NVDA_01",
-      "timestamp": "2026-11-15T01:45:15Z",
+      "timestamp": "2026-11-15T23:13:21Z",
       "symbol": "NVDA",
       "taxonomy": "TECHNICAL_BREAKOUT",
       "severity": "WARNING",
@@ -27,7 +27,7 @@
     },
     {
       "alert_id": "ALT_2026-11-15_TD_02",
-      "timestamp": "2026-11-15T01:45:15Z",
+      "timestamp": "2026-11-15T23:13:21Z",
       "symbol": "TD",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "CRITICAL",
@@ -49,7 +49,7 @@
     },
     {
       "alert_id": "ALT_2026-11-15_BOC_03",
-      "timestamp": "2026-11-15T01:45:15Z",
+      "timestamp": "2026-11-15T23:13:21Z",
       "symbol": null,
       "taxonomy": "CATALYST_MATERIALITY",
       "severity": "WARNING",
@@ -71,7 +71,7 @@
     },
     {
       "alert_id": "ALT_2026-11-15_REG_04",
-      "timestamp": "2026-11-15T01:45:15Z",
+      "timestamp": "2026-11-15T23:13:21Z",
       "symbol": null,
       "taxonomy": "REGIME_SHIFT",
       "severity": "NOTICE",
@@ -91,7 +91,7 @@
     },
     {
       "alert_id": "ALT_2026-11-15_PORT_05",
-      "timestamp": "2026-11-15T01:45:15Z",
+      "timestamp": "2026-11-15T23:13:21Z",
       "symbol": null,
       "taxonomy": "PORTFOLIO_CIRCUIT_BREAKER",
       "severity": "CRITICAL",
@@ -112,7 +112,7 @@
     },
     {
       "alert_id": "ALT_2026-11-15_SHOP_06",
-      "timestamp": "2026-11-15T01:45:15Z",
+      "timestamp": "2026-11-15T23:13:21Z",
       "symbol": "SHOP",
       "taxonomy": "PRICE_VOLUME_SPIKE",
       "severity": "NOTICE",
@@ -132,7 +132,7 @@
     },
     {
       "alert_id": "ALT_2026-11-15_NVDA_BREAKOUT_F",
-      "timestamp": "2026-11-15T01:45:20Z",
+      "timestamp": "2026-11-15T23:13:25Z",
       "symbol": "NVDA",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
@@ -155,7 +155,7 @@
     },
     {
       "alert_id": "ALT_2026-11-15_JPM_BREAKOUT_F",
-      "timestamp": "2026-11-15T01:45:20Z",
+      "timestamp": "2026-11-15T23:13:25Z",
       "symbol": "JPM",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
@@ -178,7 +178,7 @@
     },
     {
       "alert_id": "ALT_2026-11-15_SPY_BREAKOUT_F",
-      "timestamp": "2026-11-15T01:45:20Z",
+      "timestamp": "2026-11-15T23:13:25Z",
       "symbol": "SPY",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
@@ -201,7 +201,7 @@
     },
     {
       "alert_id": "ALT_2026-11-15_SHOP_BREAKOUT_F",
-      "timestamp": "2026-11-15T01:45:20Z",
+      "timestamp": "2026-11-15T23:13:25Z",
       "symbol": "SHOP",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
@@ -223,16 +223,6 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     }
   ],
-  "delivery_telemetry": {
-    "p95_latency_email_seconds": 5.81,
-    "p95_latency_in_app_seconds": 0.21,
-    "bounce_rate_pct": 0.12,
-    "monthly_opt_out_rate_pct": 0.12,
-    "total_delivered_24h": 840,
-    "total_suppressed_quiet_hours": 0,
-    "total_suppressed_budget": 0,
-    "total_suppressed_cooldown": 0
-  },
   "policy_config": {
     "quiet_hours_enabled": true,
     "quiet_hours_start": "21:00",
@@ -242,272 +232,5 @@
     "max_alerts_per_day_sms": 5,
     "cooldown_minutes_per_symbol": 120
   },
-  "consent_ledger_audit": [
-    {
-      "consent_id": 286,
-      "user_id": "cooldown_user@example.com",
-      "channel": "EMAIL",
-      "consent_type": "EXPRESS_OPT_IN",
-      "ip_address": "198.51.100.42",
-      "granted_at": "2026-11-15T01:44:24.022976+00:00",
-      "revoked_at": null,
-      "is_active": true,
-      "jurisdiction": "CA",
-      "double_opt_in": false,
-      "evidence_snippet": "I expressly consent to receive electronic research alerts from NorthIntel. ..."
-    },
-    {
-      "consent_id": 285,
-      "user_id": "+16045558888",
-      "channel": "SMS",
-      "consent_type": "DOUBLE_OPT_IN_SMS",
-      "ip_address": "198.51.100.42",
-      "granted_at": "2026-11-15T01:44:24.010834+00:00",
-      "revoked_at": null,
-      "is_active": true,
-      "jurisdiction": "CA",
-      "double_opt_in": true,
-      "evidence_snippet": "I expressly consent to receive electronic research alerts from NorthIntel. ..."
-    },
-    {
-      "consent_id": 284,
-      "user_id": "quiet_user@example.com",
-      "channel": "EMAIL",
-      "consent_type": "EXPRESS_OPT_IN",
-      "ip_address": "198.51.100.42",
-      "granted_at": "2026-11-15T01:44:23.998056+00:00",
-      "revoked_at": null,
-      "is_active": true,
-      "jurisdiction": "CA",
-      "double_opt_in": false,
-      "evidence_snippet": "I expressly consent to receive electronic research alerts from NorthIntel. ..."
-    },
-    {
-      "consent_id": 283,
-      "user_id": "opt_out_test@example.com",
-      "channel": "EMAIL",
-      "consent_type": "EXPRESS_OPT_IN",
-      "ip_address": "198.51.100.42",
-      "granted_at": "2026-11-15T01:44:23.990678+00:00",
-      "revoked_at": "2026-11-15T01:44:23.993300+00:00",
-      "is_active": false,
-      "jurisdiction": "CA",
-      "double_opt_in": false,
-      "evidence_snippet": "I expressly consent to receive electronic research alerts from NorthIntel. ..."
-    },
-    {
-      "consent_id": 282,
-      "user_id": "+16045550999",
-      "channel": "SMS",
-      "consent_type": "DOUBLE_OPT_IN_SMS",
-      "ip_address": "198.51.100.42",
-      "granted_at": "2026-11-15T01:44:23.983022+00:00",
-      "revoked_at": null,
-      "is_active": true,
-      "jurisdiction": "CA",
-      "double_opt_in": true,
-      "evidence_snippet": "I expressly consent to receive electronic research alerts from NorthIntel. ..."
-    },
-    {
-      "consent_id": 281,
-      "user_id": "test_ca_user@example.ca",
-      "channel": "EMAIL",
-      "consent_type": "EXPRESS_OPT_IN",
-      "ip_address": "198.51.100.77",
-      "granted_at": "2026-11-15T01:44:23.977744+00:00",
-      "revoked_at": null,
-      "is_active": true,
-      "jurisdiction": "CA",
-      "double_opt_in": false,
-      "evidence_snippet": "I expressly consent to receive electronic research alerts from NorthIntel. ..."
-    },
-    {
-      "consent_id": 280,
-      "user_id": "cooldown_user@example.com",
-      "channel": "EMAIL",
-      "consent_type": "EXPRESS_OPT_IN",
-      "ip_address": "198.51.100.42",
-      "granted_at": "2026-11-15T01:38:05.066130+00:00",
-      "revoked_at": null,
-      "is_active": true,
-      "jurisdiction": "CA",
-      "double_opt_in": false,
-      "evidence_snippet": "I expressly consent to receive electronic research alerts from NorthIntel. ..."
-    },
-    {
-      "consent_id": 279,
-      "user_id": "+16045558888",
-      "channel": "SMS",
-      "consent_type": "DOUBLE_OPT_IN_SMS",
-      "ip_address": "198.51.100.42",
-      "granted_at": "2026-11-15T01:38:05.053171+00:00",
-      "revoked_at": null,
-      "is_active": true,
-      "jurisdiction": "CA",
-      "double_opt_in": true,
-      "evidence_snippet": "I expressly consent to receive electronic research alerts from NorthIntel. ..."
-    },
-    {
-      "consent_id": 278,
-      "user_id": "quiet_user@example.com",
-      "channel": "EMAIL",
-      "consent_type": "EXPRESS_OPT_IN",
-      "ip_address": "198.51.100.42",
-      "granted_at": "2026-11-15T01:38:05.038934+00:00",
-      "revoked_at": null,
-      "is_active": true,
-      "jurisdiction": "CA",
-      "double_opt_in": false,
-      "evidence_snippet": "I expressly consent to receive electronic research alerts from NorthIntel. ..."
-    },
-    {
-      "consent_id": 277,
-      "user_id": "opt_out_test@example.com",
-      "channel": "EMAIL",
-      "consent_type": "EXPRESS_OPT_IN",
-      "ip_address": "198.51.100.42",
-      "granted_at": "2026-11-15T01:38:05.030141+00:00",
-      "revoked_at": "2026-11-15T01:38:05.033616+00:00",
-      "is_active": false,
-      "jurisdiction": "CA",
-      "double_opt_in": false,
-      "evidence_snippet": "I expressly consent to receive electronic research alerts from NorthIntel. ..."
-    },
-    {
-      "consent_id": 276,
-      "user_id": "+16045550999",
-      "channel": "SMS",
-      "consent_type": "DOUBLE_OPT_IN_SMS",
-      "ip_address": "198.51.100.42",
-      "granted_at": "2026-11-15T01:38:05.022575+00:00",
-      "revoked_at": null,
-      "is_active": true,
-      "jurisdiction": "CA",
-      "double_opt_in": true,
-      "evidence_snippet": "I expressly consent to receive electronic research alerts from NorthIntel. ..."
-    },
-    {
-      "consent_id": 275,
-      "user_id": "test_ca_user@example.ca",
-      "channel": "EMAIL",
-      "consent_type": "EXPRESS_OPT_IN",
-      "ip_address": "198.51.100.77",
-      "granted_at": "2026-11-15T01:38:05.017299+00:00",
-      "revoked_at": null,
-      "is_active": true,
-      "jurisdiction": "CA",
-      "double_opt_in": false,
-      "evidence_snippet": "I expressly consent to receive electronic research alerts from NorthIntel. ..."
-    },
-    {
-      "consent_id": 274,
-      "user_id": "cooldown_user@example.com",
-      "channel": "EMAIL",
-      "consent_type": "EXPRESS_OPT_IN",
-      "ip_address": "198.51.100.42",
-      "granted_at": "2026-10-04T02:55:47.646107+00:00",
-      "revoked_at": null,
-      "is_active": true,
-      "jurisdiction": "CA",
-      "double_opt_in": false,
-      "evidence_snippet": "I expressly consent to receive electronic research alerts from NorthIntel. ..."
-    },
-    {
-      "consent_id": 273,
-      "user_id": "+16045558888",
-      "channel": "SMS",
-      "consent_type": "DOUBLE_OPT_IN_SMS",
-      "ip_address": "198.51.100.42",
-      "granted_at": "2026-10-04T02:55:47.629781+00:00",
-      "revoked_at": null,
-      "is_active": true,
-      "jurisdiction": "CA",
-      "double_opt_in": true,
-      "evidence_snippet": "I expressly consent to receive electronic research alerts from NorthIntel. ..."
-    },
-    {
-      "consent_id": 272,
-      "user_id": "quiet_user@example.com",
-      "channel": "EMAIL",
-      "consent_type": "EXPRESS_OPT_IN",
-      "ip_address": "198.51.100.42",
-      "granted_at": "2026-10-04T02:55:47.613693+00:00",
-      "revoked_at": null,
-      "is_active": true,
-      "jurisdiction": "CA",
-      "double_opt_in": false,
-      "evidence_snippet": "I expressly consent to receive electronic research alerts from NorthIntel. ..."
-    },
-    {
-      "consent_id": 271,
-      "user_id": "opt_out_test@example.com",
-      "channel": "EMAIL",
-      "consent_type": "EXPRESS_OPT_IN",
-      "ip_address": "198.51.100.42",
-      "granted_at": "2026-10-04T02:55:47.602650+00:00",
-      "revoked_at": "2026-10-04T02:55:47.605943+00:00",
-      "is_active": false,
-      "jurisdiction": "CA",
-      "double_opt_in": false,
-      "evidence_snippet": "I expressly consent to receive electronic research alerts from NorthIntel. ..."
-    },
-    {
-      "consent_id": 270,
-      "user_id": "+16045550999",
-      "channel": "SMS",
-      "consent_type": "DOUBLE_OPT_IN_SMS",
-      "ip_address": "198.51.100.42",
-      "granted_at": "2026-10-04T02:55:47.593899+00:00",
-      "revoked_at": null,
-      "is_active": true,
-      "jurisdiction": "CA",
-      "double_opt_in": true,
-      "evidence_snippet": "I expressly consent to receive electronic research alerts from NorthIntel. ..."
-    },
-    {
-      "consent_id": 269,
-      "user_id": "test_ca_user@example.ca",
-      "channel": "EMAIL",
-      "consent_type": "EXPRESS_OPT_IN",
-      "ip_address": "198.51.100.77",
-      "granted_at": "2026-10-04T02:55:47.586510+00:00",
-      "revoked_at": null,
-      "is_active": true,
-      "jurisdiction": "CA",
-      "double_opt_in": false,
-      "evidence_snippet": "I expressly consent to receive electronic research alerts from NorthIntel. ..."
-    },
-    {
-      "consent_id": 268,
-      "user_id": "cooldown_user@example.com",
-      "channel": "EMAIL",
-      "consent_type": "EXPRESS_OPT_IN",
-      "ip_address": "198.51.100.42",
-      "granted_at": "2026-10-03T18:19:44.264650+00:00",
-      "revoked_at": null,
-      "is_active": true,
-      "jurisdiction": "CA",
-      "double_opt_in": false,
-      "evidence_snippet": "I expressly consent to receive electronic research alerts from NorthIntel. ..."
-    },
-    {
-      "consent_id": 267,
-      "user_id": "+16045558888",
-      "channel": "SMS",
-      "consent_type": "DOUBLE_OPT_IN_SMS",
-      "ip_address": "198.51.100.42",
-      "granted_at": "2026-10-03T18:19:44.200976+00:00",
-      "revoked_at": null,
-      "is_active": true,
-      "jurisdiction": "CA",
-      "double_opt_in": true,
-      "evidence_snippet": "I expressly consent to receive electronic research alerts from NorthIntel. ..."
-    }
-  ],
-  "compliance_attestation": {
-    "casl_compliance": "Enforced: Express opt-in audit records, immediate 1-click revocation, sender address verified",
-    "tcpa_compliance": "Enforced: Prior express written consent, CTIA double opt-in SMS verification, transactional content isolation",
-    "quiet_hours_policy": "Enforced: Non-critical messages suppressed between 21:00 and 07:00 recipient timezone",
-    "impersonal_research": "Verified: ImpersonalAdviceLinter passed on 100% of alert copy"
-  }
+  "delivery_note": "No alerts are delivered anywhere. This dashboard has no email or SMS channel and no subscriber list, so there is no delivery telemetry to report and no consent regime that applies."
 }

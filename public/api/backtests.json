@@ -1,6 +1,6 @@
 {
   "as_of_date": "2026-11-15",
-  "generated_at": "2026-11-15T01:37:05.140158+00:00",
+  "generated_at": "2026-11-15T23:12:35.251395+00:00",
   "strategy_registry": {
     "ENSEMBLE_8F": {
       "strategy_id": "ENSEMBLE_8F",
@@ -79,7 +79,7 @@
       "retirement_reason": null,
       "hypothesis": "Multi-factor confluence of Golden Cross trend, RSI momentum, fundamental quality, and S/R breakout yields robust forward risk-adjusted excess return.",
       "universe": "US + Canada Core Liquid (Cap > $2B, ADV > $10M)",
-      "generated_at": "2026-11-15T01:37:10.905838+00:00",
+      "generated_at": "2026-11-15T23:12:39.404852+00:00",
       "config": {
         "initial_capital_usd": 100000.0,
         "commission_bps": 5.0,
@@ -38997,7 +38997,7 @@
         "access_status": "TOUCHED_ONCE_LOCKED",
         "access_audit_log": [
           {
-            "timestamp": "2026-11-15T01:37:10.914836+00:00",
+            "timestamp": "2026-11-15T23:12:39.412326+00:00",
             "action": "OUT_OF_SAMPLE_AUDIT",
             "operator": "institutional_ci_runner",
             "reason": "Phase 7 Strategy Validation & Verification Gate"
@@ -39016,7 +39016,7 @@
       "retirement_reason": null,
       "hypothesis": "Buying shallow pullbacks to rising 20-DMA/50-DMA with moderate RSI within an established primary uptrend offers asymmetric R:R.",
       "universe": "US + Canada Core Liquid (Cap > $2B, ADV > $10M)",
-      "generated_at": "2026-11-15T01:37:15.646787+00:00",
+      "generated_at": "2026-11-15T23:12:43.897110+00:00",
       "config": {
         "initial_capital_usd": 100000.0,
         "commission_bps": 5.0,
@@ -68808,7 +68808,7 @@
         "access_status": "TOUCHED_ONCE_LOCKED",
         "access_audit_log": [
           {
-            "timestamp": "2026-11-15T01:37:15.653500+00:00",
+            "timestamp": "2026-11-15T23:12:43.903456+00:00",
             "action": "OUT_OF_SAMPLE_AUDIT",
             "operator": "institutional_ci_runner",
             "reason": "Phase 7 Strategy Validation & Verification Gate"
@@ -68827,7 +68827,7 @@
       "retirement_reason": null,
       "hypothesis": "Extreme Bollinger Bandwidth compression (< 6.5%) precedes directional volatility expansion with favorable follow-through.",
       "universe": "US + Canada Core Liquid (Cap > $2B, ADV > $10M)",
-      "generated_at": "2026-11-15T01:37:20.279352+00:00",
+      "generated_at": "2026-11-15T23:12:48.061844+00:00",
       "config": {
         "initial_capital_usd": 100000.0,
         "commission_bps": 5.0,
@@ -96830,7 +96830,7 @@
         "access_status": "TOUCHED_ONCE_LOCKED",
         "access_audit_log": [
           {
-            "timestamp": "2026-11-15T01:37:20.285696+00:00",
+            "timestamp": "2026-11-15T23:12:48.067133+00:00",
             "action": "OUT_OF_SAMPLE_AUDIT",
             "operator": "institutional_ci_runner",
             "reason": "Phase 7 Strategy Validation & Verification Gate"
@@ -96849,7 +96849,7 @@
       "retirement_reason": null,
       "hypothesis": "Leading relative strength securities breaking into new 52-week highs with volume expansion exhibit post-earnings and post-breakout drift.",
       "universe": "US + Canada Core Liquid (Cap > $2B, ADV > $10M)",
-      "generated_at": "2026-11-15T01:37:25.046189+00:00",
+      "generated_at": "2026-11-15T23:12:52.654985+00:00",
       "config": {
         "initial_capital_usd": 100000.0,
         "commission_bps": 5.0,
@@ -131477,7 +131477,7 @@
         "access_status": "TOUCHED_ONCE_LOCKED",
         "access_audit_log": [
           {
-            "timestamp": "2026-11-15T01:37:25.054333+00:00",
+            "timestamp": "2026-11-15T23:12:52.661484+00:00",
             "action": "OUT_OF_SAMPLE_AUDIT",
             "operator": "institutional_ci_runner",
             "reason": "Phase 7 Strategy Validation & Verification Gate"
@@ -131496,7 +131496,7 @@
       "retirement_reason": null,
       "hypothesis": "Institutional accumulation sequence (Accumulation -> Manipulation Judas Swing -> Distribution Expansion). Phase 20.4 Golden Cross structural alignment (Close > SMA50 and SMA20 > SMA50 > SMA200) with adaptive conformal breathing stop, two-stage partial trim ladder (+1.8R Target 1 trim, breakeven stop ratchet, Target 2 runner), and institutional cash sweep yield attribution.",
       "universe": "US + Canada Core Liquid (Cap > $2B, ADV > $10M)",
-      "generated_at": "2026-11-15T01:37:30.464336+00:00",
+      "generated_at": "2026-11-15T23:12:57.517629+00:00",
       "config": {
         "initial_capital_usd": 100000.0,
         "commission_bps": 5.0,
@@ -138278,7 +138278,7 @@
         "access_status": "TOUCHED_ONCE_LOCKED",
         "access_audit_log": [
           {
-            "timestamp": "2026-11-15T01:37:30.465459+00:00",
+            "timestamp": "2026-11-15T23:12:57.518571+00:00",
             "action": "OUT_OF_SAMPLE_AUDIT",
             "operator": "institutional_ci_runner",
             "reason": "Phase 7 Strategy Validation & Verification Gate"
@@ -138297,7 +138297,7 @@
       "retirement_reason": null,
       "hypothesis": "Combines the PO3 Liquidity Sweep Reclaim model with Phase 23.2 Machine Learning Meta-Labeling Classifier (L\u00f3pez de Prado AFML). Dynamically gates false breakout traps (P < 0.44) and scales position sizing according to execution probability.",
       "universe": "US + Canada Core Liquid (Cap > $2B, ADV > $10M)",
-      "generated_at": "2026-11-15T01:37:38.338776+00:00",
+      "generated_at": "2026-11-15T23:13:04.629145+00:00",
       "config": {
         "initial_capital_usd": 100000.0,
         "commission_bps": 5.0,
@@ -144611,7 +144611,7 @@
         "access_status": "TOUCHED_ONCE_LOCKED",
         "access_audit_log": [
           {
-            "timestamp": "2026-11-15T01:37:38.339773+00:00",
+            "timestamp": "2026-11-15T23:13:04.630023+00:00",
             "action": "OUT_OF_SAMPLE_AUDIT",
             "operator": "institutional_ci_runner",
             "reason": "Phase 7 Strategy Validation & Verification Gate"
@@ -144630,7 +144630,7 @@
       "retirement_reason": null,
       "hypothesis": "Regime-adaptive meta-strategy dynamically routing between PO3 Liquidity Sweeps in Mean-Reverting/Chop regimes and Momentum/Pullback in Trending regimes, modulated by Phase 18 Deterministic Idiosyncratic Risk sizing multipliers.",
       "universe": "US + Canada Core Liquid (Cap > $2B, ADV > $10M)",
-      "generated_at": "2026-11-15T01:37:43.423936+00:00",
+      "generated_at": "2026-11-15T23:13:09.197415+00:00",
       "config": {
         "initial_capital_usd": 100000.0,
         "commission_bps": 5.0,
@@ -156560,7 +156560,7 @@
         "access_status": "TOUCHED_ONCE_LOCKED",
         "access_audit_log": [
           {
-            "timestamp": "2026-11-15T01:37:43.426494+00:00",
+            "timestamp": "2026-11-15T23:13:09.199299+00:00",
             "action": "OUT_OF_SAMPLE_AUDIT",
             "operator": "institutional_ci_runner",
             "reason": "Phase 7 Strategy Validation & Verification Gate"
@@ -156579,7 +156579,7 @@
       "retirement_reason": "Retired on empirical evidence: Negative out-of-sample expectancy (-0.18R), severe fee/slippage drag from chasing gap-ups, low Deflated Sharpe Ratio (0.34 < 0.50), and high probability of overfitting (PBO 68% > 40%). De-registered from live signal production.",
       "hypothesis": "Buying immediate breakout gaps regardless of RSI overbought levels or volume support.",
       "universe": "US + Canada Core Liquid (Cap > $2B, ADV > $10M)",
-      "generated_at": "2026-11-15T01:37:47.025980+00:00",
+      "generated_at": "2026-11-15T23:13:12.682169+00:00",
       "config": {
         "initial_capital_usd": 100000.0,
         "commission_bps": 5.0,
@@ -166793,7 +166793,7 @@
         "access_status": "TOUCHED_ONCE_LOCKED",
         "access_audit_log": [
           {
-            "timestamp": "2026-11-15T01:37:47.027799+00:00",
+            "timestamp": "2026-11-15T23:13:12.683788+00:00",
             "action": "OUT_OF_SAMPLE_AUDIT",
             "operator": "institutional_ci_runner",
             "reason": "Phase 7 Strategy Validation & Verification Gate"
@@ -166824,7 +166824,7 @@
       "target_fdr_q": 0.05,
       "fdr_passed_count": 1,
       "fdr_rejected_count": 7,
-      "calibrated_at": "2026-11-15T01:37:47.352661+00:00"
+      "calibrated_at": "2026-11-15T23:13:13.040290+00:00"
     },
     "fdr_gating_table": [
       {

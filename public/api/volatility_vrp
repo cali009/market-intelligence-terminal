@@ -1,10 +1,10 @@
 {
   "as_of_date": "2026-11-15",
-  "generated_at": "2026-11-15T01:45:36.211571+00:00",
+  "generated_at": "2026-11-15T23:13:40.105139+00:00",
   "universe_count": 19,
-  "vrp_coverage_count": 10,
+  "vrp_coverage_count": 0,
   "median_realized_vol_pct": 21.41,
-  "median_vrp_variance_pts": 22.75,
+  "median_vrp_variance_pts": null,
   "cboe_index_reference_free": true,
   "dossiers": {
     "AAPL": {
@@ -82,14 +82,14 @@
         "vol_of_vol_pct": 14.42
       },
       "vrp": {
-        "available": true,
-        "implied_vol_pct": 22.5,
-        "realized_vol_pct": 23.64,
-        "vrp_variance_pts": -52.6,
-        "vrp_vol_pts": -1.14,
-        "vrp_zscore_252d": 0.24,
-        "seller_edge": "NEUTRAL",
-        "unavailable_reason": null
+        "available": false,
+        "implied_vol_pct": null,
+        "realized_vol_pct": null,
+        "vrp_variance_pts": null,
+        "vrp_vol_pts": null,
+        "vrp_zscore_252d": null,
+        "seller_edge": null,
+        "unavailable_reason": "No implied volatility source: the options surface feed was retired as fabricated, so VRP cannot be computed for this symbol."
       },
       "primary_volatility_concern": "NONE_MATERIAL"
     },
@@ -175,7 +175,7 @@
         "vrp_vol_pts": null,
         "vrp_zscore_252d": null,
         "seller_edge": null,
-        "unavailable_reason": "No Phase 30 options surface available for this symbol"
+        "unavailable_reason": "No implied volatility source: the options surface feed was retired as fabricated, so VRP cannot be computed for this symbol."
       },
       "primary_volatility_concern": "REALIZED_ESTIMATOR_DISPERSION"
     },
@@ -261,7 +261,7 @@
         "vrp_vol_pts": null,
         "vrp_zscore_252d": null,
         "seller_edge": null,
-        "unavailable_reason": "No Phase 30 options surface available for this symbol"
+        "unavailable_reason": "No implied volatility source: the options surface feed was retired as fabricated, so VRP cannot be computed for this symbol."
       },
       "primary_volatility_concern": "NONE_MATERIAL"
     },
@@ -347,7 +347,7 @@
         "vrp_vol_pts": null,
         "vrp_zscore_252d": null,
         "seller_edge": null,
-        "unavailable_reason": "No Phase 30 options surface available for this symbol"
+        "unavailable_reason": "No implied volatility source: the options surface feed was retired as fabricated, so VRP cannot be computed for this symbol."
       },
       "primary_volatility_concern": "NONE_MATERIAL"
     },
@@ -433,7 +433,7 @@
         "vrp_vol_pts": null,
         "vrp_zscore_252d": null,
         "seller_edge": null,
-        "unavailable_reason": "No Phase 30 options surface available for this symbol"
+        "unavailable_reason": "No implied volatility source: the options surface feed was retired as fabricated, so VRP cannot be computed for this symbol."
       },
       "primary_volatility_concern": "NONE_MATERIAL"
     },
@@ -519,7 +519,7 @@
         "vrp_vol_pts": null,
         "vrp_zscore_252d": null,
         "seller_edge": null,
-        "unavailable_reason": "No Phase 30 options surface available for this symbol"
+        "unavailable_reason": "No implied volatility source: the options surface feed was retired as fabricated, so VRP cannot be computed for this symbol."
       },
       "primary_volatility_concern": "NONE_MATERIAL"
     },
@@ -605,7 +605,7 @@
         "vrp_vol_pts": null,
         "vrp_zscore_252d": null,
         "seller_edge": null,
-        "unavailable_reason": "No Phase 30 options surface available for this symbol"
+        "unavailable_reason": "No implied volatility source: the options surface feed was retired as fabricated, so VRP cannot be computed for this symbol."
       },
       "primary_volatility_concern": "NONE_MATERIAL"
     },
@@ -684,14 +684,14 @@
         "vol_of_vol_pct": 5.72
       },
       "vrp": {
-        "available": true,
-        "implied_vol_pct": 14.2,
-        "realized_vol_pct": 16.04,
-        "vrp_variance_pts": -55.64,
-        "vrp_vol_pts": -1.84,
-        "vrp_zscore_252d": 0.25,
-        "seller_edge": "NEUTRAL",
-        "unavailable_reason": null
+        "available": false,
+        "implied_vol_pct": null,
+        "realized_vol_pct": null,
+        "vrp_variance_pts": null,
+        "vrp_vol_pts": null,
+        "vrp_zscore_252d": null,
+        "seller_edge": null,
+        "unavailable_reason": "No implied volatility source: the options surface feed was retired as fabricated, so VRP cannot be computed for this symbol."
       },
       "primary_volatility_concern": "NONE_MATERIAL"
     },
@@ -777,7 +777,7 @@
         "vrp_vol_pts": null,
         "vrp_zscore_252d": null,
         "seller_edge": null,
-        "unavailable_reason": "No Phase 30 options surface available for this symbol"
+        "unavailable_reason": "No implied volatility source: the options surface feed was retired as fabricated, so VRP cannot be computed for this symbol."
       },
       "primary_volatility_concern": "REALIZED_ESTIMATOR_DISPERSION"
     },
@@ -863,7 +863,7 @@
         "vrp_vol_pts": null,
         "vrp_zscore_252d": null,
         "seller_edge": null,
-        "unavailable_reason": "No Phase 30 options surface available for this symbol"
+        "unavailable_reason": "No implied volatility source: the options surface feed was retired as fabricated, so VRP cannot be computed for this symbol."
       },
       "primary_volatility_concern": "NONE_MATERIAL"
     },
@@ -942,14 +942,14 @@
         "vol_of_vol_pct": 13.75
       },
       "vrp": {
-        "available": true,
-        "implied_vol_pct": 21.0,
-        "realized_vol_pct": 21.41,
-        "vrp_variance_pts": -17.39,
-        "vrp_vol_pts": -0.41,
-        "vrp_zscore_252d": 0.51,
-        "seller_edge": "NEUTRAL",
-        "unavailable_reason": null
+        "available": false,
+        "implied_vol_pct": null,
+        "realized_vol_pct": null,
+        "vrp_variance_pts": null,
+        "vrp_vol_pts": null,
+        "vrp_zscore_252d": null,
+        "seller_edge": null,
+        "unavailable_reason": "No implied volatility source: the options surface feed was retired as fabricated, so VRP cannot be computed for this symbol."
       },
       "primary_volatility_concern": "REALIZED_ESTIMATOR_DISPERSION"
     },
@@ -1028,14 +1028,14 @@
         "vol_of_vol_pct": 18.92
       },
       "vrp": {
-        "available": true,
-        "implied_vol_pct": 38.5,
-        "realized_vol_pct": 35.46,
-        "vrp_variance_pts": 224.84,
-        "vrp_vol_pts": 3.04,
-        "vrp_zscore_252d": 0.41,
-        "seller_edge": "FAVOURABLE",
-        "unavailable_reason": null
+        "available": false,
+        "implied_vol_pct": null,
+        "realized_vol_pct": null,
+        "vrp_variance_pts": null,
+        "vrp_vol_pts": null,
+        "vrp_zscore_252d": null,
+        "seller_edge": null,
+        "unavailable_reason": "No implied volatility source: the options surface feed was retired as fabricated, so VRP cannot be computed for this symbol."
       },
       "primary_volatility_concern": "REALIZED_ESTIMATOR_DISPERSION"
     },
@@ -1114,14 +1114,14 @@
         "vol_of_vol_pct": 10.95
       },
       "vrp": {
-        "available": true,
-        "implied_vol_pct": 19.8,
-        "realized_vol_pct": 16.81,
-        "vrp_variance_pts": 109.46,
-        "vrp_vol_pts": 2.99,
-        "vrp_zscore_252d": 0.34,
-        "seller_edge": "FAVOURABLE",
-        "unavailable_reason": null
+        "available": false,
+        "implied_vol_pct": null,
+        "realized_vol_pct": null,
+        "vrp_variance_pts": null,
+        "vrp_vol_pts": null,
+        "vrp_zscore_252d": null,
+        "seller_edge": null,
+        "unavailable_reason": "No implied volatility source: the options surface feed was retired as fabricated, so VRP cannot be computed for this symbol."
       },
       "primary_volatility_concern": "NONE_MATERIAL"
     },
@@ -1200,14 +1200,14 @@
         "vol_of_vol_pct": 5.99
       },
       "vrp": {
-        "available": true,
-        "implied_vol_pct": 13.8,
-        "realized_vol_pct": 13.96,
-        "vrp_variance_pts": -4.44,
-        "vrp_vol_pts": -0.16,
-        "vrp_zscore_252d": 0.36,
-        "seller_edge": "NEUTRAL",
-        "unavailable_reason": null
+        "available": false,
+        "implied_vol_pct": null,
+        "realized_vol_pct": null,
+        "vrp_variance_pts": null,
+        "vrp_vol_pts": null,
+        "vrp_zscore_252d": null,
+        "seller_edge": null,
+        "unavailable_reason": "No implied volatility source: the options surface feed was retired as fabricated, so VRP cannot be computed for this symbol."
       },
       "primary_volatility_concern": "NONE_MATERIAL"
     },
@@ -1286,16 +1286,16 @@
         "vol_of_vol_pct": 25.6
       },
       "vrp": {
-        "available": true,
-        "implied_vol_pct": 33.5,
-        "realized_vol_pct": 45.62,
-        "vrp_variance_pts": -958.93,
-        "vrp_vol_pts": -12.12,
-        "vrp_zscore_252d": 0.62,
-        "seller_edge": "ADVERSE",
-        "unavailable_reason": null
+        "available": false,
+        "implied_vol_pct": null,
+        "realized_vol_pct": null,
+        "vrp_variance_pts": null,
+        "vrp_vol_pts": null,
+        "vrp_zscore_252d": null,
+        "seller_edge": null,
+        "unavailable_reason": "No implied volatility source: the options surface feed was retired as fabricated, so VRP cannot be computed for this symbol."
       },
-      "primary_volatility_concern": "VARIANCE_RISK_PREMIUM_COLLAPSE"
+      "primary_volatility_concern": "REALIZED_ESTIMATOR_DISPERSION"
     },
     "SPY": {
       "symbol": "SPY",
@@ -1372,14 +1372,14 @@
         "vol_of_vol_pct": 9.37
       },
       "vrp": {
-        "available": true,
-        "implied_vol_pct": 15.5,
-        "realized_vol_pct": 12.94,
-        "vrp_variance_pts": 72.81,
-        "vrp_vol_pts": 2.56,
-        "vrp_zscore_252d": 0.23,
-        "seller_edge": "NEUTRAL",
-        "unavailable_reason": null
+        "available": false,
+        "implied_vol_pct": null,
+        "realized_vol_pct": null,
+        "vrp_variance_pts": null,
+        "vrp_vol_pts": null,
+        "vrp_zscore_252d": null,
+        "seller_edge": null,
+        "unavailable_reason": "No implied volatility source: the options surface feed was retired as fabricated, so VRP cannot be computed for this symbol."
       },
       "primary_volatility_concern": "NONE_MATERIAL"
     },
@@ -1458,14 +1458,14 @@
         "vol_of_vol_pct": 7.41
       },
       "vrp": {
-        "available": true,
-        "implied_vol_pct": 16.5,
-        "realized_vol_pct": 14.91,
-        "vrp_variance_pts": 49.94,
-        "vrp_vol_pts": 1.59,
-        "vrp_zscore_252d": 0.41,
-        "seller_edge": "NEUTRAL",
-        "unavailable_reason": null
+        "available": false,
+        "implied_vol_pct": null,
+        "realized_vol_pct": null,
+        "vrp_variance_pts": null,
+        "vrp_vol_pts": null,
+        "vrp_zscore_252d": null,
+        "seller_edge": null,
+        "unavailable_reason": "No implied volatility source: the options surface feed was retired as fabricated, so VRP cannot be computed for this symbol."
       },
       "primary_volatility_concern": "NONE_MATERIAL"
     },
@@ -1544,14 +1544,14 @@
         "vol_of_vol_pct": 6.23
       },
       "vrp": {
-        "available": true,
-        "implied_vol_pct": 12.8,
-        "realized_vol_pct": 10.37,
-        "vrp_variance_pts": 56.3,
-        "vrp_vol_pts": 2.43,
-        "vrp_zscore_252d": 0.33,
-        "seller_edge": "NEUTRAL",
-        "unavailable_reason": null
+        "available": false,
+        "implied_vol_pct": null,
+        "realized_vol_pct": null,
+        "vrp_variance_pts": null,
+        "vrp_vol_pts": null,
+        "vrp_zscore_252d": null,
+        "seller_edge": null,
+        "unavailable_reason": "No implied volatility source: the options surface feed was retired as fabricated, so VRP cannot be computed for this symbol."
       },
       "primary_volatility_concern": "NONE_MATERIAL"
     },
@@ -1637,7 +1637,7 @@
         "vrp_vol_pts": null,
         "vrp_zscore_252d": null,
         "seller_edge": null,
-        "unavailable_reason": "No Phase 30 options surface available for this symbol"
+        "unavailable_reason": "No implied volatility source: the options surface feed was retired as fabricated, so VRP cannot be computed for this symbol."
       },
       "primary_volatility_concern": "NONE_MATERIAL"
     }

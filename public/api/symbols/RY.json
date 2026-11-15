@@ -5,7 +5,7 @@
   "currency": "CAD",
   "name": "Royal Bank of Canada",
   "as_of_date": "2026-11-15",
-  "generated_at": "2026-11-15T01:45:06.709447+00:00",
+  "generated_at": "2026-11-15T23:13:13.315408+00:00",
   "latest_metrics": {
     "trading_date": "2026-11-13",
     "open": 289.5,
@@ -356,7 +356,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 14,
     "gjr_garch_gamma": 0.24,
-    "last_updated": "2026-11-15T01:45:10.398641+00:00"
+    "last_updated": "2026-11-15T23:13:16.718267+00:00"
   },
   "conformal_bounds": {
     "symbol": "RY",
@@ -373,7 +373,7 @@
     "adapted_alpha": 0.09,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-11-15T01:45:10.410631+00:00"
+    "calibrated_at": "2026-11-15T23:13:16.728623+00:00"
   },
   "cross_border_parity": {
     "tsx_symbol": "RY",
@@ -1599,7 +1599,7 @@
     "country": "CA",
     "currency": "CAD",
     "as_of_date": "2026-11-15",
-    "generated_at": "2026-11-15T01:45:10.569436+00:00",
+    "generated_at": "2026-11-15T23:13:16.900156+00:00",
     "conviction_grade": "B",
     "aligned_layers_count": 4,
     "formatted_card": "TICKER: RY\nREGIME: STRONG_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 6.4%)\nPATTERN TYPE: Archetype C: Chartered Banks (Regulated Yield-Drift) \u2014 Earnings-Driven\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BULLISH \u2014 Stacked MAs (Bullish Stack), RSI 53.6 equilibrium, price structure holding above key support.\n  Fundamental:  8.0/10 \u2014 ROIC 4.1%, Debt/Equity 0.00, operating margin 41.2%; robust institutional quality balance sheet.\n  Sentiment:    0.00 (NEUTRAL) \u2014 Routine regulatory reporting schedule; no material catalyst in last 30 days.\n  Historical:   58.2% Win Rate (25 sample size, E[R]: +0.48R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $284.54 \u2013 $288.81\n  Entry trigger:  Price holds structural pivot ($283.82) followed by volume-backed expansion above $284.54.\n  Stop loss:      $277.44 (2.5% below entry)\n  Target 1 (T1):  $293.38 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $317.21 | Est. 24 days | Take 40%\n  Target 3 (T3):  $314.36 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 3.18\n  Position size:  140 shares on $100,000 portfolio risking 1% ($994.00)\n  Execution TCA:  TWAP (5 slices) | Est. Fill: $288.37 | Slippage: +0.4 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: B-Grade\nTRADE THESIS: RY exhibits high structural confluence with Earnings-Driven aligning above ascending moving averages. In the current STRONG_BULL macro context (20d adverse hazard: 6.4%), measured support at $283.82 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $277.44 or two consecutive closes back below $283.82 immediately invalidates the trade.",
@@ -1728,21 +1728,21 @@
       "action": "GATED_EXCLUDE",
       "size_multiplier": 0.0,
       "primary_driver": "mom_12_1m (+0.37, impact -)",
-      "calibrated_at": "2026-11-15T01:45:10.822435+00:00"
+      "calibrated_at": "2026-11-15T23:13:17.159857+00:00"
     },
     "microstructure_metrics": {
       "symbol": "RY",
-      "timestamp": "2026-11-15T01:45:10.824223+00:00",
-      "cvd_total": 1632,
-      "cvd_1m_delta": 3381,
-      "cvd_5m_delta": 1632,
-      "order_book_imbalance": 0.1626,
-      "kyle_lambda": 0.0154,
-      "rvol_1m": 1.68,
+      "timestamp": "2026-11-15T23:13:17.161762+00:00",
+      "cvd_total": -5248,
+      "cvd_1m_delta": -3797,
+      "cvd_5m_delta": -5248,
+      "order_book_imbalance": -0.0379,
+      "kyle_lambda": 0.0148,
+      "rvol_1m": 1.76,
       "absorption_signal": "NONE",
       "liquidity_state": "NORMAL",
-      "buyer_volume_pct": 55.9,
-      "seller_volume_pct": 44.1
+      "buyer_volume_pct": 29.0,
+      "seller_volume_pct": 71.0
     }
   },
   "disclaimers": {

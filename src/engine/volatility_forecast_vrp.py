@@ -665,9 +665,16 @@ class VolatilityForecastVrpEngine:
                 unavailable_reason=None,
             )
         else:
+            # HONESTY OVERHAUL (Phase 2): the implied volatility this reads came
+            # from the retired options surface feed, whose numbers were generated
+            # from a hard-coded tenor table rather than an option chain. With no
+            # real implied volatility source, VRP is reported as unavailable
+            # instead of being computed from invented inputs.
             vrp = VarianceRiskPremiumProfile(
                 available=False,
-                unavailable_reason="No Phase 30 options surface available for this symbol",
+                unavailable_reason="No implied volatility source: the options "
+                                   "surface feed was retired as fabricated, so VRP "
+                                   "cannot be computed for this symbol.",
             )
 
         if regime.regime == "CRISIS":
@@ -696,7 +703,13 @@ class VolatilityForecastVrpEngine:
 
     # ------------------------------------------------------------------
     def load_implied_vols(self) -> Dict[str, float]:
-        """Loads 30-day ATM implied volatility from the Phase 30 options surface feed."""
+        """Loads 30-day ATM implied volatility, if any source provides it.
+
+        HONESTY OVERHAUL (Phase 2): options_intelligence.json is no longer written,
+        so this returns an empty mapping and every dossier reports VRP as
+        unavailable. The file check is retained so that a genuine implied
+        volatility source can be wired in later without further changes.
+        """
         path = DATA_DIR / "feeds" / "options_intelligence.json"
         if not path.exists():
             return {}

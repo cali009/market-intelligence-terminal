@@ -1,13 +1,11 @@
 {
   "as_of_date": "2026-11-15",
-  "generated_at": "2026-11-15T01:45:20.705649+00:00",
+  "generated_at": "2026-11-15T23:15:10.672550+00:00",
   "summary": {
     "section_diffs_count": 3,
     "guidance_targets_count": 3,
     "management_changes_count": 3,
-    "model_cards_count": 3,
-    "citation_resolution_pct": 100.0,
-    "hallucination_rate_pct": 0.0
+    "model_cards_count": 3
   },
   "section_diffs": [
     {
@@ -256,13 +254,63 @@
     }
   ],
   "hallucination_audit": {
-    "total_audit_sample_size": 200,
-    "hallucinated_facts_count": 0,
-    "verified_grounded_facts_count": 200,
-    "hallucination_rate_pct": 0.0,
-    "citation_resolution_pct": 100.0,
-    "numeric_verification_status": "PASSED (0 hallucinated numerals across 200 gold-standard audit samples)",
-    "causal_claims_verification": "PASSED (No ungrounded causal connectors identified in output copy)"
+    "check_name": "Numeric spot-check against loaded source text",
+    "samples_checked": 6,
+    "numbers_found_in_source": 6,
+    "numbers_not_found": 0,
+    "source_documents_loaded": 6,
+    "details": [
+      {
+        "id": "SMP_01",
+        "claim": "NVDA Q3 revenue expected to be $32.50 billion",
+        "source": "NVDA_10Q_2026_Q2",
+        "target_number": 32.5,
+        "number_found_in_source": true,
+        "source_document_loaded": true
+      },
+      {
+        "id": "SMP_02",
+        "claim": "NVDA gross margins expected to be 75.0 percent",
+        "source": "NVDA_10Q_2026_Q2",
+        "target_number": 75.0,
+        "number_found_in_source": true,
+        "source_document_loaded": true
+      },
+      {
+        "id": "SMP_03",
+        "claim": "AAPL Q4 revenue projected growth 5.5 to 7.0 percent",
+        "source": "AAPL_10Q_2026_Q3",
+        "target_number": 5.5,
+        "number_found_in_source": true,
+        "source_document_loaded": true
+      },
+      {
+        "id": "SMP_04",
+        "claim": "SHOP Q2 revenue was $2.05 billion",
+        "source": "SHOP_6K_2026_Q2",
+        "target_number": 2.05,
+        "number_found_in_source": true,
+        "source_document_loaded": true
+      },
+      {
+        "id": "SMP_05",
+        "claim": "TD established pre-tax provision of C$450 million",
+        "source": "TD_TSX_2026_Q3",
+        "target_number": 450,
+        "number_found_in_source": true,
+        "source_document_loaded": true
+      },
+      {
+        "id": "SMP_06",
+        "claim": "BAM fee-bearing capital reached $510 billion",
+        "source": "BAM_10Q_2026_Q2",
+        "target_number": 510,
+        "number_found_in_source": true,
+        "source_document_loaded": true
+      }
+    ],
+    "not_a_hallucination_measurement": true,
+    "limitation": "This is a 6-sample spot-check that a target numeral appears somewhere in the loaded source text. It is not a hallucination rate, not a citation-resolution rate, and not an audit. No external audit of this system has been performed."
   },
   "model_cards": [
     {
@@ -272,8 +320,8 @@
       "task": "Comparative structural section diffs & risk factor delta detection on SEC/SEDAR+ filings",
       "architecture": "Fine-tuned hybrid transformer with strict character-offset quotation extraction",
       "context_window": 32768,
-      "citation_resolution_pct": 100.0,
-      "hallucination_rate_pct": 0.0,
+      "citation_resolution_pct": null,
+      "hallucination_rate_pct": null,
       "cost_per_query_usd": 0.0065,
       "intended_use": "Impersonal decision-support research summarization of 10-K, 10-Q, 8-K, and Canadian MD&A filings.",
       "out_of_scope": "Personalized investment recommendations, price forecasting, automated order generation.",
@@ -290,8 +338,8 @@
       "task": "18-way financial event taxonomy categorization and materiality scoring (1-5)",
       "architecture": "Distilled financial domain transformer (FinBERT-derived local ONNX runtime)",
       "context_window": 4096,
-      "citation_resolution_pct": 100.0,
-      "hallucination_rate_pct": 0.0,
+      "citation_resolution_pct": null,
+      "hallucination_rate_pct": null,
       "cost_per_query_usd": 0.0008,
       "intended_use": "Fast classification of SEC EDGAR disclosures and Bank of Canada macro updates.",
       "out_of_scope": "Speculative social media sentiment aggregation or chat forum parsing.",
@@ -307,8 +355,8 @@
       "task": "Retrieval-augmented interactive Q&A over verified filing corpora with citation highlighting",
       "architecture": "Orchestrated RAG agent with deterministic numeric verification and tool-use bounds",
       "context_window": 65536,
-      "citation_resolution_pct": 100.0,
-      "hallucination_rate_pct": 0.0,
+      "citation_resolution_pct": null,
+      "hallucination_rate_pct": null,
       "cost_per_query_usd": 0.012,
       "intended_use": "User-directed filing deep exploration with mandatory verbatim source quotes.",
       "out_of_scope": "Unverifiable causal claims, subjective qualitative stock picking, individual portfolio management.",
@@ -320,6 +368,6 @@
   ],
   "disclaimers": [
     "IMPERSONAL REGULATORY RESEARCH ONLY: All outputs derived from public SEC EDGAR and SEDAR+ filings. Does not constitute personalized investment recommendations or suitability determinations under CSA Staff Notice 31-369 or SEC Rule 206(4)-1.",
-    "STRICT GROUNDING GUARANTEE: 100% of factual extractions are validated against verbatim source character offsets. Citations are displayed side-by-side with source accession references."
+    "GROUNDING: extractions carry character offsets into the source document. The 6-sample numeric spot-check described in hallucination_audit is the only verification performed; no independent audit has been carried out."
   ]
 }

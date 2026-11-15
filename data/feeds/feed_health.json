@@ -2,58 +2,61 @@
   "feeds": [
     {
       "feed_id": "us_equities_eod",
-      "name": "US Equities Daily Bar Pipeline (NYSE / NASDAQ)",
+      "name": "US Equities Daily Bar Pipeline (NYSE / NASDAQ / AMEX)",
       "market": "US",
-      "primary_source": "Official EOD Exchange Consolidation / EDGAR",
+      "primary_source": "Yahoo Finance via the unofficial chart API (query1.finance.yahoo.com), end-of-day",
       "status": "HEALTHY",
-      "freshness_hours": 4.5,
-      "staleness_badge": "FRESH",
-      "last_synced_at": "2026-11-13 16:30:00 EST",
-      "records_count": 10005,
+      "freshness_hours": 71.3,
+      "staleness_badge": "STALE",
+      "last_synced_at": "2026-11-13 (exchange close, end-of-day)",
+      "records_count": 4725,
       "coverage_pct": 100.0,
-      "notes": "Full survivorship-bias-free universe with bitemporal lineage."
+      "survivorship_biased": true,
+      "notes": "9 US symbols, all currently listed large caps. The universe is survivorship-biased: delisted and acquired constituents are not present, so results computed over it are optimistically biased."
     },
     {
       "feed_id": "ca_equities_eod",
-      "name": "Canadian Equities Daily Bar Pipeline (TSX / TSXV)",
+      "name": "Canadian Equities Daily Bar Pipeline (TSX)",
       "market": "CA",
-      "primary_source": "TMX Datalinx Certified Reseller EOD",
+      "primary_source": "Yahoo Finance via the unofficial chart API (query1.finance.yahoo.com), end-of-day",
       "status": "HEALTHY",
-      "freshness_hours": 4.5,
-      "staleness_badge": "FRESH",
-      "last_synced_at": "2026-11-13 16:30:00 EST",
-      "records_count": 10005,
+      "freshness_hours": 71.3,
+      "staleness_badge": "STALE",
+      "last_synced_at": "2026-11-13 (exchange close, end-of-day)",
+      "records_count": 5280,
       "coverage_pct": 100.0,
-      "notes": "CAD denominated pricing; dividend split adjustments verified."
+      "survivorship_biased": true,
+      "notes": "10 TSX symbols, CAD denominated, all currently listed. Also survivorship-biased for the same reason as the US universe. No TMX Datalinx subscription; this platform is not a certified reseller of TMX data."
     },
     {
       "feed_id": "sec_edgar_xbrl",
       "name": "SEC EDGAR Continuous Regulatory Filings",
       "market": "US",
-      "primary_source": "data.sec.gov Submissions & CompanyFacts API",
+      "primary_source": "SEC EDGAR (data.sec.gov submissions and companyfacts APIs), public XBRL",
       "status": "HEALTHY",
-      "freshness_hours": 1.2,
-      "staleness_badge": "FRESH",
-      "last_synced_at": "2026-11-15 01:45:15 EST",
+      "freshness_hours": 1053.0,
+      "staleness_badge": "STALE",
+      "last_synced_at": "2026-11-15 23:15:06 EST",
       "records_count": 67,
-      "coverage_pct": 100.0,
+      "coverage_pct": null,
       "notes": "Strict 10 req/s rate-limited ingestion with declared User-Agent."
     },
     {
       "feed_id": "boc_valet_macro",
       "name": "Bank of Canada Valet & FRED Macro Feed",
       "market": "MACRO",
-      "primary_source": "Official Bank of Canada Valet REST API",
+      "primary_source": "Bank of Canada Valet REST API (public, free)",
       "status": "HEALTHY",
-      "freshness_hours": 2.0,
-      "staleness_badge": "FRESH",
+      "freshness_hours": 1271.3,
+      "staleness_badge": "STALE",
       "last_synced_at": "2026-09-24 16:35:00 EST",
       "records_count": 30,
-      "coverage_pct": 100.0,
+      "coverage_pct": null,
       "notes": "Overnight policy rate, GoC benchmark bond yields, and CAD/USD exchange rate."
     }
   ],
-  "system_health": "OPTIMAL",
+  "system_health": "STALE",
+  "universe_note": "The universe is 19 currently listed large-cap symbols. It is survivorship-biased: delisted and acquired constituents are absent, so any statistic computed across it is optimistically biased.",
   "active_securities_count": 19,
   "data_quality_events": [
     {
@@ -93,5 +96,5 @@
       "resolution_notes": "Automated validation gate passed."
     }
   ],
-  "generated_at": "2026-11-15 01:45:15 EST"
+  "generated_at": "2026-11-15 23:15:06 EST"
 }

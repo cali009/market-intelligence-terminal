@@ -581,8 +581,11 @@ class ModelCard(BaseModel):
     task: str
     architecture: str
     context_window: int
-    citation_resolution_pct: float
-    hallucination_rate_pct: float
+    # HONESTY OVERHAUL (Phase 2): these were non-optional floats and every model
+    # card supplied 100.0 and 0.00 as if measured. They are now optional; None
+    # means no measurement exists, which is the true state.
+    citation_resolution_pct: Optional[float] = None
+    hallucination_rate_pct: Optional[float] = None
     cost_per_query_usd: float
     intended_use: str
     out_of_scope: str

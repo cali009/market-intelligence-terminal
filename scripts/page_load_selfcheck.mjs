@@ -84,6 +84,24 @@ try {
     console.error('  could not open the validation tab:', e.message);
 }
 
+const harnessEarly = [];
+
+// Exercise the Phase 2 deliverable: open the System Status tab so its
+// lazy-loaded feed is actually fetched and rendered before the audit runs.
+try {
+    if (typeof window.switchTab === 'function') {
+        window.switchTab('production', { preventDefault() {}, stopPropagation() {}, target: null });
+        await new Promise((r) => setTimeout(r, 2500));
+        const cards = window.document.querySelectorAll('#sysStatusCards > div').length;
+        const notes = window.document.querySelectorAll('#sysStatusNot li').length;
+        console.log('  opened System Status tab; cards rendered:', cards, '| disclaimers:', notes);
+        if (cards === 0) harnessEarly.push('System Status panel rendered no cards — the feed never loaded');
+        if (notes === 0) harnessEarly.push('System Status panel rendered no disclaimers');
+    }
+} catch (e) {
+    console.error('  could not open the system status tab:', e.message);
+}
+
 // Run the page's own self-check and take its verdict.
 let pageFailures = null;
 if (typeof window.runHonestySelfCheck === 'function') {
@@ -94,7 +112,7 @@ if (typeof window.runHonestySelfCheck === 'function') {
 
 // Independent checks from the harness side.
 const bodyText = window.document.body ? window.document.body.innerHTML : '';
-const harness = [];
+const harness = harnessEarly.slice();
 
 // A top-level `let` in a classic <script> is a lexical binding, not a window
 // property, so the bundle cannot be read off `window`. Audit what was rendered.

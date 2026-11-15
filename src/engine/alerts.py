@@ -752,30 +752,38 @@ class AlertEngine:
         return alerts
 
     def generate_alerts_feed(self) -> Dict[str, Any]:
-        """Compile complete Phase 10 edge bundle with alerts, policy, telemetry, and consent ledger."""
-        alerts = self.build_system_alerts()
-        telemetry = self.dispatcher.get_telemetry()
-        ledger = self.consent_ledger.get_audit_ledger(limit=20)
+        """Compile the alerts edge bundle: alerts and policy only.
 
-        # Dispatch sample alerts to generate active log records
-        for a in alerts[:4]:
-            self.dispatcher.dispatch(a, user_id="ca_investor@northintel.ai", channel="IN_APP")
-            self.dispatcher.dispatch(a, user_id="ca_investor@northintel.ai", channel="EMAIL")
+        HONESTY OVERHAUL (Phase 2) — three things were removed here:
+
+        1. The CASL / TCPA consent ledger and its "compliance_attestation", which
+           asserted "Enforced: Express opt-in audit records", "Prior express
+           written consent, CTIA double opt-in SMS verification" and "Verified:
+           ImpersonalAdviceLinter passed on 100% of alert copy". There are no
+           recipients, no SMS or email delivery, and no registered 10DLC campaign,
+           so there is nothing for CASL or the TCPA to apply to and no basis for
+           any of those attestations.
+
+        2. The loop that dispatched four sample alerts to a made-up address purely
+           "to generate active log records". That manufactured the delivery
+           telemetry the panel then displayed as real traffic.
+
+        3. delivery_telemetry itself, for the same reason — with no delivery
+           channel there is nothing to measure.
+        """
+        alerts = self.build_system_alerts()
 
         return {
             "as_of_date": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
             "generated_at": datetime.now(timezone.utc).isoformat(),
             "active_alerts_count": len(alerts),
             "alerts": [a.to_dict() for a in alerts],
-            "delivery_telemetry": telemetry.to_dict(),
             "policy_config": self.policy_engine.config.to_dict(),
-            "consent_ledger_audit": ledger,
-            "compliance_attestation": {
-                "casl_compliance": "Enforced: Express opt-in audit records, immediate 1-click revocation, sender address verified",
-                "tcpa_compliance": "Enforced: Prior express written consent, CTIA double opt-in SMS verification, transactional content isolation",
-                "quiet_hours_policy": "Enforced: Non-critical messages suppressed between 21:00 and 07:00 recipient timezone",
-                "impersonal_research": "Verified: ImpersonalAdviceLinter passed on 100% of alert copy",
-            },
+            "delivery_note": (
+                "No alerts are delivered anywhere. This dashboard has no email or "
+                "SMS channel and no subscriber list, so there is no delivery "
+                "telemetry to report and no consent regime that applies."
+            ),
         }
 
 

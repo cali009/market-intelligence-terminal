@@ -257,7 +257,13 @@ class TestPortfolioReleaseAudit:
             assert 'setPortfolioCapital' in html, f"Missing setPortfolioCapital in {path}"
             assert 'selectStressScenario' in html, f"Missing selectStressScenario in {path}"
             assert 'setHrpSection' in html, f"Missing setHrpSection in {path}"
-            assert 'quickLaunchTcaFromHrp' in html, f"Missing quickLaunchTcaFromHrp in {path}"
+            # HONESTY OVERHAUL (Phase 2): quickLaunchTcaFromHrp is no longer
+            # required. It existed to jump from the HRP panel into the Phase 25
+            # microstructure TCA simulator, whose order book, CVD and OBI figures
+            # were simulated rather than observed. That panel is deleted, so the
+            # launcher is gone with it.
+            assert 'quickLaunchTcaFromHrp' not in html, \
+                "quickLaunchTcaFromHrp reappeared — it targets a deleted panel"
 
     def test_master_release_compliance_linter_zero_violations(self):
         """Statutory compliance audit across all Phase 26 production artifacts."""

@@ -11,7 +11,6 @@ from src.compliance.linter import linter
 from src.data.db import db
 from src.engine.microstructure import microstructure_engine
 from src.engine.execution_algo import execution_algo_engine
-from src.engine.production_scale import production_scale_engine
 from src.engine.quant_intel import quant_intel_engine
 
 
@@ -48,21 +47,10 @@ class TestMicrostructureRelease:
                 "DIRECT_MARKET", "LIMIT_PASSIVE", "TWAP", "VWAP", "POV_10"
             )
 
-    def test_production_health_feed_telemetry_schema(self):
-        """Asserts that production health telemetry contains Phase 25 Microstructure & TCA components."""
-        feed = production_scale_engine.generate_production_health_feed()
-        assert "microstructure_telemetry" in feed
-        telem = feed["microstructure_telemetry"]
-        assert telem["websocket_port"] == 8001
-        assert telem["sse_endpoint"] == "/api/stream/ticks"
-        assert telem["tca_endpoint"] == "/api/execution/simulate"
-        assert telem["active_monitored_symbols"] == 19
-        assert len(telem["supported_algorithms"]) == 5
-        assert telem["compliance_posture"] == "IMPERSONAL_RESEARCH_ONLY"
-
-        component_names = [c["name"] for c in feed["production_status"]["components"]]
-        assert "Microstructure & Real-Time Tick Streaming (Phase 25)" in component_names
-        assert "Algorithmic Execution Simulator & TCA (Phase 25.3)" in component_names
+    # HONESTY OVERHAUL (Phase 2): test_production_health_feed_telemetry_schema was
+    # removed with the production health feed. It asserted a websocket port, an
+    # SSE tick endpoint and a "Real-Time Tick Streaming" component on a static
+    # site that has no backend and streams nothing.
 
     def test_architectural_doc_completeness_and_compliance(self):
         """Asserts docs/07_microstructure_and_execution_engine.md exists and passes compliance."""
