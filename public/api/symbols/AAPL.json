@@ -5,7 +5,7 @@
   "currency": "USD",
   "name": "Apple Inc.",
   "as_of_date": "2026-11-17",
-  "generated_at": "2026-11-17T06:25:30.174636+00:00",
+  "generated_at": "2026-11-17T06:28:02.326564+00:00",
   "latest_metrics": {
     "trading_date": "2026-11-16",
     "open": 357.1300048828125,
@@ -354,7 +354,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 26,
     "gjr_garch_gamma": 0.08,
-    "last_updated": "2026-11-17T06:25:30.660553+00:00"
+    "last_updated": "2026-11-17T06:28:02.784022+00:00"
   },
   "conformal_bounds": {
     "symbol": "AAPL",
@@ -371,7 +371,7 @@
     "adapted_alpha": 0.085,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-11-17T06:25:30.672984+00:00"
+    "calibrated_at": "2026-11-17T06:28:02.796159+00:00"
   },
   "cross_border_parity": null,
   "shap_attribution": {
@@ -1757,7 +1757,7 @@
     "country": "US",
     "currency": "USD",
     "as_of_date": "2026-11-17",
-    "generated_at": "2026-11-17T06:25:30.690084+00:00",
+    "generated_at": "2026-11-17T06:28:02.814026+00:00",
     "conviction_grade": "B",
     "aligned_layers_count": 5,
     "formatted_card": "TICKER: AAPL\nREGIME: WEAK_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 14.0%)\nPATTERN TYPE: Archetype A: Mega-Cap Tech (Gamma-Momentum) \u2014 Momentum (Pullback Continuation)\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BULLISH \u2014 Stacked MAs (Bullish Stack), RSI 57.6 equilibrium, price structure holding above key support.\n  Fundamental:  6.7/10 \u2014 Stable financial quality (Score 6.7/10); P/E 46.34x balanced by operational cash flow.\n  Sentiment:    +0.40 (BULLISH) \u2014 AAPL Form 10-Q Quarterly Report \u2014 Q/E 2026-06-27\n  Historical:   55.4% Win Rate (10 sample size, E[R]: +0.44R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $349.38 \u2013 $354.62\n  Entry trigger:  Price stabilizes above support zone ($349.38) with 15m candle close above $349.38 and volume > 1.2x 20d average.\n  Stop loss:      $335.14 (4.1% below entry)\n  Target 1 (T1):  $370.42 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $388.06 | Est. 24 days | Take 40%\n  Target 3 (T3):  $409.19 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.52\n  Position size:  70 shares on $100,000 portfolio risking 1% ($996.80)\n  Execution TCA:  DIRECT_MARKET (1 slice) | Est. Fill: $352.79 | Slippage: +0.3 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: B-Grade\nTRADE THESIS: AAPL exhibits high structural confluence with Momentum (Pullback Continuation) aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 14.0%), measured support at $349.38 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $335.14 or two consecutive closes back below $349.38 immediately invalidates the trade.",
@@ -1886,21 +1886,21 @@
       "action": "CAUTION_THROTTLE",
       "size_multiplier": 0.5,
       "primary_driver": "dist_sma200 (+0.00, impact +)",
-      "calibrated_at": "2026-11-17T06:25:30.979460+00:00"
+      "calibrated_at": "2026-11-17T06:28:03.102493+00:00"
     },
     "microstructure_metrics": {
       "symbol": "AAPL",
-      "timestamp": "2026-11-17T06:25:30.981141+00:00",
-      "cvd_total": 258,
-      "cvd_1m_delta": 367,
-      "cvd_5m_delta": 258,
-      "order_book_imbalance": -0.152,
-      "kyle_lambda": 0.0407,
-      "rvol_1m": 1.07,
+      "timestamp": "2026-11-17T06:28:03.104238+00:00",
+      "cvd_total": 786,
+      "cvd_1m_delta": 575,
+      "cvd_5m_delta": 786,
+      "order_book_imbalance": 0.0934,
+      "kyle_lambda": 0.0083,
+      "rvol_1m": 1.11,
       "absorption_signal": "NONE",
       "liquidity_state": "NORMAL",
-      "buyer_volume_pct": 51.9,
-      "seller_volume_pct": 48.1
+      "buyer_volume_pct": 53.1,
+      "seller_volume_pct": 46.9
     }
   },
   "disclaimers": {

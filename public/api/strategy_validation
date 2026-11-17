@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-17T06:25:39.639808+00:00",
+  "generated_at": "2026-11-17T06:28:11.500444+00:00",
   "as_of_date": "2026-11-17",
   "source_of_truth": "Computed by src/engine/strategy_validation.py from the walk-forward trade ledger in backtests.json and the FDR table in cpcv_validation.json. No figure on this panel is hard-coded.",
   "validation_criteria": {
@@ -608,7 +608,7 @@
           "name": "Multiple-testing control",
           "requirement": "Passes Benjamini-Hochberg FDR at q = 0.05",
           "passed": false,
-          "observed": "p = 0.3379 vs critical 0.03125 \u2192 REJECTED_SELECTION_BIAS",
+          "observed": "p = 0.33768 vs critical 0.03125 \u2192 REJECTED_SELECTION_BIAS",
           "detail": "Rejected for selection bias.",
           "symbol": "\u274c"
         },

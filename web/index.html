@@ -967,6 +967,12 @@
             <div>
                 <div class="brand-title">QUANT INTEL TERMINAL</div>
                 <div class="brand-subtitle">US + Canada Multi-Market Decision Support</div>
+                <!-- HONESTY OVERHAUL (Phase 3): the bundle timestamp and its
+                     staleness, always visible in the header. Data older than one
+                     trading day is flagged red, because a stale feed silently
+                     presented as current is how a research dashboard starts
+                     lying. -->
+                <div id="hdrDataStamp" style="font-size: 10px; margin-top: 3px; color: var(--text-muted);">data as of &mdash;</div>
             </div>
         </div>
 
@@ -1094,10 +1100,10 @@
                     <div style="display: flex; align-items: center; gap: 10px; background: var(--bg-card); padding: 6px 12px; border-radius: 8px; border: 1px solid var(--border-color); flex-wrap: wrap;">
                         <span style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Portfolio Size:</span>
                         <div style="display: flex; gap: 4px;">
-                            <button class="filter-btn" id="btnQiPort25k" onclick="setQuantIntelPortfolio(25000)">$25K</button>
-                            <button class="filter-btn" id="btnQiPort50k" onclick="setQuantIntelPortfolio(50000)">$50K</button>
-                            <button class="filter-btn active" id="btnQiPort100k" onclick="setQuantIntelPortfolio(100000)">$100K</button>
-                            <button class="filter-btn" id="btnQiPort250k" onclick="setQuantIntelPortfolio(250000)">$250K</button>
+                            <button class="filter-btn active" id="btnQiPort500" onclick="setQuantIntelPortfolio(500)">C$500</button>
+                            <button class="filter-btn" id="btnQiPort2500" onclick="setQuantIntelPortfolio(2500)">C$2.5K</button>
+                            <button class="filter-btn" id="btnQiPort10000" onclick="setQuantIntelPortfolio(10000)">C$10K</button>
+                            <button class="filter-btn" id="btnQiPort25000" onclick="setQuantIntelPortfolio(25000)">C$25K</button>
                             <button class="filter-btn" id="btnQiPort1M" onclick="setQuantIntelPortfolio(1000000)">$1M</button>
                         </div>
                         <span style="font-size: 11px; color: var(--accent-cyan); font-weight: 700;" id="qiRiskBudgetBadge">Risk Budget: $1,000 (1%)</span>
@@ -3312,6 +3318,48 @@
                 .map(x => '<li>' + escapeHtml(x) + '</li>').join('');
         }
 
+        // -------------------------------------------------------------
+        // Header data timestamp and staleness badge (Honesty Overhaul Phase 3)
+        //
+        // Reads the bundle's own generated_at and the newest bar date, then
+        // labels the gap. Beyond one trading day the badge turns red: the data is
+        // end-of-day and this dashboard is not refreshed continuously, so a stale
+        // bundle must be obvious rather than merely present.
+        // -------------------------------------------------------------
+        async function renderHeaderDataStamp() {
+            const el = document.getElementById('hdrDataStamp');
+            if (!el) return;
+            const DASH = '\u2014';
+            try {
+                const ss = await fetchJson('/api/system_status.json', '/api/system_status');
+                const d = (ss && ss.data) || {};
+                const last = d.last_date || null;
+                const ageH = (d.age_hours === null || d.age_hours === undefined) ? null : d.age_hours;
+                const run = ss && ss.last_pipeline_run ? ss.last_pipeline_run.slice(0, 16).replace('T', ' ') + ' UTC' : null;
+
+                // One trading day of slack, then a weekend/holiday allowance. A
+                // gap past 24h is stale; past 72h it is badly stale.
+                let label = 'UNKNOWN', colour = 'var(--text-muted)';
+                if (ageH !== null) {
+                    if (ageH <= 24) { label = 'CURRENT'; colour = 'var(--accent-green)'; }
+                    else if (ageH <= 72) { label = 'STALE'; colour = '#f59e0b'; }
+                    else { label = 'STALE'; colour = 'var(--accent-red)'; }
+                }
+
+                const stamp = run || (last ? last : DASH);
+                el.innerHTML = 'data as of <strong style="color: var(--text-secondary);">'
+                    + escapeHtml(stamp) + '</strong>'
+                    + (last ? ' &middot; latest bar ' + escapeHtml(last) : '')
+                    + (ageH !== null ? ' &middot; ' + ageH + 'h old' : '')
+                    + ' &nbsp;<span style="padding: 1px 6px; border-radius: 4px; font-weight: 800; '
+                    + 'background: ' + colour + '22; color: ' + colour + '; border: 1px solid ' + colour + '55;">'
+                    + escapeHtml(label) + '</span>';
+                if (label === 'STALE') el.style.color = colour;
+            } catch (e) {
+                el.textContent = 'data as of ' + DASH + ' (status feed unavailable)';
+            }
+        }
+
         function switchTab(tabId, ev) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             if (ev && ev.currentTarget) {
@@ -3589,6 +3637,9 @@
 
         async function init() {
             renderResearchBanner();
+            // HONESTY OVERHAUL (Phase 3): surface the bundle timestamp and its
+            // staleness in the header on every load.
+            renderHeaderDataStamp();
             // Concurrent parallel fetches for all core feeds
             fetchJson('/api/summary.json', '/api/daily_summary.json')
                 .then(data => renderRegimes(data.regimes))
@@ -6043,7 +6094,16 @@
                         <div style="background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 6px; padding: 8px 10px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; font-size: 11px;">
                             <div>
                                 <span style="font-size: 10px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">1% Risk Sizing:</span>
-                                <div style="font-size: 13px; font-weight: 800; color: #fff;">${dynamicShares} shares</div>
+                                <!-- HONESTY OVERHAUL (Phase 3): whole shares only,
+                                     and a zero result is stated plainly rather than
+                                     shown as a position. At C$500 a 1% risk budget
+                                     is C$5, and for most of these names the stop
+                                     distance is larger than that, so the correct
+                                     answer is no position at all. Presenting "0
+                                     shares" beside a dollar figure invites the
+                                     reader to round up. -->
+                                <div style="font-size: 13px; font-weight: 800; color: ${dynamicShares > 0 ? '#fff' : 'var(--accent-red)'};">${dynamicShares} ${dynamicShares === 1 ? 'share' : 'shares'}</div>
+                                ${dynamicShares === 0 ? '<div style="font-size: 9.5px; color: var(--accent-red); line-height: 1.35; margin-top: 2px;">No position: 1% of this capital is less than the per-share risk. Do not round up.</div>' : ''}
                             </div>
                             <div style="text-align: right; font-size: 10px;">
                                 <div>Risk: <strong style="color: var(--accent-amber);">$${dynamicRiskDollars}</strong></div>
@@ -6773,7 +6833,12 @@
         let factorAttribBundle = null;
         let portfolioBayesianBundle = null;
         let portfolioHrpLoading = false;
-        let activePortfolioCapital = 100000;
+        // HONESTY OVERHAUL (Phase 3): the default portfolio size is C$500, not
+        // $100,000. A research dashboard for a personal account should start from
+        // the amount actually available; a six-figure default quietly implies a
+        // capacity that does not exist and makes fractional-share allocations look
+        // executable when they are not.
+        let activePortfolioCapital = 500;
         let activeStressScenarioId = '2008_GFC';
         let activeAttribBenchmark = 'BLENDED_CROSS_BORDER'; // 'BLENDED_CROSS_BORDER', 'US_SP500_CORE', 'CA_TSX60_CORE'
         let activeHrpSection = 'weights'; // 'weights', 'bayesian', 'factors', 'stress', 'orchestrator', 'tree'

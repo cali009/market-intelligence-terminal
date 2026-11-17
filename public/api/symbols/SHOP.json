@@ -5,7 +5,7 @@
   "currency": "CAD",
   "name": "Shopify Inc.",
   "as_of_date": "2026-11-17",
-  "generated_at": "2026-11-17T06:25:30.174636+00:00",
+  "generated_at": "2026-11-17T06:28:02.326564+00:00",
   "latest_metrics": {
     "trading_date": "2026-11-16",
     "open": 207.30999755859375,
@@ -362,7 +362,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 24,
     "gjr_garch_gamma": 0.14,
-    "last_updated": "2026-11-17T06:25:35.316048+00:00"
+    "last_updated": "2026-11-17T06:28:07.413731+00:00"
   },
   "conformal_bounds": {
     "symbol": "SHOP",
@@ -379,7 +379,7 @@
     "adapted_alpha": 0.165,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-11-17T06:25:35.328167+00:00"
+    "calibrated_at": "2026-11-17T06:28:07.425833+00:00"
   },
   "cross_border_parity": {
     "tsx_symbol": "SHOP",
@@ -1689,7 +1689,7 @@
     "country": "CA",
     "currency": "CAD",
     "as_of_date": "2026-11-17",
-    "generated_at": "2026-11-17T06:25:35.489332+00:00",
+    "generated_at": "2026-11-17T06:28:07.557681+00:00",
     "conviction_grade": "C",
     "aligned_layers_count": 3,
     "formatted_card": "TICKER: SHOP\nREGIME: WEAK_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 9.8%)\nPATTERN TYPE: Archetype D: Dual-Listed Cross-Border Growth \u2014 News-Reactive\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    NEUTRAL \u2014 Consolidation near moving averages; RSI 47.5 with RVOL at 1.10x awaiting directional catalyst.\n  Fundamental:  5.5/10 \u2014 Stable financial quality (Score 5.5/10); P/E 222.93x balanced by operational cash flow.\n  Sentiment:    +0.40 (BULLISH) \u2014 SHOP Form 10-Q Quarterly Report \u2014 Q/E 2026-06-30\n  Historical:   58.2% Win Rate (10 sample size, E[R]: +0.48R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $211.54 \u2013 $214.71\n  Entry trigger:  Price holds structural pivot ($207.33) followed by volume-backed expansion above $211.54.\n  Stop loss:      $193.22 (8.7% below entry)\n  Target 1 (T1):  $233.52 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $257.34 | Est. 24 days | Take 40%\n  Target 3 (T3):  $288.48 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.32\n  Position size:  27 shares on $100,000 portfolio risking 1% ($494.64)\n  Execution TCA:  DIRECT_MARKET (1 slice) | Est. Fill: $211.44 | Slippage: +0.9 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: C-Grade\nTRADE THESIS: SHOP exhibits high structural confluence with News-Reactive aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 9.8%), measured support at $207.33 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $193.22 or two consecutive closes back below $207.33 immediately invalidates the trade.",
@@ -1818,21 +1818,21 @@
       "action": "MODERATE_PROCEED",
       "size_multiplier": 0.85,
       "primary_driver": "mom_1m (-0.12, impact +)",
-      "calibrated_at": "2026-11-17T06:25:35.773927+00:00"
+      "calibrated_at": "2026-11-17T06:28:07.847177+00:00"
     },
     "microstructure_metrics": {
       "symbol": "SHOP",
-      "timestamp": "2026-11-17T06:25:35.775769+00:00",
-      "cvd_total": 2305,
-      "cvd_1m_delta": 2055,
-      "cvd_5m_delta": 2305,
-      "order_book_imbalance": 0.0843,
-      "kyle_lambda": 0.0098,
-      "rvol_1m": 1.41,
+      "timestamp": "2026-11-17T06:28:07.848877+00:00",
+      "cvd_total": -3186,
+      "cvd_1m_delta": -3057,
+      "cvd_5m_delta": -3186,
+      "order_book_imbalance": -0.125,
+      "kyle_lambda": 0.0153,
+      "rvol_1m": 1.61,
       "absorption_signal": "NONE",
       "liquidity_state": "NORMAL",
-      "buyer_volume_pct": 62.5,
-      "seller_volume_pct": 37.5
+      "buyer_volume_pct": 34.5,
+      "seller_volume_pct": 65.5
     }
   },
   "disclaimers": {
