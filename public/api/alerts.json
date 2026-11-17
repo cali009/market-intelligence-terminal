@@ -1,96 +1,50 @@
 {
-  "as_of_date": "2026-11-15",
-  "generated_at": "2026-11-15T23:26:52.586711+00:00",
-  "active_alerts_count": 4,
+  "as_of_date": "2026-11-17",
+  "generated_at": "2026-11-17T06:25:44.971627+00:00",
+  "active_alerts_count": 2,
   "alerts": [
     {
-      "alert_id": "ALT_2026-11-15_NVDA_BREAKOUT_F",
-      "timestamp": "2026-11-15T23:26:52Z",
+      "alert_id": "ALT_2026-11-17_NVDA_BREAKOUT_F",
+      "timestamp": "2026-11-17T06:25:44Z",
       "symbol": "NVDA",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
       "headline": "NVDA: Support Pivot Slipped \u2014 Breakout Failure Warning",
-      "body": "Two consecutive closes ($166.19, $162.85) below ideal entry pivot of $176.08. Setup momentum has stalled; consider reducing position size by 50% or moving stop to defense.",
+      "body": "Two consecutive closes ($162.85, $156.14) below ideal entry pivot of $173.71. Setup momentum has stalled; consider reducing position size by 50% or moving stop to defense.",
       "channels": [
         "IN_APP",
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "NVDA:BREAKOUT_FAILURE:2026-11-15",
+      "dedupe_key": "NVDA:BREAKOUT_FAILURE:2026-11-17",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
-        "trigger_level": 176.08,
-        "current_price": 162.85000610351562
+        "trigger_level": 173.71,
+        "current_price": 156.13999938964844
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-15_JPM_BREAKOUT_F",
-      "timestamp": "2026-11-15T23:26:52Z",
-      "symbol": "JPM",
-      "taxonomy": "EXIT_TRIGGER_ESCALATION",
-      "severity": "WARNING",
-      "headline": "JPM: Support Pivot Slipped \u2014 Breakout Failure Warning",
-      "body": "Two consecutive closes ($342.82, $346.19) below ideal entry pivot of $346.68. Setup momentum has stalled; consider reducing position size by 50% or moving stop to defense.",
-      "channels": [
-        "IN_APP",
-        "EMAIL",
-        "WEB_PUSH"
-      ],
-      "dedupe_key": "JPM:BREAKOUT_FAILURE:2026-11-15",
-      "data_payload": {
-        "predicate": "BREAKOUT_FAILURE",
-        "action": "DE_RISK_50_PCT",
-        "trigger_level": 346.68,
-        "current_price": 346.19000244140625
-      },
-      "is_quiet_hours_eligible": true,
-      "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
-    },
-    {
-      "alert_id": "ALT_2026-11-15_SPY_BREAKOUT_F",
-      "timestamp": "2026-11-15T23:26:52Z",
-      "symbol": "SPY",
-      "taxonomy": "EXIT_TRIGGER_ESCALATION",
-      "severity": "WARNING",
-      "headline": "SPY: Support Pivot Slipped \u2014 Breakout Failure Warning",
-      "body": "Two consecutive closes ($757.12, $754.37) below ideal entry pivot of $757.44. Setup momentum has stalled; consider reducing position size by 50% or moving stop to defense.",
-      "channels": [
-        "IN_APP",
-        "EMAIL",
-        "WEB_PUSH"
-      ],
-      "dedupe_key": "SPY:BREAKOUT_FAILURE:2026-11-15",
-      "data_payload": {
-        "predicate": "BREAKOUT_FAILURE",
-        "action": "DE_RISK_50_PCT",
-        "trigger_level": 757.44,
-        "current_price": 754.3699951171875
-      },
-      "is_quiet_hours_eligible": true,
-      "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
-    },
-    {
-      "alert_id": "ALT_2026-11-15_SHOP_BREAKOUT_F",
-      "timestamp": "2026-11-15T23:26:52Z",
+      "alert_id": "ALT_2026-11-17_SHOP_BREAKOUT_F",
+      "timestamp": "2026-11-17T06:25:44Z",
       "symbol": "SHOP",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
       "headline": "SHOP: Support Pivot Slipped \u2014 Breakout Failure Warning",
-      "body": "Two consecutive closes ($209.41, $209.74) below ideal entry pivot of $211.54. Setup momentum has stalled; consider reducing position size by 50% or moving stop to defense.",
+      "body": "Two consecutive closes ($209.74, $211.43) below ideal entry pivot of $211.54. Setup momentum has stalled; consider reducing position size by 50% or moving stop to defense.",
       "channels": [
         "IN_APP",
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "SHOP:BREAKOUT_FAILURE:2026-11-15",
+      "dedupe_key": "SHOP:BREAKOUT_FAILURE:2026-11-17",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
         "trigger_level": 211.54,
-        "current_price": 209.74000549316406
+        "current_price": 211.42999267578125
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."

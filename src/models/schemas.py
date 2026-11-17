@@ -213,7 +213,10 @@ class SignalPlanContract(BaseModel):
     target_3_basis: str
     planned_rr_t1: float
     planned_rr_t2: float
-    realized_rr_t1: float
+    # HONESTY OVERHAUL (Phase 3): was a required float that every plan filled with
+    # planned_rr_t1 * 0.88, annotated "empirical historical realization ratio".
+    # No such measurement exists, so None is the honest value.
+    realized_rr_t1: Optional[float] = None
     holding_period_desc: str
     strength: int = Field(..., ge=0, le=100)
     confidence_tier: Literal["A", "B", "C", "D"]

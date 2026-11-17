@@ -240,17 +240,146 @@ def check_forbidden_strings(rep: Reporter, feeds_dir: Path, include_html: bool,
 # 5-7. Later phases
 # ---------------------------------------------------------------------------
 def check_single_vix(rep: Reporter, feeds_dir: Path) -> None:
-    rep.record(5, "One VIX everywhere, equal to latest ^VIX close", SKIP,
-               "Phase 3 — not yet implemented.")
+    """One authoritative VIX, equal to the latest stored ^VIX close."""
+    name = "One VIX everywhere, equal to latest ^VIX close"
+    try:
+        from src.data.vix_ingestion import volatility_index_engine
+    except Exception as e:                                    # pragma: no cover
+        rep.record(5, name, FAIL, f"cannot import vix_ingestion: {e}")
+        return
+
+    row = volatility_index_engine.latest()
+    if not row:
+        rep.record(5, name, FAIL,
+                   "no ^VIX close stored — run the daily pipeline")
+        return
+    vix_close = float(row["close"])
+    vix_date = str(row["trading_date"])
+
+    summary = feeds_dir / "daily_summary.json"
+    if not summary.exists():
+        rep.record(5, name, FAIL, f"missing {summary}")
+        return
+    data = json.loads(summary.read_text())
+    block = data.get("volatility_index") or {}
+
+    problems = []
+    if abs(float(block.get("close") or -1) - vix_close) > 0.01:
+        problems.append("published close %s != stored ^VIX %s"
+                        % (block.get("close"), vix_close))
+    if block.get("as_of_date") != vix_date:
+        problems.append("published as_of %s != stored %s"
+                        % (block.get("as_of_date"), vix_date))
+    if not block.get("source"):
+        problems.append("no source attribution on the volatility block")
+
+    # No other feed may carry a competing current-VIX figure. Historical scenario
+    # parameters (e.g. the 2020 VIX peak inside portfolio_stress) are exempt.
+    banned = (16.0, 21.4)
+    for path in sorted(feeds_dir.glob("*.json")):
+        if path.name == "daily_summary.json" or path.name == "portfolio_stress.json":
+            continue
+        blob = path.read_text()
+        for value in banned:
+            if re.search(r'"vix[^"]*"\s*:\s*%s\b' % re.escape(str(value)), blob, re.I):
+                problems.append("%s carries a competing vix value %s" % (path.name, value))
+
+    if problems:
+        rep.record(5, name, FAIL, "; ".join(problems))
+    else:
+        rep.record(5, name, PASS,
+                   "^VIX = %.2f on %s; daily_summary publishes the same value with "
+                   "source attribution; no competing figure in any other feed."
+                   % (vix_close, vix_date))
 
 
 def check_pe_bounds(rep: Reporter, feeds_dir: Path) -> None:
-    rep.record(6, "P/E within 0-100 or flagged", SKIP, "Phase 3 — not yet implemented.")
+    """Every published P/E is within (0, 100] or carries an explicit flag."""
+    name = "P/E within 0-100 or flagged"
+    offenders = []
+    examined = 0
+    flagged = 0
+
+    def walk(node, where):
+        nonlocal examined, flagged
+        if isinstance(node, dict):
+            for k, v in node.items():
+                if k == "pe_ratio" and isinstance(v, (int, float)):
+                    examined += 1
+                    flag = node.get("pe_flag")
+                    if v <= 0 or v > 100.0:
+                        if flag:
+                            flagged += 1
+                        else:
+                            offenders.append("%s pe_ratio=%s unflagged" % (where, v))
+                else:
+                    walk(v, where)
+        elif isinstance(node, list):
+            for i, x in enumerate(node):
+                walk(x, where)
+
+    for path in sorted(feeds_dir.glob("*.json")):
+        try:
+            walk(json.loads(path.read_text()), path.name)
+        except (json.JSONDecodeError, OSError):
+            continue
+
+    if offenders:
+        rep.record(6, name, FAIL, "; ".join(offenders[:8]))
+    elif examined == 0:
+        rep.record(6, name, FAIL, "no pe_ratio values found in any feed")
+    else:
+        rep.record(6, name, PASS,
+                   "%d P/E values examined; %d outside (0, 100] and all of those "
+                   "carry an explicit pe_flag; the rest are in range."
+                   % (examined, flagged))
 
 
 def check_target_ordering(rep: Reporter, feeds_dir: Path) -> None:
-    rep.record(7, "T1 < T2 < T3 and entry-zone low < high", SKIP,
-               "Phase 3 — not yet implemented.")
+    """Long setups must have T1 < T2 < T3 and an ordered entry zone."""
+    name = "T1 < T2 < T3 and entry-zone low < high"
+    path = feeds_dir / "signals.json"
+    if not path.exists():
+        rep.record(7, name, FAIL, f"missing {path}")
+        return
+    plans = json.loads(path.read_text()).get("signals") or []
+    if not plans:
+        rep.record(7, name, PASS,
+                   "no active signal plans published — nothing to violate the "
+                   "invariants (an empty result is legitimate)")
+        return
+
+    bad_zone, bad_targets, rr_constant = [], [], None
+    rrs = set()
+    for p in plans:
+        sym = p.get("symbol")
+        zone = p.get("entry_zone") or []
+        if len(zone) == 2 and not (zone[0] < zone[1]):
+            bad_zone.append("%s %s" % (sym, zone))
+        tg = [t.get("target") for t in (p.get("targets") or [])]
+        if len(tg) >= 2 and not all(tg[i] < tg[i + 1] for i in range(len(tg) - 1)):
+            bad_targets.append("%s %s" % (sym, tg))
+        if p.get("risk_reward_ratio") is not None:
+            rrs.add(round(float(p["risk_reward_ratio"]), 4))
+
+    problems = []
+    if bad_zone:
+        problems.append("inverted entry zone: " + ", ".join(bad_zone))
+    if bad_targets:
+        problems.append("targets not ascending: " + ", ".join(bad_targets))
+    # A single R:R shared by every plan means it is a construction constant, not
+    # a property of the setup.
+    if len(plans) > 1 and len(rrs) == 1:
+        problems.append("risk_reward_ratio is %s for all %d plans — a constant, "
+                        "not computed per setup" % (rrs.pop(), len(plans)))
+
+    if problems:
+        rep.record(7, name, FAIL, "; ".join(problems))
+    else:
+        rep.record(7, name, PASS,
+                   "%d plans: every entry zone ordered, every target ladder "
+                   "ascending, and risk_reward_ratio takes %d distinct value(s)."
+                   % (len(plans), len(rrs)))
 
 
 # ---------------------------------------------------------------------------

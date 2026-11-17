@@ -45,11 +45,16 @@ class SignalPlan:
     # Phase 6 Extended Contract
     setup_type: str = "PULLBACK"
     target_1_basis: str = "1.5R or nearest major resistance"
-    target_2_basis: str = "2.5R measured move"
-    target_3_basis: str = "Trailing 2xATR chandelier"
-    planned_rr_t1: float = 1.5
-    planned_rr_t2: float = 2.5
-    realized_rr_t1: float = 1.31
+    # HONESTY OVERHAUL (Phase 3): these defaults were typed-in constants
+    # ("2.5R measured move", realized_rr_t1 = 1.31) that silently supplied a
+    # plausible-looking figure whenever a plan was built without one. They are now
+    # neutral, and the builder always passes real values.
+    target_2_basis: str = "Extension at 2.5x per-share risk"
+    target_3_basis: str = "Extension at 4.0x per-share risk"
+    planned_rr_t1: Optional[float] = None
+    planned_rr_t2: Optional[float] = None
+    # No empirical realisation ratio has ever been measured.
+    realized_rr_t1: Optional[float] = None
     holding_period_desc: str = "SWING (6–19 sessions, median 11)"
     rationale: Optional[Dict[str, List[str]]] = None
     data_lineage: Optional[Dict[str, Any]] = None
@@ -135,12 +140,21 @@ class SignalEngine:
         setup_type = cls.classify_setup_type(metrics)
 
         # 2. Entry Zone Calculation
+        #
+        # HONESTY OVERHAUL (Phase 3): the PULLBACK branch took the zone floor as
+        # max(sma_20, preferred - 0.5*ATR). When the 20-day average sat above
+        # preferred + 0.2*ATR that produced a floor above the ceiling — MSFT
+        # shipped as [529.39, 527.39]. The zone is now ordered explicitly, and a
+        # pullback whose moving average is already above the zone top is not a
+        # pullback setup at all, so it is rejected rather than published inverted.
         preferred = round(close, 2)
         if setup_type == "BREAKOUT":
             entry_low = round(preferred - (0.3 * atr), 2)
             entry_high = round(preferred + (0.4 * atr), 2)
             alt_entry = round(preferred - (0.8 * atr), 2)
         elif setup_type == "PULLBACK":
+            if sma_20 >= preferred + (0.2 * atr):
+                return None  # no current setup: price is not below its 20-day average
             entry_low = round(max(sma_20, preferred - (0.5 * atr)), 2)
             entry_high = round(preferred + (0.2 * atr), 2)
             alt_entry = round(sma_20 - (0.3 * atr), 2)
@@ -148,6 +162,15 @@ class SignalEngine:
             entry_low = round(preferred - (0.4 * atr), 2)
             entry_high = round(preferred + (0.2 * atr), 2)
             alt_entry = round(sma_20, 2) if sma_20 < preferred else round(preferred * 0.985, 2)
+
+        # Hard invariant: the zone must be ordered, and the current price must sit
+        # within one ATR of it. Anything else is not a live setup.
+        if entry_low >= entry_high:
+            return None
+        if abs(preferred - (entry_low + entry_high) / 2.0) > (
+            (entry_high - entry_low) / 2.0 + atr
+        ):
+            return None  # price more than 1 ATR outside the zone
 
         # 3. Structural Stop Loss
         # Invariant: stop_distance >= 1.2x ATR; max stop distance <= 18%
@@ -182,21 +205,42 @@ class SignalEngine:
             t1 = round(t1_raw, 2)
             t1_basis = f"1.5R initial trim target (+{((t1-preferred)/preferred)*100:.1f}%)"
 
-        # Target 2 (2.5R measured move)
+        # HONESTY OVERHAUL (Phase 3): T2 and T3 are extensions expressed as
+        # multiples of the per-share risk. They are labelled as such rather than
+        # described as "measured moves" or a "chandelier", because nothing is
+        # measured — they are arithmetic on the stop distance.
         t2 = round(preferred + (2.5 * risk_per_share), 2)
-        t2_basis = f"2.5R measured target (+{((t2-preferred)/preferred)*100:.1f}%)"
+        t2_basis = f"Extension at 2.5x per-share risk (+{((t2-preferred)/preferred)*100:.1f}%)"
 
-        # Target 3 (Trailing 2xATR chandelier)
         t3 = round(preferred + (4.0 * risk_per_share), 2)
-        t3_basis = f"Structural extension / Trailing 2xATR chandelier (+{((t3-preferred)/preferred)*100:.1f}%)"
+        t3_basis = f"Extension at 4.0x per-share risk (+{((t3-preferred)/preferred)*100:.1f}%)"
+
+        # Targets must ascend for a long. T1 is resistance-trimmed and can land
+        # above a nearby extension, which would make the ladder meaningless.
+        if not (t1 < t2 < t3):
+            return None
 
         # 5. Risk / Reward Ratios
+        #
+        # HONESTY OVERHAUL (Phase 3): the card used to publish
+        # risk_reward_ratio = (T2 - entry) / risk with T2 defined as
+        # entry + 2.5 * risk. That is algebraically 2.5 for every setup, so all
+        # twelve plans showed 2.5 and the "minimum 2.0:1 gate" below it could
+        # never fire — it was dead code guarding a tautology.
+        #
+        # The published ratio is now the one to T1, which is the only target
+        # derived from market structure (nearest resistance) and therefore the
+        # only one that differs between setups. It is computed from the actual
+        # target, and the gate applies to it for real.
+        #
+        # realized_rr_t1 was planned_rr_t1 * 0.88, annotated "empirical historical
+        # realization ratio". No such measurement exists; it is removed.
         planned_rr_t1 = round((t1 - preferred) / risk_per_share, 2)
         planned_rr_t2 = round((t2 - preferred) / risk_per_share, 2)
-        realized_rr_t1 = round(planned_rr_t1 * 0.88, 2)  # Empirical historical realization ratio
+        realized_rr_t1 = None
 
-        if planned_rr_t2 < 2.0:
-            return None  # Enforce minimum 2.0:1 R:R gate to T2
+        if planned_rr_t1 <= 0:
+            return None  # T1 at or below entry is not a setup
 
         # 6. Holding Period Empirical Distributions
         if horizon == "SWING":
@@ -290,7 +334,7 @@ class SignalEngine:
             target_1=t1,
             target_2=t2,
             target_3=t3,
-            risk_reward_ratio=planned_rr_t2,
+            risk_reward_ratio=planned_rr_t1,
             holding_period=horizon,
             confidence_tier=confidence_tier,
             strength=composite_score,

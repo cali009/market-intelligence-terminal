@@ -371,6 +371,8 @@ class EdgeExporter:
                 "coverage_status": fr["coverage_status"] if fr else "UNKNOWN",
                 "roic": fr["quality_ratios"].get("roic") if fr else None,
                 "pe_ratio": fr["valuation_multiples"].get("pe_ratio") if fr else None,
+                # HONESTY OVERHAUL (Phase 3): propagate the flag with the ratio.
+                "pe_flag": fr["valuation_multiples"].get("pe_flag") if fr else None,
                 "archetype": fingerprint.archetype,
                 "archetype_label": fingerprint.archetype_label,
                 "hurst_exponent": fingerprint.hurst_exponent,

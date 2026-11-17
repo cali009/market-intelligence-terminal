@@ -751,6 +751,10 @@ class FundamentalAnalysisEngine:
             },
             "valuation": {
                 "pe_ratio": v.get("pe_ratio"),
+                # HONESTY OVERHAUL (Phase 3): a P/E outside (0, 100] must travel
+                # with its flag, otherwise the published feed shows -60 or 223 as
+                # though it were an ordinary valuation.
+                "pe_flag": v.get("pe_flag"),
                 "ps_ratio": v.get("ps_ratio"),
                 "pb_ratio": v.get("pb_ratio"),
                 "fcf_yield_pct": v.get("fcf_yield_pct"),

@@ -100,7 +100,14 @@ class LightGBMSHAPEngine:
             confluence = float(tech.get("confluence_score", 50.0))
 
             roic = float(qual.get("roic") or 15.0)
-            pe = float(val.get("pe_ratio") or 25.0)
+            # HONESTY OVERHAUL (Phase 3): this silently substituted a typed-in
+            # 25.0 whenever the real P/E was missing, inventing a valuation for
+            # every issuer without one. The imputation is now recorded per row so
+            # the attribution can say which inputs were real and which were not,
+            # instead of presenting a fabricated number as an observation.
+            _pe_raw = val.get("pe_ratio")
+            pe_imputed = not bool(_pe_raw)
+            pe = float(_pe_raw) if _pe_raw else 25.0
 
             hurst = float(fp.get("hurst_exponent", 0.50))
             frac_d = float(fp.get("fractional_d_order", 0.40))
@@ -119,6 +126,7 @@ class LightGBMSHAPEngine:
                 "mtf_confluence": round(confluence, 1),
                 "roic_pct": round(roic, 1),
                 "pe_multiple": round(pe, 1),
+                "pe_imputed": pe_imputed,
                 "hurst_persistence": round(hurst, 3),
                 "fractional_d": round(frac_d, 2),
                 "amihud_illiquidity": round(amihud, 4),

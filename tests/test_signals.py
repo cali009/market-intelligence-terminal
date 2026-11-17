@@ -92,10 +92,18 @@ def test_signal_generation_bullish_contract():
     assert plan.target_1 <= 208.0
     assert "resistance" in plan.target_1_basis.lower()
 
-    # Target 2 >= 2.5R
-    assert plan.target_2 > plan.target_1
-    assert plan.planned_rr_t2 >= 2.0
-    assert plan.realized_rr_t1 > 0
+    # Target ladder must ascend, and the published R:R must be the structural one.
+    assert plan.target_1 < plan.target_2 < plan.target_3
+    # HONESTY OVERHAUL (Phase 3): risk_reward_ratio is now planned_rr_t1, the
+    # ratio to the resistance-trimmed first target — the only target derived from
+    # market structure. It used to be planned_rr_t2, which was algebraically 2.5
+    # for every plan because T2 was defined as entry + 2.5 * risk.
+    assert plan.planned_rr_t1 is not None
+    assert plan.risk_reward_ratio == plan.planned_rr_t1
+    assert plan.planned_rr_t1 > 0
+    # No realisation ratio has ever been measured, so it is None rather than
+    # planned_rr_t1 * 0.88 dressed up as an empirical figure.
+    assert plan.realized_rr_t1 is None
 
     # 100% Invalidation Predicates present
     assert len(plan.invalidation_predicates) >= 5

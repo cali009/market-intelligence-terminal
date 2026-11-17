@@ -1,58 +1,58 @@
 {
-  "as_of_date": "2026-11-15",
-  "generated_at": "2026-11-15T23:35:25.395826+00:00",
+  "as_of_date": "2026-11-17",
+  "generated_at": "2026-11-17T06:29:08.745011+00:00",
   "total_capital": 100000.0,
   "evaluation_horizon": "1_YEAR_TRAILING (252 Trading Days)",
   "benchmarks": {
     "BLENDED_CROSS_BORDER": {
       "benchmark_name": "Blended US/CA (50% SPY / 50% XIU)",
-      "portfolio_return_pct": 18.08,
-      "benchmark_return_pct": 16.1,
-      "active_return_pct": 1.99,
-      "tracking_error_pct": 4.64,
-      "information_ratio": 0.43,
-      "factor_return_contribution_pct": 1.71,
-      "specific_alpha_pct": 0.28,
+      "portfolio_return_pct": 17.47,
+      "benchmark_return_pct": 15.38,
+      "active_return_pct": 2.09,
+      "tracking_error_pct": 4.65,
+      "information_ratio": 0.45,
+      "factor_return_contribution_pct": 1.79,
+      "specific_alpha_pct": 0.3,
       "factor_tilts": {
         "market_beta": {
           "factor_key": "market_beta",
           "factor_name": "Market Beta",
-          "portfolio_exposure": 0.9855,
+          "portfolio_exposure": 0.9852,
           "benchmark_exposure": 0.9953,
-          "active_tilt": -0.0098,
+          "active_tilt": -0.0101,
           "tilt_direction": "NEUTRAL",
-          "factor_return_1y_pct": 16.1,
+          "factor_return_1y_pct": 15.38,
           "pnl_contribution_pct": -0.16
         },
         "size_smb": {
           "factor_key": "size_smb",
           "factor_name": "Size (SMB)",
-          "portfolio_exposure": -0.0553,
+          "portfolio_exposure": -0.0548,
           "benchmark_exposure": -0.0,
-          "active_tilt": -0.0552,
+          "active_tilt": -0.0548,
           "tilt_direction": "UNDERWEIGHT",
-          "factor_return_1y_pct": -1.07,
-          "pnl_contribution_pct": 0.06
+          "factor_return_1y_pct": -0.07,
+          "pnl_contribution_pct": 0.0
         },
         "value_hml": {
           "factor_key": "value_hml",
           "factor_name": "Value (HML)",
-          "portfolio_exposure": -0.1798,
-          "benchmark_exposure": 0.0002,
-          "active_tilt": -0.18,
+          "portfolio_exposure": -0.181,
+          "benchmark_exposure": 0.0003,
+          "active_tilt": -0.1813,
           "tilt_direction": "UNDERWEIGHT",
-          "factor_return_1y_pct": 3.87,
+          "factor_return_1y_pct": 3.84,
           "pnl_contribution_pct": -0.7
         },
         "momentum_umd": {
           "factor_key": "momentum_umd",
           "factor_name": "Momentum (UMD)",
-          "portfolio_exposure": -0.0617,
+          "portfolio_exposure": -0.0614,
           "benchmark_exposure": 0.001,
-          "active_tilt": -0.0627,
+          "active_tilt": -0.0624,
           "tilt_direction": "UNDERWEIGHT",
-          "factor_return_1y_pct": -7.45,
-          "pnl_contribution_pct": 0.47
+          "factor_return_1y_pct": -8.45,
+          "pnl_contribution_pct": 0.53
         },
         "quality_rmw": {
           "factor_key": "quality_rmw",
@@ -61,110 +61,110 @@
           "benchmark_exposure": -0.001,
           "active_tilt": 0.0654,
           "tilt_direction": "OVERWEIGHT",
-          "factor_return_1y_pct": -6.18,
-          "pnl_contribution_pct": -0.4
+          "factor_return_1y_pct": -6.22,
+          "pnl_contribution_pct": -0.41
         },
         "low_volatility_bab": {
           "factor_key": "low_volatility_bab",
           "factor_name": "Low Volatility (BAB)",
-          "portfolio_exposure": 0.0771,
-          "benchmark_exposure": -0.0009,
-          "active_tilt": 0.0781,
+          "portfolio_exposure": 0.0781,
+          "benchmark_exposure": -0.001,
+          "active_tilt": 0.079,
           "tilt_direction": "OVERWEIGHT",
-          "factor_return_1y_pct": -3.83,
-          "pnl_contribution_pct": -0.3
+          "factor_return_1y_pct": -3.2,
+          "pnl_contribution_pct": -0.25
         },
         "liquidity_illiq": {
           "factor_key": "liquidity_illiq",
           "factor_name": "Liquidity (ILLIQ)",
-          "portfolio_exposure": 0.0837,
+          "portfolio_exposure": 0.0841,
           "benchmark_exposure": 0.001,
-          "active_tilt": 0.0827,
+          "active_tilt": 0.0831,
           "tilt_direction": "OVERWEIGHT",
-          "factor_return_1y_pct": -7.69,
-          "pnl_contribution_pct": -0.64
+          "factor_return_1y_pct": -6.57,
+          "pnl_contribution_pct": -0.55
         },
         "cad_usd_fx_beta": {
           "factor_key": "cad_usd_fx_beta",
           "factor_name": "CAD/USD FX Beta",
-          "portfolio_exposure": -0.0421,
+          "portfolio_exposure": -0.0413,
           "benchmark_exposure": -0.0014,
-          "active_tilt": -0.0407,
+          "active_tilt": -0.0399,
           "tilt_direction": "NEUTRAL",
-          "factor_return_1y_pct": 6.27,
-          "pnl_contribution_pct": -0.26
+          "factor_return_1y_pct": 6.69,
+          "pnl_contribution_pct": -0.27
         },
         "crude_oil_beta": {
           "factor_key": "crude_oil_beta",
           "factor_name": "Crude Oil Beta",
-          "portfolio_exposure": 0.2733,
+          "portfolio_exposure": 0.2734,
           "benchmark_exposure": -0.002,
-          "active_tilt": 0.2753,
+          "active_tilt": 0.2754,
           "tilt_direction": "OVERWEIGHT",
-          "factor_return_1y_pct": 0.52,
-          "pnl_contribution_pct": 0.14
+          "factor_return_1y_pct": 0.36,
+          "pnl_contribution_pct": 0.1
         },
         "yield_curve_beta": {
           "factor_key": "yield_curve_beta",
           "factor_name": "Yield Curve Beta",
-          "portfolio_exposure": 0.2964,
+          "portfolio_exposure": 0.2971,
           "benchmark_exposure": 0.0002,
-          "active_tilt": 0.2962,
+          "active_tilt": 0.297,
           "tilt_direction": "OVERWEIGHT",
-          "factor_return_1y_pct": 11.77,
-          "pnl_contribution_pct": 3.49
+          "factor_return_1y_pct": 11.73,
+          "pnl_contribution_pct": 3.48
         }
       }
     },
     "US_SP500_CORE": {
       "benchmark_name": "US Core Equities (100% SPY)",
-      "portfolio_return_pct": 18.08,
-      "benchmark_return_pct": 12.96,
-      "active_return_pct": 5.12,
-      "tracking_error_pct": 7.78,
-      "information_ratio": 0.66,
-      "factor_return_contribution_pct": 4.8,
-      "specific_alpha_pct": 0.32,
+      "portfolio_return_pct": 17.47,
+      "benchmark_return_pct": 12.03,
+      "active_return_pct": 5.43,
+      "tracking_error_pct": 7.8,
+      "information_ratio": 0.7,
+      "factor_return_contribution_pct": 5.09,
+      "specific_alpha_pct": 0.34,
       "factor_tilts": {
         "market_beta": {
           "factor_key": "market_beta",
           "factor_name": "Market Beta",
-          "portfolio_exposure": 0.9855,
+          "portfolio_exposure": 0.9852,
           "benchmark_exposure": 0.996,
-          "active_tilt": -0.0105,
+          "active_tilt": -0.0108,
           "tilt_direction": "NEUTRAL",
-          "factor_return_1y_pct": 16.1,
+          "factor_return_1y_pct": 15.38,
           "pnl_contribution_pct": -0.17
         },
         "size_smb": {
           "factor_key": "size_smb",
           "factor_name": "Size (SMB)",
-          "portfolio_exposure": -0.0553,
+          "portfolio_exposure": -0.0548,
           "benchmark_exposure": 0.0003,
-          "active_tilt": -0.0555,
+          "active_tilt": -0.0551,
           "tilt_direction": "UNDERWEIGHT",
-          "factor_return_1y_pct": -1.07,
-          "pnl_contribution_pct": 0.06
+          "factor_return_1y_pct": -0.07,
+          "pnl_contribution_pct": 0.0
         },
         "value_hml": {
           "factor_key": "value_hml",
           "factor_name": "Value (HML)",
-          "portfolio_exposure": -0.1798,
+          "portfolio_exposure": -0.181,
           "benchmark_exposure": 0.0003,
-          "active_tilt": -0.1801,
+          "active_tilt": -0.1813,
           "tilt_direction": "UNDERWEIGHT",
-          "factor_return_1y_pct": 3.87,
+          "factor_return_1y_pct": 3.84,
           "pnl_contribution_pct": -0.7
         },
         "momentum_umd": {
           "factor_key": "momentum_umd",
           "factor_name": "Momentum (UMD)",
-          "portfolio_exposure": -0.0617,
-          "benchmark_exposure": 0.0011,
-          "active_tilt": -0.0627,
+          "portfolio_exposure": -0.0614,
+          "benchmark_exposure": 0.001,
+          "active_tilt": -0.0625,
           "tilt_direction": "UNDERWEIGHT",
-          "factor_return_1y_pct": -7.45,
-          "pnl_contribution_pct": 0.47
+          "factor_return_1y_pct": -8.45,
+          "pnl_contribution_pct": 0.53
         },
         "quality_rmw": {
           "factor_key": "quality_rmw",
@@ -173,110 +173,110 @@
           "benchmark_exposure": 0.0005,
           "active_tilt": 0.0639,
           "tilt_direction": "OVERWEIGHT",
-          "factor_return_1y_pct": -6.18,
-          "pnl_contribution_pct": -0.39
+          "factor_return_1y_pct": -6.22,
+          "pnl_contribution_pct": -0.4
         },
         "low_volatility_bab": {
           "factor_key": "low_volatility_bab",
           "factor_name": "Low Volatility (BAB)",
-          "portfolio_exposure": 0.0771,
-          "benchmark_exposure": -0.0015,
-          "active_tilt": 0.0787,
+          "portfolio_exposure": 0.0781,
+          "benchmark_exposure": -0.0016,
+          "active_tilt": 0.0796,
           "tilt_direction": "OVERWEIGHT",
-          "factor_return_1y_pct": -3.83,
-          "pnl_contribution_pct": -0.3
+          "factor_return_1y_pct": -3.2,
+          "pnl_contribution_pct": -0.25
         },
         "liquidity_illiq": {
           "factor_key": "liquidity_illiq",
           "factor_name": "Liquidity (ILLIQ)",
-          "portfolio_exposure": 0.0837,
+          "portfolio_exposure": 0.0841,
           "benchmark_exposure": -0.0,
-          "active_tilt": 0.0837,
+          "active_tilt": 0.0841,
           "tilt_direction": "OVERWEIGHT",
-          "factor_return_1y_pct": -7.69,
-          "pnl_contribution_pct": -0.64
+          "factor_return_1y_pct": -6.57,
+          "pnl_contribution_pct": -0.55
         },
         "cad_usd_fx_beta": {
           "factor_key": "cad_usd_fx_beta",
           "factor_name": "CAD/USD FX Beta",
-          "portfolio_exposure": -0.0421,
+          "portfolio_exposure": -0.0413,
           "benchmark_exposure": -0.4971,
-          "active_tilt": 0.4551,
+          "active_tilt": 0.4558,
           "tilt_direction": "OVERWEIGHT",
-          "factor_return_1y_pct": 6.27,
-          "pnl_contribution_pct": 2.85
+          "factor_return_1y_pct": 6.69,
+          "pnl_contribution_pct": 3.05
         },
         "crude_oil_beta": {
           "factor_key": "crude_oil_beta",
           "factor_name": "Crude Oil Beta",
-          "portfolio_exposure": 0.2733,
-          "benchmark_exposure": -0.0018,
-          "active_tilt": 0.275,
+          "portfolio_exposure": 0.2734,
+          "benchmark_exposure": -0.0017,
+          "active_tilt": 0.2751,
           "tilt_direction": "OVERWEIGHT",
-          "factor_return_1y_pct": 0.52,
-          "pnl_contribution_pct": 0.14
+          "factor_return_1y_pct": 0.36,
+          "pnl_contribution_pct": 0.1
         },
         "yield_curve_beta": {
           "factor_key": "yield_curve_beta",
           "factor_name": "Yield Curve Beta",
-          "portfolio_exposure": 0.2964,
+          "portfolio_exposure": 0.2971,
           "benchmark_exposure": 0.0003,
-          "active_tilt": 0.2961,
+          "active_tilt": 0.2968,
           "tilt_direction": "OVERWEIGHT",
-          "factor_return_1y_pct": 11.77,
+          "factor_return_1y_pct": 11.73,
           "pnl_contribution_pct": 3.48
         }
       }
     },
     "CA_TSX60_CORE": {
       "benchmark_name": "Canadian Large-Cap Core (100% XIU)",
-      "portfolio_return_pct": 18.08,
-      "benchmark_return_pct": 19.23,
-      "active_return_pct": -1.15,
+      "portfolio_return_pct": 17.47,
+      "benchmark_return_pct": 18.72,
+      "active_return_pct": -1.25,
       "tracking_error_pct": 6.42,
-      "information_ratio": -0.18,
-      "factor_return_contribution_pct": -1.39,
-      "specific_alpha_pct": 0.24,
+      "information_ratio": -0.19,
+      "factor_return_contribution_pct": -1.51,
+      "specific_alpha_pct": 0.26,
       "factor_tilts": {
         "market_beta": {
           "factor_key": "market_beta",
           "factor_name": "Market Beta",
-          "portfolio_exposure": 0.9855,
+          "portfolio_exposure": 0.9852,
           "benchmark_exposure": 0.9946,
-          "active_tilt": -0.0091,
+          "active_tilt": -0.0094,
           "tilt_direction": "NEUTRAL",
-          "factor_return_1y_pct": 16.1,
-          "pnl_contribution_pct": -0.15
+          "factor_return_1y_pct": 15.38,
+          "pnl_contribution_pct": -0.14
         },
         "size_smb": {
           "factor_key": "size_smb",
           "factor_name": "Size (SMB)",
-          "portfolio_exposure": -0.0553,
-          "benchmark_exposure": -0.0003,
-          "active_tilt": -0.0549,
+          "portfolio_exposure": -0.0548,
+          "benchmark_exposure": -0.0004,
+          "active_tilt": -0.0545,
           "tilt_direction": "UNDERWEIGHT",
-          "factor_return_1y_pct": -1.07,
-          "pnl_contribution_pct": 0.06
+          "factor_return_1y_pct": -0.07,
+          "pnl_contribution_pct": 0.0
         },
         "value_hml": {
           "factor_key": "value_hml",
           "factor_name": "Value (HML)",
-          "portfolio_exposure": -0.1798,
+          "portfolio_exposure": -0.181,
           "benchmark_exposure": 0.0002,
-          "active_tilt": -0.18,
+          "active_tilt": -0.1813,
           "tilt_direction": "UNDERWEIGHT",
-          "factor_return_1y_pct": 3.87,
+          "factor_return_1y_pct": 3.84,
           "pnl_contribution_pct": -0.7
         },
         "momentum_umd": {
           "factor_key": "momentum_umd",
           "factor_name": "Momentum (UMD)",
-          "portfolio_exposure": -0.0617,
+          "portfolio_exposure": -0.0614,
           "benchmark_exposure": 0.001,
-          "active_tilt": -0.0627,
+          "active_tilt": -0.0624,
           "tilt_direction": "UNDERWEIGHT",
-          "factor_return_1y_pct": -7.45,
-          "pnl_contribution_pct": 0.47
+          "factor_return_1y_pct": -8.45,
+          "pnl_contribution_pct": 0.53
         },
         "quality_rmw": {
           "factor_key": "quality_rmw",
@@ -285,77 +285,77 @@
           "benchmark_exposure": -0.0025,
           "active_tilt": 0.0669,
           "tilt_direction": "OVERWEIGHT",
-          "factor_return_1y_pct": -6.18,
-          "pnl_contribution_pct": -0.41
+          "factor_return_1y_pct": -6.22,
+          "pnl_contribution_pct": -0.42
         },
         "low_volatility_bab": {
           "factor_key": "low_volatility_bab",
           "factor_name": "Low Volatility (BAB)",
-          "portfolio_exposure": 0.0771,
+          "portfolio_exposure": 0.0781,
           "benchmark_exposure": -0.0003,
-          "active_tilt": 0.0774,
+          "active_tilt": 0.0784,
           "tilt_direction": "OVERWEIGHT",
-          "factor_return_1y_pct": -3.83,
-          "pnl_contribution_pct": -0.3
+          "factor_return_1y_pct": -3.2,
+          "pnl_contribution_pct": -0.25
         },
         "liquidity_illiq": {
           "factor_key": "liquidity_illiq",
           "factor_name": "Liquidity (ILLIQ)",
-          "portfolio_exposure": 0.0837,
+          "portfolio_exposure": 0.0841,
           "benchmark_exposure": 0.0021,
-          "active_tilt": 0.0816,
+          "active_tilt": 0.082,
           "tilt_direction": "OVERWEIGHT",
-          "factor_return_1y_pct": -7.69,
-          "pnl_contribution_pct": -0.63
+          "factor_return_1y_pct": -6.57,
+          "pnl_contribution_pct": -0.54
         },
         "cad_usd_fx_beta": {
           "factor_key": "cad_usd_fx_beta",
           "factor_name": "CAD/USD FX Beta",
-          "portfolio_exposure": -0.0421,
+          "portfolio_exposure": -0.0413,
           "benchmark_exposure": 0.4944,
-          "active_tilt": -0.5364,
+          "active_tilt": -0.5357,
           "tilt_direction": "UNDERWEIGHT",
-          "factor_return_1y_pct": 6.27,
-          "pnl_contribution_pct": -3.36
+          "factor_return_1y_pct": 6.69,
+          "pnl_contribution_pct": -3.58
         },
         "crude_oil_beta": {
           "factor_key": "crude_oil_beta",
           "factor_name": "Crude Oil Beta",
-          "portfolio_exposure": 0.2733,
+          "portfolio_exposure": 0.2734,
           "benchmark_exposure": -0.0022,
-          "active_tilt": 0.2755,
+          "active_tilt": 0.2756,
           "tilt_direction": "OVERWEIGHT",
-          "factor_return_1y_pct": 0.52,
-          "pnl_contribution_pct": 0.14
+          "factor_return_1y_pct": 0.36,
+          "pnl_contribution_pct": 0.1
         },
         "yield_curve_beta": {
           "factor_key": "yield_curve_beta",
           "factor_name": "Yield Curve Beta",
-          "portfolio_exposure": 0.2964,
+          "portfolio_exposure": 0.2971,
           "benchmark_exposure": 0.0001,
-          "active_tilt": 0.2964,
+          "active_tilt": 0.2971,
           "tilt_direction": "OVERWEIGHT",
-          "factor_return_1y_pct": 11.77,
-          "pnl_contribution_pct": 3.49
+          "factor_return_1y_pct": 11.73,
+          "pnl_contribution_pct": 3.48
         }
       }
     }
   },
   "top_positive_factors": [
-    "Yield Curve Beta (+3.49%)",
-    "Momentum (UMD) (+0.47%)",
-    "Crude Oil Beta (+0.14%)"
+    "Yield Curve Beta (+3.48%)",
+    "Momentum (UMD) (+0.53%)",
+    "Crude Oil Beta (+0.10%)"
   ],
   "top_negative_factors": [
-    "Quality (RMW) (-0.40%)",
-    "Liquidity (ILLIQ) (-0.64%)",
+    "Quality (RMW) (-0.41%)",
+    "Liquidity (ILLIQ) (-0.55%)",
     "Value (HML) (-0.70%)"
   ],
   "unintentional_biases": [
     {
       "factor_key": "value_hml",
       "factor_name": "Value (HML)",
-      "active_tilt": -0.18,
+      "active_tilt": -0.1813,
       "bias_type": "UNDEREXPOSURE",
       "pnl_impact_pct": -0.7,
       "observation": "Active tilt of -0.18 relative to balanced benchmark."
@@ -363,17 +363,17 @@
     {
       "factor_key": "crude_oil_beta",
       "factor_name": "Crude Oil Beta",
-      "active_tilt": 0.2753,
+      "active_tilt": 0.2754,
       "bias_type": "OVEREXPOSURE",
-      "pnl_impact_pct": 0.14,
+      "pnl_impact_pct": 0.1,
       "observation": "Active tilt of +0.28 relative to balanced benchmark."
     },
     {
       "factor_key": "yield_curve_beta",
       "factor_name": "Yield Curve Beta",
-      "active_tilt": 0.2962,
+      "active_tilt": 0.297,
       "bias_type": "OVEREXPOSURE",
-      "pnl_impact_pct": 3.49,
+      "pnl_impact_pct": 3.48,
       "observation": "Active tilt of +0.30 relative to balanced benchmark."
     }
   ],

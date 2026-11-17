@@ -112,6 +112,9 @@ class Layer4Fundamental:
     margin_trend_bps: Optional[float] = None
     debt_to_equity: Optional[float] = None
     pe_ratio: Optional[float] = None
+    # HONESTY OVERHAUL (Phase 3): travels with the ratio so an out-of-range
+    # P/E is never displayed as an ordinary valuation.
+    pe_flag: Optional[str] = None
     fcf_yield_pct: Optional[float] = None
     technical_gate_required: bool = False
 
@@ -660,6 +663,7 @@ class QuantIntelEngine:
             margin_trend_bps=margin_trend,
             debt_to_equity=de,
             pe_ratio=pe,
+            pe_flag=vm.get("pe_flag"),
             fcf_yield_pct=fcf_yield,
             technical_gate_required=tech_gate,
         )
