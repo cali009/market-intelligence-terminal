@@ -67,6 +67,9 @@ def build_firebase_bundle():
         ("ai_deep_read.json", "ai_deep_read"),
         ("system_status.json", "system_status.json"),
         ("system_status.json", "system_status"),
+        # Phase 4: research ledger from the user's separate research system.
+        ("quantlab_status.json", "quantlab_status.json"),
+        ("quantlab_status.json", "quantlab_status"),
         ("asset_fingerprints.json", "asset_fingerprints.json"),
         ("asset_fingerprints.json", "asset_fingerprints"),
         ("conformal_bounds.json", "conformal_bounds.json"),

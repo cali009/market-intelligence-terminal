@@ -1040,6 +1040,7 @@
             <button class="tab-btn" data-tab="portfolio" onclick="switchTab('portfolio', event)">Portfolio Intelligence (Phase 9)</button>
             <button class="tab-btn" data-tab="alerts" onclick="switchTab('alerts', event)">Alert Center &amp; Consent (Phase 10)</button>
             <button class="tab-btn" data-tab="deepread" onclick="switchTab('deepread', event)">AI Deep-Read &amp; Model Cards (Phase 11)</button>
+            <button class="tab-btn" data-tab="researchledger" onclick="switchTab('researchledger', event)">Research Ledger</button>
             <button class="tab-btn" data-tab="production" onclick="switchTab('production', event)">System Status</button>
             <button class="tab-btn" data-tab="catalysts" onclick="switchTab('catalysts', event)">News & SEC Filings</button>
             <button class="tab-btn" data-tab="journal" onclick="switchTab('journal', event)">Research Journal & Watchlists</button>
@@ -2266,6 +2267,67 @@
         </div>
 
         <!-- Tab 8B: Production Scaling, Exchange Entitlements & Disaster Recovery (Phase 12) -->
+        <!-- ============================================================
+             Research Ledger (Honesty Overhaul Phase 4)
+
+             Rendered verbatim from /api/quantlab_status.json, which carries
+             results from the owner's separate research system. Nothing on this
+             panel is computed by this codebase and nothing is recomputed or
+             adjusted here; the numbers are displayed exactly as published.
+             ============================================================ -->
+        <div id="tab-researchledger" style="display: none;">
+            <div style="margin-bottom: 18px;">
+                <h2 style="font-size: 18px; font-weight: 800; color: var(--text-primary); margin-bottom: 4px;">Research Ledger</h2>
+                <p style="font-size: 12px; color: var(--text-muted);">
+                    Every experiment run so far, including the failures. Figures are published verbatim from
+                    <code style="font-size: 11px;">/api/quantlab_status.json</code> and are not recomputed by this dashboard.
+                </p>
+            </div>
+
+            <!-- Large programme status card, above the table, per spec. -->
+            <div id="qlStatusCard" style="border-radius: 10px; padding: 22px 24px; margin-bottom: 18px; background: rgba(239, 68, 68, 0.09); border: 1px solid rgba(239, 68, 68, 0.4);">
+                <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.6px; color: var(--text-muted); margin-bottom: 8px;">Programme status</div>
+                <div id="qlStatusText" style="font-size: 19px; font-weight: 800; line-height: 1.45; color: var(--accent-red);">&mdash;</div>
+                <div id="qlStatusMeta" style="font-size: 11px; color: var(--text-muted); margin-top: 10px;"></div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; margin-bottom: 18px;">
+                <div class="glass-card" style="padding: 16px 18px;">
+                    <div style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; margin-bottom: 8px;">Charter rules</div>
+                    <ul id="qlCharter" style="margin: 0; padding-left: 16px; font-size: 11px; color: var(--text-secondary); line-height: 1.75;"></ul>
+                </div>
+                <div class="glass-card" style="padding: 16px 18px;">
+                    <div style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; margin-bottom: 8px;">Goals</div>
+                    <div id="qlGoals" style="font-size: 11px; color: var(--text-secondary); line-height: 1.75;"></div>
+                </div>
+            </div>
+
+            <div class="glass-card" style="padding: 18px 20px;">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+                    <div style="font-size: 13px; font-weight: 700; color: var(--text-primary);">Experiments</div>
+                    <div id="qlTrialsNote" style="font-size: 11px; color: var(--text-muted);"></div>
+                </div>
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse; font-size: 12px; text-align: left;">
+                        <thead>
+                            <tr style="background: var(--bg-secondary); border-bottom: 1px solid var(--border-color); text-transform: uppercase; font-size: 10px; color: var(--text-muted);">
+                                <th style="padding: 9px 10px;">ID</th>
+                                <th style="padding: 9px 10px;">Description</th>
+                                <th style="padding: 9px 10px; text-align: center;">Verdict</th>
+                                <th style="padding: 9px 10px; text-align: right;">Trades</th>
+                                <th style="padding: 9px 10px; text-align: right;">Win %</th>
+                                <th style="padding: 9px 10px; text-align: right;">Avg R (net)</th>
+                                <th style="padding: 9px 10px; text-align: right;">$500 &rarr;</th>
+                                <th style="padding: 9px 10px;">Note</th>
+                            </tr>
+                        </thead>
+                        <tbody id="qlExpBody"></tbody>
+                    </table>
+                </div>
+                <div id="qlX1Detail" style="margin-top: 14px;"></div>
+            </div>
+        </div>
+
         <!-- Honesty Overhaul Phase 2: replaces the Phase 12 "Production & Entitlements"
              panel, which published a four-nines uptime figure, eight OPERATIONAL
              components with latency figures, resolved incidents, a SOC 2 matrix, DR
@@ -3360,6 +3422,125 @@
             }
         }
 
+        // -------------------------------------------------------------
+        // Research Ledger (Honesty Overhaul Phase 4)
+        //
+        // Renders /api/quantlab_status.json verbatim. Nothing here is computed,
+        // recomputed, defaulted or rounded into a different number. Where the
+        // feed omits a field the cell shows an em dash rather than a zero, because
+        // a blank result and a zero result are not the same claim.
+        // -------------------------------------------------------------
+        let quantlabBundle = null;
+
+        async function loadResearchLedgerAndRender() {
+            if (quantlabBundle) { renderResearchLedgerView(); return; }
+            try {
+                quantlabBundle = await fetchJson('/api/quantlab_status.json', '/api/quantlab_status');
+                renderResearchLedgerView();
+            } catch (e) {
+                console.error('Research ledger feed failed to load:', e);
+                const t = document.getElementById('qlStatusText');
+                if (t) { t.textContent = '\u2014 feed unavailable'; t.style.color = 'var(--text-muted)'; }
+            }
+        }
+
+        function renderResearchLedgerView() {
+            if (!quantlabBundle) return;
+            const DASH = '\u2014';
+            const b = quantlabBundle;
+            const num = (v, dp) => (v === null || v === undefined) ? DASH
+                : (typeof v === 'number' ? v.toFixed(dp) : String(v));
+
+            // Programme status card.
+            const st = document.getElementById('qlStatusText');
+            if (st) st.textContent = b.programme_status || DASH;
+            const meta = document.getElementById('qlStatusMeta');
+            if (meta) meta.textContent = 'as of ' + (b.as_of || DASH)
+                + '  \u00b7  ' + (b.experiments ? b.experiments.length : 0) + ' experiments recorded'
+                + '  \u00b7  trials counted for selection-bias adjustment: '
+                + (b.trials_counted === null || b.trials_counted === undefined ? DASH : b.trials_counted);
+
+            // Charter rules.
+            const ch = document.getElementById('qlCharter');
+            if (ch) ch.innerHTML = (b.charter_rules || []).map(r => '<li>' + escapeHtml(r) + '</li>').join('');
+
+            // Goals.
+            const gl = document.getElementById('qlGoals');
+            if (gl) {
+                const g = b.goals || {};
+                gl.innerHTML = Object.keys(g).map(k =>
+                    '<div style="margin-bottom: 6px;"><strong style="color: var(--text-primary); text-transform: capitalize;">'
+                    + escapeHtml(k) + ':</strong> ' + escapeHtml(g[k]) + '</div>').join('');
+            }
+
+            // Experiment table.
+            const verdictStyle = (v) => {
+                const map = {
+                    FAIL:      ['#f87171', 'rgba(239, 68, 68, 0.15)'],
+                    REJECTED:  ['#f87171', 'rgba(239, 68, 68, 0.15)'],
+                    PENDING:   ['#f59e0b', 'rgba(245, 158, 11, 0.15)'],
+                    PLANNED:   ['#6b7280', 'rgba(107, 114, 128, 0.15)'],
+                    PASS:      ['#34d399', 'rgba(16, 185, 129, 0.15)']
+                };
+                return map[String(v).toUpperCase()] || ['#6b7280', 'rgba(107, 114, 128, 0.15)'];
+            };
+
+            const tb = document.getElementById('qlExpBody');
+            if (tb) {
+                tb.innerHTML = (b.experiments || []).map(x => {
+                    const [c, bg] = verdictStyle(x.verdict);
+                    const endVal = (x.start_500_end === null || x.start_500_end === undefined) ? DASH
+                        : '$' + x.start_500_end;
+                    const endCol = (typeof x.start_500_end === 'number' && x.start_500_end < 500)
+                        ? '#f87171' : 'var(--text-secondary)';
+                    return '<tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">'
+                        + '<td style="padding: 9px 10px; font-weight: 700; color: #fff; white-space: nowrap;">' + escapeHtml(x.id || DASH) + '</td>'
+                        + '<td style="padding: 9px 10px; color: var(--text-secondary);">' + escapeHtml(x.description || DASH) + '</td>'
+                        + '<td style="padding: 9px 10px; text-align: center;"><span style="font-size: 10px; font-weight: 800; padding: 2px 8px; border-radius: 4px; background: ' + bg + '; color: ' + c + '; border: 1px solid ' + c + '44;">' + escapeHtml(x.verdict || DASH) + '</span></td>'
+                        + '<td style="padding: 9px 10px; text-align: right; font-family: monospace; color: var(--text-secondary);">' + (x.trades === undefined ? DASH : x.trades) + '</td>'
+                        + '<td style="padding: 9px 10px; text-align: right; font-family: monospace; color: var(--text-secondary);">' + (x.win_rate_pct === undefined ? DASH : x.win_rate_pct + '%') + '</td>'
+                        + '<td style="padding: 9px 10px; text-align: right; font-family: monospace; color: ' + (typeof x.avg_r_net === 'number' && x.avg_r_net < 0 ? '#f87171' : 'var(--text-secondary)') + ';">' + num(x.avg_r_net, 3) + '</td>'
+                        + '<td style="padding: 9px 10px; text-align: right; font-family: monospace; color: ' + endCol + ';">' + endVal + '</td>'
+                        + '<td style="padding: 9px 10px; font-size: 11px; color: var(--text-muted);">' + escapeHtml(x.note || '') + '</td>'
+                        + '</tr>';
+                }).join('');
+            }
+
+            const tn = document.getElementById('qlTrialsNote');
+            if (tn) tn.textContent = 'Not every row is a trial: only experiments that were run against data '
+                + 'and scored count toward the selection-bias adjustment.';
+
+            // X1-v1 discovery vs holdout detail, including the failure condition.
+            const x1 = (b.experiments || []).find(e => e && e.discovery_2007_2015 && e.holdout_2016_2026);
+            const det = document.getElementById('qlX1Detail');
+            if (det) {
+                if (!x1) { det.innerHTML = ''; }
+                else {
+                    const row = (label, o) => '<tr>'
+                        + '<td style="padding: 6px 10px; color: var(--text-secondary);">' + escapeHtml(label) + '</td>'
+                        + ['cagr_pct', 'bench_cagr_pct', 'sharpe', 'bench_sharpe', 'maxdd_pct', 'bench_maxdd_pct', 't_excess', 'dsr']
+                            .map(k => '<td style="padding: 6px 10px; text-align: right; font-family: monospace; color: #fff;">'
+                                + (o[k] === null || o[k] === undefined ? DASH : o[k]) + '</td>').join('')
+                        + '</tr>';
+                    det.innerHTML = '<div style="font-size: 12px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">'
+                        + escapeHtml(x1.id) + ' &mdash; discovery vs holdout</div>'
+                        + '<div style="overflow-x: auto;"><table style="width: 100%; border-collapse: collapse; font-size: 11px;">'
+                        + '<thead><tr style="color: var(--text-muted); text-transform: uppercase; font-size: 9.5px;">'
+                        + '<th style="padding: 6px 10px; text-align: left;">Window</th>'
+                        + ['CAGR %', 'Bench CAGR %', 'Sharpe', 'Bench Sharpe', 'MaxDD %', 'Bench MaxDD %', 't (excess)', 'DSR']
+                            .map(h => '<th style="padding: 6px 10px; text-align: right;">' + h + '</th>').join('')
+                        + '</tr></thead><tbody>'
+                        + row('Discovery 2007-2015', x1.discovery_2007_2015)
+                        + row('Holdout 2016-2026', x1.holdout_2016_2026)
+                        + '</tbody></table></div>'
+                        + (x1.failure_condition_fired
+                            ? '<div style="margin-top: 10px; padding: 10px 12px; border-radius: 6px; background: rgba(239, 68, 68, 0.10); border: 1px solid rgba(239, 68, 68, 0.35); font-size: 11px; color: #fca5a5;">'
+                              + '<strong>Predetermined failure condition fired:</strong> ' + escapeHtml(x1.failure_condition_fired) + '</div>'
+                            : '');
+                }
+            }
+        }
+
         function switchTab(tabId, ev) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             if (ev && ev.currentTarget) {
@@ -3371,7 +3552,7 @@
 
             const tabIds = [
                 'leaderboard', 'quantintel', 'macroregime', 'portfoliohrp', 'crossborderfx', 'sovereigncurve', 'volatilityvrp', 'execution', 'scanners', 'signals', 'backtest', 'paper',
-                'portfolio', 'alerts', 'deepread', 'production', 'catalysts', 'journal'
+                'portfolio', 'alerts', 'deepread', 'production', 'catalysts', 'journal', 'researchledger'
             ];
             tabIds.forEach(id => {
                 const el = document.getElementById(`tab-${id}`);
@@ -3443,6 +3624,12 @@
                     loadDeepreadAndRender();
                 } else {
                     renderDeepreadView();
+                }
+            } else if (tabId === 'researchledger') {
+                if (!quantlabBundle) {
+                    loadResearchLedgerAndRender();
+                } else {
+                    renderResearchLedgerView();
                 }
             } else if (tabId === 'production') {
                 if (!sysStatusBundle) {

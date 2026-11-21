@@ -430,8 +430,70 @@ def check_pbo(rep: Reporter, feeds_dir: Path, include_html: bool) -> None:
 # 9-10. Later phases
 # ---------------------------------------------------------------------------
 def check_quantlab_panel(rep: Reporter, feeds_dir: Path) -> None:
-    rep.record(9, "QuantLab panel renders; banner matches backtest JSON", SKIP,
-               "Phase 4 — not yet implemented.")
+    name = "QuantLab panel renders; banner matches backtest JSON"
+    problems = []
+
+    feed = feeds_dir / "quantlab_status.json"
+    if not feed.exists():
+        problems.append("missing quantlab_status.json")
+    else:
+        try:
+            ql = json.loads(feed.read_text())
+        except json.JSONDecodeError as e:
+            ql = None
+            problems.append("quantlab_status.json does not parse: %s" % e)
+        if ql is not None:
+            # The feed must carry the headline verdict, not just a table of rows.
+            if not str(ql.get("programme_status") or "").strip():
+                problems.append("programme_status is empty")
+            if not ql.get("experiments"):
+                problems.append("no experiments recorded")
+            # Every experiment must carry a verdict; a row without one is a claim
+            # the reader cannot evaluate.
+            for x in ql.get("experiments") or []:
+                if not x.get("verdict"):
+                    problems.append("experiment %s has no verdict" % x.get("id"))
+
+    # The tab must exist in the published page and be wired to the feed.
+    html_path = REPO / "public" / "index.html"
+    if not html_path.exists():
+        html_path = REPO / "web" / "index.html"
+    if html_path.exists():
+        html = html_path.read_text()
+        for token, why in (
+            ('id="tab-researchledger"', "Research Ledger pane is missing"),
+            ('data-tab="researchledger"', "Research Ledger tab button is missing"),
+            ("loadResearchLedgerAndRender", "Research Ledger loader is missing"),
+            ("quantlab_status", "page never references the quantlab feed"),
+        ):
+            if token not in html:
+                problems.append(why)
+
+    # The research banner must agree with the backtest bundle it summarises.
+    bt = feeds_dir / "backtests.json"
+    sv = feeds_dir / "strategy_validation.json"
+    if bt.exists() and sv.exists():
+        try:
+            b = json.loads(bt.read_text())
+            v = json.loads(sv.read_text())
+            n_bt = len(b.get("strategies") or b.get("results") or [])
+            n_sv = v.get("strategies_evaluated")
+            if n_bt and n_sv is not None and n_bt != n_sv:
+                problems.append("backtests.json has %d strategies but "
+                                "strategy_validation.json reports %d"
+                                % (n_bt, n_sv))
+        except json.JSONDecodeError as e:
+            problems.append("cannot compare banner to backtest JSON: %s" % e)
+
+    if problems:
+        rep.record(9, name, FAIL, "; ".join(problems))
+    else:
+        rep.record(9, name, PASS,
+                   "quantlab_status.json publishes %d experiments with a verdict on "
+                   "each and a non-empty programme_status; the Research Ledger tab is "
+                   "present and wired to the feed; banner strategy count agrees with "
+                   "the backtest bundle."
+                   % len(json.loads(feed.read_text()).get("experiments") or []))
 
 
 def check_no_console_errors(rep: Reporter, feeds_dir: Path) -> None:

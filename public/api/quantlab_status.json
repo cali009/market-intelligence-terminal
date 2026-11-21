@@ -1,0 +1,31 @@
+{
+  "as_of": "2026-11-15",
+  "programme_status": "NO PROVEN EDGE. Recommendation: do not trade actively; core savings in a low-cost diversified ETF portfolio in a TFSA.",
+  "charter_rules": [
+    "R1 No real money until a strategy is proven",
+    "R2 No leverage, shorting or prohibited instruments",
+    "R3 No cherry-picking historical results",
+    "R4 No strategy accepted without genuine out-of-sample evidence",
+    "R5 Realistic transaction costs always included",
+    "R6 Every experiment has a predetermined failure condition, frozen before data is seen",
+    "R7 No promises of guaranteed or risk-free income"
+  ],
+  "trials_counted": 2,
+  "experiments": [
+    {"id": "GapGo-Massive", "description": "Gap & Go small-cap momentum, 2-year Massive data", "verdict": "FAIL", "trades": 52, "win_rate_pct": 19, "avg_r_net": -0.508, "start_500_end": 291},
+    {"id": "Ross-Massive", "description": "Ross Cameron-style momentum rules, 2-year Massive data", "verdict": "FAIL", "trades": 164, "win_rate_pct": 19, "avg_r_net": -0.685, "start_500_end": 50},
+    {"id": "H1-H14, H18", "description": "Small-cap momentum variants and news pillar", "verdict": "FAIL", "note": "US small-cap momentum day trading closed"},
+    {"id": "PO3/ICT", "description": "Power of Three / liquidity sweep", "verdict": "REJECTED"},
+    {"id": "X1-v1", "description": "12-month trend vs T-bills on 9 ETFs, monthly", "verdict": "FAIL",
+     "discovery_2007_2015": {"cagr_pct": 4.51, "bench_cagr_pct": 3.99, "sharpe": 0.66, "bench_sharpe": 0.38, "maxdd_pct": 10.1, "bench_maxdd_pct": 34.8, "dsr": 0.498},
+     "holdout_2016_2026": {"cagr_pct": 5.08, "bench_cagr_pct": 8.61, "sharpe": 0.91, "bench_sharpe": 0.90, "maxdd_pct": 7.8, "bench_maxdd_pct": 18.3, "t_excess": -1.83, "dsr": 0.008},
+     "failure_condition_fired": "holdout CAGR minus benchmark CAGR = -3.53% < -2%"},
+    {"id": "X2", "description": "Weekly cross-sectional ML on US stocks (LightGBM), 2-year free data", "verdict": "PENDING", "note": "Frozen spec; discovery run waiting for data export. Only a very large edge can pass."},
+    {"id": "Numerai", "description": "Unstaked tournament submissions", "verdict": "PLANNED"}
+  ],
+  "goals": {
+    "safety": "Max drawdown <= 35%, no leverage, regulated Canadian venue",
+    "edge": "Beat buy-and-hold after costs and tax on forward data",
+    "income": "Honest; scales with capital; no guarantees"
+  }
+}
