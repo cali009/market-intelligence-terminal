@@ -4,8 +4,8 @@
   "country": "US",
   "currency": "USD",
   "name": "JPMorgan Chase & Co.",
-  "as_of_date": "2026-11-17",
-  "generated_at": "2026-11-17T06:28:02.326564+00:00",
+  "as_of_date": "2026-11-21",
+  "generated_at": "2026-11-21T23:38:29.791529+00:00",
   "latest_metrics": {
     "trading_date": "2026-11-16",
     "open": 345.57000732421875,
@@ -307,7 +307,7 @@
   },
   "fundamental_dossier": {
     "symbol": "JPM",
-    "as_of_date": "2026-11-17",
+    "as_of_date": "2026-11-21",
     "filing_date": "2026-08-06",
     "currency": "USD",
     "fiscal_period": "Q2",
@@ -360,7 +360,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 14,
     "gjr_garch_gamma": 0.24,
-    "last_updated": "2026-11-17T06:28:04.761229+00:00"
+    "last_updated": "2026-11-21T23:38:35.071211+00:00"
   },
   "conformal_bounds": {
     "symbol": "JPM",
@@ -377,7 +377,7 @@
     "adapted_alpha": 0.235,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-11-17T06:28:04.773940+00:00"
+    "calibrated_at": "2026-11-21T23:38:35.086039+00:00"
   },
   "cross_border_parity": null,
   "shap_attribution": {
@@ -1583,11 +1583,11 @@
     "exchange": "NYSE",
     "country": "US",
     "currency": "USD",
-    "as_of_date": "2026-11-17",
-    "generated_at": "2026-11-17T06:28:04.792219+00:00",
+    "as_of_date": "2026-11-21",
+    "generated_at": "2026-11-21T23:38:35.105891+00:00",
     "conviction_grade": "SKIP",
     "aligned_layers_count": 2,
-    "formatted_card": "TICKER: JPM\nREGIME: WEAK_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 14.0%)\nPATTERN TYPE: Archetype C: Chartered Banks (Regulated Yield-Drift) \u2014 Earnings-Driven\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BEARISH \u2014 Breakdown below moving average cluster; negative CMF (-0.14) and deteriorating price structure.\n  Fundamental:  6.0/10 \u2014 Stable financial quality (Score 6.0/10); P/E 15.97x balanced by operational cash flow.\n  Sentiment:    0.00 (NEUTRAL) \u2014 Routine regulatory reporting schedule; no material catalyst in last 30 days.\n  Historical:   58.2% Win Rate (10 sample size, E[R]: +0.48R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $341.86 \u2013 $346.99\n  Entry trigger:  Price holds structural pivot ($330.68) followed by volume-backed expansion above $341.86.\n  Stop loss:      $329.50 (3.6% below entry)\n  Target 1 (T1):  $356.69 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $372.76 | Est. 24 days | Take 40%\n  Target 3 (T3):  $393.77 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.32\n  Position size:  0 shares on $100,000 portfolio risking 1% ($0.00)\n  Execution TCA:  DIRECT_MARKET (1 slice) | Est. Fill: $338.22 | Slippage: +0.3 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: SKIP-Grade\nTRADE THESIS: JPM exhibits high structural confluence with Earnings-Driven aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 14.0%), measured support at $330.68 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $329.50 or two consecutive closes back below $330.68 immediately invalidates the trade.",
+    "formatted_card": "TICKER: JPM\nREGIME: WEAK_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 14.0%)\nPATTERN TYPE: Archetype C: Chartered Banks (Regulated Yield-Drift) \u2014 Earnings-Driven\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BEARISH \u2014 Breakdown below moving average cluster; negative CMF (-0.14) and deteriorating price structure.\n  Fundamental:  6.0/10 \u2014 Stable financial quality (Score 6.0/10); P/E 15.97x balanced by operational cash flow.\n  Sentiment:    0.00 (NEUTRAL) \u2014 Routine regulatory reporting schedule; no material catalyst in last 30 days.\n  Historical:   58.2% Win Rate (10 sample size, E[R]: +0.48R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $341.86 \u2013 $346.99\n  Entry trigger:  Price holds structural pivot ($330.68) followed by volume-backed expansion above $341.86.\n  Stop loss:      $329.50 (3.6% below entry)\n  Target 1 (T1):  $356.69 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $372.76 | Est. 24 days | Take 40%\n  Target 3 (T3):  $393.77 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.32\n  Position size:  0 shares on $100,000 portfolio risking 1% ($0.00)\n  Execution:      not measurable \u2014 this platform holds end-of-day prices only, with no order book, quote feed or fill record\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: SKIP-Grade\nTRADE THESIS: JPM exhibits high structural confluence with Earnings-Driven aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 14.0%), measured support at $330.68 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $329.50 or two consecutive closes back below $330.68 immediately invalidates the trade.",
     "layer_1_regime": {
       "trend_type": "Bull",
       "volatility_regime": "Medium (15\u201325)",
@@ -1702,10 +1702,10 @@
       "portfolio_risk_pct": 0.0,
       "invalidation_rule": "A daily closing price below $329.50 or two consecutive closes back below $330.68 immediately invalidates the trade.",
       "trade_thesis": "JPM exhibits high structural confluence with Earnings-Driven aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 14.0%), measured support at $330.68 offers asymmetric risk/reward into upper channel resistance.",
-      "tca_execution_strategy": "DIRECT_MARKET",
-      "tca_expected_slippage_bps": 0.3,
-      "tca_effective_fill_price": 338.22,
-      "tca_optimal_slices": 1
+      "tca_execution_strategy": null,
+      "tca_expected_slippage_bps": null,
+      "tca_effective_fill_price": null,
+      "tca_optimal_slices": null
     },
     "meta_label_verdict": {
       "symbol": "JPM",
@@ -1713,21 +1713,7 @@
       "action": "CAUTION_THROTTLE",
       "size_multiplier": 0.5,
       "primary_driver": "dist_sma200 (+0.00, impact +)",
-      "calibrated_at": "2026-11-17T06:28:05.098336+00:00"
-    },
-    "microstructure_metrics": {
-      "symbol": "JPM",
-      "timestamp": "2026-11-17T06:28:05.100062+00:00",
-      "cvd_total": 8140,
-      "cvd_1m_delta": 7902,
-      "cvd_5m_delta": 8140,
-      "order_book_imbalance": -0.0413,
-      "kyle_lambda": 0.0109,
-      "rvol_1m": 2.58,
-      "absorption_signal": "NONE",
-      "liquidity_state": "NORMAL",
-      "buyer_volume_pct": 81.8,
-      "seller_volume_pct": 18.2
+      "calibrated_at": "2026-11-21T23:38:35.427236+00:00"
     }
   },
   "disclaimers": {

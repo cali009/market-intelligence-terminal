@@ -1,210 +1,121 @@
 """
-Unit and Integration Tests for Algorithmic Execution Simulator & Transaction Cost Analysis (Phase 25.3)
-US + Canada Dual-Market Intelligence Platform
+Execution algorithm tests — reduced to the parts that survive the honesty overhaul.
+
+HONESTY OVERHAUL (Phase 2 follow-up): this module used to build a simulated order
+book with `microstructure_engine.build_symbol_dossier()` and then exercise the
+order-sweep, limit-fill, TWAP, VWAP and POV algorithms against it. That book was
+generated, not observed: the platform holds an end-of-day price series with no
+quote feed, no depth and no fills. Nine of the eleven tests here asserted that
+invented numbers were internally consistent, which proves nothing about markets.
+They are deleted along with the engine that produced them.
+
+Two things this module tested are real and still used:
+
+  * the dual-market exchange fee schedule, consumed by the internal simulator
+    adapter in src/execution/adapters/internal_simulator.py; and
+  * the sentinel's execution-slippage predicate, whose contract changed — the
+    slippage field is now None because nothing measures it, and a None must not
+    be treated as zero or raise.
 """
 
-import pytest
-from src.compliance.linter import linter
-from src.engine.microstructure import microstructure_engine
-from src.engine.execution_algo import execution_algo_engine, TCA_DISCLAIMERS
-from src.engine.quant_intel import quant_intel_engine, QuantIntelTradePlan
-from src.engine.quant_intel_sentinel import quant_intel_sentinel, InvalidationAlert
-from src.models.schemas import OrderBookSnapshot, OrderBookLevel, MicrostructureMetrics
+from src.engine.execution_algo import execution_algo_engine
 
 
-class TestExecutionAlgoAndTCA:
-    """Test suite validating Almgren-Chriss/Kyle impact models, slicing engines, fee structures, and TCA."""
+class TestExchangeFeeSchedules:
+    """The fee tables are declarative inputs, not market estimates."""
 
-    @pytest.fixture(autouse=True)
-    def setup_dossiers(self):
-        self.us_dossier = microstructure_engine.build_symbol_dossier("SPY")
-        self.ca_dossier = microstructure_engine.build_symbol_dossier("SHOP")
+    def test_taker_fees_are_positive_and_differ_by_market(self):
+        us = execution_algo_engine.get_exchange_fee(1000, "US", is_maker=False)
+        ca = execution_algo_engine.get_exchange_fee(1000, "CA", is_maker=False)
 
-    def test_direct_market_order_sweep_and_vwap(self):
-        """Verify direct market orders correctly sweep DOM depth and calculate volume-weighted fill prices."""
-        book = self.us_dossier.order_book
-        res = execution_algo_engine.simulate_direct_market_order(
-            symbol="SPY",
-            side="BUY",
-            shares=600,
-            book=book,
-            country="US",
-            kyle_lambda=0.015,
-        )
-        assert res.strategy == "DIRECT_MARKET"
-        assert res.total_shares == 600
-        assert res.maker_taker_status == "TAKER"
-        assert res.fill_probability_pct >= 99.0
-        # Total shares across child slices must equal input shares
-        assert sum(s.shares for s in res.child_slices) == 600
-        # Buy fill price must be greater than or equal to top ask
-        assert res.expected_effective_price >= book.asks[0].price
-        # Taker fee must be positive (fee paid)
-        assert res.exchange_fees > 0.0
+        assert us > 0.0, "US taker fee should be a cost"
+        assert ca > 0.0, "Canadian taker fee should be a cost"
+        assert us != ca, "US and Canadian fee schedules should not be identical"
 
-    def test_passive_limit_order_spread_capture_and_rebate(self):
-        """Verify limit passive orders capture spread, earn maker rebates, and compute OBI-driven fill probabilities."""
-        book = self.us_dossier.order_book
-        res = execution_algo_engine.simulate_limit_passive_order(
-            symbol="SPY",
-            side="BUY",
-            shares=300,
-            book=book,
-            country="US",
-            obi=0.25,
-            kyle_lambda=0.015,
-        )
-        assert res.strategy == "LIMIT_PASSIVE"
-        assert res.total_shares == 300
-        assert res.maker_taker_status == "MAKER"
-        # Spread cost must be negative (spread capture benefit)
-        assert res.spread_cost < 0.0
-        # Net maker exchange fees must be negative (rebate earned)
-        assert res.exchange_fees < 0.0
-        # Fill probability must be within realistic bounds [25%, 95%]
-        assert 25.0 <= res.fill_probability_pct <= 95.0
+    def test_maker_orders_net_a_rebate_in_both_markets(self):
+        """A maker fee is negative by construction — it is a rebate, not a cost.
 
-    def test_twap_order_uniform_slicing_and_invariants(self):
-        """Verify TWAP uniform slicing maintains share count invariants and monotonic time offsets."""
-        book = self.us_dossier.order_book
-        total_shares = 750
-        num_slices = 5
-        res = execution_algo_engine.simulate_twap_order(
-            symbol="SPY",
-            side="BUY",
-            shares=total_shares,
-            book=book,
-            country="US",
-            kyle_lambda=0.015,
-            num_slices=num_slices,
-            horizon_mins=15,
-        )
-        assert res.strategy == "TWAP"
-        assert len(res.child_slices) == num_slices
-        assert sum(s.shares for s in res.child_slices) == total_shares
-        # Offsets must be strictly increasing
-        offsets = [s.offset_sec for s in res.child_slices]
-        assert offsets == sorted(offsets)
-        assert offsets[0] == 0
+        The docstring promises "positive value for fee paid, negative for rebate
+        earned", so asserting positivity here would be asserting the opposite of
+        the contract.
+        """
+        us = execution_algo_engine.get_exchange_fee(1000, "US", is_maker=True)
+        ca = execution_algo_engine.get_exchange_fee(1000, "CA", is_maker=True)
+        assert us < 0.0
+        assert ca < 0.0
 
-    def test_vwap_u_curve_volume_weighting(self):
-        """Verify VWAP allocates heavier child order weights at market open and close bins."""
-        book = self.ca_dossier.order_book
-        total_shares = 1000
-        res = execution_algo_engine.simulate_vwap_order(
-            symbol="SHOP",
-            side="BUY",
-            shares=total_shares,
-            book=book,
-            country="CA",
-            kyle_lambda=0.020,
-            horizon_mins=30,
-        )
-        assert res.strategy == "VWAP"
-        assert sum(s.shares for s in res.child_slices) == total_shares
-        slices = res.child_slices
-        # First (Open) and last (Close) slices must have larger share allocations than midday (index 2)
-        assert slices[0].shares > slices[2].shares
-        assert slices[-1].shares > slices[2].shares
+    def test_maker_is_cheaper_than_taker_in_both_markets(self):
+        for country in ("US", "CA"):
+            maker = execution_algo_engine.get_exchange_fee(1000, country, is_maker=True)
+            taker = execution_algo_engine.get_exchange_fee(1000, country, is_maker=False)
+            assert maker < taker, f"{country}: maker should cost less than taker"
 
-    def test_pov_iceberg_participation_capping(self):
-        """Verify POV dynamic slicing maintains target participation rate and share sum conservation."""
-        book = self.us_dossier.order_book
-        total_shares = 1200
-        res = execution_algo_engine.simulate_pov_order(
-            symbol="SPY",
-            side="BUY",
-            shares=total_shares,
-            book=book,
-            country="US",
-            kyle_lambda=0.015,
-            target_participation=0.10,
-        )
-        assert res.strategy == "POV_10"
-        assert sum(s.shares for s in res.child_slices) == total_shares
-        assert len(res.child_slices) >= 2
+    def test_fee_is_rate_times_shares_rounded_to_four_places(self):
+        """The helper rounds per call, so linearity must be checked against the
+        declared rate rather than against a one-share sample scaled up."""
+        e = execution_algo_engine
+        for country, rate in (("US", e.us_taker_fee_per_share + e.us_regulatory_fee_per_share),
+                              ("CA", e.ca_taker_fee_per_share + e.ca_regulatory_fee_per_share)):
+            for shares in (1, 1000, 4096):
+                assert e.get_exchange_fee(shares, country, is_maker=False) == \
+                    round(shares * rate, 4)
 
-    def test_dual_market_fee_schedules_us_vs_ca(self):
-        """Verify US Reg NMS vs Canadian TSX maker/taker fee rates differ according to respective market structures."""
-        shares = 1000
-        us_taker = execution_algo_engine.get_exchange_fee(shares, country="US", is_maker=False)
-        ca_taker = execution_algo_engine.get_exchange_fee(shares, country="CA", is_maker=False)
-        us_maker = execution_algo_engine.get_exchange_fee(shares, country="US", is_maker=True)
-        ca_maker = execution_algo_engine.get_exchange_fee(shares, country="CA", is_maker=True)
 
-        # US taker fee (~$3.17) is higher than CA taker fee (~$1.75)
-        assert us_taker > ca_taker > 0.0
-        # US maker rebate (~-$1.83) gives a larger credit than CA maker rebate (~-$0.75)
-        assert us_maker < ca_maker < 0.0
+def test_slippage_predicate_guards_against_a_missing_measurement():
+    """The wired predicate must skip a None slippage instead of comparing it.
 
-    def test_evaluate_all_strategies_and_recommendation(self):
-        """Verify multi-strategy evaluation produces valid comparisons and quantitative routing rationales."""
-        book = self.us_dossier.order_book
-        metrics = self.us_dossier.metrics
-        res = execution_algo_engine.evaluate_all_strategies(
-            symbol="SPY",
-            side="BUY",
-            shares=400,
-            book=book,
-            metrics=metrics,
-            country="US",
-        )
-        assert "recommended_strategy" in res
-        assert res["recommended_strategy"] in ("DIRECT_MARKET", "LIMIT_PASSIVE", "TWAP", "VWAP", "POV_10")
-        assert len(res["strategies"]) == 5
-        assert len(res["summary_comparison"]) == 5
-        for s in res["summary_comparison"]:
-            assert s["effective_price"] > 0.0
-            assert "slippage_bps" in s
-            assert "total_cost" in s
+    `tca_expected_slippage_bps` is None in production now, and `None >= 15.0`
+    raises in Python 3. The guard is asserted in the source that actually runs,
+    rather than by driving a stub dossier through the full predicate chain.
+    """
+    import inspect
 
-    def test_quant_intel_trade_plan_tca_integration(self):
-        """Verify QUANT INTEL trade plan and formatted institutional card include TCA execution parameters."""
-        dossier = quant_intel_engine.evaluate_ticker("NVDA")
-        plan = dossier.trade_plan
-        assert plan.tca_execution_strategy in ("DIRECT_MARKET", "LIMIT_PASSIVE", "TWAP", "VWAP", "POV_10")
-        assert plan.tca_effective_fill_price > 0.0
-        assert plan.tca_optimal_slices >= 1
-        assert "Execution TCA:" in dossier.formatted_card
+    from src.engine.quant_intel_sentinel import quant_intel_sentinel
 
-    def test_quant_intel_sentinel_slippage_warning_predicate(self):
-        """Verify Sentinel triggers EXECUTION_SLIPPAGE_WARNING when projected slippage exceeds 15 bps."""
-        class MockPlan:
-            entry_zone_ideal = 100.0
-            entry_zone_max = 102.0
-            stop_loss = 94.0
-            stop_distance_pct = 6.0
-            target_1 = 110.0
-            tca_execution_strategy = "VWAP"
-            tca_expected_slippage_bps = 22.5  # High slippage trigger > 15.0 bps
+    source = inspect.getsource(quant_intel_sentinel.evaluate_ticker_sentinel)
+    assert "EXECUTION_SLIPPAGE_WARNING" in source, "predicate was deleted outright"
+    assert "slip_bps is not None and slip_bps >= 15.0" in source, (
+        "the slippage predicate compares a value that is now None"
+    )
 
-        class MockDossier:
-            symbol = "ILLIQ"
-            trade_plan = MockPlan()
-            layer_1_regime = None
-            layer_3_technical = None
-            layer_5_sentiment = None
-            microstructure_metrics = None
 
-        mock_bars = [{"trading_date": "2026-09-28", "close": 100.0, "open": 100.0, "high": 100.0, "low": 100.0, "volume": 1000}]
-        alerts = quant_intel_sentinel.evaluate_ticker_sentinel("ILLIQ", MockDossier(), mock_bars)
-        types = [a.predicate_type for a in alerts]
-        assert "EXECUTION_SLIPPAGE_WARNING" in types
-        alert = next(a for a in alerts if a.predicate_type == "EXECUTION_SLIPPAGE_WARNING")
-        assert alert.action_required == "ROUTE_VIA_ALGO_SLICING"
-        assert alert.trigger_level == 22.5
+def test_liquidity_void_predicate_cannot_be_fed_synthesised_data():
+    """The liquidity-void predicate read a synthesised liquidity state.
 
-    def test_compliance_linter_zero_violations(self):
-        """Verify all execution disclaimers, rationales, and TCA outputs adhere strictly to CSA 31-369 and SEC rules."""
-        for disc in TCA_DISCLAIMERS:
-            assert len(linter.lint_text(disc)) == 0
+    It stays in the engine (deleting a predicate silently is its own kind of
+    dishonesty) but the field it read no longer exists on the dossier, so it can
+    never fire.
+    """
+    import dataclasses
+    import inspect
 
-        res = execution_algo_engine.evaluate_all_strategies(
-            symbol="SHOP",
-            side="BUY",
-            shares=500,
-            book=self.ca_dossier.order_book,
-            metrics=self.ca_dossier.metrics,
-            country="CA",
-        )
-        assert len(linter.lint_text(res["recommendation_rationale"])) == 0
+    from src.engine.quant_intel import QuantIntelDossier
+    from src.engine.quant_intel_sentinel import quant_intel_sentinel
+
+    source = inspect.getsource(quant_intel_sentinel.evaluate_ticker_sentinel)
+    assert "LIQUIDITY_VOID_SPIKE" in source, "predicate was deleted outright"
+    assert 'getattr(dossier, "microstructure_metrics", None)' in source, (
+        "the predicate no longer reads its input through a None-safe getattr"
+    )
+
+    fields = {f.name for f in dataclasses.fields(QuantIntelDossier)}
+    assert "microstructure_metrics" not in fields, (
+        "the dossier still carries a microstructure_metrics field, so synthesised "
+        "data could be attached to it again"
+    )
+
+
+def test_trade_plan_execution_fields_default_to_none():
+    """Execution quality is unmeasured, so the fields must default to None."""
+    import dataclasses
+
+    from src.engine.quant_intel import QuantIntelTradePlan
+
+    defaults = {f.name: f.default for f in dataclasses.fields(QuantIntelTradePlan)}
+    for field in (
+        "tca_execution_strategy",
+        "tca_expected_slippage_bps",
+        "tca_effective_fill_price",
+        "tca_optimal_slices",
+    ):
+        assert defaults[field] is None, f"{field} defaults to {defaults[field]!r}"

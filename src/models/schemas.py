@@ -1399,9 +1399,14 @@ class OrchestratedPosition(BaseModel):
     dollar_allocation: float
     target_shares: int
     arrival_price: float
+    # HONESTY OVERHAUL (Phase 2 follow-up): with no fills and no order book there
+    # is no measured execution price, slippage or strategy. `arrival_price` is the
+    # only observed figure, and `effective_execution_price` falls back to it for
+    # sizing. Slippage and strategy are Optional so a required float could not
+    # force an invented value back into the feed.
     effective_execution_price: float
-    expected_slippage_bps: float
-    execution_strategy: str
+    expected_slippage_bps: Optional[float] = None
+    execution_strategy: Optional[str] = None
 
     def to_dict(self) -> Dict[str, Any]:
         return self.model_dump()

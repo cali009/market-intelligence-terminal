@@ -277,8 +277,12 @@ class QuantIntelSentinel:
 
         # 9. PREDICATE: EXECUTION_SLIPPAGE_WARNING (Projected market impact > 15 bps on recommended sizing)
         plan = getattr(dossier, "trade_plan", None)
-        slip_bps = getattr(plan, "tca_expected_slippage_bps", 0.0) if plan else 0.0
-        if slip_bps >= 15.0:
+        # HONESTY OVERHAUL (Phase 2 follow-up): slippage is no longer estimated
+        # from a simulated order book, so this field is None. A None must not be
+        # compared as if it were zero and must never raise — the predicate simply
+        # cannot be evaluated without a real fill record.
+        slip_bps = getattr(plan, "tca_expected_slippage_bps", None) if plan else None
+        if slip_bps is not None and slip_bps >= 15.0:
             headline = f"{symbol}: High Execution Slippage Warning ({slip_bps:.1f} bps)"
             body = (
                 f"Projected market impact exceeds 15.0 bps under current visible liquidity. "

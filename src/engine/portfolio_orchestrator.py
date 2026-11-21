@@ -34,9 +34,7 @@ from src.engine.factor_risk import factor_risk_engine
 from src.engine.factor_attribution import factor_attribution_engine
 from src.engine.portfolio_bayesian import portfolio_bayesian_engine
 from src.engine.cross_border_fx import cross_border_fx_engine
-from src.engine.options_surface_gex import cross_border_options_engine
 from src.engine.sovereign_yield_curve import sovereign_yield_curve_engine
-from src.engine.dark_pool_liquidity import dark_pool_liquidity_engine
 from src.engine.volatility_forecast_vrp import volatility_forecast_vrp_engine
 from src.engine.quant_intel import quant_intel_engine
 from src.engine.quant_intel_sentinel import quant_intel_sentinel
@@ -179,14 +177,21 @@ class PortfolioOrchestratorEngine:
             if dossier and dossier.trade_plan:
                 plan = dossier.trade_plan
                 arr_price = plan.entry_zone_ideal
+                # HONESTY OVERHAUL (Phase 2 follow-up): with no fills and no order
+                # book there is no measured execution price and no measurable
+                # slippage. The arrival price is the only observed figure, so it is
+                # used for sizing and the execution fields stay null. Reporting a
+                # "DIRECT_MARKET" strategy with 0.28 bps of slippage — which is
+                # what a simulated book produced — asserted precision the platform
+                # does not have.
                 eff_price = plan.tca_effective_fill_price or arr_price
-                slip_bps = plan.tca_expected_slippage_bps or 0.0
-                exec_strat = plan.tca_execution_strategy or "VWAP"
+                slip_bps = plan.tca_expected_slippage_bps
+                exec_strat = plan.tca_execution_strategy
             else:
                 arr_price = 100.0
                 eff_price = 100.0
-                slip_bps = 0.0
-                exec_strat = "VWAP"
+                slip_bps = None
+                exec_strat = None
 
             target_shares = math.floor(dollar_alloc / eff_price) if eff_price > 0 else 0
             grade, b_scalar = scalar_map[sym]
@@ -202,7 +207,7 @@ class PortfolioOrchestratorEngine:
                 target_shares=target_shares,
                 arrival_price=round(arr_price, 2),
                 effective_execution_price=round(eff_price, 2),
-                expected_slippage_bps=round(slip_bps, 2),
+                expected_slippage_bps=(round(slip_bps, 2) if slip_bps is not None else None),
                 execution_strategy=exec_strat,
             )
 
@@ -219,11 +224,13 @@ class PortfolioOrchestratorEngine:
         factor_attrib_res = factor_attribution_engine.evaluate_attribution(total_capital=total_capital)
         bayesian_res = portfolio_bayesian_engine.evaluate_bayesian_portfolio(total_capital=total_capital)
         cross_border_res = cross_border_fx_engine.evaluate_cross_border_fx()
-        options_res = cross_border_options_engine.evaluate_options_intelligence()
+        # HONESTY OVERHAUL (Phase 2 follow-up): the cross-border options surface
+        # and the dark-pool liquidity figures were synthesised, not observed. They
+        # are no longer evaluated, and the sentinels that consumed them receive
+        # None so they cannot fire on invented data.
         sovereign_res = sovereign_yield_curve_engine.evaluate_sovereign_curves()
         # DECISION 1(b): commercial orchestration uses the entitlement-gated build,
         # which omits research-only short metrics entirely.
-        dark_pool_res = dark_pool_liquidity_engine.evaluate_dark_pool_liquidity()
         volatility_res = volatility_forecast_vrp_engine.evaluate_volatility_forecasts()
 
         portfolio_alerts = quant_intel_sentinel.evaluate_portfolio_level_sentinels(
@@ -234,9 +241,9 @@ class PortfolioOrchestratorEngine:
             factor_attribution_metrics=factor_attrib_res.model_dump(),
             bayesian_metrics=bayesian_res.model_dump(),
             cross_border_fx_metrics=cross_border_res.model_dump(),
-            options_intelligence_metrics=options_res.model_dump(),
+            options_intelligence_metrics=None,
             sovereign_yield_metrics=sovereign_res.model_dump(),
-            dark_pool_metrics=dark_pool_liquidity_engine.compute_sentinel_metrics(dark_pool_res),
+            dark_pool_metrics=None,
             volatility_vrp_metrics=volatility_forecast_vrp_engine.compute_sentinel_metrics(volatility_res),
             # Phase 34.5: governor rejection telemetry drives Predicate 28. Wrapped so a
             # platform that has never run the governor cannot take down orchestration.

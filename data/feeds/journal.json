@@ -9,7 +9,7 @@
     "total_realized_pnl_usd": 620.0,
     "closed_win_rate_pct": 100.0,
     "cad_usd_exchange_rate": 1.4136,
-    "as_of_date": "2026-11-17"
+    "as_of_date": "2026-11-21"
   },
   "positions": [
     {
@@ -73,7 +73,7 @@
         "r_multiple": 4.77,
         "reversal_condition": "Daily close reclaim above 50-DMA.",
         "escalation_cycles": 1,
-        "timestamp": "2026-11-17T06:28:11.387680+00:00",
+        "timestamp": "2026-11-21T23:38:42.730169+00:00",
         "primary_trigger": "PROFIT_TARGET_HIT",
         "action_summary": "REDUCE: Trimming recommended to protect gains / mitigate adverse momentum (target 50% allocation).",
         "target_allocation_pct": 50.0,
@@ -142,7 +142,7 @@
         "r_multiple": 6.41,
         "reversal_condition": "Daily close reclaim above 50-DMA.",
         "escalation_cycles": 1,
-        "timestamp": "2026-11-17T06:28:11.387751+00:00",
+        "timestamp": "2026-11-21T23:38:42.730249+00:00",
         "primary_trigger": "PROFIT_TARGET_HIT",
         "action_summary": "REDUCE: Trimming recommended to protect gains / mitigate adverse momentum (target 50% allocation).",
         "target_allocation_pct": 50.0,
@@ -203,7 +203,7 @@
         "r_multiple": 16.0,
         "reversal_condition": "Trail stop to breakeven or 20-day moving average.",
         "escalation_cycles": 0,
-        "timestamp": "2026-11-17T06:28:11.387782+00:00",
+        "timestamp": "2026-11-21T23:38:42.730283+00:00",
         "primary_trigger": "PROFIT_TARGET_HIT",
         "action_summary": "HOLD: Constructive price structure maintained within expected technical parameters.",
         "target_allocation_pct": 100.0,
@@ -264,7 +264,7 @@
         "r_multiple": 20.04,
         "reversal_condition": "Trail stop to breakeven or 20-day moving average.",
         "escalation_cycles": 0,
-        "timestamp": "2026-11-17T06:28:11.387805+00:00",
+        "timestamp": "2026-11-21T23:38:42.730309+00:00",
         "primary_trigger": "PROFIT_TARGET_HIT",
         "action_summary": "HOLD: Constructive price structure maintained within expected technical parameters.",
         "target_allocation_pct": 100.0,

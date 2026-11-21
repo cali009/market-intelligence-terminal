@@ -44,12 +44,27 @@ class TestPortfolioOrchestrator:
         assert r.ca_weight_pct > 15.0
         assert r.us_weight_pct + r.ca_weight_pct <= 100.0
 
-    def test_position_shares_and_execution_strategy(self):
-        """Asserts target shares align with effective fill prices and valid execution strategies."""
+    def test_position_shares_and_execution_fields(self):
+        """Target shares align with the arrival price; execution quality is unmeasured.
+
+        HONESTY OVERHAUL (Phase 2 follow-up): this used to assert that every
+        position carried one of five execution strategies and a projected
+        slippage figure. Both came from a simulated order book. With no fills and
+        no quote feed the strategy and slippage are None, and the price used for
+        sizing is the observed arrival price rather than an invented fill.
+        """
         for sym, p in self.result.positions.items():
             assert p.target_shares >= 0
             assert p.effective_execution_price > 0.0
-            assert p.execution_strategy in ("DIRECT_MARKET", "LIMIT_PASSIVE", "TWAP", "VWAP", "POV_10")
+            assert p.effective_execution_price == p.arrival_price, (
+                f"{sym}: sizing price diverges from the observed arrival price"
+            )
+            assert p.execution_strategy is None, (
+                f"{sym}: an execution strategy was invented: {p.execution_strategy!r}"
+            )
+            assert p.expected_slippage_bps is None, (
+                f"{sym}: slippage was invented: {p.expected_slippage_bps!r}"
+            )
             # Deployed cost of shares cannot exceed allocated dollars
             assert p.target_shares * p.effective_execution_price <= p.dollar_allocation + 1.0
 

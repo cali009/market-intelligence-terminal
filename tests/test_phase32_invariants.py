@@ -25,18 +25,33 @@ Everything else those modules asserted was about deleted files and deleted HTML.
 import inspect
 from pathlib import Path
 
+import pytest
 
-def test_sentinel_metric_surface_carries_no_ats_field():
-    """The engine's sentinel surface must not expose any ATS field."""
-    from src.engine.dark_pool_liquidity import dark_pool_liquidity_engine
 
-    feed = dark_pool_liquidity_engine.evaluate_dark_pool_liquidity(
-        include_research_only_short_metrics=True, force_refresh=True
+def test_orchestrator_no_longer_evaluates_the_fabricated_engines():
+    """ATS share cannot reach the sentinel surface because the engine is gone.
+
+    The Phase 32 decision was that ATS/dark-pool share is reference display only
+    and must never enter scoring or sentinel logic. The stronger form of that
+    invariant is now available: the orchestrator does not import or evaluate the
+    dark-pool or options engines at all, and passes None for both sentinel
+    inputs, so predicates 24 and 25 cannot fire on synthesised data.
+    """
+    src = (Path("src") / "engine" / "portfolio_orchestrator.py").read_text(encoding="utf-8")
+
+    for banned in (
+        "from src.engine.dark_pool_liquidity",
+        "from src.engine.options_surface_gex",
+        "dark_pool_liquidity_engine",
+        "cross_border_options_engine",
+        "include_research_only_short_metrics",
+    ):
+        assert banned not in src, f"orchestrator still references {banned}"
+
+    assert "dark_pool_metrics=None" in src, "dark-pool sentinel input must be None"
+    assert "options_intelligence_metrics=None" in src, (
+        "options sentinel input must be None"
     )
-    surface = dark_pool_liquidity_engine.compute_sentinel_metrics(feed)
-    assert surface["per_symbol"], "sentinel surface is empty"
-    for sym, m in surface["per_symbol"].items():
-        assert [k for k in m if "ats" in k.lower()] == [], f"{sym}: ATS leaked into sentinel surface"
 
 
 def test_predicates_24_and_25_are_wired_into_sentinel_engine():
@@ -56,14 +71,56 @@ def test_predicates_24_and_25_are_wired_into_sentinel_engine():
         assert token in source, f"{token} not wired"
 
 
-def test_orchestrator_uses_commercial_gated_build():
-    """The orchestrator must consume the commercial build (no research-only flag)."""
-    src = (Path("src") / "engine" / "portfolio_orchestrator.py").read_text(encoding="utf-8")
-    assert "from src.engine.dark_pool_liquidity import dark_pool_liquidity_engine" in src
-    assert "dark_pool_liquidity_engine.evaluate_dark_pool_liquidity()" in src
-    assert "dark_pool_metrics=dark_pool_liquidity_engine.compute_sentinel_metrics" in src
-    # Must NOT request research-only short metrics in the commercial orchestration path.
-    assert "include_research_only_short_metrics=True" not in src
+def test_fabricated_market_data_engines_are_deleted():
+    """The engines that synthesised order books, ATS flow and GEX are gone.
+
+    They are deleted rather than left on disk unreferenced, so nothing can be
+    quietly re-wired to them and start publishing invented numbers again.
+    """
+    for name in (
+        "microstructure.py",
+        "dark_pool_liquidity.py",
+        "options_surface_gex.py",
+        "streaming_server.py",
+    ):
+        assert not (Path("src") / "engine" / name).exists(), (
+            f"src/engine/{name} reappeared — it produced synthesised market data"
+        )
+
+
+def test_published_dossiers_carry_no_execution_quality_figures():
+    """The quant-intel feed must not claim measured execution quality.
+
+    tca_execution_strategy / tca_expected_slippage_bps / tca_effective_fill_price
+    / tca_optimal_slices and the per-symbol microstructure_metrics block were all
+    derived from a simulated order book. They must be null or absent in the
+    published feed.
+    """
+    import json
+
+    feed_path = Path("data") / "feeds" / "quant_intel.json"
+    if not feed_path.exists():
+        pytest.skip("quant_intel.json not generated in this checkout")
+
+    data = json.loads(feed_path.read_text(encoding="utf-8"))
+    dossiers = data.get("dossiers") or {}
+    assert dossiers, "quant_intel.json has no dossiers to inspect"
+
+    for sym, d in dossiers.items():
+        assert "microstructure_metrics" not in d, (
+            f"{sym}: synthesised microstructure metrics are still published"
+        )
+        plan = d.get("trade_plan") or {}
+        for field in (
+            "tca_execution_strategy",
+            "tca_expected_slippage_bps",
+            "tca_effective_fill_price",
+            "tca_optimal_slices",
+        ):
+            assert plan.get(field) is None, (
+                f"{sym}: {field} = {plan.get(field)!r} — execution quality is not "
+                f"measurable from end-of-day prices"
+            )
 
 
 def test_retired_fabricated_feeds_are_no_longer_written_or_published():

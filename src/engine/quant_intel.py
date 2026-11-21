@@ -170,10 +170,15 @@ class QuantIntelTradePlan:
     portfolio_risk_pct: float
     invalidation_rule: str
     trade_thesis: str
-    tca_execution_strategy: str = "VWAP"
-    tca_expected_slippage_bps: float = 0.0
-    tca_effective_fill_price: float = 0.0
-    tca_optimal_slices: int = 1
+    # HONESTY OVERHAUL (Phase 2 follow-up): execution-quality figures are not
+    # measurable from an end-of-day price series. These were previously filled
+    # from a simulated order book, which produced a "DIRECT_MARKET" strategy,
+    # an effective fill price and a slippage estimate that looked measured and
+    # were invented. They stay None unless a real fill record exists.
+    tca_execution_strategy: Optional[str] = None
+    tca_expected_slippage_bps: Optional[float] = None
+    tca_effective_fill_price: Optional[float] = None
+    tca_optimal_slices: Optional[int] = None
 
 
 @dataclass
@@ -195,7 +200,6 @@ class QuantIntelDossier:
     layer_6_memory: Layer6Memory
     trade_plan: QuantIntelTradePlan
     meta_label_verdict: Optional[Dict[str, Any]] = None
-    microstructure_metrics: Optional[Dict[str, Any]] = None
 
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)
@@ -962,31 +966,17 @@ class QuantIntelEngine:
         )
 
         # Phase 25.3: Algorithmic Execution Simulator & TCA Parameter Integration
-        tca_strat = "VWAP"
-        tca_slip_bps = 0.0
-        tca_eff_price = ideal_entry
-        tca_slices = 1
-        try:
-            from src.engine.microstructure import microstructure_engine
-            from src.engine.execution_algo import execution_algo_engine
-            micro_dossier = microstructure_engine.build_symbol_dossier(symbol)
-            shares_for_tca = max(100, recommended_shares)
-            tca_res = execution_algo_engine.evaluate_all_strategies(
-                symbol=symbol,
-                side="BUY",
-                shares=shares_for_tca,
-                book=micro_dossier.order_book,
-                metrics=micro_dossier.metrics,
-                country=getattr(fingerprint, "country", "US"),
-            )
-            tca_strat = tca_res["recommended_strategy"]
-            best_plan = tca_res["strategies"].get(tca_strat)
-            if best_plan:
-                tca_slip_bps = round(float(best_plan["expected_slippage_bps"]), 2)
-                tca_eff_price = round(float(best_plan["expected_effective_price"]), 2)
-                tca_slices = len(best_plan["child_slices"])
-        except Exception:
-            pass
+        # HONESTY OVERHAUL (Phase 2 follow-up): this block used to build a
+        # simulated order book and run an execution-algorithm comparison against
+        # it, then publish the winner as "Execution TCA: DIRECT_MARKET (1 slice)
+        # | Est. Fill: $x | Slippage: +0.0 bps". The platform has an end-of-day
+        # price series and no order book, no quote feed and no fills, so every
+        # one of those figures was invented. Execution quality is now reported
+        # as not measurable rather than estimated from a simulation.
+        tca_strat = None
+        tca_slip_bps = None
+        tca_eff_price = None
+        tca_slices = None
 
         plan = QuantIntelTradePlan(
             entry_zone_ideal=ideal_entry,
@@ -1059,7 +1049,7 @@ TRADE PLAN:
   Target 3 (T3):  {curr_sym}{plan.target_3:.2f} | Est. {plan.target_3_days} days | Runner 20%
   Risk/Reward:    1 : {plan.risk_reward_ratio:.2f}
   Position size:  {plan.recommended_shares} shares on {curr_sym}{plan.portfolio_size:,.0f} portfolio risking 1% ({curr_sym}{plan.capital_at_risk:,.2f})
-  Execution TCA:  {plan.tca_execution_strategy} ({plan.tca_optimal_slices} slice{'s' if plan.tca_optimal_slices > 1 else ''}) | Est. Fill: {curr_sym}{plan.tca_effective_fill_price:.2f} | Slippage: {plan.tca_expected_slippage_bps:+.1f} bps
+  Execution:      not measurable — this platform holds end-of-day prices only, with no order book, quote feed or fill record
 ─────────────────────────────────
 CONVICTION GRADE: {conviction_grade}-Grade
 TRADE THESIS: {plan.trade_thesis}
@@ -1164,15 +1154,9 @@ INVALIDATION: {plan.invalidation_rule}"""
         except Exception:
             pass
 
-        # Phase 25: Real-Time Microstructure Metrics
-        micro_dict = None
-        try:
-            from src.engine.microstructure import microstructure_engine
-            micro_dossier = microstructure_engine.build_symbol_dossier(symbol)
-            micro_dict = micro_dossier.metrics.to_dict()
-        except Exception:
-            pass
-
+        # HONESTY OVERHAUL (Phase 2 follow-up): the CVD / order-book-imbalance /
+        # Kyle's-lambda / buyer-vs-seller split published here was synthesised,
+        # not observed. It is no longer produced or shipped.
         return QuantIntelDossier(
             symbol=symbol,
             exchange=exch,
@@ -1191,7 +1175,6 @@ INVALIDATION: {plan.invalidation_rule}"""
             layer_6_memory=l6,
             trade_plan=plan,
             meta_label_verdict=meta_verdict,
-            microstructure_metrics=micro_dict,
         )
 
     def evaluate_all(self, portfolio_size: float = 100000.0) -> Dict[str, QuantIntelDossier]:

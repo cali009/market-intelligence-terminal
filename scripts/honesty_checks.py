@@ -228,11 +228,49 @@ def check_forbidden_strings(rep: Reporter, feeds_dir: Path, include_html: bool,
                         continue
                 found.append("%s contains %r x%d" % (label, bad, n))
 
+    # Fabricated *payloads*, not just forbidden prose. The Phase 2 panels were
+    # deleted, but the microstructure engine kept feeding quant_intel.json a
+    # synthesised order book: CVD, order-book imbalance, Kyle's lambda, a
+    # buyer/seller split, and a "DIRECT_MARKET" execution plan with a slippage
+    # estimate. None of that is observable from an end-of-day price series, so
+    # none of it may be published — including as a JSON field rather than a
+    # sentence.
+    SYNTHESISED_FIELDS = (
+        "microstructure_metrics", "cvd_1m_delta", "cvd_5m_delta", "cvd_total",
+        "order_book_imbalance", "kyle_lambda", "buyer_volume_pct",
+        "seller_volume_pct", "absorption_signal", "liquidity_state",
+    )
+    payload_hits: List[str] = []
+    for path in sorted(feeds_dir.glob("*.json")):
+        try:
+            text = path.read_text(encoding="utf-8", errors="replace")
+        except OSError:
+            continue
+        for field in SYNTHESISED_FIELDS:
+            if '"%s"' % field in text:
+                payload_hits.append("%s carries synthesised field %r"
+                                    % (path.name, field))
+        if '"tca_execution_strategy": null' not in text and                 '"tca_execution_strategy"' in text:
+            payload_hits.append("%s publishes a non-null tca_execution_strategy"
+                                % path.name)
+        if '"tca_expected_slippage_bps": null' not in text and                 '"tca_expected_slippage_bps"' in text:
+            payload_hits.append("%s publishes a non-null tca_expected_slippage_bps"
+                                % path.name)
+    for path in sorted((feeds_dir / "symbols").glob("*.json")) if (feeds_dir / "symbols").is_dir() else []:
+        text = path.read_text(encoding="utf-8", errors="replace")
+        for field in SYNTHESISED_FIELDS:
+            if '"%s"' % field in text and '"%s": null' % field not in text:
+                payload_hits.append("symbols/%s carries synthesised field %r"
+                                    % (path.name, field))
+    found.extend(payload_hits)
+
     if found:
         rep.record(4, "Forbidden claims removed", FAIL, "\n  ".join(found[:15]))
     else:
         rep.record(4, "Forbidden claims removed", PASS,
-                   "None of the %d forbidden strings in scope appear in index.html or any feed."
+                   "None of the %d forbidden strings in scope appear in index.html or "
+                   "any feed, and no published feed carries a synthesised "
+                   "microstructure or execution-quality field."
                    % (len(banned) - (2 if phase != 1 else 0)))
 
 

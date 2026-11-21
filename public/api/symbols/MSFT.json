@@ -4,8 +4,8 @@
   "country": "US",
   "currency": "USD",
   "name": "Microsoft Corporation",
-  "as_of_date": "2026-11-17",
-  "generated_at": "2026-11-17T06:28:02.326564+00:00",
+  "as_of_date": "2026-11-21",
+  "generated_at": "2026-11-21T23:38:29.791529+00:00",
   "latest_metrics": {
     "trading_date": "2026-11-16",
     "open": 525.0900268554688,
@@ -308,7 +308,7 @@
   },
   "fundamental_dossier": {
     "symbol": "MSFT",
-    "as_of_date": "2026-11-17",
+    "as_of_date": "2026-11-21",
     "filing_date": "2026-07-29",
     "currency": "USD",
     "fiscal_period": "FY",
@@ -358,7 +358,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 14,
     "gjr_garch_gamma": 0.08,
-    "last_updated": "2026-11-17T06:28:03.181922+00:00"
+    "last_updated": "2026-11-21T23:38:33.316380+00:00"
   },
   "conformal_bounds": {
     "symbol": "MSFT",
@@ -375,7 +375,7 @@
     "adapted_alpha": 0.21,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-11-17T06:28:03.194219+00:00"
+    "calibrated_at": "2026-11-21T23:38:33.330169+00:00"
   },
   "cross_border_parity": null,
   "shap_attribution": {
@@ -1689,11 +1689,11 @@
     "exchange": "NASDAQ",
     "country": "US",
     "currency": "USD",
-    "as_of_date": "2026-11-17",
-    "generated_at": "2026-11-17T06:28:03.211641+00:00",
+    "as_of_date": "2026-11-21",
+    "generated_at": "2026-11-21T23:38:33.349713+00:00",
     "conviction_grade": "C",
     "aligned_layers_count": 4,
-    "formatted_card": "TICKER: MSFT\nREGIME: WEAK_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 14.0%)\nPATTERN TYPE: Archetype A: Mega-Cap Tech (Gamma-Momentum) \u2014 Momentum (Pullback Continuation)\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    NEUTRAL \u2014 Consolidation near moving averages; RSI 47.9 with RVOL at 1.12x awaiting directional catalyst.\n  Fundamental:  10.0/10 \u2014 ROIC 28.2%, Debt/Equity 0.07, operating margin 46.8%; robust institutional quality balance sheet.\n  Sentiment:    +0.30 (BULLISH) \u2014 MSFT SEC Form 8-K Filing \u2014 Regulation FD Disclosure (Investor Presentation / Update)\n  Historical:   55.4% Win Rate (10 sample size, E[R]: +0.44R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $515.70 \u2013 $523.44\n  Entry trigger:  Price stabilizes above support zone ($515.70) with 15m candle close above $515.70 and volume > 1.2x 20d average.\n  Stop loss:      $488.87 (5.2% below entry)\n  Target 1 (T1):  $547.90 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $582.78 | Est. 24 days | Take 40%\n  Target 3 (T3):  $628.41 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.32\n  Position size:  18 shares on $100,000 portfolio risking 1% ($482.94)\n  Execution TCA:  DIRECT_MARKET (1 slice) | Est. Fill: $517.99 | Slippage: +0.2 bps\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: C-Grade\nTRADE THESIS: MSFT exhibits high structural confluence with Momentum (Pullback Continuation) aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 14.0%), measured support at $515.70 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $488.87 or two consecutive closes back below $515.70 immediately invalidates the trade.",
+    "formatted_card": "TICKER: MSFT\nREGIME: WEAK_BULL (VIX: Medium | Risk-ON | Rates: Paused | 20d Adverse Hazard: 14.0%)\nPATTERN TYPE: Archetype A: Mega-Cap Tech (Gamma-Momentum) \u2014 Momentum (Pullback Continuation)\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    NEUTRAL \u2014 Consolidation near moving averages; RSI 47.9 with RVOL at 1.12x awaiting directional catalyst.\n  Fundamental:  10.0/10 \u2014 ROIC 28.2%, Debt/Equity 0.07, operating margin 46.8%; robust institutional quality balance sheet.\n  Sentiment:    +0.30 (BULLISH) \u2014 MSFT SEC Form 8-K Filing \u2014 Regulation FD Disclosure (Investor Presentation / Update)\n  Historical:   55.4% Win Rate (10 sample size, E[R]: +0.44R)\n  Regime fit:   YES\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $515.70 \u2013 $523.44\n  Entry trigger:  Price stabilizes above support zone ($515.70) with 15m candle close above $515.70 and volume > 1.2x 20d average.\n  Stop loss:      $488.87 (5.2% below entry)\n  Target 1 (T1):  $547.90 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $582.78 | Est. 24 days | Take 40%\n  Target 3 (T3):  $628.41 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.32\n  Position size:  18 shares on $100,000 portfolio risking 1% ($482.94)\n  Execution:      not measurable \u2014 this platform holds end-of-day prices only, with no order book, quote feed or fill record\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: C-Grade\nTRADE THESIS: MSFT exhibits high structural confluence with Momentum (Pullback Continuation) aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 14.0%), measured support at $515.70 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $488.87 or two consecutive closes back below $515.70 immediately invalidates the trade.",
     "layer_1_regime": {
       "trend_type": "Bull",
       "volatility_regime": "Medium (15\u201325)",
@@ -1808,10 +1808,10 @@
       "portfolio_risk_pct": 0.48,
       "invalidation_rule": "A daily closing price below $488.87 or two consecutive closes back below $515.70 immediately invalidates the trade.",
       "trade_thesis": "MSFT exhibits high structural confluence with Momentum (Pullback Continuation) aligning above ascending moving averages. In the current WEAK_BULL macro context (20d adverse hazard: 14.0%), measured support at $515.70 offers asymmetric risk/reward into upper channel resistance.",
-      "tca_execution_strategy": "DIRECT_MARKET",
-      "tca_expected_slippage_bps": 0.19,
-      "tca_effective_fill_price": 517.99,
-      "tca_optimal_slices": 1
+      "tca_execution_strategy": null,
+      "tca_expected_slippage_bps": null,
+      "tca_effective_fill_price": null,
+      "tca_optimal_slices": null
     },
     "meta_label_verdict": {
       "symbol": "MSFT",
@@ -1819,21 +1819,7 @@
       "action": "MODERATE_PROCEED",
       "size_multiplier": 0.85,
       "primary_driver": "dist_sma200 (+0.00, impact +)",
-      "calibrated_at": "2026-11-17T06:28:03.500289+00:00"
-    },
-    "microstructure_metrics": {
-      "symbol": "MSFT",
-      "timestamp": "2026-11-17T06:28:03.502044+00:00",
-      "cvd_total": 3506,
-      "cvd_1m_delta": 3567,
-      "cvd_5m_delta": 3506,
-      "order_book_imbalance": -0.0375,
-      "kyle_lambda": 0.0066,
-      "rvol_1m": 1.71,
-      "absorption_signal": "NONE",
-      "liquidity_state": "NORMAL",
-      "buyer_volume_pct": 65.4,
-      "seller_volume_pct": 34.6
+      "calibrated_at": "2026-11-21T23:38:33.671962+00:00"
     }
   },
   "disclaimers": {
