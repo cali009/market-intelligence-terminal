@@ -497,8 +497,83 @@ def check_quantlab_panel(rep: Reporter, feeds_dir: Path) -> None:
 
 
 def check_no_console_errors(rep: Reporter, feeds_dir: Path) -> None:
-    rep.record(10, "No console errors; no panel stuck on 'Loading…'", SKIP,
-               "Requires a browser page-load run; see the JS self-check in index.html.")
+    name = "No console errors; no panel stuck on 'Loading\u2026'"
+    problems = []
+    evidence = []
+
+    html_path = REPO / "public" / "index.html"
+    if not html_path.exists():
+        html_path = REPO / "web" / "index.html"
+
+    if html_path.exists():
+        html = html_path.read_text()
+
+        # Every pane must be reachable from the tab switcher, and every registered
+        # tab id must have a pane. An orphan on either side means a panel the user
+        # can navigate to that never gets rendered, or a pane that can never be
+        # shown again once hidden.
+        panes = set(re.findall(r'<div id="tab-([a-zA-Z0-9]+)"', html))
+        m = re.search(r"const tabIds = \[(.*?)\];", html, re.S)
+        registered = set(re.findall(r"'([a-zA-Z0-9]+)'", m.group(1))) if m else set()
+        if not registered:
+            problems.append("could not locate the tabIds registration array")
+        else:
+            evidence.append("%d panes / %d registered tab ids" % (len(panes), len(registered)))
+            for orphan in sorted(panes - registered):
+                problems.append("pane tab-%s is not in tabIds and can never be shown" % orphan)
+            for orphan in sorted(registered - panes):
+                problems.append("tabId '%s' has no pane" % orphan)
+
+        # No pane may open on a bare loading placeholder with no way out. The
+        # shipped page fills panes from a renderer, so a pane that literally
+        # starts with "Loading" and has no unavailable branch is a stuck panel.
+        for pid in sorted(panes):
+            head = html.split('<div id="tab-%s"' % pid, 1)[1][:800]
+            if re.search(r"\bLoading\b", head) and not re.search(r"[Nn]ot available", head):
+                problems.append("pane tab-%s opens on a loading placeholder with no "
+                                "unavailable fallback" % pid)
+
+        # Empty states must say so in words rather than rendering a blank box.
+        n_na = len(re.findall(r"[Nn]ot available", html))
+        if n_na == 0:
+            problems.append("the page never states that data is not available")
+        else:
+            evidence.append("%d explicit 'not available' empty states" % n_na)
+
+    # Runtime half: drive the page in jsdom and require a clean load.
+    harness = REPO / "scripts" / "page_load_selfcheck.mjs"
+    runtime = None
+    if harness.exists():
+        import shutil
+        import subprocess
+        if shutil.which("node"):
+            try:
+                proc = subprocess.run(["node", str(harness)], cwd=str(REPO),
+                                      capture_output=True, text=True, timeout=300)
+                out = (proc.stdout or "") + (proc.stderr or "")
+                if "RESULT: PASS" in out:
+                    runtime = "runtime page-load harness reported PASS"
+                else:
+                    runtime = None
+                    tail = [l for l in out.splitlines() if l.strip()][-6:]
+                    problems.append("page-load harness did not report PASS: %s"
+                                    % " | ".join(tail) if tail
+                                    else "page-load harness did not report PASS")
+            except subprocess.TimeoutExpired:
+                runtime = None
+                problems.append("page-load harness timed out")
+        else:
+            evidence.append("node is not installed, so the runtime half of this "
+                            "check was NOT executed")
+    else:
+        problems.append("scripts/page_load_selfcheck.mjs is missing")
+
+    if problems:
+        rep.record(10, name, FAIL, "; ".join(problems))
+    else:
+        rep.record(10, name, PASS,
+                   "%s; %s." % ("; ".join(evidence),
+                                runtime or "static verification only"))
 
 
 # ---------------------------------------------------------------------------

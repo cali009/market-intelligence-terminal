@@ -150,9 +150,13 @@ class TestFactorAttributionEngine:
         assert np.isfinite(attrib.active_return_pct)
         assert np.isfinite(attrib.tracking_error_pct)
 
-    def test_factor_attribution_feed_export_and_json_serialization(self):
-        """Asserts export_feed produces valid JSON feed matching schema."""
-        out_path = factor_attribution_engine.export_feed()
+    def test_factor_attribution_feed_export_and_json_serialization(self, tmp_path):
+        """Asserts export_feed produces valid JSON feed matching schema.
+
+        The output directory is redirected: data/feeds/ holds tracked artifacts
+        and regenerating them mid-suite breaks the staged-copy release audits.
+        """
+        out_path = factor_attribution_engine.export_feed(output_dir=tmp_path)
         assert out_path.exists()
         assert out_path.name == "factor_attribution.json"
 

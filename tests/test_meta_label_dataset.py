@@ -140,8 +140,18 @@ def test_sqlite_persistence_and_querying():
     assert "mom_6m" in feat_dict
 
 
-def test_feed_export_and_json_schema():
-    """Verify static edge feed generation in data/feeds/meta_label_matrix.json."""
+def test_feed_export_and_json_schema(tmp_path, monkeypatch):
+    """Verify static edge feed generation into meta_label_matrix.json.
+
+    FEEDS_DIR is redirected rather than passing target_dir: export_feed treats a
+    target_dir that differs from FEEDS_DIR as a distribution copy and simply
+    clones the shipped master, which would test the copy and not the generation.
+    data/feeds/ holds tracked artifacts, and regenerating them mid-suite breaks
+    the staged-copy release audits.
+    """
+    import src.engine.meta_label_dataset as mld
+
+    monkeypatch.setattr(mld, "FEEDS_DIR", tmp_path)
     feed_path = meta_label_dataset_engine.export_feed()
     assert feed_path.exists()
 

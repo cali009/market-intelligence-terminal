@@ -188,9 +188,14 @@ class TestPortfolioBayesianEngine:
         assert linter.lint_text(a.headline) == []
         assert linter.lint_text(a.body) == []
 
-    def test_feed_export_and_json_serialization(self):
-        """Asserts that portfolio_bayesian.json exports and serializes cleanly."""
-        feed_path = portfolio_bayesian_engine.export_feed(force_refresh=True)
+    def test_feed_export_and_json_serialization(self, tmp_path):
+        """Asserts that portfolio_bayesian.json exports and serializes cleanly.
+
+        The output path is redirected: data/feeds/ holds tracked artifacts and
+        regenerating them mid-suite breaks the staged-copy release audits.
+        """
+        feed_path = portfolio_bayesian_engine.export_feed(
+            tmp_path / "portfolio_bayesian.json", force_refresh=True)
         assert feed_path.exists()
         with open(feed_path, "r", encoding="utf-8") as f:
             data = json.load(f)

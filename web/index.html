@@ -1041,6 +1041,7 @@
             <button class="tab-btn" data-tab="alerts" onclick="switchTab('alerts', event)">Alert Center &amp; Consent (Phase 10)</button>
             <button class="tab-btn" data-tab="deepread" onclick="switchTab('deepread', event)">AI Deep-Read &amp; Model Cards (Phase 11)</button>
             <button class="tab-btn" data-tab="researchledger" onclick="switchTab('researchledger', event)">Research Ledger</button>
+            <button class="tab-btn" data-tab="coreportfolio" onclick="switchTab('coreportfolio', event)">Core Portfolio</button>
             <button class="tab-btn" data-tab="production" onclick="switchTab('production', event)">System Status</button>
             <button class="tab-btn" data-tab="catalysts" onclick="switchTab('catalysts', event)">News & SEC Filings</button>
             <button class="tab-btn" data-tab="journal" onclick="switchTab('journal', event)">Research Journal & Watchlists</button>
@@ -2268,6 +2269,141 @@
 
         <!-- Tab 8B: Production Scaling, Exchange Entitlements & Disaster Recovery (Phase 12) -->
         <!-- ============================================================
+             Core Portfolio (Honesty Overhaul Phase 5)
+
+             A personal TFSA bookkeeping tab. Holdings live in this browser's
+             localStorage and are never transmitted. Prices come from the latest
+             end-of-day close in leaderboard.json; the FX rate comes from the
+             Bank of Canada daily rate in cross_border_fx.json.
+
+             This tab contains no recommendations. It does not suggest funds,
+             it does not rate holdings, and it does not score anything. It does
+             arithmetic on positions the user typed in.
+             ============================================================ -->
+        <div id="tab-coreportfolio" style="display: none;">
+            <div style="margin-bottom: 16px;">
+                <h2 style="font-size: 18px; font-weight: 800; color: var(--text-primary); margin-bottom: 4px;">Core Portfolio</h2>
+                <p style="font-size: 12px; color: var(--text-muted); max-width: 900px;">
+                    A personal allocation tracker. Holdings, targets and commission assumptions are stored in this
+                    browser's <code style="font-size: 11px;">localStorage</code> only &mdash; nothing is uploaded, and
+                    clearing site data removes them. Prices are the latest end-of-day closes from this dashboard's
+                    tracked universe; USD positions are converted with the Bank of Canada daily rate. This tab does
+                    not recommend any security and does not score what you hold.
+                </p>
+            </div>
+
+            <div id="cpNoData" style="display: none; padding: 18px 20px; border-radius: 8px; margin-bottom: 16px; background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.35); font-size: 12px; color: #fcd34d;"></div>
+
+            <!-- Entry -->
+            <div class="glass-card" style="padding: 18px 20px; margin-bottom: 16px;">
+                <div style="font-size: 13px; font-weight: 700; color: var(--text-primary); margin-bottom: 12px;">Holdings</div>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: flex-end; margin-bottom: 12px;">
+                    <div>
+                        <div style="font-size: 10px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px;">Symbol</div>
+                        <input type="text" id="cpSym" placeholder="e.g. XIU" style="width: 110px; background: var(--bg-secondary); border: 1px solid var(--border-color); color: var(--text-primary); padding: 7px 9px; border-radius: 5px; font-size: 12px; text-transform: uppercase;">
+                    </div>
+                    <div>
+                        <div style="font-size: 10px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px;">Units (whole)</div>
+                        <input type="number" id="cpUnits" min="0" step="1" placeholder="0" style="width: 110px; background: var(--bg-secondary); border: 1px solid var(--border-color); color: var(--text-primary); padding: 7px 9px; border-radius: 5px; font-size: 12px;">
+                    </div>
+                    <div>
+                        <div style="font-size: 10px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px;">Avg cost / unit</div>
+                        <input type="number" id="cpCost" min="0" step="0.01" placeholder="0.00" style="width: 120px; background: var(--bg-secondary); border: 1px solid var(--border-color); color: var(--text-primary); padding: 7px 9px; border-radius: 5px; font-size: 12px;">
+                    </div>
+                    <div>
+                        <div style="font-size: 10px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px;">Currency</div>
+                        <select id="cpCcy" style="width: 90px; background: var(--bg-secondary); border: 1px solid var(--border-color); color: var(--text-primary); padding: 7px 9px; border-radius: 5px; font-size: 12px;">
+                            <option value="CAD">CAD</option>
+                            <option value="USD">USD</option>
+                        </select>
+                    </div>
+                    <div>
+                        <div style="font-size: 10px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px;">Target weight %</div>
+                        <input type="number" id="cpTarget" min="0" max="100" step="0.5" placeholder="0" style="width: 120px; background: var(--bg-secondary); border: 1px solid var(--border-color); color: var(--text-primary); padding: 7px 9px; border-radius: 5px; font-size: 12px;">
+                    </div>
+                    <button onclick="cpAddHolding()" style="background: var(--accent-blue); color: #fff; border: none; padding: 8px 16px; border-radius: 5px; font-size: 12px; font-weight: 700; cursor: pointer;">Add / Update</button>
+                </div>
+                <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 12px;">
+                    Placeholder symbols above are input examples only, not recommendations. A symbol outside this
+                    dashboard's 19-security tracked universe will have no end-of-day price here and is shown but
+                    excluded from every weight and drift calculation.
+                </div>
+                <div id="cpMsg" style="display: none; font-size: 11px; padding: 8px 10px; border-radius: 5px; margin-bottom: 12px;"></div>
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse; font-size: 12px;">
+                        <thead>
+                            <tr style="background: var(--bg-secondary); border-bottom: 1px solid var(--border-color); text-transform: uppercase; font-size: 10px; color: var(--text-muted);">
+                                <th style="padding: 8px 10px; text-align: left;">Symbol</th>
+                                <th style="padding: 8px 10px; text-align: left;">Name</th>
+                                <th style="padding: 8px 10px; text-align: right;">Units</th>
+                                <th style="padding: 8px 10px; text-align: right;">Avg cost</th>
+                                <th style="padding: 8px 10px; text-align: center;">Ccy</th>
+                                <th style="padding: 8px 10px; text-align: right;">Target %</th>
+                                <th style="padding: 8px 10px;"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="cpHoldingsBody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Allocation -->
+            <div class="glass-card" style="padding: 18px 20px; margin-bottom: 16px;">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 12px;">
+                    <div style="font-size: 13px; font-weight: 700; color: var(--text-primary);">Allocation vs targets</div>
+                    <div id="cpRates" style="font-size: 11px; color: var(--text-muted);"></div>
+                </div>
+                <div style="display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 14px;">
+                    <div><div style="font-size: 10px; text-transform: uppercase; color: var(--text-muted);">Market value</div><div id="cpTotal" style="font-size: 17px; font-weight: 800; color: var(--text-primary);">&mdash;</div></div>
+                    <div><div style="font-size: 10px; text-transform: uppercase; color: var(--text-muted);">Cost basis</div><div id="cpCostBasis" style="font-size: 17px; font-weight: 800; color: var(--text-primary);">&mdash;</div></div>
+                    <div><div style="font-size: 10px; text-transform: uppercase; color: var(--text-muted);">Unrealised</div><div id="cpUnreal" style="font-size: 17px; font-weight: 800; color: var(--text-primary);">&mdash;</div></div>
+                    <div><div style="font-size: 10px; text-transform: uppercase; color: var(--text-muted);">Targets sum</div><div id="cpTargetSum" style="font-size: 17px; font-weight: 800; color: var(--text-primary);">&mdash;</div></div>
+                </div>
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse; font-size: 12px;">
+                        <thead>
+                            <tr style="background: var(--bg-secondary); border-bottom: 1px solid var(--border-color); text-transform: uppercase; font-size: 10px; color: var(--text-muted);">
+                                <th style="padding: 8px 10px; text-align: left;">Symbol</th>
+                                <th style="padding: 8px 10px; text-align: right;">Last close</th>
+                                <th style="padding: 8px 10px; text-align: right;">Value (C$)</th>
+                                <th style="padding: 8px 10px; text-align: right;">Weight</th>
+                                <th style="padding: 8px 10px; text-align: right;">Target</th>
+                                <th style="padding: 8px 10px; text-align: right;">Drift (pp)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cpAllocBody"></tbody>
+                    </table>
+                </div>
+                <div id="cpExcluded" style="margin-top: 10px; font-size: 11px; color: var(--text-muted);"></div>
+                <div style="margin-top: 10px; font-size: 11px; color: var(--text-muted);">
+                    Cost basis is converted at the current rate above. The rate in effect on each purchase date is not
+                    stored here, so the unrealised figure is an approximation, not a tax lot calculation.
+                </div>
+            </div>
+
+            <!-- Rebalance -->
+            <div class="glass-card" style="padding: 18px 20px; margin-bottom: 16px;">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 10px; margin-bottom: 12px;">
+                    <div style="font-size: 13px; font-weight: 700; color: var(--text-primary);">Rebalance</div>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="font-size: 10px; text-transform: uppercase; color: var(--text-muted);">Est. commission per trade (C$)</span>
+                        <input type="number" id="cpCommission" min="0" step="0.01" value="0.00" oninput="cpSetCommission(this.value)" style="width: 100px; background: var(--bg-secondary); border: 1px solid var(--border-color); color: var(--text-primary); padding: 6px 8px; border-radius: 5px; font-size: 12px;">
+                    </div>
+                </div>
+                <div id="cpRebalance"></div>
+            </div>
+
+            <!-- Static notes -->
+            <div class="glass-card" style="padding: 18px 20px;">
+                <div style="font-size: 13px; font-weight: 700; color: var(--text-primary); margin-bottom: 10px;">Notes</div>
+                <ul style="margin: 0; padding-left: 18px; font-size: 12px; color: var(--text-secondary); line-height: 1.85;">
+                    <li>US-listed ETFs in a TFSA lose 15% of dividends to US withholding tax.</li>
+                    <li>Avoid frequent trading in a TFSA (CRA may treat it as business income).</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ============================================================
              Research Ledger (Honesty Overhaul Phase 4)
 
              Rendered verbatim from /api/quantlab_status.json, which carries
@@ -3423,6 +3559,308 @@
         }
 
         // -------------------------------------------------------------
+        // Core Portfolio (Honesty Overhaul Phase 5)
+        //
+        // Personal TFSA bookkeeping. Holdings, target weights and the commission
+        // assumption are read from and written to this browser's localStorage
+        // only. Market values use the latest end-of-day closes published in
+        // leaderboard.json; USD positions are converted with the Bank of Canada
+        // daily rate from cross_border_fx.json.
+        //
+        // Nothing here is a recommendation. The tab performs arithmetic on
+        // positions the user typed in and reports the result. Where a price is
+        // missing the row says so and is excluded from the denominators rather
+        // than being silently valued at zero, which would understate the weight
+        // of every other holding.
+        // -------------------------------------------------------------
+        const CP_HOLD_KEY = 'core_portfolio_holdings';
+        const CP_TARGET_KEY = 'core_portfolio_targets';
+        const CP_COMM_KEY = 'core_portfolio_commission';
+        const CP_DRIFT_TRIGGER_PP = 5.0;
+        let cpFeeds = null;
+
+        function cpRead(key, fallback) {
+            try {
+                const raw = localStorage.getItem(key);
+                if (raw === null) return fallback;
+                const v = JSON.parse(raw);
+                return (v === null || v === undefined) ? fallback : v;
+            } catch (e) { return fallback; }
+        }
+        function cpWrite(key, value) {
+            try { localStorage.setItem(key, JSON.stringify(value)); } catch (e) {}
+        }
+        function cpMsg(text, ok) {
+            const el = document.getElementById('cpMsg');
+            if (!el) return;
+            el.style.display = text ? 'block' : 'none';
+            if (!text) return;
+            el.textContent = text;
+            el.style.background = ok ? 'rgba(16, 185, 129, 0.10)' : 'rgba(239, 68, 68, 0.10)';
+            el.style.border = '1px solid ' + (ok ? 'rgba(16, 185, 129, 0.35)' : 'rgba(239, 68, 68, 0.35)');
+            el.style.color = ok ? '#6ee7b7' : '#fca5a5';
+        }
+
+        // The FX feed carries two reciprocal fields whose key names do not match
+        // the convention they suggest (spot_cad_usd holds C$ per US$1). Rather
+        // than trust a label, take whichever value is dimensionally C$ per US$1
+        // and refuse to guess when neither is plausible.
+        function cpUsdToCad(fx) {
+            if (!fx) return null;
+            const cands = [fx.spot_cad_usd, fx.spot_usd_cad].filter(
+                v => typeof v === 'number' && isFinite(v) && v >= 1.10 && v <= 1.75);
+            return cands.length ? cands[0] : null;
+        }
+
+        async function loadCorePortfolioAndRender() {
+            if (!cpFeeds) {
+                try {
+                    const [lb, fx] = await Promise.all([
+                        fetchJson('/api/leaderboard.json', '/api/leaderboard'),
+                        fetchJson('/api/cross_border_fx.json', '/api/cross_border_fx')
+                    ]);
+                    const prices = {};
+                    ((lb && lb.securities) || []).forEach(sec => {
+                        if (sec && sec.symbol && typeof sec.price === 'number' && isFinite(sec.price)) {
+                            prices[String(sec.symbol).toUpperCase()] = {
+                                price: sec.price,
+                                currency: sec.currency || null,
+                                name: sec.name || ''
+                            };
+                        }
+                    });
+                    cpFeeds = { prices, fx, asOf: (lb && lb.as_of_date) || null, fxAsOf: (fx && fx.as_of_date) || null };
+                } catch (e) {
+                    console.error('Core portfolio feed load failed:', e);
+                    cpFeeds = { prices: {}, fx: null, asOf: null, fxAsOf: null, failed: true };
+                }
+            }
+            renderCorePortfolio();
+        }
+
+        function cpAddHolding() {
+            const sym = String(document.getElementById('cpSym').value || '').trim().toUpperCase();
+            const units = parseFloat(document.getElementById('cpUnits').value);
+            const cost = parseFloat(document.getElementById('cpCost').value);
+            const ccy = document.getElementById('cpCcy').value;
+            const tgt = parseFloat(document.getElementById('cpTarget').value);
+
+            if (!sym) return cpMsg('Enter a symbol.', false);
+            if (!isFinite(units) || units < 0 || Math.floor(units) !== units)
+                return cpMsg('Units must be a whole number of 0 or more.', false);
+            if (!isFinite(cost) || cost < 0)
+                return cpMsg('Average cost must be a number of 0 or more.', false);
+
+            const holdings = cpRead(CP_HOLD_KEY, []);
+            const i = holdings.findIndex(h => h.symbol === sym);
+            const rec = { symbol: sym, units: units, avg_cost: cost, currency: ccy };
+            if (i >= 0) holdings[i] = rec; else holdings.push(rec);
+            cpWrite(CP_HOLD_KEY, holdings);
+
+            const targets = cpRead(CP_TARGET_KEY, {});
+            if (isFinite(tgt) && tgt >= 0) targets[sym] = tgt;
+            cpWrite(CP_TARGET_KEY, targets);
+
+            ['cpSym', 'cpUnits', 'cpCost', 'cpTarget'].forEach(id => { document.getElementById(id).value = ''; });
+            cpMsg(sym + ' saved to this browser.', true);
+            renderCorePortfolio();
+        }
+
+        function cpRemoveHolding(sym) {
+            cpWrite(CP_HOLD_KEY, cpRead(CP_HOLD_KEY, []).filter(h => h.symbol !== sym));
+            const t = cpRead(CP_TARGET_KEY, {});
+            delete t[sym];
+            cpWrite(CP_TARGET_KEY, t);
+            cpMsg('');
+            renderCorePortfolio();
+        }
+
+        function cpSetTarget(sym, val) {
+            const t = cpRead(CP_TARGET_KEY, {});
+            const n = parseFloat(val);
+            if (isFinite(n) && n >= 0 && n <= 100) t[sym] = n; else delete t[sym];
+            cpWrite(CP_TARGET_KEY, t);
+            renderCorePortfolio();
+        }
+
+        function cpSetCommission(val) {
+            const n = parseFloat(val);
+            cpWrite(CP_COMM_KEY, isFinite(n) && n >= 0 ? n : 0);
+            renderCorePortfolio();
+        }
+
+        function renderCorePortfolio() {
+            const DASH = '\u2014';
+            const holdings = cpRead(CP_HOLD_KEY, []);
+            const targets = cpRead(CP_TARGET_KEY, {});
+            const commission = cpRead(CP_COMM_KEY, 0);
+            const prices = (cpFeeds && cpFeeds.prices) || {};
+            const usdToCad = cpUsdToCad(cpFeeds && cpFeeds.fx);
+
+            const warn = document.getElementById('cpNoData');
+            if (warn) {
+                const notes = [];
+                if (cpFeeds && cpFeeds.failed) notes.push('Price and FX feeds are not available right now, so market values cannot be shown.');
+                if (!usdToCad) notes.push('No plausible Bank of Canada USD/CAD rate is available, so USD holdings cannot be converted.');
+                warn.style.display = notes.length ? 'block' : 'none';
+                warn.textContent = notes.join(' ');
+            }
+
+            const commEl = document.getElementById('cpCommission');
+            if (commEl && document.activeElement !== commEl) commEl.value = Number(commission).toFixed(2);
+
+            // Holdings entry table.
+            const hb = document.getElementById('cpHoldingsBody');
+            if (hb) {
+                hb.innerHTML = holdings.length ? holdings.map(h => {
+                    const known = !!prices[h.symbol];
+                    const nm = known ? prices[h.symbol].name : 'not in the tracked universe \u2014 no end-of-day price here';
+                    return '<tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">'
+                        + '<td style="padding: 8px 10px; font-weight: 700; color: #fff;">' + escapeHtml(h.symbol) + '</td>'
+                        + '<td style="padding: 8px 10px; font-size: 11px; color: ' + (known ? 'var(--text-secondary)' : '#fcd34d') + ';">' + escapeHtml(nm) + '</td>'
+                        + '<td style="padding: 8px 10px; text-align: right; font-family: monospace; color: var(--text-secondary);">' + h.units + '</td>'
+                        + '<td style="padding: 8px 10px; text-align: right; font-family: monospace; color: var(--text-secondary);">' + Number(h.avg_cost).toFixed(2) + '</td>'
+                        + '<td style="padding: 8px 10px; text-align: center; color: var(--text-muted);">' + escapeHtml(h.currency) + '</td>'
+                        + '<td style="padding: 8px 10px; text-align: right;"><input type="number" min="0" max="100" step="0.5" value="' + (targets[h.symbol] !== undefined ? targets[h.symbol] : '') + '" placeholder="' + DASH + '" oninput="cpSetTarget(\'' + h.symbol + '\', this.value)" style="width: 80px; background: var(--bg-secondary); border: 1px solid var(--border-color); color: var(--text-primary); padding: 4px 6px; border-radius: 4px; font-size: 11px; text-align: right;"></td>'
+                        + '<td style="padding: 8px 10px; text-align: right;"><button onclick="cpRemoveHolding(\'' + h.symbol + '\')" style="background: none; border: 1px solid rgba(239, 68, 68, 0.4); color: #f87171; border-radius: 4px; padding: 3px 8px; font-size: 10px; cursor: pointer;">Remove</button></td>'
+                        + '</tr>';
+                }).join('')
+                : '<tr><td colspan="7" style="padding: 14px 10px; text-align: center; color: var(--text-muted); font-size: 11px;">No holdings entered yet. Add one above; nothing is stored outside this browser.</td></tr>';
+            }
+
+            // Value each priced holding in CAD.
+            const rows = [];
+            const excluded = [];
+            let totalCad = 0;
+            holdings.forEach(h => {
+                const px = prices[h.symbol];
+                if (!px) { excluded.push(h.symbol); return; }
+                const rate = (h.currency === 'USD') ? usdToCad : 1;
+                if (rate === null) { excluded.push(h.symbol + ' (no FX rate)'); return; }
+                const valueCcy = h.units * px.price;
+                const valueCad = valueCcy * rate;
+                const costCad = h.units * h.avg_cost * rate;
+                rows.push({ symbol: h.symbol, units: h.units, price: px.price, currency: h.currency,
+                            valueCcy, valueCad, costCad });
+                totalCad += valueCad;
+            });
+
+            const costBasis = rows.reduce((a, r) => a + r.costCad, 0);
+            const targetSum = rows.reduce((a, r) => a + (targets[r.symbol] || 0), 0);
+
+            const fmt = (n, d) => (isFinite(n) ? n.toLocaleString('en-CA', { minimumFractionDigits: d, maximumFractionDigits: d }) : DASH);
+            const setTxt = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
+
+            setTxt('cpTotal', rows.length ? 'C$' + fmt(totalCad, 2) : DASH);
+            setTxt('cpCostBasis', rows.length ? 'C$' + fmt(costBasis, 2) : DASH);
+            const unreal = totalCad - costBasis;
+            const uEl = document.getElementById('cpUnreal');
+            if (uEl) {
+                uEl.textContent = rows.length ? (unreal >= 0 ? '+' : '\u2212') + 'C$' + fmt(Math.abs(unreal), 2) : DASH;
+                uEl.style.color = !rows.length ? 'var(--text-primary)' : (unreal >= 0 ? '#34d399' : '#f87171');
+            }
+            const tsEl = document.getElementById('cpTargetSum');
+            if (tsEl) {
+                tsEl.textContent = rows.length ? fmt(targetSum, 1) + '%' : DASH;
+                tsEl.style.color = !rows.length ? 'var(--text-primary)'
+                    : (Math.abs(targetSum - 100) < 0.05 ? '#34d399' : '#fbbf24');
+            }
+            const rt = document.getElementById('cpRates');
+            if (rt) {
+                rt.textContent = (cpFeeds && cpFeeds.asOf ? 'prices as of ' + cpFeeds.asOf : 'prices not available')
+                    + (usdToCad ? '  \u00b7  C$' + usdToCad.toFixed(4) + ' per US$1 (Bank of Canada'
+                        + ((cpFeeds && cpFeeds.fxAsOf) ? ', ' + cpFeeds.fxAsOf : '') + ')' : '  \u00b7  FX rate not available');
+            }
+
+            const ab = document.getElementById('cpAllocBody');
+            const overTrigger = [];
+            if (ab) {
+                if (!rows.length) {
+                    ab.innerHTML = '<tr><td colspan="6" style="padding: 14px 10px; text-align: center; color: var(--text-muted); font-size: 11px;">'
+                        + (holdings.length ? 'Allocation not available \u2014 none of the holdings entered have an end-of-day price in this dashboard.' : 'Allocation not available \u2014 no holdings entered yet.')
+                        + '</td></tr>';
+                } else if (totalCad <= 0) {
+                    ab.innerHTML = '<tr><td colspan="6" style="padding: 14px 10px; text-align: center; color: var(--text-muted); font-size: 11px;">Allocation not available \u2014 total market value is zero, so no weight can be computed.</td></tr>';
+                } else {
+                    ab.innerHTML = rows.map(r => {
+                        const w = r.valueCad / totalCad * 100;
+                        const tgt = targets[r.symbol];
+                        const drift = (tgt === undefined) ? null : w - tgt;
+                        if (drift !== null && Math.abs(drift) > CP_DRIFT_TRIGGER_PP) overTrigger.push({ row: r, drift, weight: w, target: tgt });
+                        const dCol = drift === null ? 'var(--text-muted)'
+                            : (Math.abs(drift) > CP_DRIFT_TRIGGER_PP ? '#f87171' : 'var(--text-secondary)');
+                        return '<tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">'
+                            + '<td style="padding: 8px 10px; font-weight: 700; color: #fff;">' + escapeHtml(r.symbol) + '</td>'
+                            + '<td style="padding: 8px 10px; text-align: right; font-family: monospace; color: var(--text-secondary);">' + Number(r.price).toFixed(2) + ' ' + escapeHtml(r.currency) + '</td>'
+                            + '<td style="padding: 8px 10px; text-align: right; font-family: monospace; color: var(--text-secondary);">' + fmt(r.valueCad, 2) + '</td>'
+                            + '<td style="padding: 8px 10px; text-align: right; font-family: monospace; color: #fff;">' + fmt(w, 2) + '%</td>'
+                            + '<td style="padding: 8px 10px; text-align: right; font-family: monospace; color: var(--text-secondary);">' + (tgt === undefined ? DASH : fmt(tgt, 1) + '%') + '</td>'
+                            + '<td style="padding: 8px 10px; text-align: right; font-family: monospace; color: ' + dCol + ';">' + (drift === null ? DASH : (drift >= 0 ? '+' : '\u2212') + fmt(Math.abs(drift), 2)) + '</td>'
+                            + '</tr>';
+                    }).join('');
+                }
+            }
+
+            const ex = document.getElementById('cpExcluded');
+            if (ex) {
+                ex.textContent = excluded.length
+                    ? 'Excluded from every weight and drift figure (no end-of-day price available): ' + excluded.join(', ') + '.'
+                    : '';
+            }
+
+            // Rebalance. Flagged only past the drift threshold; otherwise left quiet.
+            const rb = document.getElementById('cpRebalance');
+            if (rb) {
+                if (!rows.length || totalCad <= 0) {
+                    rb.innerHTML = '<div style="font-size: 12px; color: var(--text-muted);">Not available \u2014 enter holdings with a priced symbol to see drift.</div>';
+                } else if (!overTrigger.length) {
+                    rb.innerHTML = '<div style="padding: 12px 14px; border-radius: 6px; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); font-size: 12px; color: #6ee7b7;">'
+                        + 'No holding has drifted more than ' + CP_DRIFT_TRIGGER_PP.toFixed(1) + ' percentage points from its target. No rebalance flagged.</div>';
+                } else {
+                    const lines = overTrigger.map(o => {
+                        const rate = (o.row.currency === 'USD') ? usdToCad : 1;
+                        const priceCad = o.row.price * rate;
+                        const deltaCad = (o.target / 100) * totalCad - o.row.valueCad;
+                        const wholeUnits = Math.trunc(deltaCad / priceCad);
+                        const dir = wholeUnits >= 0 ? 'BUY' : 'SELL';
+                        const absU = Math.abs(wholeUnits);
+                        const grossCad = absU * priceCad;
+                        const note = absU === 0
+                            ? 'the drift is smaller than one whole unit at the last close, so no trade is suggested'
+                            : (dir === 'SELL' && absU > o.row.units
+                                ? 'capped at the ' + o.row.units + ' unit(s) actually held' : '');
+                        const cappedU = (dir === 'SELL') ? Math.min(absU, o.row.units) : absU;
+                        return { symbol: o.row.symbol, dir, units: cappedU, grossCad: cappedU * priceCad,
+                                 drift: o.drift, note };
+                    });
+                    const tradeable = lines.filter(l => l.units > 0);
+                    const totalCommission = tradeable.length * Number(commission || 0);
+                    rb.innerHTML = '<div style="padding: 12px 14px; border-radius: 6px; margin-bottom: 12px; background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.35); font-size: 12px; color: #fcd34d;">'
+                        + tradeable.length + ' holding(s) drifted more than ' + CP_DRIFT_TRIGGER_PP.toFixed(1)
+                        + ' percentage points. The figures below are arithmetic to the target weights you entered &mdash; they are not advice, they ignore taxes, spreads and the effect of the trades on price, and no order is ever sent anywhere.</div>'
+                        + '<div style="overflow-x: auto;"><table style="width: 100%; border-collapse: collapse; font-size: 12px;">'
+                        + '<thead><tr style="background: var(--bg-secondary); text-transform: uppercase; font-size: 10px; color: var(--text-muted);">'
+                        + '<th style="padding: 8px 10px; text-align: left;">Symbol</th><th style="padding: 8px 10px; text-align: center;">Drift</th>'
+                        + '<th style="padding: 8px 10px; text-align: center;">Action</th><th style="padding: 8px 10px; text-align: right;">Whole units</th>'
+                        + '<th style="padding: 8px 10px; text-align: right;">Gross (C$)</th><th style="padding: 8px 10px; text-align: right;">Est. commission (C$)</th>'
+                        + '<th style="padding: 8px 10px; text-align: left;">Note</th></tr></thead><tbody>'
+                        + lines.map(l => '<tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">'
+                            + '<td style="padding: 8px 10px; font-weight: 700; color: #fff;">' + escapeHtml(l.symbol) + '</td>'
+                            + '<td style="padding: 8px 10px; text-align: center; font-family: monospace; color: #f87171;">' + (l.drift >= 0 ? '+' : '\u2212') + fmt(Math.abs(l.drift), 2) + ' pp</td>'
+                            + '<td style="padding: 8px 10px; text-align: center; font-weight: 700; color: ' + (l.units > 0 ? (l.dir === 'BUY' ? '#34d399' : '#f87171') : 'var(--text-muted)') + ';">' + (l.units > 0 ? l.dir : 'HOLD') + '</td>'
+                            + '<td style="padding: 8px 10px; text-align: right; font-family: monospace; color: #fff;">' + l.units + '</td>'
+                            + '<td style="padding: 8px 10px; text-align: right; font-family: monospace; color: var(--text-secondary);">' + fmt(l.grossCad, 2) + '</td>'
+                            + '<td style="padding: 8px 10px; text-align: right; font-family: monospace; color: var(--text-secondary);">' + (l.units > 0 ? fmt(Number(commission || 0), 2) : DASH) + '</td>'
+                            + '<td style="padding: 8px 10px; font-size: 11px; color: var(--text-muted);">' + escapeHtml(l.note) + '</td>'
+                            + '</tr>').join('')
+                        + '</tbody></table></div>'
+                        + '<div style="margin-top: 10px; font-size: 11px; color: var(--text-muted);">Total estimated commission across '
+                        + tradeable.length + ' trade(s): C$' + fmt(totalCommission, 2) + '. The commission figure is your own input and is a cost estimate only &mdash; it is not netted out of the unit counts above.</div>';
+                }
+            }
+        }
+
+        // -------------------------------------------------------------
         // Research Ledger (Honesty Overhaul Phase 4)
         //
         // Renders /api/quantlab_status.json verbatim. Nothing here is computed,
@@ -3552,7 +3990,7 @@
 
             const tabIds = [
                 'leaderboard', 'quantintel', 'macroregime', 'portfoliohrp', 'crossborderfx', 'sovereigncurve', 'volatilityvrp', 'execution', 'scanners', 'signals', 'backtest', 'paper',
-                'portfolio', 'alerts', 'deepread', 'production', 'catalysts', 'journal', 'researchledger'
+                'portfolio', 'alerts', 'deepread', 'production', 'catalysts', 'journal', 'researchledger', 'coreportfolio'
             ];
             tabIds.forEach(id => {
                 const el = document.getElementById(`tab-${id}`);
@@ -3625,6 +4063,8 @@
                 } else {
                     renderDeepreadView();
                 }
+            } else if (tabId === 'coreportfolio') {
+                loadCorePortfolioAndRender();
             } else if (tabId === 'researchledger') {
                 if (!quantlabBundle) {
                     loadResearchLedgerAndRender();

@@ -162,9 +162,13 @@ class TestFactorRiskEngine:
         assert spec_vol > 0.0
         assert np.isclose(sys_pct + spec_pct, 100.0, atol=0.1)
 
-    def test_factor_risk_feed_export_and_json_serialization(self):
-        """Asserts factor risk engine exports valid JSON feed matching schema."""
-        out_path = factor_risk_engine.export_feed()
+    def test_factor_risk_feed_export_and_json_serialization(self, tmp_path):
+        """Asserts factor risk engine exports valid JSON feed matching schema.
+
+        The output directory is redirected: data/feeds/ holds tracked artifacts
+        and regenerating them mid-suite breaks the staged-copy release audits.
+        """
+        out_path = factor_risk_engine.export_feed(output_dir=tmp_path)
         assert out_path.exists()
         assert out_path.name == "factor_risk.json"
 
