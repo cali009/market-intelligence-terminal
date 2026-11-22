@@ -66,6 +66,11 @@ class CrossBorderFxEngine:
             ("12M", 365),
         ]
 
+        if not spot_fx or spot_fx <= 0:
+            # No observed spot, so no forward curve can be computed. Returning an
+            # empty curve is honest; substituting a rate would not be.
+            return []
+
         r_cad = self.boc_policy_rate / 100.0
         r_usd = self.fed_funds_rate / 100.0
         diff_bps = (r_cad - r_usd) * 10000.0
@@ -77,7 +82,10 @@ class CrossBorderFxEngine:
             f_rate = spot_fx * (1.0 + r_cad * (days / 365.0)) / (1.0 + r_usd * (days / 365.0))
             f_points_pips = (f_rate - spot_fx) * 10000.0
 
-            # Empirical cross-currency basis (USD funding premium approx -8.5 bps)
+            # MODELLING ASSUMPTION, not an observation. This platform subscribes to no
+            # cross-currency basis swap quotes and measures no funding premium. The
+            # constants below are an order-of-magnitude placeholder; the flag published
+            # alongside the value says so, and the UI labels the column accordingly.
             cip_basis = -8.5 + (days / 365.0) * -3.5
 
             curve.append(
@@ -270,12 +278,23 @@ class CrossBorderFxEngine:
 
         # 1. Fetch official Bank of Canada FX series
         fx_df = cross_border_parity_engine.get_boc_fx_series(lookback_days=500)
-        latest_spot = float(fx_df["fx"].iloc[-1]) if not fx_df.empty else 1.3550
-        spot_cad_usd = latest_spot
-        spot_usd_cad = 1.0 / latest_spot if latest_spot > 0 else 0.7380
+        # BoC FXUSD is quoted as Canadian dollars per one US dollar.
+        # The two constants that used to stand in here (1.3550 and 0.7380) were
+        # typed-in exchange rates: an invented price published as if it had been
+        # observed. A missing series now yields None and says so.
+        latest_spot = float(fx_df["fx"].iloc[-1]) if not fx_df.empty else None
+        if latest_spot is not None and latest_spot > 0:
+            spot_cad_per_usd = round(latest_spot, 4)
+            spot_usd_per_cad = round(1.0 / latest_spot, 4)
+            fx_source_status = "OK"
+        else:
+            spot_cad_per_usd = None
+            spot_usd_per_cad = None
+            fx_source_status = ("UNAVAILABLE_NO_BOC_OBSERVATION" if fx_df.empty
+                                else "UNAVAILABLE_NON_POSITIVE_SPOT")
 
         # 2. Forward Curve & CIP Points
-        forward_curve = self.compute_forward_curve(spot_cad_usd)
+        forward_curve = self.compute_forward_curve(spot_cad_per_usd)
 
         # 3. Universe returns and market map
         returns_df, mkt_map = hrp_portfolio_engine.load_universe_returns()
@@ -285,7 +304,7 @@ class CrossBorderFxEngine:
         usd_hedging = self.compute_optimal_hedge_ratio("USD", returns_df, mkt_map, fx_df)
 
         # 5. Dual-Listed Arbitrage & Smart Venue Routing
-        dual_listed_arb = self.evaluate_dual_listed_arbitrage(spot_cad_usd)
+        dual_listed_arb = self.evaluate_dual_listed_arbitrage(spot_cad_per_usd)
 
         diff_bps = (self.boc_policy_rate - self.fed_funds_rate) * 100.0
 
@@ -295,8 +314,9 @@ class CrossBorderFxEngine:
         result = CrossBorderFxFeed(
             as_of_date=today_str,
             generated_at=now_iso,
-            spot_cad_usd=round(spot_cad_usd, 4),
-            spot_usd_cad=round(spot_usd_cad, 4),
+            spot_cad_per_usd=spot_cad_per_usd,
+            spot_usd_per_cad=spot_usd_per_cad,
+            fx_source_status=fx_source_status,
             boc_policy_rate_pct=round(self.boc_policy_rate, 2),
             fed_funds_rate_pct=round(self.fed_funds_rate, 2),
             policy_rate_differential_bps=round(diff_bps, 1),

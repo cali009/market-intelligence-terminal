@@ -615,6 +615,85 @@ def check_no_console_errors(rep: Reporter, feeds_dir: Path) -> None:
 
 
 # ---------------------------------------------------------------------------
+def check_staleness_verdict(rep: Reporter, feeds_dir: Path) -> None:
+    """A closed market must not be badged stale, and a real gap must not be excused.
+
+    The badge used to be a pure function of hours-since-last-bar, so every weekend
+    morning read STALE even though the Friday close was the newest close in existence.
+    This recomputes the verdict straight from bar_1d and compares it to what was
+    published, in both directions: it fails if a closed market is called stale, and it
+    fails if a session that closed without a captured bar is called a closed market.
+    """
+    name = "Closed market is not badged stale; a real gap is not excused"
+    problems = []
+    evidence = []
+
+    fh_path = feeds_dir / "feed_health.json"
+    if not fh_path.exists():
+        rep.record(11, name, SKIP, "feed_health.json not present")
+        return
+
+    bundle = json.loads(fh_path.read_text())
+    equity = [f for f in bundle.get("feeds", [])
+              if f.get("feed_id") in ("us_equities_eod", "ca_equities_eod")]
+    if not equity:
+        rep.record(11, name, FAIL, "feed_health.json carries no equity EOD feed")
+        return
+
+    sys.path.insert(0, str(REPO))
+    try:
+        from src.data.market_calendar import closed_market_reason, observed_trading_dates
+        from src.data.db import db
+    except Exception as exc:  # pragma: no cover - environment problem, not a data problem
+        rep.record(11, name, FAIL, "could not import the market calendar: %s" % exc)
+        return
+
+    groups = {
+        "us_equities_eod": (["NYSE", "NASDAQ", "AMEX"], "NYSE"),
+        "ca_equities_eod": (["TSX", "TSXV"], "TSX"),
+    }
+
+    for feed in equity:
+        fid = feed.get("feed_id")
+        exchanges, probe = groups[fid]
+        rows = db.execute_query(
+            "SELECT MAX(b.trading_date) AS mx FROM bar_1d b "
+            "JOIN security s USING (security_id) WHERE UPPER(s.exchange) IN (%s)"
+            % ",".join("?" * len(exchanges)), tuple(exchanges))
+        last_bar = str(rows[0]["mx"])[:10] if rows and rows[0]["mx"] else None
+
+        verdict = closed_market_reason(probe, last_bar, observed=observed_trading_dates(exchanges))
+        published = feed.get("staleness_badge")
+        sessions = verdict["sessions"].get("completed")
+        unverified = verdict["sessions"].get("unverified")
+
+        evidence.append("%s: last bar %s, %s session(s) completed unrecorded, %s unverified "
+                        "weekday(s) -> recomputed %s, published %s"
+                        % (fid, last_bar, sessions, unverified, verdict["badge"], published))
+
+        if published != verdict["badge"]:
+            problems.append("%s publishes staleness_badge=%s but the bars recompute to %s (%s)"
+                            % (fid, published, verdict["badge"], verdict["reason"]))
+        if feed.get("market_closed") and (sessions or 0) >= 1:
+            problems.append("%s claims market_closed while %s session(s) closed unrecorded"
+                            % (fid, sessions))
+        if published == "STALE" and feed.get("market_closed"):
+            problems.append("%s is badged STALE and market_closed at the same time" % fid)
+        if published == "CLOSED_MARKET" and (unverified or 0) >= 1:
+            problems.append("%s is badged CLOSED_MARKET while %s weekday(s) beyond the "
+                            "ingested history are unverified" % (fid, unverified))
+        if not feed.get("staleness_reason"):
+            problems.append("%s carries a badge with no staleness_reason explaining it" % fid)
+
+    if problems:
+        rep.record(11, name, FAIL, "\n  ".join(problems))
+    else:
+        rep.record(11, name, PASS,
+                   "Both equity feeds' badges agree with a recomputation from bar_1d, "
+                   "and each carries a reason explaining itself.\n        "
+                   + "\n        ".join(evidence))
+
+
 CHECKS: List[Tuple[int, Callable[..., None], bool]] = [
     (1, check_no_hardcoded_stats, True),
     (2, check_recomputation, False),
@@ -626,9 +705,10 @@ CHECKS: List[Tuple[int, Callable[..., None], bool]] = [
     (8, check_pbo, True),
     (9, check_quantlab_panel, False),
     (10, check_no_console_errors, False),
+    (11, check_staleness_verdict, False),
 ]
 
-PHASE_OF_CHECK = {1: 1, 2: 1, 3: 1, 4: 2, 5: 3, 6: 3, 7: 3, 8: 1, 9: 4, 10: 5}
+PHASE_OF_CHECK = {1: 1, 2: 1, 3: 1, 4: 2, 5: 3, 6: 3, 7: 3, 8: 1, 9: 4, 10: 5, 11: 6}
 
 
 def main() -> int:

@@ -10,6 +10,7 @@ from typing import Dict, List, Any, Optional
 import json
 
 from src.data.db import db
+from src.data.market_calendar import closed_market_reason, observed_trading_dates
 from src.models.schemas import JournalPosition, Watchlist, WatchlistItem, FeedHealth
 
 
@@ -478,6 +479,27 @@ class JournalEngine:
         ca_symbols = ca_row["syms"] or 0
         us_freshness_hours = _freshness_hours(us_row["mx"])
         ca_freshness_hours = _freshness_hours(ca_row["mx"])
+
+        # A closed market is not a stale feed. Before this, the badge was a pure
+        # function of hours-since-last-bar, so every weekend morning read STALE even
+        # though the Friday close was the most recent close in existence. The verdict
+        # is now derived from the ingested bars themselves: a weekday with no bar
+        # anywhere inside the observed span was a holiday, a session that closed
+        # without a bar is a real gap, and weekdays past the end of the ingested
+        # history are reported as unverified rather than guessed either way.
+        # Exchange holiday calendars are deliberately not modelled.
+        _us_observed = observed_trading_dates(["NYSE", "NASDAQ", "AMEX"])
+        _ca_observed = observed_trading_dates(["TSX", "TSXV"])
+        us_market = closed_market_reason("NYSE", us_row["mx"], observed=_us_observed)
+        ca_market = closed_market_reason("TSX", ca_row["mx"], observed=_ca_observed)
+
+        def _badge(market_verdict: Dict[str, Any], hours: Optional[float]) -> str:
+            """Market-aware badge. Falls back to the hours-only rule only when the
+            session state could not be established."""
+            b = market_verdict.get("badge")
+            if b in ("CLOSED_MARKET", "STALE", "UNVERIFIED_GAP"):
+                return b
+            return staleness_badge(hours)
         # The news/macro feeds stamp a timestamp rather than a date, so freshness
         # is measured from that directly.
         def _freshness_from_dt(value: Optional[str]) -> Optional[float]:
@@ -533,7 +555,17 @@ class JournalEngine:
                                   "(query1.finance.yahoo.com), end-of-day",
                 "status": "HEALTHY",
                 "freshness_hours": us_freshness_hours,
-                "staleness_badge": staleness_badge(us_freshness_hours),
+                "staleness_badge": _badge(us_market, us_freshness_hours),
+                "staleness_reason": us_market["reason"],
+                "market_closed": us_market["market_closed"],
+                "market_state": us_market["market_state"]["state"],
+                "market_state_detail": {
+                    "local_time": us_market["market_state"].get("local_time"),
+                    "session_local": us_market["market_state"].get("session_local"),
+                    "holiday_modelled": us_market["market_state"].get("holiday_modelled"),
+                    "sessions_completed_since_last_bar": us_market["sessions"].get("completed"),
+                    "weekdays_unverified": us_market["sessions"].get("unverified"),
+                },
                 "last_synced_at": f"{max_bar_date} (exchange close, end-of-day)",
                 "records_count": us_bars,
                 "coverage_pct": us_coverage_pct,
@@ -556,7 +588,17 @@ class JournalEngine:
                                   "(query1.finance.yahoo.com), end-of-day",
                 "status": "HEALTHY",
                 "freshness_hours": ca_freshness_hours,
-                "staleness_badge": staleness_badge(ca_freshness_hours),
+                "staleness_badge": _badge(ca_market, ca_freshness_hours),
+                "staleness_reason": ca_market["reason"],
+                "market_closed": ca_market["market_closed"],
+                "market_state": ca_market["market_state"]["state"],
+                "market_state_detail": {
+                    "local_time": ca_market["market_state"].get("local_time"),
+                    "session_local": ca_market["market_state"].get("session_local"),
+                    "holiday_modelled": ca_market["market_state"].get("holiday_modelled"),
+                    "sessions_completed_since_last_bar": ca_market["sessions"].get("completed"),
+                    "weekdays_unverified": ca_market["sessions"].get("unverified"),
+                },
                 "last_synced_at": f"{max_bar_date} (exchange close, end-of-day)",
                 "records_count": ca_bars,
                 "coverage_pct": ca_coverage_pct,

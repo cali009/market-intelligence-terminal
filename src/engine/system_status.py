@@ -26,6 +26,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 from src.data.db import db
+from src.data.market_calendar import closed_market_reason, observed_trading_dates
 
 # Beyond one trading day the data is stale; beyond two, badly stale. These are
 # policy thresholds, not statistics.
@@ -100,14 +101,39 @@ class SystemStatusEngine:
 
         feed_files = sorted(p.name for p in root.glob("*.json"))
 
+        # A closed market is not stale data. The hours-only ladder below called every
+        # weekend morning STALE even when the Friday close was the newest close that
+        # exists. The verdict now comes from the ingested bars: see market_calendar.
+        us_verdict = closed_market_reason(
+            "NYSE", bars["last_date"], observed=observed_trading_dates(["NYSE", "NASDAQ", "AMEX"]))
+        ca_verdict = closed_market_reason(
+            "TSX", bars["last_date"], observed=observed_trading_dates(["TSX", "TSXV"]))
+
+        _SEVERITY = {"CLOSED_MARKET": 0, "CURRENT": 0, "UNKNOWN": 1,
+                     "UNVERIFIED_GAP": 2, "AGING": 3, "STALE": 4}
+
         if data_age_hours is None:
-            age_label = "UNKNOWN"
+            hours_label = "UNKNOWN"
         elif data_age_hours <= STALE_AFTER_HOURS:
-            age_label = "CURRENT"
+            hours_label = "CURRENT"
         elif data_age_hours <= VERY_STALE_AFTER_HOURS:
-            age_label = "AGING"
+            hours_label = "AGING"
         else:
-            age_label = "STALE"
+            hours_label = "STALE"
+
+        if us_verdict["market_closed"] and ca_verdict["market_closed"]:
+            age_label = "CLOSED_MARKET"
+            age_reason = us_verdict["reason"]
+        else:
+            age_label = hours_label if _SEVERITY.get(hours_label, 1) >= max(
+                _SEVERITY.get(us_verdict["badge"], 1), _SEVERITY.get(ca_verdict["badge"], 1)
+            ) else max((us_verdict["badge"], ca_verdict["badge"]),
+                       key=lambda b: _SEVERITY.get(b, 1))
+            age_reason = (us_verdict["reason"]
+                          if _SEVERITY.get(us_verdict["badge"], 1)
+                          >= _SEVERITY.get(ca_verdict["badge"], 1) else ca_verdict["reason"])
+        age_label = "CURRENT" if age_label == "CLOSED_MARKET" and data_age_hours is not None \
+            and data_age_hours <= STALE_AFTER_HOURS else age_label
 
         quality = self._quality_events()
         open_issues = sum(r["n"] for r in quality if r.get("status") not in ("RESOLVED", "CLOSED"))
@@ -126,6 +152,27 @@ class SystemStatusEngine:
                 "last_date": bars["last_date"],
                 "age_hours": data_age_hours,
                 "age_label": age_label,
+                "age_reason": age_reason,
+                "market_closed": bool(us_verdict["market_closed"] and ca_verdict["market_closed"]),
+                "holiday_modelled": False,
+                "market_detail": {
+                    "us": {
+                        "badge": us_verdict["badge"],
+                        "state": us_verdict["market_state"]["state"],
+                        "local_time": us_verdict["market_state"].get("local_time"),
+                        "sessions_completed_since_last_bar": us_verdict["sessions"].get("completed"),
+                        "weekdays_unverified": us_verdict["sessions"].get("unverified"),
+                        "reason": us_verdict["reason"],
+                    },
+                    "ca": {
+                        "badge": ca_verdict["badge"],
+                        "state": ca_verdict["market_state"]["state"],
+                        "local_time": ca_verdict["market_state"].get("local_time"),
+                        "sessions_completed_since_last_bar": ca_verdict["sessions"].get("completed"),
+                        "weekdays_unverified": ca_verdict["sessions"].get("unverified"),
+                        "reason": ca_verdict["reason"],
+                    },
+                },
                 "survivorship_biased": True,
                 "universe_note": (
                     "The universe is %d currently listed large-cap symbols. It is "

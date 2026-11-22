@@ -66,11 +66,30 @@ def test_feed_health_status():
     # Coverage is now measured as bars / (symbols x trading days) for the two
     # equity feeds and is None for EDGAR and Valet, where no universe exists to
     # be complete against. The badge vocabulary is what staleness_badge emits.
+    # CLOSED_MARKET and UNVERIFIED_GAP joined the vocabulary when the badge stopped
+    # being a pure function of hours-since-last-bar. A closed market is not stale
+    # data, and weekdays past the end of the ingested history are unverified rather
+    # than assumed either way. Every badge must also carry a reason.
     for feed in health["feeds"]:
         assert feed["status"] in ("HEALTHY", "DEGRADED", "STALE", "DOWN")
-        assert feed["staleness_badge"] in ("FRESH", "AGING", "STALE", "UNKNOWN")
+        assert feed["staleness_badge"] in (
+            "FRESH", "AGING", "STALE", "UNKNOWN", "CLOSED_MARKET", "UNVERIFIED_GAP")
         cov = feed["coverage_pct"]
         assert cov is None or 0.0 <= cov <= 100.0
+
+    # The two equity feeds are the ones the market verdict applies to. They must
+    # publish the verdict, declare whether the market is shut, and never claim a
+    # closed market while badging themselves stale.
+    by_feed = {f["feed_id"]: f for f in health["feeds"]}
+    for feed_id in ("us_equities_eod", "ca_equities_eod"):
+        f = by_feed[feed_id]
+        assert "market_closed" in f
+        assert "market_state" in f
+        assert f["staleness_reason"], f"{feed_id} badged without a reason"
+        assert not (f["staleness_badge"] == "STALE" and f["market_closed"])
+        detail = f["market_state_detail"]
+        assert detail["holiday_modelled"] is False, (
+            "the calendar does not model exchange holidays and must say so")
 
     # The equity feeds have a real denominator, so their coverage must be measured.
     by_id = {f["feed_id"]: f for f in health["feeds"]}

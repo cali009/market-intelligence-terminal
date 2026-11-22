@@ -1618,6 +1618,16 @@ class CipForwardPoint(BaseModel):
     forward_fx: float
     forward_points_pips: float
     cip_basis_bps: float
+    # The basis above is NOT measured. This platform observes no cross-currency basis
+    # swap quotes; the figure is a standing modelling assumption (see the engine) and
+    # travels with the value so no consumer can mistake it for an observation.
+    cip_basis_is_modelled_assumption: bool = True
+    cip_basis_assumption_note: str = (
+        "Modelled assumption, not measured. This platform holds no cross-currency basis "
+        "swap quotes. The value is a fixed -8.5 bps USD funding premium tilted by "
+        "-3.5 bps per year of tenor, chosen as a plausible order of magnitude. Do not "
+        "treat it as market data."
+    )
 
     def to_dict(self) -> Dict[str, Any]:
         return self.model_dump()
@@ -1660,8 +1670,16 @@ class DualListedArbitrageOpportunity(BaseModel):
 class CrossBorderFxFeed(BaseModel):
     as_of_date: str
     generated_at: str
-    spot_cad_usd: float
-    spot_usd_cad: float
+    # Dimensionally explicit on purpose. The previous names (spot_cad_usd /
+
+    # spot_usd_cad) were backwards: spot_cad_usd held 1.4298, i.e. Canadian dollars
+
+    # per US dollar, which the conventional reading of "CADUSD" inverts. Consumers
+
+    # had to sniff the magnitude to work out which field was which.
+    spot_cad_per_usd: Optional[float] = None
+    spot_usd_per_cad: Optional[float] = None
+    fx_source_status: str = "UNKNOWN"
     boc_policy_rate_pct: float
     fed_funds_rate_pct: float
     policy_rate_differential_bps: float

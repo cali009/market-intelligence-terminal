@@ -41,8 +41,11 @@ class TestFxReleaseAudit:
             data = json.load(f)
             # Pydantic schema validation
             parsed = CrossBorderFxFeed.model_validate(data)
-            assert parsed.spot_cad_usd > 1.0
-            assert parsed.spot_usd_cad < 1.0
+            # Renamed from spot_cad_usd / spot_usd_cad, which were backwards.
+            assert parsed.spot_cad_per_usd is None or parsed.spot_cad_per_usd > 1.0
+            assert parsed.spot_usd_per_cad is None or parsed.spot_usd_per_cad < 1.0
+            if parsed.spot_cad_per_usd and parsed.spot_usd_per_cad:
+                assert abs(parsed.spot_cad_per_usd * parsed.spot_usd_per_cad - 1.0) < 1e-3
             assert len(parsed.forward_curve) == 4
             assert len(parsed.dual_listed_arbitrage) >= 8
             assert parsed.cad_base_hedging is not None

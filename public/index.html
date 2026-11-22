@@ -3535,24 +3535,39 @@
                 const ageH = (d.age_hours === null || d.age_hours === undefined) ? null : d.age_hours;
                 const run = ss && ss.last_pipeline_run ? ss.last_pipeline_run.slice(0, 16).replace('T', ' ') + ' UTC' : null;
 
-                // One trading day of slack, then a weekend/holiday allowance. A
-                // gap past 24h is stale; past 72h it is badly stale.
-                let label = 'UNKNOWN', colour = 'var(--text-muted)';
-                if (ageH !== null) {
-                    if (ageH <= 24) { label = 'CURRENT'; colour = 'var(--accent-green)'; }
-                    else if (ageH <= 72) { label = 'STALE'; colour = '#f59e0b'; }
-                    else { label = 'STALE'; colour = 'var(--accent-red)'; }
-                }
+                // The badge is driven by the feed's own market verdict, not by a
+                // bare hours threshold. Hours alone called every weekend morning
+                // STALE even when the Friday close was the newest close in
+                // existence. CLOSED_MARKET means the data is as current as it can
+                // possibly be; STALE means a session closed without being captured;
+                // UNVERIFIED_GAP means weekdays passed beyond the end of the
+                // ingested history and their status cannot be established.
+                const verdict = (d.age_label && d.age_label !== 'UNKNOWN') ? d.age_label
+                    : (ageH === null ? 'UNKNOWN' : (ageH <= 24 ? 'CURRENT' : 'STALE'));
+                const COLOURS = {
+                    CURRENT: 'var(--accent-green)',
+                    CLOSED_MARKET: 'var(--accent-blue)',
+                    AGING: '#f59e0b',
+                    UNVERIFIED_GAP: '#f59e0b',
+                    STALE: 'var(--accent-red)',
+                    UNKNOWN: 'var(--text-muted)'
+                };
+                const colour = COLOURS[verdict] || 'var(--text-muted)';
+                const closedNote = verdict === 'CLOSED_MARKET'
+                    ? ' &middot; market closed, this is the most recent close' : '';
 
                 const stamp = run || (last ? last : DASH);
                 el.innerHTML = 'data as of <strong style="color: var(--text-secondary);">'
                     + escapeHtml(stamp) + '</strong>'
                     + (last ? ' &middot; latest bar ' + escapeHtml(last) : '')
-                    + (ageH !== null ? ' &middot; ' + ageH + 'h old' : '')
+                    + (ageH !== null && verdict !== 'CLOSED_MARKET' ? ' &middot; ' + ageH + 'h old' : '')
+                    + closedNote
                     + ' &nbsp;<span style="padding: 1px 6px; border-radius: 4px; font-weight: 800; '
                     + 'background: ' + colour + '22; color: ' + colour + '; border: 1px solid ' + colour + '55;">'
-                    + escapeHtml(label) + '</span>';
-                if (label === 'STALE') el.style.color = colour;
+                    + escapeHtml(verdict.replace(/_/g, ' ')) + '</span>'
+                    + (d.age_reason ? '<div style="font-size: 9px; margin-top: 2px; max-width: 640px; '
+                        + 'line-height: 1.35;">' + escapeHtml(d.age_reason) + '</div>' : '');
+                if (verdict === 'STALE' || verdict === 'UNVERIFIED_GAP') el.style.color = colour;
             } catch (e) {
                 el.textContent = 'data as of ' + DASH + ' (status feed unavailable)';
             }
@@ -3601,15 +3616,14 @@
             el.style.color = ok ? '#6ee7b7' : '#fca5a5';
         }
 
-        // The FX feed carries two reciprocal fields whose key names do not match
-        // the convention they suggest (spot_cad_usd holds C$ per US$1). Rather
-        // than trust a label, take whichever value is dimensionally C$ per US$1
-        // and refuse to guess when neither is plausible.
+        // The FX feed's spot fields are now dimensionally named (spot_cad_per_usd is
+        // Canadian dollars per one US dollar). Older bundles published the same value
+        // under spot_cad_usd, which read backwards, so fall back to it rather than
+        // breaking on a cached bundle. Never substitute a rate that was not observed.
         function cpUsdToCad(fx) {
             if (!fx) return null;
-            const cands = [fx.spot_cad_usd, fx.spot_usd_cad].filter(
-                v => typeof v === 'number' && isFinite(v) && v >= 1.10 && v <= 1.75);
-            return cands.length ? cands[0] : null;
+            const v = fx.spot_cad_per_usd !== undefined ? fx.spot_cad_per_usd : fx.spot_cad_usd;
+            return (typeof v === 'number' && isFinite(v) && v > 0) ? v : null;
         }
 
         async function loadCorePortfolioAndRender() {
@@ -8895,7 +8909,7 @@
                             <span style="font-size: 20px; font-weight: 800; color: #fff;">${fx.forward_curve[3]?.forward_fx != null ? '$' + fx.forward_curve[3].forward_fx.toFixed(4) : '\u2014'}</span>
                             <span style="font-size: 11px; color: var(--accent-green); font-weight: 700;">${fx.forward_curve[3]?.forward_points_pips != null ? fx.forward_curve[3].forward_points_pips + ' pips' : '\u2014'}</span>
                         </div>
-                        <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">CIP Basis: ${fx.forward_curve[3]?.cip_basis_bps != null ? fx.forward_curve[3].cip_basis_bps + ' bps' : '\u2014'}</div>
+                        <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">CIP Basis: ${fx.forward_curve[3]?.cip_basis_bps != null ? fx.forward_curve[3].cip_basis_bps + ' bps' : '\u2014'} <span style="color: var(--accent-amber);">modelled assumption &mdash; no basis swap quotes are observed</span></div>
                     </div>
 
                     <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px 16px;">
@@ -8937,7 +8951,7 @@
                                         <th style="padding: 6px;">Days</th>
                                         <th style="padding: 6px;">Forward FX</th>
                                         <th style="padding: 6px;">Points (Pips)</th>
-                                        <th style="padding: 6px;">CIP Basis</th>
+                                        <th style="padding: 6px;" title="Modelled assumption, not measured. This platform holds no cross-currency basis swap quotes.">CIP Basis <span style="font-weight: 400; color: var(--accent-amber);">(assumed)</span></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -9058,7 +9072,7 @@
                                     <th style="padding: 8px;">Spot FX</th>
                                     <th style="padding: 8px;">Forward FX</th>
                                     <th style="padding: 8px;">Points (Pips)</th>
-                                    <th style="padding: 8px;">CIP Basis Spread</th>
+                                    <th style="padding: 8px;" title="Modelled assumption, not measured. This platform holds no cross-currency basis swap quotes.">CIP Basis Spread <span style="font-weight: 400; color: var(--accent-amber);">(assumed)</span></th>
                                     <th style="padding: 8px;">Carry Implication</th>
                                 </tr>
                             </thead>
@@ -13009,10 +13023,29 @@
                                 Source: <strong>${f.primary_source}</strong>
                             </div>
                             <div style="display: flex; justify-content: space-between; font-size: 11px; border-top: 1px solid var(--border-color); padding-top: 6px; color: var(--text-secondary);">
-                                <span>Freshness: <strong style="color: var(--accent-cyan);">${f.freshness_hours}h ago</strong></span>
-                                <span>Records: <strong>${f.records_count}</strong></span>
-                                <span>Coverage: <strong>${f.coverage_pct}%</strong></span>
+                                <span>Freshness: <strong style="color: var(--accent-cyan);">${(f.freshness_hours === null || f.freshness_hours === undefined) ? 'not measured' : f.freshness_hours + 'h ago'}</strong></span>
+                                <span>Records: <strong>${(f.records_count === null || f.records_count === undefined) ? '\u2014' : f.records_count}</strong></span>
+                                <span>Coverage: <strong>${(f.coverage_pct === null || f.coverage_pct === undefined) ? '\u2014' : f.coverage_pct + '%'}</strong></span>
                             </div>
+                            ${(() => {
+                                // CLOSED_MARKET is not a fault: the exchange has had no
+                                // session since the newest bar, so this is the most recent
+                                // close that exists. STALE is a real ingestion gap.
+                                // UNVERIFIED_GAP means weekdays passed beyond the end of the
+                                // ingested history and their status cannot be established.
+                                const b = f.staleness_badge;
+                                if (!b) return '';
+                                const c = b === 'STALE' ? 'var(--accent-red)'
+                                    : (b === 'UNVERIFIED_GAP' || b === 'AGING') ? '#f59e0b'
+                                    : b === 'CLOSED_MARKET' ? 'var(--accent-blue)' : 'var(--accent-green)';
+                                return '<div style="margin-top: 6px; font-size: 10px; line-height: 1.4;">'
+                                    + '<span style="padding: 1px 5px; border-radius: 3px; font-weight: 800; '
+                                    + 'background: ' + c + '22; color: ' + c + '; border: 1px solid ' + c + '55;">'
+                                    + escapeHtml(String(b).replace(/_/g, ' ')) + '</span>'
+                                    + (f.staleness_reason ? ' <span style="color: var(--text-muted);">'
+                                        + escapeHtml(f.staleness_reason) + '</span>' : '')
+                                    + '</div>';
+                            })()}
                         </div>
                     `).join('')}
                 </div>
