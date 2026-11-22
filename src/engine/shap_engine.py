@@ -29,6 +29,7 @@ except ImportError:
 
 from config.settings import DATA_DIR
 from src.compliance.linter import linter
+from src.engine.technicals import CONFLUENCE_MAX_POINTS
 from src.models.schemas import (
     FeatureAttributionDetail,
     SymbolSHAPAttribution,
@@ -97,7 +98,11 @@ class LightGBMSHAPEngine:
             trend_ratio = close / max(1.0, sma200)
             rsi = float(metrics.get("rsi_14", 50.0))
             prox52 = float(metrics.get("proximity_52w_high", 0.0))
-            confluence = float(tech.get("confluence_score", 50.0))
+            # MTF confluence is scored 0..CONFLUENCE_MAX_POINTS (75), not 0..100. A missing
+            # score is imputed at the neutral midpoint of the CURRENT scale; the previous
+            # hard-coded 50.0 was left over from the 0..100 scale and would have biased every
+            # missing row upward once the scale changed.
+            confluence = float(tech.get("confluence_score", CONFLUENCE_MAX_POINTS / 2.0))
 
             roic = float(qual.get("roic") or 15.0)
             # HONESTY OVERHAUL (Phase 3): this silently substituted a typed-in

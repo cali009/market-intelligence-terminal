@@ -1069,7 +1069,7 @@
                             <th>Fund Score</th>
                             <th>ROIC</th>
                             <th>P/E</th>
-                            <th>MTF Confluence</th>
+                            <th title="Multi-timeframe confluence, scored over the daily, weekly and monthly frames only. This platform holds end-of-day bars, so no intraday timeframe is measured.">Confluence (1D/1W/1M)</th>
                             <th>Value Area</th>
                             <th>Confidence</th>
                             <th>14-Day RSI</th>
@@ -1217,7 +1217,7 @@
                             <span class="exchange-tag" style="background: rgba(139, 92, 246, 0.15); color: var(--accent-purple); border-color: rgba(139, 92, 246, 0.3); font-weight: 700;">9 DUAL-LISTED PAIRS</span>
                         </div>
                         <p style="font-size: 12px; color: var(--text-muted);">
-                            Covered Interest Rate Parity forward curves (1M–12M) · Minimum-variance optimal currency hedging &amp; interactive simulator · Intraday cross-border basis spread monitor &amp; smart venue router (TSX vs. NYSE)
+                            Covered Interest Rate Parity forward curves (1M–12M) · Minimum-variance optimal currency hedging &amp; interactive simulator · Dual-listed basis spread on daily closes (TSX vs. NYSE) — this platform holds end-of-day bars only, so no intraday basis is monitored and no order is routed anywhere
                         </p>
                     </div>
                     <!-- Controls Bar -->
@@ -4354,9 +4354,14 @@
                 const scoreClass = item.composite_score >= 60 ? 'score-high' : (item.composite_score >= 45 ? 'score-mid' : 'score-low');
                 const proxClass = item.proximity_52w_high >= -5 ? 'color: var(--accent-green);' : (item.proximity_52w_high <= -20 ? 'color: var(--accent-red);' : '');
 
-                const confScore = item.mtf_confluence_score ?? 50;
-                const confLabel = item.mtf_confluence_label || 'NEUTRAL';
-                const confColor = confScore >= 75 ? 'var(--accent-green)' : (confScore >= 50 ? 'var(--accent-blue)' : 'var(--accent-amber)');
+                // Confluence is scored against the maximum the feed declares (currently 75 =
+                // 3 timeframes x 25). A missing score renders as an em dash, never as a
+                // fabricated midpoint. Colour bands are fractions of the declared maximum.
+                const confScore = (item.mtf_confluence_score === null || item.mtf_confluence_score === undefined) ? null : Number(item.mtf_confluence_score);
+                const confMax = Number(item.mtf_confluence_max_score) > 0 ? Number(item.mtf_confluence_max_score) : null;
+                const confLabel = item.mtf_confluence_label || 'NOT_MEASURED';
+                const confRatio = (confScore === null || !confMax) ? null : confScore / confMax;
+                const confColor = confRatio === null ? 'var(--text-muted)' : (confRatio >= 0.75 ? 'var(--accent-green)' : (confRatio >= 0.5 ? 'var(--accent-blue)' : 'var(--accent-amber)'));
 
                 const vaState = item.value_area_state || 'INSIDE_VALUE';
                 const vaColor = vaState === 'ABOVE_VALUE' ? 'var(--accent-cyan)' : (vaState === 'INSIDE_VALUE' ? 'var(--accent-green)' : 'var(--accent-amber)');
@@ -4400,8 +4405,8 @@
                         ${peDisplay}
                     </td>
                     <td>
-                        <div style="font-size: 12px; font-weight: 700; color: ${confColor};">${confScore}%</div>
-                        <div style="font-size: 10px; color: var(--text-muted);">${confLabel.replace(/_/g, ' ')}</div>
+                        <div style="font-size: 12px; font-weight: 700; color: ${confColor};">${confScore === null ? '—' : `${confScore}${confMax ? ' / ' + confMax : ''}`}</div>
+                        <div style="font-size: 10px; color: var(--text-muted);">${confScore === null ? 'not measured' : confLabel.replace(/_/g, ' ')}</div>
                     </td>
                     <td>
                         <span class="exchange-tag" style="color: ${vaColor}; font-weight: 700; font-size: 10px;">
@@ -5886,15 +5891,21 @@
                 return;
             }
 
-            const mtf = td.multi_timeframe || { timeframes: {}, confluence_score: 50, confluence_label: 'NEUTRAL' };
+            const mtf = td.multi_timeframe || { timeframes: {}, confluence_score: null, confluence_max_score: null, confluence_label: 'NOT_MEASURED' };
             const vp = td.volume_profile || { poc_price: 0, vah_price: 0, val_price: 0, value_area_state: 'INSIDE_VALUE', profile_bins: [] };
             const sr = td.support_resistance || { support_1: 0, support_2: 0, resistance_1: 0, resistance_2: 0, dist_support_pct: 0, dist_resistance_pct: 0 };
             const ts = td.trend_structure || { trend_structure: 'CONSOLIDATION_RANGE', structure_label: 'Consolidation', msb_detected: false };
             const av = td.anchored_vwap || { ytd_vwap: 0, dist_ytd_vwap_pct: 0, high_52w_vwap: 0 };
 
-            const confScore = td.confluence_score || mtf.confluence_score || 50;
-            const confLabel = td.confluence_label || mtf.confluence_label || 'NEUTRAL';
-            const confColor = confScore >= 75 ? 'var(--accent-green)' : (confScore >= 50 ? 'var(--accent-blue)' : 'var(--accent-amber)');
+            // Scored against the maximum declared by the feed (75 = 3 real timeframes x 25).
+            // Never fall back to a midpoint: a missing score renders as an em dash.
+            const confRaw = (td.confluence_score === null || td.confluence_score === undefined) ? mtf.confluence_score : td.confluence_score;
+            const confScore = (confRaw === null || confRaw === undefined) ? null : Number(confRaw);
+            const confMax = Number(mtf.confluence_max_score) > 0 ? Number(mtf.confluence_max_score) : null;
+            const confFrames = Array.isArray(mtf.confluence_timeframes) && mtf.confluence_timeframes.length ? mtf.confluence_timeframes.join(' / ') : null;
+            const confLabel = td.confluence_label || mtf.confluence_label || 'NOT_MEASURED';
+            const confRatio = (confScore === null || !confMax) ? null : confScore / confMax;
+            const confColor = confRatio === null ? 'var(--text-muted)' : (confRatio >= 0.75 ? 'var(--accent-green)' : (confRatio >= 0.5 ? 'var(--accent-blue)' : 'var(--accent-amber)'));
 
             const vaState = vp.value_area_state || 'INSIDE_VALUE';
             const vaColor = vaState === 'ABOVE_VALUE' ? 'var(--accent-cyan)' : (vaState === 'INSIDE_VALUE' ? 'var(--accent-green)' : 'var(--accent-amber)');
@@ -5925,11 +5936,11 @@
                     <div>
                         <div style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Multi-Timeframe Confluence</div>
                         <div style="font-size: 14px; font-weight: 800; color: ${confColor}; margin-top: 2px;">
-                            ${confScore}% · ${confLabel.replace(/_/g, ' ')}
+                            ${confScore === null ? '— not measured' : `${confScore}${confMax ? ' / ' + confMax : ''}`} · ${confScore === null ? 'no confluence score in the feed' : confLabel.replace(/_/g, ' ')}
                         </div>
                     </div>
                     <span class="exchange-tag" style="background: rgba(59, 130, 246, 0.15); color: var(--accent-blue); font-weight: 800;">
-                        1H / 1D / 1W / 1M Confluence
+                        ${confFrames ? confFrames + ' · end-of-day bars' : 'Timeframes not declared'}
                     </span>
                 </div>
 
@@ -13240,7 +13251,7 @@
                             </div>
                             <div style="background: var(--bg-card); padding: 10px; border-radius: 6px; border: 1px solid var(--border-color);">
                                 <strong style="color: var(--accent-amber); font-size: 11px; display: block; margin-bottom: 4px;">STAGE 2: MANIPULATION (SWEEP)</strong>
-                                <span style="font-size: 11px; color: var(--text-muted);">Intraday probe below 20DMA or Lower BB triggers retail stops; liquidity is immediately absorbed (lower wick &ge; 28%).</span>
+                                <span style="font-size: 11px; color: var(--text-muted);">Intra-bar probe below the 20DMA or Lower BB triggers retail stops; liquidity is immediately absorbed (lower wick &ge; 28%).</span>
                             </div>
                             <div style="background: var(--bg-card); padding: 10px; border-radius: 6px; border: 1px solid var(--border-color);">
                                 <strong style="color: var(--accent-green); font-size: 11px; display: block; margin-bottom: 4px;">STAGE 3: EXPANSION (DISTRIBUTION)</strong>

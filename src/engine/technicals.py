@@ -19,12 +19,23 @@ from datetime import datetime
 from src.data.db import db
 
 
+# Timeframes scored for MTF confluence. Only these are measured: the platform ingests
+# end-of-day bars (src/data/bar_ingestion.py, interval="1d"), so weekly and monthly frames
+# are resampled from daily bars and there is no intraday frame at all.
+CONFLUENCE_TIMEFRAMES = ("1D", "1W", "1M")
+# +20 per BULLISH trend, +10 per NEUTRAL, +5 per bullish 8/21 EMA cross, per timeframe.
+CONFLUENCE_MAX_POINTS = 25 * len(CONFLUENCE_TIMEFRAMES)
+# Bumped from v4.0: v4.x confluence scores were computed on a 0-100 scale that included a
+# synthesised 1H leg. v5.x scores are 0-75 over three real timeframes. The two scales must
+# never be mixed in one time series.
+FEATURE_VERSION = "v5.0"
+
+
 class TechnicalAnalysisEngine:
     """
     Computes deterministic technical features from canonical OHLCV bars.
     Requires at least 15 bars; optimal with 200+ bars for 200DMA.
     """
-
     @staticmethod
     def compute_all_features(df: pd.DataFrame) -> pd.DataFrame:
         """
@@ -453,14 +464,16 @@ class TechnicalAnalysisEngine:
     @classmethod
     def compute_multi_timeframe_matrix(cls, df_daily: pd.DataFrame) -> Dict[str, Any]:
         """
-        Evaluates technical features across 4 distinct timeframes:
-        1. 1-Hour (1h) - simulated intraday swing momentum
-        2. Daily (1d) - primary swing baseline
-        3. Weekly (1w) - resampled multi-week trend
-        4. Monthly (1m) - macro secular regime
-        Computes composite MTF Confluence Score (0 - 100).
+        Evaluates technical features across 3 timeframes, all derived from the same
+        end-of-day bar series:
+        1. Daily (1d) - primary swing baseline
+        2. Weekly (1w) - resampled (W-FRI) multi-week trend
+        3. Monthly (1m) - resampled (ME) macro secular regime
+        Computes composite MTF Confluence Score (0 - CONFLUENCE_MAX_POINTS).
+
+        No intraday timeframe is evaluated: this platform ingests daily bars only, so an
+        hourly reading cannot be measured and is not reported.
         """
-        cur_close = float(df_daily.iloc[-1]["close"])
         d_metrics = cls.get_latest_feature_snapshot(df_daily)
 
         # 1. Daily Timeframe (1d)
@@ -526,23 +539,21 @@ class TechnicalAnalysisEngine:
                 "ema_8_21_cross": "BULLISH", "rsi": 55.0, "macd_state": "EXPANDING", "adx": 25.0
             }
 
-        # 4. 1-Hour Intraday Momentum (simulated session quadrant distribution)
-        # Uses last 5 daily bars to model intraday momentum
-        last_5 = df_daily.tail(5)
-        intraday_direction = "BULLISH" if last_5.iloc[-1]["close"] > last_5.iloc[-1]["open"] and (d_metrics["rvol_20"] or 1.0) >= 1.0 else "NEUTRAL"
-        tf_1h = {
-            "timeframe": "1H",
-            "name": "Hourly Intraday",
-            "trend": intraday_direction,
-            "ema_8_21_cross": "BULLISH" if intraday_direction == "BULLISH" else "NEUTRAL",
-            "rsi": round(min(80.0, max(20.0, float(d_metrics.get("rsi_14") or 50.0) + (2.5 if intraday_direction == "BULLISH" else -2.5))), 1),
-            "macd_state": "EXPANDING" if intraday_direction == "BULLISH" else "CONTRACTING",
-            "adx": round(float(d_metrics.get("adx_14") or 20.0), 1),
-        }
+        # NOTE: an intraday (1H) leg was previously synthesised here from the last 5 DAILY
+        # bars — direction from close>open plus RVOL, RSI as daily RSI +/- 2.5, ADX copied
+        # verbatim from the daily frame. This platform ingests end-of-day bars only
+        # (src/data/bar_ingestion.py fetches interval="1d"), so there was no hourly data to
+        # measure. The leg has been removed rather than relabelled. Confluence is now scored
+        # over the three timeframes that are actually derived from real resampled bars.
+        # If genuine hourly bars are ingested later, a 1H leg may be re-added as a new
+        # feature_version with the maximum restored to 100.
 
-        # Confluence Score calculation (0 - 100)
+        # Confluence Score calculation (0 - 75)
+        #   +20 per timeframe with a BULLISH trend, +10 NEUTRAL, +5 for a bullish 8/21 EMA cross.
+        #   Three timeframes x 25 points each = 75 maximum. Reported against its own maximum
+        #   so the scale is visible and no timeframe is implied that we do not measure.
         bull_points = 0
-        for tf in [tf_1h, tf_1d, tf_1w, tf_1m]:
+        for tf in [tf_1d, tf_1w, tf_1m]:
             if tf["trend"] == "BULLISH":
                 bull_points += 20
             elif tf["trend"] == "NEUTRAL":
@@ -550,21 +561,23 @@ class TechnicalAnalysisEngine:
             if tf["ema_8_21_cross"] == "BULLISH":
                 bull_points += 5
 
-        confluence_score = min(100, max(0, bull_points))
-        if confluence_score >= 80:
+        confluence_score = min(CONFLUENCE_MAX_POINTS, max(0, bull_points))
+        # Thresholds are the same fractions of the maximum as the previous 80/60/40 of 100.
+        if confluence_score >= 60:
             conf_label = "STRONG_BULLISH_CONFLUENCE"
-        elif confluence_score >= 60:
+        elif confluence_score >= 45:
             conf_label = "MODERATE_BULLISH_ALIGNMENT"
-        elif confluence_score >= 40:
+        elif confluence_score >= 30:
             conf_label = "MIXED_CONSOLIDATION"
         else:
             conf_label = "BEARISH_DIVERGENCE"
 
         return {
             "confluence_score": confluence_score,
+            "confluence_max_score": CONFLUENCE_MAX_POINTS,
+            "confluence_timeframes": list(CONFLUENCE_TIMEFRAMES),
             "confluence_label": conf_label,
             "timeframes": {
-                "1h": tf_1h,
                 "1d": tf_1d,
                 "1w": tf_1w,
                 "1m": tf_1m,
@@ -594,7 +607,7 @@ class TechnicalAnalysisEngine:
             "multi_timeframe": mtf_matrix,
             "confluence_score": mtf_matrix["confluence_score"],
             "confluence_label": mtf_matrix["confluence_label"],
-            "feature_version": "v4.0"
+            "feature_version": FEATURE_VERSION
         }
 
     @staticmethod
@@ -667,14 +680,14 @@ class TechnicalAnalysisEngine:
                 "trend_structure": dossier["trend_structure"],
                 "timeframes": mtf["timeframes"]
             }),
-            "v4.0"
+            FEATURE_VERSION
         ))
 
         if not feature_id or feature_id <= 0:
             existing = db.execute_query("""
                 SELECT feature_id FROM feature_store 
-                WHERE security_id = ? AND as_of_date = ? AND timeframe = '1d' AND feature_version = 'v4.0';
-            """, (security_id, as_of_date))
+                WHERE security_id = ? AND as_of_date = ? AND timeframe = '1d' AND feature_version = ?;
+            """, (security_id, as_of_date, FEATURE_VERSION))
             feature_id = existing[0]["feature_id"] if existing else 1
 
         return feature_id

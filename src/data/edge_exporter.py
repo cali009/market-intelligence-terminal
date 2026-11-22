@@ -361,6 +361,8 @@ class EdgeExporter:
                 "proximity_52w_high": round((metrics.get("proximity_52w_high", 0.0)) * 100, 1),
                 "scanner_tags": [m.scanner_name for m in matches],
                 "mtf_confluence_score": tech_dossier["confluence_score"],
+                "mtf_confluence_max_score": tech_dossier["multi_timeframe"]["confluence_max_score"],
+                "mtf_confluence_timeframes": tech_dossier["multi_timeframe"]["confluence_timeframes"],
                 "mtf_confluence_label": tech_dossier["confluence_label"],
                 "value_area_state": tech_dossier["volume_profile"]["value_area_state"],
                 "poc_price": tech_dossier["volume_profile"]["poc_price"],
