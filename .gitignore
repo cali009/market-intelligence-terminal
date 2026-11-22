@@ -23,3 +23,6 @@ package-lock.json
 # Audit scratch: downloaded copy of the deployed site, used to reconcile the
 # workspace generators against production. Not source.
 live_snapshot/
+
+# scratch files from verification runs
+.tmp_*

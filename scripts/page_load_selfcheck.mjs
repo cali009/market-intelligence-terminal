@@ -102,6 +102,45 @@ try {
     console.error('  could not open the system status tab:', e.message);
 }
 
+// HONESTY OVERHAUL (added after a live regression): walk EVERY tab, not just the
+// two this harness used to open. The AI Deep-Read tab shipped broken for a whole
+// deploy because its renderer read a field the backend no longer emitted, threw,
+// and the catch handler replaced the panel with "Unable to load AI deep-read
+// bundle." — a message this audit never looked at, on a tab it never opened.
+// Every lazy-loaded panel gets opened and inspected for that failure state.
+try {
+    if (typeof window.switchTab === 'function') {
+        const tabIds = Array.from(
+            window.document.querySelectorAll('.tab-btn[data-tab]')
+        ).map((b) => b.getAttribute('data-tab')).filter(Boolean);
+        console.log('  walking all', tabIds.length, 'tabs...');
+        for (const id of tabIds) {
+            const before = uncaught.length + consoleErrors.length;
+            window.switchTab(id, { preventDefault() {}, stopPropagation() {}, target: null });
+            await new Promise((r) => setTimeout(r, 900));
+            const pane = window.document.getElementById('tab-' + id);
+            if (!pane) { harnessEarly.push('tab ' + id + ' has no pane'); continue; }
+            const text = pane.textContent || '';
+            if (/Unable to load/i.test(text)) {
+                const m = text.match(/Unable to load[^.]*\./i);
+                harnessEarly.push('tab ' + id + ' is showing its load-failure state: "'
+                    + (m ? m[0] : 'Unable to load') + '"');
+            }
+            const stuckInPane = Array.from(pane.querySelectorAll('[id]')).filter((el) =>
+                !el.children.length && /^Loading/i.test((el.textContent || '').trim()));
+            if (stuckInPane.length) {
+                harnessEarly.push('tab ' + id + ' is stuck on a loading placeholder: '
+                    + stuckInPane.slice(0, 4).map((e) => '#' + e.id).join(', '));
+            }
+            if (uncaught.length + consoleErrors.length > before) {
+                harnessEarly.push('tab ' + id + ' raised a console error or exception while rendering');
+            }
+        }
+    }
+} catch (e) {
+    console.error('  tab walk failed:', e.message);
+}
+
 // Run the page's own self-check and take its verdict.
 let pageFailures = null;
 if (typeof window.runHonestySelfCheck === 'function') {

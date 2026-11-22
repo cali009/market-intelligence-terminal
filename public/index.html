@@ -7698,8 +7698,13 @@
                         <div style="display: flex; flex-direction: column; gap: 6px;">
                             ${alerts.map(a => `
                                 <div style="font-size: 11px; color: var(--text-secondary); background: rgba(15, 23, 42, 0.6); padding: 8px 12px; border-radius: 6px; border: 1px solid rgba(239, 68, 68, 0.2);">
-                                    <strong style="color: #fff;">${a.title}</strong> — ${a.message}
-                                    <div style="color: var(--accent-amber); margin-top: 2px;">Action: ${a.suggested_action}</div>
+                                    <!-- The feed emits headline / body / action_required. This template
+                                         was written against title / message / suggested_action, which never
+                                         existed, so every alert rendered "undefined — undefined / Action:
+                                         undefined". Reads the real names and falls back rather than
+                                         printing a bare undefined. -->
+                                    <strong style="color: #fff;">${escapeHtml(a.headline || a.title || a.predicate_type || '\u2014')}</strong>${(a.body || a.message) ? ' \u2014 ' + escapeHtml(a.body || a.message) : ''}
+                                    <div style="color: var(--accent-amber); margin-top: 2px;">Action: ${escapeHtml(a.action_required || a.suggested_action || '\u2014')}</div>
                                 </div>
                             `).join('')}
                         </div>
@@ -11714,37 +11719,62 @@
             const container = document.getElementById('deepreadSummaryCards');
             if (!container || !deepreadBundle) return;
 
-            const s = deepreadBundle.summary || {
-                citation_resolution_pct: 100.0,
-                hallucination_rate_pct: 0.00,
-                section_diffs_count: 3,
-                model_cards_count: 3
-            };
+            // HONESTY OVERHAUL (Phase 2, fixed post-deploy): this block used to read
+            // s.citation_resolution_pct and s.hallucination_rate_pct, and carried a
+            // fallback that invented {citation_resolution_pct: 100.0,
+            // hallucination_rate_pct: 0.00} if the summary was absent. The backend
+            // audit was rewritten to report what it actually does, so both fields
+            // became undefined and `undefined.toFixed(2)` threw — which is why the
+            // whole tab fell back to "Unable to load AI deep-read bundle." The
+            // cards now show the real spot-check figures, the invented fallback is
+            // gone, and every access is null-safe so one missing field can never
+            // take the panel down again.
+            const s = deepreadBundle.summary || {};
+            const a = deepreadBundle.hallucination_audit || {};
+            const DASH = '\u2014';
+            const n = (v) => (v === null || v === undefined) ? DASH : v;
+
+            const checked = a.samples_checked;
+            const found = a.numbers_found_in_source;
+            const missing = a.numbers_not_found;
+            const spot = (checked === null || checked === undefined)
+                ? DASH
+                : n(found) + ' of ' + n(checked);
+            const spotColor = (typeof missing === 'number' && missing > 0)
+                ? 'var(--accent-red)' : 'var(--accent-green)';
+
+            const diffSymbols = (deepreadBundle.section_diffs || [])
+                .map(d => d && d.symbol).filter(Boolean).join(', ');
 
             container.innerHTML = `
                 <div class="metric-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 16px;">
-                    <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Citation Span Resolution</div>
-                    <div style="font-size: 22px; font-weight: 800; color: var(--accent-green); margin: 6px 0;">${s.citation_resolution_pct}%</div>
-                    <div style="font-size: 11px; color: var(--accent-green);">DoD SLA: &ge; 99.5% (Exact character offsets)</div>
+                    <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Numeric Spot-Check</div>
+                    <div style="font-size: 22px; font-weight: 800; color: ${spotColor}; margin: 6px 0;">${spot}</div>
+                    <div style="font-size: 11px; color: var(--text-muted);">${escapeHtml(a.check_name || 'not run')}</div>
                 </div>
 
                 <div class="metric-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 16px;">
-                    <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Hallucination Rate (Audit)</div>
-                    <div style="font-size: 22px; font-weight: 800; color: var(--accent-cyan); margin: 6px 0;">${s.hallucination_rate_pct.toFixed(2)}%</div>
-                    <div style="font-size: 11px; color: var(--accent-green);">DoD SLA: 0.00% (200 gold samples verified)</div>
+                    <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Source Documents Loaded</div>
+                    <div style="font-size: 22px; font-weight: 800; color: var(--accent-cyan); margin: 6px 0;">${n(a.source_documents_loaded)}</div>
+                    <div style="font-size: 11px; color: var(--accent-amber);">Not a hallucination rate. Not audited.</div>
                 </div>
 
                 <div class="metric-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 16px;">
                     <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Period Section Diffs</div>
-                    <div style="font-size: 22px; font-weight: 800; color: var(--accent-purple); margin: 6px 0;">${s.section_diffs_count} Issuers</div>
-                    <div style="font-size: 11px; color: var(--text-muted);">NVDA, AAPL, TD Bank (10-Q &amp; MD&amp;A)</div>
+                    <div style="font-size: 22px; font-weight: 800; color: var(--accent-purple); margin: 6px 0;">${n(s.section_diffs_count)} Issuers</div>
+                    <div style="font-size: 11px; color: var(--text-muted);">${escapeHtml(diffSymbols || 'none')}</div>
                 </div>
 
                 <div class="metric-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 16px;">
                     <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Published Model Cards</div>
-                    <div style="font-size: 22px; font-weight: 800; color: var(--accent-amber); margin: 6px 0;">${s.model_cards_count} Production Cards</div>
+                    <div style="font-size: 22px; font-weight: 800; color: var(--accent-amber); margin: 6px 0;">${n(s.model_cards_count)} Cards</div>
                     <div style="font-size: 11px; color: var(--text-muted);">Specification cards &mdash; not independently audited</div>
                 </div>
+
+                ${a.limitation ? `
+                <div class="metric-card" style="grid-column: 1 / -1; background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 8px; padding: 12px 16px;">
+                    <div style="font-size: 11px; color: #fcd34d; line-height: 1.6;">${escapeHtml(a.limitation)}</div>
+                </div>` : ''}
             `;
         }
 
@@ -11948,10 +11978,13 @@
                         </div>
                         <div style="font-size: 11px; color: var(--text-secondary); line-height: 1.4; margin-bottom: 10px;">${escapeHtml(c.task)}</div>
                         <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; font-size: 11px; margin-bottom: 10px; background: var(--bg-card); padding: 8px; border-radius: 4px; border: 1px solid var(--border-color);">
-                            <div>Citation Grounding: <strong style="color: var(--accent-green);">${c.citation_resolution_pct}%</strong></div>
-                            <div>Hallucination Rate: <strong style="color: var(--accent-cyan);">${c.hallucination_rate_pct}%</strong></div>
-                            <div>Context Window: <strong style="color: var(--text-primary);">${(c.context_window / 1024).toFixed(0)}k</strong></div>
-                            <div>Cost/Query: <strong style="color: var(--text-primary);">$${c.cost_per_query_usd.toFixed(4)}</strong></div>
+                            <!-- Citation grounding and hallucination rate are null:
+                                 neither has been measured for these cards, so the cell
+                                 says so instead of printing "null%". -->
+                            <div>Citation Grounding: <strong style="color: var(--text-muted);">${c.citation_resolution_pct == null ? 'not measured' : c.citation_resolution_pct + '%'}</strong></div>
+                            <div>Hallucination Rate: <strong style="color: var(--text-muted);">${c.hallucination_rate_pct == null ? 'not measured' : c.hallucination_rate_pct + '%'}</strong></div>
+                            <div>Context Window: <strong style="color: var(--text-primary);">${c.context_window == null ? '\u2014' : (c.context_window / 1024).toFixed(0) + 'k'}</strong></div>
+                            <div>Cost/Query: <strong style="color: var(--text-primary);">${c.cost_per_query_usd == null ? '\u2014' : '$' + c.cost_per_query_usd.toFixed(4)}</strong></div>
                         </div>
                         <div style="font-size: 11px; color: var(--text-muted); line-height: 1.4; margin-bottom: 8px;">
                             <strong style="color: var(--accent-purple);">Intended Use:</strong> ${escapeHtml(c.intended_use)}
@@ -12404,7 +12437,7 @@
                             <span class="${badgeCls}">${item.verdict_badge}</span>
                         </td>
                         <td style="padding: 12px 14px; color: var(--text-secondary); font-size: 11px; line-height: 1.4; max-width: 380px;">
-                            ${item.notes}
+                            ${escapeHtml(item.explanation || item.notes || '\u2014')}
                         </td>
                     </tr>
                 `;
@@ -12464,7 +12497,7 @@
                         <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;">
                             <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
                                 ${symButton}
-                                <span style="font-weight: 700; font-size: 13px; color: var(--text-primary);">${ev.company_name}</span>
+                                <span style="font-weight: 700; font-size: 13px; color: var(--text-primary);">${escapeHtml(ev.company_name || ev.name || '\u2014')}</span>
                                 <span class="exchange-tag" style="color: ${typeColor}; font-weight: 700;">${ev.event_type.replace(/_/g, ' ')}</span>
                             </div>
                             <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
@@ -12479,7 +12512,7 @@
                         </div>
 
                         <div style="font-size: 11px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 8px;">
-                            ${ev.details}
+                            ${escapeHtml(ev.details || ev.description || '')}
                         </div>
 
                         <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: 8px; font-size: 11px; color: var(--text-muted); flex-wrap: wrap; gap: 8px;">
@@ -12488,7 +12521,8 @@
                                 <span>${isImmediate ? 'High volatility event. Binary gap risk — reduce position sizing or tighten trailing stops.' : 'Monitor implied volatility and estimate revisions prior to print.'}</span>
                             </div>
                             <div>
-                                <span>Source: <strong style="color: var(--text-secondary);">${ev.source}</strong></span>
+                                <!-- The calendar feed carries no source field; say so instead of printing undefined. -->
+                                <span>Source: <strong style="color: var(--text-secondary);">${escapeHtml(ev.source || 'not recorded')}</strong></span>
                             </div>
                         </div>
                     </div>
