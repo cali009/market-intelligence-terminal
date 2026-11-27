@@ -1,8 +1,8 @@
 {
-  "as_of_date": "2026-11-17",
-  "generated_at": "2026-11-17T06:28:51.243671+00:00",
+  "as_of_date": "2026-11-26",
+  "generated_at": "2026-11-26T17:55:03.526273+00:00",
   "session": {
-    "session": "2026-11-17",
+    "session": "2026-11-26",
     "evaluations": 0,
     "orders": 0,
     "hard_rejections": 0,
@@ -13,7 +13,7 @@
     "rejected_share": 0.0,
     "breached_controls": {},
     "top_rejected_symbols": [],
-    "generated_at": "2026-11-17T06:28:51.243671+00:00"
+    "generated_at": "2026-11-26T17:55:03.526273+00:00"
   },
   "predicate_28": {
     "predicate_type": "PRE_TRADE_RISK_BREACH",
@@ -76,9 +76,9 @@
     "passed": true,
     "artifact_path": "/home/user/data/attestations/aos_2026.json",
     "scope_note": "Attests pre-trade control coverage, routing gates, state-machine integrity and kill-switch operation only. Does not attest profitability, fill-quality realism, or the suitability of any signal. Unregistered impersonal research; no external broker adapter ships and no order routes to a live venue.",
-    "days_until_expiry": 321,
+    "days_until_expiry": 312,
     "expired": false,
-    "artifact_sha256": "2bb437fa7b51865604eb66e89007a6e23784b82bb149512170d654ff596249b9"
+    "artifact_sha256": "54c66987e65cbe994fc888c659c31156615549fc0f21b32374d885295bf06cdd"
   },
   "disclaimers": [
     "Decision-support and research only. Not investment advice and not a recommendation to buy or sell any security.",

@@ -1,333 +1,2637 @@
 {
-  "as_of_date": "2026-11-21",
-  "generated_at": "2026-11-21T23:38:52.532227+00:00",
-  "universe_size": 19,
+  "as_of_date": "2026-11-26",
+  "generated_at": "2026-11-26T17:42:44.071221+00:00",
+  "universe_size": 163,
   "total_capital": 100000.0,
   "allocations": {
     "AAPL": {
       "symbol": "AAPL",
       "country": "US",
-      "weight": 0.0361,
-      "dollar_allocation": 3606.07,
-      "volatility_annualized": 0.2818,
-      "marginal_risk_contribution": 0.1675,
-      "risk_share_pct": 4.82
+      "weight": 0.0023,
+      "dollar_allocation": 227.04,
+      "volatility_annualized": 0.2773,
+      "marginal_risk_contribution": 0.1585,
+      "risk_share_pct": 0.33
+    },
+    "ABBV": {
+      "symbol": "ABBV",
+      "country": "US",
+      "weight": 0.0077,
+      "dollar_allocation": 769.32,
+      "volatility_annualized": 0.2354,
+      "marginal_risk_contribution": 0.0873,
+      "risk_share_pct": 0.62
+    },
+    "ABT": {
+      "symbol": "ABT",
+      "country": "US",
+      "weight": 0.006,
+      "dollar_allocation": 604.66,
+      "volatility_annualized": 0.2316,
+      "marginal_risk_contribution": 0.1223,
+      "risk_share_pct": 0.68
+    },
+    "ABX": {
+      "symbol": "ABX",
+      "country": "CA",
+      "weight": 0.0038,
+      "dollar_allocation": 376.35,
+      "volatility_annualized": 0.3624,
+      "marginal_risk_contribution": 0.1033,
+      "risk_share_pct": 0.36
+    },
+    "ACN": {
+      "symbol": "ACN",
+      "country": "US",
+      "weight": 0.0032,
+      "dollar_allocation": 320.11,
+      "volatility_annualized": 0.3326,
+      "marginal_risk_contribution": 0.1697,
+      "risk_share_pct": 0.5
+    },
+    "ADBE": {
+      "symbol": "ADBE",
+      "country": "US",
+      "weight": 0.0012,
+      "dollar_allocation": 120.14,
+      "volatility_annualized": 0.3833,
+      "marginal_risk_contribution": 0.173,
+      "risk_share_pct": 0.19
+    },
+    "AEM": {
+      "symbol": "AEM",
+      "country": "CA",
+      "weight": 0.0036,
+      "dollar_allocation": 357.49,
+      "volatility_annualized": 0.3718,
+      "marginal_risk_contribution": 0.1022,
+      "risk_share_pct": 0.34
+    },
+    "AMAT": {
+      "symbol": "AMAT",
+      "country": "US",
+      "weight": 0.0021,
+      "dollar_allocation": 207.71,
+      "volatility_annualized": 0.4875,
+      "marginal_risk_contribution": 0.1954,
+      "risk_share_pct": 0.37
+    },
+    "AMD": {
+      "symbol": "AMD",
+      "country": "US",
+      "weight": 0.0005,
+      "dollar_allocation": 46.0,
+      "volatility_annualized": 0.5874,
+      "marginal_risk_contribution": 0.2226,
+      "risk_share_pct": 0.09
+    },
+    "AMGN": {
+      "symbol": "AMGN",
+      "country": "US",
+      "weight": 0.0069,
+      "dollar_allocation": 691.8,
+      "volatility_annualized": 0.249,
+      "marginal_risk_contribution": 0.1128,
+      "risk_share_pct": 0.72
+    },
+    "AMT": {
+      "symbol": "AMT",
+      "country": "US",
+      "weight": 0.0049,
+      "dollar_allocation": 489.11,
+      "volatility_annualized": 0.2725,
+      "marginal_risk_contribution": 0.1253,
+      "risk_share_pct": 0.56
     },
     "AMZN": {
       "symbol": "AMZN",
       "country": "US",
-      "weight": 0.0196,
-      "dollar_allocation": 1964.05,
-      "volatility_annualized": 0.3367,
-      "marginal_risk_contribution": 0.194,
-      "risk_share_pct": 3.04
+      "weight": 0.0022,
+      "dollar_allocation": 218.15,
+      "volatility_annualized": 0.3637,
+      "marginal_risk_contribution": 0.1771,
+      "risk_share_pct": 0.35
+    },
+    "ANET": {
+      "symbol": "ANET",
+      "country": "US",
+      "weight": 0.0014,
+      "dollar_allocation": 142.35,
+      "volatility_annualized": 0.4936,
+      "marginal_risk_contribution": 0.1646,
+      "risk_share_pct": 0.22
+    },
+    "ATD": {
+      "symbol": "ATD",
+      "country": "CA",
+      "weight": 0.008,
+      "dollar_allocation": 803.82,
+      "volatility_annualized": 0.2366,
+      "marginal_risk_contribution": 0.1084,
+      "risk_share_pct": 0.8
+    },
+    "AVGO": {
+      "symbol": "AVGO",
+      "country": "US",
+      "weight": 0.001,
+      "dollar_allocation": 99.17,
+      "volatility_annualized": 0.45,
+      "marginal_risk_contribution": 0.1586,
+      "risk_share_pct": 0.14
+    },
+    "AXP": {
+      "symbol": "AXP",
+      "country": "US",
+      "weight": 0.0019,
+      "dollar_allocation": 191.38,
+      "volatility_annualized": 0.2875,
+      "marginal_risk_contribution": 0.185,
+      "risk_share_pct": 0.33
+    },
+    "BA": {
+      "symbol": "BA",
+      "country": "US",
+      "weight": 0.0026,
+      "dollar_allocation": 256.56,
+      "volatility_annualized": 0.3655,
+      "marginal_risk_contribution": 0.1744,
+      "risk_share_pct": 0.41
+    },
+    "BAC": {
+      "symbol": "BAC",
+      "country": "US",
+      "weight": 0.003,
+      "dollar_allocation": 297.89,
+      "volatility_annualized": 0.2641,
+      "marginal_risk_contribution": 0.1662,
+      "risk_share_pct": 0.45
     },
     "BAM": {
       "symbol": "BAM",
       "country": "CA",
-      "weight": 0.0225,
-      "dollar_allocation": 2251.44,
-      "volatility_annualized": 0.3159,
-      "marginal_risk_contribution": 0.2089,
-      "risk_share_pct": 3.75
+      "weight": 0.0039,
+      "dollar_allocation": 386.22,
+      "volatility_annualized": 0.2656,
+      "marginal_risk_contribution": 0.1153,
+      "risk_share_pct": 0.41
+    },
+    "BCE": {
+      "symbol": "BCE",
+      "country": "CA",
+      "weight": 0.0169,
+      "dollar_allocation": 1694.11,
+      "volatility_annualized": 0.1912,
+      "marginal_risk_contribution": 0.0581,
+      "risk_share_pct": 0.9
+    },
+    "BIP-UN": {
+      "symbol": "BIP-UN",
+      "country": "CA",
+      "weight": 0.0118,
+      "dollar_allocation": 1183.06,
+      "volatility_annualized": 0.2529,
+      "marginal_risk_contribution": 0.1252,
+      "risk_share_pct": 1.36
+    },
+    "BKNG": {
+      "symbol": "BKNG",
+      "country": "US",
+      "weight": 0.0025,
+      "dollar_allocation": 245.9,
+      "volatility_annualized": 0.3308,
+      "marginal_risk_contribution": 0.1725,
+      "risk_share_pct": 0.39
+    },
+    "BLK": {
+      "symbol": "BLK",
+      "country": "US",
+      "weight": 0.0022,
+      "dollar_allocation": 216.14,
+      "volatility_annualized": 0.271,
+      "marginal_risk_contribution": 0.1936,
+      "risk_share_pct": 0.38
+    },
+    "BMO": {
+      "symbol": "BMO",
+      "country": "CA",
+      "weight": 0.0055,
+      "dollar_allocation": 553.45,
+      "volatility_annualized": 0.19,
+      "marginal_risk_contribution": 0.1175,
+      "risk_share_pct": 0.6
+    },
+    "BMY": {
+      "symbol": "BMY",
+      "country": "US",
+      "weight": 0.0066,
+      "dollar_allocation": 658.42,
+      "volatility_annualized": 0.2493,
+      "marginal_risk_contribution": 0.0968,
+      "risk_share_pct": 0.59
     },
     "BN": {
       "symbol": "BN",
       "country": "CA",
-      "weight": 0.0157,
-      "dollar_allocation": 1567.95,
-      "volatility_annualized": 0.3051,
-      "marginal_risk_contribution": 0.2352,
-      "risk_share_pct": 2.94
+      "weight": 0.0025,
+      "dollar_allocation": 249.75,
+      "volatility_annualized": 0.2909,
+      "marginal_risk_contribution": 0.2068,
+      "risk_share_pct": 0.47
+    },
+    "BNS": {
+      "symbol": "BNS",
+      "country": "CA",
+      "weight": 0.0085,
+      "dollar_allocation": 853.98,
+      "volatility_annualized": 0.1738,
+      "marginal_risk_contribution": 0.0941,
+      "risk_share_pct": 0.74
+    },
+    "BNY": {
+      "symbol": "BNY",
+      "country": "US",
+      "weight": 0.003,
+      "dollar_allocation": 297.49,
+      "volatility_annualized": 0.2422,
+      "marginal_risk_contribution": 0.1531,
+      "risk_share_pct": 0.42
+    },
+    "BRK-B": {
+      "symbol": "BRK-B",
+      "country": "US",
+      "weight": 0.0166,
+      "dollar_allocation": 1664.09,
+      "volatility_annualized": 0.171,
+      "marginal_risk_contribution": 0.1192,
+      "risk_share_pct": 1.82
+    },
+    "C": {
+      "symbol": "C",
+      "country": "US",
+      "weight": 0.0011,
+      "dollar_allocation": 109.5,
+      "volatility_annualized": 0.2923,
+      "marginal_risk_contribution": 0.1748,
+      "risk_share_pct": 0.18
+    },
+    "CAE": {
+      "symbol": "CAE",
+      "country": "CA",
+      "weight": 0.005,
+      "dollar_allocation": 502.23,
+      "volatility_annualized": 0.3406,
+      "marginal_risk_contribution": 0.1643,
+      "risk_share_pct": 0.76
+    },
+    "CAT": {
+      "symbol": "CAT",
+      "country": "US",
+      "weight": 0.0022,
+      "dollar_allocation": 223.15,
+      "volatility_annualized": 0.3254,
+      "marginal_risk_contribution": 0.1575,
+      "risk_share_pct": 0.32
+    },
+    "CCL-B": {
+      "symbol": "CCL-B",
+      "country": "CA",
+      "weight": 0.0133,
+      "dollar_allocation": 1328.05,
+      "volatility_annualized": 0.2228,
+      "marginal_risk_contribution": 0.1048,
+      "risk_share_pct": 1.28
+    },
+    "CCO": {
+      "symbol": "CCO",
+      "country": "CA",
+      "weight": 0.0026,
+      "dollar_allocation": 264.9,
+      "volatility_annualized": 0.4689,
+      "marginal_risk_contribution": 0.1597,
+      "risk_share_pct": 0.39
+    },
+    "CLS": {
+      "symbol": "CLS",
+      "country": "CA",
+      "weight": 0.001,
+      "dollar_allocation": 96.78,
+      "volatility_annualized": 0.6068,
+      "marginal_risk_contribution": 0.1518,
+      "risk_share_pct": 0.13
+    },
+    "CM": {
+      "symbol": "CM",
+      "country": "CA",
+      "weight": 0.0067,
+      "dollar_allocation": 668.24,
+      "volatility_annualized": 0.1898,
+      "marginal_risk_contribution": 0.1054,
+      "risk_share_pct": 0.65
+    },
+    "CMCSA": {
+      "symbol": "CMCSA",
+      "country": "US",
+      "weight": 0.0085,
+      "dollar_allocation": 854.62,
+      "volatility_annualized": 0.2777,
+      "marginal_risk_contribution": 0.1345,
+      "risk_share_pct": 1.06
     },
     "CNQ": {
       "symbol": "CNQ",
       "country": "CA",
-      "weight": 0.0229,
-      "dollar_allocation": 2285.37,
-      "volatility_annualized": 0.3115,
-      "marginal_risk_contribution": 0.0861,
-      "risk_share_pct": 1.57
+      "weight": 0.0021,
+      "dollar_allocation": 206.33,
+      "volatility_annualized": 0.3047,
+      "marginal_risk_contribution": 0.0973,
+      "risk_share_pct": 0.18
     },
     "CNR": {
       "symbol": "CNR",
       "country": "CA",
-      "weight": 0.058,
-      "dollar_allocation": 5798.81,
-      "volatility_annualized": 0.21,
-      "marginal_risk_contribution": 0.1139,
-      "risk_share_pct": 5.27
+      "weight": 0.0065,
+      "dollar_allocation": 653.18,
+      "volatility_annualized": 0.1975,
+      "marginal_risk_contribution": 0.1123,
+      "risk_share_pct": 0.67
+    },
+    "COF": {
+      "symbol": "COF",
+      "country": "US",
+      "weight": 0.0022,
+      "dollar_allocation": 219.91,
+      "volatility_annualized": 0.3451,
+      "marginal_risk_contribution": 0.2063,
+      "risk_share_pct": 0.42
+    },
+    "COP": {
+      "symbol": "COP",
+      "country": "US",
+      "weight": 0.0033,
+      "dollar_allocation": 331.2,
+      "volatility_annualized": 0.3231,
+      "marginal_risk_contribution": 0.1163,
+      "risk_share_pct": 0.35
+    },
+    "COST": {
+      "symbol": "COST",
+      "country": "US",
+      "weight": 0.0148,
+      "dollar_allocation": 1482.33,
+      "volatility_annualized": 0.2288,
+      "marginal_risk_contribution": 0.1209,
+      "risk_share_pct": 1.65
     },
     "CP": {
       "symbol": "CP",
       "country": "CA",
-      "weight": 0.0506,
-      "dollar_allocation": 5062.54,
-      "volatility_annualized": 0.2247,
-      "marginal_risk_contribution": 0.1273,
-      "risk_share_pct": 5.14
+      "weight": 0.0068,
+      "dollar_allocation": 683.69,
+      "volatility_annualized": 0.2178,
+      "marginal_risk_contribution": 0.1219,
+      "risk_share_pct": 0.77
+    },
+    "CRM": {
+      "symbol": "CRM",
+      "country": "US",
+      "weight": 0.0011,
+      "dollar_allocation": 113.31,
+      "volatility_annualized": 0.3947,
+      "marginal_risk_contribution": 0.1723,
+      "risk_share_pct": 0.18
+    },
+    "CSCO": {
+      "symbol": "CSCO",
+      "country": "US",
+      "weight": 0.0036,
+      "dollar_allocation": 364.09,
+      "volatility_annualized": 0.2686,
+      "marginal_risk_contribution": 0.1233,
+      "risk_share_pct": 0.41
+    },
+    "CSU": {
+      "symbol": "CSU",
+      "country": "CA",
+      "weight": 0.0039,
+      "dollar_allocation": 385.31,
+      "volatility_annualized": 0.3031,
+      "marginal_risk_contribution": 0.1326,
+      "risk_share_pct": 0.47
+    },
+    "CTC-A": {
+      "symbol": "CTC-A",
+      "country": "CA",
+      "weight": 0.0149,
+      "dollar_allocation": 1493.64,
+      "volatility_annualized": 0.2244,
+      "marginal_risk_contribution": 0.0995,
+      "risk_share_pct": 1.36
+    },
+    "CVE": {
+      "symbol": "CVE",
+      "country": "CA",
+      "weight": 0.0061,
+      "dollar_allocation": 607.31,
+      "volatility_annualized": 0.3737,
+      "marginal_risk_contribution": 0.1083,
+      "risk_share_pct": 0.6
+    },
+    "CVS": {
+      "symbol": "CVS",
+      "country": "US",
+      "weight": 0.0076,
+      "dollar_allocation": 756.33,
+      "volatility_annualized": 0.3107,
+      "marginal_risk_contribution": 0.1016,
+      "risk_share_pct": 0.71
+    },
+    "CVX": {
+      "symbol": "CVX",
+      "country": "US",
+      "weight": 0.0053,
+      "dollar_allocation": 533.8,
+      "volatility_annualized": 0.2522,
+      "marginal_risk_contribution": 0.0994,
+      "risk_share_pct": 0.49
+    },
+    "DE": {
+      "symbol": "DE",
+      "country": "US",
+      "weight": 0.0028,
+      "dollar_allocation": 277.7,
+      "volatility_annualized": 0.2947,
+      "marginal_risk_contribution": 0.1456,
+      "risk_share_pct": 0.37
+    },
+    "DELL": {
+      "symbol": "DELL",
+      "country": "US",
+      "weight": 0.0009,
+      "dollar_allocation": 87.43,
+      "volatility_annualized": 0.5548,
+      "marginal_risk_contribution": 0.1753,
+      "risk_share_pct": 0.14
+    },
+    "DHR": {
+      "symbol": "DHR",
+      "country": "US",
+      "weight": 0.0041,
+      "dollar_allocation": 409.73,
+      "volatility_annualized": 0.2892,
+      "marginal_risk_contribution": 0.1575,
+      "risk_share_pct": 0.59
+    },
+    "DIS": {
+      "symbol": "DIS",
+      "country": "US",
+      "weight": 0.0031,
+      "dollar_allocation": 306.25,
+      "volatility_annualized": 0.2928,
+      "marginal_risk_contribution": 0.1668,
+      "risk_share_pct": 0.47
+    },
+    "DOL": {
+      "symbol": "DOL",
+      "country": "CA",
+      "weight": 0.0119,
+      "dollar_allocation": 1188.2,
+      "volatility_annualized": 0.2209,
+      "marginal_risk_contribution": 0.0887,
+      "risk_share_pct": 0.97
+    },
+    "DUK": {
+      "symbol": "DUK",
+      "country": "US",
+      "weight": 0.0073,
+      "dollar_allocation": 727.58,
+      "volatility_annualized": 0.1797,
+      "marginal_risk_contribution": 0.084,
+      "risk_share_pct": 0.56
+    },
+    "EMA": {
+      "symbol": "EMA",
+      "country": "CA",
+      "weight": 0.0128,
+      "dollar_allocation": 1282.86,
+      "volatility_annualized": 0.1652,
+      "marginal_risk_contribution": 0.0523,
+      "risk_share_pct": 0.62
+    },
+    "EMR": {
+      "symbol": "EMR",
+      "country": "US",
+      "weight": 0.0035,
+      "dollar_allocation": 354.68,
+      "volatility_annualized": 0.2772,
+      "marginal_risk_contribution": 0.1688,
+      "risk_share_pct": 0.55
     },
     "ENB": {
       "symbol": "ENB",
       "country": "CA",
-      "weight": 0.1286,
-      "dollar_allocation": 12860.44,
-      "volatility_annualized": 0.1688,
-      "marginal_risk_contribution": 0.0537,
-      "risk_share_pct": 5.5
+      "weight": 0.0169,
+      "dollar_allocation": 1685.37,
+      "volatility_annualized": 0.166,
+      "marginal_risk_contribution": 0.0809,
+      "risk_share_pct": 1.25
+    },
+    "FDX": {
+      "symbol": "FDX",
+      "country": "US",
+      "weight": 0.0038,
+      "dollar_allocation": 378.4,
+      "volatility_annualized": 0.3295,
+      "marginal_risk_contribution": 0.162,
+      "risk_share_pct": 0.56
+    },
+    "FFH": {
+      "symbol": "FFH",
+      "country": "CA",
+      "weight": 0.0094,
+      "dollar_allocation": 942.06,
+      "volatility_annualized": 0.2394,
+      "marginal_risk_contribution": 0.0971,
+      "risk_share_pct": 0.84
+    },
+    "FM": {
+      "symbol": "FM",
+      "country": "CA",
+      "weight": 0.0008,
+      "dollar_allocation": 82.32,
+      "volatility_annualized": 0.588,
+      "marginal_risk_contribution": 0.2237,
+      "risk_share_pct": 0.17
+    },
+    "FNV": {
+      "symbol": "FNV",
+      "country": "CA",
+      "weight": 0.0052,
+      "dollar_allocation": 524.78,
+      "volatility_annualized": 0.299,
+      "marginal_risk_contribution": 0.0909,
+      "risk_share_pct": 0.44
+    },
+    "FSV": {
+      "symbol": "FSV",
+      "country": "CA",
+      "weight": 0.01,
+      "dollar_allocation": 997.13,
+      "volatility_annualized": 0.2515,
+      "marginal_risk_contribution": 0.132,
+      "risk_share_pct": 1.21
+    },
+    "FTS": {
+      "symbol": "FTS",
+      "country": "CA",
+      "weight": 0.0139,
+      "dollar_allocation": 1389.31,
+      "volatility_annualized": 0.1468,
+      "marginal_risk_contribution": 0.0513,
+      "risk_share_pct": 0.65
+    },
+    "GD": {
+      "symbol": "GD",
+      "country": "US",
+      "weight": 0.0137,
+      "dollar_allocation": 1374.22,
+      "volatility_annualized": 0.2071,
+      "marginal_risk_contribution": 0.1154,
+      "risk_share_pct": 1.46
+    },
+    "GE": {
+      "symbol": "GE",
+      "country": "US",
+      "weight": 0.0042,
+      "dollar_allocation": 415.81,
+      "volatility_annualized": 0.3103,
+      "marginal_risk_contribution": 0.1673,
+      "risk_share_pct": 0.64
+    },
+    "GEV": {
+      "symbol": "GEV",
+      "country": "US",
+      "weight": 0.0049,
+      "dollar_allocation": 490.25,
+      "volatility_annualized": 0.3929,
+      "marginal_risk_contribution": 0.0645,
+      "risk_share_pct": 0.29
+    },
+    "GIB-A": {
+      "symbol": "GIB-A",
+      "country": "CA",
+      "weight": 0.0077,
+      "dollar_allocation": 774.12,
+      "volatility_annualized": 0.2272,
+      "marginal_risk_contribution": 0.1021,
+      "risk_share_pct": 0.73
+    },
+    "GIL": {
+      "symbol": "GIL",
+      "country": "CA",
+      "weight": 0.0069,
+      "dollar_allocation": 694.44,
+      "volatility_annualized": 0.3382,
+      "marginal_risk_contribution": 0.1654,
+      "risk_share_pct": 1.06
+    },
+    "GILD": {
+      "symbol": "GILD",
+      "country": "US",
+      "weight": 0.0053,
+      "dollar_allocation": 526.86,
+      "volatility_annualized": 0.2481,
+      "marginal_risk_contribution": 0.1055,
+      "risk_share_pct": 0.51
+    },
+    "GM": {
+      "symbol": "GM",
+      "country": "US",
+      "weight": 0.0025,
+      "dollar_allocation": 245.6,
+      "volatility_annualized": 0.3634,
+      "marginal_risk_contribution": 0.1943,
+      "risk_share_pct": 0.44
+    },
+    "GOOG": {
+      "symbol": "GOOG",
+      "country": "US",
+      "weight": 0.0021,
+      "dollar_allocation": 209.87,
+      "volatility_annualized": 0.3229,
+      "marginal_risk_contribution": 0.14,
+      "risk_share_pct": 0.27
     },
     "GOOGL": {
       "symbol": "GOOGL",
       "country": "US",
-      "weight": 0.027,
-      "dollar_allocation": 2696.48,
-      "volatility_annualized": 0.3259,
-      "marginal_risk_contribution": 0.1574,
-      "risk_share_pct": 3.38
+      "weight": 0.0015,
+      "dollar_allocation": 149.64,
+      "volatility_annualized": 0.3251,
+      "marginal_risk_contribution": 0.1404,
+      "risk_share_pct": 0.19
+    },
+    "GS": {
+      "symbol": "GS",
+      "country": "US",
+      "weight": 0.002,
+      "dollar_allocation": 198.49,
+      "volatility_annualized": 0.2881,
+      "marginal_risk_contribution": 0.1759,
+      "risk_share_pct": 0.32
+    },
+    "H": {
+      "symbol": "H",
+      "country": "CA",
+      "weight": 0.0173,
+      "dollar_allocation": 1729.35,
+      "volatility_annualized": 0.1513,
+      "marginal_risk_contribution": 0.0486,
+      "risk_share_pct": 0.77
+    },
+    "HD": {
+      "symbol": "HD",
+      "country": "US",
+      "weight": 0.0039,
+      "dollar_allocation": 394.09,
+      "volatility_annualized": 0.2483,
+      "marginal_risk_contribution": 0.1566,
+      "risk_share_pct": 0.57
+    },
+    "IBM": {
+      "symbol": "IBM",
+      "country": "US",
+      "weight": 0.0089,
+      "dollar_allocation": 889.66,
+      "volatility_annualized": 0.3088,
+      "marginal_risk_contribution": 0.1285,
+      "risk_share_pct": 1.05
+    },
+    "IFC": {
+      "symbol": "IFC",
+      "country": "CA",
+      "weight": 0.016,
+      "dollar_allocation": 1604.12,
+      "volatility_annualized": 0.1834,
+      "marginal_risk_contribution": 0.0804,
+      "risk_share_pct": 1.19
+    },
+    "IMO": {
+      "symbol": "IMO",
+      "country": "CA",
+      "weight": 0.0039,
+      "dollar_allocation": 389.47,
+      "volatility_annualized": 0.2977,
+      "marginal_risk_contribution": 0.0946,
+      "risk_share_pct": 0.34
+    },
+    "INTC": {
+      "symbol": "INTC",
+      "country": "US",
+      "weight": 0.0013,
+      "dollar_allocation": 127.79,
+      "volatility_annualized": 0.5803,
+      "marginal_risk_contribution": 0.1776,
+      "risk_share_pct": 0.21
+    },
+    "INTU": {
+      "symbol": "INTU",
+      "country": "US",
+      "weight": 0.0019,
+      "dollar_allocation": 186.44,
+      "volatility_annualized": 0.3944,
+      "marginal_risk_contribution": 0.1918,
+      "risk_share_pct": 0.33
+    },
+    "ISRG": {
+      "symbol": "ISRG",
+      "country": "US",
+      "weight": 0.0028,
+      "dollar_allocation": 281.94,
+      "volatility_annualized": 0.3468,
+      "marginal_risk_contribution": 0.1936,
+      "risk_share_pct": 0.5
+    },
+    "JNJ": {
+      "symbol": "JNJ",
+      "country": "US",
+      "weight": 0.0131,
+      "dollar_allocation": 1314.41,
+      "volatility_annualized": 0.1801,
+      "marginal_risk_contribution": 0.0715,
+      "risk_share_pct": 0.86
     },
     "JPM": {
       "symbol": "JPM",
       "country": "US",
-      "weight": 0.0368,
-      "dollar_allocation": 3682.21,
-      "volatility_annualized": 0.2459,
-      "marginal_risk_contribution": 0.1664,
-      "risk_share_pct": 4.88
+      "weight": 0.0035,
+      "dollar_allocation": 352.47,
+      "volatility_annualized": 0.2428,
+      "marginal_risk_contribution": 0.1526,
+      "risk_share_pct": 0.49
+    },
+    "K": {
+      "symbol": "K",
+      "country": "CA",
+      "weight": 0.0024,
+      "dollar_allocation": 241.51,
+      "volatility_annualized": 0.4407,
+      "marginal_risk_contribution": 0.141,
+      "risk_share_pct": 0.31
+    },
+    "KO": {
+      "symbol": "KO",
+      "country": "US",
+      "weight": 0.0112,
+      "dollar_allocation": 1120.0,
+      "volatility_annualized": 0.1679,
+      "marginal_risk_contribution": 0.083,
+      "risk_share_pct": 0.85
+    },
+    "L": {
+      "symbol": "L",
+      "country": "CA",
+      "weight": 0.0055,
+      "dollar_allocation": 546.45,
+      "volatility_annualized": 0.1918,
+      "marginal_risk_contribution": 0.0541,
+      "risk_share_pct": 0.27
+    },
+    "LIN": {
+      "symbol": "LIN",
+      "country": "US",
+      "weight": 0.0056,
+      "dollar_allocation": 559.81,
+      "volatility_annualized": 0.2076,
+      "marginal_risk_contribution": 0.1275,
+      "risk_share_pct": 0.66
+    },
+    "LLY": {
+      "symbol": "LLY",
+      "country": "US",
+      "weight": 0.0039,
+      "dollar_allocation": 389.19,
+      "volatility_annualized": 0.3255,
+      "marginal_risk_contribution": 0.1165,
+      "risk_share_pct": 0.42
+    },
+    "LMT": {
+      "symbol": "LMT",
+      "country": "US",
+      "weight": 0.0092,
+      "dollar_allocation": 921.55,
+      "volatility_annualized": 0.2417,
+      "marginal_risk_contribution": 0.0744,
+      "risk_share_pct": 0.63
+    },
+    "LOW": {
+      "symbol": "LOW",
+      "country": "US",
+      "weight": 0.0034,
+      "dollar_allocation": 344.15,
+      "volatility_annualized": 0.2658,
+      "marginal_risk_contribution": 0.1635,
+      "risk_share_pct": 0.52
+    },
+    "LRCX": {
+      "symbol": "LRCX",
+      "country": "US",
+      "weight": 0.0017,
+      "dollar_allocation": 169.38,
+      "volatility_annualized": 0.5154,
+      "marginal_risk_contribution": 0.2048,
+      "risk_share_pct": 0.32
+    },
+    "MA": {
+      "symbol": "MA",
+      "country": "US",
+      "weight": 0.005,
+      "dollar_allocation": 499.9,
+      "volatility_annualized": 0.2309,
+      "marginal_risk_contribution": 0.1534,
+      "risk_share_pct": 0.7
+    },
+    "MCD": {
+      "symbol": "MCD",
+      "country": "US",
+      "weight": 0.0121,
+      "dollar_allocation": 1207.8,
+      "volatility_annualized": 0.1811,
+      "marginal_risk_contribution": 0.0951,
+      "risk_share_pct": 1.05
+    },
+    "MDLZ": {
+      "symbol": "MDLZ",
+      "country": "US",
+      "weight": 0.006,
+      "dollar_allocation": 595.78,
+      "volatility_annualized": 0.2037,
+      "marginal_risk_contribution": 0.0958,
+      "risk_share_pct": 0.52
+    },
+    "MDT": {
+      "symbol": "MDT",
+      "country": "US",
+      "weight": 0.0135,
+      "dollar_allocation": 1354.62,
+      "volatility_annualized": 0.2266,
+      "marginal_risk_contribution": 0.1218,
+      "risk_share_pct": 1.52
+    },
+    "META": {
+      "symbol": "META",
+      "country": "US",
+      "weight": 0.0011,
+      "dollar_allocation": 113.8,
+      "volatility_annualized": 0.4556,
+      "marginal_risk_contribution": 0.1779,
+      "risk_share_pct": 0.19
+    },
+    "MFC": {
+      "symbol": "MFC",
+      "country": "CA",
+      "weight": 0.0055,
+      "dollar_allocation": 553.32,
+      "volatility_annualized": 0.2159,
+      "marginal_risk_contribution": 0.1343,
+      "risk_share_pct": 0.68
+    },
+    "MG": {
+      "symbol": "MG",
+      "country": "CA",
+      "weight": 0.0027,
+      "dollar_allocation": 273.14,
+      "volatility_annualized": 0.34,
+      "marginal_risk_contribution": 0.1708,
+      "risk_share_pct": 0.43
+    },
+    "MMM": {
+      "symbol": "MMM",
+      "country": "US",
+      "weight": 0.0073,
+      "dollar_allocation": 729.47,
+      "volatility_annualized": 0.2864,
+      "marginal_risk_contribution": 0.1631,
+      "risk_share_pct": 1.09
+    },
+    "MO": {
+      "symbol": "MO",
+      "country": "US",
+      "weight": 0.0096,
+      "dollar_allocation": 961.79,
+      "volatility_annualized": 0.2194,
+      "marginal_risk_contribution": 0.0751,
+      "risk_share_pct": 0.66
+    },
+    "MRK": {
+      "symbol": "MRK",
+      "country": "US",
+      "weight": 0.0051,
+      "dollar_allocation": 508.26,
+      "volatility_annualized": 0.2427,
+      "marginal_risk_contribution": 0.0843,
+      "risk_share_pct": 0.39
+    },
+    "MRU": {
+      "symbol": "MRU",
+      "country": "CA",
+      "weight": 0.0128,
+      "dollar_allocation": 1284.02,
+      "volatility_annualized": 0.1693,
+      "marginal_risk_contribution": 0.0569,
+      "risk_share_pct": 0.67
+    },
+    "MS": {
+      "symbol": "MS",
+      "country": "US",
+      "weight": 0.0011,
+      "dollar_allocation": 112.07,
+      "volatility_annualized": 0.2889,
+      "marginal_risk_contribution": 0.1793,
+      "risk_share_pct": 0.18
     },
     "MSFT": {
       "symbol": "MSFT",
       "country": "US",
-      "weight": 0.0482,
-      "dollar_allocation": 4821.88,
-      "volatility_annualized": 0.2881,
-      "marginal_risk_contribution": 0.1383,
-      "risk_share_pct": 5.31
+      "weight": 0.0025,
+      "dollar_allocation": 254.62,
+      "volatility_annualized": 0.2808,
+      "marginal_risk_contribution": 0.1316,
+      "risk_share_pct": 0.31
+    },
+    "MU": {
+      "symbol": "MU",
+      "country": "US",
+      "weight": 0.0005,
+      "dollar_allocation": 49.42,
+      "volatility_annualized": 0.5865,
+      "marginal_risk_contribution": 0.1815,
+      "risk_share_pct": 0.08
+    },
+    "NA": {
+      "symbol": "NA",
+      "country": "CA",
+      "weight": 0.008,
+      "dollar_allocation": 797.24,
+      "volatility_annualized": 0.1829,
+      "marginal_risk_contribution": 0.101,
+      "risk_share_pct": 0.74
+    },
+    "NEE": {
+      "symbol": "NEE",
+      "country": "US",
+      "weight": 0.0033,
+      "dollar_allocation": 326.72,
+      "volatility_annualized": 0.2682,
+      "marginal_risk_contribution": 0.1285,
+      "risk_share_pct": 0.39
+    },
+    "NFLX": {
+      "symbol": "NFLX",
+      "country": "US",
+      "weight": 0.0031,
+      "dollar_allocation": 312.77,
+      "volatility_annualized": 0.449,
+      "marginal_risk_contribution": 0.1687,
+      "risk_share_pct": 0.48
+    },
+    "NOW": {
+      "symbol": "NOW",
+      "country": "US",
+      "weight": 0.0022,
+      "dollar_allocation": 216.04,
+      "volatility_annualized": 0.4746,
+      "marginal_risk_contribution": 0.1872,
+      "risk_share_pct": 0.37
+    },
+    "NTR": {
+      "symbol": "NTR",
+      "country": "CA",
+      "weight": 0.0069,
+      "dollar_allocation": 694.19,
+      "volatility_annualized": 0.3197,
+      "marginal_risk_contribution": 0.1006,
+      "risk_share_pct": 0.64
     },
     "NVDA": {
       "symbol": "NVDA",
       "country": "US",
-      "weight": 0.0139,
-      "dollar_allocation": 1389.52,
-      "volatility_annualized": 0.4423,
-      "marginal_risk_contribution": 0.2435,
-      "risk_share_pct": 2.7
+      "weight": 0.0013,
+      "dollar_allocation": 125.09,
+      "volatility_annualized": 0.5283,
+      "marginal_risk_contribution": 0.2148,
+      "risk_share_pct": 0.25
+    },
+    "ORCL": {
+      "symbol": "ORCL",
+      "country": "US",
+      "weight": 0.0024,
+      "dollar_allocation": 237.5,
+      "volatility_annualized": 0.4454,
+      "marginal_risk_contribution": 0.1341,
+      "risk_share_pct": 0.29
+    },
+    "OTEX": {
+      "symbol": "OTEX",
+      "country": "CA",
+      "weight": 0.0056,
+      "dollar_allocation": 555.38,
+      "volatility_annualized": 0.3134,
+      "marginal_risk_contribution": 0.1441,
+      "risk_share_pct": 0.74
+    },
+    "PANW": {
+      "symbol": "PANW",
+      "country": "US",
+      "weight": 0.0024,
+      "dollar_allocation": 237.95,
+      "volatility_annualized": 0.442,
+      "marginal_risk_contribution": 0.1379,
+      "risk_share_pct": 0.3
+    },
+    "PEP": {
+      "symbol": "PEP",
+      "country": "US",
+      "weight": 0.0086,
+      "dollar_allocation": 858.41,
+      "volatility_annualized": 0.1917,
+      "marginal_risk_contribution": 0.0889,
+      "risk_share_pct": 0.7
+    },
+    "PFE": {
+      "symbol": "PFE",
+      "country": "US",
+      "weight": 0.0067,
+      "dollar_allocation": 671.75,
+      "volatility_annualized": 0.2468,
+      "marginal_risk_contribution": 0.1025,
+      "risk_share_pct": 0.63
+    },
+    "PG": {
+      "symbol": "PG",
+      "country": "US",
+      "weight": 0.0073,
+      "dollar_allocation": 725.7,
+      "volatility_annualized": 0.1846,
+      "marginal_risk_contribution": 0.0883,
+      "risk_share_pct": 0.59
+    },
+    "PLTR": {
+      "symbol": "PLTR",
+      "country": "US",
+      "weight": 0.0008,
+      "dollar_allocation": 82.95,
+      "volatility_annualized": 0.6539,
+      "marginal_risk_contribution": 0.2542,
+      "risk_share_pct": 0.19
+    },
+    "PM": {
+      "symbol": "PM",
+      "country": "US",
+      "weight": 0.0084,
+      "dollar_allocation": 837.24,
+      "volatility_annualized": 0.2351,
+      "marginal_risk_contribution": 0.0929,
+      "risk_share_pct": 0.71
+    },
+    "POW": {
+      "symbol": "POW",
+      "country": "CA",
+      "weight": 0.0165,
+      "dollar_allocation": 1648.84,
+      "volatility_annualized": 0.1807,
+      "marginal_risk_contribution": 0.0801,
+      "risk_share_pct": 1.21
+    },
+    "PPL": {
+      "symbol": "PPL",
+      "country": "CA",
+      "weight": 0.0129,
+      "dollar_allocation": 1289.74,
+      "volatility_annualized": 0.1898,
+      "marginal_risk_contribution": 0.0845,
+      "risk_share_pct": 1.0
+    },
+    "QCOM": {
+      "symbol": "QCOM",
+      "country": "US",
+      "weight": 0.0014,
+      "dollar_allocation": 142.63,
+      "volatility_annualized": 0.4286,
+      "marginal_risk_contribution": 0.2037,
+      "risk_share_pct": 0.27
     },
     "QQQ": {
       "symbol": "QQQ",
       "country": "US",
-      "weight": 0.0544,
-      "dollar_allocation": 5437.98,
-      "volatility_annualized": 0.2212,
-      "marginal_risk_contribution": 0.1736,
-      "risk_share_pct": 7.53
+      "weight": 0.0041,
+      "dollar_allocation": 407.44,
+      "volatility_annualized": 0.2347,
+      "marginal_risk_contribution": 0.1528,
+      "risk_share_pct": 0.57
+    },
+    "QSR": {
+      "symbol": "QSR",
+      "country": "CA",
+      "weight": 0.0126,
+      "dollar_allocation": 1258.67,
+      "volatility_annualized": 0.2178,
+      "marginal_risk_contribution": 0.0983,
+      "risk_share_pct": 1.14
+    },
+    "RCI-B": {
+      "symbol": "RCI-B",
+      "country": "CA",
+      "weight": 0.0128,
+      "dollar_allocation": 1282.69,
+      "volatility_annualized": 0.2197,
+      "marginal_risk_contribution": 0.0713,
+      "risk_share_pct": 0.84
+    },
+    "RTX": {
+      "symbol": "RTX",
+      "country": "US",
+      "weight": 0.0118,
+      "dollar_allocation": 1181.0,
+      "volatility_annualized": 0.2427,
+      "marginal_risk_contribution": 0.1162,
+      "risk_share_pct": 1.26
     },
     "RY": {
       "symbol": "RY",
       "country": "CA",
-      "weight": 0.1083,
-      "dollar_allocation": 10826.45,
-      "volatility_annualized": 0.1585,
-      "marginal_risk_contribution": 0.1146,
-      "risk_share_pct": 9.88
+      "weight": 0.0118,
+      "dollar_allocation": 1182.57,
+      "volatility_annualized": 0.1562,
+      "marginal_risk_contribution": 0.0996,
+      "risk_share_pct": 1.08
+    },
+    "SAP": {
+      "symbol": "SAP",
+      "country": "CA",
+      "weight": 0.0133,
+      "dollar_allocation": 1333.83,
+      "volatility_annualized": 0.2339,
+      "marginal_risk_contribution": 0.0815,
+      "risk_share_pct": 1.0
+    },
+    "SBUX": {
+      "symbol": "SBUX",
+      "country": "US",
+      "weight": 0.0048,
+      "dollar_allocation": 479.62,
+      "volatility_annualized": 0.3135,
+      "marginal_risk_contribution": 0.1653,
+      "risk_share_pct": 0.73
+    },
+    "SCHW": {
+      "symbol": "SCHW",
+      "country": "US",
+      "weight": 0.0043,
+      "dollar_allocation": 427.28,
+      "volatility_annualized": 0.3174,
+      "marginal_risk_contribution": 0.1561,
+      "risk_share_pct": 0.61
     },
     "SHOP": {
       "symbol": "SHOP",
       "country": "CA",
-      "weight": 0.0084,
-      "dollar_allocation": 842.7,
-      "volatility_annualized": 0.5987,
-      "marginal_risk_contribution": 0.3152,
-      "risk_share_pct": 2.12
+      "weight": 0.0009,
+      "dollar_allocation": 87.6,
+      "volatility_annualized": 0.6364,
+      "marginal_risk_contribution": 0.2712,
+      "risk_share_pct": 0.22
+    },
+    "SLF": {
+      "symbol": "SLF",
+      "country": "CA",
+      "weight": 0.0102,
+      "dollar_allocation": 1023.41,
+      "volatility_annualized": 0.1806,
+      "marginal_risk_contribution": 0.1032,
+      "risk_share_pct": 0.97
+    },
+    "SNDK": {
+      "symbol": "SNDK",
+      "country": "US",
+      "weight": 0.0012,
+      "dollar_allocation": 117.79,
+      "volatility_annualized": 0.6184,
+      "marginal_risk_contribution": 0.0601,
+      "risk_share_pct": 0.07
+    },
+    "SO": {
+      "symbol": "SO",
+      "country": "US",
+      "weight": 0.0113,
+      "dollar_allocation": 1133.54,
+      "volatility_annualized": 0.1869,
+      "marginal_risk_contribution": 0.0883,
+      "risk_share_pct": 0.92
     },
     "SPY": {
       "symbol": "SPY",
       "country": "US",
-      "weight": 0.0978,
-      "dollar_allocation": 9784.47,
-      "volatility_annualized": 0.1649,
-      "marginal_risk_contribution": 0.1469,
-      "risk_share_pct": 11.45
+      "weight": 0.0056,
+      "dollar_allocation": 562.59,
+      "volatility_annualized": 0.1738,
+      "marginal_risk_contribution": 0.1414,
+      "risk_share_pct": 0.73
+    },
+    "SU": {
+      "symbol": "SU",
+      "country": "CA",
+      "weight": 0.0022,
+      "dollar_allocation": 215.45,
+      "volatility_annualized": 0.2982,
+      "marginal_risk_contribution": 0.0929,
+      "risk_share_pct": 0.18
+    },
+    "T": {
+      "symbol": "T",
+      "country": "US",
+      "weight": 0.0068,
+      "dollar_allocation": 681.62,
+      "volatility_annualized": 0.2576,
+      "marginal_risk_contribution": 0.0967,
+      "risk_share_pct": 0.61
     },
     "TD": {
       "symbol": "TD",
       "country": "CA",
-      "weight": 0.1307,
-      "dollar_allocation": 13073.42,
-      "volatility_annualized": 0.175,
-      "marginal_risk_contribution": 0.1094,
-      "risk_share_pct": 11.4
+      "weight": 0.0106,
+      "dollar_allocation": 1056.53,
+      "volatility_annualized": 0.1791,
+      "marginal_risk_contribution": 0.0961,
+      "risk_share_pct": 0.93
+    },
+    "TECK-B": {
+      "symbol": "TECK-B",
+      "country": "CA",
+      "weight": 0.0015,
+      "dollar_allocation": 153.67,
+      "volatility_annualized": 0.4304,
+      "marginal_risk_contribution": 0.1824,
+      "risk_share_pct": 0.26
+    },
+    "TMO": {
+      "symbol": "TMO",
+      "country": "US",
+      "weight": 0.0042,
+      "dollar_allocation": 421.72,
+      "volatility_annualized": 0.2765,
+      "marginal_risk_contribution": 0.146,
+      "risk_share_pct": 0.57
+    },
+    "TMUS": {
+      "symbol": "TMUS",
+      "country": "US",
+      "weight": 0.0086,
+      "dollar_allocation": 856.45,
+      "volatility_annualized": 0.2641,
+      "marginal_risk_contribution": 0.103,
+      "risk_share_pct": 0.81
+    },
+    "TOU": {
+      "symbol": "TOU",
+      "country": "CA",
+      "weight": 0.0037,
+      "dollar_allocation": 372.29,
+      "volatility_annualized": 0.3048,
+      "marginal_risk_contribution": 0.0816,
+      "risk_share_pct": 0.28
+    },
+    "TRI": {
+      "symbol": "TRI",
+      "country": "CA",
+      "weight": 0.009,
+      "dollar_allocation": 901.91,
+      "volatility_annualized": 0.2933,
+      "marginal_risk_contribution": 0.0963,
+      "risk_share_pct": 0.8
+    },
+    "TRP": {
+      "symbol": "TRP",
+      "country": "CA",
+      "weight": 0.0137,
+      "dollar_allocation": 1372.19,
+      "volatility_annualized": 0.1976,
+      "marginal_risk_contribution": 0.081,
+      "risk_share_pct": 1.02
+    },
+    "TSLA": {
+      "symbol": "TSLA",
+      "country": "US",
+      "weight": 0.001,
+      "dollar_allocation": 99.55,
+      "volatility_annualized": 0.5903,
+      "marginal_risk_contribution": 0.2255,
+      "risk_share_pct": 0.21
+    },
+    "TXN": {
+      "symbol": "TXN",
+      "country": "US",
+      "weight": 0.0031,
+      "dollar_allocation": 311.96,
+      "volatility_annualized": 0.3476,
+      "marginal_risk_contribution": 0.1638,
+      "risk_share_pct": 0.47
+    },
+    "UBER": {
+      "symbol": "UBER",
+      "country": "US",
+      "weight": 0.0024,
+      "dollar_allocation": 241.86,
+      "volatility_annualized": 0.4384,
+      "marginal_risk_contribution": 0.1877,
+      "risk_share_pct": 0.42
+    },
+    "UNH": {
+      "symbol": "UNH",
+      "country": "US",
+      "weight": 0.0066,
+      "dollar_allocation": 662.8,
+      "volatility_annualized": 0.333,
+      "marginal_risk_contribution": 0.0952,
+      "risk_share_pct": 0.58
+    },
+    "UNP": {
+      "symbol": "UNP",
+      "country": "US",
+      "weight": 0.0049,
+      "dollar_allocation": 492.39,
+      "volatility_annualized": 0.2275,
+      "marginal_risk_contribution": 0.1317,
+      "risk_share_pct": 0.6
+    },
+    "UPS": {
+      "symbol": "UPS",
+      "country": "US",
+      "weight": 0.0049,
+      "dollar_allocation": 486.48,
+      "volatility_annualized": 0.2906,
+      "marginal_risk_contribution": 0.1481,
+      "risk_share_pct": 0.66
+    },
+    "USB": {
+      "symbol": "USB",
+      "country": "US",
+      "weight": 0.0023,
+      "dollar_allocation": 233.17,
+      "volatility_annualized": 0.2928,
+      "marginal_risk_contribution": 0.1781,
+      "risk_share_pct": 0.38
+    },
+    "V": {
+      "symbol": "V",
+      "country": "US",
+      "weight": 0.0058,
+      "dollar_allocation": 575.09,
+      "volatility_annualized": 0.2227,
+      "marginal_risk_contribution": 0.1418,
+      "risk_share_pct": 0.75
+    },
+    "VZ": {
+      "symbol": "VZ",
+      "country": "US",
+      "weight": 0.0076,
+      "dollar_allocation": 761.35,
+      "volatility_annualized": 0.2327,
+      "marginal_risk_contribution": 0.0823,
+      "risk_share_pct": 0.58
+    },
+    "WCN": {
+      "symbol": "WCN",
+      "country": "CA",
+      "weight": 0.0149,
+      "dollar_allocation": 1490.15,
+      "volatility_annualized": 0.1972,
+      "marginal_risk_contribution": 0.0826,
+      "risk_share_pct": 1.13
+    },
+    "WFC": {
+      "symbol": "WFC",
+      "country": "US",
+      "weight": 0.0033,
+      "dollar_allocation": 328.41,
+      "volatility_annualized": 0.292,
+      "marginal_risk_contribution": 0.1662,
+      "risk_share_pct": 0.5
+    },
+    "WMT": {
+      "symbol": "WMT",
+      "country": "US",
+      "weight": 0.0153,
+      "dollar_allocation": 1527.28,
+      "volatility_annualized": 0.2263,
+      "marginal_risk_contribution": 0.0946,
+      "risk_share_pct": 1.33
+    },
+    "WN": {
+      "symbol": "WN",
+      "country": "CA",
+      "weight": 0.0056,
+      "dollar_allocation": 555.18,
+      "volatility_annualized": 0.1903,
+      "marginal_risk_contribution": 0.0722,
+      "risk_share_pct": 0.37
+    },
+    "WPM": {
+      "symbol": "WPM",
+      "country": "CA",
+      "weight": 0.0055,
+      "dollar_allocation": 546.69,
+      "volatility_annualized": 0.3614,
+      "marginal_risk_contribution": 0.1122,
+      "risk_share_pct": 0.56
+    },
+    "WSP": {
+      "symbol": "WSP",
+      "country": "CA",
+      "weight": 0.0102,
+      "dollar_allocation": 1022.3,
+      "volatility_annualized": 0.2529,
+      "marginal_risk_contribution": 0.1315,
+      "risk_share_pct": 1.24
     },
     "XIU": {
       "symbol": "XIU",
       "country": "CA",
-      "weight": 0.0867,
-      "dollar_allocation": 8673.48,
-      "volatility_annualized": 0.1297,
-      "marginal_risk_contribution": 0.1134,
-      "risk_share_pct": 7.84
+      "weight": 0.0204,
+      "dollar_allocation": 2036.48,
+      "volatility_annualized": 0.1309,
+      "marginal_risk_contribution": 0.1121,
+      "risk_share_pct": 2.1
     },
     "XOM": {
       "symbol": "XOM",
       "country": "US",
-      "weight": 0.0337,
-      "dollar_allocation": 3374.75,
-      "volatility_annualized": 0.2563,
-      "marginal_risk_contribution": 0.0558,
-      "risk_share_pct": 1.5
+      "weight": 0.0049,
+      "dollar_allocation": 486.42,
+      "volatility_annualized": 0.2642,
+      "marginal_risk_contribution": 0.0901,
+      "risk_share_pct": 0.4
     }
   },
   "ordered_symbols": [
+    "SAP",
+    "CVS",
+    "UNH",
+    "DOL",
+    "WCN",
+    "BCE",
+    "RCI-B",
+    "CTC-A",
+    "FFH",
+    "IFC",
+    "QSR",
+    "TMUS",
+    "T",
+    "VZ",
+    "LLY",
+    "CCL-B",
+    "CMCSA",
+    "NTR",
+    "MO",
+    "PM",
+    "BMY",
+    "PFE",
+    "MCD",
+    "PG",
+    "MDLZ",
+    "KO",
+    "PEP",
+    "AMT",
+    "NEE",
+    "DUK",
+    "SO",
+    "H",
+    "EMA",
+    "FTS",
+    "MRK",
+    "JNJ",
+    "ABBV",
+    "AMGN",
+    "GILD",
+    "ABT",
+    "MDT",
+    "RTX",
+    "GD",
+    "LMT",
+    "POW",
+    "PPL",
+    "ENB",
+    "TRP",
+    "TOU",
+    "COP",
+    "CVX",
+    "XOM",
+    "IMO",
+    "SU",
+    "CNQ",
+    "CVE",
+    "IBM",
+    "GIL",
+    "FNV",
+    "K",
+    "ABX",
+    "AEM",
+    "WPM",
+    "CAE",
+    "CCO",
+    "TRI",
+    "COST",
+    "WMT",
+    "FSV",
+    "NFLX",
+    "GEV",
+    "BIP-UN",
+    "WSP",
+    "FDX",
+    "UPS",
+    "MMM",
+    "UBER",
+    "PANW",
+    "OTEX",
+    "SBUX",
+    "ORCL",
+    "BA",
+    "DHR",
+    "TMO",
+    "DELL",
+    "BKNG",
+    "CSU",
+    "ACN",
+    "GIB-A",
+    "UNP",
     "CNR",
     "CP",
-    "TD",
-    "MSFT",
-    "GOOGL",
-    "AAPL",
+    "GM",
+    "MG",
+    "LIN",
+    "DE",
+    "HD",
+    "LOW",
+    "SLF",
+    "DIS",
+    "CSCO",
+    "INTC",
+    "SCHW",
+    "INTU",
+    "ADBE",
+    "CRM",
+    "NOW",
+    "BRK-B",
+    "SNDK",
+    "FM",
+    "TECK-B",
     "SHOP",
-    "JPM",
-    "AMZN",
-    "RY",
-    "NVDA",
+    "PLTR",
+    "GE",
+    "ISRG",
+    "TD",
+    "CLS",
+    "NA",
+    "MA",
+    "V",
+    "CAT",
+    "META",
+    "ANET",
+    "TSLA",
+    "TXN",
+    "BNS",
+    "MFC",
+    "EMR",
     "BAM",
+    "GOOG",
+    "GOOGL",
+    "AXP",
+    "COF",
+    "QCOM",
+    "CM",
+    "AAPL",
+    "BNY",
+    "BMO",
+    "USB",
+    "GS",
+    "MS",
+    "C",
+    "JPM",
+    "BAC",
+    "WFC",
+    "MSFT",
+    "AVGO",
+    "RY",
+    "AMZN",
     "BN",
+    "BLK",
+    "AMD",
     "XIU",
+    "NVDA",
     "QQQ",
     "SPY",
-    "ENB",
-    "CNQ",
-    "XOM"
+    "MU",
+    "AMAT",
+    "LRCX",
+    "ATD",
+    "MRU",
+    "L",
+    "WN"
   ],
-  "portfolio_volatility_annualized": 0.1255,
-  "effective_constituents": 12.5,
-  "diversification_ratio": 1.69,
+  "portfolio_volatility_annualized": 0.1089,
+  "effective_constituents": 105.7,
+  "diversification_ratio": 2.22,
   "benchmark_comparisons": {
     "EQUAL_WEIGHT": {
-      "portfolio_volatility_annualized": 0.1611,
-      "diversification_ratio": 1.69,
-      "effective_constituents": 19.0,
-      "max_weight_pct": 5.26
+      "portfolio_volatility_annualized": 0.1411,
+      "diversification_ratio": 2.12,
+      "effective_constituents": 163.0,
+      "max_weight_pct": 0.61
     },
     "INVERSE_VARIANCE": {
-      "portfolio_volatility_annualized": 0.1293,
-      "diversification_ratio": 1.63,
-      "effective_constituents": 12.7,
-      "max_weight_pct": 15.63
+      "portfolio_volatility_annualized": 0.1135,
+      "diversification_ratio": 2.11,
+      "effective_constituents": 116.1,
+      "max_weight_pct": 2.28
     },
     "HIERARCHICAL_RISK_PARITY": {
-      "portfolio_volatility_annualized": 0.1255,
-      "diversification_ratio": 1.69,
-      "effective_constituents": 12.5,
-      "max_weight_pct": 13.07
+      "portfolio_volatility_annualized": 0.1089,
+      "diversification_ratio": 2.22,
+      "effective_constituents": 105.7,
+      "max_weight_pct": 2.04
     }
   },
   "cluster_linkage": [
     [
-      12.0,
-      15.0,
-      0.1663,
+      72.0,
+      73.0,
+      0.0365,
       2.0
     ],
     [
-      2.0,
-      3.0,
-      0.2639,
+      124.0,
+      136.0,
+      0.1594,
       2.0
-    ],
-    [
-      5.0,
-      6.0,
-      0.3258,
-      2.0
-    ],
-    [
-      17.0,
-      19.0,
-      0.3509,
-      3.0
-    ],
-    [
-      20.0,
-      22.0,
-      0.3546,
-      5.0
-    ],
-    [
-      11.0,
-      23.0,
-      0.3647,
-      6.0
-    ],
-    [
-      13.0,
-      24.0,
-      0.3999,
-      7.0
-    ],
-    [
-      4.0,
-      18.0,
-      0.4093,
-      2.0
-    ],
-    [
-      1.0,
-      25.0,
-      0.4146,
-      8.0
-    ],
-    [
-      9.0,
-      27.0,
-      0.4314,
-      9.0
-    ],
-    [
-      14.0,
-      28.0,
-      0.4377,
-      10.0
-    ],
-    [
-      0.0,
-      29.0,
-      0.4463,
-      11.0
-    ],
-    [
-      8.0,
-      30.0,
-      0.4621,
-      12.0
-    ],
-    [
-      10.0,
-      31.0,
-      0.4801,
-      13.0
-    ],
-    [
-      16.0,
-      32.0,
-      0.4802,
-      14.0
-    ],
-    [
-      21.0,
-      33.0,
-      0.5027,
-      16.0
     ],
     [
       7.0,
-      26.0,
-      0.5915,
+      92.0,
+      0.1975,
+      2.0
+    ],
+    [
+      93.0,
+      153.0,
+      0.2392,
+      2.0
+    ],
+    [
+      76.0,
+      91.0,
+      0.2409,
+      2.0
+    ],
+    [
+      6.0,
+      159.0,
+      0.2475,
+      2.0
+    ],
+    [
+      3.0,
+      168.0,
+      0.2712,
       3.0
     ],
     [
-      34.0,
+      55.0,
+      135.0,
+      0.2767,
+      2.0
+    ],
+    [
+      49.0,
+      162.0,
+      0.2791,
+      2.0
+    ],
+    [
+      74.0,
+      104.0,
+      0.2803,
+      2.0
+    ],
+    [
+      85.0,
+      169.0,
+      0.2811,
+      4.0
+    ],
+    [
+      87.0,
+      158.0,
+      0.2905,
+      2.0
+    ],
+    [
+      62.0,
+      173.0,
+      0.2934,
+      5.0
+    ],
+    [
+      40.0,
+      171.0,
+      0.2939,
+      3.0
+    ],
+    [
+      17.0,
+      156.0,
+      0.2951,
+      2.0
+    ],
+    [
+      37.0,
+      47.0,
+      0.2957,
+      2.0
+    ],
+    [
+      137.0,
+      178.0,
+      0.3015,
+      3.0
+    ],
+    [
+      52.0,
+      141.0,
+      0.3122,
+      2.0
+    ],
+    [
+      84.0,
+      177.0,
+      0.3183,
+      3.0
+    ],
+    [
+      29.0,
+      181.0,
+      0.3213,
+      4.0
+    ],
+    [
+      79.0,
+      179.0,
+      0.3219,
+      4.0
+    ],
+    [
+      112.0,
+      164.0,
+      0.3242,
+      3.0
+    ],
+    [
+      106.0,
+      165.0,
+      0.3379,
+      3.0
+    ],
+    [
+      184.0,
+      185.0,
+      0.3418,
+      6.0
+    ],
+    [
+      38.0,
+      42.0,
+      0.3423,
+      2.0
+    ],
+    [
+      15.0,
+      39.0,
+      0.343,
+      2.0
+    ],
+    [
+      172.0,
+      182.0,
+      0.3455,
+      6.0
+    ],
+    [
+      161.0,
+      186.0,
+      0.3463,
+      7.0
+    ],
+    [
+      176.0,
+      183.0,
+      0.3499,
+      7.0
+    ],
+    [
+      8.0,
+      190.0,
+      0.3552,
+      8.0
+    ],
+    [
+      22.0,
+      192.0,
+      0.3557,
+      9.0
+    ],
+    [
+      25.0,
+      193.0,
+      0.3562,
+      10.0
+    ],
+    [
+      152.0,
+      189.0,
+      0.3625,
+      7.0
+    ],
+    [
+      11.0,
+      194.0,
+      0.3668,
+      11.0
+    ],
+    [
+      56.0,
+      64.0,
+      0.3709,
+      2.0
+    ],
+    [
+      43.0,
+      110.0,
+      0.3712,
+      2.0
+    ],
+    [
+      138.0,
+      154.0,
+      0.3738,
+      2.0
+    ],
+    [
+      103.0,
+      174.0,
+      0.374,
+      3.0
+    ],
+    [
+      128.0,
+      196.0,
+      0.3752,
+      12.0
+    ],
+    [
+      14.0,
+      201.0,
+      0.3775,
+      13.0
+    ],
+    [
+      105.0,
+      202.0,
+      0.3817,
+      14.0
+    ],
+    [
+      195.0,
+      203.0,
+      0.3836,
+      21.0
+    ],
+    [
+      23.0,
+      204.0,
+      0.3837,
+      22.0
+    ],
+    [
+      27.0,
+      205.0,
+      0.3851,
+      23.0
+    ],
+    [
+      0.0,
+      206.0,
+      0.3861,
+      24.0
+    ],
+    [
       35.0,
-      0.6038,
+      207.0,
+      0.3863,
+      25.0
+    ],
+    [
+      75.0,
+      197.0,
+      0.3865,
+      3.0
+    ],
+    [
+      123.0,
+      208.0,
+      0.3871,
+      26.0
+    ],
+    [
+      188.0,
+      210.0,
+      0.39,
+      28.0
+    ],
+    [
+      163.0,
+      211.0,
+      0.3902,
+      30.0
+    ],
+    [
+      18.0,
+      212.0,
+      0.3979,
+      31.0
+    ],
+    [
+      57.0,
+      213.0,
+      0.4025,
+      32.0
+    ],
+    [
+      86.0,
+      116.0,
+      0.4028,
+      2.0
+    ],
+    [
+      98.0,
+      214.0,
+      0.4082,
+      33.0
+    ],
+    [
+      26.0,
+      216.0,
+      0.4086,
+      34.0
+    ],
+    [
+      58.0,
+      145.0,
+      0.409,
+      2.0
+    ],
+    [
+      147.0,
+      217.0,
+      0.4172,
+      35.0
+    ],
+    [
+      170.0,
+      209.0,
+      0.4176,
+      5.0
+    ],
+    [
+      146.0,
+      219.0,
+      0.4182,
+      36.0
+    ],
+    [
+      95.0,
+      215.0,
+      0.4191,
+      3.0
+    ],
+    [
+      12.0,
+      221.0,
+      0.422,
+      37.0
+    ],
+    [
+      5.0,
+      198.0,
+      0.4222,
+      3.0
+    ],
+    [
+      97.0,
+      223.0,
+      0.4226,
+      38.0
+    ],
+    [
+      31.0,
+      225.0,
+      0.4264,
+      39.0
+    ],
+    [
+      122.0,
+      218.0,
+      0.4276,
+      3.0
+    ],
+    [
+      81.0,
+      224.0,
+      0.4291,
+      4.0
+    ],
+    [
+      118.0,
+      222.0,
+      0.4324,
+      4.0
+    ],
+    [
+      166.0,
+      226.0,
+      0.4337,
+      41.0
+    ],
+    [
+      143.0,
+      191.0,
+      0.4345,
+      8.0
+    ],
+    [
+      107.0,
+      230.0,
+      0.435,
+      42.0
+    ],
+    [
+      34.0,
+      232.0,
+      0.4354,
+      43.0
+    ],
+    [
+      139.0,
+      233.0,
+      0.4374,
+      44.0
+    ],
+    [
+      82.0,
+      234.0,
+      0.4402,
+      45.0
+    ],
+    [
+      61.0,
+      140.0,
+      0.4407,
+      2.0
+    ],
+    [
+      65.0,
+      90.0,
+      0.4433,
+      2.0
+    ],
+    [
+      4.0,
+      68.0,
+      0.4469,
+      2.0
+    ],
+    [
+      59.0,
+      151.0,
+      0.4491,
+      2.0
+    ],
+    [
+      66.0,
+      235.0,
+      0.4493,
+      46.0
+    ],
+    [
+      127.0,
+      237.0,
+      0.4497,
+      3.0
+    ],
+    [
+      119.0,
+      240.0,
+      0.4521,
+      47.0
+    ],
+    [
+      108.0,
+      220.0,
+      0.4532,
+      6.0
+    ],
+    [
+      132.0,
+      242.0,
+      0.4533,
+      48.0
+    ],
+    [
+      236.0,
+      244.0,
+      0.4551,
+      50.0
+    ],
+    [
+      134.0,
+      245.0,
+      0.4555,
+      51.0
+    ],
+    [
+      150.0,
+      187.0,
+      0.4559,
+      3.0
+    ],
+    [
+      28.0,
+      246.0,
+      0.4575,
+      52.0
+    ],
+    [
+      228.0,
+      248.0,
+      0.4578,
+      56.0
+    ],
+    [
+      71.0,
+      99.0,
+      0.459,
+      2.0
+    ],
+    [
+      131.0,
+      249.0,
+      0.4593,
+      57.0
+    ],
+    [
+      227.0,
+      231.0,
+      0.4603,
+      11.0
+    ],
+    [
+      80.0,
+      251.0,
+      0.4614,
+      58.0
+    ],
+    [
+      44.0,
+      253.0,
+      0.4619,
+      59.0
+    ],
+    [
+      53.0,
+      254.0,
+      0.462,
+      60.0
+    ],
+    [
+      41.0,
+      157.0,
+      0.4624,
+      2.0
+    ],
+    [
+      45.0,
+      238.0,
+      0.4633,
+      3.0
+    ],
+    [
+      133.0,
+      255.0,
+      0.4689,
+      61.0
+    ],
+    [
+      167.0,
+      258.0,
+      0.4714,
+      63.0
+    ],
+    [
+      50.0,
+      259.0,
+      0.4727,
+      64.0
+    ],
+    [
+      88.0,
+      260.0,
+      0.474,
+      65.0
+    ],
+    [
+      250.0,
+      261.0,
+      0.4742,
+      67.0
+    ],
+    [
+      247.0,
+      262.0,
+      0.4749,
+      70.0
+    ],
+    [
+      257.0,
+      263.0,
+      0.4765,
+      73.0
+    ],
+    [
+      21.0,
+      264.0,
+      0.4787,
+      74.0
+    ],
+    [
+      51.0,
+      265.0,
+      0.4805,
+      75.0
+    ],
+    [
+      2.0,
+      96.0,
+      0.4809,
+      2.0
+    ],
+    [
+      180.0,
+      266.0,
+      0.4824,
+      77.0
+    ],
+    [
+      101.0,
+      120.0,
+      0.4824,
+      2.0
+    ],
+    [
+      16.0,
+      268.0,
+      0.487,
+      78.0
+    ],
+    [
+      94.0,
+      229.0,
+      0.4878,
+      5.0
+    ],
+    [
+      10.0,
+      243.0,
+      0.4879,
+      7.0
+    ],
+    [
+      113.0,
+      270.0,
+      0.4886,
+      79.0
+    ],
+    [
+      271.0,
+      272.0,
+      0.4896,
+      12.0
+    ],
+    [
+      130.0,
+      273.0,
+      0.4899,
+      80.0
+    ],
+    [
+      114.0,
+      275.0,
+      0.4906,
+      81.0
+    ],
+    [
+      115.0,
+      276.0,
+      0.4921,
+      82.0
+    ],
+    [
+      148.0,
+      277.0,
+      0.4941,
+      83.0
+    ],
+    [
+      100.0,
+      278.0,
+      0.4984,
+      84.0
+    ],
+    [
+      239.0,
+      279.0,
+      0.4984,
+      86.0
+    ],
+    [
+      160.0,
+      280.0,
+      0.4998,
+      87.0
+    ],
+    [
+      24.0,
+      117.0,
+      0.5007,
+      2.0
+    ],
+    [
+      20.0,
+      281.0,
+      0.5025,
+      88.0
+    ],
+    [
+      67.0,
+      283.0,
+      0.5026,
+      89.0
+    ],
+    [
+      142.0,
+      199.0,
+      0.5045,
+      3.0
+    ],
+    [
+      109.0,
+      284.0,
+      0.5085,
+      90.0
+    ],
+    [
+      63.0,
+      286.0,
+      0.5087,
+      91.0
+    ],
+    [
+      256.0,
+      287.0,
+      0.509,
+      93.0
+    ],
+    [
+      144.0,
+      288.0,
+      0.5095,
+      94.0
+    ],
+    [
+      33.0,
+      289.0,
+      0.5097,
+      95.0
+    ],
+    [
+      48.0,
+      149.0,
+      0.51,
+      2.0
+    ],
+    [
+      9.0,
+      70.0,
+      0.512,
+      2.0
+    ],
+    [
+      30.0,
+      290.0,
+      0.5122,
+      96.0
+    ],
+    [
+      175.0,
+      293.0,
+      0.5127,
+      101.0
+    ],
+    [
+      69.0,
+      294.0,
+      0.5141,
+      102.0
+    ],
+    [
+      77.0,
+      295.0,
+      0.516,
+      103.0
+    ],
+    [
+      1.0,
+      292.0,
+      0.5179,
+      3.0
+    ],
+    [
+      83.0,
+      297.0,
+      0.5182,
+      4.0
+    ],
+    [
+      252.0,
+      296.0,
+      0.5188,
+      114.0
+    ],
+    [
+      102.0,
+      298.0,
+      0.52,
+      5.0
+    ],
+    [
+      274.0,
+      300.0,
+      0.5233,
+      17.0
+    ],
+    [
+      282.0,
+      301.0,
+      0.5237,
       19.0
+    ],
+    [
+      19.0,
+      126.0,
+      0.5237,
+      2.0
+    ],
+    [
+      121.0,
+      299.0,
+      0.5246,
+      115.0
+    ],
+    [
+      269.0,
+      302.0,
+      0.5249,
+      21.0
+    ],
+    [
+      241.0,
+      304.0,
+      0.5288,
+      118.0
+    ],
+    [
+      267.0,
+      306.0,
+      0.5297,
+      120.0
+    ],
+    [
+      305.0,
+      307.0,
+      0.5347,
+      141.0
+    ],
+    [
+      111.0,
+      308.0,
+      0.5384,
+      142.0
+    ],
+    [
+      60.0,
+      78.0,
+      0.5443,
+      2.0
+    ],
+    [
+      13.0,
+      200.0,
+      0.5454,
+      4.0
+    ],
+    [
+      309.0,
+      311.0,
+      0.5457,
+      146.0
+    ],
+    [
+      36.0,
+      312.0,
+      0.5463,
+      147.0
+    ],
+    [
+      32.0,
+      313.0,
+      0.5469,
+      148.0
+    ],
+    [
+      89.0,
+      314.0,
+      0.5475,
+      149.0
+    ],
+    [
+      285.0,
+      315.0,
+      0.5478,
+      152.0
+    ],
+    [
+      125.0,
+      316.0,
+      0.5485,
+      153.0
+    ],
+    [
+      310.0,
+      317.0,
+      0.5512,
+      155.0
+    ],
+    [
+      46.0,
+      318.0,
+      0.5538,
+      156.0
+    ],
+    [
+      303.0,
+      319.0,
+      0.556,
+      158.0
+    ],
+    [
+      155.0,
+      320.0,
+      0.5564,
+      159.0
+    ],
+    [
+      54.0,
+      321.0,
+      0.5598,
+      160.0
+    ],
+    [
+      291.0,
+      322.0,
+      0.5853,
+      162.0
+    ],
+    [
+      129.0,
+      323.0,
+      0.5926,
+      163.0
     ]
   ],
   "disclaimers": [

@@ -70,6 +70,44 @@ class MetaLabelClassifierEngine:
         if len(X_tr) == 0:
             raise ValueError("Training dataset matrix is empty; cannot train meta-classifier.")
 
+        # Rows whose features could not be computed are dropped, not imputed. Widening
+        # the universe to 163 symbols brought in issuers with too little history for the
+        # Hurst exponent, fractal dimension or Amihud illiquidity, which left NaNs in the
+        # matrix; sklearn refuses to fit on them and the whole pipeline used to abort.
+        # Filling them with a mean or a zero would invent a statistic for a security that
+        # does not have one, so the rows go, and how many went is published with the model
+        # rather than discarded silently.
+        dropped = {}
+        cleaned = []
+        for label, X, y in (("train", X_tr, y_tr), ("validation", X_val, y_val),
+                            ("test", X_te, y_te)):
+            keep = ~X.isna().any(axis=1)
+            dropped[label] = {
+                "rows_in": int(len(X)),
+                "rows_dropped_missing_features": int((~keep).sum()),
+                "rows_used": int(keep.sum()),
+            }
+            nan_cols = sorted({c for c in X.columns if X[c].isna().any()})
+            if nan_cols:
+                dropped[label]["columns_with_missing_values"] = nan_cols
+            cleaned.append((X.loc[keep.values], y.loc[keep.values]
+                            if hasattr(y, "loc") else y[keep.values]))
+        (X_tr, y_tr), (X_val, y_val), (X_te, y_te) = cleaned
+        self.dropped_missing_features = dropped
+
+        if len(X_tr) == 0:
+            raise ValueError(
+                "Every training row had at least one feature that could not be computed; "
+                "refusing to train. Dropped: %s" % json.dumps(dropped))
+
+        # A feature that is missing for every row carries no information and would
+        # propagate NaN through the scaler.
+        empty_cols = [c for c in X_tr.columns if X_tr[c].isna().all()]
+        if empty_cols:
+            X_tr = X_tr.drop(columns=empty_cols)
+            X_val = X_val.drop(columns=empty_cols)
+            X_te = X_te.drop(columns=empty_cols)
+
         self.feature_names = list(X_tr.columns)
 
         # 1. Feature Standardization

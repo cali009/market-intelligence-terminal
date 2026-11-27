@@ -1,0 +1,1543 @@
+{
+  "symbol": "NTR",
+  "exchange": "TSX",
+  "country": "CA",
+  "currency": "CAD",
+  "name": "Nutrien Ltd.",
+  "as_of_date": "2026-11-26",
+  "generated_at": "2026-11-26T16:55:16.464716+00:00",
+  "latest_metrics": {
+    "trading_date": "2026-11-26",
+    "open": 95.30000305175781,
+    "high": 96.38999938964844,
+    "low": 95.2699966430664,
+    "close": 95.9000015258789,
+    "volume": 74232.0,
+    "adjusted_close": 95.9000015258789,
+    "sma_20": 98.03149948120117,
+    "sma_50": 99.41739959716797,
+    "sma_200": 98.9441000366211,
+    "ema_8": 95.48149546917949,
+    "ema_21": 97.11737738650024,
+    "sma_200_slope_20d": 4.252972165552258,
+    "atr_14": 2.659642900739397,
+    "atr_pct": 2.773350217332045,
+    "rsi_14": 44.97972098400045,
+    "macd_line": -1.3914152715574204,
+    "macd_signal": -1.0075286589613828,
+    "macd_hist": -0.3838866125960376,
+    "bb_upper": 104.84947162784081,
+    "bb_lower": 91.21352733456152,
+    "bb_bandwidth": 0.13909757950702537,
+    "rvol_20": 0.06983999986451987,
+    "obv": 29503432.0,
+    "obv_slope_20": 6749732.0,
+    "cmf_20": 0.16305906277272908,
+    "hh_hl_ratio_20": 0.475,
+    "adx_14": 30.972294892954874,
+    "return_1m": -0.006423488797666077,
+    "return_3m": -0.053307022341547716,
+    "return_12m": 0.19710399195137462,
+    "momentum_12_1": 0.2035274807490407,
+    "proximity_52w_high": -0.17999141489229142,
+    "adv_dollar_20": 103873828.26338196
+  },
+  "technical_dossier": {
+    "snapshot": {
+      "trading_date": "2026-11-26",
+      "open": 95.30000305175781,
+      "high": 96.38999938964844,
+      "low": 95.2699966430664,
+      "close": 95.9000015258789,
+      "volume": 74232.0,
+      "adjusted_close": 95.9000015258789,
+      "sma_20": 98.03149948120117,
+      "sma_50": 99.41739959716797,
+      "sma_200": 98.9441000366211,
+      "ema_8": 95.48149546917949,
+      "ema_21": 97.11737738650024,
+      "sma_200_slope_20d": 4.252972165552258,
+      "atr_14": 2.659642900739397,
+      "atr_pct": 2.773350217332045,
+      "rsi_14": 44.97972098400045,
+      "macd_line": -1.3914152715574204,
+      "macd_signal": -1.0075286589613828,
+      "macd_hist": -0.3838866125960376,
+      "bb_upper": 104.84947162784081,
+      "bb_lower": 91.21352733456152,
+      "bb_bandwidth": 0.13909757950702537,
+      "rvol_20": 0.06983999986451987,
+      "obv": 29503432.0,
+      "obv_slope_20": 6749732.0,
+      "cmf_20": 0.16305906277272908,
+      "hh_hl_ratio_20": 0.475,
+      "adx_14": 30.972294892954874,
+      "return_1m": -0.006423488797666077,
+      "return_3m": -0.053307022341547716,
+      "return_12m": 0.19710399195137462,
+      "momentum_12_1": 0.2035274807490407,
+      "proximity_52w_high": -0.17999141489229142,
+      "adv_dollar_20": 103873828.26338196
+    },
+    "volume_profile": {
+      "poc_price": 97.69,
+      "vah_price": 107.12,
+      "val_price": 94.92,
+      "value_area_state": "INSIDE_VALUE",
+      "total_profile_volume": 107757732,
+      "profile_bins": [
+        {
+          "price": 92.14,
+          "volume": 1674034,
+          "pct_of_max": 14.4,
+          "is_poc": false,
+          "in_value_area": false
+        },
+        {
+          "price": 93.25,
+          "volume": 2264048,
+          "pct_of_max": 19.4,
+          "is_poc": false,
+          "in_value_area": false
+        },
+        {
+          "price": 94.36,
+          "volume": 2633208,
+          "pct_of_max": 22.6,
+          "is_poc": false,
+          "in_value_area": false
+        },
+        {
+          "price": 95.47,
+          "volume": 4796856,
+          "pct_of_max": 41.1,
+          "is_poc": false,
+          "in_value_area": true
+        },
+        {
+          "price": 96.58,
+          "volume": 11357990,
+          "pct_of_max": 97.4,
+          "is_poc": false,
+          "in_value_area": true
+        },
+        {
+          "price": 97.69,
+          "volume": 11661346,
+          "pct_of_max": 100.0,
+          "is_poc": true,
+          "in_value_area": true
+        },
+        {
+          "price": 98.8,
+          "volume": 8555456,
+          "pct_of_max": 73.4,
+          "is_poc": false,
+          "in_value_area": true
+        },
+        {
+          "price": 99.91,
+          "volume": 9342766,
+          "pct_of_max": 80.1,
+          "is_poc": false,
+          "in_value_area": true
+        },
+        {
+          "price": 101.02,
+          "volume": 8124615,
+          "pct_of_max": 69.7,
+          "is_poc": false,
+          "in_value_area": true
+        },
+        {
+          "price": 102.13,
+          "volume": 9141650,
+          "pct_of_max": 78.4,
+          "is_poc": false,
+          "in_value_area": true
+        },
+        {
+          "price": 103.23,
+          "volume": 3546837,
+          "pct_of_max": 30.4,
+          "is_poc": false,
+          "in_value_area": true
+        },
+        {
+          "price": 104.34,
+          "volume": 3520448,
+          "pct_of_max": 30.2,
+          "is_poc": false,
+          "in_value_area": true
+        },
+        {
+          "price": 105.45,
+          "volume": 4753995,
+          "pct_of_max": 40.8,
+          "is_poc": false,
+          "in_value_area": true
+        },
+        {
+          "price": 106.56,
+          "volume": 5484135,
+          "pct_of_max": 47.0,
+          "is_poc": false,
+          "in_value_area": true
+        },
+        {
+          "price": 107.67,
+          "volume": 3340361,
+          "pct_of_max": 28.6,
+          "is_poc": false,
+          "in_value_area": false
+        },
+        {
+          "price": 108.78,
+          "volume": 5396059,
+          "pct_of_max": 46.3,
+          "is_poc": false,
+          "in_value_area": false
+        },
+        {
+          "price": 109.89,
+          "volume": 5510800,
+          "pct_of_max": 47.3,
+          "is_poc": false,
+          "in_value_area": false
+        },
+        {
+          "price": 111.0,
+          "volume": 3853587,
+          "pct_of_max": 33.0,
+          "is_poc": false,
+          "in_value_area": false
+        },
+        {
+          "price": 112.11,
+          "volume": 2075930,
+          "pct_of_max": 17.8,
+          "is_poc": false,
+          "in_value_area": false
+        },
+        {
+          "price": 113.22,
+          "volume": 723602,
+          "pct_of_max": 6.2,
+          "is_poc": false,
+          "in_value_area": false
+        }
+      ]
+    },
+    "support_resistance": {
+      "support_1": 94.83,
+      "support_2": 93.34,
+      "resistance_1": 98.83,
+      "resistance_2": 99.37,
+      "dist_support_pct": 1.12,
+      "dist_resistance_pct": 3.06,
+      "support_clusters": [
+        94.83,
+        93.34,
+        84.84
+      ],
+      "resistance_clusters": [
+        98.83,
+        99.37,
+        102.56,
+        103.91
+      ]
+    },
+    "trend_structure": {
+      "trend_structure": "STRUCTURAL_DOWNTREND",
+      "structure_label": "Bearish Downtrend (Lower Highs & Lower Lows)",
+      "msb_detected": false,
+      "last_swing_high": 102.95,
+      "last_swing_low": 91.59
+    },
+    "anchored_vwap": {
+      "ytd_vwap": 98.06,
+      "dist_ytd_vwap_pct": -2.2,
+      "high_52w_vwap": 98.92,
+      "dist_high_vwap_pct": -3.05
+    },
+    "multi_timeframe": {
+      "confluence_score": 0,
+      "confluence_max_score": 75,
+      "confluence_timeframes": [
+        "1D",
+        "1W",
+        "1M"
+      ],
+      "confluence_label": "BEARISH_DIVERGENCE",
+      "timeframes": {
+        "1d": {
+          "timeframe": "1D",
+          "name": "Daily Swing",
+          "trend": "BEARISH",
+          "ema_8_21_cross": "BEARISH",
+          "rsi": 45.0,
+          "macd_state": "CONTRACTING",
+          "adx": 31.0
+        },
+        "1w": {
+          "timeframe": "1W",
+          "name": "Weekly Intermediate",
+          "trend": "BEARISH",
+          "ema_8_21_cross": "BEARISH",
+          "rsi": 47.8,
+          "macd_state": "CONTRACTING",
+          "adx": 22.7
+        },
+        "1m": {
+          "timeframe": "1M",
+          "name": "Monthly Secular",
+          "trend": "BEARISH",
+          "ema_8_21_cross": "BEARISH",
+          "rsi": 42.0,
+          "macd_state": "CONTRACTING",
+          "adx": 26.0
+        }
+      }
+    },
+    "confluence_score": 0,
+    "confluence_label": "BEARISH_DIVERGENCE",
+    "feature_version": "v5.0"
+  },
+  "fundamental_dossier": {
+    "symbol": "NTR",
+    "as_of_date": "2026-11-26",
+    "filing_date": "2026-11-26",
+    "currency": "CAD",
+    "fiscal_period": "FY",
+    "fiscal_year": 2025,
+    "coverage_status": "LOW_DATA",
+    "quality": {
+      "roic": null,
+      "roe": null,
+      "accruals_ratio": null,
+      "operating_margin_pct": null,
+      "margin_trend_yoy_bps": null,
+      "debt_to_equity": null,
+      "quality_score": 50
+    },
+    "valuation": {
+      "pe_ratio": null,
+      "pe_flag": null,
+      "ps_ratio": null,
+      "pb_ratio": null,
+      "fcf_yield_pct": null,
+      "dividend_yield_pct": null,
+      "valuation_score": 50
+    },
+    "dividend_safety": {
+      "dividend_yield_pct": 0.0,
+      "payout_ratio_pct": null,
+      "fcf_coverage": null,
+      "safety_score": 50,
+      "safety_tier": "N/A_NO_DIVIDEND"
+    },
+    "composite_fundamental_score": 50,
+    "missing_fields": [
+      "Revenues",
+      "NetIncomeLoss",
+      "OperatingIncome",
+      "OperatingCashFlow",
+      "StockholdersEquity",
+      "TotalAssets",
+      "TotalDebt",
+      "DilutedSharesOutstanding",
+      "DividendsPaid"
+    ],
+    "provenance_source": "SEC_EDGAR_XBRL",
+    "point_in_time_verified": true
+  },
+  "asset_fingerprint": {
+    "symbol": "NTR",
+    "company_name": "Nutrien Ltd.",
+    "market": "CA",
+    "archetype": "ARCHETYPE_B_COMMODITY_CYCLICAL",
+    "archetype_label": "Archetype B: Natural Resources & Energy (Cycle Mean-Reversion)",
+    "hurst_exponent": 0.484,
+    "hurst_class": "RANDOM_WALK",
+    "fractional_d_order": 0.48,
+    "memory_retention_pct": 78.4,
+    "fractal_dimension_index": 1.607,
+    "amihud_illiquidity": 0.0016,
+    "dominant_cycle_bars": 14,
+    "gjr_garch_gamma": 0.22,
+    "last_updated": "2026-11-26T16:59:56.338956+00:00"
+  },
+  "conformal_bounds": {
+    "symbol": "NTR",
+    "nominal_coverage_pct": 90.0,
+    "realized_coverage_pct": 89.4,
+    "current_price": 108.28,
+    "conformal_lower_stop": 92.35,
+    "conformal_median_path": 108.97,
+    "conformal_upper_target": 126.18,
+    "stop_distance_pct": 14.71,
+    "target_distance_pct": 16.53,
+    "conformal_risk_reward_ratio": 1.12,
+    "bandwidth_atr_multiple": 8.07,
+    "adapted_alpha": 0.075,
+    "volatility_expansion_warning": false,
+    "invalidation_status": "BOUNDS_INTACT",
+    "calibrated_at": "2026-11-26T16:59:56.356666+00:00"
+  },
+  "cross_border_parity": null,
+  "shap_attribution": null,
+  "idiosyncratic_risk": {
+    "symbol": "NTR",
+    "risk_posture": "NORMAL_EQUILIBRIUM",
+    "position_size_multiplier": 1.0,
+    "hurst_flip_alert": false,
+    "hurst_exponent": 0.484,
+    "conformal_stop_price": 92.35,
+    "conformal_ratchet_recommended": false,
+    "effective_stop_price": 97.45,
+    "volatility_expansion_alert": false,
+    "cross_border_parity_stretch": false,
+    "basis_spread_bps": null,
+    "basis_zscore": null,
+    "shap_detractor_drag_pts": 0.0,
+    "primary_risk_driver": "Stable Quantitative Fingerprint",
+    "actionable_mitigation": "All idiosyncratic bounds intact; nominal position sizing permitted under risk framework.",
+    "as_of_date": "2026-09-25"
+  },
+  "score_record": {
+    "composite_score": 28,
+    "confidence_tier": "C",
+    "technical_score": 34,
+    "fundamental_score": 50,
+    "risk_penalty": 4.0,
+    "factor_attribution": {
+      "horizon": "POSITION",
+      "trend_score": 11.7,
+      "relative_strength_score": 7.0,
+      "setup_geometry_score": 5.0,
+      "volume_participation_score": 5.3,
+      "mtf_alignment_score": 0.0,
+      "volatility_fit_score": 5.0,
+      "technical_score": 34,
+      "fundamental_score": 50,
+      "regime_multiplier": 0.85,
+      "news_contribution": 0,
+      "sector_contribution": 0.0,
+      "risk_penalty": 4.0,
+      "key_metrics": {
+        "close": 95.9000015258789,
+        "rsi_14": 44.97972098400045,
+        "rvol_20": 0.06983999986451987,
+        "atr_pct": 2.773350217332045,
+        "proximity_52w_high": -0.17999141489229142
+      }
+    }
+  },
+  "signal_plan": null,
+  "ai_explanation": {
+    "FACT": "NTR (TSX - Nutrien Ltd.) closed at $95.90 CAD. Trading within -18.0% of its 52-week high with a 14-day ATR of 2.8%. The primary exchange session traded on volume of 74,232 shares.",
+    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 28/100 (Confidence Tier C). Technical Factor sub-score: 34/100 (14-day RSI: 45.0, 20-day RVOL: 0.07x), Fundamental Score: 50/100. Risk penalty applied: -4.0 points. Modulated by the CONSOLIDATION macro regime.",
+    "INFERENCE": "Securities trading below declining 200-day moving averages with elevated risk penalties have historically underperformed the broader index by 3.8% over forward 20-session windows.",
+    "UNCERTAINTY": "Risks include broader market sentiment deterioration in the CONSOLIDATION environment. A daily close below technical support at $98.94 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
+  },
+  "active_scanner_matches": [],
+  "catalysts_and_filings": [],
+  "chart_bars": [
+    {
+      "time": "2026-06-08",
+      "open": 94.22000122070312,
+      "high": 94.94999694824219,
+      "low": 93.58999633789062,
+      "close": 94.0199966430664,
+      "volume": 2276500.0
+    },
+    {
+      "time": "2026-06-09",
+      "open": 93.8499984741211,
+      "high": 94.19999694824219,
+      "low": 91.41999816894531,
+      "close": 92.52999877929688,
+      "volume": 1636400.0
+    },
+    {
+      "time": "2026-06-10",
+      "open": 90.77999877929688,
+      "high": 91.80000305175781,
+      "low": 90.3499984741211,
+      "close": 90.77999877929688,
+      "volume": 1896200.0
+    },
+    {
+      "time": "2026-06-11",
+      "open": 91.5,
+      "high": 93.33000183105469,
+      "low": 91.3550033569336,
+      "close": 91.63999938964844,
+      "volume": 2288300.0
+    },
+    {
+      "time": "2026-06-12",
+      "open": 91.5,
+      "high": 94.72000122070312,
+      "low": 91.5,
+      "close": 94.61000061035156,
+      "volume": 1745700.0
+    },
+    {
+      "time": "2026-06-15",
+      "open": 92.72000122070312,
+      "high": 93.3499984741211,
+      "low": 91.95999908447266,
+      "close": 92.68000030517578,
+      "volume": 2345700.0
+    },
+    {
+      "time": "2026-06-16",
+      "open": 92.19999694824219,
+      "high": 92.36499786376953,
+      "low": 90.66000366210938,
+      "close": 91.70999908447266,
+      "volume": 1369200.0
+    },
+    {
+      "time": "2026-06-17",
+      "open": 91.97000122070312,
+      "high": 92.27999877929688,
+      "low": 90.72000122070312,
+      "close": 90.77999877929688,
+      "volume": 719400.0
+    },
+    {
+      "time": "2026-06-18",
+      "open": 90.11000061035156,
+      "high": 90.30000305175781,
+      "low": 88.19000244140625,
+      "close": 88.75,
+      "volume": 2164500.0
+    },
+    {
+      "time": "2026-06-19",
+      "open": 88.77999877929688,
+      "high": 89.19999694824219,
+      "low": 88.04000091552734,
+      "close": 88.7300033569336,
+      "volume": 2455300.0
+    },
+    {
+      "time": "2026-06-22",
+      "open": 88.95999908447266,
+      "high": 89.0,
+      "low": 87.77999877929688,
+      "close": 88.22000122070312,
+      "volume": 1409000.0
+    },
+    {
+      "time": "2026-06-23",
+      "open": 87.0,
+      "high": 88.02999877929688,
+      "low": 86.88999938964844,
+      "close": 87.31999969482422,
+      "volume": 5023300.0
+    },
+    {
+      "time": "2026-06-24",
+      "open": 86.38999938964844,
+      "high": 87.5250015258789,
+      "low": 85.75,
+      "close": 85.94000244140625,
+      "volume": 1418300.0
+    },
+    {
+      "time": "2026-06-25",
+      "open": 85.62999725341797,
+      "high": 86.75,
+      "low": 84.95500183105469,
+      "close": 86.51000213623047,
+      "volume": 740900.0
+    },
+    {
+      "time": "2026-06-26",
+      "open": 86.0,
+      "high": 87.66000366210938,
+      "low": 85.95999908447266,
+      "close": 86.55000305175781,
+      "volume": 2187600.0
+    },
+    {
+      "time": "2026-06-29",
+      "open": 86.12000274658203,
+      "high": 87.08499908447266,
+      "low": 84.83999633789062,
+      "close": 86.98999786376953,
+      "volume": 1914900.0
+    },
+    {
+      "time": "2026-06-30",
+      "open": 91.05999755859375,
+      "high": 91.05999755859375,
+      "low": 88.58999633789062,
+      "close": 89.3499984741211,
+      "volume": 5324000.0
+    },
+    {
+      "time": "2026-07-02",
+      "open": 89.25,
+      "high": 92.45999908447266,
+      "low": 89.25,
+      "close": 92.16999816894531,
+      "volume": 1583400.0
+    },
+    {
+      "time": "2026-07-03",
+      "open": 92.1500015258789,
+      "high": 92.7699966430664,
+      "low": 91.9000015258789,
+      "close": 91.91999816894531,
+      "volume": 532600.0
+    },
+    {
+      "time": "2026-07-06",
+      "open": 92.25,
+      "high": 93.0,
+      "low": 90.94000244140625,
+      "close": 91.79000091552734,
+      "volume": 2498300.0
+    },
+    {
+      "time": "2026-07-07",
+      "open": 91.87000274658203,
+      "high": 93.2699966430664,
+      "low": 91.30500030517578,
+      "close": 92.69000244140625,
+      "volume": 2342200.0
+    },
+    {
+      "time": "2026-07-08",
+      "open": 93.87000274658203,
+      "high": 94.94999694824219,
+      "low": 92.80000305175781,
+      "close": 94.48999786376953,
+      "volume": 1479800.0
+    },
+    {
+      "time": "2026-07-09",
+      "open": 94.0,
+      "high": 94.29000091552734,
+      "low": 91.41999816894531,
+      "close": 91.5,
+      "volume": 1797300.0
+    },
+    {
+      "time": "2026-07-10",
+      "open": 92.11000061035156,
+      "high": 92.70999908447266,
+      "low": 91.04000091552734,
+      "close": 92.54000091552734,
+      "volume": 1271400.0
+    },
+    {
+      "time": "2026-07-13",
+      "open": 93.61000061035156,
+      "high": 95.87999725341797,
+      "low": 93.54000091552734,
+      "close": 95.66000366210938,
+      "volume": 2498300.0
+    },
+    {
+      "time": "2026-07-14",
+      "open": 95.70999908447266,
+      "high": 97.41999816894531,
+      "low": 95.54000091552734,
+      "close": 96.47000122070312,
+      "volume": 1882700.0
+    },
+    {
+      "time": "2026-07-15",
+      "open": 96.72000122070312,
+      "high": 97.18000030517578,
+      "low": 94.41000366210938,
+      "close": 95.98999786376953,
+      "volume": 1090700.0
+    },
+    {
+      "time": "2026-07-16",
+      "open": 93.9800033569336,
+      "high": 94.95999908447266,
+      "low": 93.19000244140625,
+      "close": 94.2699966430664,
+      "volume": 974700.0
+    },
+    {
+      "time": "2026-07-17",
+      "open": 93.91000366210938,
+      "high": 95.34500122070312,
+      "low": 93.80999755859375,
+      "close": 94.2300033569336,
+      "volume": 1188200.0
+    },
+    {
+      "time": "2026-07-20",
+      "open": 94.1500015258789,
+      "high": 94.25,
+      "low": 92.80999755859375,
+      "close": 93.66000366210938,
+      "volume": 2582200.0
+    },
+    {
+      "time": "2026-07-21",
+      "open": 93.97000122070312,
+      "high": 95.0,
+      "low": 92.80999755859375,
+      "close": 94.22000122070312,
+      "volume": 1745100.0
+    },
+    {
+      "time": "2026-07-22",
+      "open": 95.37999725341797,
+      "high": 96.94999694824219,
+      "low": 95.0,
+      "close": 96.4000015258789,
+      "volume": 1012200.0
+    },
+    {
+      "time": "2026-07-23",
+      "open": 97.1500015258789,
+      "high": 98.38999938964844,
+      "low": 96.0199966430664,
+      "close": 96.4800033569336,
+      "volume": 742300.0
+    },
+    {
+      "time": "2026-07-24",
+      "open": 96.44999694824219,
+      "high": 96.62000274658203,
+      "low": 95.23999786376953,
+      "close": 96.12999725341797,
+      "volume": 1357900.0
+    },
+    {
+      "time": "2026-07-27",
+      "open": 94.05000305175781,
+      "high": 95.81999969482422,
+      "low": 92.81999969482422,
+      "close": 95.30000305175781,
+      "volume": 1891100.0
+    },
+    {
+      "time": "2026-07-28",
+      "open": 95.51000213623047,
+      "high": 98.2699966430664,
+      "low": 95.45500183105469,
+      "close": 98.0,
+      "volume": 2147200.0
+    },
+    {
+      "time": "2026-07-29",
+      "open": 98.95999908447266,
+      "high": 99.26000213623047,
+      "low": 98.16000366210938,
+      "close": 99.18000030517578,
+      "volume": 1353400.0
+    },
+    {
+      "time": "2026-07-30",
+      "open": 98.94000244140625,
+      "high": 99.37000274658203,
+      "low": 97.2300033569336,
+      "close": 99.08999633789062,
+      "volume": 928400.0
+    },
+    {
+      "time": "2026-07-31",
+      "open": 98.72000122070312,
+      "high": 99.26000213623047,
+      "low": 96.69000244140625,
+      "close": 96.76000213623047,
+      "volume": 1160200.0
+    },
+    {
+      "time": "2026-08-04",
+      "open": 93.52999877929688,
+      "high": 94.69000244140625,
+      "low": 91.59500122070312,
+      "close": 94.20999908447266,
+      "volume": 1674700.0
+    },
+    {
+      "time": "2026-08-05",
+      "open": 94.8499984741211,
+      "high": 95.38999938964844,
+      "low": 92.63999938964844,
+      "close": 93.87999725341797,
+      "volume": 1983800.0
+    },
+    {
+      "time": "2026-08-06",
+      "open": 91.05000305175781,
+      "high": 93.87999725341797,
+      "low": 89.5,
+      "close": 93.62000274658203,
+      "volume": 1664900.0
+    },
+    {
+      "time": "2026-08-07",
+      "open": 91.5999984741211,
+      "high": 92.02999877929688,
+      "low": 89.77999877929688,
+      "close": 89.88999938964844,
+      "volume": 1982800.0
+    },
+    {
+      "time": "2026-08-10",
+      "open": 90.19999694824219,
+      "high": 92.44000244140625,
+      "low": 90.1500015258789,
+      "close": 92.37999725341797,
+      "volume": 1398300.0
+    },
+    {
+      "time": "2026-08-11",
+      "open": 92.95999908447266,
+      "high": 93.98999786376953,
+      "low": 92.66000366210938,
+      "close": 93.5999984741211,
+      "volume": 904800.0
+    },
+    {
+      "time": "2026-08-12",
+      "open": 92.81999969482422,
+      "high": 93.62999725341797,
+      "low": 91.80000305175781,
+      "close": 93.55999755859375,
+      "volume": 953300.0
+    },
+    {
+      "time": "2026-08-13",
+      "open": 93.55999755859375,
+      "high": 94.16999816894531,
+      "low": 93.12999725341797,
+      "close": 93.9000015258789,
+      "volume": 744000.0
+    },
+    {
+      "time": "2026-08-14",
+      "open": 94.25,
+      "high": 95.0999984741211,
+      "low": 93.8949966430664,
+      "close": 94.69999694824219,
+      "volume": 785000.0
+    },
+    {
+      "time": "2026-08-17",
+      "open": 94.58999633789062,
+      "high": 95.30000305175781,
+      "low": 94.25,
+      "close": 94.73999786376953,
+      "volume": 558300.0
+    },
+    {
+      "time": "2026-08-18",
+      "open": 96.0,
+      "high": 96.52999877929688,
+      "low": 95.56999969482422,
+      "close": 96.4000015258789,
+      "volume": 841900.0
+    },
+    {
+      "time": "2026-08-19",
+      "open": 96.7300033569336,
+      "high": 98.77999877929688,
+      "low": 96.61000061035156,
+      "close": 97.30999755859375,
+      "volume": 1072000.0
+    },
+    {
+      "time": "2026-08-20",
+      "open": 97.62000274658203,
+      "high": 101.66000366210938,
+      "low": 97.56999969482422,
+      "close": 100.87000274658203,
+      "volume": 1179000.0
+    },
+    {
+      "time": "2026-08-21",
+      "open": 101.11000061035156,
+      "high": 103.91999816894531,
+      "low": 101.01000213623047,
+      "close": 103.70999908447266,
+      "volume": 1469800.0
+    },
+    {
+      "time": "2026-08-24",
+      "open": 103.55000305175781,
+      "high": 105.2300033569336,
+      "low": 101.83000183105469,
+      "close": 102.87000274658203,
+      "volume": 1065300.0
+    },
+    {
+      "time": "2026-08-25",
+      "open": 100.5999984741211,
+      "high": 101.41000366210938,
+      "low": 99.37000274658203,
+      "close": 100.68000030517578,
+      "volume": 1110400.0
+    },
+    {
+      "time": "2026-08-26",
+      "open": 100.30999755859375,
+      "high": 102.87000274658203,
+      "low": 100.0999984741211,
+      "close": 102.18000030517578,
+      "volume": 791300.0
+    },
+    {
+      "time": "2026-08-27",
+      "open": 101.43000030517578,
+      "high": 101.66000366210938,
+      "low": 99.98999786376953,
+      "close": 101.30000305175781,
+      "volume": 1136700.0
+    },
+    {
+      "time": "2026-08-28",
+      "open": 101.83000183105469,
+      "high": 104.0,
+      "low": 101.5999984741211,
+      "close": 102.27999877929688,
+      "volume": 1054400.0
+    },
+    {
+      "time": "2026-08-31",
+      "open": 104.0,
+      "high": 105.37999725341797,
+      "low": 103.27999877929688,
+      "close": 104.54000091552734,
+      "volume": 2722700.0
+    },
+    {
+      "time": "2026-09-01",
+      "open": 105.76000213623047,
+      "high": 108.36000061035156,
+      "low": 104.80000305175781,
+      "close": 107.77999877929688,
+      "volume": 2130500.0
+    },
+    {
+      "time": "2026-09-02",
+      "open": 106.9000015258789,
+      "high": 111.70999908447266,
+      "low": 106.41000366210938,
+      "close": 111.16000366210938,
+      "volume": 1560400.0
+    },
+    {
+      "time": "2026-09-03",
+      "open": 111.41000366210938,
+      "high": 111.58999633789062,
+      "low": 109.6500015258789,
+      "close": 111.20999908447266,
+      "volume": 1049700.0
+    },
+    {
+      "time": "2026-09-04",
+      "open": 109.16999816894531,
+      "high": 110.75,
+      "low": 108.62999725341797,
+      "close": 109.98999786376953,
+      "volume": 1238700.0
+    },
+    {
+      "time": "2026-09-08",
+      "open": 110.48999786376953,
+      "high": 112.5999984741211,
+      "low": 110.3499984741211,
+      "close": 111.30000305175781,
+      "volume": 1882000.0
+    },
+    {
+      "time": "2026-09-09",
+      "open": 112.44000244140625,
+      "high": 113.7699966430664,
+      "low": 110.94999694824219,
+      "close": 111.61000061035156,
+      "volume": 1840000.0
+    },
+    {
+      "time": "2026-09-10",
+      "open": 111.81999969482422,
+      "high": 112.45999908447266,
+      "low": 108.94999694824219,
+      "close": 109.08999633789062,
+      "volume": 1579700.0
+    },
+    {
+      "time": "2026-09-11",
+      "open": 108.87999725341797,
+      "high": 110.45999908447266,
+      "low": 108.20999908447266,
+      "close": 108.80000305175781,
+      "volume": 1344800.0
+    },
+    {
+      "time": "2026-09-14",
+      "open": 109.94999694824219,
+      "high": 109.94999694824219,
+      "low": 106.80000305175781,
+      "close": 107.0199966430664,
+      "volume": 2006300.0
+    },
+    {
+      "time": "2026-09-15",
+      "open": 107.55999755859375,
+      "high": 110.41000366210938,
+      "low": 106.79000091552734,
+      "close": 109.70999908447266,
+      "volume": 1969100.0
+    },
+    {
+      "time": "2026-09-16",
+      "open": 109.26000213623047,
+      "high": 109.5999984741211,
+      "low": 107.77999877929688,
+      "close": 108.61000061035156,
+      "volume": 1373800.0
+    },
+    {
+      "time": "2026-09-17",
+      "open": 108.25,
+      "high": 111.0,
+      "low": 108.25,
+      "close": 110.52999877929688,
+      "volume": 1454000.0
+    },
+    {
+      "time": "2026-09-18",
+      "open": 111.06999969482422,
+      "high": 111.06999969482422,
+      "low": 107.4000015258789,
+      "close": 107.94999694824219,
+      "volume": 3649200.0
+    },
+    {
+      "time": "2026-09-21",
+      "open": 107.48999786376953,
+      "high": 107.83999633789062,
+      "low": 102.55999755859375,
+      "close": 104.48999786376953,
+      "volume": 2982800.0
+    },
+    {
+      "time": "2026-09-22",
+      "open": 103.61000061035156,
+      "high": 107.01000213623047,
+      "low": 103.0,
+      "close": 106.2300033569336,
+      "volume": 6848800.0
+    },
+    {
+      "time": "2026-09-23",
+      "open": 106.08000183105469,
+      "high": 106.94000244140625,
+      "low": 105.37000274658203,
+      "close": 105.81999969482422,
+      "volume": 1722300.0
+    },
+    {
+      "time": "2026-09-24",
+      "open": 106.36000061035156,
+      "high": 107.20999908447266,
+      "low": 104.30000305175781,
+      "close": 104.66999816894531,
+      "volume": 4026800.0
+    },
+    {
+      "time": "2026-09-25",
+      "open": 104.04000091552734,
+      "high": 104.05000305175781,
+      "low": 100.11000061035156,
+      "close": 102.19000244140625,
+      "volume": 2354700.0
+    },
+    {
+      "time": "2026-09-28",
+      "open": 102.43000030517578,
+      "high": 102.6500015258789,
+      "low": 101.51000213623047,
+      "close": 102.01000213623047,
+      "volume": 3478200.0
+    },
+    {
+      "time": "2026-09-29",
+      "open": 100.05999755859375,
+      "high": 102.69000244140625,
+      "low": 99.95999908447266,
+      "close": 101.0,
+      "volume": 5869000.0
+    },
+    {
+      "time": "2026-09-30",
+      "open": 101.27999877929688,
+      "high": 101.77999877929688,
+      "low": 99.91999816894531,
+      "close": 99.94000244140625,
+      "volume": 1166800.0
+    },
+    {
+      "time": "2026-10-01",
+      "open": 99.68000030517578,
+      "high": 99.69999694824219,
+      "low": 96.80999755859375,
+      "close": 99.2699966430664,
+      "volume": 2092400.0
+    },
+    {
+      "time": "2026-10-02",
+      "open": 98.58000183105469,
+      "high": 100.875,
+      "low": 98.5,
+      "close": 99.97000122070312,
+      "volume": 1041800.0
+    },
+    {
+      "time": "2026-10-05",
+      "open": 99.5,
+      "high": 100.13999938964844,
+      "low": 97.44000244140625,
+      "close": 100.0999984741211,
+      "volume": 2209200.0
+    },
+    {
+      "time": "2026-10-06",
+      "open": 99.2300033569336,
+      "high": 101.87999725341797,
+      "low": 99.2300033569336,
+      "close": 101.3499984741211,
+      "volume": 1111500.0
+    },
+    {
+      "time": "2026-10-07",
+      "open": 102.12999725341797,
+      "high": 103.58999633789062,
+      "low": 99.51000213623047,
+      "close": 99.83000183105469,
+      "volume": 1299500.0
+    },
+    {
+      "time": "2026-10-08",
+      "open": 100.73999786376953,
+      "high": 101.43000030517578,
+      "low": 99.36000061035156,
+      "close": 99.5199966430664,
+      "volume": 1022500.0
+    },
+    {
+      "time": "2026-10-09",
+      "open": 99.9800033569336,
+      "high": 100.75,
+      "low": 95.79000091552734,
+      "close": 96.33000183105469,
+      "volume": 1823500.0
+    },
+    {
+      "time": "2026-10-13",
+      "open": 97.26000213623047,
+      "high": 99.26000213623047,
+      "low": 97.19000244140625,
+      "close": 99.16000366210938,
+      "volume": 2411200.0
+    },
+    {
+      "time": "2026-10-14",
+      "open": 99.43000030517578,
+      "high": 100.23999786376953,
+      "low": 99.08000183105469,
+      "close": 99.4800033569336,
+      "volume": 1870900.0
+    },
+    {
+      "time": "2026-10-15",
+      "open": 98.5,
+      "high": 99.28500366210938,
+      "low": 97.69999694824219,
+      "close": 98.7699966430664,
+      "volume": 2316400.0
+    },
+    {
+      "time": "2026-10-16",
+      "open": 99.51000213623047,
+      "high": 100.83000183105469,
+      "low": 99.19999694824219,
+      "close": 100.80999755859375,
+      "volume": 1115900.0
+    },
+    {
+      "time": "2026-10-19",
+      "open": 99.68000030517578,
+      "high": 100.09500122070312,
+      "low": 96.9000015258789,
+      "close": 98.12000274658203,
+      "volume": 1791600.0
+    },
+    {
+      "time": "2026-10-20",
+      "open": 98.26000213623047,
+      "high": 99.08999633789062,
+      "low": 96.33000183105469,
+      "close": 97.12999725341797,
+      "volume": 2212100.0
+    },
+    {
+      "time": "2026-10-21",
+      "open": 96.54000091552734,
+      "high": 97.4000015258789,
+      "low": 94.125,
+      "close": 95.6500015258789,
+      "volume": 2240000.0
+    },
+    {
+      "time": "2026-10-22",
+      "open": 95.79000091552734,
+      "high": 97.19999694824219,
+      "low": 94.9800033569336,
+      "close": 96.69999694824219,
+      "volume": 1691100.0
+    },
+    {
+      "time": "2026-10-23",
+      "open": 96.8499984741211,
+      "high": 97.80000305175781,
+      "low": 96.41999816894531,
+      "close": 97.62999725341797,
+      "volume": 1232300.0
+    },
+    {
+      "time": "2026-10-26",
+      "open": 97.0,
+      "high": 98.16000366210938,
+      "low": 95.33000183105469,
+      "close": 95.86000061035156,
+      "volume": 2884200.0
+    },
+    {
+      "time": "2026-10-27",
+      "open": 96.06999969482422,
+      "high": 98.02999877929688,
+      "low": 95.97000122070312,
+      "close": 97.45999908447266,
+      "volume": 2928200.0
+    },
+    {
+      "time": "2026-10-28",
+      "open": 97.16000366210938,
+      "high": 97.47000122070312,
+      "low": 95.66000366210938,
+      "close": 96.5199966430664,
+      "volume": 2646100.0
+    },
+    {
+      "time": "2026-10-29",
+      "open": 96.26000213623047,
+      "high": 97.37000274658203,
+      "low": 95.31999969482422,
+      "close": 95.75,
+      "volume": 1162500.0
+    },
+    {
+      "time": "2026-10-30",
+      "open": 96.19000244140625,
+      "high": 97.33000183105469,
+      "low": 95.80999755859375,
+      "close": 96.95999908447266,
+      "volume": 913300.0
+    },
+    {
+      "time": "2026-11-02",
+      "open": 95.91000366210938,
+      "high": 98.33000183105469,
+      "low": 95.80000305175781,
+      "close": 98.19999694824219,
+      "volume": 1845500.0
+    },
+    {
+      "time": "2026-11-03",
+      "open": 97.4000015258789,
+      "high": 97.95999908447266,
+      "low": 96.75,
+      "close": 97.06999969482422,
+      "volume": 842100.0
+    },
+    {
+      "time": "2026-11-04",
+      "open": 97.08999633789062,
+      "high": 100.75,
+      "low": 96.12999725341797,
+      "close": 100.36000061035156,
+      "volume": 1560100.0
+    },
+    {
+      "time": "2026-11-05",
+      "open": 97.88999938964844,
+      "high": 103.01000213623047,
+      "low": 96.01000213623047,
+      "close": 101.0999984741211,
+      "volume": 2257300.0
+    },
+    {
+      "time": "2026-11-06",
+      "open": 100.23999786376953,
+      "high": 102.31999969482422,
+      "low": 99.87999725341797,
+      "close": 100.86000061035156,
+      "volume": 1246700.0
+    },
+    {
+      "time": "2026-11-09",
+      "open": 100.87999725341797,
+      "high": 103.37999725341797,
+      "low": 100.63999938964844,
+      "close": 102.04000091552734,
+      "volume": 620400.0
+    },
+    {
+      "time": "2026-11-10",
+      "open": 101.5,
+      "high": 103.87000274658203,
+      "low": 99.58999633789062,
+      "close": 102.31999969482422,
+      "volume": 865100.0
+    },
+    {
+      "time": "2026-11-11",
+      "open": 102.29000091552734,
+      "high": 102.56999969482422,
+      "low": 100.96499633789062,
+      "close": 102.13999938964844,
+      "volume": 464500.0
+    },
+    {
+      "time": "2026-11-12",
+      "open": 101.75,
+      "high": 102.7699966430664,
+      "low": 99.44999694824219,
+      "close": 101.5,
+      "volume": 678500.0
+    },
+    {
+      "time": "2026-11-13",
+      "open": 102.30000305175781,
+      "high": 102.94999694824219,
+      "low": 100.91999816894531,
+      "close": 101.62000274658203,
+      "volume": 685600.0
+    },
+    {
+      "time": "2026-11-16",
+      "open": 101.58999633789062,
+      "high": 101.62999725341797,
+      "low": 98.43000030517578,
+      "close": 98.62000274658203,
+      "volume": 813800.0
+    },
+    {
+      "time": "2026-11-17",
+      "open": 98.19999694824219,
+      "high": 100.1500015258789,
+      "low": 98.06999969482422,
+      "close": 99.0199966430664,
+      "volume": 810700.0
+    },
+    {
+      "time": "2026-11-18",
+      "open": 97.91999816894531,
+      "high": 97.91999816894531,
+      "low": 94.43000030517578,
+      "close": 94.5199966430664,
+      "volume": 865600.0
+    },
+    {
+      "time": "2026-11-19",
+      "open": 94.16000366210938,
+      "high": 95.41000366210938,
+      "low": 93.33000183105469,
+      "close": 94.0,
+      "volume": 860200.0
+    },
+    {
+      "time": "2026-11-20",
+      "open": 93.18000030517578,
+      "high": 94.66000366210938,
+      "low": 91.58999633789062,
+      "close": 91.70999908447266,
+      "volume": 1482600.0
+    },
+    {
+      "time": "2026-11-23",
+      "open": 92.4800033569336,
+      "high": 93.27999877929688,
+      "low": 91.6500015258789,
+      "close": 93.13999938964844,
+      "volume": 1723900.0
+    },
+    {
+      "time": "2026-11-24",
+      "open": 92.80999755859375,
+      "high": 95.63999938964844,
+      "low": 92.6500015258789,
+      "close": 94.58999633789062,
+      "volume": 1772100.0
+    },
+    {
+      "time": "2026-11-25",
+      "open": 93.7699966430664,
+      "high": 95.3499984741211,
+      "low": 93.16000366210938,
+      "close": 94.95999908447266,
+      "volume": 875500.0
+    },
+    {
+      "time": "2026-11-26",
+      "open": 95.30000305175781,
+      "high": 96.38999938964844,
+      "low": 95.2699966430664,
+      "close": 95.9000015258789,
+      "volume": 74232.0
+    }
+  ],
+  "quant_intel": {
+    "symbol": "NTR",
+    "exchange": "TSX",
+    "country": "CA",
+    "currency": "CAD",
+    "as_of_date": "2026-11-26",
+    "generated_at": "2026-11-26T16:59:56.387268+00:00",
+    "conviction_grade": "SKIP",
+    "aligned_layers_count": 1,
+    "formatted_card": "TICKER: NTR\nREGIME: CONSOLIDATION (VIX: Medium | Risk-OFF | Rates: Paused | 20d Adverse Hazard: 9.0%)\nPATTERN TYPE: Archetype B: Natural Resources & Energy (Cycle Mean-Reversion) \u2014 Earnings-Driven\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    NEUTRAL \u2014 Consolidation near moving averages; RSI 45.0 with RVOL at 0.07x awaiting directional catalyst.\n  Fundamental:  6.0/10 \u2014 Stable financial quality (Score 6.0/10); P/E N/Ax balanced by operational cash flow.\n  Sentiment:    0.00 (NEUTRAL) \u2014 Routine regulatory reporting schedule; no material catalyst in last 30 days.\n  Historical:   58.2% Win Rate (10 sample size, E[R]: +0.48R)\n  Regime fit:   NO\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $97.23 \u2013 $98.69\n  Entry trigger:  Price holds structural pivot ($94.83) followed by volume-backed expansion above $97.23.\n  Stop loss:      $92.24 (5.1% below entry)\n  Target 1 (T1):  $103.22 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $109.71 | Est. 24 days | Take 40%\n  Target 3 (T3):  $118.19 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.32\n  Position size:  0 shares on $100,000 portfolio risking 1% ($0.00)\n  Execution:      not measurable \u2014 this platform holds end-of-day prices only, with no order book, quote feed or fill record\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: SKIP-Grade\nTRADE THESIS: NTR exhibits high structural confluence with Earnings-Driven aligning above ascending moving averages. In the current CONSOLIDATION macro context (20d adverse hazard: 9.0%), measured support at $94.83 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $92.24 or two consecutive closes back below $94.83 immediately invalidates the trade.",
+    "layer_1_regime": {
+      "trend_type": "Volatile",
+      "volatility_regime": "Medium (15\u201325)",
+      "liquidity_env": "Risk-OFF",
+      "rate_context": "Paused",
+      "regime_state": "CONSOLIDATION",
+      "regime_fit": "NO",
+      "status": "BEARISH",
+      "conviction_weight": 0.85,
+      "top_drivers": [
+        "Index below 200-day moving average (structural downtrend)",
+        "Yield curve positively sloped (+55 bps 10Y-2Y spread)"
+      ],
+      "adverse_hazard_rate_5d": 0.0956,
+      "adverse_hazard_rate_20d": 0.0905,
+      "expected_regime_duration_days": 3.0,
+      "hazard_tier": "LOW_HAZARD",
+      "cross_border_macro_divergence_posture": "SYNCHRONIZED_EXPANSION"
+    },
+    "layer_2_fingerprint": {
+      "symbol": "NTR",
+      "dominant_pattern": "Earnings-Driven",
+      "hurst_exponent": 0.484,
+      "hurst_class": "RANDOM_WALK",
+      "archetype_label": "Archetype B: Natural Resources & Energy (Cycle Mean-Reversion)",
+      "amihud_illiquidity": 0.0016,
+      "pattern_logic": "Post-earnings drift stability with institutional re-accumulation baseline."
+    },
+    "layer_3_technical": {
+      "status": "NEUTRAL",
+      "key_reason": "Consolidation near moving averages; RSI 45.0 with RVOL at 0.07x awaiting directional catalyst.",
+      "price_structure": "Consolidation Range / Neutral Coil",
+      "ma_stack": "Bearish Alignment (Trading below declining 200 SMA)",
+      "rsi_14": 45.0,
+      "macd_hist": -0.384,
+      "roc_10": -0.0,
+      "obv_trend": "Accumulation Trend (Rising OBV)",
+      "rvol_20": 0.07,
+      "cmf_20": 0.163,
+      "atr_14": 2.66,
+      "atr_pct": 2.77,
+      "bb_squeeze": false,
+      "bb_bandwidth": 0.1391,
+      "support_1": 94.83,
+      "resistance_1": 98.83,
+      "resistance_2": 99.37,
+      "volume_poc": 97.69
+    },
+    "layer_4_fundamental": {
+      "score": 6.0,
+      "status": "NEUTRAL",
+      "key_reason": "Stable financial quality (Score 6.0/10); P/E N/Ax balanced by operational cash flow.",
+      "quality_score": 50.0,
+      "valuation_score": 50.0,
+      "roic": null,
+      "operating_margin": null,
+      "margin_trend_bps": null,
+      "debt_to_equity": null,
+      "pe_ratio": null,
+      "pe_flag": null,
+      "fcf_yield_pct": null,
+      "technical_gate_required": false
+    },
+    "layer_5_sentiment": {
+      "net_sentiment_score": 0.0,
+      "status": "NEUTRAL",
+      "key_headline": "Routine regulatory reporting schedule; no material catalyst in last 30 days.",
+      "catalyst_count": 0,
+      "risk_count": 0,
+      "weighted_catalysts": 0.0,
+      "weighted_risks": 0.0,
+      "recency_breakdown": {
+        "24h": 0,
+        "7d": 0,
+        "30d": 0,
+        "older": 0
+      },
+      "skip_triggered": false
+    },
+    "layer_6_memory": {
+      "win_rate_pct": 58.2,
+      "sample_size": 10,
+      "avg_move_pct": 7.4,
+      "false_breakout_rate_pct": 18.5,
+      "median_bars_to_target": 22,
+      "expectancy_r": 0.48,
+      "status": "BULLISH",
+      "signal_weight_multiplier": 1.0
+    },
+    "trade_plan": {
+      "entry_zone_ideal": 97.23,
+      "entry_zone_max": 98.69,
+      "entry_trigger": "Price holds structural pivot ($94.83) followed by volume-backed expansion above $97.23.",
+      "stop_loss": 92.24,
+      "stop_distance_pct": 5.13,
+      "stop_distance_dollars": 4.99,
+      "atr_stop_multiplier": 1.5,
+      "target_1": 103.22,
+      "target_1_days": 6,
+      "target_1_rr": 1.2,
+      "target_2": 109.71,
+      "target_2_days": 24,
+      "target_2_rr": 2.5,
+      "target_3": 118.19,
+      "target_3_days": 45,
+      "target_3_rr": 4.2,
+      "risk_reward_ratio": 2.32,
+      "portfolio_size": 100000.0,
+      "recommended_shares": 0,
+      "capital_at_risk": 0.0,
+      "position_value": 0.0,
+      "portfolio_risk_pct": 0.0,
+      "invalidation_rule": "A daily closing price below $92.24 or two consecutive closes back below $94.83 immediately invalidates the trade.",
+      "trade_thesis": "NTR exhibits high structural confluence with Earnings-Driven aligning above ascending moving averages. In the current CONSOLIDATION macro context (20d adverse hazard: 9.0%), measured support at $94.83 offers asymmetric risk/reward into upper channel resistance.",
+      "tca_execution_strategy": null,
+      "tca_expected_slippage_bps": null,
+      "tca_effective_fill_price": null,
+      "tca_optimal_slices": null
+    },
+    "meta_label_verdict": null
+  },
+  "disclaimers": {
+    "canada": "STATUTORY NOTICE (CANADA): This platform provides impersonal quantitative research and decision-support data intended exclusively for self-directed investors. It does not provide personalized investment advice, financial planning, or account management services. The scores, regime classifications, indicators, and model outputs presented herein are calculated by deterministic mathematical models and rule-based algorithms without consideration of your personal financial situation, risk tolerance, or investment objectives. Past hypothetical performance or paper-trading metrics are not indicative of future returns. The platform, its operators, and its algorithms do not hold any financial interest or proprietary position in the securities analyzed unless explicitly disclosed. You are solely responsible for evaluating the merits and risks of any trade or strategy.",
+    "united_states": "REGULATORY NOTICE (UNITED STATES): Content published by this system constitutes impersonal, bona fide investment research and general circulation financial commentary under the publisher exclusion of Section 202(a)(11)(D) of the Investment Advisers Act of 1940. This software is not a registered broker-dealer, investment adviser, or commodity trading advisor. No content or calculation constitutes an offer to buy or sell, or a solicitation of an offer to buy or sell, any security or derivative instrument.",
+    "version": "2026.1"
+  }
+}

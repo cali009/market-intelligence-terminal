@@ -25,6 +25,20 @@ class FundamentalAnalysisEngine:
     Computes Point-In-Time fundamental metrics, quality scores, and valuation percentiles.
     """
 
+    # as_of_date -> the universe-wide records already computed for that date.
+    # See evaluate_universe_fundamentals(). Invalidated by invalidate_fundamentals_cache().
+    _universe_cache: Dict[str, List[Dict[str, Any]]] = {}
+
+    @classmethod
+    def invalidate_fundamentals_cache(cls) -> None:
+        """
+        Drop every cached universe evaluation.
+
+        Call this after inserting or updating fundamental_fact rows; the cache is keyed
+        on as_of_date alone and cannot see that the database underneath it changed.
+        """
+        cls._universe_cache.clear()
+
     CORE_CONCEPTS = [
         "Revenues",
         "NetIncomeLoss",
@@ -421,13 +435,31 @@ class FundamentalAnalysisEngine:
         """
         Evaluate and cross-sectionally score all active securities in the database.
         Applies weight renormalization to handle Canadian gaps and Index ETF bypass.
+
+        The result is a pure function of as_of_date and the database contents, so it is
+        cached per date. This matters because QuantIntelEngine.evaluate_ticker() calls it
+        once per symbol and then picks its own record out of the list: without the cache
+        that is O(N^2) universe evaluations per run. At 19 securities that was 361 and
+        went unnoticed; widening the universe to 163 securities made it 26,569, and a
+        full pipeline run spent over 16 minutes here without finishing. The cache turns
+        it back into 163.
+
+        Call FundamentalAnalysisEngine.invalidate_fundamentals_cache() after writing
+        fundamental_fact rows, or the same date will keep returning the old records.
         """
+        cached = cls._universe_cache.get(as_of_date)
+        if cached is not None:
+            return cached
+
         securities = db.execute_query("""
             SELECT security_id, symbol, name, exchange, country, currency, sector, cik_padded
             FROM security
             WHERE is_active = 1
             ORDER BY security_id;
         """)
+
+        # One Bank of Canada fixing for the whole evaluation, not one per security.
+        _fx_usd_cad = cls.latest_usd_cad_rate()
 
         # Get latest prices from bar_1d
         latest_bars = db.execute_query("""
@@ -503,7 +535,7 @@ class FundamentalAnalysisEngine:
                 ttm_net_income=ttm_ni,
                 price_currency=curr,
                 fact_currency=fact_ccy,
-                fx_usd_cad=cls.latest_usd_cad_rate(),
+                fx_usd_cad=_fx_usd_cad,
             )
             v_multiples["pe_basis"] = pe_basis
 
@@ -537,6 +569,7 @@ class FundamentalAnalysisEngine:
         # Cross-sectional peer percentile ranking
         cls._apply_cross_sectional_percentiles(raw_records)
 
+        cls._universe_cache[as_of_date] = raw_records
         return raw_records
 
     @classmethod
@@ -719,6 +752,9 @@ class FundamentalAnalysisEngine:
             SET fundamental_score = ?
             WHERE security_id = ? AND as_of_date = ?;
         """, (r["composite_fundamental_score"], sec_id, as_of))
+
+        # The universe cache is keyed on as_of_date only and cannot see this write.
+        cls.invalidate_fundamentals_cache()
 
         return sec_id
 

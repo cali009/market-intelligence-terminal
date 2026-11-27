@@ -3,13 +3,13 @@
     "total_positions_tracked": 4,
     "open_positions_count": 3,
     "closed_positions_count": 1,
-    "total_open_value_usd": 27655.03,
-    "total_unrealized_pnl_usd": 11393.86,
-    "total_unrealized_return_pct": 70.07,
+    "total_open_value_usd": 26456.87,
+    "total_unrealized_pnl_usd": 10195.71,
+    "total_unrealized_return_pct": 62.7,
     "total_realized_pnl_usd": 620.0,
     "closed_win_rate_pct": 100.0,
     "cad_usd_exchange_rate": 1.4136,
-    "as_of_date": "2026-11-21"
+    "as_of_date": "2026-11-26"
   },
   "positions": [
     {
@@ -21,7 +21,7 @@
       "shares": 40.0,
       "entry_price": 118.0,
       "entry_date": "2026-08-10",
-      "current_price": 156.13999938964844,
+      "current_price": 149.3000030517578,
       "stop_loss": 110.0,
       "profit_target": 135.0,
       "exit_price": 133.5,
@@ -45,7 +45,7 @@
       ],
       "action_summary": "REDUCE: Trimming recommended to protect gains / mitigate adverse momentum (target 50% allocation).",
       "target_allocation_pct": 50.0,
-      "suggested_trailing_stop": 133.48,
+      "suggested_trailing_stop": 117.64,
       "exit_verdict": {
         "position_id": 4,
         "symbol": "NVDA",
@@ -59,25 +59,25 @@
           {
             "trigger": "PROFIT_TARGET_HIT",
             "target_price": 135.0,
-            "current_price": 156.13999938964844,
-            "action": "Target price $135.00 reached (+32.32% / 4.77R). Consider trimming 1/3 position."
+            "current_price": 149.3000030517578,
+            "action": "Target price $135.00 reached (+26.53% / 3.91R). Consider trimming 1/3 position."
           },
           {
             "trigger": "TREND_REVERSAL_CONFIRMED",
-            "sma_50": 210.40820068359375,
-            "macd_hist": -4.416501083948884,
+            "sma_50": 203.65440155029296,
+            "macd_hist": -0.6741268299043277,
             "action": "Closing below 50-day moving average with negative momentum divergence."
           }
         ],
-        "pnl_pct": 32.32,
-        "r_multiple": 4.77,
+        "pnl_pct": 26.53,
+        "r_multiple": 3.91,
         "reversal_condition": "Daily close reclaim above 50-DMA.",
         "escalation_cycles": 1,
-        "timestamp": "2026-11-21T23:38:42.730169+00:00",
+        "timestamp": "2026-11-26T17:41:27.135359+00:00",
         "primary_trigger": "PROFIT_TARGET_HIT",
         "action_summary": "REDUCE: Trimming recommended to protect gains / mitigate adverse momentum (target 50% allocation).",
         "target_allocation_pct": 50.0,
-        "suggested_trailing_stop": 133.48,
+        "suggested_trailing_stop": 117.64,
         "recommended_state": "REDUCE"
       }
     },
@@ -90,7 +90,7 @@
       "shares": 120.0,
       "entry_price": 47.8,
       "entry_date": "2026-08-25",
-      "current_price": 68.95999908447266,
+      "current_price": 66.0,
       "stop_loss": 44.5,
       "profit_target": 55.0,
       "exit_price": null,
@@ -101,9 +101,9 @@
       "thesis_notes": "Disciplined capital allocation with FCF yield > 9% and Canadian oil differential stabilization.",
       "strategy_tag": "VALUE_DIVIDEND",
       "risk_reward_ratio": 2.18,
-      "market_value_local": 8275.2,
-      "unrealized_pnl_local": 2539.2,
-      "unrealized_pnl_pct": 44.27,
+      "market_value_local": 7920.0,
+      "unrealized_pnl_local": 2184.0,
+      "unrealized_pnl_pct": 38.08,
       "realized_pnl_local": null,
       "realized_pnl_pct": null,
       "lifecycle_state": "REDUCE",
@@ -114,7 +114,7 @@
       ],
       "action_summary": "REDUCE: Trimming recommended to protect gains / mitigate adverse momentum (target 50% allocation).",
       "target_allocation_pct": 50.0,
-      "suggested_trailing_stop": 64.83,
+      "suggested_trailing_stop": 62.35,
       "exit_verdict": {
         "position_id": 3,
         "symbol": "CNQ",
@@ -128,25 +128,25 @@
           {
             "trigger": "PROFIT_TARGET_HIT",
             "target_price": 55.0,
-            "current_price": 68.95999908447266,
-            "action": "Target price $55.00 reached (+44.27% / 6.41R). Consider trimming 1/3 position."
+            "current_price": 66.0,
+            "action": "Target price $55.00 reached (+38.08% / 5.52R). Consider trimming 1/3 position."
           },
           {
             "trigger": "TREND_REVERSAL_CONFIRMED",
-            "sma_50": 71.4538003540039,
-            "macd_hist": -0.6304001942409538,
+            "sma_50": 70.34920051574707,
+            "macd_hist": -0.42078192832076255,
             "action": "Closing below 50-day moving average with negative momentum divergence."
           }
         ],
-        "pnl_pct": 44.27,
-        "r_multiple": 6.41,
+        "pnl_pct": 38.08,
+        "r_multiple": 5.52,
         "reversal_condition": "Daily close reclaim above 50-DMA.",
         "escalation_cycles": 1,
-        "timestamp": "2026-11-21T23:38:42.730249+00:00",
+        "timestamp": "2026-11-26T17:41:27.135472+00:00",
         "primary_trigger": "PROFIT_TARGET_HIT",
         "action_summary": "REDUCE: Trimming recommended to protect gains / mitigate adverse momentum (target 50% allocation).",
         "target_allocation_pct": 50.0,
-        "suggested_trailing_stop": 64.83,
+        "suggested_trailing_stop": 62.35,
         "recommended_state": "REDUCE"
       }
     },
@@ -159,7 +159,7 @@
       "shares": 75.0,
       "entry_price": 104.2,
       "entry_date": "2026-09-08",
-      "current_price": 211.42999267578125,
+      "current_price": 192.0,
       "stop_loss": 97.5,
       "profit_target": 122.0,
       "exit_price": null,
@@ -170,45 +170,53 @@
       "thesis_notes": "Dual-listed TSX momentum breakout with sustained institutional volume and Merchant Solutions acceleration.",
       "strategy_tag": "MOMENTUM_BREAKOUT",
       "risk_reward_ratio": 2.66,
-      "market_value_local": 15857.25,
-      "unrealized_pnl_local": 8042.25,
-      "unrealized_pnl_pct": 102.91,
+      "market_value_local": 14400.0,
+      "unrealized_pnl_local": 6585.0,
+      "unrealized_pnl_pct": 84.26,
       "realized_pnl_local": null,
       "realized_pnl_pct": null,
-      "lifecycle_state": "HOLD",
+      "lifecycle_state": "REDUCE",
       "primary_trigger": "PROFIT_TARGET_HIT",
       "active_triggers": [
-        "PROFIT_TARGET_HIT"
+        "PROFIT_TARGET_HIT",
+        "TREND_REVERSAL_CONFIRMED"
       ],
-      "action_summary": "HOLD: Constructive price structure maintained within expected technical parameters.",
-      "target_allocation_pct": 100.0,
-      "suggested_trailing_stop": 187.0,
+      "action_summary": "REDUCE: Trimming recommended to protect gains / mitigate adverse momentum (target 50% allocation).",
+      "target_allocation_pct": 50.0,
+      "suggested_trailing_stop": 170.46,
       "exit_verdict": {
         "position_id": 2,
         "symbol": "SHOP",
-        "state": "HOLD",
+        "state": "REDUCE",
         "active_triggers": [
-          "PROFIT_TARGET_HIT"
+          "PROFIT_TARGET_HIT",
+          "TREND_REVERSAL_CONFIRMED"
         ],
-        "trigger_severity": "INFO",
+        "trigger_severity": "REDUCE",
         "trigger_details": [
           {
             "trigger": "PROFIT_TARGET_HIT",
             "target_price": 122.0,
-            "current_price": 211.42999267578125,
-            "action": "Target price $122.00 reached (+102.91% / 16.0R). Consider trimming 1/3 position."
+            "current_price": 192.0,
+            "action": "Target price $122.00 reached (+84.26% / 13.1R). Consider trimming 1/3 position."
+          },
+          {
+            "trigger": "TREND_REVERSAL_CONFIRMED",
+            "sma_50": 215.7629998779297,
+            "macd_hist": -1.6295541069798487,
+            "action": "Closing below 50-day moving average with negative momentum divergence."
           }
         ],
-        "pnl_pct": 102.91,
-        "r_multiple": 16.0,
-        "reversal_condition": "Trail stop to breakeven or 20-day moving average.",
-        "escalation_cycles": 0,
-        "timestamp": "2026-11-21T23:38:42.730283+00:00",
+        "pnl_pct": 84.26,
+        "r_multiple": 13.1,
+        "reversal_condition": "Daily close reclaim above 50-DMA.",
+        "escalation_cycles": 1,
+        "timestamp": "2026-11-26T17:41:27.135509+00:00",
         "primary_trigger": "PROFIT_TARGET_HIT",
-        "action_summary": "HOLD: Constructive price structure maintained within expected technical parameters.",
-        "target_allocation_pct": 100.0,
-        "suggested_trailing_stop": 187.0,
-        "recommended_state": "HOLD"
+        "action_summary": "REDUCE: Trimming recommended to protect gains / mitigate adverse momentum (target 50% allocation).",
+        "target_allocation_pct": 50.0,
+        "suggested_trailing_stop": 170.46,
+        "recommended_state": "REDUCE"
       }
     },
     {
@@ -220,7 +228,7 @@
       "shares": 30.0,
       "entry_price": 222.5,
       "entry_date": "2026-09-02",
-      "current_price": 352.7799987792969,
+      "current_price": 355.5799865722656,
       "stop_loss": 216.0,
       "profit_target": 240.0,
       "exit_price": null,
@@ -231,9 +239,9 @@
       "thesis_notes": "Holding constructive consolidation above 50-day EMA with expanding operating cash flow. R:R 2.7x.",
       "strategy_tag": "PULLBACK_UPTREND",
       "risk_reward_ratio": 2.69,
-      "market_value_local": 10583.4,
-      "unrealized_pnl_local": 3908.4,
-      "unrealized_pnl_pct": 58.55,
+      "market_value_local": 10667.4,
+      "unrealized_pnl_local": 3992.4,
+      "unrealized_pnl_pct": 59.81,
       "realized_pnl_local": null,
       "realized_pnl_pct": null,
       "lifecycle_state": "HOLD",
@@ -243,7 +251,7 @@
       ],
       "action_summary": "HOLD: Constructive price structure maintained within expected technical parameters.",
       "target_allocation_pct": 100.0,
-      "suggested_trailing_stop": 333.81,
+      "suggested_trailing_stop": 339.52,
       "exit_verdict": {
         "position_id": 1,
         "symbol": "AAPL",
@@ -256,19 +264,19 @@
           {
             "trigger": "PROFIT_TARGET_HIT",
             "target_price": 240.0,
-            "current_price": 352.7799987792969,
-            "action": "Target price $240.00 reached (+58.55% / 20.04R). Consider trimming 1/3 position."
+            "current_price": 355.5799865722656,
+            "action": "Target price $240.00 reached (+59.81% / 20.47R). Consider trimming 1/3 position."
           }
         ],
-        "pnl_pct": 58.55,
-        "r_multiple": 20.04,
+        "pnl_pct": 59.81,
+        "r_multiple": 20.47,
         "reversal_condition": "Trail stop to breakeven or 20-day moving average.",
         "escalation_cycles": 0,
-        "timestamp": "2026-11-21T23:38:42.730309+00:00",
+        "timestamp": "2026-11-26T17:41:27.135537+00:00",
         "primary_trigger": "PROFIT_TARGET_HIT",
         "action_summary": "HOLD: Constructive price structure maintained within expected technical parameters.",
         "target_allocation_pct": 100.0,
-        "suggested_trailing_stop": 333.81,
+        "suggested_trailing_stop": 339.52,
         "recommended_state": "HOLD"
       }
     }

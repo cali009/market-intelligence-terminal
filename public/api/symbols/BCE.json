@@ -1,0 +1,1549 @@
+{
+  "symbol": "BCE",
+  "exchange": "TSX",
+  "country": "CA",
+  "currency": "CAD",
+  "name": "BCE Inc.",
+  "as_of_date": "2026-11-26",
+  "generated_at": "2026-11-26T16:55:16.464716+00:00",
+  "latest_metrics": {
+    "trading_date": "2026-11-26",
+    "open": 31.479999542236328,
+    "high": 31.6299991607666,
+    "low": 31.309999465942383,
+    "close": 31.34000015258789,
+    "volume": 445426.0,
+    "adjusted_close": 31.34000015258789,
+    "sma_20": 30.611499881744386,
+    "sma_50": 29.533999977111815,
+    "sma_200": 32.2107999420166,
+    "ema_8": 31.255817686999396,
+    "ema_21": 30.6317751840912,
+    "sma_200_slope_20d": -14.972047312124062,
+    "atr_14": 0.7171429225376674,
+    "atr_pct": 2.2882671316083245,
+    "rsi_14": 59.57082839557903,
+    "macd_line": 0.5883841504893113,
+    "macd_signal": 0.5333101247182159,
+    "macd_hist": 0.055074025771095325,
+    "bb_upper": 32.56100213379473,
+    "bb_lower": 28.661997629694042,
+    "bb_bandwidth": 0.12737058031011136,
+    "rvol_20": 0.0799637179077018,
+    "obv": -317708726.0,
+    "obv_slope_20": 19480774.0,
+    "cmf_20": 0.24818789543445557,
+    "hh_hl_ratio_20": 0.65,
+    "adx_14": 50.16710379386079,
+    "return_1m": 0.11569953657335885,
+    "return_3m": -0.03420648949935534,
+    "return_12m": -0.0348013866841107,
+    "momentum_12_1": -0.15050092325746955,
+    "proximity_52w_high": -0.13544827165274786,
+    "adv_dollar_20": 170680995.21240577
+  },
+  "technical_dossier": {
+    "snapshot": {
+      "trading_date": "2026-11-26",
+      "open": 31.479999542236328,
+      "high": 31.6299991607666,
+      "low": 31.309999465942383,
+      "close": 31.34000015258789,
+      "volume": 445426.0,
+      "adjusted_close": 31.34000015258789,
+      "sma_20": 30.611499881744386,
+      "sma_50": 29.533999977111815,
+      "sma_200": 32.2107999420166,
+      "ema_8": 31.255817686999396,
+      "ema_21": 30.6317751840912,
+      "sma_200_slope_20d": -14.972047312124062,
+      "atr_14": 0.7171429225376674,
+      "atr_pct": 2.2882671316083245,
+      "rsi_14": 59.57082839557903,
+      "macd_line": 0.5883841504893113,
+      "macd_signal": 0.5333101247182159,
+      "macd_hist": 0.055074025771095325,
+      "bb_upper": 32.56100213379473,
+      "bb_lower": 28.661997629694042,
+      "bb_bandwidth": 0.12737058031011136,
+      "rvol_20": 0.0799637179077018,
+      "obv": -317708726.0,
+      "obv_slope_20": 19480774.0,
+      "cmf_20": 0.24818789543445557,
+      "hh_hl_ratio_20": 0.65,
+      "adx_14": 50.16710379386079,
+      "return_1m": 0.11569953657335885,
+      "return_3m": -0.03420648949935534,
+      "return_12m": -0.0348013866841107,
+      "momentum_12_1": -0.15050092325746955,
+      "proximity_52w_high": -0.13544827165274786,
+      "adv_dollar_20": 170680995.21240577
+    },
+    "volume_profile": {
+      "poc_price": 28.07,
+      "vah_price": 31.37,
+      "val_price": 27.6,
+      "value_area_state": "INSIDE_VALUE",
+      "total_profile_volume": 330126226,
+      "profile_bins": [
+        {
+          "price": 26.82,
+          "volume": 2049530,
+          "pct_of_max": 5.6,
+          "is_poc": false,
+          "in_value_area": false
+        },
+        {
+          "price": 27.13,
+          "volume": 4194754,
+          "pct_of_max": 11.6,
+          "is_poc": false,
+          "in_value_area": false
+        },
+        {
+          "price": 27.44,
+          "volume": 6201939,
+          "pct_of_max": 17.1,
+          "is_poc": false,
+          "in_value_area": false
+        },
+        {
+          "price": 27.76,
+          "volume": 17840628,
+          "pct_of_max": 49.1,
+          "is_poc": false,
+          "in_value_area": true
+        },
+        {
+          "price": 28.07,
+          "volume": 36315710,
+          "pct_of_max": 100.0,
+          "is_poc": true,
+          "in_value_area": true
+        },
+        {
+          "price": 28.39,
+          "volume": 34203240,
+          "pct_of_max": 94.2,
+          "is_poc": false,
+          "in_value_area": true
+        },
+        {
+          "price": 28.7,
+          "volume": 26633427,
+          "pct_of_max": 73.3,
+          "is_poc": false,
+          "in_value_area": true
+        },
+        {
+          "price": 29.01,
+          "volume": 17828736,
+          "pct_of_max": 49.1,
+          "is_poc": false,
+          "in_value_area": true
+        },
+        {
+          "price": 29.33,
+          "volume": 6216919,
+          "pct_of_max": 17.1,
+          "is_poc": false,
+          "in_value_area": true
+        },
+        {
+          "price": 29.64,
+          "volume": 7837563,
+          "pct_of_max": 21.6,
+          "is_poc": false,
+          "in_value_area": true
+        },
+        {
+          "price": 29.96,
+          "volume": 7465132,
+          "pct_of_max": 20.6,
+          "is_poc": false,
+          "in_value_area": true
+        },
+        {
+          "price": 30.27,
+          "volume": 14246617,
+          "pct_of_max": 39.2,
+          "is_poc": false,
+          "in_value_area": true
+        },
+        {
+          "price": 30.58,
+          "volume": 30717143,
+          "pct_of_max": 84.6,
+          "is_poc": false,
+          "in_value_area": true
+        },
+        {
+          "price": 30.9,
+          "volume": 27407595,
+          "pct_of_max": 75.5,
+          "is_poc": false,
+          "in_value_area": true
+        },
+        {
+          "price": 31.21,
+          "volume": 14069910,
+          "pct_of_max": 38.7,
+          "is_poc": false,
+          "in_value_area": true
+        },
+        {
+          "price": 31.53,
+          "volume": 20785839,
+          "pct_of_max": 57.2,
+          "is_poc": false,
+          "in_value_area": false
+        },
+        {
+          "price": 31.84,
+          "volume": 18126405,
+          "pct_of_max": 49.9,
+          "is_poc": false,
+          "in_value_area": false
+        },
+        {
+          "price": 32.15,
+          "volume": 9466370,
+          "pct_of_max": 26.1,
+          "is_poc": false,
+          "in_value_area": false
+        },
+        {
+          "price": 32.47,
+          "volume": 17334147,
+          "pct_of_max": 47.7,
+          "is_poc": false,
+          "in_value_area": false
+        },
+        {
+          "price": 32.78,
+          "volume": 11184611,
+          "pct_of_max": 30.8,
+          "is_poc": false,
+          "in_value_area": false
+        }
+      ]
+    },
+    "support_resistance": {
+      "support_1": 31.06,
+      "support_2": 29.74,
+      "resistance_1": 32.18,
+      "resistance_2": 32.7,
+      "dist_support_pct": 0.89,
+      "dist_resistance_pct": 2.68,
+      "support_clusters": [
+        31.06,
+        29.74,
+        29.14,
+        28.55
+      ],
+      "resistance_clusters": [
+        32.18,
+        32.7,
+        34.7
+      ]
+    },
+    "trend_structure": {
+      "trend_structure": "STRUCTURAL_UPTREND",
+      "structure_label": "Bullish Uptrend (Higher Highs & Higher Lows)",
+      "msb_detected": false,
+      "last_swing_high": 32.05,
+      "last_swing_low": 29.64
+    },
+    "anchored_vwap": {
+      "ytd_vwap": 32.17,
+      "dist_ytd_vwap_pct": -2.57,
+      "high_52w_vwap": 31.77,
+      "dist_high_vwap_pct": -1.37
+    },
+    "multi_timeframe": {
+      "confluence_score": 45,
+      "confluence_max_score": 75,
+      "confluence_timeframes": [
+        "1D",
+        "1W",
+        "1M"
+      ],
+      "confluence_label": "MODERATE_BULLISH_ALIGNMENT",
+      "timeframes": {
+        "1d": {
+          "timeframe": "1D",
+          "name": "Daily Swing",
+          "trend": "BULLISH",
+          "ema_8_21_cross": "BULLISH",
+          "rsi": 59.6,
+          "macd_state": "EXPANDING",
+          "adx": 50.2
+        },
+        "1w": {
+          "timeframe": "1W",
+          "name": "Weekly Intermediate",
+          "trend": "BULLISH",
+          "ema_8_21_cross": "BEARISH",
+          "rsi": 51.8,
+          "macd_state": "EXPANDING",
+          "adx": 25.1
+        },
+        "1m": {
+          "timeframe": "1M",
+          "name": "Monthly Secular",
+          "trend": "BEARISH",
+          "ema_8_21_cross": "BEARISH",
+          "rsi": 42.0,
+          "macd_state": "CONTRACTING",
+          "adx": 26.0
+        }
+      }
+    },
+    "confluence_score": 45,
+    "confluence_label": "MODERATE_BULLISH_ALIGNMENT",
+    "feature_version": "v5.0"
+  },
+  "fundamental_dossier": {
+    "symbol": "BCE",
+    "as_of_date": "2026-11-26",
+    "filing_date": "2026-11-26",
+    "currency": "CAD",
+    "fiscal_period": "FY",
+    "fiscal_year": 2025,
+    "coverage_status": "LOW_DATA",
+    "quality": {
+      "roic": null,
+      "roe": null,
+      "accruals_ratio": null,
+      "operating_margin_pct": null,
+      "margin_trend_yoy_bps": null,
+      "debt_to_equity": null,
+      "quality_score": 50
+    },
+    "valuation": {
+      "pe_ratio": null,
+      "pe_flag": null,
+      "ps_ratio": null,
+      "pb_ratio": null,
+      "fcf_yield_pct": null,
+      "dividend_yield_pct": null,
+      "valuation_score": 50
+    },
+    "dividend_safety": {
+      "dividend_yield_pct": 0.0,
+      "payout_ratio_pct": null,
+      "fcf_coverage": null,
+      "safety_score": 50,
+      "safety_tier": "N/A_NO_DIVIDEND"
+    },
+    "composite_fundamental_score": 50,
+    "missing_fields": [
+      "Revenues",
+      "NetIncomeLoss",
+      "OperatingIncome",
+      "OperatingCashFlow",
+      "StockholdersEquity",
+      "TotalAssets",
+      "TotalDebt",
+      "DilutedSharesOutstanding",
+      "DividendsPaid"
+    ],
+    "provenance_source": "SEC_EDGAR_XBRL",
+    "point_in_time_verified": true
+  },
+  "asset_fingerprint": {
+    "symbol": "BCE",
+    "company_name": "BCE Inc.",
+    "market": "CA",
+    "archetype": "ARCHETYPE_B_COMMODITY_CYCLICAL",
+    "archetype_label": "Archetype B: Natural Resources & Energy (Cycle Mean-Reversion)",
+    "hurst_exponent": 0.463,
+    "hurst_class": "RANDOM_WALK",
+    "fractional_d_order": 0.49,
+    "memory_retention_pct": 78.0,
+    "fractal_dimension_index": 1.551,
+    "amihud_illiquidity": 0.001,
+    "dominant_cycle_bars": 14,
+    "gjr_garch_gamma": 0.22,
+    "last_updated": "2026-11-26T16:59:17.015653+00:00"
+  },
+  "conformal_bounds": {
+    "symbol": "BCE",
+    "nominal_coverage_pct": 90.0,
+    "realized_coverage_pct": 91.8,
+    "current_price": 64.08,
+    "conformal_lower_stop": 60.85,
+    "conformal_median_path": 63.73,
+    "conformal_upper_target": 66.31,
+    "stop_distance_pct": 5.04,
+    "target_distance_pct": 3.48,
+    "conformal_risk_reward_ratio": 0.69,
+    "bandwidth_atr_multiple": 6.42,
+    "adapted_alpha": 0.25,
+    "volatility_expansion_warning": false,
+    "invalidation_status": "BOUNDS_INTACT",
+    "calibrated_at": "2026-11-26T16:59:17.033175+00:00"
+  },
+  "cross_border_parity": null,
+  "shap_attribution": null,
+  "idiosyncratic_risk": {
+    "symbol": "BCE",
+    "risk_posture": "NORMAL_EQUILIBRIUM",
+    "position_size_multiplier": 1.0,
+    "hurst_flip_alert": false,
+    "hurst_exponent": 0.463,
+    "conformal_stop_price": 60.85,
+    "conformal_ratchet_recommended": true,
+    "effective_stop_price": 60.85,
+    "volatility_expansion_alert": false,
+    "cross_border_parity_stretch": false,
+    "basis_spread_bps": null,
+    "basis_zscore": null,
+    "shap_detractor_drag_pts": 0.0,
+    "primary_risk_driver": "Stable Quantitative Fingerprint",
+    "actionable_mitigation": "All idiosyncratic bounds intact; nominal position sizing permitted under risk framework.",
+    "as_of_date": "2026-09-25"
+  },
+  "score_record": {
+    "composite_score": 27,
+    "confidence_tier": "C",
+    "technical_score": 39,
+    "fundamental_score": 50,
+    "risk_penalty": 8.0,
+    "factor_attribution": {
+      "horizon": "POSITION",
+      "trend_score": 10.8,
+      "relative_strength_score": 6.0,
+      "setup_geometry_score": 6.5,
+      "volume_participation_score": 5.3,
+      "mtf_alignment_score": 5.0,
+      "volatility_fit_score": 5.0,
+      "technical_score": 39,
+      "fundamental_score": 50,
+      "regime_multiplier": 0.85,
+      "news_contribution": 0,
+      "sector_contribution": 0.0,
+      "risk_penalty": 8.0,
+      "key_metrics": {
+        "close": 31.34000015258789,
+        "rsi_14": 59.57082839557903,
+        "rvol_20": 0.0799637179077018,
+        "atr_pct": 2.2882671316083245,
+        "proximity_52w_high": -0.13544827165274786
+      }
+    }
+  },
+  "signal_plan": null,
+  "ai_explanation": {
+    "FACT": "BCE (TSX - BCE Inc.) closed at $31.34 CAD. Trading within -13.5% of its 52-week high with a 14-day ATR of 2.3%. The primary exchange session traded on volume of 445,426 shares.",
+    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 27/100 (Confidence Tier C). Technical Factor sub-score: 39/100 (14-day RSI: 59.6, 20-day RVOL: 0.08x), Fundamental Score: 50/100. Risk penalty applied: -8.0 points. Modulated by the CONSOLIDATION macro regime.",
+    "INFERENCE": "Securities trading below declining 200-day moving averages with elevated risk penalties have historically underperformed the broader index by 3.8% over forward 20-session windows.",
+    "UNCERTAINTY": "Risks include broader market sentiment deterioration in the CONSOLIDATION environment. A daily close below technical support at $32.21 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
+  },
+  "active_scanner_matches": [
+    {
+      "id": "MTF_ALIGNMENT",
+      "name": "Fast & Medium MTF Alignment",
+      "why": "Fast 8EMA > 21EMA above 50DMA with established trend strength (ADX 50.2)."
+    }
+  ],
+  "catalysts_and_filings": [],
+  "chart_bars": [
+    {
+      "time": "2026-06-08",
+      "open": 33.869998931884766,
+      "high": 34.13999938964844,
+      "low": 33.5,
+      "close": 33.77000045776367,
+      "volume": 4452000.0
+    },
+    {
+      "time": "2026-06-09",
+      "open": 33.7400016784668,
+      "high": 34.459999084472656,
+      "low": 33.7400016784668,
+      "close": 34.25,
+      "volume": 5505700.0
+    },
+    {
+      "time": "2026-06-10",
+      "open": 34.29999923706055,
+      "high": 34.66999816894531,
+      "low": 34.029998779296875,
+      "close": 34.4900016784668,
+      "volume": 3694900.0
+    },
+    {
+      "time": "2026-06-11",
+      "open": 34.54999923706055,
+      "high": 34.70000076293945,
+      "low": 34.209999084472656,
+      "close": 34.290000915527344,
+      "volume": 3518200.0
+    },
+    {
+      "time": "2026-06-12",
+      "open": 34.400001525878906,
+      "high": 34.5,
+      "low": 34.150001525878906,
+      "close": 34.369998931884766,
+      "volume": 3462000.0
+    },
+    {
+      "time": "2026-06-15",
+      "open": 34.060001373291016,
+      "high": 34.18000030517578,
+      "low": 33.61000061035156,
+      "close": 33.709999084472656,
+      "volume": 4031200.0
+    },
+    {
+      "time": "2026-06-16",
+      "open": 33.630001068115234,
+      "high": 33.70000076293945,
+      "low": 33.06999969482422,
+      "close": 33.369998931884766,
+      "volume": 5206000.0
+    },
+    {
+      "time": "2026-06-17",
+      "open": 33.189998626708984,
+      "high": 33.349998474121094,
+      "low": 32.7599983215332,
+      "close": 32.90999984741211,
+      "volume": 4552100.0
+    },
+    {
+      "time": "2026-06-18",
+      "open": 32.810001373291016,
+      "high": 33.0099983215332,
+      "low": 32.66999816894531,
+      "close": 32.93000030517578,
+      "volume": 3306100.0
+    },
+    {
+      "time": "2026-06-19",
+      "open": 32.81999969482422,
+      "high": 33.189998626708984,
+      "low": 32.70000076293945,
+      "close": 32.72999954223633,
+      "volume": 4458600.0
+    },
+    {
+      "time": "2026-06-22",
+      "open": 32.72999954223633,
+      "high": 32.900001525878906,
+      "low": 32.09000015258789,
+      "close": 32.11000061035156,
+      "volume": 5430400.0
+    },
+    {
+      "time": "2026-06-23",
+      "open": 32.310001373291016,
+      "high": 32.810001373291016,
+      "low": 32.220001220703125,
+      "close": 32.7400016784668,
+      "volume": 3672900.0
+    },
+    {
+      "time": "2026-06-24",
+      "open": 32.86000061035156,
+      "high": 33.33000183105469,
+      "low": 32.56999969482422,
+      "close": 33.08000183105469,
+      "volume": 3677900.0
+    },
+    {
+      "time": "2026-06-25",
+      "open": 33.0,
+      "high": 33.08000183105469,
+      "low": 32.560001373291016,
+      "close": 32.97999954223633,
+      "volume": 3452200.0
+    },
+    {
+      "time": "2026-06-26",
+      "open": 32.91999816894531,
+      "high": 32.9900016784668,
+      "low": 32.38999938964844,
+      "close": 32.529998779296875,
+      "volume": 3530100.0
+    },
+    {
+      "time": "2026-06-29",
+      "open": 32.529998779296875,
+      "high": 32.560001373291016,
+      "low": 31.510000228881836,
+      "close": 31.639999389648438,
+      "volume": 5397800.0
+    },
+    {
+      "time": "2026-06-30",
+      "open": 31.610000610351562,
+      "high": 31.68000030517578,
+      "low": 30.510000228881836,
+      "close": 30.549999237060547,
+      "volume": 9442500.0
+    },
+    {
+      "time": "2026-07-02",
+      "open": 30.940000534057617,
+      "high": 31.209999084472656,
+      "low": 30.030000686645508,
+      "close": 30.3700008392334,
+      "volume": 7367400.0
+    },
+    {
+      "time": "2026-07-03",
+      "open": 30.3700008392334,
+      "high": 30.56999969482422,
+      "low": 30.270000457763672,
+      "close": 30.270000457763672,
+      "volume": 1589000.0
+    },
+    {
+      "time": "2026-07-06",
+      "open": 30.309999465942383,
+      "high": 30.34000015258789,
+      "low": 29.65999984741211,
+      "close": 29.690000534057617,
+      "volume": 6452300.0
+    },
+    {
+      "time": "2026-07-07",
+      "open": 29.8700008392334,
+      "high": 30.719999313354492,
+      "low": 29.799999237060547,
+      "close": 30.3799991607666,
+      "volume": 5384200.0
+    },
+    {
+      "time": "2026-07-08",
+      "open": 30.329999923706055,
+      "high": 30.850000381469727,
+      "low": 30.280000686645508,
+      "close": 30.420000076293945,
+      "volume": 2802600.0
+    },
+    {
+      "time": "2026-07-09",
+      "open": 30.329999923706055,
+      "high": 30.3799991607666,
+      "low": 30.040000915527344,
+      "close": 30.209999084472656,
+      "volume": 3009600.0
+    },
+    {
+      "time": "2026-07-10",
+      "open": 30.260000228881836,
+      "high": 30.540000915527344,
+      "low": 30.100000381469727,
+      "close": 30.280000686645508,
+      "volume": 2666300.0
+    },
+    {
+      "time": "2026-07-13",
+      "open": 30.489999771118164,
+      "high": 30.729999542236328,
+      "low": 30.3700008392334,
+      "close": 30.399999618530273,
+      "volume": 4202800.0
+    },
+    {
+      "time": "2026-07-14",
+      "open": 30.239999771118164,
+      "high": 30.25,
+      "low": 29.729999542236328,
+      "close": 29.809999465942383,
+      "volume": 4763100.0
+    },
+    {
+      "time": "2026-07-15",
+      "open": 29.799999237060547,
+      "high": 30.68000030517578,
+      "low": 29.790000915527344,
+      "close": 30.34000015258789,
+      "volume": 4413900.0
+    },
+    {
+      "time": "2026-07-16",
+      "open": 30.34000015258789,
+      "high": 31.18000030517578,
+      "low": 30.299999237060547,
+      "close": 31.1299991607666,
+      "volume": 4950600.0
+    },
+    {
+      "time": "2026-07-17",
+      "open": 31.25,
+      "high": 31.350000381469727,
+      "low": 30.549999237060547,
+      "close": 30.6200008392334,
+      "volume": 3556100.0
+    },
+    {
+      "time": "2026-07-20",
+      "open": 30.559999465942383,
+      "high": 30.770000457763672,
+      "low": 30.43000030517578,
+      "close": 30.56999969482422,
+      "volume": 4529800.0
+    },
+    {
+      "time": "2026-07-21",
+      "open": 30.559999465942383,
+      "high": 30.700000762939453,
+      "low": 30.31999969482422,
+      "close": 30.56999969482422,
+      "volume": 3252000.0
+    },
+    {
+      "time": "2026-07-22",
+      "open": 30.719999313354492,
+      "high": 30.889999389648438,
+      "low": 30.18000030517578,
+      "close": 30.200000762939453,
+      "volume": 4490900.0
+    },
+    {
+      "time": "2026-07-23",
+      "open": 30.15999984741211,
+      "high": 30.239999771118164,
+      "low": 29.780000686645508,
+      "close": 29.90999984741211,
+      "volume": 4031700.0
+    },
+    {
+      "time": "2026-07-24",
+      "open": 29.899999618530273,
+      "high": 30.18000030517578,
+      "low": 29.790000915527344,
+      "close": 30.079999923706055,
+      "volume": 2418400.0
+    },
+    {
+      "time": "2026-07-27",
+      "open": 30.020000457763672,
+      "high": 30.399999618530273,
+      "low": 30.010000228881836,
+      "close": 30.059999465942383,
+      "volume": 2762100.0
+    },
+    {
+      "time": "2026-07-28",
+      "open": 30.309999465942383,
+      "high": 30.84000015258789,
+      "low": 30.260000228881836,
+      "close": 30.790000915527344,
+      "volume": 4302500.0
+    },
+    {
+      "time": "2026-07-29",
+      "open": 30.700000762939453,
+      "high": 31.540000915527344,
+      "low": 30.700000762939453,
+      "close": 31.420000076293945,
+      "volume": 5270100.0
+    },
+    {
+      "time": "2026-07-30",
+      "open": 31.079999923706055,
+      "high": 31.1299991607666,
+      "low": 30.290000915527344,
+      "close": 30.40999984741211,
+      "volume": 6106500.0
+    },
+    {
+      "time": "2026-07-31",
+      "open": 30.25,
+      "high": 30.40999984741211,
+      "low": 29.8700008392334,
+      "close": 30.40999984741211,
+      "volume": 5577300.0
+    },
+    {
+      "time": "2026-08-04",
+      "open": 30.270000457763672,
+      "high": 30.969999313354492,
+      "low": 30.049999237060547,
+      "close": 30.950000762939453,
+      "volume": 9178100.0
+    },
+    {
+      "time": "2026-08-05",
+      "open": 30.93000030517578,
+      "high": 30.979999542236328,
+      "low": 30.389999389648438,
+      "close": 30.860000610351562,
+      "volume": 9405900.0
+    },
+    {
+      "time": "2026-08-06",
+      "open": 31.059999465942383,
+      "high": 32.279998779296875,
+      "low": 31.010000228881836,
+      "close": 31.8700008392334,
+      "volume": 7678400.0
+    },
+    {
+      "time": "2026-08-07",
+      "open": 31.809999465942383,
+      "high": 31.959999084472656,
+      "low": 31.489999771118164,
+      "close": 31.670000076293945,
+      "volume": 2815100.0
+    },
+    {
+      "time": "2026-08-10",
+      "open": 31.59000015258789,
+      "high": 31.690000534057617,
+      "low": 31.239999771118164,
+      "close": 31.3799991607666,
+      "volume": 4431300.0
+    },
+    {
+      "time": "2026-08-11",
+      "open": 31.899999618530273,
+      "high": 32.619998931884766,
+      "low": 31.889999389648438,
+      "close": 32.47999954223633,
+      "volume": 4782600.0
+    },
+    {
+      "time": "2026-08-12",
+      "open": 32.38999938964844,
+      "high": 32.38999938964844,
+      "low": 31.969999313354492,
+      "close": 32.22999954223633,
+      "volume": 2744200.0
+    },
+    {
+      "time": "2026-08-13",
+      "open": 32.29999923706055,
+      "high": 32.4900016784668,
+      "low": 32.04999923706055,
+      "close": 32.459999084472656,
+      "volume": 2459200.0
+    },
+    {
+      "time": "2026-08-14",
+      "open": 32.5,
+      "high": 32.7599983215332,
+      "low": 32.439998626708984,
+      "close": 32.56999969482422,
+      "volume": 2533100.0
+    },
+    {
+      "time": "2026-08-17",
+      "open": 32.56999969482422,
+      "high": 32.72999954223633,
+      "low": 32.400001525878906,
+      "close": 32.40999984741211,
+      "volume": 3624700.0
+    },
+    {
+      "time": "2026-08-18",
+      "open": 32.529998779296875,
+      "high": 32.81999969482422,
+      "low": 32.459999084472656,
+      "close": 32.5,
+      "volume": 2349800.0
+    },
+    {
+      "time": "2026-08-19",
+      "open": 32.45000076293945,
+      "high": 32.81999969482422,
+      "low": 32.38999938964844,
+      "close": 32.709999084472656,
+      "volume": 3288700.0
+    },
+    {
+      "time": "2026-08-20",
+      "open": 32.689998626708984,
+      "high": 32.88999938964844,
+      "low": 32.459999084472656,
+      "close": 32.77000045776367,
+      "volume": 4230800.0
+    },
+    {
+      "time": "2026-08-21",
+      "open": 32.7599983215332,
+      "high": 32.900001525878906,
+      "low": 32.54999923706055,
+      "close": 32.650001525878906,
+      "volume": 2484500.0
+    },
+    {
+      "time": "2026-08-24",
+      "open": 32.630001068115234,
+      "high": 33.150001525878906,
+      "low": 32.599998474121094,
+      "close": 32.97999954223633,
+      "volume": 3216700.0
+    },
+    {
+      "time": "2026-08-25",
+      "open": 32.900001525878906,
+      "high": 33.0,
+      "low": 32.5099983215332,
+      "close": 32.59000015258789,
+      "volume": 2711400.0
+    },
+    {
+      "time": "2026-08-26",
+      "open": 32.630001068115234,
+      "high": 32.79999923706055,
+      "low": 32.459999084472656,
+      "close": 32.540000915527344,
+      "volume": 1882800.0
+    },
+    {
+      "time": "2026-08-27",
+      "open": 32.38999938964844,
+      "high": 32.66999816894531,
+      "low": 32.310001373291016,
+      "close": 32.45000076293945,
+      "volume": 2290900.0
+    },
+    {
+      "time": "2026-08-28",
+      "open": 32.5,
+      "high": 32.689998626708984,
+      "low": 32.369998931884766,
+      "close": 32.560001373291016,
+      "volume": 2499800.0
+    },
+    {
+      "time": "2026-08-31",
+      "open": 32.47999954223633,
+      "high": 32.83000183105469,
+      "low": 32.47999954223633,
+      "close": 32.68000030517578,
+      "volume": 4211400.0
+    },
+    {
+      "time": "2026-09-01",
+      "open": 32.810001373291016,
+      "high": 33.20000076293945,
+      "low": 32.5,
+      "close": 32.5099983215332,
+      "volume": 3485100.0
+    },
+    {
+      "time": "2026-09-02",
+      "open": 32.66999816894531,
+      "high": 32.869998931884766,
+      "low": 32.310001373291016,
+      "close": 32.349998474121094,
+      "volume": 2662000.0
+    },
+    {
+      "time": "2026-09-03",
+      "open": 32.38999938964844,
+      "high": 32.939998626708984,
+      "low": 32.38999938964844,
+      "close": 32.83000183105469,
+      "volume": 3319900.0
+    },
+    {
+      "time": "2026-09-04",
+      "open": 32.779998779296875,
+      "high": 32.939998626708984,
+      "low": 32.650001525878906,
+      "close": 32.790000915527344,
+      "volume": 2213000.0
+    },
+    {
+      "time": "2026-09-08",
+      "open": 32.689998626708984,
+      "high": 32.720001220703125,
+      "low": 32.34000015258789,
+      "close": 32.61000061035156,
+      "volume": 5577400.0
+    },
+    {
+      "time": "2026-09-09",
+      "open": 32.619998931884766,
+      "high": 32.619998931884766,
+      "low": 32.04999923706055,
+      "close": 32.25,
+      "volume": 4060800.0
+    },
+    {
+      "time": "2026-09-10",
+      "open": 32.25,
+      "high": 32.45000076293945,
+      "low": 31.809999465942383,
+      "close": 32.130001068115234,
+      "volume": 4350600.0
+    },
+    {
+      "time": "2026-09-11",
+      "open": 32.34000015258789,
+      "high": 32.619998931884766,
+      "low": 32.27000045776367,
+      "close": 32.38999938964844,
+      "volume": 3080100.0
+    },
+    {
+      "time": "2026-09-14",
+      "open": 32.59000015258789,
+      "high": 32.86000061035156,
+      "low": 32.45000076293945,
+      "close": 32.59000015258789,
+      "volume": 3914700.0
+    },
+    {
+      "time": "2026-09-15",
+      "open": 32.45000076293945,
+      "high": 32.939998626708984,
+      "low": 31.690000534057617,
+      "close": 31.899999618530273,
+      "volume": 9165600.0
+    },
+    {
+      "time": "2026-09-16",
+      "open": 31.899999618530273,
+      "high": 32.029998779296875,
+      "low": 31.290000915527344,
+      "close": 31.530000686645508,
+      "volume": 7710700.0
+    },
+    {
+      "time": "2026-09-17",
+      "open": 31.68000030517578,
+      "high": 32.400001525878906,
+      "low": 31.170000076293945,
+      "close": 31.200000762939453,
+      "volume": 5501000.0
+    },
+    {
+      "time": "2026-09-18",
+      "open": 30.889999389648438,
+      "high": 31.059999465942383,
+      "low": 30.5,
+      "close": 30.899999618530273,
+      "volume": 7188600.0
+    },
+    {
+      "time": "2026-09-21",
+      "open": 30.8799991607666,
+      "high": 31.040000915527344,
+      "low": 30.739999771118164,
+      "close": 30.8799991607666,
+      "volume": 6157500.0
+    },
+    {
+      "time": "2026-09-22",
+      "open": 30.90999984741211,
+      "high": 31.149999618530273,
+      "low": 30.440000534057617,
+      "close": 30.56999969482422,
+      "volume": 9189000.0
+    },
+    {
+      "time": "2026-09-23",
+      "open": 30.520000457763672,
+      "high": 30.729999542236328,
+      "low": 30.149999618530273,
+      "close": 30.530000686645508,
+      "volume": 4732000.0
+    },
+    {
+      "time": "2026-09-24",
+      "open": 30.579999923706055,
+      "high": 30.739999771118164,
+      "low": 30.1299991607666,
+      "close": 30.149999618530273,
+      "volume": 3221800.0
+    },
+    {
+      "time": "2026-09-25",
+      "open": 30.149999618530273,
+      "high": 30.15999984741211,
+      "low": 29.530000686645508,
+      "close": 29.690000534057617,
+      "volume": 5476800.0
+    },
+    {
+      "time": "2026-09-28",
+      "open": 29.68000030517578,
+      "high": 29.690000534057617,
+      "low": 29.0,
+      "close": 29.190000534057617,
+      "volume": 5154700.0
+    },
+    {
+      "time": "2026-09-29",
+      "open": 29.049999237060547,
+      "high": 29.1299991607666,
+      "low": 28.56999969482422,
+      "close": 28.6200008392334,
+      "volume": 6304300.0
+    },
+    {
+      "time": "2026-09-30",
+      "open": 28.600000381469727,
+      "high": 29.18000030517578,
+      "low": 28.5,
+      "close": 28.969999313354492,
+      "volume": 3751200.0
+    },
+    {
+      "time": "2026-10-01",
+      "open": 28.899999618530273,
+      "high": 29.0,
+      "low": 28.139999389648438,
+      "close": 28.350000381469727,
+      "volume": 5104900.0
+    },
+    {
+      "time": "2026-10-02",
+      "open": 28.31999969482422,
+      "high": 28.780000686645508,
+      "low": 28.149999618530273,
+      "close": 28.170000076293945,
+      "volume": 4417700.0
+    },
+    {
+      "time": "2026-10-05",
+      "open": 28.09000015258789,
+      "high": 28.149999618530273,
+      "low": 27.8700008392334,
+      "close": 28.149999618530273,
+      "volume": 7209800.0
+    },
+    {
+      "time": "2026-10-06",
+      "open": 28.09000015258789,
+      "high": 28.149999618530273,
+      "low": 27.75,
+      "close": 28.030000686645508,
+      "volume": 5223000.0
+    },
+    {
+      "time": "2026-10-07",
+      "open": 28.110000610351562,
+      "high": 28.34000015258789,
+      "low": 28.0,
+      "close": 28.190000534057617,
+      "volume": 5057700.0
+    },
+    {
+      "time": "2026-10-08",
+      "open": 28.09000015258789,
+      "high": 28.549999237060547,
+      "low": 28.059999465942383,
+      "close": 28.350000381469727,
+      "volume": 5667700.0
+    },
+    {
+      "time": "2026-10-09",
+      "open": 28.1200008392334,
+      "high": 28.18000030517578,
+      "low": 26.65999984741211,
+      "close": 26.799999237060547,
+      "volume": 9921300.0
+    },
+    {
+      "time": "2026-10-13",
+      "open": 27.149999618530273,
+      "high": 27.979999542236328,
+      "low": 27.100000381469727,
+      "close": 27.670000076293945,
+      "volume": 10041500.0
+    },
+    {
+      "time": "2026-10-14",
+      "open": 27.760000228881836,
+      "high": 28.049999237060547,
+      "low": 27.530000686645508,
+      "close": 28.0,
+      "volume": 4112500.0
+    },
+    {
+      "time": "2026-10-15",
+      "open": 28.049999237060547,
+      "high": 29.139999389648438,
+      "low": 27.989999771118164,
+      "close": 28.579999923706055,
+      "volume": 7042500.0
+    },
+    {
+      "time": "2026-10-16",
+      "open": 28.65999984741211,
+      "high": 28.920000076293945,
+      "low": 28.520000457763672,
+      "close": 28.729999542236328,
+      "volume": 3388100.0
+    },
+    {
+      "time": "2026-10-19",
+      "open": 28.389999389648438,
+      "high": 28.440000534057617,
+      "low": 27.920000076293945,
+      "close": 28.0,
+      "volume": 3896000.0
+    },
+    {
+      "time": "2026-10-20",
+      "open": 28.06999969482422,
+      "high": 28.3700008392334,
+      "low": 27.989999771118164,
+      "close": 28.149999618530273,
+      "volume": 3369900.0
+    },
+    {
+      "time": "2026-10-21",
+      "open": 28.0,
+      "high": 28.1299991607666,
+      "low": 27.719999313354492,
+      "close": 28.079999923706055,
+      "volume": 7819500.0
+    },
+    {
+      "time": "2026-10-22",
+      "open": 28.149999618530273,
+      "high": 29.139999389648438,
+      "low": 28.149999618530273,
+      "close": 29.100000381469727,
+      "volume": 8488800.0
+    },
+    {
+      "time": "2026-10-23",
+      "open": 28.809999465942383,
+      "high": 29.030000686645508,
+      "low": 28.420000076293945,
+      "close": 28.6299991607666,
+      "volume": 4564900.0
+    },
+    {
+      "time": "2026-10-26",
+      "open": 28.59000015258789,
+      "high": 28.719999313354492,
+      "low": 28.229999542236328,
+      "close": 28.43000030517578,
+      "volume": 5191600.0
+    },
+    {
+      "time": "2026-10-27",
+      "open": 28.309999465942383,
+      "high": 28.540000915527344,
+      "low": 28.170000076293945,
+      "close": 28.229999542236328,
+      "volume": 3664100.0
+    },
+    {
+      "time": "2026-10-28",
+      "open": 28.209999084472656,
+      "high": 28.420000076293945,
+      "low": 28.030000686645508,
+      "close": 28.09000015258789,
+      "volume": 3987600.0
+    },
+    {
+      "time": "2026-10-29",
+      "open": 28.200000762939453,
+      "high": 28.399999618530273,
+      "low": 27.670000076293945,
+      "close": 28.040000915527344,
+      "volume": 7818400.0
+    },
+    {
+      "time": "2026-10-30",
+      "open": 28.200000762939453,
+      "high": 28.56999969482422,
+      "low": 28.190000534057617,
+      "close": 28.489999771118164,
+      "volume": 5211900.0
+    },
+    {
+      "time": "2026-11-02",
+      "open": 28.399999618530273,
+      "high": 28.940000534057617,
+      "low": 28.31999969482422,
+      "close": 28.93000030517578,
+      "volume": 4423500.0
+    },
+    {
+      "time": "2026-11-03",
+      "open": 28.809999465942383,
+      "high": 28.950000762939453,
+      "low": 28.59000015258789,
+      "close": 28.799999237060547,
+      "volume": 5352300.0
+    },
+    {
+      "time": "2026-11-04",
+      "open": 28.860000610351562,
+      "high": 29.59000015258789,
+      "low": 28.860000610351562,
+      "close": 29.479999542236328,
+      "volume": 7011000.0
+    },
+    {
+      "time": "2026-11-05",
+      "open": 29.510000228881836,
+      "high": 30.8700008392334,
+      "low": 29.360000610351562,
+      "close": 30.829999923706055,
+      "volume": 9723200.0
+    },
+    {
+      "time": "2026-11-06",
+      "open": 30.350000381469727,
+      "high": 30.899999618530273,
+      "low": 30.1299991607666,
+      "close": 30.56999969482422,
+      "volume": 6009800.0
+    },
+    {
+      "time": "2026-11-09",
+      "open": 30.639999389648438,
+      "high": 30.670000076293945,
+      "low": 30.020000457763672,
+      "close": 30.350000381469727,
+      "volume": 5931200.0
+    },
+    {
+      "time": "2026-11-10",
+      "open": 30.360000610351562,
+      "high": 30.93000030517578,
+      "low": 30.31999969482422,
+      "close": 30.729999542236328,
+      "volume": 4599800.0
+    },
+    {
+      "time": "2026-11-11",
+      "open": 30.579999923706055,
+      "high": 30.760000228881836,
+      "low": 30.43000030517578,
+      "close": 30.6200008392334,
+      "volume": 2832400.0
+    },
+    {
+      "time": "2026-11-12",
+      "open": 30.770000457763672,
+      "high": 30.889999389648438,
+      "low": 30.40999984741211,
+      "close": 30.469999313354492,
+      "volume": 3240800.0
+    },
+    {
+      "time": "2026-11-13",
+      "open": 30.489999771118164,
+      "high": 30.860000610351562,
+      "low": 30.459999084472656,
+      "close": 30.600000381469727,
+      "volume": 4409900.0
+    },
+    {
+      "time": "2026-11-16",
+      "open": 31.0,
+      "high": 31.65999984741211,
+      "low": 30.959999084472656,
+      "close": 31.6299991607666,
+      "volume": 10386800.0
+    },
+    {
+      "time": "2026-11-17",
+      "open": 31.450000762939453,
+      "high": 32.040000915527344,
+      "low": 31.3700008392334,
+      "close": 31.479999542236328,
+      "volume": 5631300.0
+    },
+    {
+      "time": "2026-11-18",
+      "open": 31.309999465942383,
+      "high": 31.850000381469727,
+      "low": 31.18000030517578,
+      "close": 31.639999389648438,
+      "volume": 4846100.0
+    },
+    {
+      "time": "2026-11-19",
+      "open": 31.1299991607666,
+      "high": 31.139999389648438,
+      "low": 29.639999389648438,
+      "close": 30.600000381469727,
+      "volume": 8865200.0
+    },
+    {
+      "time": "2026-11-20",
+      "open": 30.639999389648438,
+      "high": 31.639999389648438,
+      "low": 30.639999389648438,
+      "close": 31.360000610351562,
+      "volume": 7234900.0
+    },
+    {
+      "time": "2026-11-23",
+      "open": 30.90999984741211,
+      "high": 31.399999618530273,
+      "low": 30.809999465942383,
+      "close": 31.309999465942383,
+      "volume": 4112600.0
+    },
+    {
+      "time": "2026-11-24",
+      "open": 31.5,
+      "high": 32.04999923706055,
+      "low": 31.479999542236328,
+      "close": 31.540000915527344,
+      "volume": 7596800.0
+    },
+    {
+      "time": "2026-11-25",
+      "open": 31.709999084472656,
+      "high": 31.940000534057617,
+      "low": 31.459999084472656,
+      "close": 31.459999084472656,
+      "volume": 3542100.0
+    },
+    {
+      "time": "2026-11-26",
+      "open": 31.479999542236328,
+      "high": 31.6299991607666,
+      "low": 31.309999465942383,
+      "close": 31.34000015258789,
+      "volume": 445426.0
+    }
+  ],
+  "quant_intel": {
+    "symbol": "BCE",
+    "exchange": "TSX",
+    "country": "CA",
+    "currency": "CAD",
+    "as_of_date": "2026-11-26",
+    "generated_at": "2026-11-26T16:59:17.058040+00:00",
+    "conviction_grade": "SKIP",
+    "aligned_layers_count": 2,
+    "formatted_card": "TICKER: BCE\nREGIME: CONSOLIDATION (VIX: Medium | Risk-OFF | Rates: Paused | 20d Adverse Hazard: 9.0%)\nPATTERN TYPE: Archetype B: Natural Resources & Energy (Cycle Mean-Reversion) \u2014 Earnings-Driven\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BULLISH \u2014 Stacked MAs (Short-Term Bullish), RSI 59.6 equilibrium, price structure holding above key support.\n  Fundamental:  6.0/10 \u2014 Stable financial quality (Score 6.0/10); P/E N/Ax balanced by operational cash flow.\n  Sentiment:    0.00 (NEUTRAL) \u2014 Routine regulatory reporting schedule; no material catalyst in last 30 days.\n  Historical:   58.2% Win Rate (10 sample size, E[R]: +0.48R)\n  Regime fit:   NO\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $31.06 \u2013 $31.53\n  Entry trigger:  Price holds structural pivot ($31.06) followed by volume-backed expansion above $31.06.\n  Stop loss:      $29.71 (4.3% below entry)\n  Target 1 (T1):  $32.18 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $34.44 | Est. 24 days | Take 40%\n  Target 3 (T3):  $36.73 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.17\n  Position size:  0 shares on $100,000 portfolio risking 1% ($0.00)\n  Execution:      not measurable \u2014 this platform holds end-of-day prices only, with no order book, quote feed or fill record\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: SKIP-Grade\nTRADE THESIS: BCE exhibits high structural confluence with Earnings-Driven aligning above ascending moving averages. In the current CONSOLIDATION macro context (20d adverse hazard: 9.0%), measured support at $31.06 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $29.71 or two consecutive closes back below $31.06 immediately invalidates the trade.",
+    "layer_1_regime": {
+      "trend_type": "Volatile",
+      "volatility_regime": "Medium (15\u201325)",
+      "liquidity_env": "Risk-OFF",
+      "rate_context": "Paused",
+      "regime_state": "CONSOLIDATION",
+      "regime_fit": "NO",
+      "status": "BEARISH",
+      "conviction_weight": 0.85,
+      "top_drivers": [
+        "Index below 200-day moving average (structural downtrend)",
+        "Yield curve positively sloped (+55 bps 10Y-2Y spread)"
+      ],
+      "adverse_hazard_rate_5d": 0.0956,
+      "adverse_hazard_rate_20d": 0.0905,
+      "expected_regime_duration_days": 3.0,
+      "hazard_tier": "LOW_HAZARD",
+      "cross_border_macro_divergence_posture": "SYNCHRONIZED_EXPANSION"
+    },
+    "layer_2_fingerprint": {
+      "symbol": "BCE",
+      "dominant_pattern": "Earnings-Driven",
+      "hurst_exponent": 0.463,
+      "hurst_class": "RANDOM_WALK",
+      "archetype_label": "Archetype B: Natural Resources & Energy (Cycle Mean-Reversion)",
+      "amihud_illiquidity": 0.001,
+      "pattern_logic": "Post-earnings drift stability with institutional re-accumulation baseline."
+    },
+    "layer_3_technical": {
+      "status": "BULLISH",
+      "key_reason": "Stacked MAs (Short-Term Bullish), RSI 59.6 equilibrium, price structure holding above key support.",
+      "price_structure": "Higher Highs / Higher Lows (Uptrend)",
+      "ma_stack": "Short-Term Bullish (9 EMA > 21 EMA above 50 SMA)",
+      "rsi_14": 59.6,
+      "macd_hist": 0.055,
+      "roc_10": 0.06,
+      "obv_trend": "Accumulation Trend (Rising OBV)",
+      "rvol_20": 0.08,
+      "cmf_20": 0.248,
+      "atr_14": 0.72,
+      "atr_pct": 2.29,
+      "bb_squeeze": false,
+      "bb_bandwidth": 0.1274,
+      "support_1": 31.06,
+      "resistance_1": 32.18,
+      "resistance_2": 32.7,
+      "volume_poc": 28.07
+    },
+    "layer_4_fundamental": {
+      "score": 6.0,
+      "status": "NEUTRAL",
+      "key_reason": "Stable financial quality (Score 6.0/10); P/E N/Ax balanced by operational cash flow.",
+      "quality_score": 50.0,
+      "valuation_score": 50.0,
+      "roic": null,
+      "operating_margin": null,
+      "margin_trend_bps": null,
+      "debt_to_equity": null,
+      "pe_ratio": null,
+      "pe_flag": null,
+      "fcf_yield_pct": null,
+      "technical_gate_required": false
+    },
+    "layer_5_sentiment": {
+      "net_sentiment_score": 0.0,
+      "status": "NEUTRAL",
+      "key_headline": "Routine regulatory reporting schedule; no material catalyst in last 30 days.",
+      "catalyst_count": 0,
+      "risk_count": 0,
+      "weighted_catalysts": 0.0,
+      "weighted_risks": 0.0,
+      "recency_breakdown": {
+        "24h": 0,
+        "7d": 0,
+        "30d": 0,
+        "older": 0
+      },
+      "skip_triggered": false
+    },
+    "layer_6_memory": {
+      "win_rate_pct": 58.2,
+      "sample_size": 10,
+      "avg_move_pct": 7.4,
+      "false_breakout_rate_pct": 18.5,
+      "median_bars_to_target": 22,
+      "expectancy_r": 0.48,
+      "status": "BULLISH",
+      "signal_weight_multiplier": 1.0
+    },
+    "trade_plan": {
+      "entry_zone_ideal": 31.06,
+      "entry_zone_max": 31.53,
+      "entry_trigger": "Price holds structural pivot ($31.06) followed by volume-backed expansion above $31.06.",
+      "stop_loss": 29.71,
+      "stop_distance_pct": 4.35,
+      "stop_distance_dollars": 1.35,
+      "atr_stop_multiplier": 1.5,
+      "target_1": 32.18,
+      "target_1_days": 6,
+      "target_1_rr": 0.83,
+      "target_2": 34.44,
+      "target_2_days": 24,
+      "target_2_rr": 2.5,
+      "target_3": 36.73,
+      "target_3_days": 45,
+      "target_3_rr": 4.2,
+      "risk_reward_ratio": 2.17,
+      "portfolio_size": 100000.0,
+      "recommended_shares": 0,
+      "capital_at_risk": 0.0,
+      "position_value": 0.0,
+      "portfolio_risk_pct": 0.0,
+      "invalidation_rule": "A daily closing price below $29.71 or two consecutive closes back below $31.06 immediately invalidates the trade.",
+      "trade_thesis": "BCE exhibits high structural confluence with Earnings-Driven aligning above ascending moving averages. In the current CONSOLIDATION macro context (20d adverse hazard: 9.0%), measured support at $31.06 offers asymmetric risk/reward into upper channel resistance.",
+      "tca_execution_strategy": null,
+      "tca_expected_slippage_bps": null,
+      "tca_effective_fill_price": null,
+      "tca_optimal_slices": null
+    },
+    "meta_label_verdict": null
+  },
+  "disclaimers": {
+    "canada": "STATUTORY NOTICE (CANADA): This platform provides impersonal quantitative research and decision-support data intended exclusively for self-directed investors. It does not provide personalized investment advice, financial planning, or account management services. The scores, regime classifications, indicators, and model outputs presented herein are calculated by deterministic mathematical models and rule-based algorithms without consideration of your personal financial situation, risk tolerance, or investment objectives. Past hypothetical performance or paper-trading metrics are not indicative of future returns. The platform, its operators, and its algorithms do not hold any financial interest or proprietary position in the securities analyzed unless explicitly disclosed. You are solely responsible for evaluating the merits and risks of any trade or strategy.",
+    "united_states": "REGULATORY NOTICE (UNITED STATES): Content published by this system constitutes impersonal, bona fide investment research and general circulation financial commentary under the publisher exclusion of Section 202(a)(11)(D) of the Investment Advisers Act of 1940. This software is not a registered broker-dealer, investment adviser, or commodity trading advisor. No content or calculation constitutes an offer to buy or sell, or a solicitation of an offer to buy or sell, any security or derivative instrument.",
+    "version": "2026.1"
+  }
+}

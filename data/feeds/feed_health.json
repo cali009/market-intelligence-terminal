@@ -6,13 +6,23 @@
       "market": "US",
       "primary_source": "Yahoo Finance via the unofficial chart API (query1.finance.yahoo.com), end-of-day",
       "status": "HEALTHY",
-      "freshness_hours": 143.6,
-      "staleness_badge": "STALE",
-      "last_synced_at": "2026-11-16 (exchange close, end-of-day)",
-      "records_count": 4734,
-      "coverage_pct": 100.0,
+      "freshness_hours": 48.8,
+      "staleness_badge": "CLOSED_MARKET",
+      "staleness_reason": "No completed session since the 2026-11-25 close as of 2026-11-26 19:50 EST. Data is current; the next close has not happened yet.",
+      "market_closed": true,
+      "market_state": "CLOSED_HOLIDAY",
+      "market_state_detail": {
+        "local_time": "2026-11-26 19:50 EST",
+        "session_local": "NYSE/Nasdaq regular session 09:30-16:00 ET",
+        "holiday_modelled": true,
+        "sessions_completed_since_last_bar": 0,
+        "weekdays_unverified": 0
+      },
+      "last_synced_at": "2026-11-26 (exchange close, end-of-day)",
+      "records_count": 127870,
+      "coverage_pct": 98.9,
       "survivorship_biased": true,
-      "notes": "9 US symbols, all currently listed large caps. The universe is survivorship-biased: delisted and acquired constituents are not present, so results computed over it are optimistically biased."
+      "notes": "103 US symbols, all currently listed large caps. The universe is survivorship-biased: delisted and acquired constituents are not present, so results computed over it are optimistically biased."
     },
     {
       "feed_id": "ca_equities_eod",
@@ -20,13 +30,23 @@
       "market": "CA",
       "primary_source": "Yahoo Finance via the unofficial chart API (query1.finance.yahoo.com), end-of-day",
       "status": "HEALTHY",
-      "freshness_hours": 143.6,
-      "staleness_badge": "STALE",
-      "last_synced_at": "2026-11-16 (exchange close, end-of-day)",
-      "records_count": 5290,
-      "coverage_pct": 100.0,
+      "freshness_hours": 24.8,
+      "staleness_badge": "CLOSED_MARKET",
+      "staleness_reason": "No completed session since the 2026-11-26 close as of 2026-11-26 19:50 EST. Data is current; the next close has not happened yet.",
+      "market_closed": true,
+      "market_state": "AFTER_HOURS",
+      "market_state_detail": {
+        "local_time": "2026-11-26 19:50 EST",
+        "session_local": "TSX regular session 09:30-16:00 ET",
+        "holiday_modelled": true,
+        "sessions_completed_since_last_bar": 0,
+        "weekdays_unverified": 0
+      },
+      "last_synced_at": "2026-11-26 (exchange close, end-of-day)",
+      "records_count": 75045,
+      "coverage_pct": 99.7,
       "survivorship_biased": true,
-      "notes": "10 TSX symbols, CAD denominated, all currently listed. Also survivorship-biased for the same reason as the US universe. No TMX Datalinx subscription; this platform is not a certified reseller of TMX data."
+      "notes": "60 TSX symbols, CAD denominated, all currently listed. Also survivorship-biased for the same reason as the US universe. No TMX Datalinx subscription; this platform is not a certified reseller of TMX data."
     },
     {
       "feed_id": "sec_edgar_xbrl",
@@ -34,9 +54,9 @@
       "market": "US",
       "primary_source": "SEC EDGAR (data.sec.gov submissions and companyfacts APIs), public XBRL",
       "status": "HEALTHY",
-      "freshness_hours": 1197.3,
+      "freshness_hours": 1318.5,
       "staleness_badge": "STALE",
-      "last_synced_at": "2026-11-21 23:38:42 EST",
+      "last_synced_at": "2026-11-27 00:50:57 EST",
       "records_count": 67,
       "coverage_pct": null,
       "notes": "Strict 10 req/s rate-limited ingestion with declared User-Agent."
@@ -47,7 +67,7 @@
       "market": "MACRO",
       "primary_source": "Bank of Canada Valet REST API (public, free)",
       "status": "HEALTHY",
-      "freshness_hours": 1415.6,
+      "freshness_hours": 1536.8,
       "staleness_badge": "STALE",
       "last_synced_at": "2026-09-24 16:35:00 EST",
       "records_count": 30,
@@ -56,8 +76,8 @@
     }
   ],
   "system_health": "STALE",
-  "universe_note": "The universe is 19 currently listed large-cap symbols. It is survivorship-biased: delisted and acquired constituents are absent, so any statistic computed across it is optimistically biased.",
-  "active_securities_count": 19,
+  "universe_note": "The universe is 163 currently listed large-cap symbols. It is survivorship-biased: delisted and acquired constituents are absent, so any statistic computed across it is optimistically biased.",
+  "active_securities_count": 163,
   "data_quality_events": [
     {
       "event_id": 4,
@@ -96,5 +116,5 @@
       "resolution_notes": "Automated validation gate passed."
     }
   ],
-  "generated_at": "2026-11-21 23:38:42 EST"
+  "generated_at": "2026-11-27 00:50:57 EST"
 }

@@ -6,11 +6,12 @@ Enforces bitemporal lineage, OHLC consistency, and exchange calendar checks.
 """
 
 from datetime import date, datetime, timezone
-from typing import List, Dict, Optional, Tuple
+from typing import Any, List, Dict, Optional, Tuple
 import pandas as pd
 import requests
 
 from src.data.db import db
+from src.data.symbol_identity import VERIFIED, verify_identity
 from src.models.schemas import DailyBar
 from config.calendars import is_trading_day
 
@@ -19,6 +20,14 @@ REQUEST_HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
     "Accept": "application/json",
 }
+
+
+class SymbolIdentityError(RuntimeError):
+    """Raised when the data endpoint returned a different security than the one asked for.
+
+    Carrying the expected and returned names is the point: the message has to be enough
+    for a human to decide whether the record or the endpoint is wrong.
+    """
 
 
 class BarIngestionEngine:
@@ -46,13 +55,15 @@ class BarIngestionEngine:
     # Backward compatibility alias
     format_yfinance_symbol = format_symbol
 
-    def fetch_history(
+    def fetch_history_with_meta(
         self,
         symbol: str,
         exchange: str,
         period: str = "1y",
         interval: str = "1d",
-    ) -> pd.DataFrame:
+    ) -> Tuple[pd.DataFrame, Dict[str, Any]]:
+        """Same as fetch_history but also returns the endpoint's own description of the
+        security it sent back, so the caller can check it is the one we asked for."""
         """
         Fetch OHLCV historical dataframe for a symbol via direct HTTPS query.
         Returns clean DataFrame with ['trading_date', 'Open', 'High', 'Low', 'Close', 'Volume', 'adjusted_close']
@@ -122,7 +133,14 @@ class BarIngestionEngine:
 
         # Drop duplicate trading dates if any
         df = df.drop_duplicates(subset=["trading_date"]).sort_values("trading_date").reset_index(drop=True)
-        return df
+        meta = result_obj.get("meta", {}) or {}
+        return df, {
+            "returned_name": meta.get("longName") or meta.get("shortName"),
+            "returned_exchange": meta.get("fullExchangeName"),
+            "instrument_type": meta.get("instrumentType"),
+            "currency": meta.get("currency"),
+            "requested_symbol": formatted_sym,
+        }
 
     def validate_and_parse_bars(
         self,
@@ -218,6 +236,18 @@ class BarIngestionEngine:
         finally:
             conn.close()
 
+    def fetch_history(
+        self,
+        symbol: str,
+        exchange: str,
+        period: str = "1y",
+        interval: str = "1d",
+    ) -> pd.DataFrame:
+        """Backwards-compatible wrapper. Prefer fetch_history_with_meta: the frame alone
+        carries no evidence of which security it describes."""
+        df, _meta = self.fetch_history_with_meta(symbol, exchange, period=period, interval=interval)
+        return df
+
     def sync_security_bars(
         self,
         security_id: int,
@@ -226,9 +256,54 @@ class BarIngestionEngine:
         period: str = "1y",
     ) -> int:
         """
-        End-to-end sync for a single security.
+        End-to-end sync for a single security, gated on symbol identity.
+
+        The endpoint is asked which security it just sent, and the answer is compared
+        against what this symbol is recorded as. Bars are written only on VERIFIED. A
+        MISMATCH or NEEDS_REVIEW writes nothing at all: a skipped symbol is visible and
+        recoverable, whereas a price series quietly belonging to a different company
+        corrupts every score computed from it and nothing downstream would notice.
         """
-        df = self.fetch_history(symbol, exchange, period=period)
+        df, meta = self.fetch_history_with_meta(symbol, exchange, period=period)
+
+        row = db.execute_query(
+            "SELECT expected_name, expected_calendar FROM security WHERE security_id = ?;",
+            (security_id,),
+        )
+        expected_name = row[0]["expected_name"] if row else None
+        expected_calendar = row[0]["expected_calendar"] if row else None
+
+        if not expected_name:
+            # No expectation recorded, so nothing to check against. This is not a pass:
+            # it is recorded as UNVERIFIED and the bars are still written, because
+            # refusing would break every symbol seeded before the gate existed. The
+            # status is what makes the gap auditable.
+            db.execute_write(
+                "UPDATE security SET identity_status = 'UNVERIFIED', "
+                "identity_evidence = 'No expected_name recorded for this symbol.', "
+                "identity_checked_at = ? WHERE security_id = ?;",
+                (datetime.now(timezone.utc).isoformat(), security_id),
+            )
+        else:
+            verdict = verify_identity(
+                expected_name, expected_calendar or exchange,
+                meta.get("returned_name"), meta.get("returned_exchange"),
+                meta.get("instrument_type"),
+            )
+            db.execute_write(
+                "UPDATE security SET identity_status = ?, identity_evidence = ?, "
+                "identity_checked_at = ? WHERE security_id = ?;",
+                (verdict["verdict"], " | ".join(verdict["evidence"]),
+                 datetime.now(timezone.utc).isoformat(), security_id),
+            )
+            if verdict["verdict"] != VERIFIED:
+                raise SymbolIdentityError(
+                    "%s resolved to %r on %r but is recorded as %r (%s). Refusing to "
+                    "write bars." % (
+                        symbol, meta.get("returned_name"), meta.get("returned_exchange"),
+                        expected_name, verdict["verdict"])
+                )
+
         bars = self.validate_and_parse_bars(security_id, df)
         count = self.save_bars_to_db(bars)
         return count

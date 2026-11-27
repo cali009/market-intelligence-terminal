@@ -154,11 +154,19 @@ class SystemStatusEngine:
                 "age_label": age_label,
                 "age_reason": age_reason,
                 "market_closed": bool(us_verdict["market_closed"] and ca_verdict["market_closed"]),
-                "holiday_modelled": False,
+                # Read from the calendar rather than asserted. This was hard-coded
+                # False while the calendar modelled no holidays; it now derives each
+                # exchange's published holiday rule, so publishing a literal False
+                # here would be a false statement about our own data.
+                "holiday_modelled": bool(
+                    us_verdict["market_state"].get("holiday_modelled")
+                    and ca_verdict["market_state"].get("holiday_modelled")
+                ),
                 "market_detail": {
                     "us": {
                         "badge": us_verdict["badge"],
                         "state": us_verdict["market_state"]["state"],
+                        "holiday": us_verdict["market_state"].get("holiday"),
                         "local_time": us_verdict["market_state"].get("local_time"),
                         "sessions_completed_since_last_bar": us_verdict["sessions"].get("completed"),
                         "weekdays_unverified": us_verdict["sessions"].get("unverified"),
@@ -167,6 +175,7 @@ class SystemStatusEngine:
                     "ca": {
                         "badge": ca_verdict["badge"],
                         "state": ca_verdict["market_state"]["state"],
+                        "holiday": ca_verdict["market_state"].get("holiday"),
                         "local_time": ca_verdict["market_state"].get("local_time"),
                         "sessions_completed_since_last_bar": ca_verdict["sessions"].get("completed"),
                         "weekdays_unverified": ca_verdict["sessions"].get("unverified"),

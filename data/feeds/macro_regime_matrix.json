@@ -1,6 +1,6 @@
 {
-  "as_of_date": "2026-11-21",
-  "generated_at": "2026-11-21T23:38:52.487274+00:00",
+  "as_of_date": "2026-11-26",
+  "generated_at": "2026-11-26T17:42:42.446949+00:00",
   "us_matrix": {
     "market": "US",
     "benchmark_symbol": "SPY",
@@ -12,67 +12,67 @@
       "BEARISH",
       "CRISIS"
     ],
-    "sample_sessions_count": 492,
+    "sample_sessions_count": 510,
     "rows": [
       {
         "from_state": "STRONG_BULL",
         "probabilities": {
-          "STRONG_BULL": 0.8746,
-          "WEAK_BULL": 0.1118,
-          "CONSOLIDATION": 0.0043,
-          "HIGH_VOLATILITY": 0.0079,
+          "STRONG_BULL": 0.878,
+          "WEAK_BULL": 0.1159,
+          "CONSOLIDATION": 0.0007,
+          "HIGH_VOLATILITY": 0.0041,
           "BEARISH": 0.0007,
           "CRISIS": 0.0007
         },
-        "expected_duration_days": 8.0
+        "expected_duration_days": 8.2
       },
       {
         "from_state": "WEAK_BULL",
         "probabilities": {
-          "STRONG_BULL": 0.2496,
-          "WEAK_BULL": 0.6788,
-          "CONSOLIDATION": 0.0234,
-          "HIGH_VOLATILITY": 0.038,
-          "BEARISH": 0.0088,
-          "CRISIS": 0.0015
+          "STRONG_BULL": 0.2295,
+          "WEAK_BULL": 0.7047,
+          "CONSOLIDATION": 0.0081,
+          "HIGH_VOLATILITY": 0.055,
+          "BEARISH": 0.0013,
+          "CRISIS": 0.0013
         },
-        "expected_duration_days": 3.1
+        "expected_duration_days": 3.4
       },
       {
         "from_state": "CONSOLIDATION",
         "probabilities": {
-          "STRONG_BULL": 0.01,
-          "WEAK_BULL": 0.21,
-          "CONSOLIDATION": 0.6,
-          "HIGH_VOLATILITY": 0.16,
-          "BEARISH": 0.01,
-          "CRISIS": 0.01
+          "STRONG_BULL": 0.0091,
+          "WEAK_BULL": 0.0545,
+          "CONSOLIDATION": 0.7273,
+          "HIGH_VOLATILITY": 0.1909,
+          "BEARISH": 0.0091,
+          "CRISIS": 0.0091
         },
-        "expected_duration_days": 2.5
+        "expected_duration_days": 3.7
       },
       {
         "from_state": "HIGH_VOLATILITY",
         "probabilities": {
-          "STRONG_BULL": 0.0056,
-          "WEAK_BULL": 0.1722,
-          "CONSOLIDATION": 0.0889,
-          "HIGH_VOLATILITY": 0.5833,
-          "BEARISH": 0.0889,
-          "CRISIS": 0.0611
+          "STRONG_BULL": 0.0049,
+          "WEAK_BULL": 0.1756,
+          "CONSOLIDATION": 0.1024,
+          "HIGH_VOLATILITY": 0.6098,
+          "BEARISH": 0.0537,
+          "CRISIS": 0.0537
         },
-        "expected_duration_days": 2.4
+        "expected_duration_days": 2.6
       },
       {
         "from_state": "BEARISH",
         "probabilities": {
-          "STRONG_BULL": 0.0067,
-          "WEAK_BULL": 0.0733,
-          "CONSOLIDATION": 0.0067,
-          "HIGH_VOLATILITY": 0.0733,
-          "BEARISH": 0.8333,
-          "CRISIS": 0.0067
+          "STRONG_BULL": 0.0154,
+          "WEAK_BULL": 0.0923,
+          "CONSOLIDATION": 0.0154,
+          "HIGH_VOLATILITY": 0.0923,
+          "BEARISH": 0.7692,
+          "CRISIS": 0.0154
         },
-        "expected_duration_days": 6.0
+        "expected_duration_days": 4.3
       },
       {
         "from_state": "CRISIS",
@@ -88,15 +88,15 @@
       }
     ],
     "stationary_distribution": {
-      "STRONG_BULL": 0.5481,
-      "WEAK_BULL": 0.2692,
-      "CONSOLIDATION": 0.0393,
-      "HIGH_VOLATILITY": 0.0707,
-      "BEARISH": 0.0589,
-      "CRISIS": 0.0138
+      "STRONG_BULL": 0.5458,
+      "WEAK_BULL": 0.283,
+      "CONSOLIDATION": 0.0448,
+      "HIGH_VOLATILITY": 0.0854,
+      "BEARISH": 0.0266,
+      "CRISIS": 0.0143
     },
-    "current_state": "WEAK_BULL",
-    "current_filtered_probability": 0.78
+    "current_state": "HIGH_VOLATILITY",
+    "current_filtered_probability": 0.82
   },
   "ca_matrix": {
     "market": "CA",
@@ -109,67 +109,67 @@
       "BEARISH",
       "CRISIS"
     ],
-    "sample_sessions_count": 485,
+    "sample_sessions_count": 502,
     "rows": [
       {
         "from_state": "STRONG_BULL",
         "probabilities": {
-          "STRONG_BULL": 0.8555,
-          "WEAK_BULL": 0.13,
-          "CONSOLIDATION": 0.0046,
-          "HIGH_VOLATILITY": 0.0084,
-          "BEARISH": 0.0008,
-          "CRISIS": 0.0008
+          "STRONG_BULL": 0.8561,
+          "WEAK_BULL": 0.1336,
+          "CONSOLIDATION": 0.0007,
+          "HIGH_VOLATILITY": 0.0081,
+          "BEARISH": 0.0007,
+          "CRISIS": 0.0007
         },
         "expected_duration_days": 6.9
       },
       {
         "from_state": "WEAK_BULL",
         "probabilities": {
-          "STRONG_BULL": 0.2188,
-          "WEAK_BULL": 0.7118,
-          "CONSOLIDATION": 0.0129,
-          "HIGH_VOLATILITY": 0.0482,
-          "BEARISH": 0.0071,
-          "CRISIS": 0.0012
+          "STRONG_BULL": 0.1927,
+          "WEAK_BULL": 0.7409,
+          "CONSOLIDATION": 0.001,
+          "HIGH_VOLATILITY": 0.0632,
+          "BEARISH": 0.001,
+          "CRISIS": 0.001
         },
-        "expected_duration_days": 3.5
+        "expected_duration_days": 3.9
       },
       {
         "from_state": "CONSOLIDATION",
         "probabilities": {
-          "STRONG_BULL": 0.01,
-          "WEAK_BULL": 0.16,
-          "CONSOLIDATION": 0.7,
-          "HIGH_VOLATILITY": 0.06,
-          "BEARISH": 0.06,
-          "CRISIS": 0.01
+          "STRONG_BULL": 0.0667,
+          "WEAK_BULL": 0.0667,
+          "CONSOLIDATION": 0.6667,
+          "HIGH_VOLATILITY": 0.0667,
+          "BEARISH": 0.0667,
+          "CRISIS": 0.0667
         },
-        "expected_duration_days": 3.3
+        "expected_duration_days": 3.0
       },
       {
         "from_state": "HIGH_VOLATILITY",
         "probabilities": {
-          "STRONG_BULL": 0.0056,
-          "WEAK_BULL": 0.2556,
-          "CONSOLIDATION": 0.0611,
-          "HIGH_VOLATILITY": 0.5833,
-          "BEARISH": 0.0333,
-          "CRISIS": 0.0611
+          "STRONG_BULL": 0.0048,
+          "WEAK_BULL": 0.3143,
+          "CONSOLIDATION": 0.0048,
+          "HIGH_VOLATILITY": 0.619,
+          "BEARISH": 0.0048,
+          "CRISIS": 0.0524
         },
-        "expected_duration_days": 2.4
+        "expected_duration_days": 2.6
       },
       {
         "from_state": "BEARISH",
         "probabilities": {
-          "STRONG_BULL": 0.0333,
-          "WEAK_BULL": 0.3667,
-          "CONSOLIDATION": 0.0333,
-          "HIGH_VOLATILITY": 0.2,
-          "BEARISH": 0.3333,
-          "CRISIS": 0.0333
+          "STRONG_BULL": 0.0667,
+          "WEAK_BULL": 0.0667,
+          "CONSOLIDATION": 0.0667,
+          "HIGH_VOLATILITY": 0.0667,
+          "BEARISH": 0.6667,
+          "CRISIS": 0.0667
         },
-        "expected_duration_days": 1.5
+        "expected_duration_days": 3.0
       },
       {
         "from_state": "CRISIS",
@@ -185,101 +185,101 @@
       }
     ],
     "stationary_distribution": {
-      "STRONG_BULL": 0.5239,
-      "WEAK_BULL": 0.3386,
-      "CONSOLIDATION": 0.0398,
-      "HIGH_VOLATILITY": 0.0717,
-      "BEARISH": 0.012,
-      "CRISIS": 0.0139
+      "STRONG_BULL": 0.5126,
+      "WEAK_BULL": 0.3743,
+      "CONSOLIDATION": 0.006,
+      "HIGH_VOLATILITY": 0.0869,
+      "BEARISH": 0.006,
+      "CRISIS": 0.0143
     },
-    "current_state": "WEAK_BULL",
-    "current_filtered_probability": 0.78
+    "current_state": "HIGH_VOLATILITY",
+    "current_filtered_probability": 0.82
   },
   "us_forward_projections": [
     {
       "horizon_days": 1,
       "projected_distribution": {
-        "STRONG_BULL": 0.2496,
-        "WEAK_BULL": 0.6787,
-        "CONSOLIDATION": 0.0234,
-        "HIGH_VOLATILITY": 0.038,
-        "BEARISH": 0.0088,
-        "CRISIS": 0.0015
+        "STRONG_BULL": 0.0049,
+        "WEAK_BULL": 0.1756,
+        "CONSOLIDATION": 0.1024,
+        "HIGH_VOLATILITY": 0.6097,
+        "BEARISH": 0.0537,
+        "CRISIS": 0.0537
       },
-      "adverse_hazard_rate": 0.0483,
-      "hazard_tier": "LOW_HAZARD"
+      "adverse_hazard_rate": 0.7171,
+      "hazard_tier": "SEVERE_HAZARD"
     },
     {
       "horizon_days": 5,
       "projected_distribution": {
-        "STRONG_BULL": 0.532,
-        "WEAK_BULL": 0.3136,
-        "CONSOLIDATION": 0.0411,
-        "HIGH_VOLATILITY": 0.0672,
-        "BEARISH": 0.0351,
-        "CRISIS": 0.011
+        "STRONG_BULL": 0.2109,
+        "WEAK_BULL": 0.2788,
+        "CONSOLIDATION": 0.1409,
+        "HIGH_VOLATILITY": 0.2348,
+        "BEARISH": 0.0846,
+        "CRISIS": 0.05
       },
-      "adverse_hazard_rate": 0.1133,
-      "hazard_tier": "LOW_HAZARD"
+      "adverse_hazard_rate": 0.3694,
+      "hazard_tier": "ELEVATED_HAZARD"
     },
     {
       "horizon_days": 20,
       "projected_distribution": {
-        "STRONG_BULL": 0.5513,
-        "WEAK_BULL": 0.2692,
-        "CONSOLIDATION": 0.0391,
-        "HIGH_VOLATILITY": 0.07,
-        "BEARISH": 0.0568,
-        "CRISIS": 0.0136
+        "STRONG_BULL": 0.5021,
+        "WEAK_BULL": 0.2816,
+        "CONSOLIDATION": 0.0585,
+        "HIGH_VOLATILITY": 0.1025,
+        "BEARISH": 0.0371,
+        "CRISIS": 0.0182
       },
-      "adverse_hazard_rate": 0.1404,
-      "hazard_tier": "LOW_HAZARD"
+      "adverse_hazard_rate": 0.1578,
+      "hazard_tier": "MODERATE_HAZARD"
     }
   ],
   "ca_forward_projections": [
     {
       "horizon_days": 1,
       "projected_distribution": {
-        "STRONG_BULL": 0.2188,
-        "WEAK_BULL": 0.7118,
-        "CONSOLIDATION": 0.0129,
-        "HIGH_VOLATILITY": 0.0482,
-        "BEARISH": 0.0071,
-        "CRISIS": 0.0012
+        "STRONG_BULL": 0.0048,
+        "WEAK_BULL": 0.3143,
+        "CONSOLIDATION": 0.0048,
+        "HIGH_VOLATILITY": 0.6189,
+        "BEARISH": 0.0048,
+        "CRISIS": 0.0524
       },
-      "adverse_hazard_rate": 0.0565,
-      "hazard_tier": "LOW_HAZARD"
+      "adverse_hazard_rate": 0.6761,
+      "hazard_tier": "SEVERE_HAZARD"
     },
     {
       "horizon_days": 5,
       "projected_distribution": {
-        "STRONG_BULL": 0.4832,
-        "WEAK_BULL": 0.3811,
-        "CONSOLIDATION": 0.036,
-        "HIGH_VOLATILITY": 0.0753,
-        "BEARISH": 0.012,
-        "CRISIS": 0.0124
+        "STRONG_BULL": 0.2819,
+        "WEAK_BULL": 0.4515,
+        "CONSOLIDATION": 0.0116,
+        "HIGH_VOLATILITY": 0.1987,
+        "BEARISH": 0.0116,
+        "CRISIS": 0.0447
       },
-      "adverse_hazard_rate": 0.0997,
-      "hazard_tier": "LOW_HAZARD"
+      "adverse_hazard_rate": 0.255,
+      "hazard_tier": "ELEVATED_HAZARD"
     },
     {
       "horizon_days": 20,
       "projected_distribution": {
-        "STRONG_BULL": 0.5234,
-        "WEAK_BULL": 0.3387,
-        "CONSOLIDATION": 0.0399,
-        "HIGH_VOLATILITY": 0.0719,
-        "BEARISH": 0.012,
-        "CRISIS": 0.0141
+        "STRONG_BULL": 0.5075,
+        "WEAK_BULL": 0.376,
+        "CONSOLIDATION": 0.0063,
+        "HIGH_VOLATILITY": 0.089,
+        "BEARISH": 0.0063,
+        "CRISIS": 0.0149
       },
-      "adverse_hazard_rate": 0.098,
+      "adverse_hazard_rate": 0.1102,
       "hazard_tier": "LOW_HAZARD"
     }
   ],
   "cross_border_divergence": {
-    "us_regime": "WEAK_BULL",
-    "ca_regime": "WEAK_BULL",
+    "us_regime": "HIGH_VOLATILITY",
+    "ca_regime": "HIGH_VOLATILITY",
     "us_yield_spread_10y_2y": 0.45,
     "ca_yield_spread_10y_2y": 0.56,
     "yield_spread_divergence_bps": -11.0,

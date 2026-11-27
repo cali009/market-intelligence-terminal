@@ -1,6 +1,6 @@
 {
-  "as_of_date": "2026-11-21",
-  "generated_at": "2026-11-21T23:38:29.791529+00:00",
+  "as_of_date": "2026-11-26",
+  "generated_at": "2026-11-26T17:39:52.576382+00:00",
   "summary": {
     "total_catalysts_analyzed": 63,
     "high_materiality_count": 22,
@@ -70,9 +70,9 @@
       "label": "Other Corporate Disclosures (8-K 8.01)",
       "sample_size": 15,
       "measured_reactions": 15,
-      "avg_reaction_1d_pct": 0.23,
-      "avg_reaction_3d_pct": 1.09,
-      "directional_win_rate_pct": 53.3,
+      "avg_reaction_1d_pct": -0.05,
+      "avg_reaction_3d_pct": -0.16,
+      "directional_win_rate_pct": 46.7,
       "avg_rvol": 1.0,
       "verdict": "STATISTICAL_NOISE_PRICED_IN",
       "verdict_badge": "NO QUANT EDGE",
@@ -86,7 +86,7 @@
       "sample_size": 7,
       "measured_reactions": 7,
       "avg_reaction_1d_pct": -0.56,
-      "avg_reaction_3d_pct": -1.85,
+      "avg_reaction_3d_pct": -1.86,
       "directional_win_rate_pct": 28.6,
       "avg_rvol": 1.0,
       "verdict": "MODEST_CONDITIONAL_SIGNAL",
@@ -168,7 +168,7 @@
       "description": "Azure cloud acceleration, Copilot AI subscription metrics, and capital expenditure trajectory.",
       "importance": "HIGH",
       "proximity_flag": "PAST",
-      "days_until": -25
+      "days_until": -30
     },
     {
       "id": "cal_boc_2026_10",
@@ -181,7 +181,7 @@
       "description": "Governing Council interest rate announcement and full economic projection report.",
       "importance": "HIGH",
       "proximity_flag": "PAST",
-      "days_until": -24
+      "days_until": -29
     },
     {
       "id": "cal_aapl_q4",
@@ -194,7 +194,7 @@
       "description": "Preliminary Q4 revenue, iPhone 17 channel inventory, and FY2027 gross margin guidance.",
       "importance": "HIGH",
       "proximity_flag": "PAST",
-      "days_until": -23
+      "days_until": -28
     },
     {
       "id": "cal_shop_q3",
@@ -207,7 +207,7 @@
       "description": "Gross Merchandise Volume (GMV), merchant solutions attach rate, and free cash flow margin.",
       "importance": "HIGH",
       "proximity_flag": "PAST",
-      "days_until": -16
+      "days_until": -21
     },
     {
       "id": "cal_cnq_q3",
@@ -220,7 +220,7 @@
       "description": "Oil sands mining throughput, synthetic crude realisations, and 100% free cash flow shareholder returns.",
       "importance": "MEDIUM",
       "proximity_flag": "PAST",
-      "days_until": -16
+      "days_until": -21
     },
     {
       "id": "cal_enb_q3",
@@ -233,7 +233,7 @@
       "description": "Mainline system throughput, gas utility integration, and distributable cash flow (DCF) per share.",
       "importance": "MEDIUM",
       "proximity_flag": "PAST",
-      "days_until": -15
+      "days_until": -20
     },
     {
       "id": "cal_nvda_q3",
@@ -246,7 +246,7 @@
       "description": "Data Center GPU revenue, Blackwell architecture delivery rates, and software gross margins.",
       "importance": "HIGH",
       "proximity_flag": "PAST",
-      "days_until": -3
+      "days_until": -8
     },
     {
       "id": "cal_ry_q4",
@@ -258,8 +258,8 @@
       "title": "Q4 & Full Year 2026 Earnings Release",
       "description": "Canadian banking Net Interest Margin, provision for credit losses (PCL), and capital adequacy.",
       "importance": "HIGH",
-      "proximity_flag": "UPCOMING",
-      "days_until": 5
+      "proximity_flag": "EVENT_RISK_IMMEDIATE",
+      "days_until": 0
     },
     {
       "id": "cal_boc_2026_12",
@@ -272,7 +272,7 @@
       "description": "Final scheduled 2026 overnight target rate decision.",
       "importance": "HIGH",
       "proximity_flag": "UPCOMING",
-      "days_until": 18
+      "days_until": 13
     }
   ],
   "catalysts": [
@@ -298,8 +298,8 @@
       ],
       "horizon": "SHORT_TERM",
       "priced_in_status": "PRICED_IN",
-      "reaction_1d_pct": 2.32,
-      "reaction_3d_pct": 3.65,
+      "reaction_1d_pct": -0.14,
+      "reaction_3d_pct": 0.46,
       "rvol_at_event": 1.0,
       "factual_claims": [
         "Official SEC filing under CIK 0001937926 with accession number 0001171843-26-006323",
@@ -336,8 +336,8 @@
       ],
       "horizon": "SHORT_TERM",
       "priced_in_status": "PRICED_IN",
-      "reaction_1d_pct": 2.32,
-      "reaction_3d_pct": 3.65,
+      "reaction_1d_pct": -0.14,
+      "reaction_3d_pct": 0.46,
       "rvol_at_event": 1.0,
       "factual_claims": [
         "Official SEC filing under CIK 0001937926 with accession number 0001171843-26-006315",
@@ -374,8 +374,8 @@
       ],
       "horizon": "SHORT_TERM",
       "priced_in_status": "PRICED_IN",
-      "reaction_1d_pct": -0.6,
-      "reaction_3d_pct": 0.65,
+      "reaction_1d_pct": 0.06,
+      "reaction_3d_pct": -1.93,
       "rvol_at_event": 1.0,
       "factual_claims": [
         "Official SEC filing under CIK 0000016875 with accession number 0001193125-26-407607",
@@ -413,7 +413,7 @@
       "horizon": "SHORT_TERM",
       "priced_in_status": "PRICED_IN",
       "reaction_1d_pct": -0.22,
-      "reaction_3d_pct": 0.73,
+      "reaction_3d_pct": 0.68,
       "rvol_at_event": 1.0,
       "factual_claims": [
         "Official SEC filing under CIK 0001937926 with accession number 0001104659-26-111209",
@@ -451,7 +451,7 @@
       "horizon": "SHORT_TERM",
       "priced_in_status": "PRICED_IN",
       "reaction_1d_pct": -0.96,
-      "reaction_3d_pct": 9.17,
+      "reaction_3d_pct": -0.49,
       "rvol_at_event": 1.0,
       "factual_claims": [
         "Official SEC filing under CIK 0002115436 with accession number 0001193125-26-402986",

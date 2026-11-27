@@ -20,6 +20,16 @@ CREATE TABLE IF NOT EXISTS security (
     calendar_id TEXT NOT NULL,               -- XNYS | XTSE
     is_active INTEGER NOT NULL DEFAULT 1,
     created_at TEXT NOT NULL DEFAULT (datetime('now')),
+    -- Identity gate. A ticker is not a permanent identifier: it is reassigned when a
+    -- company is acquired or delisted, so the same letters can resolve to a different
+    -- security. expected_name/expected_calendar record what the symbol is supposed to
+    -- be, and bar ingestion refuses to write unless the endpoint's own description of
+    -- the security agrees. See src/data/symbol_identity.py.
+    expected_name TEXT,
+    expected_calendar TEXT,
+    identity_status TEXT,                -- VERIFIED | MISMATCH | NEEDS_REVIEW | UNVERIFIED
+    identity_evidence TEXT,
+    identity_checked_at TEXT,
     UNIQUE(symbol, exchange)
 );
 

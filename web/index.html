@@ -8897,10 +8897,11 @@
                     <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px 16px;">
                         <div style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; margin-bottom: 4px;">Spot FX Exchange Rates</div>
                         <div style="display: flex; align-items: baseline; gap: 8px;">
-                            <span style="font-size: 20px; font-weight: 800; color: var(--accent-cyan);">$${fx.spot_cad_usd.toFixed(4)}</span>
-                            <span style="font-size: 11px; color: var(--text-muted);">CAD/USD</span>
+                            <span style="font-size: 20px; font-weight: 800; color: var(--accent-cyan);">${fx.spot_cad_per_usd != null ? '$' + fx.spot_cad_per_usd.toFixed(4) : '\u2014'}</span>
+                            <span style="font-size: 11px; color: var(--text-muted);">CAD per USD</span>
                         </div>
-                        <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">USD/CAD = $${fx.spot_usd_cad.toFixed(4)}</div>
+                        <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">${fx.spot_usd_per_cad != null ? 'USD per CAD = $' + fx.spot_usd_per_cad.toFixed(4) : 'USD per CAD not available'}</div>
+                        ${fx.spot_cad_per_usd == null ? '<div style="font-size: 10px; color: var(--text-muted); margin-top: 4px;">Source: ' + (fx.fx_source_status || 'unknown') + '. No figure is estimated.</div>' : ''}
                     </div>
 
                     <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px 16px;">

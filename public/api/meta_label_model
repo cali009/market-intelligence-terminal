@@ -2,106 +2,106 @@
   "metrics": {
     "model_id": "ML_META_ENSEMBLE_V1",
     "model_architecture": "Ensemble (L2-Logistic Regression + Constrained Random Forest)",
-    "train_auc": 0.7127,
-    "validation_auc": 0.4441,
-    "test_auc": 0.5575,
-    "brier_score": 0.2405,
-    "total_training_samples": 1024,
+    "train_auc": 0.576,
+    "validation_auc": 0.5256,
+    "test_auc": 0.4995,
+    "brier_score": 0.2475,
+    "total_training_samples": 33585,
     "top_features": [
       {
-        "feature_name": "atr_pct",
-        "importance_weight": 0.1337,
-        "directional_impact": "POSITIVE"
+        "feature_name": "sma200_slope",
+        "importance_weight": 0.1177,
+        "directional_impact": "NEGATIVE"
       },
       {
         "feature_name": "dist_sma200",
-        "importance_weight": 0.0844,
-        "directional_impact": "NEGATIVE"
-      },
-      {
-        "feature_name": "mom_6m",
-        "importance_weight": 0.0763,
-        "directional_impact": "NEGATIVE"
-      },
-      {
-        "feature_name": "mom_12_1m",
-        "importance_weight": 0.072,
-        "directional_impact": "NEGATIVE"
-      },
-      {
-        "feature_name": "cmf_20",
-        "importance_weight": 0.065,
+        "importance_weight": 0.1129,
         "directional_impact": "POSITIVE"
       },
       {
-        "feature_name": "mom_3m",
-        "importance_weight": 0.0582,
-        "directional_impact": "POSITIVE"
-      },
-      {
-        "feature_name": "sma200_slope",
-        "importance_weight": 0.0577,
-        "directional_impact": "POSITIVE"
-      },
-      {
-        "feature_name": "mom_1m",
-        "importance_weight": 0.0537,
-        "directional_impact": "NEGATIVE"
-      },
-      {
-        "feature_name": "amihud_illiquidity",
-        "importance_weight": 0.051,
-        "directional_impact": "NEGATIVE"
-      },
-      {
-        "feature_name": "bb_bandwidth",
-        "importance_weight": 0.0493,
-        "directional_impact": "NEGATIVE"
-      },
-      {
-        "feature_name": "fractal_dimension",
-        "importance_weight": 0.0486,
-        "directional_impact": "POSITIVE"
-      },
-      {
-        "feature_name": "hurst_exponent",
-        "importance_weight": 0.0455,
+        "feature_name": "prox_52w",
+        "importance_weight": 0.0969,
         "directional_impact": "NEGATIVE"
       },
       {
         "feature_name": "dist_sma50",
-        "importance_weight": 0.0401,
-        "directional_impact": "POSITIVE"
-      },
-      {
-        "feature_name": "valuation_score",
-        "importance_weight": 0.0384,
-        "directional_impact": "POSITIVE"
-      },
-      {
-        "feature_name": "quality_score",
-        "importance_weight": 0.036,
+        "importance_weight": 0.0945,
         "directional_impact": "NEGATIVE"
       },
       {
-        "feature_name": "prox_52w",
-        "importance_weight": 0.0355,
-        "directional_impact": "POSITIVE"
-      },
-      {
-        "feature_name": "rvol_20",
-        "importance_weight": 0.0267,
+        "feature_name": "mom_3m",
+        "importance_weight": 0.0763,
         "directional_impact": "NEGATIVE"
       },
       {
-        "feature_name": "rsi_14",
-        "importance_weight": 0.0163,
+        "feature_name": "atr_pct",
+        "importance_weight": 0.0721,
+        "directional_impact": "POSITIVE"
+      },
+      {
+        "feature_name": "mom_1m",
+        "importance_weight": 0.0719,
         "directional_impact": "POSITIVE"
       },
       {
         "feature_name": "macro_regime_score",
-        "importance_weight": 0.0114,
+        "importance_weight": 0.0684,
         "directional_impact": "NEGATIVE"
+      },
+      {
+        "feature_name": "mom_12_1m",
+        "importance_weight": 0.0609,
+        "directional_impact": "POSITIVE"
+      },
+      {
+        "feature_name": "bb_bandwidth",
+        "importance_weight": 0.0514,
+        "directional_impact": "NEGATIVE"
+      },
+      {
+        "feature_name": "mom_6m",
+        "importance_weight": 0.045,
+        "directional_impact": "NEGATIVE"
+      },
+      {
+        "feature_name": "rvol_20",
+        "importance_weight": 0.0306,
+        "directional_impact": "NEGATIVE"
+      },
+      {
+        "feature_name": "rsi_14",
+        "importance_weight": 0.0245,
+        "directional_impact": "POSITIVE"
+      },
+      {
+        "feature_name": "fractal_dimension",
+        "importance_weight": 0.0244,
+        "directional_impact": "NEGATIVE"
+      },
+      {
+        "feature_name": "cmf_20",
+        "importance_weight": 0.0222,
+        "directional_impact": "POSITIVE"
+      },
+      {
+        "feature_name": "hurst_exponent",
+        "importance_weight": 0.0113,
+        "directional_impact": "NEGATIVE"
+      },
+      {
+        "feature_name": "amihud_illiquidity",
+        "importance_weight": 0.0112,
+        "directional_impact": "POSITIVE"
+      },
+      {
+        "feature_name": "valuation_score",
+        "importance_weight": 0.0046,
+        "directional_impact": "POSITIVE"
+      },
+      {
+        "feature_name": "quality_score",
+        "importance_weight": 0.0032,
+        "directional_impact": "POSITIVE"
       },
       {
         "feature_name": "yield_spread_10y_2y",
@@ -109,7 +109,7 @@
         "directional_impact": "POSITIVE"
       }
     ],
-    "calibrated_at": "2026-11-21T23:38:33.224062+00:00"
+    "calibrated_at": "2026-11-26T17:38:19.940261+00:00"
   },
   "disclaimers": [
     "Machine learning meta-labeling models generate statistical decision-support probabilities for risk management and trade filtering.",

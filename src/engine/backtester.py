@@ -285,11 +285,21 @@ class BacktestEngine:
             sec_bars[s_id].append(b)
 
         sec_dfs: Dict[int, pd.DataFrame] = {}
+        # trading_date -> positional row, per security, built once here. The backtest
+        # loop previously answered "is there a bar for this date?" with a boolean mask
+        # over the whole frame, inside the per-date x per-symbol loop, four separate
+        # times. At 19 symbols that was wasteful but tolerable; widening the universe to
+        # 163 symbols made it the dominant cost -- a full CI pipeline run spent over ten
+        # minutes in one of these masks before the strategy backtests had even started.
+        sec_date_index: Dict[int, Dict[str, int]] = {}
         all_trading_dates_set = set()
         for s_id, b_list in sec_bars.items():
             df = pd.DataFrame(b_list)
             df = TechnicalAnalysisEngine.compute_all_features(df)
             sec_dfs[s_id] = df
+            sec_date_index[s_id] = {
+                str(d): i for i, d in enumerate(df["trading_date"].tolist())
+            }
             all_trading_dates_set.update(df["trading_date"].tolist())
 
         timeline = sorted(list(all_trading_dates_set))
@@ -393,7 +403,8 @@ class BacktestEngine:
                     continue
 
                 df_s = sec_dfs[s_meta["security_id"]]
-                today_bar = df_s[df_s["trading_date"] == curr_date]
+                _pos = sec_date_index[s_meta["security_id"]].get(str(curr_date))
+                today_bar = df_s.iloc[[_pos]] if _pos is not None else df_s.iloc[0:0]
                 if today_bar.empty:
                     still_open.append(trade)
                     continue
@@ -534,9 +545,9 @@ class BacktestEngine:
                         bench_sec = next((b for b in securities if b["symbol"] == mkt_bench_sym), None)
                         if bench_sec and bench_sec["security_id"] in sec_dfs:
                             b_df = sec_dfs[bench_sec["security_id"]]
-                            b_rows = b_df[b_df["trading_date"] == curr_date]
-                            if not b_rows.empty:
-                                b_prior = b_df.iloc[b_rows.index[0] - 1]
+                            _bpos = sec_date_index[bench_sec["security_id"]].get(str(curr_date))
+                            if _bpos is not None and _bpos > 0:
+                                b_prior = b_df.iloc[_bpos - 1]
                                 b_c = b_prior.get("close", 0)
                                 b_sma20 = b_prior.get("sma_20", 0)
                                 b_sma50 = b_prior.get("sma_50", 0)
@@ -548,11 +559,9 @@ class BacktestEngine:
                         continue
 
                     df_s = sec_dfs[s_id]
-                    idx_today_series = df_s.index[df_s["trading_date"] == curr_date]
-                    if len(idx_today_series) == 0 or idx_today_series[0] == 0:
+                    row_idx = sec_date_index[s_id].get(str(curr_date))
+                    if row_idx is None or row_idx == 0:
                         continue
-
-                    row_idx = idx_today_series[0]
                     prior_bar = df_s.iloc[row_idx - 1]
                     today_bar = df_s.iloc[row_idx]
 
@@ -730,7 +739,8 @@ class BacktestEngine:
             for t in open_trades:
                 s_meta = next(s for s in securities if s["symbol"] == t.symbol)
                 df_s = sec_dfs[s_meta["security_id"]]
-                today_row = df_s[df_s["trading_date"] == curr_date]
+                _pos = sec_date_index[s_meta["security_id"]].get(str(curr_date))
+                today_row = df_s.iloc[[_pos]] if _pos is not None else df_s.iloc[0:0]
                 fx_today = get_fx_to_usd(curr_date, t.currency)
                 if not today_row.empty:
                     current_close = today_row.iloc[0]["close"]

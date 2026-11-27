@@ -24,7 +24,15 @@ class TestMetaLabelClassifier:
         assert isinstance(metrics, MetaLabelModelMetrics)
         assert metrics.model_id == "ML_META_ENSEMBLE_V1"
         assert "Ensemble" in metrics.model_architecture
-        assert metrics.total_training_samples == 944
+        # This used to assert == 944, a count pinned to the original 19-security
+        # universe. Widening the universe changed it, and so would any future
+        # backfill, so pinning a number here only encodes "how many rows happened to
+        # exist that day". The invariant that actually matters is that every row the
+        # model saw had a complete feature vector, and that the engine accounts for
+        # the rows it dropped rather than discarding them silently.
+        dropped = meta_label_classifier.dropped_missing_features["train"]
+        assert metrics.total_training_samples == dropped["rows_used"] > 0
+        assert dropped["rows_in"] == dropped["rows_used"] + dropped["rows_dropped_missing_features"]
         assert metrics.train_auc > 0.55
         assert 0.0 <= metrics.brier_score <= 1.0
         assert len(metrics.top_features) == 20
