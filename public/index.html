@@ -5382,7 +5382,7 @@
                 renderConformalBoundsInDrawer(data.conformal_bounds);
 
                 // Render Phase 15 Cross-Border Dual-Listed Parity
-                renderDualListedParityInDrawer(data.cross_border_parity);
+                renderDualListedParityInDrawer(data.cross_border_parity, data.symbol, data.country);
 
                 // Render Phase 17 LightGBM TreeSHAP Factor Attributions
                 renderSHAPAttributionInDrawer(data.shap_attribution);
@@ -5700,13 +5700,24 @@
             `;
         }
 
-        function renderDualListedParityInDrawer(p) {
+        function renderDualListedParityInDrawer(p, symbol, country) {
             const wrapper = document.getElementById('drawerParityWrapper');
             const container = document.getElementById('drawerParitySection');
             if (!container || !wrapper) return;
 
             if (!p) {
-                wrapper.style.display = 'none';
+                // Used to hide the whole section. That is defensible for a pure-play,
+                // but every other panel on this site states why it has nothing to show,
+                // and a section that simply vanishes next to one that renders for RY or
+                // CNQ reads as a bug. Say what is true instead: there is no second
+                // listing to compare against.
+                wrapper.style.display = 'block';
+                container.innerHTML = '<div style="font-size: 11px; color: var(--text-muted); line-height: 1.5;">'
+                    + 'No cross-border parity for this security. It has a single listing'
+                    + (country ? ' in ' + escapeHtml(String(country)) : '')
+                    + (symbol ? ' (' + escapeHtml(String(symbol)) + ')' : '')
+                    + ', so there is no second venue to measure a basis against.'
+                    + '</div>';
                 return;
             }
             wrapper.style.display = 'block';
