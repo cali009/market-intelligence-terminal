@@ -4308,7 +4308,7 @@
             fetchJson('/api/signals.json', '/api/signals')
                 .then(data => {
                     rawSignalsData = data.signals || [];
-                    renderSignals(rawSignalsData);
+                    renderSignals(rawSignalsData, data.gate_context);
                 })
                 .catch(err => console.error("Signals load error:", err));
 
@@ -4959,13 +4959,98 @@
             if (saved[curVal]) sel.value = curVal;
         }
 
-        function renderSignals(signals) {
+        // An empty signals tab used to say only that nothing qualified, which is
+        // indistinguishable from a broken tab. The usual real cause is a regime
+        // multiplier pressing every composite score below the publication gate, and
+        // that is measurable -- so show the arithmetic instead of a shrug. Every value
+        // comes from gate_context in signals.json; nothing here is estimated, and any
+        // figure the feed did not publish renders as an em dash rather than a guess.
+        function renderSignalsEmptyState(gate) {
+            const box = 'padding: 26px 28px; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px;';
+            if (!gate) {
+                return '<div style="padding: 40px; text-align: center; color: var(--text-muted);">'
+                    + 'No active research signals qualify under current market filters.'
+                    + '<div style="font-size: 11px; margin-top: 8px;">The feed carries no gate context, so the reason cannot be shown.</div>'
+                    + '</div>';
+            }
+
+            const dash = '\u2014';
+            // A number is only shown if it is a real finite number. null, undefined,
+            // NaN and non-numeric values all become an em dash: the feed is JSON, and
+            // Python's json.dump will happily emit a bare NaN, which must never reach
+            // the screen as a figure.
+            const isNum = (v) => typeof v === 'number' && Number.isFinite(v);
+            const n = (v) => (isNum(v) ? v : dash);
+            const gateVal = n(gate.composite_gate);
+            const scored = n(gate.securities_scored);
+            const clearing = n(gate.securities_clearing_gate);
+            const best = isNum(gate.highest_composite_score) ? gate.highest_composite_score : null;
+            const bestSym = (gate.highest_composite_symbol === null || gate.highest_composite_symbol === undefined)
+                ? null : String(gate.highest_composite_symbol);
+
+            const regimeRows = Object.entries(gate.regimes || {}).map(([label, r]) => {
+                const mult = isNum(r && r.score_multiplier) ? r.score_multiplier : null;
+                const prob = isNum(r && r.filtered_probability)
+                    ? (r.filtered_probability * 100).toFixed(0) + '%' : dash;
+                return '<tr>'
+                    + '<td style="padding: 3px 14px 3px 0; color: var(--text-muted);">' + escapeHtml(label) + '</td>'
+                    + '<td style="padding: 3px 14px 3px 0; font-weight: 700;">'
+                    // A regime label is only a label if it is a non-empty string.
+                    // `!= null` is not enough here: NaN != null is true, and String(NaN)
+                    // would put the literal text "NaN" on screen.
+                    + escapeHtml(typeof (r && r.regime_state) === 'string' && r.regime_state
+                        ? r.regime_state : dash) + '</td>'
+                    + '<td style="padding: 3px 14px 3px 0; text-align: right;">' + prob + '</td>'
+                    + '<td style="padding: 3px 0; text-align: right; font-weight: 700; color: '
+                    + (mult !== null && mult < 1.0 ? 'var(--accent-red)' : 'var(--accent-green)') + ';">'
+                    + (mult !== null ? '\u00d7' + mult.toFixed(2) : dash) + '</td>'
+                    + '</tr>';
+            }).join('');
+
+            const need = isNum(gate.raw_score_needed_under_tightest_multiplier)
+                ? gate.raw_score_needed_under_tightest_multiplier : null;
+
+            return '<div style="' + box + '">'
+                + '<div style="font-size: 13px; font-weight: 800; color: #fff; margin-bottom: 6px;">No research signals are published right now</div>'
+                + '<div style="font-size: 12px; color: var(--text-muted); line-height: 1.55; margin-bottom: 14px;">'
+                + 'This is a filter outcome, not a fault. A security must clear a composite score of '
+                + '<strong style="color: #fff;">' + gateVal + '</strong> before any plan is published. '
+                + '<strong style="color: #fff;">' + clearing + '</strong> of <strong style="color: #fff;">' + scored
+                + '</strong> scored securities clear it.'
+                + (best != null
+                    ? ' The highest score in the universe is <strong style="color: #fff;">' + best + '</strong>'
+                      + (bestSym ? ' (' + escapeHtml(String(bestSym)) + ')' : '') + '.'
+                    : '')
+                + '</div>'
+                + (regimeRows
+                    ? '<table style="font-size: 11px; border-collapse: collapse; margin-bottom: 12px;">'
+                      + '<thead><tr style="color: var(--text-muted); text-transform: uppercase; font-size: 10px;">'
+                      + '<th style="text-align: left; padding: 0 14px 4px 0;">Market</th>'
+                      + '<th style="text-align: left; padding: 0 14px 4px 0;">Regime</th>'
+                      + '<th style="text-align: right; padding: 0 14px 4px 0;">Confidence</th>'
+                      + '<th style="text-align: right; padding: 0 0 4px 0;">Score multiplier</th>'
+                      + '</tr></thead><tbody>' + regimeRows + '</tbody></table>'
+                    : '')
+                + (need !== null
+                    ? '<div style="font-size: 11px; color: var(--text-muted); line-height: 1.55;">'
+                      + 'The multiplier scales the composite score, so under the tightest regime in force a '
+                      + 'security needs a raw score of about <strong style="color: #fff;">' + need
+                      + '</strong> to clear the gate. Scores rise when the regime does; nothing is being hidden here.'
+                      + '</div>'
+                    : '')
+                + '<div style="font-size: 10px; color: var(--text-muted); margin-top: 12px; border-top: 1px solid var(--border-color); padding-top: 8px;">'
+                + 'Not investment advice. A published plan is a research setup with stated invalidation levels, not a recommendation to trade.'
+                + '</div>'
+                + '</div>';
+        }
+
+        function renderSignals(signals, gate) {
             const grid = document.getElementById('signalsGrid');
             if (!grid) return;
             grid.innerHTML = '';
 
             if (!signals || signals.length === 0) {
-                grid.innerHTML = '<div style="padding: 40px; text-align: center; color: var(--text-muted);">No active research signals qualify under current market filters.</div>';
+                grid.innerHTML = renderSignalsEmptyState(gate);
                 return;
             }
 

@@ -1,11 +1,11 @@
 {
-  "as_of_date": "2026-11-26",
-  "generated_at": "2026-11-26T17:42:33.809222+00:00",
-  "active_alerts_count": 206,
+  "as_of_date": "2026-11-27",
+  "generated_at": "2026-11-27T20:24:57.342491+00:00",
+  "active_alerts_count": 207,
   "alerts": [
     {
-      "alert_id": "ALT_2026-11-26_AAPL_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_AAPL_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "AAPL",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -16,7 +16,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "AAPL:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "AAPL:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -27,8 +27,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_MSFT_BREAKOUT_F",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_MSFT_BREAKOUT_F",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "MSFT",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
@@ -39,7 +39,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "MSFT:BREAKOUT_FAILURE:2026-11-26",
+      "dedupe_key": "MSFT:BREAKOUT_FAILURE:2026-11-27",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
@@ -50,8 +50,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_MSFT_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_MSFT_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "MSFT",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -62,7 +62,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "MSFT:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "MSFT:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -73,8 +73,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_NVDA_BREAKOUT_F",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_NVDA_BREAKOUT_F",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "NVDA",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
@@ -85,7 +85,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "NVDA:BREAKOUT_FAILURE:2026-11-26",
+      "dedupe_key": "NVDA:BREAKOUT_FAILURE:2026-11-27",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
@@ -96,8 +96,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_NVDA_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_NVDA_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "NVDA",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -108,7 +108,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "NVDA:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "NVDA:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -119,8 +119,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_AMZN_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_AMZN_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "AMZN",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -131,7 +131,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "AMZN:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "AMZN:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -142,8 +142,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_GOOGL_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_GOOGL_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "GOOGL",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -154,7 +154,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "GOOGL:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "GOOGL:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -165,8 +165,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_JPM_BREAKOUT_F",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_JPM_BREAKOUT_F",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "JPM",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
@@ -177,7 +177,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "JPM:BREAKOUT_FAILURE:2026-11-26",
+      "dedupe_key": "JPM:BREAKOUT_FAILURE:2026-11-27",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
@@ -188,8 +188,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_JPM_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_JPM_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "JPM",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -200,7 +200,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "JPM:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "JPM:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -211,8 +211,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_XOM_BREAKOUT_F",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_XOM_BREAKOUT_F",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "XOM",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
@@ -223,7 +223,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "XOM:BREAKOUT_FAILURE:2026-11-26",
+      "dedupe_key": "XOM:BREAKOUT_FAILURE:2026-11-27",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
@@ -234,8 +234,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_XOM_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_XOM_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "XOM",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -246,7 +246,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "XOM:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "XOM:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -257,8 +257,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_SPY_BREAKOUT_F",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_SPY_BREAKOUT_F",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "SPY",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
@@ -269,7 +269,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "SPY:BREAKOUT_FAILURE:2026-11-26",
+      "dedupe_key": "SPY:BREAKOUT_FAILURE:2026-11-27",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
@@ -280,8 +280,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_SPY_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_SPY_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "SPY",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -292,7 +292,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "SPY:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "SPY:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -303,8 +303,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_QQQ_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_QQQ_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "QQQ",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -315,7 +315,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "QQQ:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "QQQ:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -326,8 +326,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_RY_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_RY_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "RY",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -338,42 +338,42 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "RY:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "RY:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 268.80999755859375
+        "current_price": 268.7699890136719
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_TD_BREAKOUT_F",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_TD_BREAKOUT_F",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "TD",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
       "headline": "TD: Support Pivot Slipped \u2014 Breakout Failure Warning",
-      "body": "Two consecutive closes ($164.71, $166.00) below ideal entry pivot of $167.83. Setup momentum has stalled; consider reducing position size by 50% or moving stop to defense.",
+      "body": "Two consecutive closes ($164.71, $165.84) below ideal entry pivot of $167.83. Setup momentum has stalled; consider reducing position size by 50% or moving stop to defense.",
       "channels": [
         "IN_APP",
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "TD:BREAKOUT_FAILURE:2026-11-26",
+      "dedupe_key": "TD:BREAKOUT_FAILURE:2026-11-27",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
         "trigger_level": 167.83,
-        "current_price": 166.0
+        "current_price": 165.83999633789062
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_TD_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_TD_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "TD",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -384,42 +384,42 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "TD:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "TD:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 166.0
+        "current_price": 165.83999633789062
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_SHOP_BREAKOUT_F",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_SHOP_BREAKOUT_F",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "SHOP",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
       "headline": "SHOP: Support Pivot Slipped \u2014 Breakout Failure Warning",
-      "body": "Two consecutive closes ($189.67, $192.00) below ideal entry pivot of $192.88. Setup momentum has stalled; consider reducing position size by 50% or moving stop to defense.",
+      "body": "Two consecutive closes ($189.67, $192.20) below ideal entry pivot of $192.88. Setup momentum has stalled; consider reducing position size by 50% or moving stop to defense.",
       "channels": [
         "IN_APP",
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "SHOP:BREAKOUT_FAILURE:2026-11-26",
+      "dedupe_key": "SHOP:BREAKOUT_FAILURE:2026-11-27",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
         "trigger_level": 192.88,
-        "current_price": 192.0
+        "current_price": 192.1999969482422
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_SHOP_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_SHOP_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "SHOP",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -430,42 +430,42 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "SHOP:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "SHOP:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 192.0
+        "current_price": 192.1999969482422
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_ENB_BREAKOUT_F",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_ENB_BREAKOUT_F",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "ENB",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
       "headline": "ENB: Support Pivot Slipped \u2014 Breakout Failure Warning",
-      "body": "Two consecutive closes ($66.68, $66.44) below ideal entry pivot of $67.55. Setup momentum has stalled; consider reducing position size by 50% or moving stop to defense.",
+      "body": "Two consecutive closes ($66.68, $66.40) below ideal entry pivot of $67.55. Setup momentum has stalled; consider reducing position size by 50% or moving stop to defense.",
       "channels": [
         "IN_APP",
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "ENB:BREAKOUT_FAILURE:2026-11-26",
+      "dedupe_key": "ENB:BREAKOUT_FAILURE:2026-11-27",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
         "trigger_level": 67.55,
-        "current_price": 66.44499969482422
+        "current_price": 66.4000015258789
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_ENB_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_ENB_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "ENB",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -476,19 +476,19 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "ENB:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "ENB:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 66.44499969482422
+        "current_price": 66.4000015258789
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_CNR_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_CNR_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "CNR",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -499,42 +499,42 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "CNR:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "CNR:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 180.38999938964844
+        "current_price": 180.52499389648438
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_CNQ_BREAKOUT_F",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_CNQ_BREAKOUT_F",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "CNQ",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
       "headline": "CNQ: Support Pivot Slipped \u2014 Breakout Failure Warning",
-      "body": "Two consecutive closes ($64.74, $66.00) below ideal entry pivot of $66.26. Setup momentum has stalled; consider reducing position size by 50% or moving stop to defense.",
+      "body": "Two consecutive closes ($64.74, $66.04) below ideal entry pivot of $66.26. Setup momentum has stalled; consider reducing position size by 50% or moving stop to defense.",
       "channels": [
         "IN_APP",
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "CNQ:BREAKOUT_FAILURE:2026-11-26",
+      "dedupe_key": "CNQ:BREAKOUT_FAILURE:2026-11-27",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
         "trigger_level": 66.26,
-        "current_price": 66.0
+        "current_price": 66.04000091552734
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_CNQ_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_CNQ_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "CNQ",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -545,19 +545,19 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "CNQ:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "CNQ:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 66.0
+        "current_price": 66.04000091552734
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_BN_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_BN_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "BN",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -568,19 +568,19 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "BN:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "BN:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 57.23500061035156
+        "current_price": 57.27000045776367
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_BAM_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_BAM_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "BAM",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -591,19 +591,19 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "BAM:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "BAM:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 74.57499694824219
+        "current_price": 74.5999984741211
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_CP_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_CP_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "CP",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -614,19 +614,42 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "CP:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "CP:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 133.22999572753906
+        "current_price": 133.27999877929688
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_XIU_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_XIU_BREAKOUT_F",
+      "timestamp": "2026-11-27T20:24:57Z",
+      "symbol": "XIU",
+      "taxonomy": "EXIT_TRIGGER_ESCALATION",
+      "severity": "WARNING",
+      "headline": "XIU: Support Pivot Slipped \u2014 Breakout Failure Warning",
+      "body": "Two consecutive closes ($51.30, $51.60) below ideal entry pivot of $51.61. Setup momentum has stalled; consider reducing position size by 50% or moving stop to defense.",
+      "channels": [
+        "IN_APP",
+        "EMAIL",
+        "WEB_PUSH"
+      ],
+      "dedupe_key": "XIU:BREAKOUT_FAILURE:2026-11-27",
+      "data_payload": {
+        "predicate": "BREAKOUT_FAILURE",
+        "action": "DE_RISK_50_PCT",
+        "trigger_level": 51.61,
+        "current_price": 51.599998474121094
+      },
+      "is_quiet_hours_eligible": true,
+      "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
+    },
+    {
+      "alert_id": "ALT_2026-11-27_XIU_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "XIU",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -637,19 +660,19 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "XIU:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "XIU:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 51.61000061035156
+        "current_price": 51.599998474121094
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_ABBV_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_ABBV_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "ABBV",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -660,7 +683,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "ABBV:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "ABBV:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -671,8 +694,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_ABBV_TARGET_1_H",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_ABBV_TARGET_1_H",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "ABBV",
       "taxonomy": "TECHNICAL_BREAKOUT",
       "severity": "NOTICE",
@@ -681,7 +704,7 @@
       "channels": [
         "IN_APP"
       ],
-      "dedupe_key": "ABBV:TARGET_1_HIT_RATCHET:2026-11-26",
+      "dedupe_key": "ABBV:TARGET_1_HIT_RATCHET:2026-11-27",
       "data_payload": {
         "predicate": "TARGET_1_HIT_RATCHET",
         "action": "TIGHTEN_STOP_TO_BREAKEVEN",
@@ -692,8 +715,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_ABT_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_ABT_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "ABT",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -704,7 +727,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "ABT:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "ABT:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -715,8 +738,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_ACN_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_ACN_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "ACN",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -727,7 +750,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "ACN:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "ACN:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -738,8 +761,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_ADBE_BREAKOUT_F",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_ADBE_BREAKOUT_F",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "ADBE",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
@@ -750,7 +773,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "ADBE:BREAKOUT_FAILURE:2026-11-26",
+      "dedupe_key": "ADBE:BREAKOUT_FAILURE:2026-11-27",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
@@ -761,8 +784,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_ADBE_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_ADBE_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "ADBE",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -773,7 +796,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "ADBE:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "ADBE:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -784,8 +807,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_AMAT_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_AMAT_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "AMAT",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -796,7 +819,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "AMAT:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "AMAT:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -807,8 +830,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_AMD_BREAKOUT_F",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_AMD_BREAKOUT_F",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "AMD",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
@@ -819,7 +842,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "AMD:BREAKOUT_FAILURE:2026-11-26",
+      "dedupe_key": "AMD:BREAKOUT_FAILURE:2026-11-27",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
@@ -830,8 +853,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_AMD_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_AMD_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "AMD",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -842,7 +865,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "AMD:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "AMD:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -853,8 +876,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_AMGN_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_AMGN_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "AMGN",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -865,7 +888,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "AMGN:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "AMGN:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -876,8 +899,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_AMT_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_AMT_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "AMT",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -888,7 +911,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "AMT:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "AMT:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -899,8 +922,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_ANET_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_ANET_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "ANET",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -911,7 +934,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "ANET:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "ANET:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -922,8 +945,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_AVGO_BREAKOUT_F",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_AVGO_BREAKOUT_F",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "AVGO",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
@@ -934,7 +957,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "AVGO:BREAKOUT_FAILURE:2026-11-26",
+      "dedupe_key": "AVGO:BREAKOUT_FAILURE:2026-11-27",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
@@ -945,8 +968,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_AVGO_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_AVGO_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "AVGO",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -957,7 +980,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "AVGO:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "AVGO:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -968,8 +991,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_AXP_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_AXP_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "AXP",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -980,7 +1003,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "AXP:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "AXP:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -991,8 +1014,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_BA_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_BA_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "BA",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -1003,7 +1026,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "BA:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "BA:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -1014,8 +1037,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_BAC_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_BAC_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "BAC",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -1026,7 +1049,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "BAC:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "BAC:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -1037,8 +1060,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_BKNG_BREAKOUT_F",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_BKNG_BREAKOUT_F",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "BKNG",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
@@ -1049,7 +1072,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "BKNG:BREAKOUT_FAILURE:2026-11-26",
+      "dedupe_key": "BKNG:BREAKOUT_FAILURE:2026-11-27",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
@@ -1060,8 +1083,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_BKNG_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_BKNG_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "BKNG",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -1072,7 +1095,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "BKNG:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "BKNG:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -1083,8 +1106,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_BLK_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_BLK_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "BLK",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -1095,7 +1118,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "BLK:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "BLK:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -1106,8 +1129,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_BMY_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_BMY_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "BMY",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -1118,7 +1141,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "BMY:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "BMY:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -1129,8 +1152,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_BNY_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_BNY_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "BNY",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -1141,7 +1164,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "BNY:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "BNY:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -1152,8 +1175,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_BRK-B_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_BRK-B_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "BRK-B",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -1164,7 +1187,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "BRK-B:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "BRK-B:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -1175,8 +1198,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_C_BREAKOUT_F",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_C_BREAKOUT_F",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "C",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
@@ -1187,7 +1210,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "C:BREAKOUT_FAILURE:2026-11-26",
+      "dedupe_key": "C:BREAKOUT_FAILURE:2026-11-27",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
@@ -1198,8 +1221,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_C_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_C_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "C",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -1210,7 +1233,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "C:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "C:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -1221,8 +1244,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_CAT_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_CAT_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "CAT",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -1233,7 +1256,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "CAT:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "CAT:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -1244,8 +1267,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_CMCSA_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_CMCSA_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "CMCSA",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -1256,7 +1279,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "CMCSA:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "CMCSA:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -1267,8 +1290,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_COF_BREAKOUT_F",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_COF_BREAKOUT_F",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "COF",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
@@ -1279,7 +1302,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "COF:BREAKOUT_FAILURE:2026-11-26",
+      "dedupe_key": "COF:BREAKOUT_FAILURE:2026-11-27",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
@@ -1290,8 +1313,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_COF_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_COF_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "COF",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -1302,7 +1325,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "COF:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "COF:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -1313,8 +1336,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_COP_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_COP_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "COP",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -1325,7 +1348,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "COP:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "COP:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -1336,8 +1359,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_COST_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_COST_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "COST",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -1348,7 +1371,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "COST:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "COST:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -1359,8 +1382,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_CRM_BREAKOUT_F",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_CRM_BREAKOUT_F",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "CRM",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
@@ -1371,7 +1394,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "CRM:BREAKOUT_FAILURE:2026-11-26",
+      "dedupe_key": "CRM:BREAKOUT_FAILURE:2026-11-27",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
@@ -1382,8 +1405,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_CRM_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_CRM_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "CRM",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -1394,7 +1417,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "CRM:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "CRM:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -1405,8 +1428,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_CSCO_BREAKOUT_F",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_CSCO_BREAKOUT_F",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "CSCO",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
@@ -1417,7 +1440,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "CSCO:BREAKOUT_FAILURE:2026-11-26",
+      "dedupe_key": "CSCO:BREAKOUT_FAILURE:2026-11-27",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
@@ -1428,8 +1451,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_CSCO_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_CSCO_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "CSCO",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -1440,7 +1463,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "CSCO:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "CSCO:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -1451,8 +1474,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_CVS_BREAKOUT_F",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_CVS_BREAKOUT_F",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "CVS",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
@@ -1463,7 +1486,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "CVS:BREAKOUT_FAILURE:2026-11-26",
+      "dedupe_key": "CVS:BREAKOUT_FAILURE:2026-11-27",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
@@ -1474,8 +1497,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_CVS_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_CVS_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "CVS",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -1486,7 +1509,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "CVS:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "CVS:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -1497,8 +1520,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_CVX_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_CVX_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "CVX",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -1509,7 +1532,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "CVX:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "CVX:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -1520,8 +1543,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_DE_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_DE_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "DE",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -1532,7 +1555,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "DE:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "DE:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -1543,8 +1566,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_DELL_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_DELL_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "DELL",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -1555,7 +1578,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "DELL:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "DELL:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -1566,8 +1589,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_DHR_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_DHR_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "DHR",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -1578,7 +1601,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "DHR:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "DHR:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -1589,8 +1612,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_DIS_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_DIS_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "DIS",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -1601,7 +1624,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "DIS:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "DIS:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -1612,8 +1635,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_DUK_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_DUK_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "DUK",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -1624,7 +1647,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "DUK:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "DUK:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -1635,8 +1658,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_EMR_BREAKOUT_F",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_EMR_BREAKOUT_F",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "EMR",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
@@ -1647,7 +1670,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "EMR:BREAKOUT_FAILURE:2026-11-26",
+      "dedupe_key": "EMR:BREAKOUT_FAILURE:2026-11-27",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
@@ -1658,8 +1681,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_EMR_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_EMR_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "EMR",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -1670,7 +1693,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "EMR:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "EMR:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -1681,8 +1704,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_FDX_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_FDX_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "FDX",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -1693,7 +1716,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "FDX:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "FDX:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -1704,8 +1727,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_GD_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_GD_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "GD",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -1716,7 +1739,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "GD:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "GD:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -1727,8 +1750,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_GE_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_GE_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "GE",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -1739,7 +1762,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "GE:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "GE:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -1750,8 +1773,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_GEV_BREAKOUT_F",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_GEV_BREAKOUT_F",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "GEV",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
@@ -1762,7 +1785,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "GEV:BREAKOUT_FAILURE:2026-11-26",
+      "dedupe_key": "GEV:BREAKOUT_FAILURE:2026-11-27",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
@@ -1773,8 +1796,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_GEV_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_GEV_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "GEV",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -1785,7 +1808,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "GEV:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "GEV:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -1796,8 +1819,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_GILD_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_GILD_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "GILD",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -1808,7 +1831,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "GILD:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "GILD:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -1819,8 +1842,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_GM_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_GM_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "GM",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -1831,7 +1854,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "GM:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "GM:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -1842,8 +1865,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_GOOG_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_GOOG_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "GOOG",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -1854,7 +1877,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "GOOG:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "GOOG:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -1865,8 +1888,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_GS_BREAKOUT_F",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_GS_BREAKOUT_F",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "GS",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
@@ -1877,7 +1900,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "GS:BREAKOUT_FAILURE:2026-11-26",
+      "dedupe_key": "GS:BREAKOUT_FAILURE:2026-11-27",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
@@ -1888,8 +1911,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_GS_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_GS_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "GS",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -1900,7 +1923,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "GS:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "GS:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -1911,8 +1934,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_HD_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_HD_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "HD",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -1923,7 +1946,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "HD:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "HD:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -1934,8 +1957,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_IBM_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_IBM_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "IBM",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -1946,7 +1969,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "IBM:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "IBM:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -1957,8 +1980,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_INTC_BREAKOUT_F",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_INTC_BREAKOUT_F",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "INTC",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
@@ -1969,7 +1992,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "INTC:BREAKOUT_FAILURE:2026-11-26",
+      "dedupe_key": "INTC:BREAKOUT_FAILURE:2026-11-27",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
@@ -1980,8 +2003,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_INTC_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_INTC_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "INTC",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -1992,7 +2015,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "INTC:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "INTC:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -2003,8 +2026,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_INTU_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_INTU_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "INTU",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -2015,7 +2038,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "INTU:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "INTU:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -2026,8 +2049,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_ISRG_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_ISRG_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "ISRG",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -2038,7 +2061,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "ISRG:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "ISRG:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -2049,8 +2072,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_JNJ_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_JNJ_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "JNJ",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -2061,7 +2084,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "JNJ:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "JNJ:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -2072,8 +2095,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_KO_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_KO_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "KO",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -2084,7 +2107,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "KO:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "KO:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -2095,8 +2118,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_LIN_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_LIN_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "LIN",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -2107,7 +2130,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "LIN:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "LIN:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -2118,8 +2141,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_LLY_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_LLY_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "LLY",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -2130,7 +2153,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "LLY:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "LLY:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -2141,8 +2164,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_LMT_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_LMT_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "LMT",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -2153,7 +2176,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "LMT:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "LMT:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -2164,8 +2187,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_LOW_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_LOW_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "LOW",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -2176,7 +2199,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "LOW:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "LOW:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -2187,8 +2210,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_LRCX_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_LRCX_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "LRCX",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -2199,7 +2222,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "LRCX:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "LRCX:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -2210,8 +2233,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_MA_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_MA_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "MA",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -2222,7 +2245,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "MA:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "MA:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -2233,8 +2256,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_MCD_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_MCD_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "MCD",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -2245,7 +2268,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "MCD:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "MCD:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -2256,8 +2279,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_MDLZ_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_MDLZ_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "MDLZ",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -2268,7 +2291,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "MDLZ:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "MDLZ:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -2279,8 +2302,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_MDT_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_MDT_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "MDT",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -2291,7 +2314,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "MDT:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "MDT:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -2302,8 +2325,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_META_BREAKOUT_F",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_META_BREAKOUT_F",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "META",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
@@ -2314,7 +2337,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "META:BREAKOUT_FAILURE:2026-11-26",
+      "dedupe_key": "META:BREAKOUT_FAILURE:2026-11-27",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
@@ -2325,8 +2348,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_META_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_META_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "META",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -2337,7 +2360,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "META:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "META:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -2348,8 +2371,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_MMM_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_MMM_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "MMM",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -2360,7 +2383,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "MMM:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "MMM:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -2371,8 +2394,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_MO_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_MO_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "MO",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -2383,7 +2406,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "MO:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "MO:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -2394,8 +2417,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_MRK_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_MRK_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "MRK",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -2406,7 +2429,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "MRK:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "MRK:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -2417,8 +2440,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_MS_BREAKOUT_F",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_MS_BREAKOUT_F",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "MS",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
@@ -2429,7 +2452,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "MS:BREAKOUT_FAILURE:2026-11-26",
+      "dedupe_key": "MS:BREAKOUT_FAILURE:2026-11-27",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
@@ -2440,8 +2463,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_MS_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_MS_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "MS",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -2452,7 +2475,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "MS:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "MS:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -2463,8 +2486,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_MU_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_MU_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "MU",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -2475,7 +2498,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "MU:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "MU:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -2486,8 +2509,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_NEE_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_NEE_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "NEE",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -2498,7 +2521,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "NEE:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "NEE:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -2509,8 +2532,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_NFLX_BREAKOUT_F",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_NFLX_BREAKOUT_F",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "NFLX",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
@@ -2521,7 +2544,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "NFLX:BREAKOUT_FAILURE:2026-11-26",
+      "dedupe_key": "NFLX:BREAKOUT_FAILURE:2026-11-27",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
@@ -2532,8 +2555,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_NFLX_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_NFLX_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "NFLX",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -2544,7 +2567,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "NFLX:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "NFLX:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -2555,8 +2578,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_NOW_BREAKOUT_F",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_NOW_BREAKOUT_F",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "NOW",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
@@ -2567,7 +2590,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "NOW:BREAKOUT_FAILURE:2026-11-26",
+      "dedupe_key": "NOW:BREAKOUT_FAILURE:2026-11-27",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
@@ -2578,8 +2601,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_NOW_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_NOW_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "NOW",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -2590,7 +2613,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "NOW:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "NOW:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -2601,8 +2624,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_ORCL_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_ORCL_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "ORCL",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -2613,7 +2636,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "ORCL:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "ORCL:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -2624,8 +2647,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_PANW_BREAKOUT_F",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_PANW_BREAKOUT_F",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "PANW",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
@@ -2636,7 +2659,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "PANW:BREAKOUT_FAILURE:2026-11-26",
+      "dedupe_key": "PANW:BREAKOUT_FAILURE:2026-11-27",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
@@ -2647,8 +2670,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_PANW_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_PANW_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "PANW",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -2659,7 +2682,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "PANW:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "PANW:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -2670,8 +2693,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_PEP_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_PEP_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "PEP",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -2682,7 +2705,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "PEP:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "PEP:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -2693,8 +2716,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_PFE_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_PFE_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "PFE",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -2705,7 +2728,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "PFE:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "PFE:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -2716,8 +2739,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_PG_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_PG_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "PG",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -2728,7 +2751,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "PG:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "PG:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -2739,8 +2762,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_PLTR_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_PLTR_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "PLTR",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -2751,7 +2774,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "PLTR:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "PLTR:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -2762,8 +2785,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_PM_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_PM_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "PM",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -2774,7 +2797,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "PM:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "PM:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -2785,8 +2808,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_QCOM_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_QCOM_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "QCOM",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -2797,7 +2820,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "QCOM:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "QCOM:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -2808,8 +2831,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_RTX_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_RTX_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "RTX",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -2820,7 +2843,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "RTX:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "RTX:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -2831,8 +2854,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_SBUX_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_SBUX_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "SBUX",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -2843,7 +2866,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "SBUX:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "SBUX:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -2854,8 +2877,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_SCHW_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_SCHW_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "SCHW",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -2866,7 +2889,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "SCHW:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "SCHW:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -2877,8 +2900,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_SNDK_BREAKOUT_F",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_SNDK_BREAKOUT_F",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "SNDK",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
@@ -2889,7 +2912,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "SNDK:BREAKOUT_FAILURE:2026-11-26",
+      "dedupe_key": "SNDK:BREAKOUT_FAILURE:2026-11-27",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
@@ -2900,8 +2923,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_SNDK_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_SNDK_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "SNDK",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -2912,7 +2935,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "SNDK:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "SNDK:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -2923,8 +2946,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_SO_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_SO_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "SO",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -2935,7 +2958,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "SO:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "SO:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -2946,8 +2969,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_T_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_T_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "T",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -2958,7 +2981,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "T:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "T:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -2969,8 +2992,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_TMO_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_TMO_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "TMO",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -2981,7 +3004,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "TMO:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "TMO:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -2992,8 +3015,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_TMUS_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_TMUS_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "TMUS",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -3004,7 +3027,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "TMUS:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "TMUS:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -3015,8 +3038,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_TSLA_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_TSLA_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "TSLA",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -3027,7 +3050,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "TSLA:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "TSLA:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -3038,8 +3061,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_TXN_BREAKOUT_F",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_TXN_BREAKOUT_F",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "TXN",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
@@ -3050,7 +3073,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "TXN:BREAKOUT_FAILURE:2026-11-26",
+      "dedupe_key": "TXN:BREAKOUT_FAILURE:2026-11-27",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
@@ -3061,8 +3084,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_TXN_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_TXN_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "TXN",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -3073,7 +3096,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "TXN:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "TXN:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -3084,8 +3107,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_UBER_BREAKOUT_F",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_UBER_BREAKOUT_F",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "UBER",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
@@ -3096,7 +3119,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "UBER:BREAKOUT_FAILURE:2026-11-26",
+      "dedupe_key": "UBER:BREAKOUT_FAILURE:2026-11-27",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
@@ -3107,8 +3130,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_UBER_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_UBER_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "UBER",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -3119,7 +3142,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "UBER:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "UBER:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -3130,8 +3153,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_UNH_BREAKOUT_F",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_UNH_BREAKOUT_F",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "UNH",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
@@ -3142,7 +3165,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "UNH:BREAKOUT_FAILURE:2026-11-26",
+      "dedupe_key": "UNH:BREAKOUT_FAILURE:2026-11-27",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
@@ -3153,8 +3176,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_UNH_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_UNH_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "UNH",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -3165,7 +3188,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "UNH:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "UNH:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -3176,8 +3199,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_UNP_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_UNP_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "UNP",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -3188,7 +3211,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "UNP:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "UNP:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -3199,8 +3222,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_UPS_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_UPS_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "UPS",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -3211,7 +3234,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "UPS:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "UPS:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -3222,8 +3245,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_USB_BREAKOUT_F",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_USB_BREAKOUT_F",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "USB",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
@@ -3234,7 +3257,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "USB:BREAKOUT_FAILURE:2026-11-26",
+      "dedupe_key": "USB:BREAKOUT_FAILURE:2026-11-27",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
@@ -3245,8 +3268,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_USB_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_USB_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "USB",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -3257,7 +3280,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "USB:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "USB:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -3268,8 +3291,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_V_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_V_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "V",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -3280,7 +3303,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "V:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "V:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -3291,8 +3314,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_VZ_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_VZ_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "VZ",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -3303,7 +3326,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "VZ:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "VZ:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -3314,8 +3337,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_WFC_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_WFC_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "WFC",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -3326,7 +3349,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "WFC:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "WFC:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -3337,8 +3360,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_WMT_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_WMT_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "WMT",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -3349,7 +3372,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "WMT:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "WMT:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -3360,8 +3383,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_AEM_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_AEM_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "AEM",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -3372,19 +3395,19 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "AEM:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "AEM:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 233.52499389648438
+        "current_price": 232.8699951171875
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_ATD_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_ATD_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "ATD",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -3395,42 +3418,42 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "ATD:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "ATD:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 86.5
+        "current_price": 86.4000015258789
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_BMO_BREAKOUT_F",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_BMO_BREAKOUT_F",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "BMO",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
       "headline": "BMO: Support Pivot Slipped \u2014 Breakout Failure Warning",
-      "body": "Two consecutive closes ($227.58, $227.28) below ideal entry pivot of $231.49. Setup momentum has stalled; consider reducing position size by 50% or moving stop to defense.",
+      "body": "Two consecutive closes ($227.58, $227.17) below ideal entry pivot of $231.49. Setup momentum has stalled; consider reducing position size by 50% or moving stop to defense.",
       "channels": [
         "IN_APP",
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "BMO:BREAKOUT_FAILURE:2026-11-26",
+      "dedupe_key": "BMO:BREAKOUT_FAILURE:2026-11-27",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
         "trigger_level": 231.49,
-        "current_price": 227.27999877929688
+        "current_price": 227.1699981689453
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_BMO_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_BMO_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "BMO",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -3441,19 +3464,19 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "BMO:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "BMO:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 227.27999877929688
+        "current_price": 227.1699981689453
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_BNS_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_BNS_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "BNS",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -3464,19 +3487,19 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "BNS:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "BNS:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 120.22000122070312
+        "current_price": 120.18499755859375
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_ABX_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_ABX_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "ABX",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -3487,19 +3510,19 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "ABX:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "ABX:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 49.650001525878906
+        "current_price": 49.66999816894531
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_BCE_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_BCE_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "BCE",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -3510,7 +3533,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "BCE:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "BCE:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -3521,8 +3544,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_BIP-UN_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_BIP-UN_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "BIP-UN",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -3533,7 +3556,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "BIP-UN:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "BIP-UN:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -3544,8 +3567,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_CAE_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_CAE_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "CAE",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -3556,19 +3579,19 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "CAE:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "CAE:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 39.61000061035156
+        "current_price": 39.63999938964844
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_CCO_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_CCO_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "CCO",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -3579,42 +3602,42 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "CCO:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "CCO:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 88.4000015258789
+        "current_price": 88.41000366210938
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_CM_BREAKOUT_F",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_CM_BREAKOUT_F",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "CM",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
       "headline": "CM: Support Pivot Slipped \u2014 Breakout Failure Warning",
-      "body": "Two consecutive closes ($148.46, $149.04) below ideal entry pivot of $153.85. Setup momentum has stalled; consider reducing position size by 50% or moving stop to defense.",
+      "body": "Two consecutive closes ($148.46, $149.00) below ideal entry pivot of $153.85. Setup momentum has stalled; consider reducing position size by 50% or moving stop to defense.",
       "channels": [
         "IN_APP",
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "CM:BREAKOUT_FAILURE:2026-11-26",
+      "dedupe_key": "CM:BREAKOUT_FAILURE:2026-11-27",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
         "trigger_level": 153.85,
-        "current_price": 149.0399932861328
+        "current_price": 149.0
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_CM_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_CM_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "CM",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -3625,19 +3648,19 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "CM:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "CM:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 149.0399932861328
+        "current_price": 149.0
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_CTC-A_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_CTC-A_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "CTC-A",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -3648,19 +3671,19 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "CTC-A:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "CTC-A:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 227.47000122070312
+        "current_price": 227.30999755859375
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_CCL-B_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_CCL-B_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "CCL-B",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -3671,42 +3694,42 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "CCL-B:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "CCL-B:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 104.9800033569336
+        "current_price": 104.97000122070312
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_CLS_BREAKOUT_F",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_CLS_BREAKOUT_F",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "CLS",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
       "headline": "CLS: Support Pivot Slipped \u2014 Breakout Failure Warning",
-      "body": "Two consecutive closes ($272.92, $277.24) below ideal entry pivot of $305.42. Setup momentum has stalled; consider reducing position size by 50% or moving stop to defense.",
+      "body": "Two consecutive closes ($272.92, $278.00) below ideal entry pivot of $305.42. Setup momentum has stalled; consider reducing position size by 50% or moving stop to defense.",
       "channels": [
         "IN_APP",
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "CLS:BREAKOUT_FAILURE:2026-11-26",
+      "dedupe_key": "CLS:BREAKOUT_FAILURE:2026-11-27",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
         "trigger_level": 305.42,
-        "current_price": 277.2449951171875
+        "current_price": 278.0
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_CLS_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_CLS_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "CLS",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -3717,42 +3740,42 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "CLS:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "CLS:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 277.2449951171875
+        "current_price": 278.0
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_CVE_BREAKOUT_F",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_CVE_BREAKOUT_F",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "CVE",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
       "headline": "CVE: Support Pivot Slipped \u2014 Breakout Failure Warning",
-      "body": "Two consecutive closes ($38.43, $38.77) below ideal entry pivot of $39.20. Setup momentum has stalled; consider reducing position size by 50% or moving stop to defense.",
+      "body": "Two consecutive closes ($38.43, $38.81) below ideal entry pivot of $39.20. Setup momentum has stalled; consider reducing position size by 50% or moving stop to defense.",
       "channels": [
         "IN_APP",
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "CVE:BREAKOUT_FAILURE:2026-11-26",
+      "dedupe_key": "CVE:BREAKOUT_FAILURE:2026-11-27",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
         "trigger_level": 39.2,
-        "current_price": 38.77000045776367
+        "current_price": 38.80500030517578
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_CVE_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_CVE_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "CVE",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -3763,19 +3786,19 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "CVE:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "CVE:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 38.77000045776367
+        "current_price": 38.80500030517578
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_GIB-A_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_GIB-A_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "GIB-A",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -3786,19 +3809,19 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "GIB-A:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "GIB-A:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 118.66000366210938
+        "current_price": 118.66999816894531
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_CSU_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_CSU_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "CSU",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -3809,19 +3832,19 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "CSU:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "CSU:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 3078.014892578125
+        "current_price": 3095.699951171875
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_DOL_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_DOL_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "DOL",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -3832,19 +3855,19 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "DOL:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "DOL:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 224.9199981689453
+        "current_price": 224.75999450683594
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_EMA_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_EMA_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "EMA",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -3855,7 +3878,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "EMA:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "EMA:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -3866,8 +3889,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_FFH_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_FFH_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "FFH",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -3878,7 +3901,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "FFH:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "FFH:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -3889,31 +3912,31 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_FM_BREAKOUT_F",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_FM_BREAKOUT_F",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "FM",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
       "headline": "FM: Support Pivot Slipped \u2014 Breakout Failure Warning",
-      "body": "Two consecutive closes ($26.01, $25.75) below ideal entry pivot of $26.58. Setup momentum has stalled; consider reducing position size by 50% or moving stop to defense.",
+      "body": "Two consecutive closes ($26.01, $25.73) below ideal entry pivot of $26.58. Setup momentum has stalled; consider reducing position size by 50% or moving stop to defense.",
       "channels": [
         "IN_APP",
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "FM:BREAKOUT_FAILURE:2026-11-26",
+      "dedupe_key": "FM:BREAKOUT_FAILURE:2026-11-27",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
         "trigger_level": 26.58,
-        "current_price": 25.7450008392334
+        "current_price": 25.729999542236328
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_FM_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_FM_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "FM",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -3924,19 +3947,19 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "FM:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "FM:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 25.7450008392334
+        "current_price": 25.729999542236328
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_FSV_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_FSV_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "FSV",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -3947,7 +3970,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "FSV:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "FSV:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -3958,8 +3981,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_FTS_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_FTS_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "FTS",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -3970,19 +3993,19 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "FTS:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "FTS:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 84.38999938964844
+        "current_price": 84.41000366210938
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_FNV_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_FNV_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "FNV",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -3993,19 +4016,19 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "FNV:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "FNV:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 352.760009765625
+        "current_price": 353.80999755859375
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_WN_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_WN_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "WN",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -4016,19 +4039,19 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "WN:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "WN:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 118.45999908447266
+        "current_price": 118.41000366210938
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_GIL_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_GIL_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "GIL",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -4039,19 +4062,19 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "GIL:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "GIL:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 50.93000030517578
+        "current_price": 50.939998626708984
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_H_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_H_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "H",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -4062,42 +4085,42 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "H:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "H:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 57.540000915527344
+        "current_price": 57.5099983215332
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_IMO_BREAKOUT_F",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_IMO_BREAKOUT_F",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "IMO",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
       "headline": "IMO: Support Pivot Slipped \u2014 Breakout Failure Warning",
-      "body": "Two consecutive closes ($166.14, $168.29) below ideal entry pivot of $169.39. Setup momentum has stalled; consider reducing position size by 50% or moving stop to defense.",
+      "body": "Two consecutive closes ($166.14, $168.42) below ideal entry pivot of $169.39. Setup momentum has stalled; consider reducing position size by 50% or moving stop to defense.",
       "channels": [
         "IN_APP",
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "IMO:BREAKOUT_FAILURE:2026-11-26",
+      "dedupe_key": "IMO:BREAKOUT_FAILURE:2026-11-27",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
         "trigger_level": 169.39,
-        "current_price": 168.2899932861328
+        "current_price": 168.4199981689453
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_IMO_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_IMO_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "IMO",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -4108,19 +4131,19 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "IMO:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "IMO:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 168.2899932861328
+        "current_price": 168.4199981689453
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_IFC_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_IFC_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "IFC",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -4131,19 +4154,19 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "IFC:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "IFC:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 279.2799987792969
+        "current_price": 279.1499938964844
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_K_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_K_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "K",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -4154,7 +4177,7 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "K:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "K:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
@@ -4165,8 +4188,8 @@
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_L_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_L_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "L",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -4177,19 +4200,19 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "L:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "L:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 72.5199966430664
+        "current_price": 72.47000122070312
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_MG_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_MG_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "MG",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -4200,42 +4223,42 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "MG:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "MG:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 89.40499877929688
+        "current_price": 89.45999908447266
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_MFC_BREAKOUT_F",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_MFC_BREAKOUT_F",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "MFC",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
       "headline": "MFC: Support Pivot Slipped \u2014 Breakout Failure Warning",
-      "body": "Two consecutive closes ($60.02, $60.12) below ideal entry pivot of $60.62. Setup momentum has stalled; consider reducing position size by 50% or moving stop to defense.",
+      "body": "Two consecutive closes ($60.02, $60.10) below ideal entry pivot of $60.62. Setup momentum has stalled; consider reducing position size by 50% or moving stop to defense.",
       "channels": [
         "IN_APP",
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "MFC:BREAKOUT_FAILURE:2026-11-26",
+      "dedupe_key": "MFC:BREAKOUT_FAILURE:2026-11-27",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
         "trigger_level": 60.62,
-        "current_price": 60.119998931884766
+        "current_price": 60.099998474121094
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_MFC_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_MFC_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "MFC",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -4246,19 +4269,19 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "MFC:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "MFC:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 60.119998931884766
+        "current_price": 60.099998474121094
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_MRU_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_MRU_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "MRU",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -4269,19 +4292,19 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "MRU:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "MRU:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 98.36000061035156
+        "current_price": 98.29000091552734
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_NA_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_NA_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "NA",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -4292,42 +4315,42 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "NA:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "NA:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 202.22000122070312
+        "current_price": 202.1300048828125
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_NTR_BREAKOUT_F",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_NTR_BREAKOUT_F",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "NTR",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
       "headline": "NTR: Support Pivot Slipped \u2014 Breakout Failure Warning",
-      "body": "Two consecutive closes ($94.96, $95.94) below ideal entry pivot of $97.23. Setup momentum has stalled; consider reducing position size by 50% or moving stop to defense.",
+      "body": "Two consecutive closes ($94.96, $95.97) below ideal entry pivot of $97.23. Setup momentum has stalled; consider reducing position size by 50% or moving stop to defense.",
       "channels": [
         "IN_APP",
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "NTR:BREAKOUT_FAILURE:2026-11-26",
+      "dedupe_key": "NTR:BREAKOUT_FAILURE:2026-11-27",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
         "trigger_level": 97.23,
-        "current_price": 95.94000244140625
+        "current_price": 95.97000122070312
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_NTR_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_NTR_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "NTR",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -4338,19 +4361,19 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "NTR:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "NTR:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 95.94000244140625
+        "current_price": 95.97000122070312
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_OTEX_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_OTEX_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "OTEX",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -4361,42 +4384,42 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "OTEX:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "OTEX:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 34.084999084472656
+        "current_price": 34.02000045776367
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_PPL_BREAKOUT_F",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_PPL_BREAKOUT_F",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "PPL",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
       "headline": "PPL: Support Pivot Slipped \u2014 Breakout Failure Warning",
-      "body": "Two consecutive closes ($70.16, $70.26) below ideal entry pivot of $70.53. Setup momentum has stalled; consider reducing position size by 50% or moving stop to defense.",
+      "body": "Two consecutive closes ($70.16, $70.22) below ideal entry pivot of $70.53. Setup momentum has stalled; consider reducing position size by 50% or moving stop to defense.",
       "channels": [
         "IN_APP",
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "PPL:BREAKOUT_FAILURE:2026-11-26",
+      "dedupe_key": "PPL:BREAKOUT_FAILURE:2026-11-27",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
         "trigger_level": 70.53,
-        "current_price": 70.26000213623047
+        "current_price": 70.22000122070312
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_PPL_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_PPL_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "PPL",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -4407,19 +4430,19 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "PPL:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "PPL:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 70.26000213623047
+        "current_price": 70.22000122070312
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_POW_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_POW_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "POW",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -4430,19 +4453,19 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "POW:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "POW:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 93.88999938964844
+        "current_price": 93.81999969482422
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_QSR_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_QSR_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "QSR",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -4453,19 +4476,19 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "QSR:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "QSR:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 108.54000091552734
+        "current_price": 108.58000183105469
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_RCI-B_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_RCI-B_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "RCI-B",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -4476,19 +4499,19 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "RCI-B:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "RCI-B:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 50.47999954223633
+        "current_price": 50.540000915527344
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_SAP_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_SAP_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "SAP",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -4499,42 +4522,42 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "SAP:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "SAP:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 45.029998779296875
+        "current_price": 45.06999969482422
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_SLF_BREAKOUT_F",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_SLF_BREAKOUT_F",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "SLF",
       "taxonomy": "EXIT_TRIGGER_ESCALATION",
       "severity": "WARNING",
       "headline": "SLF: Support Pivot Slipped \u2014 Breakout Failure Warning",
-      "body": "Two consecutive closes ($100.11, $100.53) below ideal entry pivot of $101.12. Setup momentum has stalled; consider reducing position size by 50% or moving stop to defense.",
+      "body": "Two consecutive closes ($100.11, $100.49) below ideal entry pivot of $101.12. Setup momentum has stalled; consider reducing position size by 50% or moving stop to defense.",
       "channels": [
         "IN_APP",
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "SLF:BREAKOUT_FAILURE:2026-11-26",
+      "dedupe_key": "SLF:BREAKOUT_FAILURE:2026-11-27",
       "data_payload": {
         "predicate": "BREAKOUT_FAILURE",
         "action": "DE_RISK_50_PCT",
         "trigger_level": 101.12,
-        "current_price": 100.52999877929688
+        "current_price": 100.48999786376953
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_SLF_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_SLF_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "SLF",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -4545,19 +4568,19 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "SLF:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "SLF:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 100.52999877929688
+        "current_price": 100.48999786376953
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_SU_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_SU_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "SU",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -4568,19 +4591,19 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "SU:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "SU:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 93.44000244140625
+        "current_price": 93.48999786376953
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_TRP_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_TRP_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "TRP",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -4591,19 +4614,19 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "TRP:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "TRP:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 89.7699966430664
+        "current_price": 89.73500061035156
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_TECK-B_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_TECK-B_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "TECK-B",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -4614,19 +4637,19 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "TECK-B:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "TECK-B:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 73.43000030517578
+        "current_price": 73.33000183105469
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_TRI_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_TRI_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "TRI",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -4637,19 +4660,19 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "TRI:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "TRI:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 155.19000244140625
+        "current_price": 155.44000244140625
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_TOU_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_TOU_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "TOU",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -4660,19 +4683,19 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "TOU:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "TOU:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 63.779998779296875
+        "current_price": 63.810001373291016
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_WCN_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_WCN_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "WCN",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -4683,19 +4706,19 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "WCN:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "WCN:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 268.92999267578125
+        "current_price": 263.4599914550781
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_WPM_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_WPM_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "WPM",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -4706,19 +4729,19 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "WPM:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "WPM:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 176.88999938964844
+        "current_price": 176.8800048828125
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."
     },
     {
-      "alert_id": "ALT_2026-11-26_WSP_REGIME_DOW",
-      "timestamp": "2026-11-26T17:42:33Z",
+      "alert_id": "ALT_2026-11-27_WSP_REGIME_DOW",
+      "timestamp": "2026-11-27T20:24:57Z",
       "symbol": "WSP",
       "taxonomy": "REGIME_SHIFT",
       "severity": "WARNING",
@@ -4729,12 +4752,12 @@
         "EMAIL",
         "WEB_PUSH"
       ],
-      "dedupe_key": "WSP:REGIME_DOWNGRADE:2026-11-26",
+      "dedupe_key": "WSP:REGIME_DOWNGRADE:2026-11-27",
       "data_payload": {
         "predicate": "REGIME_DOWNGRADE",
         "action": "WIDEN_STOP_OR_DE_RISK",
         "trigger_level": 0.0,
-        "current_price": 191.38499450683594
+        "current_price": 191.1999969482422
       },
       "is_quiet_hours_eligible": true,
       "disclaimer": "Impersonal decision-support research alert based on quantitative models. Does not provide personalized investment recommendations. Verify liquidity and risk before execution."

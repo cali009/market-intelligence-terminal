@@ -4,8 +4,8 @@
   "country": "US",
   "currency": "USD",
   "name": "PepsiCo",
-  "as_of_date": "2026-11-26",
-  "generated_at": "2026-11-26T16:55:16.464716+00:00",
+  "as_of_date": "2026-11-27",
+  "generated_at": "2026-11-27T20:22:14.014293+00:00",
   "latest_metrics": {
     "trading_date": "2026-11-25",
     "open": 144.14999389648438,
@@ -301,8 +301,8 @@
   },
   "fundamental_dossier": {
     "symbol": "PEP",
-    "as_of_date": "2026-11-26",
-    "filing_date": "2026-11-26",
+    "as_of_date": "2026-11-27",
+    "filing_date": "2026-11-27",
     "currency": "USD",
     "fiscal_period": "FY",
     "fiscal_year": 2025,
@@ -361,7 +361,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 14,
     "gjr_garch_gamma": 0.08,
-    "last_updated": "2026-11-26T16:58:35.952698+00:00"
+    "last_updated": "2026-11-27T20:23:46.107199+00:00"
   },
   "conformal_bounds": {
     "symbol": "PEP",
@@ -378,14 +378,64 @@
     "adapted_alpha": 0.14,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-11-26T16:58:35.970332+00:00"
+    "calibrated_at": "2026-11-27T20:23:46.118811+00:00"
   },
   "cross_border_parity": null,
-  "shap_attribution": null,
+  "shap_attribution": {
+    "symbol": "PEP",
+    "base_value": 30.25,
+    "model_score": 28.4,
+    "top_drivers": [
+      {
+        "feature_name": "proximity_52w",
+        "feature_label": "Proximity to 52W High",
+        "feature_value": -0.161,
+        "shap_contribution": 6.92,
+        "direction": "POSITIVE"
+      },
+      {
+        "feature_name": "mtf_confluence",
+        "feature_label": "Multi-Timeframe Confluence",
+        "feature_value": 50.0,
+        "shap_contribution": 0.52,
+        "direction": "POSITIVE"
+      },
+      {
+        "feature_name": "hurst_persistence",
+        "feature_label": "Lo HAC Hurst Exponent",
+        "feature_value": 0.495,
+        "shap_contribution": 0.08,
+        "direction": "POSITIVE"
+      }
+    ],
+    "top_detractors": [
+      {
+        "feature_name": "trend_sma200_ratio",
+        "feature_label": "Trend vs 200DMA",
+        "feature_value": 0.993,
+        "shap_contribution": -9.48,
+        "direction": "NEGATIVE"
+      }
+    ],
+    "all_attributions": {
+      "trend_sma200_ratio": -9.48,
+      "momentum_rsi": 0.03,
+      "proximity_52w": 6.92,
+      "mtf_confluence": 0.52,
+      "roic_pct": 0.0,
+      "pe_multiple": 0.0,
+      "pe_imputed": 0.0,
+      "hurst_persistence": 0.08,
+      "fractional_d": 0.0,
+      "amihud_illiquidity": 0.03,
+      "conformal_rr": 0.0,
+      "dual_basis_bps": 0.0
+    }
+  },
   "idiosyncratic_risk": {
     "symbol": "PEP",
-    "risk_posture": "NORMAL_EQUILIBRIUM",
-    "position_size_multiplier": 1.0,
+    "risk_posture": "ELEVATED_CAUTION",
+    "position_size_multiplier": 0.75,
     "hurst_flip_alert": false,
     "hurst_exponent": 0.495,
     "conformal_stop_price": 173.69,
@@ -395,13 +445,13 @@
     "cross_border_parity_stretch": false,
     "basis_spread_bps": null,
     "basis_zscore": null,
-    "shap_detractor_drag_pts": 0.0,
-    "primary_risk_driver": "Stable Quantitative Fingerprint",
-    "actionable_mitigation": "All idiosyncratic bounds intact; nominal position sizing permitted under risk framework.",
+    "shap_detractor_drag_pts": -9.48,
+    "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-9.48 pts)",
+    "actionable_mitigation": "Minor basis disparity or factor detractor identified; 25% exposure haircut recommended under risk rules.",
     "as_of_date": "2026-09-25"
   },
   "score_record": {
-    "composite_score": 27,
+    "composite_score": 21,
     "confidence_tier": "C",
     "technical_score": 39,
     "fundamental_score": 50,
@@ -416,7 +466,7 @@
       "volatility_fit_score": 5.0,
       "technical_score": 39,
       "fundamental_score": 50,
-      "regime_multiplier": 0.85,
+      "regime_multiplier": 0.7,
       "news_contribution": 0,
       "sector_contribution": 0.0,
       "risk_penalty": 8.0,
@@ -432,20 +482,20 @@
   "signal_plan": null,
   "ai_explanation": {
     "FACT": "PEP (NASDAQ - PepsiCo) closed at $143.93 USD. Trading within -16.1% of its 52-week high with a 14-day ATR of 2.4%. The primary exchange session traded on volume of 6,221,000 shares.",
-    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 27/100 (Confidence Tier C). Technical Factor sub-score: 39/100 (14-day RSI: 59.3, 20-day RVOL: 0.62x), Fundamental Score: 50/100. Risk penalty applied: -8.0 points. Modulated by the CONSOLIDATION macro regime.",
+    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 21/100 (Confidence Tier C). Technical Factor sub-score: 39/100 (14-day RSI: 59.3, 20-day RVOL: 0.62x), Fundamental Score: 50/100. Risk penalty applied: -8.0 points. Modulated by the HIGH_VOLATILITY macro regime.",
     "INFERENCE": "Securities trading below declining 200-day moving averages with elevated risk penalties have historically underperformed the broader index by 3.8% over forward 20-session windows.",
-    "UNCERTAINTY": "Risks include broader market sentiment deterioration in the CONSOLIDATION environment. A daily close below technical support at $144.89 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
+    "UNCERTAINTY": "Risks include broader market sentiment deterioration in the HIGH_VOLATILITY environment. A daily close below technical support at $144.89 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
   },
   "active_scanner_matches": [
-    {
-      "id": "MTF_ALIGNMENT",
-      "name": "Fast & Medium MTF Alignment",
-      "why": "Fast 8EMA > 21EMA above 50DMA with established trend strength (ADX 23.3)."
-    },
     {
       "id": "VOLATILITY_SQUEEZE",
       "name": "Volatility Squeeze (Bandwidth)",
       "why": "Bollinger Bandwidth compressed to 8.3% with low ATR% of 2.4%, indicating impending expansion."
+    },
+    {
+      "id": "MTF_ALIGNMENT",
+      "name": "Fast & Medium MTF Alignment",
+      "why": "Fast 8EMA > 21EMA above 50DMA with established trend strength (ADX 23.3)."
     }
   ],
   "catalysts_and_filings": [],
@@ -1416,28 +1466,29 @@
     "exchange": "NASDAQ",
     "country": "US",
     "currency": "USD",
-    "as_of_date": "2026-11-26",
-    "generated_at": "2026-11-26T16:58:35.996133+00:00",
+    "as_of_date": "2026-11-27",
+    "generated_at": "2026-11-27T20:23:46.132626+00:00",
     "conviction_grade": "SKIP",
     "aligned_layers_count": 2,
-    "formatted_card": "TICKER: PEP\nREGIME: CONSOLIDATION (VIX: Medium | Risk-OFF | Rates: Paused | 20d Adverse Hazard: 10.8%)\nPATTERN TYPE: Archetype A: Mega-Cap Tech (Gamma-Momentum) \u2014 Momentum (Pullback Continuation)\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BULLISH \u2014 Stacked MAs (Short-Term Bullish), RSI 59.3 equilibrium, price structure holding above key support.\n  Fundamental:  6.0/10 \u2014 Stable financial quality (Score 6.0/10); P/E N/Ax balanced by operational cash flow.\n  Sentiment:    0.00 (NEUTRAL) \u2014 Routine regulatory reporting schedule; no material catalyst in last 30 days.\n  Historical:   55.4% Win Rate (10 sample size, E[R]: +0.44R)\n  Regime fit:   NO\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $143.63 \u2013 $145.78\n  Entry trigger:  Price stabilizes above support zone ($143.63) with 15m candle close above $143.63 and volume > 1.2x 20d average.\n  Stop loss:      $137.18 (4.5% below entry)\n  Target 1 (T1):  $151.13 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $159.75 | Est. 24 days | Take 40%\n  Target 3 (T3):  $170.72 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.30\n  Position size:  0 shares on $100,000 portfolio risking 1% ($0.00)\n  Execution:      not measurable \u2014 this platform holds end-of-day prices only, with no order book, quote feed or fill record\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: SKIP-Grade\nTRADE THESIS: PEP exhibits high structural confluence with Momentum (Pullback Continuation) aligning above ascending moving averages. In the current CONSOLIDATION macro context (20d adverse hazard: 10.8%), measured support at $143.63 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $137.18 or two consecutive closes back below $143.63 immediately invalidates the trade.",
+    "formatted_card": "TICKER: PEP\nREGIME: HIGH_VOLATILITY (VIX: Medium | Risk-OFF | Rates: Paused | 20d Adverse Hazard: 15.8%)\nPATTERN TYPE: Archetype A: Mega-Cap Tech (Gamma-Momentum) \u2014 Momentum (Pullback Continuation)\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BULLISH \u2014 Stacked MAs (Short-Term Bullish), RSI 59.3 equilibrium, price structure holding above key support.\n  Fundamental:  6.0/10 \u2014 Stable financial quality (Score 6.0/10); P/E N/Ax balanced by operational cash flow.\n  Sentiment:    0.00 (NEUTRAL) \u2014 Routine regulatory reporting schedule; no material catalyst in last 30 days.\n  Historical:   55.4% Win Rate (10 sample size, E[R]: +0.44R)\n  Regime fit:   NO\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $143.63 \u2013 $145.78\n  Entry trigger:  Price stabilizes above support zone ($143.63) with 15m candle close above $143.63 and volume > 1.2x 20d average.\n  Stop loss:      $137.18 (4.5% below entry)\n  Target 1 (T1):  $151.13 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $159.75 | Est. 24 days | Take 40%\n  Target 3 (T3):  $170.72 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.30\n  Position size:  0 shares on $100,000 portfolio risking 1% ($0.00)\n  Execution:      not measurable \u2014 this platform holds end-of-day prices only, with no order book, quote feed or fill record\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: SKIP-Grade\nTRADE THESIS: PEP exhibits high structural confluence with Momentum (Pullback Continuation) aligning above ascending moving averages. In the current HIGH_VOLATILITY macro context (20d adverse hazard: 15.8%), measured support at $143.63 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $137.18 or two consecutive closes back below $143.63 immediately invalidates the trade.",
     "layer_1_regime": {
       "trend_type": "Volatile",
       "volatility_regime": "Medium (15\u201325)",
       "liquidity_env": "Risk-OFF",
       "rate_context": "Paused",
-      "regime_state": "CONSOLIDATION",
+      "regime_state": "HIGH_VOLATILITY",
       "regime_fit": "NO",
       "status": "BEARISH",
-      "conviction_weight": 0.85,
+      "conviction_weight": 0.7,
       "top_drivers": [
         "Index below 200-day moving average (structural downtrend)",
+        "VIX elevated at 26.8 signals heightened market volatility",
         "Yield curve positively sloped (+45 bps 10Y-2Y spread)"
       ],
-      "adverse_hazard_rate_5d": 0.0982,
-      "adverse_hazard_rate_20d": 0.1082,
-      "expected_regime_duration_days": 4.2,
-      "hazard_tier": "LOW_HAZARD",
+      "adverse_hazard_rate_5d": 0.3694,
+      "adverse_hazard_rate_20d": 0.1578,
+      "expected_regime_duration_days": 2.6,
+      "hazard_tier": "MODERATE_HAZARD",
       "cross_border_macro_divergence_posture": "SYNCHRONIZED_EXPANSION"
     },
     "layer_2_fingerprint": {
@@ -1534,13 +1585,20 @@
       "position_value": 0.0,
       "portfolio_risk_pct": 0.0,
       "invalidation_rule": "A daily closing price below $137.18 or two consecutive closes back below $143.63 immediately invalidates the trade.",
-      "trade_thesis": "PEP exhibits high structural confluence with Momentum (Pullback Continuation) aligning above ascending moving averages. In the current CONSOLIDATION macro context (20d adverse hazard: 10.8%), measured support at $143.63 offers asymmetric risk/reward into upper channel resistance.",
+      "trade_thesis": "PEP exhibits high structural confluence with Momentum (Pullback Continuation) aligning above ascending moving averages. In the current HIGH_VOLATILITY macro context (20d adverse hazard: 15.8%), measured support at $143.63 offers asymmetric risk/reward into upper channel resistance.",
       "tca_execution_strategy": null,
       "tca_expected_slippage_bps": null,
       "tca_effective_fill_price": null,
       "tca_optimal_slices": null
     },
-    "meta_label_verdict": null
+    "meta_label_verdict": {
+      "symbol": "PEP",
+      "meta_probability": 0.4584,
+      "action": "CAUTION_THROTTLE",
+      "size_multiplier": 0.5,
+      "primary_driver": "mom_1m (+0.08, impact +)",
+      "calibrated_at": "2026-11-27T20:23:46.422082+00:00"
+    }
   },
   "disclaimers": {
     "canada": "STATUTORY NOTICE (CANADA): This platform provides impersonal quantitative research and decision-support data intended exclusively for self-directed investors. It does not provide personalized investment advice, financial planning, or account management services. The scores, regime classifications, indicators, and model outputs presented herein are calculated by deterministic mathematical models and rule-based algorithms without consideration of your personal financial situation, risk tolerance, or investment objectives. Past hypothetical performance or paper-trading metrics are not indicative of future returns. The platform, its operators, and its algorithms do not hold any financial interest or proprietary position in the securities analyzed unless explicitly disclosed. You are solely responsible for evaluating the merits and risks of any trade or strategy.",

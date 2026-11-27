@@ -1,6 +1,27 @@
 {
-  "as_of_date": "2026-11-26",
-  "generated_at": "2026-11-26T17:39:52.576382+00:00",
+  "as_of_date": "2026-11-27",
+  "generated_at": "2026-11-27T20:22:14.014293+00:00",
   "total_active_signals": 0,
+  "gate_context": {
+    "composite_gate": 50,
+    "securities_scored": 163,
+    "securities_clearing_gate": 0,
+    "highest_composite_score": 46,
+    "highest_composite_symbol": "CNR",
+    "regimes": {
+      "US": {
+        "regime_state": "HIGH_VOLATILITY",
+        "filtered_probability": 0.82,
+        "score_multiplier": 0.7
+      },
+      "CA": {
+        "regime_state": "HIGH_VOLATILITY",
+        "filtered_probability": 0.82,
+        "score_multiplier": 0.7
+      }
+    },
+    "tightest_active_multiplier": 0.7,
+    "raw_score_needed_under_tightest_multiplier": 71.4
+  },
   "signals": []
 }

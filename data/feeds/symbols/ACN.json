@@ -4,8 +4,8 @@
   "country": "US",
   "currency": "USD",
   "name": "Accenture",
-  "as_of_date": "2026-11-26",
-  "generated_at": "2026-11-26T16:55:16.464716+00:00",
+  "as_of_date": "2026-11-27",
+  "generated_at": "2026-11-27T20:22:14.014293+00:00",
   "latest_metrics": {
     "trading_date": "2026-11-25",
     "open": 234.66000366210938,
@@ -305,8 +305,8 @@
   },
   "fundamental_dossier": {
     "symbol": "ACN",
-    "as_of_date": "2026-11-26",
-    "filing_date": "2026-11-26",
+    "as_of_date": "2026-11-27",
+    "filing_date": "2026-11-27",
     "currency": "USD",
     "fiscal_period": "FY",
     "fiscal_year": 2025,
@@ -365,7 +365,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 18,
     "gjr_garch_gamma": 0.08,
-    "last_updated": "2026-11-26T16:57:05.147817+00:00"
+    "last_updated": "2026-11-27T20:23:22.707457+00:00"
   },
   "conformal_bounds": {
     "symbol": "ACN",
@@ -382,10 +382,74 @@
     "adapted_alpha": 0.095,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-11-26T16:57:05.165480+00:00"
+    "calibrated_at": "2026-11-27T20:23:22.717414+00:00"
   },
   "cross_border_parity": null,
-  "shap_attribution": null,
+  "shap_attribution": {
+    "symbol": "ACN",
+    "base_value": 30.25,
+    "model_score": 35.7,
+    "top_drivers": [
+      {
+        "feature_name": "trend_sma200_ratio",
+        "feature_label": "Trend vs 200DMA",
+        "feature_value": 1.267,
+        "shap_contribution": 7.05,
+        "direction": "POSITIVE"
+      },
+      {
+        "feature_name": "mtf_confluence",
+        "feature_label": "Multi-Timeframe Confluence",
+        "feature_value": 60.0,
+        "shap_contribution": 3.45,
+        "direction": "POSITIVE"
+      },
+      {
+        "feature_name": "momentum_rsi",
+        "feature_label": "14-Day RSI Momentum",
+        "feature_value": 52.6,
+        "shap_contribution": 1.07,
+        "direction": "POSITIVE"
+      }
+    ],
+    "top_detractors": [
+      {
+        "feature_name": "proximity_52w",
+        "feature_label": "Proximity to 52W High",
+        "feature_value": -0.174,
+        "shap_contribution": -5.85,
+        "direction": "NEGATIVE"
+      },
+      {
+        "feature_name": "conformal_rr",
+        "feature_label": "Certified Conformal R:R",
+        "feature_value": 1.0,
+        "shap_contribution": -0.12,
+        "direction": "NEGATIVE"
+      },
+      {
+        "feature_name": "hurst_persistence",
+        "feature_label": "Lo HAC Hurst Exponent",
+        "feature_value": 0.44,
+        "shap_contribution": -0.1,
+        "direction": "NEGATIVE"
+      }
+    ],
+    "all_attributions": {
+      "trend_sma200_ratio": 7.05,
+      "momentum_rsi": 1.07,
+      "proximity_52w": -5.85,
+      "mtf_confluence": 3.45,
+      "roic_pct": 0.0,
+      "pe_multiple": 0.0,
+      "pe_imputed": 0.0,
+      "hurst_persistence": -0.1,
+      "fractional_d": 0.0,
+      "amihud_illiquidity": 0.0,
+      "conformal_rr": -0.12,
+      "dual_basis_bps": 0.0
+    }
+  },
   "idiosyncratic_risk": {
     "symbol": "ACN",
     "risk_posture": "DEFENSIVE_DE_RISK",
@@ -399,13 +463,13 @@
     "cross_border_parity_stretch": false,
     "basis_spread_bps": null,
     "basis_zscore": null,
-    "shap_detractor_drag_pts": 0.0,
+    "shap_detractor_drag_pts": -6.07,
     "primary_risk_driver": "Hurst Memory Flip (H=0.44)",
     "actionable_mitigation": "Idiosyncratic memory flip or volatility expansion active; 50% exposure haircut recommended by systematic risk budget.",
     "as_of_date": "2026-09-25"
   },
   "score_record": {
-    "composite_score": 37,
+    "composite_score": 31,
     "confidence_tier": "C",
     "technical_score": 42,
     "fundamental_score": 50,
@@ -420,7 +484,7 @@
       "volatility_fit_score": 5.0,
       "technical_score": 42,
       "fundamental_score": 50,
-      "regime_multiplier": 0.85,
+      "regime_multiplier": 0.7,
       "news_contribution": 0,
       "sector_contribution": 0.0,
       "risk_penalty": 0.0,
@@ -436,9 +500,9 @@
   "signal_plan": null,
   "ai_explanation": {
     "FACT": "ACN (NASDAQ - Accenture) closed at $240.49 USD. Trading within -17.4% of its 52-week high with a 14-day ATR of 3.9%. The primary exchange session traded on volume of 4,133,300 shares.",
-    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 37/100 (Confidence Tier C). Technical Factor sub-score: 42/100 (14-day RSI: 52.6, 20-day RVOL: 0.83x), Fundamental Score: 50/100. Risk penalty applied: -0.0 points. Modulated by the CONSOLIDATION macro regime.",
+    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 31/100 (Confidence Tier C). Technical Factor sub-score: 42/100 (14-day RSI: 52.6, 20-day RVOL: 0.83x), Fundamental Score: 50/100. Risk penalty applied: -0.0 points. Modulated by the HIGH_VOLATILITY macro regime.",
     "INFERENCE": "Securities trading below declining 200-day moving averages with elevated risk penalties have historically underperformed the broader index by 3.8% over forward 20-session windows.",
-    "UNCERTAINTY": "Risks include broader market sentiment deterioration in the CONSOLIDATION environment. A daily close below technical support at $189.76 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
+    "UNCERTAINTY": "Risks include broader market sentiment deterioration in the HIGH_VOLATILITY environment. A daily close below technical support at $189.76 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
   },
   "active_scanner_matches": [],
   "catalysts_and_filings": [],
@@ -1409,28 +1473,29 @@
     "exchange": "NASDAQ",
     "country": "US",
     "currency": "USD",
-    "as_of_date": "2026-11-26",
-    "generated_at": "2026-11-26T16:57:05.190600+00:00",
+    "as_of_date": "2026-11-27",
+    "generated_at": "2026-11-27T20:23:22.730999+00:00",
     "conviction_grade": "SKIP",
     "aligned_layers_count": 1,
-    "formatted_card": "TICKER: ACN\nREGIME: CONSOLIDATION (VIX: Medium | Risk-OFF | Rates: Paused | 20d Adverse Hazard: 10.8%)\nPATTERN TYPE: Archetype A: Mega-Cap Tech (Gamma-Momentum) \u2014 Momentum (Pullback Continuation)\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    NEUTRAL \u2014 Consolidation near moving averages; RSI 52.6 with RVOL at 0.83x awaiting directional catalyst.\n  Fundamental:  6.0/10 \u2014 Stable financial quality (Score 6.0/10); P/E N/Ax balanced by operational cash flow.\n  Sentiment:    0.00 (NEUTRAL) \u2014 Routine regulatory reporting schedule; no material catalyst in last 30 days.\n  Historical:   55.4% Win Rate (10 sample size, E[R]: +0.44R)\n  Regime fit:   NO\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $232.57 \u2013 $236.06\n  Entry trigger:  Price stabilizes above support zone ($232.57) with 15m candle close above $232.57 and volume > 1.2x 20d average.\n  Stop loss:      $215.06 (7.5% below entry)\n  Target 1 (T1):  $246.86 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $276.35 | Est. 24 days | Take 40%\n  Target 3 (T3):  $306.11 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.17\n  Position size:  0 shares on $100,000 portfolio risking 1% ($0.00)\n  Execution:      not measurable \u2014 this platform holds end-of-day prices only, with no order book, quote feed or fill record\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: SKIP-Grade\nTRADE THESIS: ACN exhibits high structural confluence with Momentum (Pullback Continuation) aligning above ascending moving averages. In the current CONSOLIDATION macro context (20d adverse hazard: 10.8%), measured support at $232.57 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $215.06 or two consecutive closes back below $232.57 immediately invalidates the trade.",
+    "formatted_card": "TICKER: ACN\nREGIME: HIGH_VOLATILITY (VIX: Medium | Risk-OFF | Rates: Paused | 20d Adverse Hazard: 15.8%)\nPATTERN TYPE: Archetype A: Mega-Cap Tech (Gamma-Momentum) \u2014 Momentum (Pullback Continuation)\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    NEUTRAL \u2014 Consolidation near moving averages; RSI 52.6 with RVOL at 0.83x awaiting directional catalyst.\n  Fundamental:  6.0/10 \u2014 Stable financial quality (Score 6.0/10); P/E N/Ax balanced by operational cash flow.\n  Sentiment:    0.00 (NEUTRAL) \u2014 Routine regulatory reporting schedule; no material catalyst in last 30 days.\n  Historical:   55.4% Win Rate (10 sample size, E[R]: +0.44R)\n  Regime fit:   NO\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $232.57 \u2013 $236.06\n  Entry trigger:  Price stabilizes above support zone ($232.57) with 15m candle close above $232.57 and volume > 1.2x 20d average.\n  Stop loss:      $215.06 (7.5% below entry)\n  Target 1 (T1):  $246.86 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $276.35 | Est. 24 days | Take 40%\n  Target 3 (T3):  $306.11 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.17\n  Position size:  0 shares on $100,000 portfolio risking 1% ($0.00)\n  Execution:      not measurable \u2014 this platform holds end-of-day prices only, with no order book, quote feed or fill record\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: SKIP-Grade\nTRADE THESIS: ACN exhibits high structural confluence with Momentum (Pullback Continuation) aligning above ascending moving averages. In the current HIGH_VOLATILITY macro context (20d adverse hazard: 15.8%), measured support at $232.57 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $215.06 or two consecutive closes back below $232.57 immediately invalidates the trade.",
     "layer_1_regime": {
       "trend_type": "Volatile",
       "volatility_regime": "Medium (15\u201325)",
       "liquidity_env": "Risk-OFF",
       "rate_context": "Paused",
-      "regime_state": "CONSOLIDATION",
+      "regime_state": "HIGH_VOLATILITY",
       "regime_fit": "NO",
       "status": "BEARISH",
-      "conviction_weight": 0.85,
+      "conviction_weight": 0.7,
       "top_drivers": [
         "Index below 200-day moving average (structural downtrend)",
+        "VIX elevated at 26.8 signals heightened market volatility",
         "Yield curve positively sloped (+45 bps 10Y-2Y spread)"
       ],
-      "adverse_hazard_rate_5d": 0.0982,
-      "adverse_hazard_rate_20d": 0.1082,
-      "expected_regime_duration_days": 4.2,
-      "hazard_tier": "LOW_HAZARD",
+      "adverse_hazard_rate_5d": 0.3694,
+      "adverse_hazard_rate_20d": 0.1578,
+      "expected_regime_duration_days": 2.6,
+      "hazard_tier": "MODERATE_HAZARD",
       "cross_border_macro_divergence_posture": "SYNCHRONIZED_EXPANSION"
     },
     "layer_2_fingerprint": {
@@ -1527,13 +1592,20 @@
       "position_value": 0.0,
       "portfolio_risk_pct": 0.0,
       "invalidation_rule": "A daily closing price below $215.06 or two consecutive closes back below $232.57 immediately invalidates the trade.",
-      "trade_thesis": "ACN exhibits high structural confluence with Momentum (Pullback Continuation) aligning above ascending moving averages. In the current CONSOLIDATION macro context (20d adverse hazard: 10.8%), measured support at $232.57 offers asymmetric risk/reward into upper channel resistance.",
+      "trade_thesis": "ACN exhibits high structural confluence with Momentum (Pullback Continuation) aligning above ascending moving averages. In the current HIGH_VOLATILITY macro context (20d adverse hazard: 15.8%), measured support at $232.57 offers asymmetric risk/reward into upper channel resistance.",
       "tca_execution_strategy": null,
       "tca_expected_slippage_bps": null,
       "tca_effective_fill_price": null,
       "tca_optimal_slices": null
     },
-    "meta_label_verdict": null
+    "meta_label_verdict": {
+      "symbol": "ACN",
+      "meta_probability": 0.4148,
+      "action": "GATED_EXCLUDE",
+      "size_multiplier": 0.0,
+      "primary_driver": "mom_3m (+0.28, impact -)",
+      "calibrated_at": "2026-11-27T20:23:22.999678+00:00"
+    }
   },
   "disclaimers": {
     "canada": "STATUTORY NOTICE (CANADA): This platform provides impersonal quantitative research and decision-support data intended exclusively for self-directed investors. It does not provide personalized investment advice, financial planning, or account management services. The scores, regime classifications, indicators, and model outputs presented herein are calculated by deterministic mathematical models and rule-based algorithms without consideration of your personal financial situation, risk tolerance, or investment objectives. Past hypothetical performance or paper-trading metrics are not indicative of future returns. The platform, its operators, and its algorithms do not hold any financial interest or proprietary position in the securities analyzed unless explicitly disclosed. You are solely responsible for evaluating the merits and risks of any trade or strategy.",

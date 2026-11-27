@@ -4,8 +4,8 @@
   "country": "US",
   "currency": "USD",
   "name": "Pfizer",
-  "as_of_date": "2026-11-26",
-  "generated_at": "2026-11-26T16:55:16.464716+00:00",
+  "as_of_date": "2026-11-27",
+  "generated_at": "2026-11-27T20:22:14.014293+00:00",
   "latest_metrics": {
     "trading_date": "2026-11-25",
     "open": 28.610000610351562,
@@ -306,8 +306,8 @@
   },
   "fundamental_dossier": {
     "symbol": "PFE",
-    "as_of_date": "2026-11-26",
-    "filing_date": "2026-11-26",
+    "as_of_date": "2026-11-27",
+    "filing_date": "2026-11-27",
     "currency": "USD",
     "fiscal_period": "FY",
     "fiscal_year": 2025,
@@ -366,7 +366,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 14,
     "gjr_garch_gamma": 0.08,
-    "last_updated": "2026-11-26T16:58:37.328882+00:00"
+    "last_updated": "2026-11-27T20:23:46.483794+00:00"
   },
   "conformal_bounds": {
     "symbol": "PFE",
@@ -383,14 +383,71 @@
     "adapted_alpha": 0.105,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-11-26T16:58:37.346691+00:00"
+    "calibrated_at": "2026-11-27T20:23:46.491785+00:00"
   },
   "cross_border_parity": null,
-  "shap_attribution": null,
+  "shap_attribution": {
+    "symbol": "PFE",
+    "base_value": 30.25,
+    "model_score": 36.3,
+    "top_drivers": [
+      {
+        "feature_name": "trend_sma200_ratio",
+        "feature_label": "Trend vs 200DMA",
+        "feature_value": 1.053,
+        "shap_contribution": 7.04,
+        "direction": "POSITIVE"
+      },
+      {
+        "feature_name": "proximity_52w",
+        "feature_label": "Proximity to 52W High",
+        "feature_value": -0.095,
+        "shap_contribution": 2.55,
+        "direction": "POSITIVE"
+      },
+      {
+        "feature_name": "fractional_d",
+        "feature_label": "Fractional Memory Order d*",
+        "feature_value": 0.39,
+        "shap_contribution": 0.11,
+        "direction": "POSITIVE"
+      }
+    ],
+    "top_detractors": [
+      {
+        "feature_name": "momentum_rsi",
+        "feature_label": "14-Day RSI Momentum",
+        "feature_value": 46.5,
+        "shap_contribution": -2.41,
+        "direction": "NEGATIVE"
+      },
+      {
+        "feature_name": "mtf_confluence",
+        "feature_label": "Multi-Timeframe Confluence",
+        "feature_value": 50.0,
+        "shap_contribution": -1.24,
+        "direction": "NEGATIVE"
+      }
+    ],
+    "all_attributions": {
+      "trend_sma200_ratio": 7.04,
+      "momentum_rsi": -2.41,
+      "proximity_52w": 2.55,
+      "mtf_confluence": -1.24,
+      "roic_pct": 0.0,
+      "pe_multiple": 0.0,
+      "pe_imputed": 0.0,
+      "hurst_persistence": 0.0,
+      "fractional_d": 0.11,
+      "amihud_illiquidity": 0.0,
+      "conformal_rr": -0.04,
+      "dual_basis_bps": 0.0
+    }
+  },
   "idiosyncratic_risk": {
     "symbol": "PFE",
-    "risk_posture": "NORMAL_EQUILIBRIUM",
-    "position_size_multiplier": 1.0,
+    "risk_posture": "ELEVATED_CAUTION",
+    "position_size_multiplier": 0.75,
     "hurst_flip_alert": false,
     "hurst_exponent": 0.464,
     "conformal_stop_price": 45.36,
@@ -400,13 +457,13 @@
     "cross_border_parity_stretch": false,
     "basis_spread_bps": null,
     "basis_zscore": null,
-    "shap_detractor_drag_pts": 0.0,
-    "primary_risk_driver": "Stable Quantitative Fingerprint",
-    "actionable_mitigation": "All idiosyncratic bounds intact; nominal position sizing permitted under risk framework.",
+    "shap_detractor_drag_pts": -3.65,
+    "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-3.65 pts)",
+    "actionable_mitigation": "Minor basis disparity or factor detractor identified; 25% exposure haircut recommended under risk rules.",
     "as_of_date": "2026-09-25"
   },
   "score_record": {
-    "composite_score": 35,
+    "composite_score": 29,
     "confidence_tier": "C",
     "technical_score": 38,
     "fundamental_score": 50,
@@ -421,7 +478,7 @@
       "volatility_fit_score": 5.0,
       "technical_score": 38,
       "fundamental_score": 50,
-      "regime_multiplier": 0.85,
+      "regime_multiplier": 0.7,
       "news_contribution": 0,
       "sector_contribution": 0.0,
       "risk_penalty": 0.0,
@@ -437,9 +494,9 @@
   "signal_plan": null,
   "ai_explanation": {
     "FACT": "PFE (NASDAQ - Pfizer) closed at $28.46 USD. Trading within -9.5% of its 52-week high with a 14-day ATR of 2.3%. The primary exchange session traded on volume of 27,106,200 shares.",
-    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 35/100 (Confidence Tier C). Technical Factor sub-score: 38/100 (14-day RSI: 46.5, 20-day RVOL: 0.71x), Fundamental Score: 50/100. Risk penalty applied: -0.0 points. Modulated by the CONSOLIDATION macro regime.",
+    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 29/100 (Confidence Tier C). Technical Factor sub-score: 38/100 (14-day RSI: 46.5, 20-day RVOL: 0.71x), Fundamental Score: 50/100. Risk penalty applied: -0.0 points. Modulated by the HIGH_VOLATILITY macro regime.",
     "INFERENCE": "Securities trading below declining 200-day moving averages with elevated risk penalties have historically underperformed the broader index by 3.8% over forward 20-session windows.",
-    "UNCERTAINTY": "Risks include broader market sentiment deterioration in the CONSOLIDATION environment. A daily close below technical support at $27.04 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
+    "UNCERTAINTY": "Risks include broader market sentiment deterioration in the HIGH_VOLATILITY environment. A daily close below technical support at $27.04 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
   },
   "active_scanner_matches": [
     {
@@ -1416,28 +1473,29 @@
     "exchange": "NASDAQ",
     "country": "US",
     "currency": "USD",
-    "as_of_date": "2026-11-26",
-    "generated_at": "2026-11-26T16:58:37.372440+00:00",
+    "as_of_date": "2026-11-27",
+    "generated_at": "2026-11-27T20:23:46.502580+00:00",
     "conviction_grade": "SKIP",
     "aligned_layers_count": 1,
-    "formatted_card": "TICKER: PFE\nREGIME: CONSOLIDATION (VIX: Medium | Risk-OFF | Rates: Paused | 20d Adverse Hazard: 10.8%)\nPATTERN TYPE: Archetype A: Mega-Cap Tech (Gamma-Momentum) \u2014 Momentum (Pullback Continuation)\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BEARISH \u2014 Breakdown below moving average cluster; negative CMF (-0.09) and deteriorating price structure.\n  Fundamental:  6.0/10 \u2014 Stable financial quality (Score 6.0/10); P/E N/Ax balanced by operational cash flow.\n  Sentiment:    0.00 (NEUTRAL) \u2014 Routine regulatory reporting schedule; no material catalyst in last 30 days.\n  Historical:   55.4% Win Rate (10 sample size, E[R]: +0.44R)\n  Regime fit:   NO\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $27.66 \u2013 $28.07\n  Entry trigger:  Price stabilizes above support zone ($27.34) with 15m candle close above $27.66 and volume > 1.2x 20d average.\n  Stop loss:      $26.40 (4.6% below entry)\n  Target 1 (T1):  $29.17 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $30.81 | Est. 24 days | Take 40%\n  Target 3 (T3):  $32.95 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.32\n  Position size:  0 shares on $100,000 portfolio risking 1% ($0.00)\n  Execution:      not measurable \u2014 this platform holds end-of-day prices only, with no order book, quote feed or fill record\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: SKIP-Grade\nTRADE THESIS: PFE exhibits high structural confluence with Momentum (Pullback Continuation) aligning above ascending moving averages. In the current CONSOLIDATION macro context (20d adverse hazard: 10.8%), measured support at $27.34 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $26.40 or two consecutive closes back below $27.34 immediately invalidates the trade.",
+    "formatted_card": "TICKER: PFE\nREGIME: HIGH_VOLATILITY (VIX: Medium | Risk-OFF | Rates: Paused | 20d Adverse Hazard: 15.8%)\nPATTERN TYPE: Archetype A: Mega-Cap Tech (Gamma-Momentum) \u2014 Momentum (Pullback Continuation)\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BEARISH \u2014 Breakdown below moving average cluster; negative CMF (-0.09) and deteriorating price structure.\n  Fundamental:  6.0/10 \u2014 Stable financial quality (Score 6.0/10); P/E N/Ax balanced by operational cash flow.\n  Sentiment:    0.00 (NEUTRAL) \u2014 Routine regulatory reporting schedule; no material catalyst in last 30 days.\n  Historical:   55.4% Win Rate (10 sample size, E[R]: +0.44R)\n  Regime fit:   NO\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $27.66 \u2013 $28.07\n  Entry trigger:  Price stabilizes above support zone ($27.34) with 15m candle close above $27.66 and volume > 1.2x 20d average.\n  Stop loss:      $26.40 (4.6% below entry)\n  Target 1 (T1):  $29.17 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $30.81 | Est. 24 days | Take 40%\n  Target 3 (T3):  $32.95 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.32\n  Position size:  0 shares on $100,000 portfolio risking 1% ($0.00)\n  Execution:      not measurable \u2014 this platform holds end-of-day prices only, with no order book, quote feed or fill record\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: SKIP-Grade\nTRADE THESIS: PFE exhibits high structural confluence with Momentum (Pullback Continuation) aligning above ascending moving averages. In the current HIGH_VOLATILITY macro context (20d adverse hazard: 15.8%), measured support at $27.34 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $26.40 or two consecutive closes back below $27.34 immediately invalidates the trade.",
     "layer_1_regime": {
       "trend_type": "Volatile",
       "volatility_regime": "Medium (15\u201325)",
       "liquidity_env": "Risk-OFF",
       "rate_context": "Paused",
-      "regime_state": "CONSOLIDATION",
+      "regime_state": "HIGH_VOLATILITY",
       "regime_fit": "NO",
       "status": "BEARISH",
-      "conviction_weight": 0.85,
+      "conviction_weight": 0.7,
       "top_drivers": [
         "Index below 200-day moving average (structural downtrend)",
+        "VIX elevated at 26.8 signals heightened market volatility",
         "Yield curve positively sloped (+45 bps 10Y-2Y spread)"
       ],
-      "adverse_hazard_rate_5d": 0.0982,
-      "adverse_hazard_rate_20d": 0.1082,
-      "expected_regime_duration_days": 4.2,
-      "hazard_tier": "LOW_HAZARD",
+      "adverse_hazard_rate_5d": 0.3694,
+      "adverse_hazard_rate_20d": 0.1578,
+      "expected_regime_duration_days": 2.6,
+      "hazard_tier": "MODERATE_HAZARD",
       "cross_border_macro_divergence_posture": "SYNCHRONIZED_EXPANSION"
     },
     "layer_2_fingerprint": {
@@ -1534,13 +1592,20 @@
       "position_value": 0.0,
       "portfolio_risk_pct": 0.0,
       "invalidation_rule": "A daily closing price below $26.40 or two consecutive closes back below $27.34 immediately invalidates the trade.",
-      "trade_thesis": "PFE exhibits high structural confluence with Momentum (Pullback Continuation) aligning above ascending moving averages. In the current CONSOLIDATION macro context (20d adverse hazard: 10.8%), measured support at $27.34 offers asymmetric risk/reward into upper channel resistance.",
+      "trade_thesis": "PFE exhibits high structural confluence with Momentum (Pullback Continuation) aligning above ascending moving averages. In the current HIGH_VOLATILITY macro context (20d adverse hazard: 15.8%), measured support at $27.34 offers asymmetric risk/reward into upper channel resistance.",
       "tca_execution_strategy": null,
       "tca_expected_slippage_bps": null,
       "tca_effective_fill_price": null,
       "tca_optimal_slices": null
     },
-    "meta_label_verdict": null
+    "meta_label_verdict": {
+      "symbol": "PFE",
+      "meta_probability": 0.4285,
+      "action": "GATED_EXCLUDE",
+      "size_multiplier": 0.0,
+      "primary_driver": "mom_1m (-0.04, impact -)",
+      "calibrated_at": "2026-11-27T20:23:46.727535+00:00"
+    }
   },
   "disclaimers": {
     "canada": "STATUTORY NOTICE (CANADA): This platform provides impersonal quantitative research and decision-support data intended exclusively for self-directed investors. It does not provide personalized investment advice, financial planning, or account management services. The scores, regime classifications, indicators, and model outputs presented herein are calculated by deterministic mathematical models and rule-based algorithms without consideration of your personal financial situation, risk tolerance, or investment objectives. Past hypothetical performance or paper-trading metrics are not indicative of future returns. The platform, its operators, and its algorithms do not hold any financial interest or proprietary position in the securities analyzed unless explicitly disclosed. You are solely responsible for evaluating the merits and risks of any trade or strategy.",

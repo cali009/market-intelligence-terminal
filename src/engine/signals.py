@@ -21,6 +21,13 @@ from src.compliance.disclaimers import DISCLAIMER_VERSION
 from src.models.schemas import SignalPlanContract
 
 
+# A security must clear this composite score before an actionable research plan is
+# published at all. Referenced by the exporter so the empty state on the dashboard can
+# explain the gate using the same number the gate actually uses.
+MIN_COMPOSITE_SCORE_FOR_PLAN = 50
+
+
+
 @dataclass
 class SignalPlan:
     """
@@ -119,8 +126,10 @@ class SignalEngine:
         Evaluate whether current market posture warrants an actionable research signal plan.
         Requires composite_score >= 50, minimum R:R >= 2.0:1, and 100% invalidation predicates.
         """
-        # Minimum score threshold to publish an actionable research plan
-        if composite_score < 50:
+        # Minimum score threshold to publish an actionable research plan.
+        # A module constant rather than a literal so the gate and anything that
+        # explains the gate to a user read the same number.
+        if composite_score < MIN_COMPOSITE_SCORE_FOR_PLAN:
             return None
 
         close = float(metrics.get("close", 0.0))

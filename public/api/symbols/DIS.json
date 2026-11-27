@@ -4,8 +4,8 @@
   "country": "US",
   "currency": "USD",
   "name": "Walt Disney Company (The)",
-  "as_of_date": "2026-11-26",
-  "generated_at": "2026-11-26T16:55:16.464716+00:00",
+  "as_of_date": "2026-11-27",
+  "generated_at": "2026-11-27T20:22:14.014293+00:00",
   "latest_metrics": {
     "trading_date": "2026-11-25",
     "open": 121.9800033569336,
@@ -301,8 +301,8 @@
   },
   "fundamental_dossier": {
     "symbol": "DIS",
-    "as_of_date": "2026-11-26",
-    "filing_date": "2026-11-26",
+    "as_of_date": "2026-11-27",
+    "filing_date": "2026-11-27",
     "currency": "USD",
     "fiscal_period": "FY",
     "fiscal_year": 2025,
@@ -361,7 +361,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 14,
     "gjr_garch_gamma": 0.08,
-    "last_updated": "2026-11-26T16:57:46.726068+00:00"
+    "last_updated": "2026-11-27T20:23:32.607717+00:00"
   },
   "conformal_bounds": {
     "symbol": "DIS",
@@ -378,10 +378,60 @@
     "adapted_alpha": 0.07,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-11-26T16:57:46.744713+00:00"
+    "calibrated_at": "2026-11-27T20:23:32.615704+00:00"
   },
   "cross_border_parity": null,
-  "shap_attribution": null,
+  "shap_attribution": {
+    "symbol": "DIS",
+    "base_value": 30.25,
+    "model_score": 47.9,
+    "top_drivers": [
+      {
+        "feature_name": "proximity_52w",
+        "feature_label": "Proximity to 52W High",
+        "feature_value": -0.005,
+        "shap_contribution": 8.45,
+        "direction": "POSITIVE"
+      },
+      {
+        "feature_name": "trend_sma200_ratio",
+        "feature_label": "Trend vs 200DMA",
+        "feature_value": 1.204,
+        "shap_contribution": 7.12,
+        "direction": "POSITIVE"
+      },
+      {
+        "feature_name": "mtf_confluence",
+        "feature_label": "Multi-Timeframe Confluence",
+        "feature_value": 75.0,
+        "shap_contribution": 2.05,
+        "direction": "POSITIVE"
+      }
+    ],
+    "top_detractors": [
+      {
+        "feature_name": "conformal_rr",
+        "feature_label": "Certified Conformal R:R",
+        "feature_value": 1.45,
+        "shap_contribution": -0.14,
+        "direction": "NEGATIVE"
+      }
+    ],
+    "all_attributions": {
+      "trend_sma200_ratio": 7.12,
+      "momentum_rsi": 0.16,
+      "proximity_52w": 8.45,
+      "mtf_confluence": 2.05,
+      "roic_pct": 0.0,
+      "pe_multiple": 0.0,
+      "pe_imputed": 0.0,
+      "hurst_persistence": 0.0,
+      "fractional_d": 0.0,
+      "amihud_illiquidity": 0.0,
+      "conformal_rr": -0.14,
+      "dual_basis_bps": 0.0
+    }
+  },
   "idiosyncratic_risk": {
     "symbol": "DIS",
     "risk_posture": "NORMAL_EQUILIBRIUM",
@@ -395,14 +445,14 @@
     "cross_border_parity_stretch": false,
     "basis_spread_bps": null,
     "basis_zscore": null,
-    "shap_detractor_drag_pts": 0.0,
+    "shap_detractor_drag_pts": -0.14,
     "primary_risk_driver": "Stable Quantitative Fingerprint",
     "actionable_mitigation": "All idiosyncratic bounds intact; nominal position sizing permitted under risk framework.",
     "as_of_date": "2026-09-25"
   },
   "score_record": {
-    "composite_score": 53,
-    "confidence_tier": "B",
+    "composite_score": 43,
+    "confidence_tier": "C",
     "technical_score": 66,
     "fundamental_score": 50,
     "risk_penalty": 0.0,
@@ -416,7 +466,7 @@
       "volatility_fit_score": 5.0,
       "technical_score": 66,
       "fundamental_score": 50,
-      "regime_multiplier": 0.85,
+      "regime_multiplier": 0.7,
       "news_contribution": 0,
       "sector_contribution": 0.0,
       "risk_penalty": 0.0,
@@ -429,117 +479,33 @@
       }
     }
   },
-  "signal_plan": {
-    "direction": "LONG",
-    "stance": "POTENTIAL LONG SETUP",
-    "setup_type": "BREAKOUT",
-    "preferred_entry": 125.6,
-    "alt_entry": 122.85,
-    "entry_zone": [
-      124.57,
-      126.97
-    ],
-    "structural_stop": 118.04,
-    "stop_distance_pct": 6.0,
-    "targets": [
-      {
-        "target": 131.22,
-        "basis": "Trim candidate at nearest major resistance level ($131.88)",
-        "rr": 0.74
-      },
-      {
-        "target": 144.5,
-        "basis": "Extension at 2.5x per-share risk (+15.0%)",
-        "rr": 2.5
-      },
-      {
-        "target": 155.84,
-        "basis": "Extension at 4.0x per-share risk (+24.1%)"
-      }
-    ],
-    "risk_reward_ratio": 0.74,
-    "planned_rr_t1": 0.74,
-    "planned_rr_t2": 2.5,
-    "realized_rr_t1": null,
-    "holding_period_desc": "POSITION \u2014 empirical winner distribution: 20\u201365 sessions (median 38)",
-    "invalidation": [
-      {
-        "predicate": "DAILY_CLOSE_BELOW_LEVEL",
-        "level": 118.04,
-        "description": "Daily closing price finishes below structural stop loss of $118.04"
-      },
-      {
-        "predicate": "BREAKOUT_FAILURE_CONSECUTIVE_CLOSES",
-        "level": 125.6,
-        "cycles": 2,
-        "description": "Two consecutive closes back below $125.60 on declining volume"
-      },
-      {
-        "predicate": "RELATIVE_STRENGTH_COLLAPSE",
-        "threshold_percentile": 40,
-        "description": "Relative strength rank vs sector benchmark drops below the 40th percentile"
-      },
-      {
-        "predicate": "MATERIAL_ADVERSE_NEWS_EVENT",
-        "min_materiality": 4,
-        "description": "Unresolved Materiality 4+ regulatory, accounting, or going-concern disclosure"
-      },
-      {
-        "predicate": "REGIME_SHIFT_CRISIS",
-        "gated_regimes": [
-          "HIGH_VOLATILITY",
-          "BEARISH",
-          "CRISIS"
-        ],
-        "description": "Macro regime deterioration to High Volatility, Bearish, or Crisis state"
-      }
-    ],
-    "risk_notes": [
-      "Volatility Sizing: 14-day ATR is 2.7%; position sizing must calibrate to $7.56/share risk.",
-      "Structural Risk: Stop loss is positioned 6.0% below preferred entry price.",
-      "Macro Regime Context: Operating in CONSOLIDATION regime with regime multiplier applied.",
-      "Data Gap Note: Non-reported concepts: Revenues, NetIncomeLoss, OperatingIncome, OperatingCashFlow, StockholdersEquity, TotalAssets, TotalDebt, DilutedSharesOutstanding, DividendsPaid. Weights renormalized."
-    ],
-    "rationale": {
-      "technical": [
-        "Setup Type: BREAKOUT verified with 14-day RSI at 68.9.",
-        "Volume participation: 20-day RVOL at 1.52x average daily volume."
-      ],
-      "fundamental": [
-        "Fundamental Quality Score: 50/100 with Valuation Score at 50/100.",
-        "Point-in-Time status: LOW_DATA."
-      ],
-      "news_catalysts": [
-        "Recent verified disclosures: 0 continuous filing events recorded."
-      ],
-      "macro": [
-        "Operating within CONSOLIDATION regime context."
-      ],
-      "sector": [
-        "Sector alignment within Communication Services."
-      ],
-      "regime": [
-        "Positive forward expectancy across empirical walk-forward historical analogues in CONSOLIDATION regime."
-      ]
-    },
-    "data_lineage": {
-      "price_source": "PRIMARY_EXCHANGE_CANONICAL_EOD",
-      "fundamentals_source": "SEC_EDGAR_XBRL",
-      "news_source": "OFFICIAL_REGULATORY_FILINGS",
-      "point_in_time_verified": true
-    }
-  },
+  "signal_plan": null,
   "ai_explanation": {
     "FACT": "DIS (NASDAQ - Walt Disney Company (The)) closed at $125.60 USD. Trading within -0.5% of its 52-week high with a 14-day ATR of 2.7%. The primary exchange session traded on volume of 16,344,400 shares.",
-    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 53/100 (Confidence Tier B). Technical Factor sub-score: 66/100 (14-day RSI: 68.9, 20-day RVOL: 1.52x), Fundamental Score: 50/100. Risk penalty applied: -0.0 points. Modulated by the CONSOLIDATION macro regime.",
+    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 43/100 (Confidence Tier C). Technical Factor sub-score: 66/100 (14-day RSI: 68.9, 20-day RVOL: 1.52x), Fundamental Score: 50/100. Risk penalty applied: -0.0 points. Modulated by the HIGH_VOLATILITY macro regime.",
     "INFERENCE": "Current technical structure reflects neutral consolidation. Setup geometry indicates digestive trading range with no confirmed directional expansion.",
-    "UNCERTAINTY": "Risks include broader market sentiment deterioration in the CONSOLIDATION environment. A daily close below technical support at $104.28 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
+    "UNCERTAINTY": "Risks include broader market sentiment deterioration in the HIGH_VOLATILITY environment. A daily close below technical support at $104.28 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
   },
   "active_scanner_matches": [
+    {
+      "id": "ATR_EXPANSION",
+      "name": "Daily Range Expansion",
+      "why": "Daily bar range (5.31) expanded to 1.5x the 14-day average true range."
+    },
+    {
+      "id": "BREAKOUT_52W_HIGH",
+      "name": "52-Week High Breakout",
+      "why": "Trading within 0.5% of 52-week high with elevated RVOL of 1.52x."
+    },
     {
       "id": "INSTITUTIONAL_ACCUMULATION",
       "name": "Institutional Accumulation (CMF+OBV)",
       "why": "Positive Chaikin Money Flow (+0.14) accompanied by rising 20-day OBV slope."
+    },
+    {
+      "id": "STACKED_MOVING_AVERAGES",
+      "name": "Stacked Moving Average Alignment",
+      "why": "Perfect bullish alignment: Price > 20DMA > 50DMA > 200DMA with positive 200DMA slope."
     },
     {
       "id": "MTF_ALIGNMENT",
@@ -550,21 +516,6 @@
       "id": "MOMENTUM_LEADERS",
       "name": "Momentum Leaders",
       "why": "Strong trend: close > 50DMA > 200DMA with +17.6% 3m return and -0.5% from 52w high."
-    },
-    {
-      "id": "BREAKOUT_52W_HIGH",
-      "name": "52-Week High Breakout",
-      "why": "Trading within 0.5% of 52-week high with elevated RVOL of 1.52x."
-    },
-    {
-      "id": "STACKED_MOVING_AVERAGES",
-      "name": "Stacked Moving Average Alignment",
-      "why": "Perfect bullish alignment: Price > 20DMA > 50DMA > 200DMA with positive 200DMA slope."
-    },
-    {
-      "id": "ATR_EXPANSION",
-      "name": "Daily Range Expansion",
-      "why": "Daily bar range (5.31) expanded to 1.5x the 14-day average true range."
     }
   ],
   "catalysts_and_filings": [],
@@ -1535,28 +1486,29 @@
     "exchange": "NASDAQ",
     "country": "US",
     "currency": "USD",
-    "as_of_date": "2026-11-26",
-    "generated_at": "2026-11-26T16:57:46.770054+00:00",
+    "as_of_date": "2026-11-27",
+    "generated_at": "2026-11-27T20:23:32.626537+00:00",
     "conviction_grade": "SKIP",
     "aligned_layers_count": 2,
-    "formatted_card": "TICKER: DIS\nREGIME: CONSOLIDATION (VIX: Medium | Risk-OFF | Rates: Paused | 20d Adverse Hazard: 10.8%)\nPATTERN TYPE: Archetype A: Mega-Cap Tech (Gamma-Momentum) \u2014 Institutional Accumulation\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BULLISH \u2014 Stacked MAs (Bullish Stack), RSI 68.9 equilibrium, price structure holding above key support.\n  Fundamental:  6.0/10 \u2014 Stable financial quality (Score 6.0/10); P/E N/Ax balanced by operational cash flow.\n  Sentiment:    0.00 (NEUTRAL) \u2014 Routine regulatory reporting schedule; no material catalyst in last 30 days.\n  Historical:   61.5% Win Rate (10 sample size, E[R]: +0.58R)\n  Regime fit:   NO\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $123.37 \u2013 $125.22\n  Entry trigger:  Volume POC reclaim ($104.29) with Chaikin Money Flow sustaining above +0.08.\n  Stop loss:      $116.92 (5.2% below entry)\n  Target 1 (T1):  $131.88 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $139.50 | Est. 24 days | Take 40%\n  Target 3 (T3):  $150.46 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.37\n  Position size:  0 shares on $100,000 portfolio risking 1% ($0.00)\n  Execution:      not measurable \u2014 this platform holds end-of-day prices only, with no order book, quote feed or fill record\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: SKIP-Grade\nTRADE THESIS: DIS exhibits high structural confluence with Institutional Accumulation aligning above ascending moving averages. In the current CONSOLIDATION macro context (20d adverse hazard: 10.8%), measured support at $123.37 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $116.92 or two consecutive closes back below $123.37 immediately invalidates the trade.",
+    "formatted_card": "TICKER: DIS\nREGIME: HIGH_VOLATILITY (VIX: Medium | Risk-OFF | Rates: Paused | 20d Adverse Hazard: 15.8%)\nPATTERN TYPE: Archetype A: Mega-Cap Tech (Gamma-Momentum) \u2014 Institutional Accumulation\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BULLISH \u2014 Stacked MAs (Bullish Stack), RSI 68.9 equilibrium, price structure holding above key support.\n  Fundamental:  6.0/10 \u2014 Stable financial quality (Score 6.0/10); P/E N/Ax balanced by operational cash flow.\n  Sentiment:    0.00 (NEUTRAL) \u2014 Routine regulatory reporting schedule; no material catalyst in last 30 days.\n  Historical:   61.5% Win Rate (10 sample size, E[R]: +0.58R)\n  Regime fit:   NO\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $123.37 \u2013 $125.22\n  Entry trigger:  Volume POC reclaim ($104.29) with Chaikin Money Flow sustaining above +0.08.\n  Stop loss:      $116.92 (5.2% below entry)\n  Target 1 (T1):  $131.88 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $139.50 | Est. 24 days | Take 40%\n  Target 3 (T3):  $150.46 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.37\n  Position size:  0 shares on $100,000 portfolio risking 1% ($0.00)\n  Execution:      not measurable \u2014 this platform holds end-of-day prices only, with no order book, quote feed or fill record\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: SKIP-Grade\nTRADE THESIS: DIS exhibits high structural confluence with Institutional Accumulation aligning above ascending moving averages. In the current HIGH_VOLATILITY macro context (20d adverse hazard: 15.8%), measured support at $123.37 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $116.92 or two consecutive closes back below $123.37 immediately invalidates the trade.",
     "layer_1_regime": {
       "trend_type": "Volatile",
       "volatility_regime": "Medium (15\u201325)",
       "liquidity_env": "Risk-OFF",
       "rate_context": "Paused",
-      "regime_state": "CONSOLIDATION",
+      "regime_state": "HIGH_VOLATILITY",
       "regime_fit": "NO",
       "status": "BEARISH",
-      "conviction_weight": 0.85,
+      "conviction_weight": 0.7,
       "top_drivers": [
         "Index below 200-day moving average (structural downtrend)",
+        "VIX elevated at 26.8 signals heightened market volatility",
         "Yield curve positively sloped (+45 bps 10Y-2Y spread)"
       ],
-      "adverse_hazard_rate_5d": 0.0982,
-      "adverse_hazard_rate_20d": 0.1082,
-      "expected_regime_duration_days": 4.2,
-      "hazard_tier": "LOW_HAZARD",
+      "adverse_hazard_rate_5d": 0.3694,
+      "adverse_hazard_rate_20d": 0.1578,
+      "expected_regime_duration_days": 2.6,
+      "hazard_tier": "MODERATE_HAZARD",
       "cross_border_macro_divergence_posture": "SYNCHRONIZED_EXPANSION"
     },
     "layer_2_fingerprint": {
@@ -1653,13 +1605,20 @@
       "position_value": 0.0,
       "portfolio_risk_pct": 0.0,
       "invalidation_rule": "A daily closing price below $116.92 or two consecutive closes back below $123.37 immediately invalidates the trade.",
-      "trade_thesis": "DIS exhibits high structural confluence with Institutional Accumulation aligning above ascending moving averages. In the current CONSOLIDATION macro context (20d adverse hazard: 10.8%), measured support at $123.37 offers asymmetric risk/reward into upper channel resistance.",
+      "trade_thesis": "DIS exhibits high structural confluence with Institutional Accumulation aligning above ascending moving averages. In the current HIGH_VOLATILITY macro context (20d adverse hazard: 15.8%), measured support at $123.37 offers asymmetric risk/reward into upper channel resistance.",
       "tca_execution_strategy": null,
       "tca_expected_slippage_bps": null,
       "tca_effective_fill_price": null,
       "tca_optimal_slices": null
     },
-    "meta_label_verdict": null
+    "meta_label_verdict": {
+      "symbol": "DIS",
+      "meta_probability": 0.4276,
+      "action": "GATED_EXCLUDE",
+      "size_multiplier": 0.0,
+      "primary_driver": "mom_1m (+0.14, impact +)",
+      "calibrated_at": "2026-11-27T20:23:32.853077+00:00"
+    }
   },
   "disclaimers": {
     "canada": "STATUTORY NOTICE (CANADA): This platform provides impersonal quantitative research and decision-support data intended exclusively for self-directed investors. It does not provide personalized investment advice, financial planning, or account management services. The scores, regime classifications, indicators, and model outputs presented herein are calculated by deterministic mathematical models and rule-based algorithms without consideration of your personal financial situation, risk tolerance, or investment objectives. Past hypothetical performance or paper-trading metrics are not indicative of future returns. The platform, its operators, and its algorithms do not hold any financial interest or proprietary position in the securities analyzed unless explicitly disclosed. You are solely responsible for evaluating the merits and risks of any trade or strategy.",

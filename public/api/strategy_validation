@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-26T17:41:27.867215+00:00",
+  "generated_at": "2026-11-27T20:24:15.080451+00:00",
   "as_of_date": "2026-11-26",
   "source_of_truth": "Computed by src/engine/strategy_validation.py from the walk-forward trade ledger in backtests.json and the FDR table in cpcv_validation.json. No figure on this panel is hard-coded.",
   "validation_criteria": {
@@ -24,7 +24,7 @@
     "promotion_statement": "No strategy is promoted to live. 0 of 8 strategies pass all eight gates."
   },
   "pbo": {
-    "value": 0.133,
+    "value": 0.067,
     "informative": true,
     "assessment": "LOW_OVERFITTING_RISK",
     "reason": "1 of 8 strategies are profitable out-of-sample on an adequate sample, so rank inversion is meaningful.",
@@ -82,7 +82,7 @@
           "name": "Multiple-testing control",
           "requirement": "Passes Benjamini-Hochberg FDR at q = 0.05",
           "passed": true,
-          "observed": "p = 0.00267 vs critical 0.00625 \u2192 FDR_PASSED",
+          "observed": "p = 3e-05 vs critical 0.00625 \u2192 FDR_PASSED",
           "detail": "Survives multiple-testing control.",
           "symbol": "\u2705"
         },
@@ -170,7 +170,7 @@
           "name": "Multiple-testing control",
           "requirement": "Passes Benjamini-Hochberg FDR at q = 0.05",
           "passed": false,
-          "observed": "p = 0.43333 vs critical 0.0375 \u2192 REJECTED_SELECTION_BIAS",
+          "observed": "p = 0.08559 vs critical 0.03125 \u2192 REJECTED_SELECTION_BIAS",
           "detail": "Rejected for selection bias.",
           "symbol": "\u274c"
         },
@@ -231,8 +231,8 @@
       "oos_mean_return_pct": -0.5701,
       "oos_expectancy_r": -0.2314,
       "oos_t_stat": -2.687,
-      "gates_passed": 2,
-      "gates_failed": 6,
+      "gates_passed": 3,
+      "gates_failed": 5,
       "gates_unevaluable": 0,
       "gates": [
         {
@@ -257,10 +257,10 @@
           "gate_id": 3,
           "name": "Multiple-testing control",
           "requirement": "Passes Benjamini-Hochberg FDR at q = 0.05",
-          "passed": false,
-          "observed": "p = 0.60338 vs critical 0.04375 \u2192 REJECTED_SELECTION_BIAS",
-          "detail": "Rejected for selection bias.",
-          "symbol": "\u274c"
+          "passed": true,
+          "observed": "p = 0.01651 vs critical 0.01875 \u2192 FDR_PASSED",
+          "detail": "Survives multiple-testing control.",
+          "symbol": "\u2705"
         },
         {
           "gate_id": 4,
@@ -319,8 +319,8 @@
       "oos_mean_return_pct": -0.6089,
       "oos_expectancy_r": -0.191,
       "oos_t_stat": -2.047,
-      "gates_passed": 2,
-      "gates_failed": 6,
+      "gates_passed": 3,
+      "gates_failed": 5,
       "gates_unevaluable": 0,
       "gates": [
         {
@@ -345,10 +345,10 @@
           "gate_id": 3,
           "name": "Multiple-testing control",
           "requirement": "Passes Benjamini-Hochberg FDR at q = 0.05",
-          "passed": false,
-          "observed": "p = 0.02213 vs critical 0.0125 \u2192 REJECTED_SELECTION_BIAS",
-          "detail": "Rejected for selection bias.",
-          "symbol": "\u274c"
+          "passed": true,
+          "observed": "p = 0.00121 vs critical 0.0125 \u2192 FDR_PASSED",
+          "detail": "Survives multiple-testing control.",
+          "symbol": "\u2705"
         },
         {
           "gate_id": 4,
@@ -434,7 +434,7 @@
           "name": "Multiple-testing control",
           "requirement": "Passes Benjamini-Hochberg FDR at q = 0.05",
           "passed": false,
-          "observed": "p = 0.21926 vs critical 0.01875 \u2192 REJECTED_SELECTION_BIAS",
+          "observed": "p = 0.53811 vs critical 0.05 \u2192 REJECTED_SELECTION_BIAS",
           "detail": "Rejected for selection bias.",
           "symbol": "\u274c"
         },
@@ -522,7 +522,7 @@
           "name": "Multiple-testing control",
           "requirement": "Passes Benjamini-Hochberg FDR at q = 0.05",
           "passed": false,
-          "observed": "p = 0.22209 vs critical 0.025 \u2192 REJECTED_SELECTION_BIAS",
+          "observed": "p = 0.42477 vs critical 0.04375 \u2192 REJECTED_SELECTION_BIAS",
           "detail": "Rejected for selection bias.",
           "symbol": "\u274c"
         },
@@ -610,7 +610,7 @@
           "name": "Multiple-testing control",
           "requirement": "Passes Benjamini-Hochberg FDR at q = 0.05",
           "passed": false,
-          "observed": "p = 0.33768 vs critical 0.03125 \u2192 REJECTED_SELECTION_BIAS",
+          "observed": "p = 0.11776 vs critical 0.0375 \u2192 REJECTED_SELECTION_BIAS",
           "detail": "Rejected for selection bias.",
           "symbol": "\u274c"
         },
@@ -698,7 +698,7 @@
           "name": "Multiple-testing control",
           "requirement": "Passes Benjamini-Hochberg FDR at q = 0.05",
           "passed": false,
-          "observed": "p = 0.66796 vs critical 0.05 \u2192 REJECTED_SELECTION_BIAS",
+          "observed": "p = 0.08551 vs critical 0.025 \u2192 REJECTED_SELECTION_BIAS",
           "detail": "Rejected for selection bias.",
           "symbol": "\u274c"
         },

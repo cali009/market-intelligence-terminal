@@ -4,15 +4,15 @@
   "country": "CA",
   "currency": "CAD",
   "name": "Barrick Mining Corporation",
-  "as_of_date": "2026-11-26",
-  "generated_at": "2026-11-26T16:55:16.464716+00:00",
+  "as_of_date": "2026-11-27",
+  "generated_at": "2026-11-27T20:22:14.014293+00:00",
   "latest_metrics": {
     "trading_date": "2026-11-26",
     "open": 49.290000915527344,
     "high": 50.290000915527344,
     "low": 49.290000915527344,
     "close": 49.66999816894531,
-    "volume": 372661.0,
+    "volume": 392862.0,
     "adjusted_close": 49.66999816894531,
     "sma_20": 52.4269998550415,
     "sma_50": 55.4510001373291,
@@ -29,10 +29,10 @@
     "bb_upper": 59.98924898275975,
     "bb_lower": 44.864750727323255,
     "bb_bandwidth": 0.28848681590125524,
-    "rvol_20": 0.08743635345162971,
-    "obv": 140841061.0,
-    "obv_slope_20": -4003939.0,
-    "cmf_20": -0.1185276691174867,
+    "rvol_20": 0.09215421544511895,
+    "obv": 140861262.0,
+    "obv_slope_20": -3983738.0,
+    "cmf_20": -0.11855645072588701,
     "hh_hl_ratio_20": 0.4,
     "adx_14": 19.754020203391747,
     "return_1m": -0.10552855644103365,
@@ -40,7 +40,7 @@
     "return_12m": -0.09985505809635964,
     "momentum_12_1": 0.005673498344674011,
     "proximity_52w_high": -0.328783808527766,
-    "adv_dollar_20": 222328281.1959099
+    "adv_dollar_20": 222378450.37756044
   },
   "technical_dossier": {
     "snapshot": {
@@ -49,7 +49,7 @@
       "high": 50.290000915527344,
       "low": 49.290000915527344,
       "close": 49.66999816894531,
-      "volume": 372661.0,
+      "volume": 392862.0,
       "adjusted_close": 49.66999816894531,
       "sma_20": 52.4269998550415,
       "sma_50": 55.4510001373291,
@@ -66,10 +66,10 @@
       "bb_upper": 59.98924898275975,
       "bb_lower": 44.864750727323255,
       "bb_bandwidth": 0.28848681590125524,
-      "rvol_20": 0.08743635345162971,
-      "obv": 140841061.0,
-      "obv_slope_20": -4003939.0,
-      "cmf_20": -0.1185276691174867,
+      "rvol_20": 0.09215421544511895,
+      "obv": 140861262.0,
+      "obv_slope_20": -3983738.0,
+      "cmf_20": -0.11855645072588701,
       "hh_hl_ratio_20": 0.4,
       "adx_14": 19.754020203391747,
       "return_1m": -0.10552855644103365,
@@ -77,14 +77,14 @@
       "return_12m": -0.09985505809635964,
       "momentum_12_1": 0.005673498344674011,
       "proximity_52w_high": -0.328783808527766,
-      "adv_dollar_20": 222328281.1959099
+      "adv_dollar_20": 222378450.37756044
     },
     "volume_profile": {
       "poc_price": 57.24,
       "vah_price": 62.24,
       "val_price": 54.06,
       "value_area_state": "BELOW_VALUE",
-      "total_profile_volume": 233184761,
+      "total_profile_volume": 233204962,
       "profile_bins": [
         {
           "price": 45.41,
@@ -116,15 +116,15 @@
         },
         {
           "price": 49.05,
-          "volume": 8295769,
+          "volume": 8300163,
           "pct_of_max": 35.2,
           "is_poc": false,
           "in_value_area": false
         },
         {
           "price": 49.96,
-          "volume": 1880666,
-          "pct_of_max": 8.0,
+          "volume": 1896473,
+          "pct_of_max": 8.1,
           "is_poc": false,
           "in_value_area": false
         },
@@ -304,8 +304,8 @@
   },
   "fundamental_dossier": {
     "symbol": "ABX",
-    "as_of_date": "2026-11-26",
-    "filing_date": "2026-11-26",
+    "as_of_date": "2026-11-27",
+    "filing_date": "2026-11-27",
     "currency": "CAD",
     "fiscal_period": "FY",
     "fiscal_year": 2025,
@@ -364,7 +364,7 @@
     "amihud_illiquidity": 0.0016,
     "dominant_cycle_bars": 20,
     "gjr_garch_gamma": 0.22,
-    "last_updated": "2026-11-26T16:59:15.413585+00:00"
+    "last_updated": "2026-11-27T20:23:57.560971+00:00"
   },
   "conformal_bounds": {
     "symbol": "ABX",
@@ -381,14 +381,56 @@
     "adapted_alpha": 0.065,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-11-26T16:59:15.439860+00:00"
+    "calibrated_at": "2026-11-27T20:23:57.571547+00:00"
   },
   "cross_border_parity": null,
-  "shap_attribution": null,
+  "shap_attribution": {
+    "symbol": "ABX",
+    "base_value": 30.25,
+    "model_score": 8.5,
+    "top_drivers": [],
+    "top_detractors": [
+      {
+        "feature_name": "trend_sma200_ratio",
+        "feature_label": "Trend vs 200DMA",
+        "feature_value": 0.868,
+        "shap_contribution": -10.08,
+        "direction": "NEGATIVE"
+      },
+      {
+        "feature_name": "proximity_52w",
+        "feature_label": "Proximity to 52W High",
+        "feature_value": -0.329,
+        "shap_contribution": -8.8,
+        "direction": "NEGATIVE"
+      },
+      {
+        "feature_name": "momentum_rsi",
+        "feature_label": "14-Day RSI Momentum",
+        "feature_value": 42.6,
+        "shap_contribution": -1.41,
+        "direction": "NEGATIVE"
+      }
+    ],
+    "all_attributions": {
+      "trend_sma200_ratio": -10.08,
+      "momentum_rsi": -1.41,
+      "proximity_52w": -8.8,
+      "mtf_confluence": -1.13,
+      "roic_pct": 0.0,
+      "pe_multiple": 0.0,
+      "pe_imputed": 0.0,
+      "hurst_persistence": 0.0,
+      "fractional_d": -0.13,
+      "amihud_illiquidity": 0.0,
+      "conformal_rr": -0.21,
+      "dual_basis_bps": 0.0
+    }
+  },
   "idiosyncratic_risk": {
     "symbol": "ABX",
-    "risk_posture": "NORMAL_EQUILIBRIUM",
-    "position_size_multiplier": 1.0,
+    "risk_posture": "ELEVATED_CAUTION",
+    "position_size_multiplier": 0.75,
     "hurst_flip_alert": false,
     "hurst_exponent": 0.477,
     "conformal_stop_price": 18.46,
@@ -398,13 +440,13 @@
     "cross_border_parity_stretch": false,
     "basis_spread_bps": null,
     "basis_zscore": null,
-    "shap_detractor_drag_pts": 0.0,
-    "primary_risk_driver": "Stable Quantitative Fingerprint",
-    "actionable_mitigation": "All idiosyncratic bounds intact; nominal position sizing permitted under risk framework.",
+    "shap_detractor_drag_pts": -20.29,
+    "primary_risk_driver": "TreeSHAP Factor Detractor Drag (-20.29 pts)",
+    "actionable_mitigation": "Minor basis disparity or factor detractor identified; 25% exposure haircut recommended under risk rules.",
     "as_of_date": "2026-09-25"
   },
   "score_record": {
-    "composite_score": 1,
+    "composite_score": 0,
     "confidence_tier": "C",
     "technical_score": 8,
     "fundamental_score": 50,
@@ -419,14 +461,14 @@
       "volatility_fit_score": 3.0,
       "technical_score": 8,
       "fundamental_score": 50,
-      "regime_multiplier": 0.85,
+      "regime_multiplier": 0.7,
       "news_contribution": 0,
       "sector_contribution": 0.0,
       "risk_penalty": 15.0,
       "key_metrics": {
         "close": 49.66999816894531,
         "rsi_14": 42.58652784949671,
-        "rvol_20": 0.08743635345162971,
+        "rvol_20": 0.09215421544511895,
         "atr_pct": 4.708216956298702,
         "proximity_52w_high": -0.328783808527766
       }
@@ -434,10 +476,10 @@
   },
   "signal_plan": null,
   "ai_explanation": {
-    "FACT": "ABX (TSX - Barrick Mining Corporation) closed at $49.67 CAD. Trading within -32.9% of its 52-week high with a 14-day ATR of 4.7%. The primary exchange session traded on volume of 372,661 shares.",
-    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 1/100 (Confidence Tier C). Technical Factor sub-score: 8/100 (14-day RSI: 42.6, 20-day RVOL: 0.09x), Fundamental Score: 50/100. Risk penalty applied: -15.0 points. Modulated by the CONSOLIDATION macro regime.",
+    "FACT": "ABX (TSX - Barrick Mining Corporation) closed at $49.67 CAD. Trading within -32.9% of its 52-week high with a 14-day ATR of 4.7%. The primary exchange session traded on volume of 392,862 shares.",
+    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 0/100 (Confidence Tier C). Technical Factor sub-score: 8/100 (14-day RSI: 42.6, 20-day RVOL: 0.09x), Fundamental Score: 50/100. Risk penalty applied: -15.0 points. Modulated by the HIGH_VOLATILITY macro regime.",
     "INFERENCE": "Securities trading below declining 200-day moving averages with elevated risk penalties have historically underperformed the broader index by 3.8% over forward 20-session windows.",
-    "UNCERTAINTY": "Risks include broader market sentiment deterioration in the CONSOLIDATION environment. A daily close below technical support at $57.21 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
+    "UNCERTAINTY": "Risks include broader market sentiment deterioration in the HIGH_VOLATILITY environment. A daily close below technical support at $57.21 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
   },
   "active_scanner_matches": [],
   "catalysts_and_filings": [],
@@ -1400,7 +1442,7 @@
       "high": 50.290000915527344,
       "low": 49.290000915527344,
       "close": 49.66999816894531,
-      "volume": 372661.0
+      "volume": 392862.0
     }
   ],
   "quant_intel": {
@@ -1408,27 +1450,28 @@
     "exchange": "TSX",
     "country": "CA",
     "currency": "CAD",
-    "as_of_date": "2026-11-26",
-    "generated_at": "2026-11-26T16:59:15.493647+00:00",
+    "as_of_date": "2026-11-27",
+    "generated_at": "2026-11-27T20:23:57.585788+00:00",
     "conviction_grade": "SKIP",
     "aligned_layers_count": 1,
-    "formatted_card": "TICKER: ABX\nREGIME: CONSOLIDATION (VIX: Medium | Risk-OFF | Rates: Paused | 20d Adverse Hazard: 9.0%)\nPATTERN TYPE: Archetype B: Natural Resources & Energy (Cycle Mean-Reversion) \u2014 News-Reactive\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BEARISH \u2014 Breakdown below moving average cluster; negative CMF (-0.12) and deteriorating price structure.\n  Fundamental:  6.0/10 \u2014 Stable financial quality (Score 6.0/10); P/E N/Ax balanced by operational cash flow.\n  Sentiment:    0.00 (NEUTRAL) \u2014 Routine regulatory reporting schedule; no material catalyst in last 30 days.\n  Historical:   58.2% Win Rate (10 sample size, E[R]: +0.48R)\n  Regime fit:   NO\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $49.61 \u2013 $50.35\n  Entry trigger:  Price holds structural pivot ($47.70) followed by volume-backed expansion above $49.61.\n  Stop loss:      $45.22 (8.8% below entry)\n  Target 1 (T1):  $54.88 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $60.59 | Est. 24 days | Take 40%\n  Target 3 (T3):  $68.05 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.32\n  Position size:  0 shares on $100,000 portfolio risking 1% ($0.00)\n  Execution:      not measurable \u2014 this platform holds end-of-day prices only, with no order book, quote feed or fill record\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: SKIP-Grade\nTRADE THESIS: ABX exhibits high structural confluence with News-Reactive aligning above ascending moving averages. In the current CONSOLIDATION macro context (20d adverse hazard: 9.0%), measured support at $47.70 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $45.22 or two consecutive closes back below $47.70 immediately invalidates the trade.",
+    "formatted_card": "TICKER: ABX\nREGIME: HIGH_VOLATILITY (VIX: Medium | Risk-OFF | Rates: Paused | 20d Adverse Hazard: 11.0%)\nPATTERN TYPE: Archetype B: Natural Resources & Energy (Cycle Mean-Reversion) \u2014 News-Reactive\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BEARISH \u2014 Breakdown below moving average cluster; negative CMF (-0.12) and deteriorating price structure.\n  Fundamental:  6.0/10 \u2014 Stable financial quality (Score 6.0/10); P/E N/Ax balanced by operational cash flow.\n  Sentiment:    0.00 (NEUTRAL) \u2014 Routine regulatory reporting schedule; no material catalyst in last 30 days.\n  Historical:   58.2% Win Rate (10 sample size, E[R]: +0.48R)\n  Regime fit:   NO\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $49.61 \u2013 $50.35\n  Entry trigger:  Price holds structural pivot ($47.70) followed by volume-backed expansion above $49.61.\n  Stop loss:      $45.22 (8.8% below entry)\n  Target 1 (T1):  $54.88 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $60.59 | Est. 24 days | Take 40%\n  Target 3 (T3):  $68.05 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.32\n  Position size:  0 shares on $100,000 portfolio risking 1% ($0.00)\n  Execution:      not measurable \u2014 this platform holds end-of-day prices only, with no order book, quote feed or fill record\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: SKIP-Grade\nTRADE THESIS: ABX exhibits high structural confluence with News-Reactive aligning above ascending moving averages. In the current HIGH_VOLATILITY macro context (20d adverse hazard: 11.0%), measured support at $47.70 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $45.22 or two consecutive closes back below $47.70 immediately invalidates the trade.",
     "layer_1_regime": {
       "trend_type": "Volatile",
       "volatility_regime": "Medium (15\u201325)",
       "liquidity_env": "Risk-OFF",
       "rate_context": "Paused",
-      "regime_state": "CONSOLIDATION",
+      "regime_state": "HIGH_VOLATILITY",
       "regime_fit": "NO",
       "status": "BEARISH",
-      "conviction_weight": 0.85,
+      "conviction_weight": 0.7,
       "top_drivers": [
         "Index below 200-day moving average (structural downtrend)",
+        "VIX elevated at 26.8 signals heightened market volatility",
         "Yield curve positively sloped (+55 bps 10Y-2Y spread)"
       ],
-      "adverse_hazard_rate_5d": 0.0956,
-      "adverse_hazard_rate_20d": 0.0905,
-      "expected_regime_duration_days": 3.0,
+      "adverse_hazard_rate_5d": 0.255,
+      "adverse_hazard_rate_20d": 0.1102,
+      "expected_regime_duration_days": 2.6,
       "hazard_tier": "LOW_HAZARD",
       "cross_border_macro_divergence_posture": "SYNCHRONIZED_EXPANSION"
     },
@@ -1526,13 +1569,20 @@
       "position_value": 0.0,
       "portfolio_risk_pct": 0.0,
       "invalidation_rule": "A daily closing price below $45.22 or two consecutive closes back below $47.70 immediately invalidates the trade.",
-      "trade_thesis": "ABX exhibits high structural confluence with News-Reactive aligning above ascending moving averages. In the current CONSOLIDATION macro context (20d adverse hazard: 9.0%), measured support at $47.70 offers asymmetric risk/reward into upper channel resistance.",
+      "trade_thesis": "ABX exhibits high structural confluence with News-Reactive aligning above ascending moving averages. In the current HIGH_VOLATILITY macro context (20d adverse hazard: 11.0%), measured support at $47.70 offers asymmetric risk/reward into upper channel resistance.",
       "tca_execution_strategy": null,
       "tca_expected_slippage_bps": null,
       "tca_effective_fill_price": null,
       "tca_optimal_slices": null
     },
-    "meta_label_verdict": null
+    "meta_label_verdict": {
+      "symbol": "ABX",
+      "meta_probability": 0.4943,
+      "action": "MODERATE_PROCEED",
+      "size_multiplier": 0.85,
+      "primary_driver": "prox_52w (-0.33, impact +)",
+      "calibrated_at": "2026-11-27T20:23:57.875953+00:00"
+    }
   },
   "disclaimers": {
     "canada": "STATUTORY NOTICE (CANADA): This platform provides impersonal quantitative research and decision-support data intended exclusively for self-directed investors. It does not provide personalized investment advice, financial planning, or account management services. The scores, regime classifications, indicators, and model outputs presented herein are calculated by deterministic mathematical models and rule-based algorithms without consideration of your personal financial situation, risk tolerance, or investment objectives. Past hypothetical performance or paper-trading metrics are not indicative of future returns. The platform, its operators, and its algorithms do not hold any financial interest or proprietary position in the securities analyzed unless explicitly disclosed. You are solely responsible for evaluating the merits and risks of any trade or strategy.",

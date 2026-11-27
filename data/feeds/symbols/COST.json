@@ -4,8 +4,8 @@
   "country": "US",
   "currency": "USD",
   "name": "Costco",
-  "as_of_date": "2026-11-26",
-  "generated_at": "2026-11-26T16:55:16.464716+00:00",
+  "as_of_date": "2026-11-27",
+  "generated_at": "2026-11-27T20:22:14.014293+00:00",
   "latest_metrics": {
     "trading_date": "2026-11-25",
     "open": 1092.0,
@@ -303,8 +303,8 @@
   },
   "fundamental_dossier": {
     "symbol": "COST",
-    "as_of_date": "2026-11-26",
-    "filing_date": "2026-11-26",
+    "as_of_date": "2026-11-27",
+    "filing_date": "2026-11-27",
     "currency": "USD",
     "fiscal_period": "FY",
     "fiscal_year": 2025,
@@ -363,7 +363,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 14,
     "gjr_garch_gamma": 0.08,
-    "last_updated": "2026-11-26T16:57:36.105047+00:00"
+    "last_updated": "2026-11-27T20:23:29.906768+00:00"
   },
   "conformal_bounds": {
     "symbol": "COST",
@@ -380,10 +380,52 @@
     "adapted_alpha": 0.2,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-11-26T16:57:36.132909+00:00"
+    "calibrated_at": "2026-11-27T20:23:29.916923+00:00"
   },
   "cross_border_parity": null,
-  "shap_attribution": null,
+  "shap_attribution": {
+    "symbol": "COST",
+    "base_value": 30.25,
+    "model_score": 48.7,
+    "top_drivers": [
+      {
+        "feature_name": "proximity_52w",
+        "feature_label": "Proximity to 52W High",
+        "feature_value": -0.033,
+        "shap_contribution": 8.45,
+        "direction": "POSITIVE"
+      },
+      {
+        "feature_name": "trend_sma200_ratio",
+        "feature_label": "Trend vs 200DMA",
+        "feature_value": 1.108,
+        "shap_contribution": 7.12,
+        "direction": "POSITIVE"
+      },
+      {
+        "feature_name": "mtf_confluence",
+        "feature_label": "Multi-Timeframe Confluence",
+        "feature_value": 75.0,
+        "shap_contribution": 2.05,
+        "direction": "POSITIVE"
+      }
+    ],
+    "top_detractors": [],
+    "all_attributions": {
+      "trend_sma200_ratio": 7.12,
+      "momentum_rsi": 0.69,
+      "proximity_52w": 8.45,
+      "mtf_confluence": 2.05,
+      "roic_pct": 0.0,
+      "pe_multiple": 0.0,
+      "pe_imputed": 0.0,
+      "hurst_persistence": 0.0,
+      "fractional_d": 0.0,
+      "amihud_illiquidity": 0.0,
+      "conformal_rr": 0.12,
+      "dual_basis_bps": 0.0
+    }
+  },
   "idiosyncratic_risk": {
     "symbol": "COST",
     "risk_posture": "NORMAL_EQUILIBRIUM",
@@ -403,8 +445,8 @@
     "as_of_date": "2026-09-25"
   },
   "score_record": {
-    "composite_score": 55,
-    "confidence_tier": "B",
+    "composite_score": 45,
+    "confidence_tier": "C",
     "technical_score": 69,
     "fundamental_score": 50,
     "risk_penalty": 0.0,
@@ -418,7 +460,7 @@
       "volatility_fit_score": 5.0,
       "technical_score": 69,
       "fundamental_score": 50,
-      "regime_multiplier": 0.85,
+      "regime_multiplier": 0.7,
       "news_contribution": 0,
       "sector_contribution": 0.0,
       "risk_penalty": 0.0,
@@ -431,132 +473,33 @@
       }
     }
   },
-  "signal_plan": {
-    "direction": "LONG",
-    "stance": "POTENTIAL LONG SETUP",
-    "setup_type": "PULLBACK",
-    "preferred_entry": 1086.81,
-    "alt_entry": 1066.68,
-    "entry_zone": [
-      1077.52,
-      1090.53
-    ],
-    "structural_stop": 1045.93,
-    "stop_distance_pct": 3.8,
-    "targets": [
-      {
-        "target": 1117.62,
-        "basis": "Trim candidate at nearest major resistance level ($1123.24)",
-        "rr": 0.75
-      },
-      {
-        "target": 1189.01,
-        "basis": "Extension at 2.5x per-share risk (+9.4%)",
-        "rr": 2.5
-      },
-      {
-        "target": 1250.33,
-        "basis": "Extension at 4.0x per-share risk (+15.0%)"
-      }
-    ],
-    "risk_reward_ratio": 0.75,
-    "planned_rr_t1": 0.75,
-    "planned_rr_t2": 2.5,
-    "realized_rr_t1": null,
-    "holding_period_desc": "POSITION \u2014 empirical winner distribution: 20\u201365 sessions (median 38)",
-    "invalidation": [
-      {
-        "predicate": "DAILY_CLOSE_BELOW_LEVEL",
-        "level": 1045.93,
-        "description": "Daily closing price finishes below structural stop loss of $1045.93"
-      },
-      {
-        "predicate": "BREAKOUT_FAILURE_CONSECUTIVE_CLOSES",
-        "level": 1086.81,
-        "cycles": 2,
-        "description": "Two consecutive closes back below $1086.81 on declining volume"
-      },
-      {
-        "predicate": "RELATIVE_STRENGTH_COLLAPSE",
-        "threshold_percentile": 40,
-        "description": "Relative strength rank vs sector benchmark drops below the 40th percentile"
-      },
-      {
-        "predicate": "MATERIAL_ADVERSE_NEWS_EVENT",
-        "min_materiality": 4,
-        "description": "Unresolved Materiality 4+ regulatory, accounting, or going-concern disclosure"
-      },
-      {
-        "predicate": "REGIME_SHIFT_CRISIS",
-        "gated_regimes": [
-          "HIGH_VOLATILITY",
-          "BEARISH",
-          "CRISIS"
-        ],
-        "description": "Macro regime deterioration to High Volatility, Bearish, or Crisis state"
-      }
-    ],
-    "risk_notes": [
-      "Volatility Sizing: 14-day ATR is 1.7%; position sizing must calibrate to $40.88/share risk.",
-      "Structural Risk: Stop loss is positioned 3.8% below preferred entry price.",
-      "Macro Regime Context: Operating in CONSOLIDATION regime with regime multiplier applied.",
-      "Data Gap Note: Non-reported concepts: Revenues, NetIncomeLoss, OperatingIncome, OperatingCashFlow, StockholdersEquity, TotalAssets, TotalDebt, DilutedSharesOutstanding, DividendsPaid. Weights renormalized."
-    ],
-    "rationale": {
-      "technical": [
-        "Setup Type: PULLBACK verified with 14-day RSI at 62.2.",
-        "Volume participation: 20-day RVOL at 1.01x average daily volume."
-      ],
-      "fundamental": [
-        "Fundamental Quality Score: 50/100 with Valuation Score at 50/100.",
-        "Point-in-Time status: LOW_DATA."
-      ],
-      "news_catalysts": [
-        "Recent verified disclosures: 0 continuous filing events recorded."
-      ],
-      "macro": [
-        "Operating within CONSOLIDATION regime context."
-      ],
-      "sector": [
-        "Sector alignment within Consumer Staples."
-      ],
-      "regime": [
-        "Positive forward expectancy across empirical walk-forward historical analogues in CONSOLIDATION regime."
-      ]
-    },
-    "data_lineage": {
-      "price_source": "PRIMARY_EXCHANGE_CANONICAL_EOD",
-      "fundamentals_source": "SEC_EDGAR_XBRL",
-      "news_source": "OFFICIAL_REGULATORY_FILINGS",
-      "point_in_time_verified": true
-    }
-  },
+  "signal_plan": null,
   "ai_explanation": {
     "FACT": "COST (NASDAQ - Costco) closed at $1086.81 USD. Trading within -3.3% of its 52-week high with a 14-day ATR of 1.7%. The primary exchange session traded on volume of 2,701,700 shares.",
-    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 55/100 (Confidence Tier B). Technical Factor sub-score: 69/100 (14-day RSI: 62.2, 20-day RVOL: 1.01x), Fundamental Score: 50/100. Risk penalty applied: -0.0 points. Modulated by the CONSOLIDATION macro regime.",
+    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 45/100 (Confidence Tier C). Technical Factor sub-score: 69/100 (14-day RSI: 62.2, 20-day RVOL: 1.01x), Fundamental Score: 50/100. Risk penalty applied: -0.0 points. Modulated by the HIGH_VOLATILITY macro regime.",
     "INFERENCE": "Current technical structure reflects neutral consolidation. Setup geometry indicates digestive trading range with no confirmed directional expansion.",
-    "UNCERTAINTY": "Risks include broader market sentiment deterioration in the CONSOLIDATION environment. A daily close below technical support at $980.53 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
+    "UNCERTAINTY": "Risks include broader market sentiment deterioration in the HIGH_VOLATILITY environment. A daily close below technical support at $980.53 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
   },
   "active_scanner_matches": [
-    {
-      "id": "MOMENTUM_LEADERS",
-      "name": "Momentum Leaders",
-      "why": "Strong trend: close > 50DMA > 200DMA with +16.3% 3m return and -3.3% from 52w high."
-    },
     {
       "id": "LOW_BETA_QUALITY",
       "name": "Low-Volatility Trend Quality",
       "why": "Low ATR volatility (1.7%) paired with rising 200DMA and positive quarterly return."
     },
     {
-      "id": "MTF_ALIGNMENT",
-      "name": "Fast & Medium MTF Alignment",
-      "why": "Fast 8EMA > 21EMA above 50DMA with established trend strength (ADX 50.8)."
+      "id": "MOMENTUM_LEADERS",
+      "name": "Momentum Leaders",
+      "why": "Strong trend: close > 50DMA > 200DMA with +16.3% 3m return and -3.3% from 52w high."
     },
     {
       "id": "STACKED_MOVING_AVERAGES",
       "name": "Stacked Moving Average Alignment",
       "why": "Perfect bullish alignment: Price > 20DMA > 50DMA > 200DMA with positive 200DMA slope."
+    },
+    {
+      "id": "MTF_ALIGNMENT",
+      "name": "Fast & Medium MTF Alignment",
+      "why": "Fast 8EMA > 21EMA above 50DMA with established trend strength (ADX 50.8)."
     }
   ],
   "catalysts_and_filings": [],
@@ -1527,28 +1470,29 @@
     "exchange": "NASDAQ",
     "country": "US",
     "currency": "USD",
-    "as_of_date": "2026-11-26",
-    "generated_at": "2026-11-26T16:57:36.160291+00:00",
+    "as_of_date": "2026-11-27",
+    "generated_at": "2026-11-27T20:23:29.930686+00:00",
     "conviction_grade": "SKIP",
     "aligned_layers_count": 2,
-    "formatted_card": "TICKER: COST\nREGIME: CONSOLIDATION (VIX: Medium | Risk-OFF | Rates: Paused | 20d Adverse Hazard: 10.8%)\nPATTERN TYPE: Archetype A: Mega-Cap Tech (Gamma-Momentum) \u2014 Momentum (Trend Breakout)\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BULLISH \u2014 Stacked MAs (Bullish Stack), RSI 62.2 equilibrium, price structure holding above key support.\n  Fundamental:  6.0/10 \u2014 Stable financial quality (Score 6.0/10); P/E N/Ax balanced by operational cash flow.\n  Sentiment:    0.00 (NEUTRAL) \u2014 Routine regulatory reporting schedule; no material catalyst in last 30 days.\n  Historical:   55.4% Win Rate (10 sample size, E[R]: +0.44R)\n  Regime fit:   NO\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $1083.15 \u2013 $1099.40\n  Entry trigger:  Confirmed daily close above swing resistance ($1123.24) on RVOL > 1.5x with CMF > 0.05.\n  Stop loss:      $1048.31 (3.2% below entry)\n  Target 1 (T1):  $1123.24 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $1195.49 | Est. 24 days | Take 40%\n  Target 3 (T3):  $1229.48 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.59\n  Position size:  0 shares on $100,000 portfolio risking 1% ($0.00)\n  Execution:      not measurable \u2014 this platform holds end-of-day prices only, with no order book, quote feed or fill record\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: SKIP-Grade\nTRADE THESIS: COST exhibits high structural confluence with Momentum (Trend Breakout) aligning above ascending moving averages. In the current CONSOLIDATION macro context (20d adverse hazard: 10.8%), measured support at $1083.15 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $1048.31 or two consecutive closes back below $1083.15 immediately invalidates the trade.",
+    "formatted_card": "TICKER: COST\nREGIME: HIGH_VOLATILITY (VIX: Medium | Risk-OFF | Rates: Paused | 20d Adverse Hazard: 15.8%)\nPATTERN TYPE: Archetype A: Mega-Cap Tech (Gamma-Momentum) \u2014 Momentum (Trend Breakout)\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BULLISH \u2014 Stacked MAs (Bullish Stack), RSI 62.2 equilibrium, price structure holding above key support.\n  Fundamental:  6.0/10 \u2014 Stable financial quality (Score 6.0/10); P/E N/Ax balanced by operational cash flow.\n  Sentiment:    0.00 (NEUTRAL) \u2014 Routine regulatory reporting schedule; no material catalyst in last 30 days.\n  Historical:   55.4% Win Rate (10 sample size, E[R]: +0.44R)\n  Regime fit:   NO\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $1083.15 \u2013 $1099.40\n  Entry trigger:  Confirmed daily close above swing resistance ($1123.24) on RVOL > 1.5x with CMF > 0.05.\n  Stop loss:      $1048.31 (3.2% below entry)\n  Target 1 (T1):  $1123.24 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $1195.49 | Est. 24 days | Take 40%\n  Target 3 (T3):  $1229.48 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.59\n  Position size:  0 shares on $100,000 portfolio risking 1% ($0.00)\n  Execution:      not measurable \u2014 this platform holds end-of-day prices only, with no order book, quote feed or fill record\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: SKIP-Grade\nTRADE THESIS: COST exhibits high structural confluence with Momentum (Trend Breakout) aligning above ascending moving averages. In the current HIGH_VOLATILITY macro context (20d adverse hazard: 15.8%), measured support at $1083.15 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $1048.31 or two consecutive closes back below $1083.15 immediately invalidates the trade.",
     "layer_1_regime": {
       "trend_type": "Volatile",
       "volatility_regime": "Medium (15\u201325)",
       "liquidity_env": "Risk-OFF",
       "rate_context": "Paused",
-      "regime_state": "CONSOLIDATION",
+      "regime_state": "HIGH_VOLATILITY",
       "regime_fit": "NO",
       "status": "BEARISH",
-      "conviction_weight": 0.85,
+      "conviction_weight": 0.7,
       "top_drivers": [
         "Index below 200-day moving average (structural downtrend)",
+        "VIX elevated at 26.8 signals heightened market volatility",
         "Yield curve positively sloped (+45 bps 10Y-2Y spread)"
       ],
-      "adverse_hazard_rate_5d": 0.0982,
-      "adverse_hazard_rate_20d": 0.1082,
-      "expected_regime_duration_days": 4.2,
-      "hazard_tier": "LOW_HAZARD",
+      "adverse_hazard_rate_5d": 0.3694,
+      "adverse_hazard_rate_20d": 0.1578,
+      "expected_regime_duration_days": 2.6,
+      "hazard_tier": "MODERATE_HAZARD",
       "cross_border_macro_divergence_posture": "SYNCHRONIZED_EXPANSION"
     },
     "layer_2_fingerprint": {
@@ -1645,13 +1589,20 @@
       "position_value": 0.0,
       "portfolio_risk_pct": 0.0,
       "invalidation_rule": "A daily closing price below $1048.31 or two consecutive closes back below $1083.15 immediately invalidates the trade.",
-      "trade_thesis": "COST exhibits high structural confluence with Momentum (Trend Breakout) aligning above ascending moving averages. In the current CONSOLIDATION macro context (20d adverse hazard: 10.8%), measured support at $1083.15 offers asymmetric risk/reward into upper channel resistance.",
+      "trade_thesis": "COST exhibits high structural confluence with Momentum (Trend Breakout) aligning above ascending moving averages. In the current HIGH_VOLATILITY macro context (20d adverse hazard: 15.8%), measured support at $1083.15 offers asymmetric risk/reward into upper channel resistance.",
       "tca_execution_strategy": null,
       "tca_expected_slippage_bps": null,
       "tca_effective_fill_price": null,
       "tca_optimal_slices": null
     },
-    "meta_label_verdict": null
+    "meta_label_verdict": {
+      "symbol": "COST",
+      "meta_probability": 0.4372,
+      "action": "GATED_EXCLUDE",
+      "size_multiplier": 0.0,
+      "primary_driver": "mom_1m (+0.10, impact +)",
+      "calibrated_at": "2026-11-27T20:23:30.201826+00:00"
+    }
   },
   "disclaimers": {
     "canada": "STATUTORY NOTICE (CANADA): This platform provides impersonal quantitative research and decision-support data intended exclusively for self-directed investors. It does not provide personalized investment advice, financial planning, or account management services. The scores, regime classifications, indicators, and model outputs presented herein are calculated by deterministic mathematical models and rule-based algorithms without consideration of your personal financial situation, risk tolerance, or investment objectives. Past hypothetical performance or paper-trading metrics are not indicative of future returns. The platform, its operators, and its algorithms do not hold any financial interest or proprietary position in the securities analyzed unless explicitly disclosed. You are solely responsible for evaluating the merits and risks of any trade or strategy.",

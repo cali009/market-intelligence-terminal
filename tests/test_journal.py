@@ -88,8 +88,20 @@ def test_feed_health_status():
         assert f["staleness_reason"], f"{feed_id} badged without a reason"
         assert not (f["staleness_badge"] == "STALE" and f["market_closed"])
         detail = f["market_state_detail"]
-        assert detail["holiday_modelled"] is False, (
-            "the calendar does not model exchange holidays and must say so")
+        # This used to assert holiday_modelled is False, with the message "the calendar
+        # does not model exchange holidays and must say so". That was true when the
+        # calendar deliberately modelled nothing, and it is now false: the calendar
+        # derives each exchange's published holiday rule. The invariant that survives
+        # the change is the honest one -- the feed must always declare whether holidays
+        # are modelled rather than leaving a reader to assume, and modelling them must
+        # not become a way to excuse an unexplained weekday. That second half is what
+        # test_market_calendar.py::test_negative_control_an_unexplained_weekday_is_still_a_gap
+        # pins down.
+        assert "holiday_modelled" in detail, f"{feed_id} does not declare whether holidays are modelled"
+        assert isinstance(detail["holiday_modelled"], bool)
+        assert detail["holiday_modelled"] is True, (
+            "both equity calendars derive their published holiday rule, so the feed "
+            "must say holidays are modelled rather than understate its own data")
 
     # The equity feeds have a real denominator, so their coverage must be measured.
     by_id = {f["feed_id"]: f for f in health["feeds"]}

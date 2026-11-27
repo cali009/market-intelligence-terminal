@@ -1,8 +1,8 @@
 {
-  "as_of_date": "2026-11-26",
-  "generated_at": "2026-11-26T17:39:52.576382+00:00",
+  "as_of_date": "2026-11-27",
+  "generated_at": "2026-11-27T20:22:14.014293+00:00",
   "active_regime": "HIGH_VOLATILITY",
-  "total_matches": 281,
+  "total_matches": 282,
   "scanner_definitions": [
     {
       "scanner_id": "MOMENTUM_LEADERS",
@@ -407,11 +407,11 @@
       "scanner_name": "Volatility Squeeze (Bandwidth)",
       "symbol": "ENB",
       "exchange": "TSX",
-      "price": 66.44499969482422,
+      "price": 66.4000015258789,
       "why_matched": "Bollinger Bandwidth compressed to 6.8% with low ATR% of 1.6%, indicating impending expansion.",
       "key_metrics": {
-        "bandwidth": 0.06799653016929304,
-        "atr_pct": 1.6393795158231674
+        "bandwidth": 0.06810154997070433,
+        "atr_pct": 1.6404904958641802
       },
       "regime_gated": false,
       "regime_state": "HIGH_VOLATILITY",
@@ -432,11 +432,11 @@
       "scanner_name": "Volatility Squeeze (Bandwidth)",
       "symbol": "CNR",
       "exchange": "TSX",
-      "price": 180.38999938964844,
+      "price": 180.52499389648438,
       "why_matched": "Bollinger Bandwidth compressed to 5.6% with low ATR% of 1.6%, indicating impending expansion.",
       "key_metrics": {
-        "bandwidth": 0.05610775477937857,
-        "atr_pct": 1.576347000232846
+        "bandwidth": 0.05620467125957923,
+        "atr_pct": 1.5751682261400974
       },
       "regime_gated": false,
       "regime_state": "HIGH_VOLATILITY",
@@ -457,12 +457,12 @@
       "scanner_name": "Low-Volatility Trend Quality",
       "symbol": "CNR",
       "exchange": "TSX",
-      "price": 180.38999938964844,
+      "price": 180.52499389648438,
       "why_matched": "Low ATR volatility (1.6%) paired with rising 200DMA and positive quarterly return.",
       "key_metrics": {
-        "atr_pct": 1.576347000232846,
-        "slope_200": 33.35645783903406,
-        "ret_3m": 0.029917246221892402
+        "atr_pct": 1.5751682261400974,
+        "slope_200": 33.36177097804485,
+        "ret_3m": 0.03068798279934093
       },
       "regime_gated": false,
       "regime_state": "HIGH_VOLATILITY",
@@ -483,11 +483,11 @@
       "scanner_name": "Consolidation Base Tightening",
       "symbol": "CNR",
       "exchange": "TSX",
-      "price": 180.38999938964844,
+      "price": 180.52499389648438,
       "why_matched": "Price consolidating in a tight band (5.6%) within 2.6% of yearly high.",
       "key_metrics": {
-        "bandwidth": 0.05610775477937857,
-        "prox_52w": -0.026234821108510498
+        "bandwidth": 0.05620467125957923,
+        "prox_52w": -0.02550610582194668
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -508,12 +508,12 @@
       "scanner_name": "Pullback to Key Support",
       "symbol": "CNR",
       "exchange": "TSX",
-      "price": 180.38999938964844,
-      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 57.0 shows controlled digestion.",
+      "price": 180.52499389648438,
+      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 57.3 shows controlled digestion.",
       "key_metrics": {
-        "dist_sma20": 0.008393487590813053,
-        "dist_sma50": 0.03880413234674574,
-        "rsi": 57.01355610700505
+        "dist_sma20": 0.009110041704213472,
+        "dist_sma50": 0.0395653565150681,
+        "rsi": 57.265955446342254
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -534,13 +534,13 @@
       "scanner_name": "Stacked Moving Average Alignment",
       "symbol": "CNR",
       "exchange": "TSX",
-      "price": 180.38999938964844,
+      "price": 180.52499389648438,
       "why_matched": "Perfect bullish alignment: Price > 20DMA > 50DMA > 200DMA with positive 200DMA slope.",
       "key_metrics": {
-        "close": 180.38999938964844,
-        "sma_20": 178.8885009765625,
-        "sma_50": 173.65159973144532,
-        "sma_200": 164.305899810791
+        "close": 180.52499389648438,
+        "sma_20": 178.8952507019043,
+        "sma_50": 173.65429962158203,
+        "sma_200": 164.3065747833252
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -561,11 +561,11 @@
       "scanner_name": "Fast & Medium MTF Alignment",
       "symbol": "CNR",
       "exchange": "TSX",
-      "price": 180.38999938964844,
+      "price": 180.52499389648438,
       "why_matched": "Fast 8EMA > 21EMA above 50DMA with established trend strength (ADX 26.5).",
       "key_metrics": {
-        "ema_8": 179.24401863514476,
-        "ema_21": 178.08564902100784,
+        "ema_8": 179.27401741444163,
+        "ema_21": 178.09792124890203,
         "adx": 26.491532565181423
       },
       "regime_gated": true,
@@ -587,11 +587,11 @@
       "scanner_name": "Fast & Medium MTF Alignment",
       "symbol": "BN",
       "exchange": "TSX",
-      "price": 57.23500061035156,
+      "price": 57.27000045776367,
       "why_matched": "Fast 8EMA > 21EMA above 50DMA with established trend strength (ADX 49.2).",
       "key_metrics": {
-        "ema_8": 56.75196695765492,
-        "ema_21": 56.60819943702684,
+        "ema_8": 56.75974470152428,
+        "ema_21": 56.61138124133703,
         "adx": 49.244762169300216
       },
       "regime_gated": true,
@@ -613,13 +613,13 @@
       "scanner_name": "Stacked Moving Average Alignment",
       "symbol": "BAM",
       "exchange": "TSX",
-      "price": 74.57499694824219,
+      "price": 74.5999984741211,
       "why_matched": "Perfect bullish alignment: Price > 20DMA > 50DMA > 200DMA with positive 200DMA slope.",
       "key_metrics": {
-        "close": 74.57499694824219,
-        "sma_20": 73.04425048828125,
-        "sma_50": 67.92090003967286,
-        "sma_200": 66.70762508392335
+        "close": 74.5999984741211,
+        "sma_20": 73.04550056457519,
+        "sma_50": 67.92140007019043,
+        "sma_200": 66.70775009155274
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -640,11 +640,11 @@
       "scanner_name": "Fast & Medium MTF Alignment",
       "symbol": "BAM",
       "exchange": "TSX",
-      "price": 74.57499694824219,
+      "price": 74.5999984741211,
       "why_matched": "Fast 8EMA > 21EMA above 50DMA with established trend strength (ADX 41.7).",
       "key_metrics": {
-        "ema_8": 73.03956063570459,
-        "ema_21": 71.89901392870263,
+        "ema_8": 73.04511653034436,
+        "ema_21": 71.90128679469163,
         "adx": 41.74938735462029
       },
       "regime_gated": true,
@@ -666,11 +666,11 @@
       "scanner_name": "Volatility Squeeze (Bandwidth)",
       "symbol": "CP",
       "exchange": "TSX",
-      "price": 133.22999572753906,
+      "price": 133.27999877929688,
       "why_matched": "Bollinger Bandwidth compressed to 7.9% with low ATR% of 1.8%, indicating impending expansion.",
       "key_metrics": {
-        "bandwidth": 0.07943048580705911,
-        "atr_pct": 1.7772691532773153
+        "bandwidth": 0.07947848442432681,
+        "atr_pct": 1.7766023699469367
       },
       "regime_gated": false,
       "regime_state": "HIGH_VOLATILITY",
@@ -691,12 +691,12 @@
       "scanner_name": "Low-Volatility Trend Quality",
       "symbol": "CP",
       "exchange": "TSX",
-      "price": 133.22999572753906,
+      "price": 133.27999877929688,
       "why_matched": "Low ATR volatility (1.8%) paired with rising 200DMA and positive quarterly return.",
       "key_metrics": {
-        "atr_pct": 1.7772691532773153,
-        "slope_200": 30.53686825369255,
-        "ret_3m": 0.023743632644710244
+        "atr_pct": 1.7766023699469367,
+        "slope_200": 30.539509738296438,
+        "ret_3m": 0.024127857725333657
       },
       "regime_gated": false,
       "regime_state": "HIGH_VOLATILITY",
@@ -717,14 +717,14 @@
       "scanner_name": "TAC-15: PO3 Liquidity Sweep & Manipulation Reversal",
       "symbol": "CP",
       "exchange": "TSX",
-      "price": 133.22999572753906,
-      "why_matched": "Institutional liquidity sweep: Low ($132.01) swept support with 35.4% lower rejection wick and close in upper 74.4% of daily range.",
+      "price": 133.27999877929688,
+      "why_matched": "Institutional liquidity sweep: Low ($132.01) swept support with 35.4% lower rejection wick and close in upper 77.4% of daily range.",
       "key_metrics": {
         "low": 132.00999450683594,
-        "close": 133.22999572753906,
+        "close": 133.27999877929688,
         "wick_ratio": 0.35,
-        "rsi": 58.7,
-        "rvol": 0.07
+        "rsi": 58.8,
+        "rvol": 0.06
       },
       "regime_gated": false,
       "regime_state": "HIGH_VOLATILITY",
@@ -745,11 +745,11 @@
       "scanner_name": "Consolidation Base Tightening",
       "symbol": "CP",
       "exchange": "TSX",
-      "price": 133.22999572753906,
-      "why_matched": "Price consolidating in a tight band (7.9%) within 2.1% of yearly high.",
+      "price": 133.27999877929688,
+      "why_matched": "Price consolidating in a tight band (7.9%) within 2.0% of yearly high.",
       "key_metrics": {
-        "bandwidth": 0.07943048580705911,
-        "prox_52w": -0.020655672576251005
+        "bandwidth": 0.07947848442432681,
+        "prox_52w": -0.020288111166183675
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -770,13 +770,13 @@
       "scanner_name": "Stacked Moving Average Alignment",
       "symbol": "CP",
       "exchange": "TSX",
-      "price": 133.22999572753906,
+      "price": 133.27999877929688,
       "why_matched": "Perfect bullish alignment: Price > 20DMA > 50DMA > 200DMA with positive 200DMA slope.",
       "key_metrics": {
-        "close": 133.22999572753906,
-        "sma_20": 131.63499946594237,
-        "sma_50": 126.49539993286133,
-        "sma_200": 122.1486994934082
+        "close": 133.27999877929688,
+        "sma_20": 131.63749961853028,
+        "sma_50": 126.49639999389649,
+        "sma_200": 122.14894950866699
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -797,11 +797,11 @@
       "scanner_name": "Fast & Medium MTF Alignment",
       "symbol": "CP",
       "exchange": "TSX",
-      "price": 133.22999572753906,
+      "price": 133.27999877929688,
       "why_matched": "Fast 8EMA > 21EMA above 50DMA with established trend strength (ADX 28.7).",
       "key_metrics": {
-        "ema_8": 132.18457590201143,
-        "ema_21": 130.88936812181254,
+        "ema_8": 132.19568769129094,
+        "ema_21": 130.89391385379054,
         "adx": 28.692138478981118
       },
       "regime_gated": true,
@@ -4894,11 +4894,11 @@
       "scanner_name": "Volatility Squeeze (Bandwidth)",
       "symbol": "ATD",
       "exchange": "TSX",
-      "price": 86.5,
+      "price": 86.4000015258789,
       "why_matched": "Bollinger Bandwidth compressed to 7.2% with low ATR% of 2.4%, indicating impending expansion.",
       "key_metrics": {
-        "bandwidth": 0.07239940307622686,
-        "atr_pct": 2.4388925188538657
+        "bandwidth": 0.07183518889842497,
+        "atr_pct": 2.440888371830343
       },
       "regime_gated": false,
       "regime_state": "HIGH_VOLATILITY",
@@ -4919,11 +4919,11 @@
       "scanner_name": "Consolidation Base Tightening",
       "symbol": "ATD",
       "exchange": "TSX",
-      "price": 86.5,
-      "why_matched": "Price consolidating in a tight band (7.2%) within 9.1% of yearly high.",
+      "price": 86.4000015258789,
+      "why_matched": "Price consolidating in a tight band (7.2%) within 9.2% of yearly high.",
       "key_metrics": {
-        "bandwidth": 0.07239940307622686,
-        "prox_52w": -0.09090910548778375
+        "bandwidth": 0.07183518889842497,
+        "prox_52w": -0.0919600615836057
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -4944,12 +4944,12 @@
       "scanner_name": "Mean Reversion (Oversold Bounce)",
       "symbol": "BNS",
       "exchange": "TSX",
-      "price": 120.22000122070312,
-      "why_matched": "Oversold conditions: RSI at 34.5 interacting with lower Bollinger Band.",
+      "price": 120.18499755859375,
+      "why_matched": "Oversold conditions: RSI at 34.4 interacting with lower Bollinger Band.",
       "key_metrics": {
-        "rsi": 34.49720654342656,
-        "close": 120.22000122070312,
-        "bb_lower": 117.99182157044734
+        "rsi": 34.397889006318024,
+        "close": 120.18499755859375,
+        "bb_lower": 117.9843646168666
       },
       "regime_gated": false,
       "regime_state": "HIGH_VOLATILITY",
@@ -5101,12 +5101,12 @@
       "scanner_name": "Fast & Medium MTF Alignment",
       "symbol": "CAE",
       "exchange": "TSX",
-      "price": 39.61000061035156,
+      "price": 39.63999938964844,
       "why_matched": "Fast 8EMA > 21EMA above 50DMA with established trend strength (ADX 60.4).",
       "key_metrics": {
-        "ema_8": 39.28996576141269,
-        "ema_21": 38.47771970038129,
-        "adx": 60.405415158637744
+        "ema_8": 39.296632156811995,
+        "ema_21": 38.48044686213556,
+        "adx": 60.39736015361559
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -5123,17 +5123,42 @@
       }
     },
     {
+      "scanner_id": "CROSS_BORDER_LEADER",
+      "scanner_name": "Canadian Market Leader",
+      "symbol": "CTC-A",
+      "exchange": "TSX",
+      "price": 227.30999755859375,
+      "why_matched": "Top-tier Canadian equity outperforming TSX index benchmark with -0.0% from 52w high.",
+      "key_metrics": {
+        "prox_52w": -0.00046169219549629936,
+        "ret_3m": 0.20582464687489455
+      },
+      "regime_gated": true,
+      "regime_state": "HIGH_VOLATILITY",
+      "idiosyncratic_risk_multiplier": 1.0,
+      "risk_posture": "NORMAL_EQUILIBRIUM",
+      "primary_risk_driver": "Stable Quantitative Fingerprint",
+      "conviction_score": 50.0,
+      "conviction_tier": "MODERATE",
+      "conviction_breakdown": {
+        "technical_quality": 35.0,
+        "macro_risk_alignment": 15.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
+      }
+    },
+    {
       "scanner_id": "STACKED_MOVING_AVERAGES",
       "scanner_name": "Stacked Moving Average Alignment",
       "symbol": "CTC-A",
       "exchange": "TSX",
-      "price": 227.47000122070312,
+      "price": 227.30999755859375,
       "why_matched": "Perfect bullish alignment: Price > 20DMA > 50DMA > 200DMA with positive 200DMA slope.",
       "key_metrics": {
-        "close": 227.47000122070312,
-        "sma_20": 214.04600143432617,
-        "sma_50": 202.84239990234374,
-        "sma_200": 193.0350998687744
+        "close": 227.30999755859375,
+        "sma_20": 214.0380012512207,
+        "sma_50": 202.83919982910157,
+        "sma_200": 193.03429985046387
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -5154,12 +5179,12 @@
       "scanner_name": "Fast & Medium MTF Alignment",
       "symbol": "CTC-A",
       "exchange": "TSX",
-      "price": 227.47000122070312,
+      "price": 227.30999755859375,
       "why_matched": "Fast 8EMA > 21EMA above 50DMA with established trend strength (ADX 37.1).",
       "key_metrics": {
-        "ema_8": 222.50426660121101,
-        "ema_21": 215.4999154038963,
-        "adx": 37.14170437017028
+        "ema_8": 222.46871023185338,
+        "ema_21": 215.4853696164318,
+        "adx": 37.13626246444084
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -5176,17 +5201,43 @@
       }
     },
     {
+      "scanner_id": "MOMENTUM_LEADERS",
+      "scanner_name": "Momentum Leaders",
+      "symbol": "CTC-A",
+      "exchange": "TSX",
+      "price": 227.30999755859375,
+      "why_matched": "Strong trend: close > 50DMA > 200DMA with +20.6% 3m return and -0.0% from 52w high.",
+      "key_metrics": {
+        "ret_3m": 0.20582464687489455,
+        "prox_52w": -0.00046169219549629936,
+        "rsi": 70.49725545452024
+      },
+      "regime_gated": true,
+      "regime_state": "HIGH_VOLATILITY",
+      "idiosyncratic_risk_multiplier": 1.0,
+      "risk_posture": "NORMAL_EQUILIBRIUM",
+      "primary_risk_driver": "Stable Quantitative Fingerprint",
+      "conviction_score": 43.0,
+      "conviction_tier": "WATCHLIST",
+      "conviction_breakdown": {
+        "technical_quality": 28.0,
+        "macro_risk_alignment": 15.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
+      }
+    },
+    {
       "scanner_id": "STACKED_MOVING_AVERAGES",
       "scanner_name": "Stacked Moving Average Alignment",
       "symbol": "CCL-B",
       "exchange": "TSX",
-      "price": 104.9800033569336,
+      "price": 104.97000122070312,
       "why_matched": "Perfect bullish alignment: Price > 20DMA > 50DMA > 200DMA with positive 200DMA slope.",
       "key_metrics": {
-        "close": 104.9800033569336,
-        "sma_20": 101.1825008392334,
-        "sma_50": 97.72820037841797,
-        "sma_200": 91.2154001235962
+        "close": 104.97000122070312,
+        "sma_20": 101.18200073242187,
+        "sma_50": 97.72800033569337,
+        "sma_200": 91.21535011291503
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -5207,11 +5258,11 @@
       "scanner_name": "Fast & Medium MTF Alignment",
       "symbol": "CCL-B",
       "exchange": "TSX",
-      "price": 104.9800033569336,
+      "price": 104.97000122070312,
       "why_matched": "Fast 8EMA > 21EMA above 50DMA with established trend strength (ADX 45.8).",
       "key_metrics": {
-        "ema_8": 103.34814654359603,
-        "ema_21": 101.3040360543992,
+        "ema_8": 103.34592384665592,
+        "ema_21": 101.30312676928735,
         "adx": 45.841471535532094
       },
       "regime_gated": true,
@@ -5233,11 +5284,11 @@
       "scanner_name": "Consolidation Base Tightening",
       "symbol": "CCL-B",
       "exchange": "TSX",
-      "price": 104.9800033569336,
+      "price": 104.97000122070312,
       "why_matched": "Price consolidating in a tight band (8.2%) within 4.3% of yearly high.",
       "key_metrics": {
-        "bandwidth": 0.08215418327531519,
-        "prox_52w": -0.042502700279609895
+        "bandwidth": 0.0821165987819824,
+        "prox_52w": -0.04259392735263212
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -5258,11 +5309,11 @@
       "scanner_name": "Canadian Market Leader",
       "symbol": "CCL-B",
       "exchange": "TSX",
-      "price": 104.9800033569336,
+      "price": 104.97000122070312,
       "why_matched": "Top-tier Canadian equity outperforming TSX index benchmark with -4.3% from 52w high.",
       "key_metrics": {
-        "prox_52w": -0.042502700279609895,
-        "ret_3m": 0.12893865758260836
+        "prox_52w": -0.04259392735263212,
+        "ret_3m": 0.12883109616245303
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -5283,12 +5334,12 @@
       "scanner_name": "Momentum Leaders",
       "symbol": "CCL-B",
       "exchange": "TSX",
-      "price": 104.9800033569336,
+      "price": 104.97000122070312,
       "why_matched": "Strong trend: close > 50DMA > 200DMA with +12.9% 3m return and -4.3% from 52w high.",
       "key_metrics": {
-        "ret_3m": 0.12893865758260836,
-        "prox_52w": -0.042502700279609895,
-        "rsi": 66.91034493638742
+        "ret_3m": 0.12883109616245303,
+        "prox_52w": -0.04259392735263212,
+        "rsi": 66.88653232610235
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -5309,11 +5360,11 @@
       "scanner_name": "Volatility Squeeze (Bandwidth)",
       "symbol": "GIB-A",
       "exchange": "TSX",
-      "price": 118.66000366210938,
+      "price": 118.66999816894531,
       "why_matched": "Bollinger Bandwidth compressed to 6.2% with low ATR% of 2.2%, indicating impending expansion.",
       "key_metrics": {
-        "bandwidth": 0.06217976582231543,
-        "atr_pct": 2.196551776841861
+        "bandwidth": 0.06220809519139322,
+        "atr_pct": 2.196366781037632
       },
       "regime_gated": false,
       "regime_state": "HIGH_VOLATILITY",
@@ -5334,11 +5385,11 @@
       "scanner_name": "Fast & Medium MTF Alignment",
       "symbol": "GIB-A",
       "exchange": "TSX",
-      "price": 118.66000366210938,
+      "price": 118.66999816894531,
       "why_matched": "Fast 8EMA > 21EMA above 50DMA with established trend strength (ADX 31.5).",
       "key_metrics": {
-        "ema_8": 116.82601859454527,
-        "ema_21": 114.90806910332229,
+        "ema_8": 116.82823959606436,
+        "ema_21": 114.90897769485282,
         "adx": 31.48295470922969
       },
       "regime_gated": true,
@@ -5360,11 +5411,11 @@
       "scanner_name": "Consolidation Base Tightening",
       "symbol": "GIB-A",
       "exchange": "TSX",
-      "price": 118.66000366210938,
+      "price": 118.66999816894531,
       "why_matched": "Price consolidating in a tight band (6.2%) within 10.1% of yearly high.",
       "key_metrics": {
-        "bandwidth": 0.06217976582231543,
-        "prox_52w": -0.10085623577690561
+        "bandwidth": 0.06220809519139322,
+        "prox_52w": -0.100780502604643
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -5385,12 +5436,12 @@
       "scanner_name": "Low-Volatility Trend Quality",
       "symbol": "DOL",
       "exchange": "TSX",
-      "price": 224.9199981689453,
+      "price": 224.75999450683594,
       "why_matched": "Low ATR volatility (1.8%) paired with rising 200DMA and positive quarterly return.",
       "key_metrics": {
-        "atr_pct": 1.8154076690854326,
-        "slope_200": 18.16504534906572,
-        "ret_3m": 0.28555092328490606
+        "atr_pct": 1.8167000337516293,
+        "slope_200": 18.159596289999556,
+        "ret_3m": 0.28463640764722054
       },
       "regime_gated": false,
       "regime_state": "HIGH_VOLATILITY",
@@ -5411,11 +5462,11 @@
       "scanner_name": "Consolidation Base Tightening",
       "symbol": "DOL",
       "exchange": "TSX",
-      "price": 224.9199981689453,
-      "why_matched": "Price consolidating in a tight band (8.6%) within 0.8% of yearly high.",
+      "price": 224.75999450683594,
+      "why_matched": "Price consolidating in a tight band (8.6%) within 0.9% of yearly high.",
       "key_metrics": {
-        "bandwidth": 0.08576954917343163,
-        "prox_52w": -0.008158072358162793
+        "bandwidth": 0.08555831612360947,
+        "prox_52w": -0.008863649194141177
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -5436,11 +5487,11 @@
       "scanner_name": "Canadian Market Leader",
       "symbol": "DOL",
       "exchange": "TSX",
-      "price": 224.9199981689453,
-      "why_matched": "Top-tier Canadian equity outperforming TSX index benchmark with -0.8% from 52w high.",
+      "price": 224.75999450683594,
+      "why_matched": "Top-tier Canadian equity outperforming TSX index benchmark with -0.9% from 52w high.",
       "key_metrics": {
-        "prox_52w": -0.008158072358162793,
-        "ret_3m": 0.28555092328490606
+        "prox_52w": -0.008863649194141177,
+        "ret_3m": 0.28463640764722054
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -5461,13 +5512,13 @@
       "scanner_name": "Stacked Moving Average Alignment",
       "symbol": "DOL",
       "exchange": "TSX",
-      "price": 224.9199981689453,
+      "price": 224.75999450683594,
       "why_matched": "Perfect bullish alignment: Price > 20DMA > 50DMA > 200DMA with positive 200DMA slope.",
       "key_metrics": {
-        "close": 224.9199981689453,
-        "sma_20": 218.34650115966798,
-        "sma_50": 202.4718002319336,
-        "sma_200": 187.6572501373291
+        "close": 224.75999450683594,
+        "sma_20": 218.3385009765625,
+        "sma_50": 202.4686001586914,
+        "sma_200": 187.65645011901856
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -5488,11 +5539,11 @@
       "scanner_name": "Fast & Medium MTF Alignment",
       "symbol": "DOL",
       "exchange": "TSX",
-      "price": 224.9199981689453,
+      "price": 224.75999450683594,
       "why_matched": "Fast 8EMA > 21EMA above 50DMA with established trend strength (ADX 32.1).",
       "key_metrics": {
-        "ema_8": 222.02093536955914,
-        "ema_21": 216.9079177855628,
+        "ema_8": 221.9853790002015,
+        "ema_21": 216.8933719980983,
         "adx": 32.06896015889715
       },
       "regime_gated": true,
@@ -5514,12 +5565,12 @@
       "scanner_name": "Momentum Leaders",
       "symbol": "DOL",
       "exchange": "TSX",
-      "price": 224.9199981689453,
-      "why_matched": "Strong trend: close > 50DMA > 200DMA with +28.6% 3m return and -0.8% from 52w high.",
+      "price": 224.75999450683594,
+      "why_matched": "Strong trend: close > 50DMA > 200DMA with +28.5% 3m return and -0.9% from 52w high.",
       "key_metrics": {
-        "ret_3m": 0.28555092328490606,
-        "prox_52w": -0.008158072358162793,
-        "rsi": 67.5296111210728
+        "ret_3m": 0.28463640764722054,
+        "prox_52w": -0.008863649194141177,
+        "rsi": 67.19714528056896
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -5850,11 +5901,11 @@
       "scanner_name": "Volatility Squeeze (Bandwidth)",
       "symbol": "FTS",
       "exchange": "TSX",
-      "price": 84.38999938964844,
+      "price": 84.41000366210938,
       "why_matched": "Bollinger Bandwidth compressed to 4.1% with low ATR% of 1.4%, indicating impending expansion.",
       "key_metrics": {
-        "bandwidth": 0.04118261239441079,
-        "atr_pct": 1.3694926659888942
+        "bandwidth": 0.04118157905610176,
+        "atr_pct": 1.3691681108030733
       },
       "regime_gated": false,
       "regime_state": "HIGH_VOLATILITY",
@@ -5875,12 +5926,12 @@
       "scanner_name": "Low-Volatility Trend Quality",
       "symbol": "FTS",
       "exchange": "TSX",
-      "price": 84.38999938964844,
+      "price": 84.41000366210938,
       "why_matched": "Low ATR volatility (1.4%) paired with rising 200DMA and positive quarterly return.",
       "key_metrics": {
-        "atr_pct": 1.3694926659888942,
-        "slope_200": 18.78816866455231,
-        "ret_3m": 0.10951882853582218
+        "atr_pct": 1.3691681108030733,
+        "slope_200": 18.78979295091368,
+        "ret_3m": 0.10978183501890193
       },
       "regime_gated": false,
       "regime_state": "HIGH_VOLATILITY",
@@ -5901,11 +5952,11 @@
       "scanner_name": "Consolidation Base Tightening",
       "symbol": "FTS",
       "exchange": "TSX",
-      "price": 84.38999938964844,
-      "why_matched": "Price consolidating in a tight band (4.1%) within 2.3% of yearly high.",
+      "price": 84.41000366210938,
+      "why_matched": "Price consolidating in a tight band (4.1%) within 2.2% of yearly high.",
       "key_metrics": {
-        "bandwidth": 0.04118261239441079,
-        "prox_52w": -0.02269831058607441
+        "bandwidth": 0.04118157905610176,
+        "prox_52w": -0.022466645585328293
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -5926,11 +5977,11 @@
       "scanner_name": "Canadian Market Leader",
       "symbol": "FTS",
       "exchange": "TSX",
-      "price": 84.38999938964844,
-      "why_matched": "Top-tier Canadian equity outperforming TSX index benchmark with -2.3% from 52w high.",
+      "price": 84.41000366210938,
+      "why_matched": "Top-tier Canadian equity outperforming TSX index benchmark with -2.2% from 52w high.",
       "key_metrics": {
-        "prox_52w": -0.02269831058607441,
-        "ret_3m": 0.10951882853582218
+        "prox_52w": -0.022466645585328293,
+        "ret_3m": 0.10978183501890193
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -5951,12 +6002,39 @@
       "scanner_name": "Momentum Leaders",
       "symbol": "FTS",
       "exchange": "TSX",
-      "price": 84.38999938964844,
-      "why_matched": "Strong trend: close > 50DMA > 200DMA with +11.0% 3m return and -2.3% from 52w high.",
+      "price": 84.41000366210938,
+      "why_matched": "Strong trend: close > 50DMA > 200DMA with +11.0% 3m return and -2.2% from 52w high.",
       "key_metrics": {
-        "ret_3m": 0.10951882853582218,
-        "prox_52w": -0.02269831058607441,
-        "rsi": 59.77457870866995
+        "ret_3m": 0.10978183501890193,
+        "prox_52w": -0.022466645585328293,
+        "rsi": 59.93906791791186
+      },
+      "regime_gated": true,
+      "regime_state": "HIGH_VOLATILITY",
+      "idiosyncratic_risk_multiplier": 1.0,
+      "risk_posture": "NORMAL_EQUILIBRIUM",
+      "primary_risk_driver": "Stable Quantitative Fingerprint",
+      "conviction_score": 47.0,
+      "conviction_tier": "MODERATE",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 15.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
+      }
+    },
+    {
+      "scanner_id": "STACKED_MOVING_AVERAGES",
+      "scanner_name": "Stacked Moving Average Alignment",
+      "symbol": "FTS",
+      "exchange": "TSX",
+      "price": 84.41000366210938,
+      "why_matched": "Perfect bullish alignment: Price > 20DMA > 50DMA > 200DMA with positive 200DMA slope.",
+      "key_metrics": {
+        "close": 84.41000366210938,
+        "sma_20": 84.41000061035156,
+        "sma_50": 80.02999984741211,
+        "sma_200": 78.7461498260498
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -5977,38 +6055,12 @@
       "scanner_name": "Fast & Medium MTF Alignment",
       "symbol": "FTS",
       "exchange": "TSX",
-      "price": 84.38999938964844,
+      "price": 84.41000366210938,
       "why_matched": "Fast 8EMA > 21EMA above 50DMA with established trend strength (ADX 37.0).",
       "key_metrics": {
-        "ema_8": 84.47090963637935,
-        "ema_21": 83.62566975319545,
+        "ema_8": 84.47535503025956,
+        "ema_21": 83.62748832341919,
         "adx": 36.997796426281205
-      },
-      "regime_gated": true,
-      "regime_state": "HIGH_VOLATILITY",
-      "idiosyncratic_risk_multiplier": 1.0,
-      "risk_posture": "NORMAL_EQUILIBRIUM",
-      "primary_risk_driver": "Stable Quantitative Fingerprint",
-      "conviction_score": 47.0,
-      "conviction_tier": "MODERATE",
-      "conviction_breakdown": {
-        "technical_quality": 32.0,
-        "macro_risk_alignment": 15.0,
-        "empirical_expectancy": null,
-        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
-      }
-    },
-    {
-      "scanner_id": "PULLBACK_UPTREND",
-      "scanner_name": "Pullback to Key Support",
-      "symbol": "FNV",
-      "exchange": "TSX",
-      "price": 352.760009765625,
-      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 54.6 shows controlled digestion.",
-      "key_metrics": {
-        "dist_sma20": 0.027768658497401733,
-        "dist_sma50": 0.023151161441522298,
-        "rsi": 54.5940222078441
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -6029,22 +6081,22 @@
       "scanner_name": "Low-Volatility Trend Quality",
       "symbol": "WN",
       "exchange": "TSX",
-      "price": 118.45999908447266,
+      "price": 118.41000366210938,
       "why_matched": "Low ATR volatility (2.0%) paired with rising 200DMA and positive quarterly return.",
       "key_metrics": {
-        "atr_pct": 2.0054988280485517,
-        "slope_200": 18.004773080715445,
-        "ret_3m": 0.21248723423428917
+        "atr_pct": 1.999710019137043,
+        "slope_200": 18.001621273153983,
+        "ret_3m": 0.2119755103455998
       },
       "regime_gated": false,
       "regime_state": "HIGH_VOLATILITY",
       "idiosyncratic_risk_multiplier": 1.0,
       "risk_posture": "NORMAL_EQUILIBRIUM",
       "primary_risk_driver": "Stable Quantitative Fingerprint",
-      "conviction_score": 59.0,
+      "conviction_score": 62.0,
       "conviction_tier": "HIGH",
       "conviction_breakdown": {
-        "technical_quality": 29.0,
+        "technical_quality": 32.0,
         "macro_risk_alignment": 30.0,
         "empirical_expectancy": null,
         "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
@@ -6055,11 +6107,11 @@
       "scanner_name": "Canadian Market Leader",
       "symbol": "WN",
       "exchange": "TSX",
-      "price": 118.45999908447266,
+      "price": 118.41000366210938,
       "why_matched": "Top-tier Canadian equity outperforming TSX index benchmark with -0.2% from 52w high.",
       "key_metrics": {
-        "prox_52w": -0.0017696055255153054,
-        "ret_3m": 0.21248723423428917
+        "prox_52w": -0.0021909034368214897,
+        "ret_3m": 0.2119755103455998
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -6080,13 +6132,13 @@
       "scanner_name": "Stacked Moving Average Alignment",
       "symbol": "WN",
       "exchange": "TSX",
-      "price": 118.45999908447266,
+      "price": 118.41000366210938,
       "why_matched": "Perfect bullish alignment: Price > 20DMA > 50DMA > 200DMA with positive 200DMA slope.",
       "key_metrics": {
-        "close": 118.45999908447266,
-        "sma_20": 112.10149955749512,
-        "sma_50": 107.03479965209961,
-        "sma_200": 101.36149997711182
+        "close": 118.41000366210938,
+        "sma_20": 112.09899978637695,
+        "sma_50": 107.03379974365234,
+        "sma_200": 101.36125
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -6107,11 +6159,11 @@
       "scanner_name": "Fast & Medium MTF Alignment",
       "symbol": "WN",
       "exchange": "TSX",
-      "price": 118.45999908447266,
+      "price": 118.41000366210938,
       "why_matched": "Fast 8EMA > 21EMA above 50DMA with established trend strength (ADX 24.8).",
       "key_metrics": {
-        "ema_8": 115.19127037361363,
-        "ema_21": 112.27452631976334,
+        "ema_8": 115.18016027975511,
+        "ema_21": 112.26998128136667,
         "adx": 24.758713958900366
       },
       "regime_gated": true,
@@ -6133,12 +6185,12 @@
       "scanner_name": "Momentum Leaders",
       "symbol": "WN",
       "exchange": "TSX",
-      "price": 118.45999908447266,
+      "price": 118.41000366210938,
       "why_matched": "Strong trend: close > 50DMA > 200DMA with +21.2% 3m return and -0.2% from 52w high.",
       "key_metrics": {
-        "ret_3m": 0.21248723423428917,
-        "prox_52w": -0.0017696055255153054,
-        "rsi": 72.89649292288792
+        "ret_3m": 0.2119755103455998,
+        "prox_52w": -0.0021909034368214897,
+        "rsi": 72.81624748566942
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -6159,11 +6211,11 @@
       "scanner_name": "Volatility Squeeze (Bandwidth)",
       "symbol": "H",
       "exchange": "TSX",
-      "price": 57.540000915527344,
+      "price": 57.5099983215332,
       "why_matched": "Bollinger Bandwidth compressed to 4.7% with low ATR% of 1.5%, indicating impending expansion.",
       "key_metrics": {
-        "bandwidth": 0.04703639337633601,
-        "atr_pct": 1.5026812837817065
+        "bandwidth": 0.046967936010999224,
+        "atr_pct": 1.503465222884049
       },
       "regime_gated": false,
       "regime_state": "HIGH_VOLATILITY",
@@ -6184,12 +6236,12 @@
       "scanner_name": "Low-Volatility Trend Quality",
       "symbol": "H",
       "exchange": "TSX",
-      "price": 57.540000915527344,
+      "price": 57.5099983215332,
       "why_matched": "Low ATR volatility (1.5%) paired with rising 200DMA and positive quarterly return.",
       "key_metrics": {
-        "atr_pct": 1.5026812837817065,
-        "slope_200": 7.584928317090922,
-        "ret_3m": 0.08586524047817679
+        "atr_pct": 1.503465222884049,
+        "slope_200": 7.58156243172078,
+        "ret_3m": 0.0852990469880126
       },
       "regime_gated": false,
       "regime_state": "HIGH_VOLATILITY",
@@ -6210,11 +6262,11 @@
       "scanner_name": "Fast & Medium MTF Alignment",
       "symbol": "H",
       "exchange": "TSX",
-      "price": 57.540000915527344,
+      "price": 57.5099983215332,
       "why_matched": "Fast 8EMA > 21EMA above 50DMA with established trend strength (ADX 37.8).",
       "key_metrics": {
-        "ema_8": 57.40503967760135,
-        "ema_21": 56.65344413511864,
+        "ema_8": 57.39837243449154,
+        "ema_21": 56.65071662657372,
         "adx": 37.844647530122245
       },
       "regime_gated": true,
@@ -6236,11 +6288,11 @@
       "scanner_name": "Consolidation Base Tightening",
       "symbol": "H",
       "exchange": "TSX",
-      "price": 57.540000915527344,
-      "why_matched": "Price consolidating in a tight band (4.7%) within 5.0% of yearly high.",
+      "price": 57.5099983215332,
+      "why_matched": "Price consolidating in a tight band (4.7%) within 5.1% of yearly high.",
       "key_metrics": {
-        "bandwidth": 0.04703639337633601,
-        "prox_52w": -0.05002474483346897
+        "bandwidth": 0.046967936010999224,
+        "prox_52w": -0.05052008236269645
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -6261,11 +6313,11 @@
       "scanner_name": "Canadian Market Leader",
       "symbol": "H",
       "exchange": "TSX",
-      "price": 57.540000915527344,
-      "why_matched": "Top-tier Canadian equity outperforming TSX index benchmark with -5.0% from 52w high.",
+      "price": 57.5099983215332,
+      "why_matched": "Top-tier Canadian equity outperforming TSX index benchmark with -5.1% from 52w high.",
       "key_metrics": {
-        "prox_52w": -0.05002474483346897,
-        "ret_3m": 0.08586524047817679
+        "prox_52w": -0.05052008236269645,
+        "ret_3m": 0.0852990469880126
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -6286,12 +6338,12 @@
       "scanner_name": "Low-Volatility Trend Quality",
       "symbol": "IFC",
       "exchange": "TSX",
-      "price": 279.2799987792969,
+      "price": 279.1499938964844,
       "why_matched": "Low ATR volatility (1.9%) paired with rising 200DMA and positive quarterly return.",
       "key_metrics": {
-        "atr_pct": 1.8721621681404983,
-        "slope_200": 7.926692412006497,
-        "ret_3m": 0.04599250479137407
+        "atr_pct": 1.8730340657890625,
+        "slope_200": 7.92360437567825,
+        "ret_3m": 0.04550559511791907
       },
       "regime_gated": false,
       "regime_state": "HIGH_VOLATILITY",
@@ -6312,11 +6364,11 @@
       "scanner_name": "Fast & Medium MTF Alignment",
       "symbol": "IFC",
       "exchange": "TSX",
-      "price": 279.2799987792969,
+      "price": 279.1499938964844,
       "why_matched": "Fast 8EMA > 21EMA above 50DMA with established trend strength (ADX 34.3).",
       "key_metrics": {
-        "ema_8": 279.29842727455576,
-        "ema_21": 275.1875830019387,
+        "ema_8": 279.26953730059745,
+        "ema_21": 275.17576437622847,
         "adx": 34.278373161426316
       },
       "regime_gated": true,
@@ -6338,11 +6390,11 @@
       "scanner_name": "Consolidation Base Tightening",
       "symbol": "IFC",
       "exchange": "TSX",
-      "price": 279.2799987792969,
+      "price": 279.1499938964844,
       "why_matched": "Price consolidating in a tight band (9.4%) within 8.6% of yearly high.",
       "key_metrics": {
-        "bandwidth": 0.09370697989746515,
-        "prox_52w": -0.08588632880973546
+        "bandwidth": 0.09367094772753073,
+        "prox_52w": -0.08631184886566445
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -6363,11 +6415,11 @@
       "scanner_name": "Volatility Squeeze (Bandwidth)",
       "symbol": "L",
       "exchange": "TSX",
-      "price": 72.5199966430664,
-      "why_matched": "Bollinger Bandwidth compressed to 7.1% with low ATR% of 1.9%, indicating impending expansion.",
+      "price": 72.47000122070312,
+      "why_matched": "Bollinger Bandwidth compressed to 7.0% with low ATR% of 1.9%, indicating impending expansion.",
       "key_metrics": {
-        "bandwidth": 0.07070647608226346,
-        "atr_pct": 1.8615564209036342
+        "bandwidth": 0.07045585138790005,
+        "atr_pct": 1.8628406667701787
       },
       "regime_gated": false,
       "regime_state": "HIGH_VOLATILITY",
@@ -6388,12 +6440,12 @@
       "scanner_name": "Low-Volatility Trend Quality",
       "symbol": "L",
       "exchange": "TSX",
-      "price": 72.5199966430664,
+      "price": 72.47000122070312,
       "why_matched": "Low ATR volatility (1.9%) paired with rising 200DMA and positive quarterly return.",
       "key_metrics": {
-        "atr_pct": 1.8615564209036342,
-        "slope_200": 13.609297566434,
-        "ret_3m": 0.19650215992046594
+        "atr_pct": 1.8628406667701787,
+        "slope_200": 13.60433944807668,
+        "ret_3m": 0.19567728907638382
       },
       "regime_gated": false,
       "regime_state": "HIGH_VOLATILITY",
@@ -6414,11 +6466,11 @@
       "scanner_name": "Consolidation Base Tightening",
       "symbol": "L",
       "exchange": "TSX",
-      "price": 72.5199966430664,
-      "why_matched": "Price consolidating in a tight band (7.1%) within 1.5% of yearly high.",
+      "price": 72.47000122070312,
+      "why_matched": "Price consolidating in a tight band (7.0%) within 1.6% of yearly high.",
       "key_metrics": {
-        "bandwidth": 0.07070647608226346,
-        "prox_52w": -0.014941674306942265
+        "bandwidth": 0.07045585138790005,
+        "prox_52w": -0.0156207753732025
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -6439,11 +6491,11 @@
       "scanner_name": "Canadian Market Leader",
       "symbol": "L",
       "exchange": "TSX",
-      "price": 72.5199966430664,
-      "why_matched": "Top-tier Canadian equity outperforming TSX index benchmark with -1.5% from 52w high.",
+      "price": 72.47000122070312,
+      "why_matched": "Top-tier Canadian equity outperforming TSX index benchmark with -1.6% from 52w high.",
       "key_metrics": {
-        "prox_52w": -0.014941674306942265,
-        "ret_3m": 0.19650215992046594
+        "prox_52w": -0.0156207753732025,
+        "ret_3m": 0.19567728907638382
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -6464,13 +6516,13 @@
       "scanner_name": "Stacked Moving Average Alignment",
       "symbol": "L",
       "exchange": "TSX",
-      "price": 72.5199966430664,
+      "price": 72.47000122070312,
       "why_matched": "Perfect bullish alignment: Price > 20DMA > 50DMA > 200DMA with positive 200DMA slope.",
       "key_metrics": {
-        "close": 72.5199966430664,
-        "sma_20": 70.39349937438965,
-        "sma_50": 67.10019981384278,
-        "sma_200": 64.21249975204468
+        "close": 72.47000122070312,
+        "sma_20": 70.39099960327148,
+        "sma_50": 67.09919990539551,
+        "sma_200": 64.21224977493286
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -6491,12 +6543,12 @@
       "scanner_name": "Momentum Leaders",
       "symbol": "L",
       "exchange": "TSX",
-      "price": 72.5199966430664,
-      "why_matched": "Strong trend: close > 50DMA > 200DMA with +19.7% 3m return and -1.5% from 52w high.",
+      "price": 72.47000122070312,
+      "why_matched": "Strong trend: close > 50DMA > 200DMA with +19.6% 3m return and -1.6% from 52w high.",
       "key_metrics": {
-        "ret_3m": 0.19650215992046594,
-        "prox_52w": -0.014941674306942265,
-        "rsi": 67.78575945625893
+        "ret_3m": 0.19567728907638382,
+        "prox_52w": -0.0156207753732025,
+        "rsi": 67.5908619013868
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -6517,12 +6569,12 @@
       "scanner_name": "Pullback to Key Support",
       "symbol": "MG",
       "exchange": "TSX",
-      "price": 89.40499877929688,
-      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 50.9 shows controlled digestion.",
+      "price": 89.45999908447266,
+      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 51.1 shows controlled digestion.",
       "key_metrics": {
-        "dist_sma20": 0.0098864925932615,
-        "dist_sma50": 0.007181445258847522,
-        "rsi": 50.93303585632097
+        "dist_sma20": 0.010476367519040243,
+        "dist_sma50": 0.006582816469716605,
+        "rsi": 51.06550620865378
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -6543,11 +6595,11 @@
       "scanner_name": "Consolidation Base Tightening",
       "symbol": "MG",
       "exchange": "TSX",
-      "price": 89.40499877929688,
-      "why_matched": "Price consolidating in a tight band (7.3%) within 11.6% of yearly high.",
+      "price": 89.45999908447266,
+      "why_matched": "Price consolidating in a tight band (7.3%) within 11.5% of yearly high.",
       "key_metrics": {
-        "bandwidth": 0.07259185281306978,
-        "prox_52w": -0.11567754571052569
+        "bandwidth": 0.07266293733377512,
+        "prox_52w": -0.11513352685784628
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -6568,11 +6620,11 @@
       "scanner_name": "Consolidation Base Tightening",
       "symbol": "MFC",
       "exchange": "TSX",
-      "price": 60.119998931884766,
-      "why_matched": "Price consolidating in a tight band (9.3%) within 6.9% of yearly high.",
+      "price": 60.099998474121094,
+      "why_matched": "Price consolidating in a tight band (9.3%) within 7.0% of yearly high.",
       "key_metrics": {
-        "bandwidth": 0.09301604610076478,
-        "prox_52w": -0.06934983975318554
+        "bandwidth": 0.09309591477813779,
+        "prox_52w": -0.06965944436984328
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -6593,11 +6645,11 @@
       "scanner_name": "Volatility Squeeze (Bandwidth)",
       "symbol": "MRU",
       "exchange": "TSX",
-      "price": 98.36000061035156,
+      "price": 98.29000091552734,
       "why_matched": "Bollinger Bandwidth compressed to 4.7% with low ATR% of 2.0%, indicating impending expansion.",
       "key_metrics": {
-        "bandwidth": 0.04670057920013631,
-        "atr_pct": 1.9570961468809802
+        "bandwidth": 0.046754617317493835,
+        "atr_pct": 1.9584899420966406
       },
       "regime_gated": false,
       "regime_state": "HIGH_VOLATILITY",
@@ -6618,12 +6670,12 @@
       "scanner_name": "Low-Volatility Trend Quality",
       "symbol": "MRU",
       "exchange": "TSX",
-      "price": 98.36000061035156,
+      "price": 98.29000091552734,
       "why_matched": "Low ATR volatility (2.0%) paired with rising 200DMA and positive quarterly return.",
       "key_metrics": {
-        "atr_pct": 1.9570961468809802,
-        "slope_200": 4.199603696095364,
-        "ret_3m": 0.10504435737245399
+        "atr_pct": 1.9584899420966406,
+        "slope_200": 4.1948407191840476,
+        "ret_3m": 0.10425793232870362
       },
       "regime_gated": false,
       "regime_state": "HIGH_VOLATILITY",
@@ -6640,44 +6692,16 @@
       }
     },
     {
-      "scanner_id": "PO3_LIQUIDITY_SWEEP",
-      "scanner_name": "TAC-15: PO3 Liquidity Sweep & Manipulation Reversal",
-      "symbol": "MRU",
-      "exchange": "TSX",
-      "price": 98.36000061035156,
-      "why_matched": "Institutional liquidity sweep: Low ($98.04) swept support with 53.3% lower rejection wick and close in upper 53.3% of daily range.",
-      "key_metrics": {
-        "low": 98.04000091552734,
-        "close": 98.36000061035156,
-        "wick_ratio": 0.53,
-        "rsi": 53.4,
-        "rvol": 0.03
-      },
-      "regime_gated": false,
-      "regime_state": "HIGH_VOLATILITY",
-      "idiosyncratic_risk_multiplier": 1.0,
-      "risk_posture": "NORMAL_EQUILIBRIUM",
-      "primary_risk_driver": "Stable Quantitative Fingerprint",
-      "conviction_score": 59.0,
-      "conviction_tier": "HIGH",
-      "conviction_breakdown": {
-        "technical_quality": 29.0,
-        "macro_risk_alignment": 30.0,
-        "empirical_expectancy": null,
-        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
-      }
-    },
-    {
       "scanner_id": "MOMENTUM_LEADERS",
       "scanner_name": "Momentum Leaders",
       "symbol": "MRU",
       "exchange": "TSX",
-      "price": 98.36000061035156,
-      "why_matched": "Strong trend: close > 50DMA > 200DMA with +10.5% 3m return and -3.2% from 52w high.",
+      "price": 98.29000091552734,
+      "why_matched": "Strong trend: close > 50DMA > 200DMA with +10.4% 3m return and -3.3% from 52w high.",
       "key_metrics": {
-        "ret_3m": 0.10504435737245399,
-        "prox_52w": -0.03208031930839639,
-        "rsi": 53.38215668492356
+        "ret_3m": 0.10425793232870362,
+        "prox_52w": -0.03276915706604522,
+        "rsi": 53.09793905923375
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -6698,11 +6722,11 @@
       "scanner_name": "Consolidation Base Tightening",
       "symbol": "MRU",
       "exchange": "TSX",
-      "price": 98.36000061035156,
-      "why_matched": "Price consolidating in a tight band (4.7%) within 3.2% of yearly high.",
+      "price": 98.29000091552734,
+      "why_matched": "Price consolidating in a tight band (4.7%) within 3.3% of yearly high.",
       "key_metrics": {
-        "bandwidth": 0.04670057920013631,
-        "prox_52w": -0.03208031930839639
+        "bandwidth": 0.046754617317493835,
+        "prox_52w": -0.03276915706604522
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -6723,11 +6747,11 @@
       "scanner_name": "Canadian Market Leader",
       "symbol": "MRU",
       "exchange": "TSX",
-      "price": 98.36000061035156,
-      "why_matched": "Top-tier Canadian equity outperforming TSX index benchmark with -3.2% from 52w high.",
+      "price": 98.29000091552734,
+      "why_matched": "Top-tier Canadian equity outperforming TSX index benchmark with -3.3% from 52w high.",
       "key_metrics": {
-        "prox_52w": -0.03208031930839639,
-        "ret_3m": 0.10504435737245399
+        "prox_52w": -0.03276915706604522,
+        "ret_3m": 0.10425793232870362
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -6748,12 +6772,12 @@
       "scanner_name": "Pullback to Key Support",
       "symbol": "MRU",
       "exchange": "TSX",
-      "price": 98.36000061035156,
-      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 53.4 shows controlled digestion.",
+      "price": 98.29000091552734,
+      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 53.1 shows controlled digestion.",
       "key_metrics": {
-        "dist_sma20": 0.003762722665370931,
-        "dist_sma50": 0.03521804956506897,
-        "rsi": 53.38215668492356
+        "dist_sma20": 0.004436420903329368,
+        "dist_sma50": 0.034496560623165015,
+        "rsi": 53.09793905923375
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -6774,11 +6798,11 @@
       "scanner_name": "Fast & Medium MTF Alignment",
       "symbol": "MRU",
       "exchange": "TSX",
-      "price": 98.36000061035156,
+      "price": 98.29000091552734,
       "why_matched": "Fast 8EMA > 21EMA above 50DMA with established trend strength (ADX 31.3).",
       "key_metrics": {
-        "ema_8": 98.60033080268356,
-        "ema_21": 98.01935336747609,
+        "ema_8": 98.58477531494485,
+        "ema_21": 98.0129897588557,
         "adx": 31.292027696616667
       },
       "regime_gated": true,
@@ -6800,11 +6824,11 @@
       "scanner_name": "Volatility Squeeze (Bandwidth)",
       "symbol": "PPL",
       "exchange": "TSX",
-      "price": 70.26000213623047,
+      "price": 70.22000122070312,
       "why_matched": "Bollinger Bandwidth compressed to 8.0% with low ATR% of 2.1%, indicating impending expansion.",
       "key_metrics": {
-        "bandwidth": 0.08030443448009766,
-        "atr_pct": 2.098329306605147
+        "bandwidth": 0.08027319719268931,
+        "atr_pct": 2.0995246226387976
       },
       "regime_gated": false,
       "regime_state": "HIGH_VOLATILITY",
@@ -6825,12 +6849,12 @@
       "scanner_name": "Low-Volatility Trend Quality",
       "symbol": "PPL",
       "exchange": "TSX",
-      "price": 70.26000213623047,
+      "price": 70.22000122070312,
       "why_matched": "Low ATR volatility (2.1%) paired with rising 200DMA and positive quarterly return.",
       "key_metrics": {
-        "atr_pct": 2.098329306605147,
-        "slope_200": 27.368372873249875,
-        "ret_3m": 0.04756228501447901
+        "atr_pct": 2.0995246226387976,
+        "slope_200": 27.364454900542846,
+        "ret_3m": 0.04696587953200759
       },
       "regime_gated": false,
       "regime_state": "HIGH_VOLATILITY",
@@ -6851,11 +6875,11 @@
       "scanner_name": "Consolidation Base Tightening",
       "symbol": "PPL",
       "exchange": "TSX",
-      "price": 70.26000213623047,
+      "price": 70.22000122070312,
       "why_matched": "Price consolidating in a tight band (8.0%) within 3.4% of yearly high.",
       "key_metrics": {
-        "bandwidth": 0.08030443448009766,
-        "prox_52w": -0.03382836968066916
+        "bandwidth": 0.08027319719268931,
+        "prox_52w": -0.03437843726669598
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -6876,12 +6900,12 @@
       "scanner_name": "Pullback to Key Support",
       "symbol": "PPL",
       "exchange": "TSX",
-      "price": 70.26000213623047,
-      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 53.3 shows controlled digestion.",
+      "price": 70.22000122070312,
+      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 53.1 shows controlled digestion.",
       "key_metrics": {
-        "dist_sma20": 0.005855342624346482,
-        "dist_sma50": 0.02837173046462375,
-        "rsi": 53.260440553261795
+        "dist_sma20": 0.005311467142966233,
+        "dist_sma50": 0.02779828578513116,
+        "rsi": 53.09093733699316
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -6902,13 +6926,13 @@
       "scanner_name": "Stacked Moving Average Alignment",
       "symbol": "PPL",
       "exchange": "TSX",
-      "price": 70.26000213623047,
+      "price": 70.22000122070312,
       "why_matched": "Perfect bullish alignment: Price > 20DMA > 50DMA > 200DMA with positive 200DMA slope.",
       "key_metrics": {
-        "close": 70.26000213623047,
-        "sma_20": 69.85100059509277,
-        "sma_50": 68.32160011291504,
-        "sma_200": 65.71755010604858
+        "close": 70.22000122070312,
+        "sma_20": 69.8490005493164,
+        "sma_50": 68.3208000946045,
+        "sma_200": 65.71735010147094
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -6929,11 +6953,11 @@
       "scanner_name": "Fast & Medium MTF Alignment",
       "symbol": "PPL",
       "exchange": "TSX",
-      "price": 70.26000213623047,
+      "price": 70.22000122070312,
       "why_matched": "Fast 8EMA > 21EMA above 50DMA with established trend strength (ADX 23.0).",
       "key_metrics": {
-        "ema_8": 69.85830539688732,
-        "ema_21": 69.75321238054109,
+        "ema_8": 69.8494163045479,
+        "ema_21": 69.74957593367498,
         "adx": 22.955453372785026
       },
       "regime_gated": true,
@@ -6955,11 +6979,11 @@
       "scanner_name": "Volatility Squeeze (Bandwidth)",
       "symbol": "POW",
       "exchange": "TSX",
-      "price": 93.88999938964844,
+      "price": 93.81999969482422,
       "why_matched": "Bollinger Bandwidth compressed to 7.0% with low ATR% of 2.5%, indicating impending expansion.",
       "key_metrics": {
-        "bandwidth": 0.07023162869614792,
-        "atr_pct": 2.4626072834639956
+        "bandwidth": 0.07023926671414536,
+        "atr_pct": 2.4644446503247406
       },
       "regime_gated": false,
       "regime_state": "HIGH_VOLATILITY",
@@ -6980,12 +7004,12 @@
       "scanner_name": "Pullback to Key Support",
       "symbol": "POW",
       "exchange": "TSX",
-      "price": 93.88999938964844,
-      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 51.0 shows controlled digestion.",
+      "price": 93.81999969482422,
+      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 50.8 shows controlled digestion.",
       "key_metrics": {
-        "dist_sma20": 0.00020765452266838336,
-        "dist_sma50": 0.008944989889258428,
-        "rsi": 50.977862329684356
+        "dist_sma20": 0.0009158141373193925,
+        "dist_sma50": 0.008207938753278137,
+        "rsi": 50.78922820751034
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -7006,64 +7030,11 @@
       "scanner_name": "Consolidation Base Tightening",
       "symbol": "POW",
       "exchange": "TSX",
-      "price": 93.88999938964844,
+      "price": 93.81999969482422,
       "why_matched": "Price consolidating in a tight band (7.0%) within 4.7% of yearly high.",
       "key_metrics": {
-        "bandwidth": 0.07023162869614792,
-        "prox_52w": -0.046705234784183536
-      },
-      "regime_gated": true,
-      "regime_state": "HIGH_VOLATILITY",
-      "idiosyncratic_risk_multiplier": 1.0,
-      "risk_posture": "NORMAL_EQUILIBRIUM",
-      "primary_risk_driver": "Stable Quantitative Fingerprint",
-      "conviction_score": 47.0,
-      "conviction_tier": "MODERATE",
-      "conviction_breakdown": {
-        "technical_quality": 32.0,
-        "macro_risk_alignment": 15.0,
-        "empirical_expectancy": null,
-        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
-      }
-    },
-    {
-      "scanner_id": "PULLBACK_UPTREND",
-      "scanner_name": "Pullback to Key Support",
-      "symbol": "QSR",
-      "exchange": "TSX",
-      "price": 108.54000091552734,
-      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 57.4 shows controlled digestion.",
-      "key_metrics": {
-        "dist_sma20": 0.014188746187000237,
-        "dist_sma50": 0.041185043143141094,
-        "rsi": 57.42284616343878
-      },
-      "regime_gated": true,
-      "regime_state": "HIGH_VOLATILITY",
-      "idiosyncratic_risk_multiplier": 1.0,
-      "risk_posture": "NORMAL_EQUILIBRIUM",
-      "primary_risk_driver": "Stable Quantitative Fingerprint",
-      "conviction_score": 47.0,
-      "conviction_tier": "MODERATE",
-      "conviction_breakdown": {
-        "technical_quality": 32.0,
-        "macro_risk_alignment": 15.0,
-        "empirical_expectancy": null,
-        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
-      }
-    },
-    {
-      "scanner_id": "STACKED_MOVING_AVERAGES",
-      "scanner_name": "Stacked Moving Average Alignment",
-      "symbol": "QSR",
-      "exchange": "TSX",
-      "price": 108.54000091552734,
-      "why_matched": "Perfect bullish alignment: Price > 20DMA > 50DMA > 200DMA with positive 200DMA slope.",
-      "key_metrics": {
-        "close": 108.54000091552734,
-        "sma_20": 107.0215000152588,
-        "sma_50": 104.24660018920899,
-        "sma_200": 104.09230026245118
+        "bandwidth": 0.07023926671414536,
+        "prox_52w": -0.04741596375506896
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -7084,11 +7055,64 @@
       "scanner_name": "Consolidation Base Tightening",
       "symbol": "QSR",
       "exchange": "TSX",
-      "price": 108.54000091552734,
+      "price": 108.58000183105469,
       "why_matched": "Price consolidating in a tight band (9.5%) within 4.0% of yearly high.",
       "key_metrics": {
-        "bandwidth": 0.09460890209523347,
-        "prox_52w": -0.04031828134495641
+        "bandwidth": 0.09465491557351988,
+        "prox_52w": -0.039964603926149866
+      },
+      "regime_gated": true,
+      "regime_state": "HIGH_VOLATILITY",
+      "idiosyncratic_risk_multiplier": 1.0,
+      "risk_posture": "NORMAL_EQUILIBRIUM",
+      "primary_risk_driver": "Stable Quantitative Fingerprint",
+      "conviction_score": 50.0,
+      "conviction_tier": "MODERATE",
+      "conviction_breakdown": {
+        "technical_quality": 35.0,
+        "macro_risk_alignment": 15.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
+      }
+    },
+    {
+      "scanner_id": "PULLBACK_UPTREND",
+      "scanner_name": "Pullback to Key Support",
+      "symbol": "QSR",
+      "exchange": "TSX",
+      "price": 108.58000183105469,
+      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 57.6 shows controlled digestion.",
+      "key_metrics": {
+        "dist_sma20": 0.014543551361447431,
+        "dist_sma50": 0.04156076424841756,
+        "rsi": 57.566369579263
+      },
+      "regime_gated": true,
+      "regime_state": "HIGH_VOLATILITY",
+      "idiosyncratic_risk_multiplier": 1.0,
+      "risk_posture": "NORMAL_EQUILIBRIUM",
+      "primary_risk_driver": "Stable Quantitative Fingerprint",
+      "conviction_score": 47.0,
+      "conviction_tier": "MODERATE",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 15.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
+      }
+    },
+    {
+      "scanner_id": "STACKED_MOVING_AVERAGES",
+      "scanner_name": "Stacked Moving Average Alignment",
+      "symbol": "QSR",
+      "exchange": "TSX",
+      "price": 108.58000183105469,
+      "why_matched": "Perfect bullish alignment: Price > 20DMA > 50DMA > 200DMA with positive 200DMA slope.",
+      "key_metrics": {
+        "close": 108.58000183105469,
+        "sma_20": 107.02350006103515,
+        "sma_50": 104.24740020751953,
+        "sma_200": 104.09250026702881
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -7109,11 +7133,11 @@
       "scanner_name": "Fast & Medium MTF Alignment",
       "symbol": "RCI-B",
       "exchange": "TSX",
-      "price": 50.47999954223633,
+      "price": 50.540000915527344,
       "why_matched": "Fast 8EMA > 21EMA above 50DMA with established trend strength (ADX 47.1).",
       "key_metrics": {
-        "ema_8": 50.11315524906516,
-        "ema_21": 48.66204471266594,
+        "ema_8": 50.12648888757427,
+        "ema_21": 48.66749938296512,
         "adx": 47.07367410820717
       },
       "regime_gated": true,
@@ -7135,12 +7159,12 @@
       "scanner_name": "Low-Volatility Trend Quality",
       "symbol": "SAP",
       "exchange": "TSX",
-      "price": 45.029998779296875,
+      "price": 45.06999969482422,
       "why_matched": "Low ATR volatility (2.1%) paired with rising 200DMA and positive quarterly return.",
       "key_metrics": {
-        "atr_pct": 2.138257020345343,
-        "slope_200": 7.0112314047231905,
-        "ret_3m": 0.10774900587960712
+        "atr_pct": 2.1363592560004188,
+        "slope_200": 7.01734022079834,
+        "ret_3m": 0.10873303820496583
       },
       "regime_gated": false,
       "regime_state": "HIGH_VOLATILITY",
@@ -7161,11 +7185,11 @@
       "scanner_name": "Canadian Market Leader",
       "symbol": "SAP",
       "exchange": "TSX",
-      "price": 45.029998779296875,
-      "why_matched": "Top-tier Canadian equity outperforming TSX index benchmark with -2.9% from 52w high.",
+      "price": 45.06999969482422,
+      "why_matched": "Top-tier Canadian equity outperforming TSX index benchmark with -2.8% from 52w high.",
       "key_metrics": {
-        "prox_52w": -0.02889799834924056,
-        "ret_3m": 0.10774900587960712
+        "prox_52w": -0.028035351887115256,
+        "ret_3m": 0.10873303820496583
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -7186,11 +7210,11 @@
       "scanner_name": "Fast & Medium MTF Alignment",
       "symbol": "SAP",
       "exchange": "TSX",
-      "price": 45.029998779296875,
+      "price": 45.06999969482422,
       "why_matched": "Fast 8EMA > 21EMA above 50DMA with established trend strength (ADX 70.7).",
       "key_metrics": {
-        "ema_8": 45.04626217205098,
-        "ema_21": 44.00067427835979,
+        "ema_8": 45.05515126439039,
+        "ema_21": 44.00431072522591,
         "adx": 70.70585244241627
       },
       "regime_gated": true,
@@ -7212,11 +7236,11 @@
       "scanner_name": "Volatility Squeeze (Bandwidth)",
       "symbol": "TRP",
       "exchange": "TSX",
-      "price": 89.7699966430664,
+      "price": 89.73500061035156,
       "why_matched": "Bollinger Bandwidth compressed to 7.1% with low ATR% of 2.0%, indicating impending expansion.",
       "key_metrics": {
-        "bandwidth": 0.07050112063107107,
-        "atr_pct": 2.024221504330558
+        "bandwidth": 0.0705056358944915,
+        "atr_pct": 2.025010936787301
       },
       "regime_gated": false,
       "regime_state": "HIGH_VOLATILITY",
@@ -7237,12 +7261,12 @@
       "scanner_name": "Low-Volatility Trend Quality",
       "symbol": "TRP",
       "exchange": "TSX",
-      "price": 89.7699966430664,
+      "price": 89.73500061035156,
       "why_matched": "Low ATR volatility (2.0%) paired with rising 200DMA and positive quarterly return.",
       "key_metrics": {
-        "atr_pct": 2.024221504330558,
-        "slope_200": 16.21175714904051,
-        "ret_3m": 0.04493065785608241
+        "atr_pct": 2.025010936787301,
+        "slope_200": 16.20926463019891,
+        "ret_3m": 0.044523300956733625
       },
       "regime_gated": false,
       "regime_state": "HIGH_VOLATILITY",
@@ -7263,12 +7287,12 @@
       "scanner_name": "Pullback to Key Support",
       "symbol": "TRP",
       "exchange": "TSX",
-      "price": 89.7699966430664,
-      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 53.2 shows controlled digestion.",
+      "price": 89.73500061035156,
+      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 53.0 shows controlled digestion.",
       "key_metrics": {
-        "dist_sma20": 0.000489942294198816,
-        "dist_sma50": 0.02801765075398459,
-        "rsi": 53.16370140370748
+        "dist_sma20": 0.000860126630844218,
+        "dist_sma50": 0.027625123932763455,
+        "rsi": 53.0055491478524
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -7289,11 +7313,11 @@
       "scanner_name": "Consolidation Base Tightening",
       "symbol": "TRP",
       "exchange": "TSX",
-      "price": 89.7699966430664,
+      "price": 89.73500061035156,
       "why_matched": "Price consolidating in a tight band (7.1%) within 10.4% of yearly high.",
       "key_metrics": {
-        "bandwidth": 0.07050112063107107,
-        "prox_52w": -0.1039129929167264
+        "bandwidth": 0.0705056358944915,
+        "prox_52w": -0.10426232444605588
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -7314,12 +7338,39 @@
       "scanner_name": "Pullback to Key Support",
       "symbol": "TRI",
       "exchange": "TSX",
-      "price": 155.19000244140625,
-      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 52.1 shows controlled digestion.",
+      "price": 155.44000244140625,
+      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 52.4 shows controlled digestion.",
       "key_metrics": {
-        "dist_sma20": 0.0005345337350299915,
-        "dist_sma50": 0.026937693005973325,
-        "rsi": 52.09682628859163
+        "dist_sma20": 0.0009949502154441867,
+        "dist_sma50": 0.028557984870624258,
+        "rsi": 52.40743921685528
+      },
+      "regime_gated": true,
+      "regime_state": "HIGH_VOLATILITY",
+      "idiosyncratic_risk_multiplier": 1.0,
+      "risk_posture": "NORMAL_EQUILIBRIUM",
+      "primary_risk_driver": "Stable Quantitative Fingerprint",
+      "conviction_score": 47.0,
+      "conviction_tier": "MODERATE",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 15.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
+      }
+    },
+    {
+      "scanner_id": "STACKED_MOVING_AVERAGES",
+      "scanner_name": "Stacked Moving Average Alignment",
+      "symbol": "TRI",
+      "exchange": "TSX",
+      "price": 155.44000244140625,
+      "why_matched": "Perfect bullish alignment: Price > 20DMA > 50DMA > 200DMA with positive 200DMA slope.",
+      "key_metrics": {
+        "close": 155.44000244140625,
+        "sma_20": 155.2855010986328,
+        "sma_50": 151.12419982910157,
+        "sma_200": 134.29744979858398
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -7340,12 +7391,12 @@
       "scanner_name": "Pullback to Key Support",
       "symbol": "TOU",
       "exchange": "TSX",
-      "price": 63.779998779296875,
-      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 49.6 shows controlled digestion.",
+      "price": 63.810001373291016,
+      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 49.7 shows controlled digestion.",
       "key_metrics": {
-        "dist_sma20": 0.0035309372166037766,
-        "dist_sma50": 0.000574151330372931,
-        "rsi": 49.589549821124564
+        "dist_sma20": 0.003085555642190777,
+        "dist_sma50": 0.0010354056817706043,
+        "rsi": 49.723634901075144
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -7366,90 +7417,12 @@
       "scanner_name": "50-Day Moving Average Support Bounce",
       "symbol": "TOU",
       "exchange": "TSX",
-      "price": 63.779998779296875,
+      "price": 63.810001373291016,
       "why_matched": "Session low tested the 50DMA (63.74), with buyers closing the price firmly above support.",
       "key_metrics": {
         "low": 63.41999816894531,
-        "close": 63.779998779296875,
-        "sma_50": 63.74340042114258
-      },
-      "regime_gated": true,
-      "regime_state": "HIGH_VOLATILITY",
-      "idiosyncratic_risk_multiplier": 1.0,
-      "risk_posture": "NORMAL_EQUILIBRIUM",
-      "primary_risk_driver": "Stable Quantitative Fingerprint",
-      "conviction_score": 47.0,
-      "conviction_tier": "MODERATE",
-      "conviction_breakdown": {
-        "technical_quality": 32.0,
-        "macro_risk_alignment": 15.0,
-        "empirical_expectancy": null,
-        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
-      }
-    },
-    {
-      "scanner_id": "STACKED_MOVING_AVERAGES",
-      "scanner_name": "Stacked Moving Average Alignment",
-      "symbol": "WCN",
-      "exchange": "TSX",
-      "price": 268.92999267578125,
-      "why_matched": "Perfect bullish alignment: Price > 20DMA > 50DMA > 200DMA with positive 200DMA slope.",
-      "key_metrics": {
-        "close": 268.92999267578125,
-        "sma_20": 266.3499984741211,
-        "sma_50": 244.36599975585938,
-        "sma_200": 230.3780997467041
-      },
-      "regime_gated": true,
-      "regime_state": "HIGH_VOLATILITY",
-      "idiosyncratic_risk_multiplier": 1.0,
-      "risk_posture": "NORMAL_EQUILIBRIUM",
-      "primary_risk_driver": "Stable Quantitative Fingerprint",
-      "conviction_score": 47.0,
-      "conviction_tier": "MODERATE",
-      "conviction_breakdown": {
-        "technical_quality": 32.0,
-        "macro_risk_alignment": 15.0,
-        "empirical_expectancy": null,
-        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
-      }
-    },
-    {
-      "scanner_id": "MTF_ALIGNMENT",
-      "scanner_name": "Fast & Medium MTF Alignment",
-      "symbol": "WCN",
-      "exchange": "TSX",
-      "price": 268.92999267578125,
-      "why_matched": "Fast 8EMA > 21EMA above 50DMA with established trend strength (ADX 22.6).",
-      "key_metrics": {
-        "ema_8": 265.05778535874003,
-        "ema_21": 262.0176681590759,
-        "adx": 22.622125278378764
-      },
-      "regime_gated": true,
-      "regime_state": "HIGH_VOLATILITY",
-      "idiosyncratic_risk_multiplier": 1.0,
-      "risk_posture": "NORMAL_EQUILIBRIUM",
-      "primary_risk_driver": "Stable Quantitative Fingerprint",
-      "conviction_score": 47.0,
-      "conviction_tier": "MODERATE",
-      "conviction_breakdown": {
-        "technical_quality": 32.0,
-        "macro_risk_alignment": 15.0,
-        "empirical_expectancy": null,
-        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
-      }
-    },
-    {
-      "scanner_id": "CROSS_BORDER_LEADER",
-      "scanner_name": "Canadian Market Leader",
-      "symbol": "WCN",
-      "exchange": "TSX",
-      "price": 268.92999267578125,
-      "why_matched": "Top-tier Canadian equity outperforming TSX index benchmark with -4.7% from 52w high.",
-      "key_metrics": {
-        "prox_52w": -0.046955845006431685,
-        "ret_3m": 0.17032943354026564
+        "close": 63.810001373291016,
+        "sma_50": 63.74400047302246
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
@@ -7470,22 +7443,74 @@
       "scanner_name": "Momentum Leaders",
       "symbol": "WCN",
       "exchange": "TSX",
-      "price": 268.92999267578125,
-      "why_matched": "Strong trend: close > 50DMA > 200DMA with +17.0% 3m return and -4.7% from 52w high.",
+      "price": 263.4599914550781,
+      "why_matched": "Strong trend: close > 50DMA > 200DMA with +14.7% 3m return and -6.6% from 52w high.",
       "key_metrics": {
-        "ret_3m": 0.17032943354026564,
-        "prox_52w": -0.046955845006431685,
-        "rsi": 59.82757563914862
+        "ret_3m": 0.14652508443663903,
+        "prox_52w": -0.06634063968600357,
+        "rsi": 54.50520520097399
       },
       "regime_gated": true,
       "regime_state": "HIGH_VOLATILITY",
       "idiosyncratic_risk_multiplier": 1.0,
       "risk_posture": "NORMAL_EQUILIBRIUM",
       "primary_risk_driver": "Stable Quantitative Fingerprint",
-      "conviction_score": 44.0,
-      "conviction_tier": "WATCHLIST",
+      "conviction_score": 47.0,
+      "conviction_tier": "MODERATE",
       "conviction_breakdown": {
-        "technical_quality": 29.0,
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 15.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
+      }
+    },
+    {
+      "scanner_id": "PULLBACK_UPTREND",
+      "scanner_name": "Pullback to Key Support",
+      "symbol": "WCN",
+      "exchange": "TSX",
+      "price": 263.4599914550781,
+      "why_matched": "Pullback into key moving average in a rising uptrend; RSI at 54.5 shows controlled digestion.",
+      "key_metrics": {
+        "dist_sma20": 0.009833664279306778,
+        "dist_sma50": 0.07861974556571459,
+        "rsi": 54.50520520097399
+      },
+      "regime_gated": true,
+      "regime_state": "HIGH_VOLATILITY",
+      "idiosyncratic_risk_multiplier": 1.0,
+      "risk_posture": "NORMAL_EQUILIBRIUM",
+      "primary_risk_driver": "Stable Quantitative Fingerprint",
+      "conviction_score": 47.0,
+      "conviction_tier": "MODERATE",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
+        "macro_risk_alignment": 15.0,
+        "empirical_expectancy": null,
+        "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."
+      }
+    },
+    {
+      "scanner_id": "MTF_ALIGNMENT",
+      "scanner_name": "Fast & Medium MTF Alignment",
+      "symbol": "WCN",
+      "exchange": "TSX",
+      "price": 263.4599914550781,
+      "why_matched": "Fast 8EMA > 21EMA above 50DMA with established trend strength (ADX 22.9).",
+      "key_metrics": {
+        "ema_8": 263.8422295319171,
+        "ema_21": 261.5203953208302,
+        "adx": 22.859033007778283
+      },
+      "regime_gated": true,
+      "regime_state": "HIGH_VOLATILITY",
+      "idiosyncratic_risk_multiplier": 1.0,
+      "risk_posture": "NORMAL_EQUILIBRIUM",
+      "primary_risk_driver": "Stable Quantitative Fingerprint",
+      "conviction_score": 47.0,
+      "conviction_tier": "MODERATE",
+      "conviction_breakdown": {
+        "technical_quality": 32.0,
         "macro_risk_alignment": 15.0,
         "empirical_expectancy": null,
         "empirical_expectancy_note": "Not scored. No per-rule win rate or expectancy has been computed, because the scanner rules are not wired into the backtest engine."

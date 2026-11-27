@@ -8,7 +8,7 @@ Zero egress fees, sub-50ms global CDN retrieval, 100% legal derived intelligence
 import json
 from pathlib import Path
 from datetime import date, datetime, timezone
-from typing import Dict, Any, List
+from typing import Any, Dict, List, Optional
 
 from config.settings import DATA_DIR
 from src.compliance.disclaimers import (
@@ -22,7 +22,7 @@ from src.engine.technicals import TechnicalAnalysisEngine
 from src.engine.scoring import scoring_engine
 from src.engine.regime import regime_classifier
 from src.engine.scanners import market_scanners
-from src.engine.signals import signal_engine
+from src.engine.signals import MIN_COMPOSITE_SCORE_FOR_PLAN, signal_engine
 from src.engine.exit_engine import exit_signal_engine
 from src.engine.explanations import explanation_engine
 from src.engine.news_engine import news_engine
@@ -151,6 +151,8 @@ class EdgeExporter:
         leaderboard_items = []
         scanner_results = []
         signals_list = []
+        best_composite: Optional[Dict[str, Any]] = None
+        securities_scored = 0
         symbol_files_count = 0
         metrics_map: Dict[str, Any] = {}
         quant_intel_map: Dict[str, Any] = {}
@@ -231,6 +233,14 @@ class EdgeExporter:
                 news_contribution=news_pts,
                 horizon="POSITION",
             )
+
+            # Track the best composite score in the universe so the signals feed can
+            # explain an empty result with the real numbers instead of a shrug.
+            if score_rec.composite_score is not None and (
+                best_composite is None or score_rec.composite_score > best_composite["score"]
+            ):
+                best_composite = {"score": score_rec.composite_score, "symbol": sym}
+            securities_scored += 1
 
             # Scanners
             matches = market_scanners.scan_all(dict(s), metrics, regime_state=regime_name)
@@ -540,12 +550,47 @@ class EdgeExporter:
                     indent=2,
                 )
 
+            # Why the list is the length it is. An empty signals tab otherwise reads as
+            # a broken tab, when the usual cause is a regime multiplier pressing every
+            # composite score below the publication gate. All of this is measured here
+            # rather than asserted, so the dashboard can show its working.
+            _gate = MIN_COMPOSITE_SCORE_FOR_PLAN
+            _gate_context = {
+                "composite_gate": _gate,
+                "securities_scored": securities_scored,
+                "securities_clearing_gate": sum(
+                    1 for it in leaderboard_items
+                    if (it.get("composite_score") or 0) >= _gate
+                ),
+                "highest_composite_score": best_composite["score"] if best_composite else None,
+                "highest_composite_symbol": best_composite["symbol"] if best_composite else None,
+                "regimes": {
+                    label: {
+                        "regime_state": r.get("regime_state"),
+                        "filtered_probability": r.get("filtered_probability"),
+                        "score_multiplier": r.get("score_multiplier"),
+                    }
+                    for label, r in regimes_data.items()
+                },
+            }
+            # The raw score a security would need to clear the gate under the tightest
+            # multiplier in force. Derived, not typed in, so it cannot drift from the
+            # multiplier table in src/engine/regime.py.
+            _mults = [r.get("score_multiplier") for r in regimes_data.values()
+                      if r.get("score_multiplier")]
+            _tightest = min(_mults) if _mults else None
+            _gate_context["tightest_active_multiplier"] = _tightest
+            _gate_context["raw_score_needed_under_tightest_multiplier"] = (
+                round(_gate / _tightest, 1) if _tightest else None
+            )
+
             with open(d_dir / "signals.json", "w") as f:
                 json.dump(
                     {
                         "as_of_date": as_of_date,
                         "generated_at": generated_at,
                         "total_active_signals": len(signals_list),
+                        "gate_context": _gate_context,
                         "signals": signals_list,
                     },
                     f,

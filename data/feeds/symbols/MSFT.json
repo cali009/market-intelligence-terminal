@@ -4,8 +4,8 @@
   "country": "US",
   "currency": "USD",
   "name": "Microsoft Corporation",
-  "as_of_date": "2026-11-26",
-  "generated_at": "2026-11-26T16:55:16.464716+00:00",
+  "as_of_date": "2026-11-27",
+  "generated_at": "2026-11-27T20:22:14.014293+00:00",
   "latest_metrics": {
     "trading_date": "2026-11-25",
     "open": 485.2300109863281,
@@ -306,7 +306,7 @@
   },
   "fundamental_dossier": {
     "symbol": "MSFT",
-    "as_of_date": "2026-11-26",
+    "as_of_date": "2026-11-27",
     "filing_date": "2026-07-29",
     "currency": "USD",
     "fiscal_period": "FY",
@@ -356,7 +356,7 @@
     "amihud_illiquidity": 0.001,
     "dominant_cycle_bars": 14,
     "gjr_garch_gamma": 0.08,
-    "last_updated": "2026-11-26T16:56:35.936574+00:00"
+    "last_updated": "2026-11-27T20:23:10.455125+00:00"
   },
   "conformal_bounds": {
     "symbol": "MSFT",
@@ -373,72 +373,65 @@
     "adapted_alpha": 0.095,
     "volatility_expansion_warning": false,
     "invalidation_status": "BOUNDS_INTACT",
-    "calibrated_at": "2026-11-26T16:56:35.954226+00:00"
+    "calibrated_at": "2026-11-27T20:23:10.465524+00:00"
   },
   "cross_border_parity": null,
   "shap_attribution": {
     "symbol": "MSFT",
-    "base_value": 46.74,
-    "model_score": 52.4,
+    "base_value": 30.25,
+    "model_score": 34.1,
     "top_drivers": [
       {
         "feature_name": "trend_sma200_ratio",
         "feature_label": "Trend vs 200DMA",
-        "feature_value": 1.182,
-        "shap_contribution": 4.09,
+        "feature_value": 1.101,
+        "shap_contribution": 7.04,
         "direction": "POSITIVE"
       },
       {
         "feature_name": "proximity_52w",
         "feature_label": "Proximity to 52W High",
-        "feature_value": -0.074,
-        "shap_contribution": 1.26,
+        "feature_value": -0.124,
+        "shap_contribution": 0.46,
         "direction": "POSITIVE"
       },
       {
-        "feature_name": "conformal_rr",
-        "feature_label": "Certified Conformal R:R",
-        "feature_value": 1.25,
-        "shap_contribution": 0.43,
+        "feature_name": "fractional_d",
+        "feature_label": "Fractional Memory Order d*",
+        "feature_value": 0.4,
+        "shap_contribution": 0.11,
         "direction": "POSITIVE"
       }
     ],
     "top_detractors": [
       {
-        "feature_name": "fractional_d",
-        "feature_label": "Fractional Memory Order d*",
-        "feature_value": 0.38,
-        "shap_contribution": -0.16,
+        "feature_name": "mtf_confluence",
+        "feature_label": "Multi-Timeframe Confluence",
+        "feature_value": 30.0,
+        "shap_contribution": -2.4,
         "direction": "NEGATIVE"
       },
       {
-        "feature_name": "dual_basis_bps",
-        "feature_label": "Cross-Border Basis Spread",
-        "feature_value": 0.0,
-        "shap_contribution": -0.12,
-        "direction": "NEGATIVE"
-      },
-      {
-        "feature_name": "hurst_persistence",
-        "feature_label": "Lo HAC Hurst Exponent",
-        "feature_value": 0.546,
-        "shap_contribution": -0.09,
+        "feature_name": "momentum_rsi",
+        "feature_label": "14-Day RSI Momentum",
+        "feature_value": 38.7,
+        "shap_contribution": -1.36,
         "direction": "NEGATIVE"
       }
     ],
     "all_attributions": {
-      "trend_sma200_ratio": 4.09,
-      "momentum_rsi": 0.22,
-      "proximity_52w": 1.26,
-      "mtf_confluence": 0.0,
+      "trend_sma200_ratio": 7.04,
+      "momentum_rsi": -1.36,
+      "proximity_52w": 0.46,
+      "mtf_confluence": -2.4,
       "roic_pct": 0.0,
       "pe_multiple": 0.0,
       "pe_imputed": 0.0,
-      "hurst_persistence": -0.09,
-      "fractional_d": -0.16,
+      "hurst_persistence": 0.0,
+      "fractional_d": 0.11,
       "amihud_illiquidity": 0.0,
-      "conformal_rr": 0.43,
-      "dual_basis_bps": -0.12
+      "conformal_rr": -0.04,
+      "dual_basis_bps": 0.0
     }
   },
   "idiosyncratic_risk": {
@@ -454,13 +447,13 @@
     "cross_border_parity_stretch": false,
     "basis_spread_bps": null,
     "basis_zscore": null,
-    "shap_detractor_drag_pts": -0.37,
+    "shap_detractor_drag_pts": -3.76,
     "primary_risk_driver": "Hurst Memory Flip (H=0.401)",
     "actionable_mitigation": "Idiosyncratic memory flip or volatility expansion active; 50% exposure haircut recommended by systematic risk budget.",
     "as_of_date": "2026-09-25"
   },
   "score_record": {
-    "composite_score": 37,
+    "composite_score": 30,
     "confidence_tier": "C",
     "technical_score": 29,
     "fundamental_score": 86,
@@ -475,7 +468,7 @@
       "volatility_fit_score": 5.0,
       "technical_score": 29,
       "fundamental_score": 86,
-      "regime_multiplier": 0.85,
+      "regime_multiplier": 0.7,
       "news_contribution": 0.0,
       "sector_contribution": 0.0,
       "risk_penalty": 0.0,
@@ -491,9 +484,9 @@
   "signal_plan": null,
   "ai_explanation": {
     "FACT": "MSFT (NASDAQ - Microsoft Corporation) closed at $489.93 USD. Trading within -12.4% of its 52-week high with a 14-day ATR of 3.5%. The primary exchange session traded on volume of 26,733,600 shares.",
-    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 37/100 (Confidence Tier C). Technical Factor sub-score: 29/100 (14-day RSI: 38.7, 20-day RVOL: 0.87x), Fundamental Score: 86/100. Risk penalty applied: -0.0 points. Modulated by the CONSOLIDATION macro regime.",
+    "CALCULATION": "The quantitative engine computed a Composite Opportunity Score of 30/100 (Confidence Tier C). Technical Factor sub-score: 29/100 (14-day RSI: 38.7, 20-day RVOL: 0.87x), Fundamental Score: 86/100. Risk penalty applied: -0.0 points. Modulated by the HIGH_VOLATILITY macro regime.",
     "INFERENCE": "Securities trading below declining 200-day moving averages with elevated risk penalties have historically underperformed the broader index by 3.8% over forward 20-session windows.",
-    "UNCERTAINTY": "Risks include broader market sentiment deterioration in the CONSOLIDATION environment. A daily close below technical support at $444.89 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
+    "UNCERTAINTY": "Risks include broader market sentiment deterioration in the HIGH_VOLATILITY environment. A daily close below technical support at $444.89 invalidates the constructive thesis. Upcoming earnings, macroeconomic releases, or sudden volatility spikes represent unmodeled event risks."
   },
   "active_scanner_matches": [],
   "catalysts_and_filings": [
@@ -1578,28 +1571,29 @@
     "exchange": "NASDAQ",
     "country": "US",
     "currency": "USD",
-    "as_of_date": "2026-11-26",
-    "generated_at": "2026-11-26T16:56:35.978439+00:00",
+    "as_of_date": "2026-11-27",
+    "generated_at": "2026-11-27T20:23:10.479514+00:00",
     "conviction_grade": "C",
     "aligned_layers_count": 3,
-    "formatted_card": "TICKER: MSFT\nREGIME: CONSOLIDATION (VIX: Medium | Risk-OFF | Rates: Paused | 20d Adverse Hazard: 10.8%)\nPATTERN TYPE: Archetype A: Mega-Cap Tech (Gamma-Momentum) \u2014 Momentum (Pullback Continuation)\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BEARISH \u2014 Breakdown below moving average cluster; negative CMF (-0.16) and deteriorating price structure.\n  Fundamental:  10.0/10 \u2014 ROIC 28.2%, Debt/Equity 0.07, operating margin 46.8%; robust institutional quality balance sheet.\n  Sentiment:    +0.30 (BULLISH) \u2014 MSFT SEC Form 8-K Filing \u2014 Regulation FD Disclosure (Investor Presentation / Update)\n  Historical:   55.4% Win Rate (10 sample size, E[R]: +0.44R)\n  Regime fit:   NO\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $497.78 \u2013 $505.25\n  Entry trigger:  Price stabilizes above support zone ($487.00) with 15m candle close above $497.78 and volume > 1.2x 20d average.\n  Stop loss:      $465.81 (6.4% below entry)\n  Target 1 (T1):  $536.14 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $577.70 | Est. 24 days | Take 40%\n  Target 3 (T3):  $632.05 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.32\n  Position size:  15 shares on $100,000 portfolio risking 1% ($479.55)\n  Execution:      not measurable \u2014 this platform holds end-of-day prices only, with no order book, quote feed or fill record\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: C-Grade\nTRADE THESIS: MSFT exhibits high structural confluence with Momentum (Pullback Continuation) aligning above ascending moving averages. In the current CONSOLIDATION macro context (20d adverse hazard: 10.8%), measured support at $487.00 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $465.81 or two consecutive closes back below $487.00 immediately invalidates the trade.",
+    "formatted_card": "TICKER: MSFT\nREGIME: HIGH_VOLATILITY (VIX: Medium | Risk-OFF | Rates: Paused | 20d Adverse Hazard: 15.8%)\nPATTERN TYPE: Archetype A: Mega-Cap Tech (Gamma-Momentum) \u2014 Momentum (Pullback Continuation)\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSIGNAL SUMMARY:\n  Technical:    BEARISH \u2014 Breakdown below moving average cluster; negative CMF (-0.16) and deteriorating price structure.\n  Fundamental:  10.0/10 \u2014 ROIC 28.2%, Debt/Equity 0.07, operating margin 46.8%; robust institutional quality balance sheet.\n  Sentiment:    +0.30 (BULLISH) \u2014 MSFT SEC Form 8-K Filing \u2014 Regulation FD Disclosure (Investor Presentation / Update)\n  Historical:   55.4% Win Rate (10 sample size, E[R]: +0.44R)\n  Regime fit:   NO\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRADE PLAN:\n  Entry zone:     $497.78 \u2013 $505.25\n  Entry trigger:  Price stabilizes above support zone ($487.00) with 15m candle close above $497.78 and volume > 1.2x 20d average.\n  Stop loss:      $465.81 (6.4% below entry)\n  Target 1 (T1):  $536.14 | Est. 6 days | Take 40% (Stop to BE)\n  Target 2 (T2):  $577.70 | Est. 24 days | Take 40%\n  Target 3 (T3):  $632.05 | Est. 45 days | Runner 20%\n  Risk/Reward:    1 : 2.32\n  Position size:  15 shares on $100,000 portfolio risking 1% ($479.55)\n  Execution:      not measurable \u2014 this platform holds end-of-day prices only, with no order book, quote feed or fill record\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nCONVICTION GRADE: C-Grade\nTRADE THESIS: MSFT exhibits high structural confluence with Momentum (Pullback Continuation) aligning above ascending moving averages. In the current HIGH_VOLATILITY macro context (20d adverse hazard: 15.8%), measured support at $487.00 offers asymmetric risk/reward into upper channel resistance.\nINVALIDATION: A daily closing price below $465.81 or two consecutive closes back below $487.00 immediately invalidates the trade.",
     "layer_1_regime": {
       "trend_type": "Volatile",
       "volatility_regime": "Medium (15\u201325)",
       "liquidity_env": "Risk-OFF",
       "rate_context": "Paused",
-      "regime_state": "CONSOLIDATION",
+      "regime_state": "HIGH_VOLATILITY",
       "regime_fit": "NO",
       "status": "BEARISH",
-      "conviction_weight": 0.85,
+      "conviction_weight": 0.7,
       "top_drivers": [
         "Index below 200-day moving average (structural downtrend)",
+        "VIX elevated at 26.8 signals heightened market volatility",
         "Yield curve positively sloped (+45 bps 10Y-2Y spread)"
       ],
-      "adverse_hazard_rate_5d": 0.0982,
-      "adverse_hazard_rate_20d": 0.1082,
-      "expected_regime_duration_days": 4.2,
-      "hazard_tier": "LOW_HAZARD",
+      "adverse_hazard_rate_5d": 0.3694,
+      "adverse_hazard_rate_20d": 0.1578,
+      "expected_regime_duration_days": 2.6,
+      "hazard_tier": "MODERATE_HAZARD",
       "cross_border_macro_divergence_posture": "SYNCHRONIZED_EXPANSION"
     },
     "layer_2_fingerprint": {
@@ -1696,13 +1690,20 @@
       "position_value": 7466.7,
       "portfolio_risk_pct": 0.48,
       "invalidation_rule": "A daily closing price below $465.81 or two consecutive closes back below $487.00 immediately invalidates the trade.",
-      "trade_thesis": "MSFT exhibits high structural confluence with Momentum (Pullback Continuation) aligning above ascending moving averages. In the current CONSOLIDATION macro context (20d adverse hazard: 10.8%), measured support at $487.00 offers asymmetric risk/reward into upper channel resistance.",
+      "trade_thesis": "MSFT exhibits high structural confluence with Momentum (Pullback Continuation) aligning above ascending moving averages. In the current HIGH_VOLATILITY macro context (20d adverse hazard: 15.8%), measured support at $487.00 offers asymmetric risk/reward into upper channel resistance.",
       "tca_execution_strategy": null,
       "tca_expected_slippage_bps": null,
       "tca_effective_fill_price": null,
       "tca_optimal_slices": null
     },
-    "meta_label_verdict": null
+    "meta_label_verdict": {
+      "symbol": "MSFT",
+      "meta_probability": 0.4251,
+      "action": "GATED_EXCLUDE",
+      "size_multiplier": 0.0,
+      "primary_driver": "mom_1m (-0.08, impact -)",
+      "calibrated_at": "2026-11-27T20:23:10.759876+00:00"
+    }
   },
   "disclaimers": {
     "canada": "STATUTORY NOTICE (CANADA): This platform provides impersonal quantitative research and decision-support data intended exclusively for self-directed investors. It does not provide personalized investment advice, financial planning, or account management services. The scores, regime classifications, indicators, and model outputs presented herein are calculated by deterministic mathematical models and rule-based algorithms without consideration of your personal financial situation, risk tolerance, or investment objectives. Past hypothetical performance or paper-trading metrics are not indicative of future returns. The platform, its operators, and its algorithms do not hold any financial interest or proprietary position in the securities analyzed unless explicitly disclosed. You are solely responsible for evaluating the merits and risks of any trade or strategy.",
