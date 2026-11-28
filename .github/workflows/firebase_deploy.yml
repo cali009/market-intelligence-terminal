@@ -11,9 +11,18 @@ on:
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
+    # Needed so the forward-paper step can commit its own log back to the branch.
+    permissions:
+      contents: write
+    # The pipeline has been measured at ~23 minutes at 163 symbols. Without a timeout a
+    # job runs to the 360-minute default, which turns a hang into a six-hour bill.
+    timeout-minutes: 60
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          # Full history, so the forward-log commit can push without a shallow-repo error.
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -77,6 +86,37 @@ jobs:
           SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
         run: |
           npx firebase-tools deploy --only hosting --token "${{ secrets.FIREBASE_TOKEN }}"
+
+      - name: Commit Forward Paper Log
+        # ONLY the append-only forward log is committed. The database is 84 MB and is
+        # regenerated every run; committing it would grow the repository without bound and
+        # GitHub rejects files above 100 MB. Nothing else here needs to persist.
+        #
+        # This step is what makes gate 8 achievable at all. Without it the log is written
+        # inside an ephemeral runner and thrown away, so the three months of forward record
+        # the gate requires could never accumulate.
+        run: |
+          if [ ! -f data/forward_paper_log.jsonl ]; then
+            echo "No forward paper log produced; nothing to commit."
+            exit 0
+          fi
+          git config user.name "market-intel-pipeline"
+          git config user.email "pipeline@users.noreply.github.com"
+          git add data/forward_paper_log.jsonl
+          if git diff --cached --quiet; then
+            echo "Forward log unchanged."
+            exit 0
+          fi
+          # Refuse to shrink the log. A shorter file means records were removed, which is
+          # exactly the tampering the hash chain exists to expose.
+          REMOTE_LINES=$(git show origin/${GITHUB_REF_NAME}:data/forward_paper_log.jsonl 2>/dev/null | wc -l || echo 0)
+          LOCAL_LINES=$(wc -l < data/forward_paper_log.jsonl)
+          if [ "$LOCAL_LINES" -lt "$REMOTE_LINES" ]; then
+            echo "::error::Forward log shrank from $REMOTE_LINES to $LOCAL_LINES lines. Refusing to commit."
+            exit 1
+          fi
+          git commit -m "Forward paper log: $(date -u +%Y-%m-%dT%H:%MZ) ($LOCAL_LINES records)"
+          git push origin HEAD:${GITHUB_REF_NAME}
 
       - name: Build Summary
         run: |

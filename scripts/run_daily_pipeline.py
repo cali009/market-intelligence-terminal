@@ -70,6 +70,26 @@ def run_pipeline():
     bt_bundle = run_all_backtests()
     print(f"    Evaluated {len(bt_bundle['strategies'])} strategies across Walk-Forward partitions.")
 
+    # Step 5.5: Forward paper record. Runs after the close and after the backtests, so
+    # today's decisions are recorded while tomorrow's open is still unknown. Settlement
+    # happens first inside the script, which is what keeps a decision from being filled
+    # at a price the run already knows.
+    print("\n>>> STEP 5.5: Recording Forward Paper Decisions...")
+    from scripts.run_forward_paper import LEDGER, publish_feed
+    from scripts.run_forward_paper import latest_bar_date as _fp_latest_date
+    _fp_as_of = _fp_latest_date()
+    _fp_settle = LEDGER.settle(_fp_as_of)
+    _fp_cap = LEDGER.capture(_fp_as_of)
+    _fp_ver = LEDGER.verify()
+    publish_feed()
+    print(f"    Settled {_fp_settle['fills']} fill(s) / {_fp_settle['closes']} close(s); "
+          f"captured {_fp_cap['records_written']} new record(s) for {_fp_as_of}.")
+    print(f"    Forward chain integrity: {'OK' if _fp_ver['ok'] else 'FAILED'} "
+          f"({_fp_ver['records']} records, {len(_fp_ver['violations'])} violation(s)).")
+    if not _fp_ver["ok"]:
+        for _v in _fp_ver["violations"]:
+            print(f"      ! {_v}")
+
     # Step 6: Edge Static Compilation & Export
     print("\n>>> STEP 6: Compiling Static JSON Intelligence Bundles for Edge CDN...")
     export_stats = edge_exporter.export_all()

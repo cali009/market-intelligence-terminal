@@ -30,6 +30,7 @@ suite evaluates it on identical terms. Run scripts/run_backtests.py first.
 import json
 import sys
 from pathlib import Path
+from typing import Optional
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
@@ -41,17 +42,25 @@ CONSTITUENTS = ["ADAPTIVE_DUAL_REGIME", "PO3_META_GATED", "PO3_LIQUIDITY_SWEEP"]
 WEIGHT = 1.0 / len(CONSTITUENTS)
 
 
-def build_sleeve(bundle: dict) -> dict:
+def build_sleeve(bundle: dict) -> Optional[dict]:
+    """Build the sleeve record from a backtest bundle. Returns None if it cannot be built.
+
+    Returning None rather than raising matters: this is called from run_all_backtests on
+    every pipeline run, and a retired or renamed constituent must not take the whole
+    backtest step down with it.
+    """
     strategies = bundle.get("strategies") or {}
     missing = [c for c in CONSTITUENTS if c not in strategies]
     if missing:
-        raise SystemExit(f"constituents not present in backtests.json: {missing}")
+        print(f"    ! sleeve not built -- constituents absent: {missing}")
+        return None
 
     curves = {}
     for c in CONSTITUENTS:
         ec = strategies[c].get("equity_curve") or []
         if not ec:
-            raise SystemExit(f"{c} has no equity_curve")
+            print(f"    ! sleeve not built -- {c} has no equity_curve")
+            return None
         curves[c] = {p["date"]: p for p in ec}
 
     # Only dates every constituent has. Dropping a date silently would misalign the
@@ -145,6 +154,8 @@ def main() -> None:
     path = FEEDS / "backtests.json"
     bundle = json.load(open(path))
     sleeve = build_sleeve(bundle)
+    if sleeve is None:
+        raise SystemExit("could not build the sleeve from the current backtests.json")
     bundle["strategies"][SLEEVE_ID] = sleeve
     json.dump(bundle, open(path, "w"), indent=2)
 

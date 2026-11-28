@@ -1,0 +1,52 @@
+{
+  "generated_at": "2026-11-28T04:14:31.063504+00:00",
+  "source_of_truth": "data/forward_paper_log.jsonl, appended by scripts/run_forward_paper.py after each close. Read back and verified by src/engine/forward_paper.py; nothing here is hard-coded.",
+  "log_exists": true,
+  "records": 124,
+  "per_strategy": {
+    "ADAPTIVE_DUAL_REGIME": {
+      "records": 100,
+      "decisions": 61,
+      "fills": 36,
+      "entered": 36,
+      "closed_trades": 0,
+      "months_covered": 1,
+      "months": [
+        "2026-11"
+      ],
+      "first_recorded_at": "2026-11-28T04:12:26+00:00",
+      "forward_mean_r": null
+    },
+    "PO3_META_GATED": {
+      "records": 12,
+      "decisions": 5,
+      "fills": 4,
+      "entered": 4,
+      "closed_trades": 0,
+      "months_covered": 1,
+      "months": [
+        "2026-11"
+      ],
+      "first_recorded_at": "2026-11-28T04:12:26+00:00",
+      "forward_mean_r": null
+    },
+    "PO3_LIQUIDITY_SWEEP": {
+      "records": 12,
+      "decisions": 5,
+      "fills": 4,
+      "entered": 4,
+      "closed_trades": 0,
+      "months_covered": 1,
+      "months": [
+        "2026-11"
+      ],
+      "first_recorded_at": "2026-11-28T04:12:26+00:00",
+      "forward_mean_r": null
+    }
+  },
+  "chain_verifies": true,
+  "chain_violations": [],
+  "integrity_statement": "This forward record is tamper-EVIDENT, not tamper-PROOF. The hash chain detects edits to individual records but cannot prevent the operator from rewriting the whole file, and the timestamps come from a clock the operator controls. A gate-8 pass computed from this file means the process was followed, not that the edge is real. No third-party anchor (RFC 3161 timestamp or externally-recorded commit) exists yet.",
+  "what_this_is": "A forward paper record: the strategy's decisions are written down after each close, before the next open is known, and are never revised. It is the only evidence in this lab that cannot be retro-fitted to a favourable outcome.",
+  "what_this_is_not": "It is not proof of an edge, and it is not tamper-proof. The operator controls the file, the git history and the clock. Until each run's hash is anchored to something outside the operator's control, every number here is self-attested."
+}

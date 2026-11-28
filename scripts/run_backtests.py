@@ -62,6 +62,16 @@ def run_all_backtests():
         "disclaimer_version": DISCLAIMER_VERSION,
     }
 
+    # The sleeve is a derived record: it is rebuilt from the strategies above on every run
+    # rather than left to persist in the JSON, because this function rebuilds `results`
+    # from scratch and would otherwise silently drop it.
+    from scripts.build_strategy_sleeve import SLEEVE_ID, build_sleeve
+    sleeve = build_sleeve(bundle)
+    if sleeve is not None:
+        bundle["strategies"][SLEEVE_ID] = sleeve
+        print(f"\n>>> Derived {SLEEVE_ID} from its {len(sleeve['config']['constituents'])} "
+              f"constituents ({len(sleeve['all_trades'])} pooled trades).")
+
     # Ensure directories exist
     FEEDS_DIR.mkdir(parents=True, exist_ok=True)
     DIST_DIR.mkdir(parents=True, exist_ok=True)

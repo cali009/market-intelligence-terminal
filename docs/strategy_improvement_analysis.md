@@ -270,3 +270,64 @@ live-recorded decisions with no ability to revise them afterwards.
 
 Until that exists, the sleeve's correct status is **EXPERIMENTAL / NOT VALIDATED**, which is
 what the record says.
+
+---
+
+# Building the forward paper record
+
+Gate 8 was the only gate no strategy could pass, because `data/forward_paper_log.jsonl`
+never existed. It is also the only gate that time rather than tuning can fix, and the only
+one that produces evidence a backtest cannot. So it was built.
+
+## The design review
+
+Three router models (`auto/best-reasoning`, `auto/claude-sonnet`, `auto/deepseek`) reviewed
+the design before it was written. All three independently reached the same conclusion:
+
+> **The hash chain is tamper-EVIDENT, not tamper-PROOF.** The operator controls the file, the
+> git history and the clock. A chain cannot stop someone rewriting the whole file and
+> recomputing every hash.
+
+That is correct and it is now stated in the module docstring, in `INTEGRITY_STATEMENT`, and
+in the published feed. A gate-8 pass from this file means the process was followed, not that
+an edge exists. The only real upgrade is an anchor outside the operator's control.
+
+Five specific holes were found and closed:
+
+| hole | fix |
+|---|---|
+| Write ten DECISIONs, peek at the opens, FILL only the five good ones | Every DECISION gets exactly one FILL, entered or not. `verify()` reports unsettled decisions. |
+| Backfill only the strategies that happened to work | A CENSUS record is written for every strategy every run, including zero-signal days. |
+| Quietly retune mid-stream and keep the same `strategy_id` | `strategy_version_hash` on every record; drift is reported so the log is segmented, not blended. |
+| Record a stop price before the entry is known | DECISION records the stop **rule** and the ATR, never a price. The FILL computes it. |
+| Forward fires on different conditions than the backtest it is compared to | The predicate is imported from `backtest_engine`, not re-implemented. |
+
+That last one is tested, not asserted: `test_forward_predicate_agrees_with_backtest` replays
+real historical signals from the published backtest ledger and requires the forward path to
+reproduce them. Measured on the current data: **PO3_LIQUIDITY_SWEEP 21/21,
+ADAPTIVE_DUAL_REGIME 18/18, PO3_META_GATED 21/21.** Gate 8 is comparing the same strategy on
+both sides.
+
+## What was broken and found while building it
+
+1. **`run_all_backtests()` rebuilds `results` from scratch**, so the sleeve added last turn
+   would have been silently erased on the next pipeline run. It is now rebuilt as a derived
+   record inside `run_backtests.py`, and degrades gracefully if a constituent disappears.
+2. **The local `.git` reverted a fourth time**, back to `85fc7d6` with an 8.9 MB database
+   holding 10,024 bars. The remote was untouched at `3ec54e5` with the correct 84.4 MB /
+   203,078-bar database — the push script's behind-remote guard did its job. Recovered with
+   `git fetch` + `git reset --mixed origin/main`.
+3. **The CI workflow had no commit step**, so a forward log written by the cron was discarded
+   with the runner and gate 8 could never accumulate the three months it requires. Added a
+   commit step that stages `data/forward_paper_log.jsonl` only — never the 84 MB database —
+   and refuses to commit if the log shrank. Also added the missing `timeout-minutes: 60`.
+
+## State as of writing
+
+The log holds 124 records across three sessions, the chain verifies, and gate 8 reads
+**1/3 months for all three strategies**. Two more months of daily runs are required before
+gate 8 can produce a verdict. Until then it fails for the honest reason: not enough time has
+passed, not because anything is wrong.
+
+Nothing about this changes the verdict on the sleeve. It changes whether a verdict will
+eventually be possible.

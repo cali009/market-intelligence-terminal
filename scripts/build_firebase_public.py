@@ -113,6 +113,9 @@ def build_firebase_bundle():
         # Phase 34.5: execution gateway telemetry, Predicate 28, AOS attestation
         ("execution_gateway.json", "execution_gateway.json"),
         ("execution_gateway.json", "execution_gateway"),
+        # Forward paper record: the only feed here that is not a model of the past.
+        ("forward_paper.json", "forward_paper.json"),
+        ("forward_paper.json", "forward_paper"),
     ]
 
     for src_name, dest_name in core_feeds:
