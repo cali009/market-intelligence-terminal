@@ -87,6 +87,24 @@ jobs:
         run: |
           npx firebase-tools deploy --only hosting --token "${{ secrets.FIREBASE_TOKEN }}"
 
+      - name: Verify Push Permission (manual runs only)
+        # A no-op commit step proves nothing about write access: when the log is unchanged
+        # the step exits before git push ever runs, so a token without contents:write would
+        # still report success. This dry-run creates a throwaway ref name, which requires
+        # write permission to negotiate, and does it without creating anything.
+        # Runs only on workflow_dispatch so scheduled runs are never affected.
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          git config user.name "market-intel-pipeline"
+          git config user.email "pipeline@users.noreply.github.com"
+          PROBE="refs/heads/permission-probe-$(git rev-parse --short HEAD)"
+          if git push --dry-run origin "HEAD:$PROBE" 2>&1; then
+            echo "Push permission OK: contents:write is effective for GITHUB_TOKEN."
+          else
+            echo "::error::GITHUB_TOKEN cannot push. The forward log will not accumulate."
+            exit 1
+          fi
+
       - name: Commit Forward Paper Log
         # ONLY the append-only forward log is committed. The database is 84 MB and is
         # regenerated every run; committing it would grow the repository without bound and
