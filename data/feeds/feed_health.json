@@ -6,20 +6,20 @@
       "market": "US",
       "primary_source": "Yahoo Finance via the unofficial chart API (query1.finance.yahoo.com), end-of-day",
       "status": "HEALTHY",
-      "freshness_hours": 68.4,
+      "freshness_hours": 24.0,
       "staleness_badge": "CLOSED_MARKET",
-      "staleness_reason": "No completed session since the 2026-11-25 close as of 2026-11-27 15:24 EST. Data is current; the next close has not happened yet.",
+      "staleness_reason": "No completed session since the 2026-11-27 close as of 2026-11-27 19:01 EST. Data is current; the next close has not happened yet.",
       "market_closed": true,
-      "market_state": "OPEN",
+      "market_state": "AFTER_HOURS",
       "market_state_detail": {
-        "local_time": "2026-11-27 15:24 EST",
+        "local_time": "2026-11-27 19:01 EST",
         "session_local": "NYSE/Nasdaq regular session 09:30-16:00 ET",
         "holiday_modelled": true,
         "sessions_completed_since_last_bar": 0,
         "weekdays_unverified": 0
       },
-      "last_synced_at": "2026-11-26 (exchange close, end-of-day)",
-      "records_count": 127870,
+      "last_synced_at": "2026-11-27 (exchange close, end-of-day)",
+      "records_count": 127973,
       "coverage_pct": 98.9,
       "survivorship_biased": true,
       "notes": "103 US symbols, all currently listed large caps. The universe is survivorship-biased: delisted and acquired constituents are not present, so results computed over it are optimistically biased."
@@ -30,20 +30,20 @@
       "market": "CA",
       "primary_source": "Yahoo Finance via the unofficial chart API (query1.finance.yahoo.com), end-of-day",
       "status": "HEALTHY",
-      "freshness_hours": 44.4,
+      "freshness_hours": 24.0,
       "staleness_badge": "CLOSED_MARKET",
-      "staleness_reason": "No completed session since the 2026-11-26 close as of 2026-11-27 15:24 EST. Data is current; the next close has not happened yet.",
+      "staleness_reason": "No completed session since the 2026-11-27 close as of 2026-11-27 19:01 EST. Data is current; the next close has not happened yet.",
       "market_closed": true,
-      "market_state": "OPEN",
+      "market_state": "AFTER_HOURS",
       "market_state_detail": {
-        "local_time": "2026-11-27 15:24 EST",
+        "local_time": "2026-11-27 19:01 EST",
         "session_local": "TSX regular session 09:30-16:00 ET",
         "holiday_modelled": true,
         "sessions_completed_since_last_bar": 0,
         "weekdays_unverified": 0
       },
-      "last_synced_at": "2026-11-26 (exchange close, end-of-day)",
-      "records_count": 75045,
+      "last_synced_at": "2026-11-27 (exchange close, end-of-day)",
+      "records_count": 75105,
       "coverage_pct": 99.7,
       "survivorship_biased": true,
       "notes": "60 TSX symbols, CAD denominated, all currently listed. Also survivorship-biased for the same reason as the US universe. No TMX Datalinx subscription; this platform is not a certified reseller of TMX data."
@@ -54,9 +54,9 @@
       "market": "US",
       "primary_source": "SEC EDGAR (data.sec.gov submissions and companyfacts APIs), public XBRL",
       "status": "HEALTHY",
-      "freshness_hours": 1338.1,
+      "freshness_hours": 1341.7,
       "staleness_badge": "STALE",
-      "last_synced_at": "2026-11-27 20:24:14 EST",
+      "last_synced_at": "2026-11-28 00:01:09 EST",
       "records_count": 67,
       "coverage_pct": null,
       "notes": "Strict 10 req/s rate-limited ingestion with declared User-Agent."
@@ -67,7 +67,7 @@
       "market": "MACRO",
       "primary_source": "Bank of Canada Valet REST API (public, free)",
       "status": "HEALTHY",
-      "freshness_hours": 1556.4,
+      "freshness_hours": 1560.0,
       "staleness_badge": "STALE",
       "last_synced_at": "2026-09-24 16:35:00 EST",
       "records_count": 30,
@@ -116,5 +116,5 @@
       "resolution_notes": "Automated validation gate passed."
     }
   ],
-  "generated_at": "2026-11-27 20:24:14 EST"
+  "generated_at": "2026-11-28 00:01:09 EST"
 }

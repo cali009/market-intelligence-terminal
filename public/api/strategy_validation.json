@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-27T20:24:15.080451+00:00",
+  "generated_at": "2026-11-28T00:02:25.540251+00:00",
   "as_of_date": "2026-11-26",
   "source_of_truth": "Computed by src/engine/strategy_validation.py from the walk-forward trade ledger in backtests.json and the FDR table in cpcv_validation.json. No figure on this panel is hard-coded.",
   "validation_criteria": {
@@ -15,26 +15,28 @@
     "max_forward_degradation_pct": 40.0
   },
   "summary": {
-    "strategies_evaluated": 8,
+    "strategies_evaluated": 9,
     "passed_all_gates": 0,
-    "failed": 6,
+    "failed": 7,
     "insufficient_sample": 2,
     "not_validated": 0,
     "promoted_to_live": 0,
-    "promotion_statement": "No strategy is promoted to live. 0 of 8 strategies pass all eight gates."
+    "promotion_statement": "No strategy is promoted to live. 0 of 9 strategies pass all eight gates."
   },
   "pbo": {
     "value": 0.067,
     "informative": true,
     "assessment": "LOW_OVERFITTING_RISK",
-    "reason": "1 of 8 strategies are profitable out-of-sample on an adequate sample, so rank inversion is meaningful.",
+    "reason": "2 of 9 strategies are profitable out-of-sample on an adequate sample, so rank inversion is meaningful.",
     "profitable_strategies": [
       "PO3_LIQUIDITY_SWEEP",
       "PO3_META_GATED",
-      "ADAPTIVE_DUAL_REGIME"
+      "ADAPTIVE_DUAL_REGIME",
+      "SLEEVE_3WAY_EQUAL"
     ],
     "credible_profitable_strategies": [
-      "ADAPTIVE_DUAL_REGIME"
+      "ADAPTIVE_DUAL_REGIME",
+      "SLEEVE_3WAY_EQUAL"
     ]
   },
   "forward_record": {
@@ -735,6 +737,94 @@
           "requirement": "Still positive after removing the 5 best trades",
           "passed": false,
           "observed": "trimmed mean -0.089R (n=176)",
+          "detail": "Profitability depends on the top 5 trades.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 8,
+          "name": "Forward paper record",
+          "requirement": "\u2265 3 months of genuine timestamped forward paper record, degrading \u2264 40% vs backtest",
+          "passed": false,
+          "observed": "0 forward trades, 0 month(s)",
+          "detail": "No forward paper record exists for any strategy. No forward log file exists. No strategy has any forward paper record.",
+          "symbol": "\u274c"
+        }
+      ]
+    },
+    {
+      "strategy_id": "SLEEVE_3WAY_EQUAL",
+      "strategy_name": "Three-Strategy Equal-Weight Sleeve (ADAPTIVE + PO3_META + PO3_LIQ)",
+      "verdict": "FAILED",
+      "verdict_reason": "Failed: G1 Out-of-sample profitability, G5 Beats the benchmark, G7 Not dependent on a few winners.",
+      "oos_trades": 256,
+      "oos_months": 12,
+      "oos_mean_return_pct": 0.0601,
+      "oos_expectancy_r": 0.0135,
+      "oos_t_stat": 0.7,
+      "gates_passed": 2,
+      "gates_failed": 4,
+      "gates_unevaluable": 2,
+      "gates": [
+        {
+          "gate_id": 1,
+          "name": "Out-of-sample profitability",
+          "requirement": "OOS mean return after costs > 0 with t-statistic \u2265 2.0",
+          "passed": false,
+          "observed": "mean 0.060%, t = 0.70 (n=256)",
+          "detail": "Mean is above zero; t-statistic is below the 2.0 threshold.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 2,
+          "name": "Deflated Sharpe ratio",
+          "requirement": "DSR \u2265 0.95 counting all variants (N \u2265 12)",
+          "passed": null,
+          "observed": "\u2014",
+          "detail": "No deflated Sharpe ratio was computed for this strategy.",
+          "symbol": "\u26a0\ufe0f"
+        },
+        {
+          "gate_id": 3,
+          "name": "Multiple-testing control",
+          "requirement": "Passes Benjamini-Hochberg FDR at q = 0.05",
+          "passed": null,
+          "observed": "\u2014",
+          "detail": "Strategy is absent from the FDR gating table.",
+          "symbol": "\u26a0\ufe0f"
+        },
+        {
+          "gate_id": 4,
+          "name": "Sufficient out-of-sample evidence",
+          "requirement": "\u2265 100 OOS trades or \u2265 36 monthly periods",
+          "passed": true,
+          "observed": "256 trades, 12 month(s)",
+          "detail": "Sample size is adequate.",
+          "symbol": "\u2705"
+        },
+        {
+          "gate_id": 5,
+          "name": "Beats the benchmark",
+          "requirement": "Beats SPY (US) / XIU (CA) buy-and-hold after costs over the same window",
+          "passed": false,
+          "observed": "strategy +4.11% vs SPY +5.36% / XIU +10.89%",
+          "detail": "Over the OOS window: SPY not beaten, XIU not beaten.",
+          "symbol": "\u274c"
+        },
+        {
+          "gate_id": 6,
+          "name": "Drawdown limit",
+          "requirement": "Max drawdown \u2264 35%",
+          "passed": true,
+          "observed": "7.28% (OOS equity curve)",
+          "detail": "Within the 35%% limit.",
+          "symbol": "\u2705"
+        },
+        {
+          "gate_id": 7,
+          "name": "Not dependent on a few winners",
+          "requirement": "Still positive after removing the 5 best trades",
+          "passed": false,
+          "observed": "trimmed mean -0.002R (n=251)",
           "detail": "Profitability depends on the top 5 trades.",
           "symbol": "\u274c"
         },

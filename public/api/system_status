@@ -1,35 +1,35 @@
 {
-  "generated_at": "2026-11-27T20:24:57.757419+00:00",
-  "last_pipeline_run": "2026-11-27T20:24:57.347110+00:00",
+  "generated_at": "2026-11-28T00:01:10.317547+00:00",
+  "last_pipeline_run": "2026-11-28 00:01:09 EST",
   "last_pipeline_run_note": "Most recent generated_at across the written feed files.",
   "data": {
-    "bars": 202915,
+    "bars": 203078,
     "symbols": 163,
     "first_date": "2021-11-26",
-    "last_date": "2026-11-26",
-    "age_hours": 44.4,
-    "age_label": "CLOSED_MARKET",
-    "age_reason": "No completed session since the 2026-11-26 close as of 2026-11-27 15:24 EST. Data is current; the next close has not happened yet.",
+    "last_date": "2026-11-27",
+    "age_hours": 24.0,
+    "age_label": "CURRENT",
+    "age_reason": "No completed session since the 2026-11-27 close as of 2026-11-27 19:01 EST. Data is current; the next close has not happened yet.",
     "market_closed": true,
     "holiday_modelled": true,
     "market_detail": {
       "us": {
         "badge": "CLOSED_MARKET",
-        "state": "OPEN",
+        "state": "AFTER_HOURS",
         "holiday": null,
-        "local_time": "2026-11-27 15:24 EST",
+        "local_time": "2026-11-27 19:01 EST",
         "sessions_completed_since_last_bar": 0,
         "weekdays_unverified": 0,
-        "reason": "No completed session since the 2026-11-26 close as of 2026-11-27 15:24 EST. Data is current; the next close has not happened yet."
+        "reason": "No completed session since the 2026-11-27 close as of 2026-11-27 19:01 EST. Data is current; the next close has not happened yet."
       },
       "ca": {
         "badge": "CLOSED_MARKET",
-        "state": "OPEN",
+        "state": "AFTER_HOURS",
         "holiday": null,
-        "local_time": "2026-11-27 15:24 EST",
+        "local_time": "2026-11-27 19:01 EST",
         "sessions_completed_since_last_bar": 0,
         "weekdays_unverified": 0,
-        "reason": "No completed session since the 2026-11-26 close as of 2026-11-27 15:24 EST. Data is current; the next close has not happened yet."
+        "reason": "No completed session since the 2026-11-27 close as of 2026-11-27 19:01 EST. Data is current; the next close has not happened yet."
       }
     },
     "survivorship_biased": true,
